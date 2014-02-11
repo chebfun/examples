@@ -1,0 +1,4 @@
+examples
+========
+
+Chebfun examples collection
