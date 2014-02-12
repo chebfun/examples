@@ -16,7 +16,7 @@ approx
 - *BestApprox.m* - good
 - *BestL2Approximation.m* - good
 - *BSplineConv.m* - good
-- *BumpFunction.m* - this one is going seriously wrong,
+- ***BumpFunction.m*** - this one is going seriously wrong,
   I can't even describe. It's not adding the functions
   together properly, evidently, because the final result
   is not random and it has rank 100.
