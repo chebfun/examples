@@ -1,0 +1,21 @@
+
+<!--#include virtual="/chebfun/includes/head.html" -->
+<link href="/chebfun/css/examples.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/chebfun/MathJax/MathJax.js">
+    MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        },
+    });
+</script>
+</head>
+<html>
+<body>
+<div id="headimg"></div>
+<div id="wrapper">
+<!--#include virtual="/chebfun/includes/header.html" -->
+        <!--#include virtual="/chebfun/includes/mainmenu.html" -->
+        <div id="guidecontent">

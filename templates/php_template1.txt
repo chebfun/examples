@@ -1,0 +1,43 @@
+<?
+ function search($text_search){
+
+  // Tidy inputs
+  $text_search = explode(" ", $text_search);
+  $strip = array(",", " ", "#");
+  $i = 0;
+  while($i<count($text_search))
+  {
+    $text_search[$i] = str_replace($strip,"",$text_search[$i]);
+    $i++;
+  }
+
+  // Load data
+  $buffer = file('tags.list');
+
+  // Search
+  $i = 0;
+  while($i<count($text_search)) {
+   $j = 0;
+   $buffer2 = array();
+   while($j<count($buffer)) {
+      if ( strripos($buffer[$j], $text_search[$i]) !== false ) {
+         array_push($buffer2, $buffer[$j]);
+      }
+      $j++;
+   }
+   $buffer = $buffer2;
+   $i++;
+  }
+
+  // Tidy Output
+  $j = 0;
+  $found = array();
+  while($j<count($buffer)) {
+    $buffer[$j] = explode(" ", $buffer[$j]);
+    array_push($found, $buffer[$j][0]);
+    $j++;
+  }
+
+  return $found;
+ }
+?>

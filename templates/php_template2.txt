@@ -1,0 +1,26 @@
+<?php
+  $string = $_GET["query"]; 
+
+  $found = search($string);
+  $i = 0; 
+  if (count($string) !== 0) {
+    if (count($found) == 0) {
+      print("<h2 class='bigger' style='margin-left:-15pt; margin-bottom:-10pt;'>No search results for '$string'.</h2>");
+    }
+    else {
+      print("<h2 class='bigger' style='margin-left:-15pt; margin-bottom:-10pt;'>Search results for '$string':</h2>");
+    }
+  }
+  while($i<count($found))
+  {
+    $found[$i] = explode("/", $found[$i]);
+    $dir = $found[$i][0];
+    $file = $found[$i][1];
+    $url = "http://www2.maths.ox.ac.uk/chebfun/examples/$dir/html/$file.shtml";
+    $mfile = @fopen("http://www2.maths.ox.ac.uk/chebfun/examples/$dir/$file.m", "r");
+    $title = substr(fgets($mfile, 4096), 3);
+    fclose($mfile);
+    print("<br/><a href='$url'>$title</a> : ($dir/$file)");
+    $i++;
+  }
+?>

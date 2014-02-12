@@ -1,0 +1,16 @@
+calc Calculus
+roots Rootfinding  
+opt Optimization  
+quad Quadrature  
+linalg Linear algebra  
+approx Approximation of functions  
+complex Complex variables 
+geom Geometry
+stats Probability and statistics
+ode Ordinary differential equations 
+ode-eig ODE eigenvalue problems
+integro Integral and integro-differential equations  
+pde Partial differential equations 
+veccalc Vector Calculus
+fun Fun!
+temp Temporary folder

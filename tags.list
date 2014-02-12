@@ -1,0 +1,172 @@
+roots/AverageDegreeReduction1D #roots #subdivision
+roots/AverageDegreeReduction2D #roots #Chebfun2 #subdivision
+integro/VlasovPoisson #eigenvalues #volterra
+approx/AbsoluteValue #rational #Newton #ABS
+approx/AbsoluteValueScaled #rational #Newton #ABS
+approx/BumpFunction #bump #gaussian #Chebfun2
+ode/AdvDiffJump #linearODE #piecewise #advectiondiffusion
+ode/AllenCahn #linearODE #AllenCahn
+pde/AllenCahn2 #Allen-Cahn #metastability #EQUI #PDE15S
+complex/AnalyticContinuation #RATINTERP #analytic continuation #poles #rational function
+complex/Arguments #complex #angle
+fun/PiecewiseLinear #piecewise #game #interpolation #rational
+approx/OscError #approximation #bestapproximation #l2approximation #interpolation
+complex/ComplexArcLength #complex #arclength #roots
+geom/Area #parameterized #intersection #trajectory #geometry
+ode/ChebfunAD #automaticdifferention #AD
+approx/BSplineConv #spline #Bspline #convolution #CONV #probability
+quad/BatteryTest #quadrature #minsamples #spike #blowup
+approx/BernsteinPolys #Bernstein #Gibbs #Weierstrass #binomial
+approx/BestApprox #REMEZ #Pachon #bestapproximation #rational #Caratheodory
+stats/BetaExercise #Beta distribution #probability #mode #median
+fun/Birthday #complex #gift
+stats/BivariateNormalDistribution #normal distribution #Chebfun2
+ode/Bloodhound #nonlinearODE #piecewise
+ode/BlowupFK #nonlinearODE #blowup
+ode/BouncingBall #linearODE #Ball #physics
+geom/Sinai #piecewise #concatentation #trajectory #intersection #geometry
+ode/BoundaryLayer #linearODE #boundarylayer #advectiondiffusion
+fun/AudibleChebfuns #sound #fun
+ode/Carrier #nonlinearODE
+stats/CentralLimitTheorem #centrallimittheorem #convolution #CONV #probability #delta #deltafunction #DIRAC
+fun/SoccerBall #Chebfun2  #soccer
+approx/Other2DDomains #Domain #Approximation #Chebfun2
+approx/ChebCoeffs #Chebyshev #coefficients #CHEBPOLYPLOT
+approx/Entire #entire #interpolation #ellipse #resolution
+approx/ChebPolysHigham #Higham #Chebyshevpolynomial #PLOT3 #CHEBPOLY
+veccalc/CheckingVectorCalculus #parallelogram law #gradient theorem #divgradcurl #Chebfun2
+veccalc/DynamicalSystems #dynamical systems #phase portrait #Chebfun2
+roots/RootsNearAxis #roots #complex #CHEBELLIPSEPLOT
+roots/BivariateRoots #bivariate polynomials #roots #curve intersections
+linalg/CondNos #linearalgebra #polynomials #qrdecomposition #conditionnumber
+complex/ConformalSquare #complex #conformalmap #integral #singularities
+approx/Convergence #Gibbsphenomenon #discontinuity #ABS #fractional
+pde/ReactDiffSys #reactiondiffusion #system #linearPDE
+ode/DawsonIntegral #linearODE #special function #Dawson
+calc/Integrals #SUM #CUMSUM #integral
+complex/Hyperfuns #DIRAC #complex #deltafunction #heaviside #hyperfunction #delta
+calc/DeltaDerivs #DIRAC #delta #impulse #deltafunction
+ode/DeltaODEs #DIRAC #linearODE #deltafunctions #jumpconditions #impulse #delta
+opt/DixonSzego #optimization #2D
+roots/FundamentalTheoremOfAlgebra #roots #FundamentalTheoremOfAlgebra
+ode-eig/DoubleWell #eigenvalues #piecewise #quantum
+calc/SnellsLaw #calculus #Snell's Law #Snell
+geom/DualCurves #dual #curve #polygon #geometry
+ode-eig/Eigenstates #eigenvalues #quantum
+linalg/LevelRepulsion #linearalgebra #eigenvalues
+integro/FoxLi #eigenvalues #fredholm
+geom/Ellipses #complex #ode #trajectory #geometry
+fun/Encryption #encryption #message
+veccalc/EventHandling #Bouncing #autonomous #Chebfun2
+approx/ExactChebCoeffs #Chebyshevcoefficients #residue
+ode/ExactSolns #nonlinearODE
+stats/ExponentialExercises #exponentialdistribution #probability
+opt/ExtremeExtrema #optimization #localextrema #piecewise #rootfinding
+approx/FastChebyshevLegendreTransform #fast transform #Legendre #Chebyshev #FFT #coefficients
+approx/ChebfunFFT #FFT #Chebyshevpolynomial #CHEBPOLY
+linalg/FieldOfValues #linearalgebra #fieldofvalues
+ode/FourBugs #nonlinearODE
+complex/FourierContour #fouriertransform #contourintegral #pole #residue
+integro/FracCalc #calculus
+ode-eig/Drum #eigenvalues #rootfinding
+approx/GammaFun #gamma #exponents #pole #squareroot
+quad/GaussClenCurt #quadrature #Clenshaw_Curtis_quadrature #Gauss_quadrature
+quad/GaussQuad #quadrature #Gauss_quadrature #quadrature_nodes #quadrature_weights
+opt/GlobalMinimum #100-Digit Challenge #optimization #Chebfun2
+quad/TwoCubes #quadrature #multiple_integrals #singular_integral
+approx/GreedyInterp #greedy #interpolation #Leja #Chebyshevpoints
+ode/Rectifier #nonlinearODE #IVP
+approx/Halphen #Halphen #rational #9.28903 #exponential
+fun/ValentinesDay #gift #heart
+fun/ValentinesDay2 #gift #heart #love #Chebfun2
+pde/Erosion #heatequation #erosion #linearPDE
+fun/HelloWorld #Chebfun2 #Rank
+fun/HilbertSurfaceChebsnake2 #Chebfun2 #chebsnake #chebsnake2 #Hilbert
+approx/CommunicationSystem #signaprocessing #AM #amplitudemodulation #DIRAC #deltafunction
+fun/ContourFun #implicitfunction #fun #contour
+approx/InteractiveInterp #interpolation #INTERP1 #LEBESGUE
+ode/JumpConditions #linearODE #jumpconditions
+complex/KeyholeContour #complex #contour
+fun/KochSnowflake #fun #fractal #ARCLENGTH #koch #snowflake>
+approx/LebesgueConst #Lebesgue
+ode/LeeGreengardODEs #linearODE #boundarylayer
+ode/LinExpIVP #linearODE #IVP
+ode/LinearIVP #linearODE #IVP
+geom/Lissajous #complex #sinewaves #geometry
+ode/Logistic #logistic #chaos
+ode/LorenzAttractor #Lorenz #dynamical systems #autonomous #RATINTERP #analytic continuation #poles #rational function
+roots/MarchingSquares #rootfinding #contourc #Chebfun2
+ode/MatchedAsymp #linearODE #asymptotics
+fun/MathJax #mathjax
+stats/MaxwellExercises #Maxwell distribution #probability #mean #variance
+pde/Maxwell #Maxwell #linearPDE
+linalg/MercuryEarthConjunctions #linearalgebra #rootfinding #determinant
+opt/MercuryEarth #optimization #astrophysics
+fun/XmasCard #Xmas #gift #fun
+ode-eig/SolarQDA #eigenvalues #piecewise #quantum
+ode/TwoSolBVPfromIVP #nonlinearODE #IVP
+roots/BernoulliPolynomials #roots #Bernoulli #Reimann
+opt/Needle #optimization
+roots/ResultantMethod #roots #Chebfun2 #Resultant #Bezout
+ode/SolarFields #nonlinearODE #continuation #astrophysics
+linalg/NonnormalQuiz #linearalgebra #nonnormality #norm #fun
+ode/NonstandardBCs #linearODE #exoticBCs #nonstandard
+stats/NormalExercises #normaldistribution #probability
+ode-eig/NullSpace #linear #eigenvalues #optimization #bvp #nonstandard
+opt/OptimInt #optimization #integration #rootfinding #parameter
+ode/Orbits #nonlinearODE #astrophysics #IVP
+ode-eig/OrrSommerfeld #eigenvalues #highorder #stability
+approx/OrthPolys #orthogonal #GramSchmidt #LAGPOLY #HERMPOLY #LEGPOLY #CHEBPOLY
+approx/OrthPolysLanczos #orthogonal #Lanczos
+quad/LevinIntegrate #quadrature #ODE
+ode/ParameterODE #linearODE #piecewise #parameter
+ode/ParamODEs #linearODE #nonlinearODE #parameter
+geom/ParametricSurfaces #chebfun2 #surfaces #parametric
+approx/WeierstrassFunction #Weierstrass #approximation #infinite series
+geom/Ellipse #perimeter #geometry
+ode/PeriodicSystem #linearODE #ODEsystem #periodic #piecewise
+complex/PhasePortraits #phase portraits #Chebfun2
+veccalc/AutonomousSystems #Duffing oscillator #phase portrait #Chebfun2
+complex/PortraitsWithPoles #phase portraits #poles #Chebfun2
+ode/PiecewiseDemo #linearODE #piecewise
+approx/HermiteBasis #Hermite #basis
+ode-eig/PolyEigDiff #eigenvalues #specialfunctions
+approx/PrettyFunctions #pretty #Chebfun2
+geom/Procrustes #shapeanaylsis #affinetransformations #geometry
+quad/QuadratureConvergence #quadrature
+approx/ScalingAndSquaring #rational #exponential #pade
+approx/RationalInterp #rational #interpolation #RATINTERP #least-squares
+linalg/ResolventNorm #linearalgebra #norm #resolvent
+ode/ResonantVandal #linearODE #resonance #CarrierPearson
+approx/RestrictedDenominatorApproximations #rational #exponential #best
+roots/BesselRoots #roots #Bessel
+roots/ComplexRoots #roots #complex #Cauchy
+roots/SecularRoots #roots #pole
+roots/RandomPolynomials #roots #random
+opt/Rosenbrock #optimization #2D
+opt/Rosenbrock2 #Rosenbrock #optimization #Chebfun2
+complex/RoucheTheorem #complex #roots
+geom/RoundingCorners #CONV #convolution #corners
+complex/SCToolbox #complex #conformalmap
+fun/Scribble2 #gift #SCRIBBLE #fun #birthday
+pde/SVDFrequencyResponse #SVD #compact #linearalgebra
+quad/SpikeIntegral #quadrature #spike
+approx/Splines #spline #splitting
+ode-eig/ThermoelasticRod #eigenvalues #linear #nonstandard #stability
+ode/Regions #stabilityregions
+approx/DivergentSeries #Divergentseries #PADEAPPROX #extrapolation #Pade
+ode/BVPSystem #nonlinearODE #ODEsystem
+ode/ThreeBodyProblem #nonlinearODE #ODEsystem #astrophysics #rational
+ode/BlackScholes #linearODE #piecewise #jumpconditions #blackscholes
+pde/IntegroDiffT #integrodifferential
+linalg/TransientGrowth #linearalgebra #norm #transient
+complex/Singularities #complex #phase portraits #Chebfun2
+veccalc/UndergraduateCalculus #mulivriable calculus #line integral #Green's theorem #Chebfun2
+stats/UniformExercises #Uniform distribution #probability #mean #variance
+geom/VolumeOfHeart #heart #chebfun2 #surfaces
+ode-eig/WaveDecay #eigenvalues #piecewise #waves
+roots/WhiteCurves #roots #whitecurves
+approx/WigglyApprox #best #REMEZ #CHEBPOLY
+integro/WikiIntegroDiff #linear #backslash #wikipedia
+ode/WikiODE #linearODE #wikipedia
+fun/Writing3D #complex #3D #camorbit
