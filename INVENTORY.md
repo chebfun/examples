@@ -12,7 +12,8 @@ This list is sorted by category.
   ```
   hold on, semilogy(abs(rs-abs(x)),'r',LW,lw)
   ```
-  The first `abs` is the problem.
+  I do recall this one takes a long time, but I was not
+  patient enough to let it run completely this time.
 - *BernsteinPolys.m* - good
 - *BestApprox.m* - good
 - *BestL2Approximation.m* - good
