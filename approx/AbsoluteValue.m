@@ -82,7 +82,7 @@ title('Error',FS,fs)
 % Donald Newman showed that the optimal type (n,n)
 % rational approximants to abs(x) achieve accuracy O(exp(-C*sqrt(n)))
 % [1,2], whereas here the maximum error is exactly 2^(-k) after k steps,
-% which corresponds to 1/n for the type (n,n) approximation.  
+% which corresponds to 1/n for the type (n,n) approximation.
 % Away from x=0, however, the accuracy is O(exp(-C*n)), thanks to the quadratic
 % convergence of Newton's method.
 

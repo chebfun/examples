@@ -41,7 +41,7 @@ FS = 'fontsize'; fs = 16;
 
 f = chebfun(@(x) 1./(1 + 1000*(x-.1).^2));  % A Runge-type function  
 c_cheb = chebpoly(f).';                     % Chebyshev coeffs in O(NlogN)
-c_leg = cheb2leg(c_cheb);                   % Leg coeffs with the new algorithm
+c_leg = chebtech.cheb2leg(c_cheb);                   % Leg coeffs with the new algorithm
 
 semilogy(flipud(abs(c_leg)), '-r'), hold on  % plot them
 semilogy(flipud(abs(c_cheb)), '.b', LW, lw)
@@ -57,7 +57,7 @@ xlabel('n', FS, fs), set(gca, FS, fs), hold off
 
 f = chebfun(@(x) abs(x-.1).^(7/4)); N = length(f);  % |x-.1|^(7/4)
 c_cheb = chebpoly(f)';                              % Chebyshev coeffs
-c_leg = cheb2leg(c_cheb);                           % Legendre coeffs
+c_leg = chebtech.cheb2leg(c_cheb);                           % Legendre coeffs
 
 semilogy(flipud(abs(c_leg)), 'r'), hold on,         % plot them
 semilogy(flipud(abs(c_cheb)), 'b'),
@@ -83,13 +83,13 @@ ns = sprintf('No. of evaluation points = %u\n',N);
 
 s = tic;                                           % evaluate f
 c_leg = t.^(N-1:-1:0);                             % via Legendre coeffs
-cheb_vals = chebpolyval(leg2cheb(c_leg));          % and time it...
+cheb_vals = chebtech2.coeffs2vals(chebtech.leg2cheb(c_leg)); % and time it...
 tt = toc(s);
 
 ts = sprintf('Evaluation time = %1.2fs\n', tt);
 fprintf([ns, ts])
 
-semilogy(chebpts(length(f)), abs(f.vals - cheb_vals))
+semilogy(chebpts(length(f)), abs(f.values{:} - cheb_vals))
 title('Absolute error', FS, fs), hold off
 axis([-1 1 1e-16 1e-12]), set(gca, FS, fs), hold off
 
@@ -128,11 +128,11 @@ toc
 % We can now form a chebfun from solution using LEG2CHEB():
 
 tic
-c_cheb = leg2cheb(c_leg);
+c_cheb = chebtech.leg2cheb(c_leg);
 u = chebfun(c_cheb, 'coeffs');                 
 toc
 
-clf, plot(u, 'interval', [-.001, .001])        % plot u on [-0.001, 0.001]
+clf, plot(u{-0.001,0.001}) % plot u on [-0.001, 0.001]
 title('Computed solution (zoomed in)', FS, fs)
 set(gca, FS, fs), xlabel('x', FS, fs), shg
 

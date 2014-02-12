@@ -49,7 +49,7 @@ title(sprintf('40 equispaced points    Lambda = %5.2e',Lambda),FS,14)
 % shrinking the number from 40 to 30 is that for larger values than this,
 % difficulties arise caused by rounding errors since the Lebesgue function
 % is bigger than the inverse of machine epsilon.
-rand('seed',1)
+rng(0)
 [Lfun,Lambda] = lebesgue(2*rand(10,1)-1);
 subplot(2,1,1), semilogy(Lfun,LW,1.6), grid on
 title(sprintf('10 random points    Lambda = %5.2e',Lambda),FS,14)

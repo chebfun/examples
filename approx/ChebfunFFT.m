@@ -25,7 +25,7 @@ fc = chebfun('exp(x).*sin(pi*x) + x'); n = length(fc) - 1;
 %%
 % Chebfuns are defined by the values taken at Chebyshev points. We can
 % access this data by looking in the 'vals' field.
-fvals = fc.vals; 
+fvals = fc.values{1}; 
 %% 
 % We can plot the chebfun and its values at Chebsyhev points with the
 % following code, noting that this is equivalent to the command

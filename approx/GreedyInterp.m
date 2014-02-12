@@ -30,10 +30,10 @@ f = abs(x);
 % Here is a loop to compute the first few polynomial interpolants and plot
 % their errors:
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
-s = []; [maxval, maxpos] = norm(f,inf);
+s = []; [maxval, maxpos] = norm(f,inf); dom = domain(-1,1);
 for n = 0:4
    s = [s; maxpos];
-   p = interp1(s,f);
+   p = interp1(s,f,dom);
    err = f-p;
    [maxval, maxpos] = norm(err,inf);
    hold off, plot(err,LW,2), ylim(1.2*maxval*[-1 1]), grid on
@@ -45,7 +45,7 @@ end
 % Let's continue to n = 8, 16, 32, 64, 128:
 for n = 5:128
    s = [s; maxpos];
-   p = interp1(s,f);
+   p = interp1(s,f,dom);
    err = f-p;
    [maxval, maxpos] = norm(err,inf);
    if log2(n)==round(log2(n))

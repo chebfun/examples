@@ -49,10 +49,11 @@ title('Best L^2 approximation to |x| of degree 5','fontsize',16), hold off
 % of a smooth function via cheb2leg:
 
 n = 10;  
-f = 1./(1+25*x.^2);                  % Runge function 
-cleg = cheb2leg(get(f,'coeffs'));    % convert cheb coeffs of f to Leg coeffs                    
+f = 1./(1+25*x.^2);                  % Runge function
+ccheb = get(f,'coeffs');             % get the Chebyshev coefficients of f
+cleg = chebtech.cheb2leg(ccheb{:});  % convert Cheb coeffs of f to Leg coeffs                    
 cleg = cleg(end-n:end);              % truncate
-ccheb = leg2cheb(cleg);              % convert them back to form a chebfun
+ccheb = chebtech.leg2cheb(cleg);     % convert them back to form a chebfun
 pn = chebfun(ccheb,'coeffs');        % form a chebfun
 plot(f,LW,lw), hold on, plot(pn,'r',LW,lw)
 title('Best L^2 approx to Runge function of degree 10','fontsize',16), hold off
@@ -91,7 +92,7 @@ j=1;
 for n = nn             
     pn = polyfit(f, n);
     err(j) = norm(f - pn);
-    j = j+1;
+    j = j+1
 end
 
 loglog(nn, err,'k-',LW,lw), hold on, loglog(nn,nn.^(-3/2),'k--',LW,lw)

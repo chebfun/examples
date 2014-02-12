@@ -20,8 +20,8 @@ for n = 1:100
     x0 = 2*rand-1; y0 = 2*rand-1;
     df = chebfun2(@(x,y) exp(-gam*((x-x0).^2+(y-y0).^2)));
     f = f + df;    
-    if n == 1 || n==5 || n==50 || n==100
-        subplot(2,2,j), plot(f), title(sprintf('n=%u',n),FS,fs), j=j+1;
+    if n==1 || n==5 || n==50 || n==100
+        subplot(2,2,j), plot(f), title(sprintf('n = %u',n),FS,fs), j=j+1;
         zlim([0,5])
     end
 end
