@@ -1,9 +1,10 @@
+# Chebfun examples inventory
 
-For each of the examples, verify that the code runs and the output looks reasonable.
+Please help with this! For each of the examples, verify
+that the code runs and the output looks reasonable.
+This list is sorted by category.
 
-
-approx
-----
+### approx
 
 - *AbsoluteValue.m* - good
 - ***AbsoluteValueScaled.m*** - stalls at line 60:
