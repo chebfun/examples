@@ -83,3 +83,32 @@ This list is sorted by category.
 - ***OrthPolys.m*** - complains that you can't use `subsref` to set
   a column of a quasimatrix equal to given chebfun. I don't know
   what this syntax is supposed to look like now.
+- ***OrthPolysLanczos.m*** - same problem as with `OrthPolys.m`
+- *OscError.m* - good
+- ***Other2DDomains.m*** - function `chebmatrix` is undefined (in
+  `vertcat`), and the plots are mostly completely messed up
+- ***PrettyFunctions.m*** - the contour plots work, but the surf
+  ones error out in myriad and remarkable ways
+- ***RationalInterp.m*** - something's going wrong with the `p./q`
+  wherein the result doesn't resolve; the code runs, but it's wrong
+- ***ResolutionWiggly.m*** - 2/3 of the approximants are blowing up
+- ***RestrictedDenominatorApproximations.m*** - requires `unbndfun`
+- *ScalingAndSquaring.m* - good
+- ***Splines.m*** - `chebfun/spline` gives an ugly error:
+
+  ```
+  Error using message
+  Error filling holes for
+  MATLAB:chckxy:NumSitesMismatchValues. Floating
+  point numbers are not allowed as holes. They
+  should be converted to strings.
+  Error in chckxy (line 89)
+     error(message('MATLAB:chckxy:NumSitesMismatchValues',nstart,
+     yn))
+  Error in spline (line 54)
+  [x,y,sizey,endslopes] = chckxy(x,y);
+  Error in chebfun.spline (line 48)
+  yy = spline(x, y, xx);
+  ```
+- *WeierstrassFunction.m* - good
+- *WigglyApprox.m* - good

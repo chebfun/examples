@@ -42,7 +42,8 @@ title('A pathological function of Weierstrass', FS, 16)
 %%
 % We must zoom in two hundred times to see that Chebfun is in fact plotting a
 % smooth function.
-Fzoom = chebfun(F{9}, [0,0.01]);
+Fzoom = F{9};
+Fzoom = Fzoom{0,0.01};
 plot(Fzoom, 'k-', 'numpts', 5000, LW, 1)
 title('Close-up of Weierstrass approximant', FS, 16)
 

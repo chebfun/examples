@@ -19,7 +19,7 @@ plot(f,LW,1.6), axis([0 10 -1.2 1.2])
 % the integers, and superimpose it on the same plot in red. Since a spline is
 % just piecewise smooth, the Chebfun is made of a collection of funs, and we
 % include red dots to mark the knots that separate them.
-s = spline(0:10,f);
+s = chebfun.spline(0:10,f);
 hold on, plot(s,'r',LW,1.6)
 plot(s.ends,s(s.ends),'.r',MS,24)
 axis([0 10 -1.2 1.2])
