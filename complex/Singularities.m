@@ -21,8 +21,8 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % 2. a pole of order $n$ if $c_{-n} \neq 0$ and $c_k = 0$ for
 %    all $k < -n < 0$,
 %
-% 3. an essential singularity if $c_k \neq 0$ for infinitely
-%    many negative $k$.
+% 3. an essential singularity if $c_k \neq 0$ for
+%    infinitely many negative $k$.
 
 %% A removable singularity
 % Consider the function $f(z) = \mathrm{sinc}(z) = \frac{\sin(z)}{z}$.
