@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example linalg/NonnormalQuiz.m)
-% [Tags: #linearalgebra, #nonnormality, #norm, #fun, #pseudospectra]
+% [Tags: #linearalgebra, #nonnormality, #pseudospectra, #NORM, #EXPM]
 
 %%
 % The frontispiece of the book Spectra and Pseudospectra presents a quiz

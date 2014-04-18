@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example complex/RoucheTheorem.m)
-% [Tags: #complex, #roots]
+% [Tags: #complex, #Rouche, #ROOTS]
 
 %%
 LW = 'LineWidth'; lw = 1.6; MS = 'MarkerSize'; FS = 'FontSize';
@@ -16,7 +16,7 @@ LW = 'LineWidth'; lw = 1.6; MS = 'MarkerSize'; FS = 'FontSize';
 % $\gamma$ is a closed curve in $\Omega$ such that $n(\gamma, z)$ is either
 % $0$ or $1$ for all points $z$ not on $\gamma$, where $n(\gamma, z)$ is
 % the winding number of $\gamma$ about $z$.  If $f$ and $g$ are holomorphic
-% functions on $\Omega$ and $|f(z) - g(z)| < |f(z)|$ for all points $z$ on
+% functions in $\Omega$ and $|f(z) - g(z)| < |f(z)|$ for all points $z$ on
 % $\gamma$, then $\gamma$ encloses the same number of zeros of $f(z)$ as it
 % does of $g(z)$.
 
@@ -29,7 +29,7 @@ t = chebfun('t', [0, 2*pi]);
 z = exp(1i*t);
 
 %%
-% And let us choose functions $f$ and $g$ which have roots in the unit disc
+% Let us choose functions $f$ and $g$ which have roots in the unit disc
 % and which we know satisfy the hypotheses of the theorem.  (Of course, the
 % functions will need to have the same number of zeros inside the unit
 % disc.) $f(z) = z$ and $g(z) = \sin(z)$ each have a single zero inside the
@@ -38,25 +38,20 @@ z = exp(1i*t);
 
 f = z;
 g = sin(z);
-
-plot(abs(f), 'b-', abs(f - g), 'r-', LW, lw)
-title('|f| (blue) and |f - g| (red) on the Unit Disc', FS, 14);
-xlabel('t');
-xlim([0, 2*pi]);
-ylim([0, 1.1]);
+plot(abs(f), 'b', abs(f - g), 'r', LW, lw)
+title('|f| (blue) and |f - g| (red) on the unit disc', FS, 14)
+xlabel('t')
+axis([0 2*pi 0 1.1])
 
 %%
 % To understand what is really going on, it is instructive to examine the
 % images of the unit circle under $f$ and $g$, which the following plot
 % displays:
 
-plot(f, 'b-', LW, lw); hold on;
-plot(g, 'r-', LW, lw); hold off;
-title('Images of the Unit Circle Under f (blue) and g (red)', FS, 14);
-xlabel('Re');
-ylabel('Im');
-grid on;
-axis equal;
+plot(f, 'b', g, 'r', LW, lw)
+title('Images of the unit circle under f (blue) and g (red)', FS, 14)
+xlabel('Re'), ylabel('Im')
+grid on, axis equal
 
 %%
 % We notice that the images each encircle the origin exactly once, in
@@ -66,14 +61,11 @@ axis equal;
 % must encircle the origin the same number of times.  An equivalent way of
 % seeing this is by considering the image of the unit circle under $g/f$:
 
-plot(g./f, 'b-', LW, lw);
-title('Image of the Unit Circle Under g/f', FS, 14);
-xlabel('Re');
-ylabel('Im');
-xlim([0 1.5]);
-ylim([-0.5 0.5]);
-grid on;
-axis equal;
+plot(g./f, 'b', LW, lw)
+title('Image of the unit circle under g/f', FS, 14)
+xlabel('Re'), ylabel('Im')
+axis([0 1.5 -0.5 0.5])
+grid on, axis equal
 
 %%
 % From the plot, we see that this curve does not encircle the origin at
@@ -95,11 +87,10 @@ axis equal;
 
 f = 15*z.^3;
 g = z.^7 - 2*z.^5 + 15*z.^3 - z + 1;
-
-plot(abs(f), 'b-', abs(f - g), 'r-', LW, lw)
-title('|f| (blue) and |f - g| (red) on the Unit Disc', FS, 14);
-xlabel('t');
-xlim([0, 2*pi]);
+plot(abs(f), 'b', abs(f - g), 'r', LW, lw)
+title('|f| (blue) and |f - g| (red) on the unit disc', FS, 14)
+xlabel('t')
+axis([0 2*pi 0 16])
 
 %%
 % The plot shows that the inequality $|f(z) - g(z)| < |f(z)|$ does indeed
@@ -110,30 +101,21 @@ xlim([0, 2*pi]);
 
 p = [1 0 -2 0 15 0 -1 1];
 r = roots(p);
-
-plot(z, 'b-', LW, lw); hold on;
-plot(r, 'ro', MS, 7); hold off;
-title('Roots of g', FS, 14);
-xlabel('Re');
-ylabel('Im');
-xlim([-1.5 1.5]);
-ylim([-1.5 1.5]);
-grid on;
-axis equal;
-
-return;
+plot(z, 'b', LW, lw), hold on
+plot(r, 'ro', MS, 7), hold off
+title('Roots of g', FS, 14)
+xlabel('Re'), ylabel('Im')
+axis([-1.5 1.5 -1.5 1.5])
+grid on, axis equal
 
 %%
 % We see that $g$ does indeed have three roots inside the unit disc, as the
 % theorem predicts.  The images of the unit circle under $f$ and $g$ are
 
-plot(f, 'b-', LW, lw); hold on;
-plot(g, 'r-', LW, lw); hold off;
-title('Images of the Unit Circle Under f (blue) and g (red)', FS, 14);
-xlabel('Re');
-ylabel('Im');
-grid on;
-axis equal;
+plot(f, 'b', g, 'r', LW, lw)
+title('Images of the unit circle under f (blue) and g (red)', FS, 14)
+xlabel('Re'), ylabel('Im')
+grid on, axis equal
 
 %%
 % This plot is difficult to interpret because the image curves intersect
@@ -141,21 +123,17 @@ axis equal;
 % encircles the origin exactly three times.  Turning to the plot of $g/f$,
 % we have
 
-plot(g./f, 'b-', LW, lw);
-title('Image of the Unit Circle Under g/f', FS, 14);
-xlabel('Re');
-ylabel('Im');
-xlim([0 1.5]);
-ylim([-0.5 0.5]);
-grid on;
-axis equal;
+plot(g./f, 'b', LW, lw)
+title('Image of the unit circle under g/f', FS, 14)
+xlabel('Re'), ylabel('Im')
+axis([0 1.5 -0.5 0.5])
+grid on, axis equal
 
 %%
 % It is clear that this curve does not enclose the origin.
 
 %%
-% References:
+% Reference:
 %
-% [1] Ahlfors, L. _Complex Analysis_, Third Edition.  New York:  McGraw 
-%       Hill, Inc., 1979.
-
+% [1] Ahlfors, L. _Complex Analysis_, Third Edition.  New York:  
+%       McGraw-Hill, Inc., 1979.
