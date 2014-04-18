@@ -3,11 +3,12 @@
 
 %%
 % (Chebfun example linalg/NonnormalQuiz.m)
-% [Tags: #linearalgebra, #nonnormality, #norm, #fun]
+% [Tags: #linearalgebra, #nonnormality, #norm, #fun, #pseudospectra]
 
 %%
-% The frontispiece of the book Spectra and Pseudospctra presents a quiz
+% The frontispiece of the book Spectra and Pseudospectra presents a quiz
 % involving two matrices:
+format compact, format long
 A1 = [-1 1; 0 -1],  A2 = [-1 5; 0 -2]
 
 %%
@@ -25,8 +26,7 @@ A1 = [-1 1; 0 -1],  A2 = [-1 5; 0 -2]
 e1 = chebfun(@(t) norm(expm(t*A1)),[0 3.4],'vectorize');
 e2 = chebfun(@(t) norm(expm(t*A2)),[0 3.4],'vectorize');
 LW = 'linewidth'; FS = 'fontsize';
-hold off, plot(e1,'b',LW,2)
-hold on,  plot(e2,'r',LW,2)
+plot(e1,'b',e2,'r',LW,2)
 ylim([0 1.5]), grid on, legend('A1','A2')
 xlabel('t',FS,14)
 ylabel('||e^{tA}||',FS,14)
@@ -42,12 +42,19 @@ title('Which curve is which?',FS,16)
 
 %%
 % This is a natural problem for Chebfun because Chebfun is good at
-% working with functions that don't have a representation by
-% an explicit formula.  Here the function we are concerned with is
+% working with functions that don't have representations by
+% explicit formulas.  Here the function we are concerned with is
 % norm(expm(tA)), a function of time t.  Chebfun is happy to sample
 % that function at various values of t and construct a corresponding
 % chebfun.  Since norm(expm(tA)) will not work when t is a vector,
 % the 'vectorize' flag is included to avoid a warning message.
+
+%%
+% Once we have the chebfuns, we can do things with them.
+% For example, here are the maximum values of the two curves
+% and the locations where they occur:
+[maxnorm1, maxt1] = max(e1)
+[maxnorm2, maxt2] = max(e2)
 
 %%
 % Reference:
