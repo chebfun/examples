@@ -3,16 +3,16 @@
 
 %%
 % (Chebfun example approx/BSplineConv.m)
-% [Tags: #spline, #Bspline, #convolution, #CONV, #probability]
+% [Tags: #spline, #Bspline, #convolution, #probability, #CONV]
 
 %%
 % Here is the characteristic function on the interval $[-1/2,1/2]$:
-x = chebfun('x',[-1 1]);
-B0 = heaviside(x+.5) - heaviside(x-.5);
-LW = 'linewidth'; lw = 1.2; ax = [-3 3 -.2 1.2];
+x = chebfun('x',[-0.5 0.5]);
+B0 = 1+0*x;
+LW = 'linewidth'; lw = 1.6; ax = [-3 3 -.2 1.2];
 hold off, plot(B0,LW,lw), axis(ax), grid on
 pts = [-.5 .5];
-MS = 'markersize'; ms = 10;
+MS = 'markersize'; ms = 12;
 hold on, plot(pts,B0(pts,'left'),'.k',MS,ms)
 plot(pts,B0(pts,'right'),'.k',MS,ms)
 FS = 'fontsize'; fs = 12;
@@ -39,7 +39,8 @@ title('B-spline of order 2',FS,fs)
 % As the titles of the plots indicate, these functions are known as
 % B-splines.  In our notation the B-spline $B_n$ is a $C^{n-1}$ piecewise
 % polynomial of degree $n$ with support $[-(n+1)/2,(n+1)/2]$ and
-% breakpoints at the half-integers in this interval. The B-splines form a
+% breakpoints uniformly spaced with separation 1 this interval.
+% The B-splines form a
 % good basis for numerical computation with splines. Here is B3:
 B3 = conv(B0,B2);
 hold off, plot(B3,LW,lw), axis(ax), grid on
@@ -64,7 +65,7 @@ title('B-spline of order 4',FS,fs)
 % by noting that in Fourier space, each convolution is a multiplication by
 % the Fourier transform of $B_0$, namely a sinc function.  This is the same
 % computation that arises in the proof of the Central Limit Theorem, and in
-% fact, the B splines have a probabilistic interpretation: if $B_0$
+% fact, the B-splines have a probabilistic interpretation: if $B_0$
 % represents a random variable with uniform distribution on the interval
 % $[-1/2,1/2]$ then $B_1$ is the distribution for the sum of two
 % independent samples from $B_0$, $B_2$ is the distribution for the sum of
