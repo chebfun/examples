@@ -3,14 +3,15 @@
 
 %% 
 % (Chebfun Example approx/FastChebyshevLegendreTransform.m)
-% [Tags: #fast transform, #Legendre, #Chebyshev, #FFT, #coefficients]
+% [Tags: #fast transform, #Legendre, #Chebyshev, #coefficients,
+% #FFT, #LEGPTS, #LEG2CHEB, #CHEB2LEG]
 
 LW = 'linewidth'; lw = 2; 
 MS = 'markersize'; ms = 20; 
 FS = 'fontsize'; fs = 16;
 
 %% The Chebyshev-Legendre transform
-% Chebfun is based on Chebyshev approximants and their related fast algorithms.
+% Chebfun is based on Chebyshev interpolants and their related fast algorithms.
 % Chebyshev interpolants are a very practical tool for computing with smooth
 % functions. However, in some situations Legendre expansions, i.e.,
 % 
@@ -23,7 +24,7 @@ FS = 'fontsize'; fs = 16;
 % N (\log N)^2/ \log \log N)$ operations [2]. The algorithm is based on a
 % long-established asymptotic formula for Legendre polynomials [4], which was
 % previously used in Chebfun's LEGPTS() command [1]. The transform comes in two
-% parts: (1) The forward transform, LEG2CHEB(), that converts Legendre to
+% parts: (1) The forward transform, LEG2CHEB(), which converts Legendre to
 % Chebyshev coefficients and (2) The inverse transform, CHEB2LEG(), that
 % converts in the other direction.
 
@@ -31,7 +32,8 @@ FS = 'fontsize'; fs = 16;
 % In this Example a few applications of the transform are considered. 
 
 %% Computing the Legendre coefficients
-% Computing the coefficients in a Legendre expansion of a function has received
+% The problem of 
+% computing the coefficients in a Legendre expansion of a function has received
 % considerable research attention since the 1970s and there are now many
 % approaches (a summary is given [2]). In particular, any fast
 % Chebyshev-Legendre transform can be used to compute the Legendre coefficients
