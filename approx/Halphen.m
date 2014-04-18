@@ -33,7 +33,7 @@ halphen_const = 9.289025491920818918755449435951
 % This result comes from a sequence of contributions between 1969 and 2002
 % by, among others, Cody, Meinardus and Varga; Newman; Trefethen and
 % Gutknecht; Carpenter, Ruttan and Varga; Magnus; Gonchar and Rakhmanov;
-% and Aptekarev.
+% and Aptekarev.  For a discussion, see Chapter 25 of [3].
 
 %%
 % Here is a plot showing that the asymptotic behavior matches the actual
@@ -62,11 +62,11 @@ while normsk > 1e-16
   f = f + k*sk./(1-(-1)^k*sk);
   normsk = norm(sk,inf);
 end
-hold off, plot(1./s,f,LW,1.2), grid on
+hold off, plot(1./s,f,LW,1.6), grid on
 h = 1/roots(f-1/8);
-hold on, plot(h,1/8,'.r',MS,20)
-title('Halphen''s constant',FS,14)
-text(h,.15,sprintf('%16.13f',h),FS,14)
+hold on, plot(h,1/8,'.r',MS,24)
+title('Halphen''s constant',FS,16)
+text(h,.135,sprintf('%16.13f',h),FS,18)
 
 %%
 % References:
@@ -74,7 +74,7 @@ text(h,.15,sprintf('%16.13f',h),FS,14)
 % [1] A. J. Carpenter, A. Ruttan, and R. S. Varga, Extended numerical
 % computations on the "1/9" conjecture in rational approximation theory, in
 % P. Graves-Morris, E. B. Saff, and R. S. Varga, eds., Rational
-% Aprpoximation and Interpolation, Lecture Notes in Mathematics 1005,
+% Approximation and Interpolation, Lecture Notes in Mathematics 1105,
 % Springer, 1984.
 %
 % [2] A. A. Gonchar and E. A. Rakhmanov, Equilibrium distributions and
@@ -82,5 +82,5 @@ text(h,.15,sprintf('%16.13f',h),FS,14)
 % Sbornik 62 (1989), 305-348.
 %
 % [3] L. N. Trefethen, Approximation Theory and Approximation Practice,
-% draft available at http://www.maths.ox.ac.uk/chebfun/ATAP (chapter 24).
+% SIAM, 2013.
 
