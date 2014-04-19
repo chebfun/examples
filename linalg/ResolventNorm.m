@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example linalg/ResolventNorm.m)
-% [Tags: #linearalgebra, #norm, #resolvent]
+% [Tags: #linearalgebra, #norm, #resolvent, #pseudospectra]
 
 %%
 % If A is a square matrix, the resolvent of A for a particular complex
@@ -32,11 +32,12 @@ A = [-1 3 5 2; -3 -2 4 6; -5 -4 -2 1; -2 -6 -1 3]
 
 %%
 % A has two pairs of eigenvalues near the imaginary axis:
-format short, eig(A)
+format short, format compact
+eig(A)
 
 %%
 % Suppose z=x+iy.  It takes Chebfun a fraction of a second to compute
-% a chebfun representating norm(inv(zI-A)) as a function of y, with
+% a chebfun representing norm(inv(zI-A)) as a function of y, with
 % x=0.  Here is that calculation and a plot of the result:
 I = eye(size(A));
 nr = @(y) 1/min(svd(1i*y*I-A));
@@ -46,6 +47,7 @@ plot(f,LW,1.6), grid on
 
 %%
 % The maximum of f is this,
+format long
 maxf = max(f)
 
 %%
@@ -67,7 +69,7 @@ B =  [ -3-2i   1+1i    -1i      0   -1+1i
           1i      0  -2-4i  -2-1i    2-1i
            0      1     1i  -2-4i      1i
         1-2i      0      1      1   -2-3i ];    
-eig(B)
+format short, eig(B)
 %%
 % And here is its resolvent norm plot:
 fB = normfun(B);
