@@ -10,23 +10,24 @@ MS = 'MarkerSize'; ms = 20;
   
 %% 1. The Rosenbrock function
 % One of the very first Chebfun examples [2] demonstrated how standard 1D
-% Chebfun often does a reasonable job of minimizing or maximizing a function
-% defined on a 2D rectangle, such as the "Rosenbrock function" [1]:
+% Chebfun can do a reasonable job of minimizing or maximizing a function
+% defined on a 2D rectangle, such as the Rosenbrock function [1]:
 f = @(x,y) (1-x).^2 + 100*(y-x.^2).^2;
 
 %%
-% With the introduction of Chebfun2, this task is made even more simple!
+% With the introduction of Chebfun2 in 2013, this
+% take become much simpler.
 F = chebfun2(f, [-1.5 1.5 -1 3]);
 [minf, minx] = min2(F)
 
 %%
-% We can plot the Rosenbrock function and the minimum we computed:
+% We can plot the function and the computed minimum like this:
 contour(F, 10:10:300, LW, lw), colorbar, shg
 hold on, plot(minx(1), minx(2), '.k', MS, ms), hold off
 
 %% 2. A function with several local minima
 % The example [2] explained how Chebfun computed these results: by taking maxima
-% along 1D slices, and then taking the maxiumum of these results. For functions
+% along 1D slices, and then taking the maximum of these results. For functions
 % with multiple local minima, like the one below, this meant the 'splitting'
 % 'on' flag needed to be set.
 
@@ -34,13 +35,15 @@ f = @(x,y) exp(x-2*x.^2-y.^2).*sin(6*(x + y + x.*y.^2));
 
 %% 
 % Chebfun2 uses a different algorithm for locating maxima and minima, and so
-% splitting is not required in this case:
-
+% splitting is not required in this case.  The following computation
+% is much faster than before.
+tic
 F = chebfun2(f);
 [minf, minx] = min2(F)
+toc
 
 %%
-% We can plot this function too, again with the computed minimum:
+% Here is a plot, again with the computed global minimum.
 contour(F,30, LW, lw), colorbar, hold on
 plot(minx(1), minx(2), '.k', MS, ms)
 
@@ -52,7 +55,7 @@ plot(minx(1), minx(2), '.k', MS, ms)
 % For example we can compute all the stationary points of f and add these to our
 % contour plot:
 tp = roots(grad(F))
-plot(tp(:,1), tp(:,2), 'kx', MS, 15, LW, 2)
+plot(tp(:,1), tp(:,2), 'ko', MS, 12, LW, 2)
 
 %%
 % We can make chebfuns of the zero level curves of F:
