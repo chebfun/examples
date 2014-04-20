@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example roots/SecularRoots.m)
-% [Tags: #roots, #pole]
+% [Tags: #pole, #ROOTS]
 
 %%
 % Sometimes one needs to find the roots
@@ -29,13 +29,16 @@ hold off, plot(f,'linewidth',2), grid on
 
 %%
 % Chebfun can compute the roots:
+format long, format compact
 r = roots(f)
 
 %%
 % Notice that the result is 8 numbers, including the poles as well as the
 % roots.  This is because Chebfun's convention is to regard a function as
 % having a root at any point where it crosses between positive and negative
-% values.  
+% values.  If we don't want roots of that kind, we can execute
+% instead
+r = roots(f,'nojump')
 
 %%
 % Let us add the roots to the plot.
