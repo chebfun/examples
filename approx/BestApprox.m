@@ -1,4 +1,4 @@
-%% Best approximation with the Remez command
+%% Best approximation with the REMEZ command
 % Nick Trefethen, September 2010
 
 %%
@@ -27,7 +27,8 @@ ylim([-.05 .05])
 title('Degree 10 polynomial error curve',FS,fs)
 
 %%
-% In Chebfun Version 3, REMEZ could only compute polynomial approximations,
+% In Chebfun Version 3, REMEZ could only compute
+% polynomial approximations [1],
 % but Version 4 introduced some capabilities with rational approximations
 % too.  For example, here is the error curve for type (5,5) best rational
 % approximation of the same function f, plotted on the same scale.  Note
@@ -41,9 +42,13 @@ ylim([-.05 .05])
 title('Type (5,5) rational error curve',FS,fs)
 
 %%
+% For an introduction to the theory of these approximations,
+% see Chapters 10 and 24 of [3].
+
+%%
 % For rational approximation, Chebfun's REMEZ command is currently not very
-% robust.  An often better alternative is CF approximation; see the CF
-% command.
+% robust.  An often better alternative is CF approximation; see [2] and
+% the Chebfun CF command.
 
 %%
 % References:
@@ -57,4 +62,4 @@ title('Type (5,5) rational error curve',FS,fs)
 % 51 (2011), 1039-1050.
 %
 % [3] L. N. Trefethen, Approximation Theory and Approximation Practice,
-% draft book available at http://www.maths.ox.ac.uk/chebfun/ATAP/.
+% SIAM, 2013.
