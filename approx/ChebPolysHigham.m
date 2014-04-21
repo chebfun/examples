@@ -12,10 +12,11 @@
 
 k = [0 2 4 10 20 40 60];
 x = chebfun('x'); one = 1 + 0*x;
-LW = 'linewidth'; FS = 'fontsize'; fs = 14;
+FS = 'fontsize'; fs = 14;
 for j = 1:length(k)
-  plot3(j*one,x,chebpoly(k(j)),LW,1.6), hold on
+  plot3(j*one,x,chebpoly(k(j)),'linewidth',1.6), hold on
 end
+axis([1 length(k) -1 1 -1 1])
 box on
 set(gca,'dataaspectratio',[1 0.75 4]), view(-72,28)
 set(gca,'xticklabel',k)
