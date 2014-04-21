@@ -55,5 +55,5 @@ title('Local extrema',FS,14)
 % or vice versa.
 
 %%
-% The time for this whole sequence of computations:
+% Here is the time for this whole sequence of computations:
 Total_time = toc
