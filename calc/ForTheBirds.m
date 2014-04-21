@@ -4,7 +4,7 @@
 %%
 % (Chebfun example calc/ForTheBirds.m)
 %
-% [Tags: #Optimisation, #Birds]
+% [Tags: #optimisation, #birds]
 %%
 LW = 'LineWidth'; MS = 'MarkerSize'; format short
 close all
@@ -21,7 +21,7 @@ close all
 % then traveling the remaining 13-x km over land.
 
 %%
-island = [0,5];  nest = [13,0];   % coordinates of start/end
+island = [0,5];  nest = [13,0];    % coordinates of start/end
 landfall = [4,0];                  % example with x=4
 path = [island;landfall;nest];
 plot(path(:,1),path(:,2),LW,3)
@@ -58,13 +58,13 @@ total_energy = 1*land_length + 1.4*water_length;
 % minimization.)
 
 %%
-clf, plot(total_energy,LW,2)
+clf, plot(total_energy,LW,2), grid on
 xlabel('landfall point x'), ylabel('total energy of flight')
 
 %%
 % As you can see from the curve, there is a unique value of x that
 % minimizes the total energy.
-[~,x_optimal] = min(total_energy)
+[energy_optimal,x_optimal] = min(total_energy)
 
 %%
 % Of course, that minimum point occurs at the single place where the
@@ -83,16 +83,16 @@ find( diff(total_energy)==0 )
 % above. For example,
 WL_ratio = 1.05;
 total_energy = land_length + WL_ratio*water_length;
-[~,x_optimal] = min(total_energy)
+[energy_optimal,x_optimal] = min(total_energy)
 
 %%
 % Notice that the optimal strategy in this case is for the bird to fly
 % directly to the nest, because the penalty for going over water is quite
 % small. Mathematically, the minimum does not occur at a zero in the
 % derivative, but at an endpoint of the interval.
-clf, subplot(1,2,1), plot(total_energy,LW,2)
+clf, subplot(1,2,1), plot(total_energy,LW,2), grid on
 xlabel('x'), ylabel('total energy')
-subplot(1,2,2), plot(diff(total_energy),LW,2)
+subplot(1,2,2), plot(diff(total_energy),LW,2), grid on
 xlabel('x'), ylabel('derivative')
 
 %%
@@ -101,12 +101,12 @@ xlabel('x'), ylabel('derivative')
 % never exactly the case:
 WL_ratio = 5;
 total_energy = land_length + WL_ratio*water_length;
-[~,x_optimal] = min(total_energy)
+[energy_optimal,x_optimal] = min(total_energy)
 
 %%
 WL_ratio = 50;
 total_energy = land_length + WL_ratio*water_length;
-[~,x_optimal] = min(total_energy)
+[energy_optimal,x_optimal] = min(total_energy)
 
 
 %% Function function
@@ -135,7 +135,7 @@ optimal_landfall_function(1.4)
 % 'vectorize' argument tells chebfun that our function expects only one
 % value of WL at a time.)
 optimal_landfall = chebfun( optimal_landfall_function, [1.1 5], 'vectorize');
-clf, plot(optimal_landfall,LW,2) 
+clf, plot(optimal_landfall,LW,2), grid on
 xlabel('water-to-land energy ratio'), ylabel('optimal landfall position')
 
 %%

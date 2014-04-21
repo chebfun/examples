@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example calc/Integrals.m) 
-% [Tags: #SUM, #CUMSUM, #integral]
+% [Tags: #integral, #SUM, #CUMSUM]
 
 %%
 % Suppose we have a function, like this one:
