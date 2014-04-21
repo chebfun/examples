@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example roots/RandomPolynomials.m)
-% [Tags: #roots, #random]
+% [Tags: #random, #ROOTS]
 
 %%
 % If p(z) = a_0 + a_1 z + ... + a_n z^n is a polynomial with random
@@ -41,12 +41,13 @@ end
 % For example, here is what happens if we repeat the 
 % experiment above but for random polynomials in the basis of
 % Chebyshev polynomials, i.e., p = a_0 + a_1 T_1 + ... + a_n T_n.
+randn('seed',1)
 for j = 1:2
     subplot(1,2,j)
     n = nn(j);
     a = [1; randn(n,1)];
     p = chebfun(a,'coeffs');
-    r = roots(p,'all','norecurse');
+    r = roots(p,'all');
     plot(r,'.k',MS,ms)
     axis(1.5*[-1 1 -1 1]), axis square
     title(['Chebyshev, n=' int2str(n)],FS,fs)
@@ -61,7 +62,7 @@ for j = 1:2
     a = [1; randn(n,1)];
     A = legpoly(n:-1:0);
     p = A*a;
-    r = roots(p,'all','norecurse');
+    r = roots(p,'all');
     plot(r,'.k',MS,ms)
     axis(1.5*[-1 1 -1 1]), axis square
     title(['Legendre, n=' int2str(n)],FS,fs)
