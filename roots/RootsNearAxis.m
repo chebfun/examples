@@ -21,7 +21,7 @@ roots(f)
 % the chebfun will have some accuracy for these complex values. We can get
 % an idea of the relevant region with chebellipseplot, which plots the
 % "Chebfun ellipse" for f:
-hold off, chebellipseplot(f,LW,2), grid on
+clf, chebellipseplot(f,LW,2), grid on
 xlim([-5 35]), axis equal
 hold on, plot(x,0*x,'k',LW,1.5)
 
@@ -49,6 +49,11 @@ plot(roots(f,'all'),'or'), axis auto, axis equal
 
 %%
 % For more details about computations like these, see Section 3.6 of the
-% Chebfun Guide.  In particular, note that the flag 'norecurse' should
-% often be used if one wants to see all the roots of a chebfun of length in
-% the hundreds or higher.
+% Chebfun Guide, and for more on the mathematics, see Chapters 8
+% and 18 of [1].
+
+%%
+% Reference:
+%
+% [1] L. N. Trefethen, Approximation Theory and Approximation 
+% Practice, SIAM, 2013.
