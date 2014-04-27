@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example quad/GaussClenCurt.m)
-% [Tags: #quadrature, #Clenshaw_Curtis_quadrature, #Gauss_quadrature]
+% [Tags: #quadrature, #Clenshaw_Curtis, #Gauss_quadrature, #CHEBPTS, #LEGPTS]
 %%
 % Suppose you have a function f on an interval:
 x = chebfun('x');
@@ -41,12 +41,13 @@ Igauss = w*f(s)
 %% 
 % Though this value of Npts is in the hundreds, Chebfun can
 % handle values in the millions without difficulty.  This is
-% achieved by the algorithm of Glaser, Liu and Rokhlin [1] as
-% implemented by Nick Hale.  See Examples quad/GaussQuad.m.
+% achieved by the algorithm of Hale and Townsend [1].
+% See Examples quad/GaussQuad.m.
 
 %%
 % Let's take a look at the accuracy as a function of Npts.
-% Gauss quadrature converges geometrically, since f is analytic:
+% Gauss quadrature converges geometrically, since f is analytic
+% ([1], Theorem 19.3).
 figure, tic, err = [];
 NN = 10:10:500;
 for Npts = NN
@@ -73,23 +74,27 @@ legend('Gauss','Clenshaw-Curtis','location','southwest'), toc
 
 %%
 % Clenshaw-Curtis quadrature also converges geometrically for
-% analytic functions.  In some circumstances Gauss converges
+% analytic functions ([1], Theorem 19.3).
+% In some circumstances Gauss converges
 % up to twice as fast as C-C, with respect to Npts, but as
 % this example suggests, the two formulas are often closer than
 % that.  The computer time is often faster with C-C.
-% For details of the cmoparison, see [2] and Chapter 19 of [3].
+% For details of the comparison, see [2], [4], and Chapter 19 of [3].
 
 %%
 % References:
 %
-% [1] A. Glaser, X. Liu and V. Rokhlin, A fast algorithm for the
-% calculation of the roots of special functions, SIAM J. Sci. Comp.
-% 29 (2007), 1420-1438. 
+% [1] N. Hale and A. Townsend, Fast and accurate computation
+% of Gauss-Legendre and Gauss-Jacobi quadrature
+% nodes and weights, SIAM Journal on Scientific Computing,
+% 35 (2013), A652-A672.
 %
 % [2] L. N. Trefethen, Is Gauss quadrature better than
 % Clenshaw-Curtis?, SIAM Review 50 (2008), 67-87.
 %
 % [3] L. N. Trefethen, Approximation Theory and Approximation
-% Practice, draft textbook available at
-% http://www.maths.ox.ac.uk/chebfun/ATAP.
-
+% Practice, SIAM, 2013.
+%
+% [4] J. A. C. Weideman and L. N. Trefethen, The kink
+% phenomenon in Fejer and Clenshaw-Curtis quadrature, Numerische
+% Mathematik, 107 (2007), 707-727.

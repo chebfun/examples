@@ -2,7 +2,7 @@
 % Alex Townsend, 4th March 2013
 
 %% 
-% (Chebfun2 example veccalc/CheckingVectorCalculus.m)
+% (Chebfun example veccalc/CheckingVectorCalculus.m)
 % [Tags: #parallelogram law, #gradient theorem, #divgradcurl, #Chebfun2]
 
 %% Introduction
@@ -11,7 +11,7 @@
 % case letter for a scalar function, $f$, and an upper case letter for a vector
 % function, $F = \left(f_1,f_2\right)^T$. Vector valued functions can be
 % approximated by objects of type chebfun2v. There are two standard ways to make
-% a chebfun2v
+% a chebfun2v:
 
 F = chebfun2v(@(x,y) sin(x), @(x,y) sin(y));     % direct construction
 
@@ -34,7 +34,7 @@ abs((2*norm(F)^2 + 2*norm(G)^2) - (norm(F+G)^2 + norm(F-G)^2))
 % that the integral of $grad(f)$ over a curve only depends on the values of $f$
 % at the endpoints of that curve. We can check this numerically by using the
 % Chebfun2v command integral. This command computes the line integral of a
-% vector valued function. Here we check one example to confirm that if the
+% vector valued function. Here we check one example to confirm that the
 % gradient theorem holds:
 
 f = chebfun2(@(x,y)sin(2*x)+x.*y.^2);        % chebfun2 object
@@ -58,4 +58,5 @@ norm(curl(grad(f)))
 
 %% References
 % [1] A. Townsend and L. N. Trefethen, An extension of Chebfun to two 
-%     dimensions, submitted (2013). 
+% dimensions, SIAM Journal on Scientific Computing,
+% 35 (2013), C495-C518.
