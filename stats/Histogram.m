@@ -3,6 +3,10 @@
 
 %%
 % (Chebfun example stats/Histogram.m)
+
+% [Tags: #histogram, #HIST]
+%%
+
 function Histogram
 
 %%
@@ -59,7 +63,7 @@ ylim([-1,max(h)+1])
 
 %%
 % Perhaps an overload of Matlab's HIST command should be included
-% in Chebfun Version 5.  Such an overload would certainly not use
+% in Chebfun?  Such an overload would certainly not use
 % delta functions internally, and it would require some careful
 % thinking about appropriate definitions.
 
