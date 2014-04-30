@@ -41,7 +41,7 @@ close all, plot(h,LW,1), axis equal, axis([-4 4 -.4 2])
 % used to solve it in this framework.
 
 %%
-% For me, when I hear the word "continuum", I think Chebfun.
+% For us, when I hear the word "continuum", we think Chebfun.
 % Suppose we specify two variables: $x$, the horizontal
 % position of the center of the needle, and $\theta$, its angle
 % counterclockwise from the horizontal.  Given $x$ and $\theta$, we
@@ -75,9 +75,9 @@ end
 % $(x,\theta) = (-.6, -0.2)$ and
 % $(x,\theta) = (1.7, 1)$.
 subplot(2,1,1)
-plotneedle(-0.6,-0.2), title('needle with (x,theta) = (-.6, -0.2)',FS,16)
+plotneedle(-0.6,-0.2), title('needle with (x,theta) = (-.6, -0.2)',FS,14)
 subplot(2,1,2)
-plotneedle(1.7,1), title('needle with (x,theta) = (1.7, 1)',FS,16)
+plotneedle(1.7,1), title('needle with (x,theta) = (1.7, 1)',FS,14)
 
 %%
 % Now we just have to minimize over $x$ and $\theta$.
@@ -91,8 +91,8 @@ for k = 1:length(x)
     yy(j,k) = minfun(xx(j,k),thth(j,k));
   end
 end
-close, contour(x,theta,yy,80), grid on, xlabel('x',FS,16), ylabel('theta',FS,16)
-colorbar, title(['min value on grid: ' num2str(min(yy(:)))],FS,16), toc
+close, contour(x,theta,yy,80), grid on, xlabel('x',FS,14), ylabel('theta',FS,14)
+colorbar, title(['min value on grid: ' num2str(min(yy(:)))],FS,14), toc
 
 %%
 % In this picture we see that there are two promising
@@ -112,8 +112,8 @@ for k = 1:length(x)
   end
 end
 levels = 0.06:.003:0.12;
-contour(x,theta,yy,levels), grid on, xlabel('x',FS,16), ylabel('theta',FS,16)
-title(['min value on grid: ' num2str(min(min(yy)))],FS,16), toc
+contour(x,theta,yy,levels), grid on, xlabel('x',FS,14), ylabel('theta',FS,14)
+title(['min value on grid: ' num2str(min(min(yy)))],FS,14), toc
 
 %%
 % The winner seems to be the region on the right.
