@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example roots/ComplexRoots.m)
-% [Tags: #roots, #complex, #Cauchy]
+% [Tags: #complex, #Cauchy, #ROOTS]
 
 function ComplexRoots
 
@@ -23,7 +23,8 @@ ff = @(z) (z-0.5i).*exp(z);
 
 %%
 % Since Chebfun works with real independent variables,
-% we parametrize the unit circle by a real variable t on [-1,1]:
+% we parametrize the unit circle by a real variable $t$ on
+% $[-1,1]$:
 z = chebfun('exp(1i*pi*t)');
 
 %%
@@ -46,18 +47,19 @@ s1 = sum(z.*diff(f)./f)/(2i*pi)
 
 %%
 % This method of finding a single root goes back at least
-% to McCune in 1966 [3].  In practice we would often
+% to McCune in 1966 [4].  In practice we would often
 % want to be able to find multiple roots, and a generalized algorithm
 % for this case was published by Delves and Lyness in
-% 1967 [1], with mathematical origins as far back as Jackson
-% in 1917 [2].  The idea here is that if f has more
+% 1967 [2], with mathematical origins as far back as Jackson
+% in 1917 [3].  For a discussion of all kinds of related
+% algorithms, see [1].  The idea here is that if f has more
 % than one root in the unit disk, then the value s above
 % comes out as the sum of all these roots.  Similarly
 %
 %   s2 = (1/2i*pi) INT z^2 (f'(z)/f(z)) dz
 %
 % is the sum of the squares of the roots, the analogous
-% formula for s3 with a factor z^3 gives the sum of the
+% formula for s3 with a factor $z^3$ gives the sum of the
 % cubes, and so on.  And a count of the number of roots is
 % given by
 %
@@ -117,12 +119,17 @@ end
 %%
 % References
 %
-% [1] L. M. Delves and J. N. Lyness, A numerical
+% [1] A. P. Austin, P. Kravanja and L. N. Trefethen,
+% Numerical algorithms based on analytic function
+% values at roots of unity, SIAM Journal on Numerical
+% Analysis, to appear.
+%
+% [2] L. M. Delves and J. N. Lyness, A numerical
 % method for lcoating the zeros of an analytic function,
 % Mathematics of Computation 21 (1967), 543-560.
 %
-% [2] D. Jackson, Roots and singular points of analytic
+% [3] D. Jackson, Roots and singular points of analytic
 % functions, Annals of Matheamtics 19 (1917), 142-151.
 %
-% [3] J. E. McCune, Exact inversion of dispersion relations,
+% [4] J. E. McCune, Exact inversion of dispersion relations,
 % Physics of Fluids 9 (1966), 2082-2084.
