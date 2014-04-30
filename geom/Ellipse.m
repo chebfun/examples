@@ -8,7 +8,7 @@
 %%
 % The ellipse we use is the one used by Poisson in his paper of 1827 [1], 
 % with semiaxis lengths 0.5/pi and 0.4/pi. We know thanks to M. Poisson 
-% that the perimeter should be (*) 0.902779927 
+% that the perimeter is (*) 0.902779927 
 exact = 0.90277992777219;
 
 %%

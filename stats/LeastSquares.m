@@ -3,6 +3,7 @@
 
 %%
 % (Chebfun example stats/LeastSquares.m)
+% [Tags: #least-squares, #POLYFIT]
 
 %%
 % In Matlab, a standard command for least-squares fitting by a polynomial
