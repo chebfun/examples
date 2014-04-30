@@ -35,14 +35,14 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % The singularity at $z = 0$ can be removed simply by defining
 % $f(0) = c_0 = 1$.
 
-f = @(z) sinc(z/pi); % sinc in MATLAB is defined as sin(pi z)/(pi z)
+f = @(z) sin(z+1e-14)./(z+1e-14); % sinc in MATLAB is defined as sin(pi z)/(pi z)
 removable = chebfun2(f, 1.5*pi*[-1 1 -1 1]);
 plot(removable)
 
 %%
 % Indeed, the phase portrait of $f$ looks clean around the origin,
 % and there is no singularity after all. The points $\pm\pi$ stand
-% out in the plot, but they are zeros, not singularities, of $f$.
+% out in the plot, but these are zeros, not singularities, of $f$.
 % In a phase portrait the difference is that the colors of zeros
 % and poles wind in opposite directions.
 
@@ -82,7 +82,7 @@ plot(poles)
 % its Laurent expansion at $z=0$ has infinitely many negative terms.
 % In particular,
 % $$ h(z) = \sum_{k=-\infty}^0 \frac{(-z)^k}{(-k)!}. $$
-% This unwieldy singularity cannot be captured in full by Chebfun2,
+% This complicated singularity cannot be captured in full by Chebfun2,
 % but we can peek at it from the side by first slightly squashing
 % the complex plane with the transformation $z \mapsto z^{0.9}$.
 
@@ -93,7 +93,7 @@ plot(essential)
 %%
 % The essential singularity can be thought of as a pole of order infinity.
 % Winding around at an infinitesimal distance from the origin, each color
-% appears infinitely many times, a fact that follows from the following
+% appears infinitely many times, a fact that is implied by the following
 % famous theorem.
 %%
 % $\mathrm{\bf Big~Picard~Theorem~(1879).}$ Suppose $z_0 \in U \subset
@@ -104,9 +104,10 @@ plot(essential)
 %%
 % References:
 %
-% [1] Wegert, Elias. Visual complex functions. Vol. 1. Springer, 2012.
+% [1] Wegert, Elias. Visual Complex Functions: An Introduction
+% with Phase Portraits, vol. 1. Birkhauser/Springer, 2012.
 %
-% [2] M. J. Ablowitz and A. S. Fokas. Complex variables: introduction 
-%     and applications. Cambridge University Press, 1997.
+% [2] M. J. Ablowitz and A. S. Fokas. Complex Variables: Introduction 
+%     and Applications. Cambridge University Press, 1997.
 %
 end
