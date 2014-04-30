@@ -15,6 +15,8 @@ function BernsteinPolys()
 % Weierstrass proved this in 1885 by a diffusion argument:
 % if $f$ diffuses however little, it becomes an entire function,
 % which can be approximated by truncating the Taylor series.
+% (Before the diffusion, one first extends $f$ to a continuous
+% with compact support on the whole real line.)
 
 %%
 % Bernstein gave a proof of the Weierstrass Approximation Theorem
