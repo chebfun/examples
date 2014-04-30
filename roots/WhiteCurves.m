@@ -3,11 +3,11 @@
 
 %%
 % (Chebfun example roots/WhiteCurves.m)
-% [Tags: #roots, #whitecurves]
+% [Tags: #whitecurves, #ROOTS]
 
 %%
-% In their article ``Another Look at the Chebyshev Polynomials'' [1] from
-% 1983, E. L. Ortiz and T. J. Rivlin considered the graph of 30 Chebyshev
+% In their article ``Another look at the Chebyshev polynomials'' from
+% 1983 [1], E. L. Ortiz and T. J. Rivlin considered the graph of 30 Chebyshev
 % polynomials T_j(x), noticing the appearance of what they called "white
 % curves":
 
@@ -23,7 +23,7 @@ hold on
 %
 % Hence the interior intersection points of Chebyshev polynomials
 % must lie on the curve (x,y) satisfying T_2(y) = T_{n-m}(x).
-% Smaller numbers of n-m correspond to smaller numbers of intersection
+% Smaller numbers n-m correspond to smaller numbers of intersection
 % points. Here are the intersection points obtained with n-m <= 4,
 % obtained with Chebfun's rootfinding capability:
 
@@ -35,10 +35,11 @@ for j = 1:4,        % j = n-m
         plot(x,y,'r.');
     end
 end
+ylim([-1 1])
 
 %%
 % Ortiz and Rivlin also noted that the phenomenon of white curves 
-% persists for other orthogonal polynomials as well. For example,
+% appears for other orthogonal polynomials as well. For example,
 % let's take the Legendre polynomials and plot them with some
 % appropriate reweighting:
 
@@ -50,6 +51,7 @@ for j = 1:30,
     plot(L.*q);
     hold on
 end
+ylim([-1 1])
 
 %% 
 % It is easy to compute the points (x,y) satisfying L_2(y) = L_j(x) just
@@ -69,5 +71,5 @@ end
 %%
 % References:
 %
-% E. L. Ortiz and T. J. Rivlin, Another look at the Chebyshev polynomials,
+% [1] E. L. Ortiz and T. J. Rivlin, Another look at the Chebyshev polynomials,
 % American Mathematical Monthly 90 (1983), 3-10.

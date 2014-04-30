@@ -2,7 +2,7 @@
 % Kuan Xu, 23rd October 2012
 %
 % (Chebfun example calc/MeanValueTheorem.m)
-% [Tags: #calculus, #root]
+% [Tags: #calculus, #ROOTS]
 
 %%
 % The mean value theorem states that for an arc between two endpoints, 
@@ -45,9 +45,8 @@ c = roots(fprime - sl)
 % dashed).
 
 LW = 'linewidth'; lw = 1.6;
-MS = 'MarkerSize'; ms = 20;
 plot(f, LW, lw), hold on
 plot([a b], [f(a) f(b)], '--k', LW, lw)
-plot(c(1), f(c(1)),'.r', MS, ms)
-l = 2;
-plot([c(1)-l c(1)+l],[f(c(1))-l*sl f(c(1))+l*sl], 'r', LW, lw)
+plot(c(1), f(c(1)),'.r', 'markersize', 20)
+L = 2;
+plot([c(1)-L c(1)+L],[f(c(1))-L*sl f(c(1))+L*sl], 'r', LW, lw)
