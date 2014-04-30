@@ -5,6 +5,8 @@
 % (Chebfun example calc/SnellsLaw.m)
 % [Tags: #calculus, #Snell's Law]
 
+FS = 'fontsize'; MS = 'markersize';
+
 %% How to save a drowning man
 % On a bright sunny day we are having a nice time at the beach:
 figure(1)
