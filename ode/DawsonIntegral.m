@@ -55,8 +55,8 @@ plot(f,LW,lw), xlim([-W W]), hold on, grid on;
 tic
 x = chebfun('x',[0,W]);
 fr = exp(-x.^2).*cumsum(exp(x.^2));  % right of x=0
-fl = newdomain(-flipud(fr),[-W 0]);  % left of x=0
-f = [fl;fr];                         % must be an easier way to do this!
+fl = newDomain(-flipud(fr),[-W 0]);  % left of x=0
+f = join(fl,fr);                     % must be an easier way to do this!
 f = chebfun(f, [-W,W]);              % is there a better way to do this?
 plot(f,LW,lw), grid on
 

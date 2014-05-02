@@ -18,7 +18,7 @@ d = [0,100];                 % domain
 x = chebfun('x',d);          % x variable
 L = chebop(d);               % name of operator
 L.op = @(u) diff(u,2) + u;   % linear operator defining the ODE
-L.lbc = @(u) [u-1, diff(u)]; % imposing Dirichlet and Neumann BCs
+L.lbc = @(u) [u-1;diff(u)]; % imposing Dirichlet and Neumann BCs
 u = L\0;                     % solve the problem
 plot(u,'linewidth',1.6)      % plot the solution
 err = norm(u-cos(x),inf);    % measure the error

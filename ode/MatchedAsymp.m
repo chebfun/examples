@@ -19,9 +19,10 @@
 %
 % with eps<<1.  In Chebfun, we can set up the problem conveniently with a couple
 % of anonymous functions:
-d = domain(-1,1);
+d = [-1,1];
 x = chebfun('x',d);
 L = @(eps) -eps*diff(d,2) + diag(2-x.^2) & 'dirichlet';
+% L = @(eps) chebop(@(x,u)-eps*diff(u,2) + (2-x.^2).*u,d,0,0);
 y = @(eps) L(eps)\1;
 
 %%

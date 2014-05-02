@@ -15,10 +15,10 @@
 
 %% Example 1. Viscous shock
 % The first example is
-% $$ \varepsilon u''(x) + 2 x u'(x) = 0, \quad u(-1) = 1, ~ u(1) = 1. $$
+% $$ \varepsilon u''(x) + 2 x u'(x) = 0, \quad u(-1) = -1, ~ u(1) = 1. $$
 % The following anonymous function produces a Chebfun solution as a
 % function of ep:
-uep = @(ep) chebop(@(x,u) ep*diff(u,2) + 2*x.*diff(u),-1,1)\0;
+uep = @(ep) chebop(@(x,u) ep*diff(u,2) + 2*x.*diff(u),[-1,1],-1,1)\0;
 
 %%
 % Here we plot the solution for ep = 0.01, 0.0001.  It works fine, but Lee
@@ -53,7 +53,7 @@ title(s,FS,10)
 % This example is an Airy equation,
 % $$ \varepsilon u''(x) - x u(x) = 0, \quad u(-1) = 1, ~ u(1) = 1. $$
 % We proceed as usual:
-uep = @(ep) chebop(@(x,u) ep*diff(u,2)-x.*u,1,1)\0; 
+uep = @(ep) chebop(@(x,u) ep*diff(u,2)-x.*u,[-1,1],1,1)\0; 
 clf
 for k = 1:2
     ep = 10^(-3*k);
@@ -68,7 +68,7 @@ end
 % The fourth example is
 % $$ \varepsilon u''(x) + (x^2-0.25)u(x) = 0, \quad u(-1) = 1, ~ u(1) = 2. $$
 % Here we go:
-uep = @(ep) chebop(@(x,u) ep*diff(u,2)+(x.^2-0.25).*u,1,2)\0;
+uep = @(ep) chebop(@(x,u) ep*diff(u,2)+(x.^2-0.25).*u,[-1,1],1,2)\0;
 for k = 1:2
     ep = 10^(-3*k);
     subplot(2,1,k)

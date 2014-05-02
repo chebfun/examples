@@ -27,7 +27,7 @@
 % overload of the MATLAB ODE solver, ODE113:
 opts = odeset('abstol',1e-13,'reltol',1e-13);
 fun = @(t,u) [10*(u(2)-u(1)); 28*u(1)-u(2)-u(1)*u(3); u(1)*u(2)-(8/3)*u(3)];
-u = ode113(fun,domain(0,5),[-14 -15 20], opts)
+u = chebfun.ode113(fun,[0,5],[-14 -15 20], opts)
 
 %%
 % The solution can be viewed as an autonomous dynamical system in three

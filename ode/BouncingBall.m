@@ -44,7 +44,7 @@ while ( theta > 0.15 )
     y = y0 + (-g/(2*v_0x^2))*(x-x0).^2 + (v_0y(i)/v_0x)*(x-x0);
     
     % Piecewise chebfun:
-    trajectory = [trajectory ; y];
+    trajectory = join(trajectory,y);
     
     % Velocity at the impact point:
     v_fy=v_0y(i)-g*t_ground(i);
@@ -65,7 +65,7 @@ end
 %%
 % The final part of the trajectory is horizontal:
 final_part = chebfun(@(y) 0*y);
-trajectory = [trajectory ; final_part];
+trajectory = join(trajectory,final_part);
 
 %%
 % I shift the trajectory vertically by a quantity equal to the radius r in order

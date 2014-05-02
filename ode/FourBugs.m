@@ -90,7 +90,7 @@ fun = @(t, u) ... % u = [theta, phi, ell1, ell2]
         -cos(u(1))-1;
         cos(u(1))-1 ];
 initial_conds = [pi/2, pi/2, 1, 2];
-u = ode113(fun, domain(interval), initial_conds, opts);
+u = chebfun.ode113(fun, interval, initial_conds, opts);
 
 %%
 % The variable `u` is now a 4-column quasimatrix containing

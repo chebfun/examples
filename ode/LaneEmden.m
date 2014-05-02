@@ -34,7 +34,7 @@ for n = 0:5
     N = chebop(@(x,u) x.*diff(u,2)+2.*diff(u)+x.*u.^n,[0,10]);
 
     % Left boundary conditions
-    N.lbc = @(u) [u-1,diff(u)];
+    N.lbc = @(u) [u-1;diff(u)];
 
     %Solve the bvp
     u = solvebvp(N,0);

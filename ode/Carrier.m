@@ -31,7 +31,8 @@ N.init = 2*(x.^2-1);
 % the solution process. We then plot the solution and the norm of the
 % updates:
 cheboppref('display','iter')
-[u nrmdu] = N\1;
+[u,info] = solvebvp(N,1);
+nrmdu = info.normDelta;
 LW = 'linewidth'; MS = 'markersize'; FS = 'fontsize';
 subplot(1,2,1), plot(u,LW,1.6), title('Solution',FS,14)
 subplot(1,2,2), semilogy(nrmdu,'.-r',LW,1.6,MS,16), title('Convergence',FS,14)
@@ -45,7 +46,8 @@ accuracy = norm(N(u)-1)
 % Running from a different initial guess gives a different solution:
 N.init = 2*(x.^2-1).*(1-2./(1+20*x.^2));
 cheboppref('display','off')
-[u nrmdu] = N\1;
+[u,info] = solvebvp(N,1);
+nrmdu = info.normDelta;
 subplot(1,2,1), plot(u,LW,1.6), title('Solution',FS,14)
 subplot(1,2,2), semilogy(nrmdu,'.-r',LW,1.6,MS,16), title('Convergence',FS,14)
 xlim([1 length(nrmdu)]), grid on
@@ -62,7 +64,8 @@ accuracy = norm(N(u)-1)
 % We can execute the following commands:
 N.lbc = 1;
 N.rbc = @(u) diff(u) + u;
-[u nrmdu] = N\1;
+[u,info] = solvebvp(N,1);
+nrmdu = info.normDelta;
 subplot(1,2,1), plot(u,LW,1.6), title('Solution',FS,14)
 subplot(1,2,2), semilogy(nrmdu,'.-r',LW,1.6,MS,16), title('Convergence',FS,14)
 xlim([1 length(nrmdu)]), grid on
