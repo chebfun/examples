@@ -49,8 +49,8 @@ ode1 = @(t,z1) (-L1*sin(theta1(z1))+1i*cos(theta1(z1)))./...
 ode2 = @(t,z2) (L2*sin(theta2(z2))-1i*cos(theta2(z2)))./...
     sqrt(L2^2*sin(theta2(z2)).^2+cos(theta2(z2)).^2);
 opts = odeset('abstol',1e-13,'reltol',1e-13); tmax = 7.5;
-z1 = ode113(ode1,domain(0,tmax), L1/2,opts);
-z2 = ode113(ode2,domain(0,tmax),-L2/2,opts);
+z1 = chebfun.ode113(ode1,[0,tmax], L1/2,opts);
+z2 = chebfun.ode113(ode2,[0,tmax],-L2/2,opts);
 
 %%
 % Now what about the trajectory traced by the midpoint, w(t)? A little

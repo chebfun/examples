@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun2 example complex/PortraitsWithPoles.m)
-% [Tags: #phase portraits, #poles, #Chebfun2]
+% [Tags: #phase portraits, #poles, #Chebfun2, #SMASH]
 
 function PortraitsWithPoles
 
@@ -45,7 +45,7 @@ plot(h), axis(d), axis square on
 
 %%
 % These experiments are promising.  In fact, I am not sure how robust the
-% technique is; some careful exploration may be needed, and we may want to
+% technique is; some careful exploration may be needed, and one might want to
 % loosen the Chebfun2 convergence criterion, since the aim here is only to draw
 % a plot in any case.  Also, the "smash" process as I've defined it isn't
 % scale-invariant; instead of 1 in the denominator, there should be a number
@@ -60,6 +60,6 @@ plot(h), axis(d), axis square on
 
 %% References 
 % [1] E. Wegert, Visual Complex Functions: An Introduction with Phase Portraits,
-% Springer Basel, 2012.
+% Birkhauser/Springer, Basel, 2012.
 
 end

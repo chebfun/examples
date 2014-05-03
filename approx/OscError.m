@@ -1,4 +1,4 @@
-%% Approximations and Oscillation of Error 
+%% Approximations and oscillation of error 
 % Mohsin Javed, 22nd October 2013
 
 %%

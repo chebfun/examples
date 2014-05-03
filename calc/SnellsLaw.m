@@ -5,6 +5,9 @@
 % (Chebfun example calc/SnellsLaw.m)
 % [Tags: #calculus, #Snell's Law]
 
+FS = 'fontsize'; MS = 'markersize';
+LW = 'linewidth'; lw = 1.6;
+
 %% How to save a drowning man
 % On a bright sunny day we are having a nice time at the beach:
 figure(1)
@@ -15,8 +18,6 @@ title('Beach',FS,14)
 % A lifeguard is located at the point $(-5, 5)$.  (We use
 % complex arithmetic for simplicity.)
 sMan = -5+1i*5;
-LW = 'linewidth'; lw = 1.6;
-MS = 'markersize'; FS = 'fontsize';
 plot(sMan, '.k', MS, 24)
 title('Beach, lifeguard',FS,14)
 

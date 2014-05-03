@@ -38,7 +38,7 @@ for n = 0:4
    [maxval, maxpos] = norm(err,inf);
    hold off, plot(err,LW,2), ylim(1.2*maxval*[-1 1]), grid on
    hold on, plot(maxpos,err(maxpos),'.r','markersize',24)
-   title(['n = ' int2str(n)  '    error = ' num2str(maxval)],FS,16), snapnow
+   title(['n = ' int2str(n)  '    error = ' num2str(maxval)],FS,14), snapnow
 end
 
 %%
@@ -51,7 +51,7 @@ for n = 5:128
    if log2(n)==round(log2(n))
      hold off, plot(err,LW,2), ylim(1.2*maxval*[-1 1]), grid on
      hold on, plot(maxpos,err(maxpos),'.r','markersize',24)
-     title(['n = ' int2str(n)  '    error = ' num2str(maxval)],FS,16), snapnow
+     title(['n = ' int2str(n)  '    error = ' num2str(maxval)],FS,14), snapnow
    end
 end
 
@@ -71,12 +71,12 @@ hold on, semilogy(lebesgue(scheb),'r',LW,1.4)
 
 %%
 % The flavor of this kind of algorithm is reminiscent of the
-% theory of Leja points [1], though the details are different since
+% theory of Leja points [1,2], though the details are different since
 % Leja points are determined just by the domain of approximation whereas
 % here we are adaptively working with the function f itself.
 % For an explanation related to
 % potential theory of why effective interpolation grids tend to cluster
-% near boundaries, see Chapter 12 of [2].
+% near boundaries, see Chapter 12 of [3].
 
 %%
 % References
@@ -84,6 +84,10 @@ hold on, semilogy(lebesgue(scheb),'r',LW,1.4)
 % [1] L. Reichel, Newton interpolation at Leja points,
 % BIT Numerical Mathematics 30 (1990), 332-346.
 %
-% [2] L. N. Trefethen, Approximation Theory and Approximation Practice,
-% draft book available at http://www.maths.ox.ac.uk/chebfun/ATAP/.
+% [2] R. Taylor and V. Totik, Lebesgue constants for
+% Leja points, IMA Journal of Numerical Analysis, 30
+% (2010), 462--486.
+%
+% [3] L. N. Trefethen, Approximation Theory and Approximation Practice,
+% SIAM, 2013.
 

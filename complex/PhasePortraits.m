@@ -9,11 +9,11 @@
 % Phase portraits are a technique for visualising complex valued functions of a
 % single complex variable. They rely on the visual encoding of complex numbers:
 % if $z = re^{it}$ then the rainbow colours represent the phase of z. Red
-% indicates an argument of 0 and the rainbow goes through red, yellow, green,
-% blue, violet as the argument increases. By default, Chebfun2 produces a phase
+% indicates a phase of 0 and the rainbow goes through red, yellow, green,
+% blue, violet as the phase increases. By default, Chebfun2 produces a phase
 % portrait when asked to plot a chebfun2 object that is complex. For example,
 
-FS = 'FontSize'; fs=16; d = pi*[-1 1 -1 1];
+FS = 'FontSize'; fs = 14; d = pi*[-1 1 -1 1];
 f = chebfun2(@(z) sin(z),d); 
 plot(f), title('Phase portrait for sin(z)',FS,fs);
 
@@ -46,7 +46,9 @@ plot(f), title('Phase portrait plot for sin(z)-sinh(z)',FS,fs)
 % As illustrated copiously in [1], the power of phase portraits is most fully
 % realised when they are applied to functions with poles or other singularities.
 % Unfortunately, at present Chebfun2 cannot represent such functions.
+% See, however, the Chebfun example "Phase portraits for functions
+% with poles".
 
 %% References 
 % [1] E. Wegert, Visual Complex Functions: An Introduction with Phase
-% Portraits, Springer Basel, 2012. 
+% Portraits, Birkhauser/Springer, Basel, 2012. 
