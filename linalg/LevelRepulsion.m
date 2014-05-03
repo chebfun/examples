@@ -21,8 +21,8 @@
 % happen.  That is to say, if A and B are selected at random in a
 % reasonable sense from the set of all real symmetric matrices of dimension
 % n, the probability will be zero that there will be any value of t for
-% which A(t) has a multiple eigenvalue. This phenomenon of ``level
-% repulsion'' or ``eigenvalue avoided crossings'' goes back to von Neumann
+% which A(t) has a multiple eigenvalue. This phenomenon of ''level
+% repulsion'' or ''eigenvalue avoided crossings'' goes back to von Neumann
 % and Wigner and is well known to physicists. It is illustrated on the
 % cover of Peter Lax's textbook Linear Algebra [1].
 
@@ -41,9 +41,9 @@ A = randn(n); A = A+A'; B = randn(n); B = B+B';
 % the 2nd column for the 2nd eigenvalue, and so on.
 
 %%
-% We can construct this quasimatrix as follows.  (The ``splitting off''
+% We can construct this quasimatrix as follows.  (The ''splitting off''
 % command has no effect, since splitting off is the default, but is
-% included to show where one would put ``splitting on'' to handle a problem
+% included to show where one would put ''splitting on'' to handle a problem
 % with curves actually crossing or coming very close.)
 ek = @(e,k) e(k);            % returns kth element of the vector e
 eigA = @(A) sort(eig(A));    % returns sorted eigenvalues of the matrix A
