@@ -26,7 +26,7 @@ taxpts = 10:10:40;
 N = chebop(@(s,V) .5*vol*s.^2.*diff(V,2) + r*s.*diff(V) - r*V,[1,50]);
 N.lbc = @(V) V+50;
 N.rbc = @(V) V-150;
-N.bc = @(V) jump(V,taxpts)+tax*feval(V,taxpts);
+N.bc = @(s,V) jump(V,taxpts)+tax*feval(V,taxpts);
 y=N\0;
 plot(y), hold on; 
 title('Profit/loss versus underlying share price','FontSize',16);

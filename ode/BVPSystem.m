@@ -25,16 +25,17 @@
 % two chebfuns as input and return a quasimatrix of two chebfuns as output:
 N = chebop(-1,1);
 x = chebfun('x');
-N.op = @(x,u,v)[ diff(u,2) - sin(v), diff(v,2) + cos(u)];
-N.lbc = @(u,v)[ u-1,  diff(v)];
-N.rbc =  @(u,v)[ v, diff(u)];
-N.guess = [0*x,0*x];
-[sol nrmduvec] = N\0;
+N.op = @(x,u,v)[ diff(u,2) - sin(v); diff(v,2) + cos(u)];
+N.lbc = @(u,v)[ u-1; diff(v)];
+N.rbc =  @(u,v)[ v; diff(u)];
+N.init = [0*x; 0*x];
+[sol,info] = solvebvp(N,[0;0]);
+nrmduvec = info.normDelta;
 
 %%
 % We extract the functions from the solution and plot them:
 LW = 'linewidth'; FS = 'fontsize';
-u = sol(:,1); v = sol(:,2);
+u = sol{1}; v = sol{2};
 figure, subplot(1,2,1), plot(u,LW,2)
 hold on, plot(v,'--r',LW,2), hold off
 title('u and v vs. x',FS,12), legend('u','v')
@@ -59,15 +60,16 @@ xlabel('Iteration no.',FS,10), ylabel('Norm of update',FS,10)
 %
 N = chebop(-1,1);
 x = chebfun('x');
-N.op = @(u) [ diff(u(:,1),2) - sin(u(:,2)), diff(u(:,2),2) + cos(u(:,1)) ];
-N.lbc = @(u)[ u(:,1)-1, diff(u(:,2))];
-N.rbc =  @(u)[ u(:,2), diff(u(:,1))];
-N.guess = [0*x,0*x];
-[u nrmduvec] = N\0;
+N.op = @(u) [ diff(u(:,1),2) - sin(u(:,2)); diff(u(:,2),2) + cos(u(:,1)) ];
+N.lbc = @(u)[ u(:,1)-1; diff(u(:,2)) ];
+N.rbc =  @(u)[ u(:,2); diff(u(:,1)) ];
+N.init = [0*x; 0*x];
+[u,info] = solvebvp(N,[0;0]);
+nrmduvec = info.normDelta;
 
 figure
-subplot(1,2,1), plot(u(:,1),LW,2), hold on
-plot(u(:,2),'--r',LW,2), hold off
+subplot(1,2,1), plot(u{1},LW,2), hold on
+plot(u{2},'--r',LW,2), hold off
 title('u_1(x) and u_2(x) vs. x',FS,12), legend('u_1','u_2')
 box on, grid on
 xlabel('x',FS,10), ylabel('u_1(x) and u_2(x)',FS,10)

@@ -17,13 +17,13 @@
 % Here is a code to solve this problem using Chebfun's ode113 command,
 % and complex arithmetic for simplicity.  We track the orbit for 23
 % time units and see that it is an ellipse.
-tmax = 23; d = domain([0 tmax]);
+tmax = 23; d = [0 tmax];
 LW = 'linewidth'; MS = 'markersize';
 opts = odeset('abstol',1e-10,'reltol',1e-10);
 fun = @(t,u) [u(2); -u(1)./abs(u(1)).^3];
 u0 = -1+1i;
 v = 1;
-uv = ode113(fun,d,[u0; v],opts); uv = uv(:,1);
+uv = chebfun.ode113(fun,d,[u0; v],opts); uv = uv(:,1);
 hold off, plot(0,0,'.r','markersize',24), hold on
 plot(uv,LW,1.6), axis equal, grid on, shg
 plot(uv(0:tmax),'.k',MS,16)
@@ -31,7 +31,7 @@ plot(uv(0:tmax),'.k',MS,16)
 %%
 % If we want the initial speed v to be a parameter, we can make
 % an anonymous function:
-u = @(v) ode113(fun,d,[u0; v],opts);
+u = @(v) chebfun.ode113(fun,d,[u0; v],opts);
 
 %%
 % Here are the orbits for v = .5, .75, 1, 1.5, 2.  This kind of
@@ -51,8 +51,8 @@ axis([-3 3 -3 3]), axis square, grid on, shg
 % another at (1,0), with the planet feeling a gravitational tug from
 % each.  Here is an orbit over 10 time units starting with v=1:
 fun = @(t,u) [u(2); -u(1)./abs(u(1)).^3-(u(1)-1)./abs(u(1)-1).^3];
-tmax = 10; d = domain([0 tmax]);
-u = @(v) ode113(fun,d,[u0; v],opts);
+tmax = 10; d = [0 tmax];
+u = @(v) chebfun.ode113(fun,d,[u0; v],opts);
 v = 1; uv = u(v); uv = uv(:,1);
 hold off, plot([0 1],[0 0],'.r','markersize',24), hold on
 plot(uv,LW,1.6), axis equal, grid on, shg

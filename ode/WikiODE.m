@@ -55,15 +55,16 @@ plot(y,'linewidth',2), grid on
 d = [-1 1];
 x = chebfun('x',d);
 N = chebop(d);
+N.op = @(y) diff(y,2) + pi^2*y;
 %%
 % This problem has a Dirichlet BC on the left,
 N.lbc = -1; 
 %%
 % and a Neumann condition on the right.
-N.rbc = @(u) diff(u) + pi;
+N.rbc = @(x,u) diff(u) + pi;
+
 %%
 % Define the linear operator.
-N.op = @(y) diff(y,2) + pi^2*y;
 %%
 % Define the RHS of the ODE.
 rhs = 0*x;
