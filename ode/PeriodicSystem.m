@@ -17,9 +17,9 @@
 
 d = [-pi,pi];
 A = chebop(d);
-A.op = @(x,u,v) [u-diff(v), diff(u,2)+v];
+A.op = @(x,u,v) [u-diff(v); diff(u,2)+v];
 x = chebfun('x',d);
-f = [0, cos(x)];
+f = [0;cos(x)];
 A.bc = 'periodic';
 u = A\f;
 

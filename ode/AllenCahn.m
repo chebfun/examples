@@ -17,11 +17,11 @@
 % If we try a very small value of Eps without a well-chosen initial guess,
 % Chebfun will not converge.  Instead let's begin by solving the problem
 % with the rather large initial guess Eps = 1:
-Eps = 1;
+Eps = 2;
 dom = [0,10];
 x = chebfun('x',dom);
 f = sin(x);
-cheboppref('plotting',0.01)
+% cheboppref('plotting',0.01)
 N = chebop(@(u) Eps*diff(u,2)+u-u.^3,dom,1,-1);
 tic, u = N\f; t = toc;
 
@@ -39,7 +39,7 @@ for j = 1:length(Epsvec)
   close all
   Eps = Epsvec(j);
   N = chebop(@(u) Eps*diff(u,2)+u-u.^3,dom,1,-1);
-  N.guess = u;
+  N.init = u;
   tic, u = N\f; t = toc;
   close, plot(u,LW,lw)
   title(sprintf(s,Eps,length(u),t),FS,fs), snapnow

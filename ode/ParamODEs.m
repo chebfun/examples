@@ -24,12 +24,12 @@
 
 LW = 'LineWidth'; FS = 'FontSize';
 N = chebop(@(x,u,a) 0.001*diff(u,2) + x.*u + a);
-N.lbc = @(u,a) [u + a + 1, diff(u)];
+N.lbc = @(u,a) [u + a + 1; diff(u)];
 N.rbc = @(u,a) u - 1;
 ua = N\0
-plot(ua,LW,2); title('Solution to parameter-dependent ODE',FS,16);
+plot(ua{1},LW,2); title('Solution to parameter-dependent ODE',FS,16);
 legend('u','a');
-a = ua(1,2)
+a = ua{2}(1)
 
 %% 2. Newton's Law of Cooling
 % During the Jack the Ripper murder investigations in the 1880s, detectives
@@ -53,16 +53,17 @@ S = 15;   % Ambient temperature
 t0 = 37;  % Initial temperature
 tT = 20;  % Discovery temperature
 % Rescale the equation by x=t/T to form parameter-dependent ODE.
-N = chebop(@(x,y,T) diff(y) + k.*T.*(y-S),[0 1]);
+N = chebop(@(x,y,T) diff(y) + k.*T.*(y-S),[0,1]);
 N.lbc = @(y,T) y-t0;
 N.rbc = @(y,T) y-tT;
 % Solve
 yT = N\0;
 % Rescale solution and plot
-T = yT(1,2); t = chebfun(@(t) t/T,[0 T]); y = yT(t,1); 
+yT1 = yT{1}; yT2 = yT{2};
+T = yT2(1); t = chebfun(@(t) t/T,[0 T]); y = yT1(t); 
 plot(y,LW,2), title('Temperature of body Vs. Time',FS,16);
 xlabel('Time in seconds',FS,10), ylabel('Temperature',FS,10);
-fprintf('T is estimated to be %1.2f hrs.\n',yT(1,2)/360)
+fprintf('T is estimated to be %1.2f hrs.\n',yT2(1)/360)
 
 %%
 % From the estimate of T we are able to calculate the time of the murder
@@ -84,15 +85,16 @@ fprintf('T is estimated to be %1.2f hrs.\n',yT(1,2)/360)
 n = 4.5;
 %Parameter-dependent ODE
 N = chebop(@(x,u,v) x.*diff(u,2) + 2*diff(u) + x.*v.^2.*(u+1e-12).^n,[0 1]);
-N.lbc = @(u,v) [u-1,diff(u)];
+N.lbc = @(u,v) [u-1;diff(u)];
 N.rbc = @(u,v) u;
 %Choose initial condition.
 x = chebfun(@(x) x,[0 1]);
-N.init = [cos(pi/2*x),3];
+N.init = [cos(pi/2*x);3];
 %Solve
-uv = N\0;
+uv = solvebvp(N,[0;0]);
+uv1 = uv{1}; uv2 = uv{2};
 %Rescale solution and plot.
-t = chebfun('t',[0,uv(1,2)]); u = uv(t./uv(1,2),1);
+t = chebfun('t',[0,uv2(1)]); u = uv1(t./uv2(1));
 plot(u,LW,2), hold on; 
 title('Solution of the Lane-Emden equation for n=4.5',FS,16),
 

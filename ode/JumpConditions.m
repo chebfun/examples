@@ -29,7 +29,7 @@ plot(u1)
 % Suppose we want to add a jump condition at the origin. To do this we'd
 % use the .bc field as follows
 
-N.bc = @(x,u) feval(u,0,'right') - feval(u,0,'left') - 1;
+N.bc = @(x,u) jump(u,0) - feval(u,0,'left') - 1;
 u2 = N\0
 plot(u2)
 

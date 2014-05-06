@@ -38,7 +38,7 @@
 % we will do it with Chebfun.  We solve the ODE, and then solve the
 % equation $d=20$ to find the breakaway time:
 L = chebop(@(t,d) diff(d,2) + d - (1-cos(t)),[0 50]);
-L.lbc = @(d) [d-2 diff(d)];
+L.lbc = @(d) [d-2; diff(d)];
 LW = 'linewidth';
 d = L\0; plot(d,LW,1.6), grid on
 xlabel('t (secs)'), ylabel('d (cm)'), axis([0 50 -30 30])
