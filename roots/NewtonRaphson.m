@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example roots/NewtonRaphson.m)
-% [Tags: #root, #Newton]
+% [Tags: #Newton, #ROOTS]
 
 %%
 % Newton's method, as the most fundamental root-finding algorithm, usually
