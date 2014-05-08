@@ -13,11 +13,12 @@ L.op = @(u) diff(u,2);
 L.bc = 'dirichlet';
 nn = [1 2 10 20]; nmax = max(nn);
 [V,D] = eigs(L,nmax);
+d = diag(D); [d,ii] = sort(d,'descend'); V = V(:,ii');
 for j = 1:4
   n = nn(j);
   v = V(:,n);                 % pick out nth eigenvector
   v = v/norm(v,inf);          % normalize to have amplitude 1
-  lam = D(n,n);               % nth eigenvalue
+  lam = d(n);               % nth eigenvalue
   subplot(4,1,j)
   plot(v,LW,lw)
   axis([-pi/2 pi/2 -1.6 1.6])
@@ -34,11 +35,12 @@ middle = (abs(x)<=a);
 L.op = @(x,u) diff(u,2) + (2/a)*middle.*diff(u);   % decay band
 nn = [1 2 10 40]; nmax = max(nn);
 [V,D] = eigs(L,nmax);
+d = diag(D); [d,ii] = sort(d,'descend'); V = V(:,ii');
 for j = 1:4
   n = nn(j);
   v = V(:,n);                 % pick out nth eigenvector
   v = v/norm(v,inf);          % normalize to have amplitude 1
-  lam = D(n,n);               % nth eigenvalue
+  lam = d(n);               % nth eigenvalue
   subplot(4,1,j)
   hold off, fill(a*[-1 1 1 -1],1.6*[-1 -1 1 1],[1 .8 .8])
   hold on, plot(v,LW,lw)

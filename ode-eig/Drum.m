@@ -31,8 +31,9 @@ B.op = @(r,u) r.*u;
 % values are also zeros of the Bessel function J0, which gives a way to
 % valudate the results.
 [V,D] = eigs(A,B);
-omega = sqrt(-diag(D))
-err = omega - roots( besselj(0,chebfun('r',[0 20])) )
+[omega,ii] = sort(sqrt(-diag(D)))
+V = V(:,ii');
+err = omega - sort(roots( besselj(0,chebfun('r',[0 20])) ))
 
 %% 
 % We also get the eigenfunctions, which gives a way to visualize
@@ -65,7 +66,8 @@ function ratio = evratio(a)
   rho = 1 - a*sin(pi*r);
   B.op = @(r,u) r.*rho.*u;
   [V,D] = eigs(A,B,2,0);
-  omega = sqrt(-diag(D));
+  [omega,ii] = sort(sqrt(-diag(D)));
+  V = V(:,ii');
   ratio = omega(2)/omega(1);
 end
 
@@ -81,7 +83,7 @@ set(gca,'xtick',[0.5,astar,1],'ytick',[2],'xgrid','on','ygrid','on')
 % We compute the ratio at astar to verify the answer, and plot the
 % eigenfunctions.
 residual = evratio(astar) - 2
-subplot(1,2,1), surfl(rr.*cos(tt),rr.*sin(tt),repmat(V(rr(1,:),1),60,1))
+subplot(1,2,1), surfl(rr.*cos(tt),rr.*sin(tt),repmat(-V(rr(1,:),1),60,1))
 shading interp, lighting phong, title('First mode')
 subplot(1,2,2), surfl(rr.*cos(tt),rr.*sin(tt),repmat(-V(rr(1,:),2),60,1))
 shading interp, lighting phong, title('Second mode')

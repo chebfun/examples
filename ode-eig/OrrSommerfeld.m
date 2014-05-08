@@ -30,17 +30,14 @@
 % eigenvalue problem.
 Re = 2000;                  % Reynolds number
 alph = 1;                   % longitudinal Fourier parameter
-
-A2.op = @(x,u) (diff(u,4)-2*alph^2*diff(u,2)+alpha^4*u)/Re - 2i*alpha*u ...
-    - 1i*alpha*diag(1-x.^2)*(diff(u,2)-alpha^2*u);
-
 A = chebop(-1,1);
+
 A.op = @(x,u) (diff(u,4)-2*alph^2*diff(u,2)+alph^4*u)/Re - ...
-    2i*alph*u - 1i*alph*diag(1-x.^2)*(diff(u,2)-alph^2*u);
+    2i*alph*u - 1i*alph*(1-x.^2).*(diff(u,2)-alph^2*u);
 B = chebop(-1,1);
 B.op = @(x,u) diff(u,2) - u;
-A.lbc = @(u) [u , diff(u)];
-A.rbc = @(u) [u , diff(u)];
+A.lbc = @(u) [u ; diff(u)];
+A.rbc = @(u) [u ; diff(u)];
 e = eigs(A,B,50,'LR');
 FS = 'fontsize'; MS = 'markersize';
 maxe = max(real(e));
@@ -53,7 +50,7 @@ title(sprintf('Re = %8.2f   \\lambda_r = %7.5f',Re,maxe),FS,16)
 % at which an eigenvalue first crosses into the right half-plane:
 Re = 5772.22; alph = 1.02;           
 A.op = @(x,u) (diff(u,4)-2*alph^2*diff(u,2)+alph^4*u)/Re - ...
-    2i*alph*u - 1i*alph*diag(1-x.^2)*(diff(u,2)-alph^2*u);
+    2i*alph*u - 1i*alph*(1-x.^2).*(diff(u,2)-alph^2*u);
 e = eigs(A,B,50,'LR');
 maxe = max(real(e));
 plot(e,'.r',MS,16), grid on, axis([-.9 .1 -1 0]), axis square
