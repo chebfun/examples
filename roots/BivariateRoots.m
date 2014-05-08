@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example roots/BivariateRoots.m)
-% [Tags: #bivariate polynomials, #roots, #curve intersections]
+% [Tags: #bivariate polynomials, #curve intersections, #ROOTS]
 
 function BivariateRoots()
 
@@ -13,7 +13,8 @@ LW = 'LineWidth'; lw = 2; MS = 'MarkerSize'; FS = 'FontSize'; fs = 16;
 % Suppose $f(x,y)$ and $g(x,y)$ are bivariate polynomials and we are interested
 % in finding the common roots $(x_\ast,y_\ast)$ for which
 % $f(x_\ast,y_\ast)=g(x_\ast,y_\ast)=0$. This problem arises for example when
-% locating the critical points of a surface $z = h(x,y)$ since they satisfy
+% locating the critical points of a surface $z = h(x,y)$ since the
+% critical points satisfy
 % $$(f(x,y)=)\ \frac{\partial z}{\partial x} = 0 ,\quad (g(x,y)=)\
 % \frac{\partial z}{\partial y}= 0. $$
 
@@ -30,10 +31,7 @@ LW = 'LineWidth'; lw = 2; MS = 'MarkerSize'; FS = 'FontSize'; fs = 16;
 %%
 % A well known fact [1] is that the matrix $A$ is singular if and only if the two
 % polynomials $p(x)$ and $q(x)$ have a common root. 
-
-
-%%
-% We take advantage of this property in the following way:
+% We take advantage of this property in the following way.
 % Regard $f(x,y)$ and $g(x,y)$ as univariate polynomials in $x$, with coefficients 
 % in $y$. Then we can form the Bezout matrix $A(y)$, whose elements are now
 % seen as functions of $y$. A value $y_\ast$ such that $A(y_\ast)$ is singular
@@ -41,9 +39,9 @@ LW = 'LineWidth'; lw = 2; MS = 'MarkerSize'; FS = 'FontSize'; fs = 16;
 % and hence, $f(x_\ast,y_\ast)=g(x_\ast,y_\ast)=0$.
 
 %%
-% Let's illustrate how this bivariate rootfinding can be done with an example.
+% Let's illustrate bivariate rootfinding with an example.
 % Suppose we want to find the intersections of the two curves $u_1(x) + iv_1(x)$ and 
-% $u_2(y) + iv_2(y)$ then we can write this as the following bivariate rootfinding
+% $u_2(y) + iv_2(y)$.  We can write this as the following bivariate rootfinding
 % problem:
 %
 % $$ f(x,y) = u_1(x) - u_2(y),\quad  g(x,y) = v_1(x) - v_2(y). $$ 
@@ -71,19 +69,19 @@ u2 = chebfun(real(c2),n); v2 = chebfun(imag(c2),n);
 %%
 % The first step is to consider the Bezoutian and form the Bezout matrix.
 % For convenience we first represent the bivariate polynomials
-% $f(x,y)$ and $g(x,y)$ as matrices of coefficients in their bivariate expansion,
-% as we did above.
+% $f(x,y)$ and $g(x,y)$ as matrices of coefficients in their bivariate
+% expansions, as we did above.
 
 F = zeros(n); G = zeros(n);
 F(end,:) = chebpoly(u1); F(:,end) = F(:,end) - chebpoly(u2)';
 G(end,:) = chebpoly(v1); G(:,end) = G(:,end) - chebpoly(v2)';
 
 %%
-% Now we form the Bezoutian of $f(x,y)$ and $g(x,y)$ (as seen as
+% Now we form the Bezoutian of $f(x,y)$ and $g(x,y)$ (seen as
 % polynomials in $x$) by using the code DLP.m, available from [4]. The code
 % forms a linearization $\lambda X+Y$ for a given matrix polynomial, and in
 % [4] it is shown that $X$ is a Bezout matrix. We use this to construct the 
-% Bezout matrix corresponding $A$ to the Bezoutian of $f(x,y)$ and $g(x,y)$. 
+% Bezout matrix $A$ corresponding to the Bezoutian of $f(x,y)$ and $g(x,y)$. 
 
 A = zeros(n-1,n-1,2*n-1);
 a = [ones(n-1,1); 2]/2; b = zeros(n,1); c = ones(n,1)/2; % Cheb 3 term
@@ -135,10 +133,11 @@ a = [ones(n-1,1); 2]/2; b = zeros(n,1); c = ones(n,1)/2;
 [V,yvals] = eig(Y,-X); % solve generalized eigenvalue problem
 
 %%
-% The computed yvals contain the $y$-values corresponding to the
+% The computed matrix `yvals` contains the $y$-values corresponding to the
 % intersecting points, that is $(u2(yval),v2(yval))$.
-% To get the $x$-values, we use the fact that if the Bezoutian has a null space, then it is of the
-% Vandermonde form $[T_{n-1}(x),\ldots, T_2(x),T_1(x),T_0(x)]^T$, an important but less well-known fact. 
+% To get the $x$-values, we use the important but not so well known
+% fact that if the Bezoutian has a null space, then it is of the
+% Vandermonde form $[T_{n-1}(x),\ldots, T_2(x),T_1(x),T_0(x)]^T$. 
 % We extract the 'correct' computed roots by finding the solution in the region of interest 
 % $x,y\in [-1,1]$. 
 
@@ -157,17 +156,17 @@ errors = abs(c2(y)-c1(x))
 
 %%
 % References:
-%%
+%
 % [1]  D. S. Bernstein, Matrix Mathematics: Theory, Facts, and Formulas,
 % Princeton University Press, 2nd edition, 2009.
-%%
-% [2]  D.A. Bini and A. Marco. Computing curve intersection by means of
+%
+% [2]  D. A. Bini and A. Marco. Computing curve intersection by means of
 % simultaneous iterations. Numerical Algorithms, 43(2):151-175, 2006.
-%%
+%
 % [3] D. Manocha and J. Demmel. Algorithms for intersecting parametric and
 % algebraic curves I: simple intersections. ACM Transactions on Graphics,
 % 13(1):73-100, 1994.
-%%
+%
 % [4] A. Townsend, V. Noferini, and Y. Nakatsukasa. Vector spaces of
 % linearizations for matrix polynomials: a bivariate polynomial approach.
 % Preprint: The Mathematical Institute, University of Oxford, Eprints Archive
@@ -190,7 +189,7 @@ S = kron(v,AA);
 for j=0:k-1, jj=n*j+1:n*j+n; AA(:,jj) = AA(:,jj)';end % block transpose
 T = kron(v',AA'); R = M'*S-T*M;                % construct RHS
 
-% Bartel-Stewart algorithm on M'Y+YM=R, M is upper triangular. 
+% Bartels-Stewart algorithm on M'Y+YM=R, M is upper triangular. 
 X = zeros(s); Y=X; ii=n+1:s+n; nn=1:n;         % useful indices
 Y(nn,:)=R(nn,ii)/M(1); X(nn,:)=T(nn,:)/M(1);   % first column of X and Y
 Y(nn+n,:)=(R(nn+n,ii)-M(1,n+1)*Y(nn,:)+Y(nn,:)*M(:,n+1:s+n))/M(n+1,n+1);
