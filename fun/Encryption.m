@@ -6,7 +6,7 @@
 % [Tags: #encryption, #message]
 
 %%
-% SCRIBBLE produces piecewise linear complex chebfun whose plots look like
+% `scribble` produces piecewise linear complex chebfuns whose plots look like
 % words, like this:
 message = scribble('This is the message');
 LW = 'linewidth'; lw = 2;
