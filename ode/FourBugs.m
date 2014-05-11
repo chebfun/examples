@@ -8,14 +8,14 @@
 %%
 % Problem: Four particles start at $t=0$ at the vertices of a
 % $2\times1$ rectangle. Each one chases the particle to its
-% left with speed 1. When does a collision occur?
+% left with speed $1$. When does a collision occur?
 
 format long, format compact
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 
 %% Introduction
 % The above problem was posed by Trefethen [1] to students
-% as a simple extension to a similar problem
+% as an extension of a similar problem
 % made famous by the great Martin Gardner in 1957, for whom the
 % particles were instead bugs that begun on the corners of a square.
 
@@ -28,9 +28,10 @@ xx = [-1 1 1 -1];  yy = [-1 -1 1 1]/2;
 uu = [1 0 -1 0];  vv = [0 1 0 -1];
 quiver(xx, yy, uu, vv, 1/3, 'k-'), hold on
 plot(xx, yy, 'k.', MS, 18), text(-.07,0,'?','FontSize',60)
-text(.93,-.5,'1'); text(1,.43,'2'); text(-.93,.5,'3'); text(-1,-.43,'4');
-axis tight, axis equal, axis off
-title('The "Four bugs on a rectangle" problem', FS, 16)
+text(.93,-.5,'1',FS,12), text(1,.43,'2',FS,12),
+text(-.93,.5,'3',FS,12), text(-1,-.43,'4',FS,12)
+axis tight equal off
+title('The "Four bugs on a rectangle" problem', FS, 14)
 
 %% The system of ODEs
 % For notational and computational convenience, we will
@@ -106,8 +107,8 @@ bugs(:,3) = -bugs(:,1);  bugs(:,4) = -bugs(:,2);  bugs(:,5) = bugs(:,1);
 % Here is a plot of their movement toward the origin.
 figure(2)
 plot(bugs, LW, 2), hold on
-plot(xx, yy, 'k.', MS, 18), axis equal, axis off
-title('The dance of four bugs on a rectangle', FS, 16)
+plot(xx, yy, 'k.', MS, 18), axis equal off
+title('The dance of four bugs on a rectangle', FS, 14)
 
 %%
 % As explained above, the bugs always form a parallelogram
@@ -118,20 +119,20 @@ figure(2), hold on
 for t = linspace(-1.5, -.01, 7),
     plot(bugs(t,:), 'k.-', MS, 18)
 end
-title('The dance of four bugs on a rectangle, with level sets', FS, 16)
+title('The dance of four bugs on a rectangle, with level sets', FS, 14)
 
 %%
 % We can verify in Chebfun that the perimeter of
-% the bugs' parallelogram decreases at a constant rate 4.
+% the bugs' parallelogram decreases at the constant rate 4.
 figure(3)
 subplot(2,1,1)
     plot(ell1, 'r-', ell2, 'b-', LW, 2)
     legend('length of sides 1,3', 'length of sides 2,4')
-    title('Parallelogram side lengths over time', FS, 16)
+    title('Parallelogram side lengths over time', FS, 14)
 subplot(2,1,2)
     plot(2*diff(ell1 + ell2), 'k-', LW, 2)
     ylim([-7 0])
-    title('Rate of change of parallelogram perimeter', FS, 16)
+    title('Rate of change of parallelogram perimeter', FS, 14)
 
 %% Computing critical times
 % The exposition in [1] also includes discussion of critical times
@@ -184,22 +185,22 @@ tt = sort([t_rect_est, t_rhomb_est]);
 subplot(2,2,1), hold on
     plot(bugs(tt(1),:), 'k.-', MS, 18)
     axis equal, zoom(1), axis off
-    title(['rectangle, t = ' num2str(tt(1),10)], FS, 14)
+    title(['rectangle, t = ' num2str(tt(1),10)], FS, 12)
 subplot(2,2,2), hold on
     plot(bugs, 'interval', [-1.5 tt(3)], LW, 2)
     plot(bugs(tt(3),:), 'k.-', MS, 18)
     axis equal, zoom(1.8), axis off
-    title(['rhombus, t = ' num2str(tt(3),10)], FS, 14)
+    title(['rhombus, t = ' num2str(tt(3),10)], FS, 12)
 subplot(2,2,3), hold on
     plot(bugs, 'interval', [-1.5 tt(2)], LW, 2)
     plot(bugs(tt(2),:), 'k.-', MS, 18)
     axis equal, zoom(6), axis off
-    title(['rectangle, t = ' num2str(tt(2),10)], FS, 14)
+    title(['rectangle, t = ' num2str(tt(2),10)], FS, 12)
 subplot(2,2,4), hold on
     plot(bugs, 'interval', [-1.5 tt(4)], LW, 2)
     plot(bugs(tt(4),:), 'k.-', MS, 18)
     axis equal, zoom(60), axis off
-    title(['rhombus, t = ' num2str(tt(4),10)], FS, 14)
+    title(['rhombus, t = ' num2str(tt(4),10)], FS, 12)
 
 %%
 % References:
