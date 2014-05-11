@@ -119,6 +119,7 @@ figure(2), hold on
 for t = linspace(-1.5, -.01, 7),
     plot(bugs(t,:), 'k.-', MS, 18)
 end
+ylim([-.55 .55])
 title('The dance of four bugs on a rectangle, with level sets', FS, 14)
 
 %%
@@ -184,7 +185,7 @@ figure(4)
 tt = sort([t_rect_est, t_rhomb_est]);
 subplot(2,2,1), hold on
     plot(bugs(tt(1),:), 'k.-', MS, 18)
-    axis equal, zoom(1), axis off
+    axis equal off, ylim([-.55 .55])
     title(['rectangle, t = ' num2str(tt(1),10)], FS, 12)
 subplot(2,2,2), hold on
     plot(bugs, 'interval', [-1.5 tt(3)], LW, 2)
@@ -194,12 +195,12 @@ subplot(2,2,2), hold on
 subplot(2,2,3), hold on
     plot(bugs, 'interval', [-1.5 tt(2)], LW, 2)
     plot(bugs(tt(2),:), 'k.-', MS, 18)
-    axis equal, zoom(6), axis off
+    axis equal, zoom(4.4), axis off
     title(['rectangle, t = ' num2str(tt(2),10)], FS, 12)
 subplot(2,2,4), hold on
     plot(bugs, 'interval', [-1.5 tt(4)], LW, 2)
     plot(bugs(tt(4),:), 'k.-', MS, 18)
-    axis equal, zoom(60), axis off
+    axis equal, zoom(52), axis off
     title(['rhombus, t = ' num2str(tt(4),10)], FS, 12)
 
 %%
