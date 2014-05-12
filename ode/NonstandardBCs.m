@@ -5,6 +5,8 @@
 % (Chebfun example ode/NonstandardBCs.m)
 % [Tags: #linearODE, #exoticBCs, #nonstandard]
 
+LW = 'linewidth';
+
 %%
 % With the advances of automatic differentiation of scalars in Chebfun it
 % became possible to solve ODEs in Chebfun with more exotic constraints
