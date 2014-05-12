@@ -11,9 +11,8 @@
 % number for continuous functions, not discrete approximations.
 
 %%
-% For example, here we take the first 12 Chebyshev polynomials
-% on [-1,1]:
-tic
+% For example, here we take the first $12$ Chebyshev polynomials
+% on $[-1,1]$:
 N = 11;
 A = chebpoly(0:N);
 plot(A)
@@ -27,8 +26,8 @@ fprintf('Condition no. for Legendre polynomials: %8.3f\n',cond(A))
 
 %%
 % Here are the Legendre polynomials normalized by having unit norm
-% rather than by taking the value 1 at x=1.  Since the
-% functions are orthonormal, the condition number is 1.
+% rather than by taking the value $1$ at $x=1$.  Since the
+% functions are orthonormal, the condition number is $1$.
 A = legpoly(0:N,'norm');
 plot(A)
 fprintf('Condition no. for normalized Legendre polynomials: %8.3f\n',cond(A))
@@ -45,29 +44,20 @@ plot(A)
 fprintf('Condition no. for monomials: %8.3f\n',cond(A))
 
 %%
-% These experiments take a surprisingly long time, which is
-% why we've looked at sets of only twelve functions:
-fprintf('Total time: %5.2f        (too long!)\n', toc)
-
-%%
-% Unfortunately Chebfun's QR command, though very robust
-% due to the use of continuous Householder reflectors [1], is slow.
-
-%%
 % Now what exactly do these condition numbers mean?  Here is an
-% explanation following Chapter 4 of [2].  A is a "quasimatrix",
-% a matrix with 12 "columns" that are not vectors but functions
-% of the variable x on [-1,1].  This quasimatrix represents a
-% mapping from the space R12 of vectors of dimension 12 into the
-% 12-dimensional subspace of degree 11 polynomials in 
-% L2([-1,1]), the infinite-dimensional space of
-% square-integrable functions defined on [-1,1].  Now suppose we
-% consider the unit ball in R12, that is, the set of all 12-vectors
-% whose 2-norm is <1.  The quasimatrix A maps this ball into an
-% 12-dimensional hyperellipsoid, a kind of 12-dimensional pancake.
-% The condition number cond(A) is equal to the ratio of the
+% explanation following Chapter 4 of [2].  $A$ is a "quasimatrix",
+% a matrix with $12$ "columns" that are not vectors but functions
+% of the variable $x$ on $[-1,1]$.  This quasimatrix represents a
+% mapping from the space $R^{12}$ of vectors of dimension $12$ into the
+% $12$-dimensional subspace of degree $11$ polynomials in 
+% $L^2([-1,1])$, the infinite-dimensional space of
+% square-integrable functions defined on $[-1,1]$.  Now suppose we
+% consider the unit ball in $R^{12}$, that is, the set of all $12$-vectors
+% whose $2$-norm is $<1$.  The quasimatrix $A$ maps this ball into an
+% $12$-dimensional hyperellipsoid, a kind of $12$-dimensional pancake.
+% The condition number $\mbox{cond}(A)$ is equal to the ratio of the
 % largest dimension of the
-% pancake to the smallest.  When the columns of A are monomials,
+% pancake to the smallest.  When the columns of $A$ are monomials,
 % the pancake is very flat indeed.
 
 %%
@@ -78,4 +68,3 @@ fprintf('Total time: %5.2f        (too long!)\n', toc)
 %
 % [2] L. N. Trefethen and D. Bau, III, Numerical Linear Algebra,
 % SIAM, 1997.
- 
