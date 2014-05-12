@@ -9,7 +9,7 @@
 % With Chebfun it is easy to compute with parametrized
 % curves in the plane. 
 % For example, the following lines define a curve
-% (x,y) as a pair of chebfuns in the variable t:
+% $(x,y)$ as a pair of chebfuns in the variable $t$:
 
 t = chebfun('t',[0,2*pi]);
 b = 1; m = 7; a = (m-1)*b;
@@ -24,13 +24,12 @@ y = (a+b)*sin(t) - b*sin((a+b)/b*t);
 % epicycloidal teeth turned with minimum friction. 
 % This is what our epicycloid looks like:
 
-LW = 'linewidth'; lw = 1.6;
-plot(x,y,LW,lw)
+fill(x,y,[.6 .6 1])
 axis equal
 
 %% 
 % Note that although this curve is not smooth, the
-% functions x(t) and y(t) that parameterize it are
+% functions $x(t)$ and $y(t)$ that parameterize it are
 % smooth, so Chebfun has no difficulty representing 
 % them by global polynomials:
 
@@ -39,14 +38,14 @@ y
 
 %%
 % With the following formula we can compute the area 
-% enclosed by the curve (x,y):
+% enclosed by the curve $(x,y)$:
 
 format long
 A = sum(x.*diff(y))
 
 %%
 % Let's compare this result with the exact area of the
-% epicycloid, given (for integer m) by the formula
+% epicycloid, given (for integer $m$) by the formula
 
 exact = pi*b^2*(m^2+m)
 
@@ -56,13 +55,13 @@ exact = pi*b^2*(m^2+m)
 % real-valued chebfuns):
 
 z = exp(1i*t) + (1+1i)*sin(6*t).^2;
-plot(z,LW,lw)
+fill(real(z),imag(z),[.6 1 .6])
 axis equal
 
 %% 
 % Because this curve is a perturbed unit circle, with
 % every perturbation occurring twice with opposite 
-% signs, the enclosed area should be equal to pi, as is 
+% signs, the enclosed area should be equal to $\pi$, as is 
 % confirmed by Chebfun:
 
 A = sum(real(z).*diff(imag(z)));
@@ -74,7 +73,7 @@ A = sum(real(z).*diff(imag(z)));
 
 c = sum(diff(z).*z.*conj(z))/(2i*A);
 hold on
-plot(c,'r+',LW,lw)
+plot(c,'r+','markersize',20)
 
 %%
 % If you use scissors to produce a piece of paper in this 
