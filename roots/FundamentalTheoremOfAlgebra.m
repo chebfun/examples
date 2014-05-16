@@ -56,7 +56,7 @@ title(sprintf('Degree %u with %u roots\n',length(f)-1,length(r)),FS,fs), hold of
 % polynomial of degree 60:
 
 n = 60; xx = (0:n)/n;
-f = chebfun(@(x) prod(x - xx),'vectorize',[0 1]);
+f = chebfun(@(x) prod(x - xx),[0 1],'vectorize');
 r = roots(f); 
 plot([0 1]+eps*1i,'k-','linewidth',3), hold on 
 plot(r+eps*1i,'.r',MS,ms), chebellipseplot(f,LW,lw)
@@ -111,3 +111,4 @@ norm(f(r))
 %%
 % [3] L. N. Trefethen, Approximation Theory and Approximation Practice, SIAM,
 % 2013. 
+
