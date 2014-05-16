@@ -14,7 +14,7 @@ ax = [-1.2 1.2 0 2.4];
 plot(f,LW,lw), axis(ax), axis square, grid on
 
 %%
-% And here is a narrow function with integral equal to 1:
+% And here is a narrow function with integral equal to $1$:
 h = 0.1;
 s = chebfun(@(s) s,[-h h]);
 g = (h-abs(s))/h^2;
@@ -22,7 +22,7 @@ plot(g,'k',LW,lw), axis([-1 1 0 12]), grid on
 
 %%
 % If we convolve the two functions, we get a W with rounded corners.
-% At the ends, the "rounding" has brought the values down to 0:
+% At the ends, the "rounding" has brought the values down to $0$:
 f2 = conv(f,g);
 plot(f2,LW,lw), axis(ax), axis square, grid on
 
