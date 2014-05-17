@@ -38,14 +38,14 @@
 % function $f(x,y)$, and is employed with the command roots(f).
 
 %% Zero contours
-% Let's solve a problem from [2] of finding the solution to f(x,y) = g(x,y) = 0:
+% Let's solve a problem from [2] of finding the solution to $f(x,y) = g(x,y) = 0$:
 
 d = [-4 4 -4 4]; 
 f = chebfun2(@(x,y) 2*y.*cos(y.^2).*cos(2*x)-cos(y),d);
 g = chebfun2(@(x,y) 2*sin(y.^2).*sin(2*x)-sin(x),d);
 
 %% 
-% This example was derived from an autonomous system of ODEs. Here are the zero
+% This example was derived from an autonomous system of ODEs.  Here are the zero
 % contours computed by Marching Squares.
 
 plot(roots(g),'r'), hold on, plot(roots(f),'g')
@@ -53,9 +53,9 @@ plot(roots(g),'r'), hold on, plot(roots(f),'g')
 %% Solutions to bivariate systems
 % A different problem is to find the isolated solutions to a bivariate system
 % $f(x,y) = g(x,y) = 0$. In Chebfun2 we compute the solutions to this problem by
-% first computing the zero contours of f and g by marching squares, and then
+% first computing the zero contours of $f$ and $g$ by marching squares, and then
 % using their intersections as initial guesses in a Newton iteration.  The
-% solutions to $f(x,y) = g(x,y) = 0$ can be computed by the command roots(f,g)
+% solutions to $f(x,y) = g(x,y) = 0$ can be computed by the command `roots(f,g)`
 % in Chebfun2.
 
 %% 
@@ -67,7 +67,7 @@ plot(r(:,1),r(:,2),'.k','MarkerSize',20), hold off
 
 %% Trott's curve
 % Trott's curve an important curve in algebraic geometry.  Here we use the
-% compute roots(f,g) to compute the intersections between trotts curves and the
+% command `roots(f,g)` to compute the intersections between Trott's curves and the
 % zero contours of $f(x,y) = y-x^6$.
 
 trott = @(x,y) 144*(x.^4+y.^4)-225*(x.^2+y.^2) + 350*x.^2.*y.^2+81;
@@ -88,8 +88,8 @@ plot(roots(diff(f)),'r')                 % plot zero contours of f_y
 plot(r(:,1),r(:,2),'k.','MarkerSize',30) % plot extrema
 
 %% 
-% Note that we have used the gradient command in Chebfun2 which computes the x
-% and y derivative of f.
+% Note that we have used the gradient command in Chebfun2 which computes the $x$
+% and $y$ derivatives of $f$.
 
 %% More information 
 % The last example can also be found in [3] along with additional information
