@@ -30,7 +30,7 @@ fprintf('This chebfun of degree %u has %u roots\n',length(f)-1,length(r))
 % Often the Chebfun roots command returns fewer than $n$ roots for a chebfun of 
 % degree $n$. For example,
  
-f = chebfun(@(x) exp(-10*x));                    % A chebfun of exp(x)
+f = chebfun(@(x) exp(-10*x));                    % A chebfun of exp(-10x)
 r = roots(f,'all');                              % Compute all its roots
 plot([-1 1]+eps*1i,'k-','linewidth',3), hold on  % Plot
 plot(r,'.r',MS,ms), chebellipseplot(f,LW,lw)
