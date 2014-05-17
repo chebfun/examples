@@ -30,7 +30,7 @@ fprintf('This chebfun of degree %u has %u roots\n',length(f)-1,length(r))
 % Often the Chebfun roots command returns fewer than $n$ roots for a chebfun of 
 % degree $n$. For example,
  
-f = chebfun(@(x) exp(x));                        % A chebfun of exp(x)
+f = chebfun(@(x) exp(-10*x));                    % A chebfun of exp(x)
 r = roots(f,'all');                              % Compute all its roots
 plot([-1 1]+eps*1i,'k-','linewidth',3), hold on  % Plot
 plot(r,'.r',MS,ms), chebellipseplot(f,LW,lw)
@@ -53,9 +53,9 @@ title(sprintf('Degree %u with %u roots\n',length(f)-1,length(r)),FS,fs), hold of
 %% More roots than expected
 % The Chebfun roots command can also return more roots than 
 % the degree of the chebfun. For example, consider the Wilkinson
-% polynomial of degree 60:
+% polynomial of degree 71:
 
-n = 60; xx = (0:n)/n;
+n = 71; xx = (0:n)/n;
 f = chebfun(@(x) prod(x - xx),[0 1],'vectorize');
 r = roots(f); 
 plot([0 1]+eps*1i,'k-','linewidth',3), hold on 
@@ -99,7 +99,7 @@ norm(f(r))
 %% Acknowledgements
 % I'm grateful to Yuji Nakatsukasa and Vanni Noferini for showing me that the 
 % roots command returned more solutions than expected for the 
-% Wilkinson polynomial of degree 60. 
+% Wilkinson polynomial of degree 71. 
 
 %% References
 %%
