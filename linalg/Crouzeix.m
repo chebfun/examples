@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun Example linalg/Crouzeix.m)
-% [Tags: #linear algebra, #field of values, #Crouzeix]
+% [Tags: #linear algebra, #field of values, #Crouzeix, #FOV]
 
 function Crouzeix
 
@@ -18,7 +18,7 @@ function Crouzeix
 % \|p\|_{W(A)} $$ where $\|p(A)\|_{W(A)}$ denotes the maximum of $|p(z)|$ where
 % $z$ ranges over the _field of values_ (or _numerical range_) of $A$.  $W(A)$
 % is defined as the set of Rayleigh quotients associated with $A$, and there is
-% a Chebfun command FOV to compute it.  This is a nonempty, bounded, convex set
+% a Chebfun command `fov` to compute it.  This is a nonempty, bounded, convex set
 % in the complex plane that contains the eigenvalues of $A$.  For more about
 % $W(A)$, see the Chebfun Example linalg/FieldOfValues.
 
@@ -30,15 +30,16 @@ function Crouzeix
 
 %%
 % It is known that Crouzeix's inequality holds in all kinds of special cases,
-% including if $A$ has dimension 2, if $A^2=0$, if $A^3=0$ and $d=3$ (Crouzeix
+% including if $A$ has dimension $2$, if $A^2=0$, if $A^3=0$ and $d=3$ (Crouzeix
 % 2012), if $W(A)$ is a disk (Badea 2004 based on work of von Neumann 1951 and
-% Okubo and Ando 1975), if $p(z)=z^n$ (Berger 1965) and 1967, Pearcy 1966), is
-% $p$ is any other polynomial with $p(0)=0$ (Kato 1965 and Berger 1967), if
-% $f(W(A))$ is convex (Kato 1965), if $A$ is a Jordan block (Choi and
-% Greenbaum), or if $A$ is normal (in which case the constant 2 can be improved
-% to 1 and the inequality is an equality). The case of matrices of dimension 3
+% Okubo and Ando 1975), if $p(z)=z^n$
+% (Berger 1965) and 1967, Pearcy 1966).
+% or if $A$ is normal (in which case the constant $2$ can be improved
+% to $1$ and the inequality is an equality). The case of matrices 
+% of dimension $3$
 % is open but has been explored so thoroughly numerically that if Crouzeix's
-% conjecture is false, it's likely that the first counterexample is of dimension
+% conjecture is false, it is highly
+% likely that the first counterexample is of dimension
 % $4$ or higher.
 
 %%
@@ -81,17 +82,17 @@ B = diag(eig(A));
 c(B,a)
 
 %%
-% The two of us have done some experimentation with an optimization code to try
-% to find counterexamples to Crouzeix conjecture for matrices of dimensions up
-% to 6, and so far, we have found no counterexamples.
+% We have done experiments with an optimization code to try
+% to find counterexamples to Crouzeix conjecture for matrices of 
+% various dimensions, and so far, we have found no counterexamples.
 
 %%
 % References:
 %
-% [1] M. Crouzeix, Bounds for analytical functions of matrices, Integral
-% Equations and Operator Theory, 48 (2004), 461-477.
+% [1] M. Crouzeix, Bounds for analytical functions of matrices, _Integral
+% Equations and Operator Theory_, 48 (2004), 461-477.
 %
 % [2] M. Crouzeix, Numerical range and functional calculus in Hilbert space,
-% Journal of Functional Analaysis, 244 (2007), 668-690.
+% _Journal of Functional Analysis_, 244 (2007), 668-690.
 
 end
