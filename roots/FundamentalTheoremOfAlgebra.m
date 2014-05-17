@@ -27,7 +27,8 @@ fprintf('This chebfun of degree %u has %u roots\n',length(f)-1,length(r))
 % examples to the contrary. 
 
 %% Fewer roots than expected
-% Often the Chebfun roots command returns fewer than $n$ roots for a chebfun of 
+% Sometimes the Chebfun `roots(...,'all')` command
+% returns fewer than $n$ roots for a chebfun of 
 % degree $n$. For example,
  
 f = chebfun(@(x) exp(-10*x));                    % A chebfun of exp(-10x)
@@ -86,29 +87,32 @@ norm(f(r))
 
 %%
 % Alternatively, when we supply the 
-% 'all' flag an eigenvalue problem is constructed (without subdivision) and 
+% `'all'` flag an eigenvalue problem is constructed (without subdivision) and 
 % extra solutions are never introduced in practice.
 
 %% Conclusion
-% At the edge of machine precision apparent anomalies between the degree 
-% and number of roots of a chebfun are never too far away. These effects highlight
+% At the edge of machine precision, apparent anomalies between the degree 
+% and the number of roots of a chebfun are
+% never too far away. These effects highlight
 % the challenges of computing in a system that must constantly make decisions 
 % about what quantities are effectively zero. It's just 
-% worth keeping in mind that a chebfun of degree n does not always have n roots.
+% worth keeping in mind that a chebfun of degree $n$
+% does not always have $n$ roots.
 
 %% Acknowledgements
 % I'm grateful to Yuji Nakatsukasa and Vanni Noferini for showing me that the 
-% roots command returned more solutions than expected for the 
-% Wilkinson polynomial of degree 71. 
+% `roots` command returned more solutions than expected for the 
+% Wilkinson polynomial of degree $71$. 
 
 %% References
-%%
+%
 % [1] Z. Battles and L. N. Trefethen, An extension of MATLAB to continuous
-% functions and operators, SIAM J. Sci. Comput., 25 (2004), pp. 1743-1770.
-%%
-% [2] J. P. Boyd, Computing zeros on a real interval through Chebyshev expansion 
-% and polynomial rootfinding, SIAM J. Numer. Anal., 40 (2002), pp. 1666-1682.
-%%
-% [3] L. N. Trefethen, Approximation Theory and Approximation Practice, SIAM,
-% 2013. 
-
+% functions and operators, _SIAM Journal on Scientific
+% Computing_, 25 (2004), pp. 1743-1770.
+%
+% [2] J. P. Boyd, Computing zeros on a real interval
+% through Chebyshev expansion and polynomial rootfinding, _SIAM Journal on
+% Numerical Analysis_, 40 (2002), pp. 1666-1682.
+%
+% [3] L. N. Trefethen, _Approximation Theory
+% and Approximation Practice_, SIAM, 2013. 
