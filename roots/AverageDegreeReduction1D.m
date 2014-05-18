@@ -155,7 +155,7 @@ for lvl = 0:levels
     for x = xx(1:end-1)
         plot([x x],[-.1 .1]+lvl,LW,lw)
         funs = newg.funs; 
-        text(x+2.^(-lvl)-.09,lvl+.1,sprintf('N = %u',funs(j).n-1)); 
+        text(x+2.^(-lvl)-.09,lvl+.1,sprintf('N = %u',length(funs{j})-1)); 
         j = j + 1;
     end
     plot([xx(end) xx(end)],[-.1 .1]+lvl,LW,lw)
