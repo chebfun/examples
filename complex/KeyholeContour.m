@@ -21,12 +21,12 @@ r = 0.2;   R = 2;   e = 0.1;
 
 %%
 % Construct the contour:
-s = chebfun('s',[0 1]);                 % Dummy variable
+s = chebfun('s',[0 1]);                 % dummy variable
 c = [-R+e*1i -r+e*1i -r-e*1i -R-e*1i];
-z = [ c(1) + s*(c(2)-c(1))              % Top of the keyhole
-      c(2)*c(3).^s ./ c(2).^s           % Inner circle
-      c(3) + s*(c(4)-c(3))              % Bottom of the keyhole
-      c(4)*c(1).^s ./ c(4).^s];         % Outer circle
+z = join( c(1) + s*(c(2)-c(1)), ...     % top of the keyhole
+          c(2)*c(3).^s ./ c(2).^s, ...  % inner circle
+          c(3) + s*(c(4)-c(3)), ...     % bottom of the keyhole
+          c(4)*c(1).^s ./ c(4).^s);     % outer circle
  
 %%
 % Plot the contour and the branch cut of the function f:
