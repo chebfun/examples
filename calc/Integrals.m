@@ -13,7 +13,7 @@ LW = 'linewidth'; lw = 1.6;
 plot(f,LW,lw), ylim(2.5*[-1 1])
 
 %%
-% The Chebfun command SUM returns the definite
+% The Chebfun command `sum` returns the definite
 % integral over the prescribed interval, which is
 % just a number:
 format long, sum(f)
@@ -24,7 +24,7 @@ format long, sum(f)
 sum(f,3,4)
 
 %%
-% To compute an indefinite integral, use the Chebfun command CUMSUM.
+% To compute an indefinite integral, use the Chebfun command `cumsum`.
 % This returns a chebfun defined over the given interval:
 g = cumsum(f);
 plot(g,'m',LW,lw)
