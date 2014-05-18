@@ -62,8 +62,14 @@ plot(roots(g),'r'), hold on, plot(roots(f),'g')
 % For example we can find all the solutions to the example above with the
 % following code:
 
-r = roots(f,g); 
+r = roots([f;g],'ms'); 
 plot(r(:,1),r(:,2),'.k','MarkerSize',20), hold off
+
+%% 
+% (Note: The roots command in Chebfun2 uses two different algorithm. One based on 
+% a hidden variable resultant method and one based on Marching Squares. The 'ms' 
+% flag ensures that the Marching Squares algorithm is employed. For more information
+% see type "help chebfun2v/roots.m" into the command line.)
 
 %% Trott's curve
 % Trott's curve an important curve in algebraic geometry.  Here we use the
@@ -74,7 +80,7 @@ trott = @(x,y) 144*(x.^4+y.^4)-225*(x.^2+y.^2) + 350*x.^2.*y.^2+81;
 f = chebfun2(trott); 
 g = chebfun2(@(x,y) y-x.^6); 
 plot(roots(f),'b'), hold on, plot(roots(g),'r'), axis equal
-r = roots(f,g); 
+r = roots([f;g],'ms'); 
 plot(r(:,1),r(:,2),'k.','MarkerSize',30), hold off
 
 %% A function with several local minima
@@ -82,7 +88,7 @@ plot(r(:,1),r(:,2),'k.','MarkerSize',30), hold off
 % a function $f(x,y)$ because they satisfy $df/dx = df/dy = 0$.
 
 f = chebfun2(@(x,y) (x.^2-y.^3+1/8).*sin(10*x.*y));
-r = roots(gradient(f));                  % critical points
+r = roots(gradient(f),'ms');             % critical points
 plot(roots(diff(f,1,2)),'b'), hold on    % plot zero contours of f_x
 plot(roots(diff(f)),'r')                 % plot zero contours of f_y
 plot(r(:,1),r(:,2),'k.','MarkerSize',30) % plot extrema
