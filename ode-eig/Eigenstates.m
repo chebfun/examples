@@ -1,4 +1,4 @@
-%% Eigenstates of the Schrödinger equation
+%% Eigenstates of the Schroedinger equation
 % Nick Trefethen, 25th January 2012
 
 %%
@@ -8,13 +8,13 @@
 %%
 % Chebfun is very good at solving eigenvalue problems in one dimension
 % defined by smooth or piecewise-smooth coefficients.  An important example
-% of such problems is the determination of eigenstates of the Schrödinger
+% of such problems is the determination of eigenstates of the Schroedinger
 % operator, which correspond to energy levels of quantum systems. There is
 % a special Chebfun command, `quantumstates`, for computing and plotting such
 % functions.
 
 %%
-% The Schrödinger eigenvalue problem solved by `quantumstates` takes the
+% The Schroedinger eigenvalue problem solved by `quantumstates` takes the
 % form
 %
 % $$  L u = \lambda u, $$
