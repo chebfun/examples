@@ -49,8 +49,7 @@ z = chebfun('z',[0 1]);
 w = cumsum( fprime(z) )
 
 %%
-% As you can see, the resulting expression is not very complicated. in
-% fact, the result is essentially real too.
+% In fact, the resulting expression is essentially real.
 zcirc = exp(1i*chebfun('t',[0 2*pi]));
 subplot(1,2,1), LW = 'linewidth'; MS = 'markersize';
 plot(zcirc,'k',LW,2)
