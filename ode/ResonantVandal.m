@@ -11,12 +11,15 @@
 %%
 % _``A mathematically minded vandal wishes to break a steam radiator away
 % from its foundations, but finds that when he applies steadily the
-% greatest force of which he is capable [100 kg] the 2-cm displacement of
+% greatest force of which he is capable [ $100$ kg] the $2$-cm displacement of
 % the top of the radiator is only one-tenth of that required for his
 % purposes.  He finds, however, that he can apply a force $f(t)$ according
-% to the schedule $$ f(t) =  (1-\cos(\omega t)) \times 50\hbox{ kg} $$ for
-% any of a large range of values of $\omega$.  The mass of the radiator is
-% 50 kg and its foundation resists its movement by a force proportional to
+% to the schedule
+%
+% $$ f(t) =  (1-\cos(\omega t)) \times 50\hbox{ kg} $$
+%
+% for any of a large range of values of $\omega$.  The mass of the radiator is
+% $50$ kg and its foundation resists its movement by a force proportional to
 % its displacement.  At what frequency and for how long must he exert the
 % force $f(t)$ if he is to succeed?''_
 
@@ -24,7 +27,10 @@
 % Well, the vandal clearly has to find the natural frequency of the system
 % and then pump it at that frequency to exploit resonance, just like
 % pumping up a swing.  To solve the problem, we note that the total force
-% on the radiator is $$ [(1-\cos(\omega t)) - d\,] \times 50\hbox{ kg} $$
+% on the radiator is
+%
+% $$ [(1-\cos(\omega t)) - d\,] \times 50\hbox{ kg}, $$ 
+%
 % where $d(t)$ is the distance of the radiator from its rest position in
 % centimeters.  Since $50$ kg is also conveniently the mass of the
 % radiator, Newton's law $F=ma$ gives us the equation $$ d'' + d = 1 -
