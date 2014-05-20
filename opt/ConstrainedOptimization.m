@@ -118,19 +118,18 @@ function [in,on] = inpolygon(x,y,p)
 tol = 100*eps;
   
 p = p(:); % concatenate to column chebfun. 
-if ( all(abs(p(p.ends,'left') - p(p.ends,'right')) > 100*eps) || ...
-        all(abs(p.vals(1) - p.vals(end)) > 100*eps))
+if ( all(abs(p(p.domain,'left') - p(p.domain,'right')) > 100*eps) )
     error('CHEBFUN:inpolygon:closed','Chebfun must form closed curve.');
 end
 
 pgon = 1;   %Is it a polygon?
-for k = 1:numel(p.nfuns)
-    if ( p.funs(k).n > 2 ), pgon = 0; break; end 
+for k = 1:numel(p.funs{:})
+    if ( length(p.funs{k}) > 2 ), pgon = 0; break; end 
 end
 
 % If it is a polygon use MATLAB inbuilt INPOLYGON command.
-if (pgon)
-    [in, on] = inpolygon( x, y, real(p.vals), imag(p.vals) );
+if ( pgon )
+    [in, on] = inpolygon( x, y, real(p.values{:}), imag(p.values{:}) );
     return
 end
 
