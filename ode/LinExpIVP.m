@@ -10,10 +10,9 @@
 % one might use Chebfun to solve a very simple ODE initial-value problem.
 % We take the scalar test problem
 %
-%    u' - lambda*u = 0  ,    u(0) = 1,   lambda = -10000
+% $$ u' - \lambda u = 0  ,~~~    u(0) = 1,~  \lambda = -10000 $$
 %
-% on the interval [0,.005].  The solution is exp(lambda*x).
-
+% on the interval $[0,.005]$.  The solution is $\exp(\lambda x)$.
 d = [0,.005];                       % domain
 x = chebfun('x',d);                 % x variable
 L = chebop(d);                      % operator
