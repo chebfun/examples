@@ -3,6 +3,7 @@
 
 %%
 % (Chebfun example stats/MercerKarhunenLoeve.m)
+plotopt = {'linewidth',2,'markersize',12};
 
 %%
 % Mercer's theorem is a continuous analog of the singular-value or
@@ -32,9 +33,15 @@ K = @(s,t) exp(-abs(s-t));
 % Mercer decomposition numerically.
 F = fred( K, domain([-1,1]) );
 [Psi,Lambda] = eigs(F,20,'lm');
-%Psi = Psi{1};  %%%% Should this be necessary?
-LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
-plot(Psi(:,[1 2 5 10]),LW,2), title('Four Mercer eigenfunctions')
+Psi = Psi{1};  
+[lambda,idx] = sort(diag(Lambda),'descend');
+Psi = Psi(:,idx);
+
+%%
+plot(Psi(:,[1 2 5 10]),plotopt{:})
+title('First four Mercer eigenfunctions')
+xlabel('x')
+ylabel('\Psi(x)')
 
 %%
 % The eigenfunctions returned by eigs are orthonormal. 
@@ -45,14 +52,15 @@ Psi(:,1:6)'*Psi(:,1:6)
 % The truncation of the Mercer sum does lead to an underestimate of the
 % values of the kernel $K(s,t)$. For our example, we should get $K(s,s)=1$, but
 % we get noticeably less.
-Psi(0,:)*Lambda*Psi(0,:)'
-Psi(0.95,:)*Lambda*Psi(0.95,:)'
+Psi(0,:)*diag(lambda)*Psi(0,:)'
+Psi(0.95,:)*diag(lambda)*Psi(0.95,:)'
 
 %%
 % In fact, the eigenvalues decrease only like $O(n^{-2})$, which makes the
 % pointwise convergence in the number of terms rather slow.
-diff(log(diag(Lambda)))' ./ diff(log((1:20)))
-
+loglog(lambda,'.',plotopt{:}), axis tight
+xlabel('n')
+ylabel('| \lambda_n |')
 
 %% Karhunen-Loeve expansion
 % Now suppose that $X(t,\omega)$ is a stochastic process for $t$ in some
@@ -85,25 +93,27 @@ diff(log(diag(Lambda)))' ./ diff(log((1:20)))
 % some of the eigenvalues. For example, suppose the process $X$ has the
 % exponential covariance in $K$ above. The eigenvalues show that $95\%$ of the
 % variance in the process is captured by the first $10$ K-L modes:
-lambda = diag(Lambda); 
-sum(lambda(1:10)) / 2
+captured = sum(lambda(1:10)) / 2
 
 %%
 % We can find realizations of $X$ by selecting the random parameters
 % $Z_j$ in the expansion.
 Z = randn(10,400);
-X = Psi(:,1:10)*(sqrt(Lambda(1:10,1:10))*Z); 
+L = diag( sqrt(lambda(1:10)) );
+X = Psi(:,1:10)*(L*Z); 
 plot(X(:,1:40))
 mu = sum(X,2)/400;  
-hold on, plot(mu,'k',LW,3)
+hold on, plot(mu,'k',plotopt{:})
 title('Random realizations, and the mean')
 
 %%
-% We should get roughly the original covariance function back.
-[S,T] = meshgrid(-1:.05:1);
-C = cov( X(-1:.05:1,:)' );  % covariance at discrete locations
+% We should get roughly the original covariance function back. (We'll
+% discretize the computation for speed.)
+points = (-1:.05:1)';
+[S,T] = meshgrid(points);
+C = cov( X(points,:)' );  % covariance at discrete locations
 clf, mesh(S,T,C)
-hold on, plot3(S,T,K(S,T),'k.',MS,10)
+hold on, plot3(S,T,K(S,T),'k.',plotopt{:})
 
 %% 
 % If we shorten the correlation length of the process relative to the
@@ -111,8 +121,18 @@ hold on, plot3(S,T,K(S,T),'k.',MS,10)
 % first $10$ modes will decrease.
 K = @(s,t) exp(-4*abs(s-t));     % decrease correlation faster, then...
 F = fred( K, domain([-1,1]) );
-lambda = eigs(F,24,'lm');
-sum(lambda(1:10)) / 2            % ... a smaller fraction is captured
+lambdaShort = sort( eigs(F,24,'lm'), 'descend' );
+
+
+%%
+clf
+loglog(lambda,'b.',plotopt{:})
+hold on
+loglog(lambdaShort,'r.',plotopt{:}), axis tight
+xlabel('n')
+ylabel('| \lambda_n |')
+
+captured = sum(lambdaShort(1:10)) / 2    % ... a smaller fraction is captured
 
 %%
 % Reference:
