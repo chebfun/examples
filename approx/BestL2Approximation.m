@@ -3,7 +3,8 @@
 
 %% 
 % (Chebfun example: approx/BestL2Approximation.m) 
-LW = 'linewidth'; lw = 2; 
+LW = 'linewidth'; lw = 1.6; 
+MS = 'markersize';
 FS = 'Fontsize'; fs = 16;
 
 %% Least-squares approximation 
@@ -36,7 +37,7 @@ title('Best L^2 approximation to |x| of degree 5','fontsize',16), hold off
 % algorithm using in Chebfun's `polyfit` command for many years, but was changed 
 % last week. 
 
-%% `polyfit` using fast Chebyshev--Legendre transform
+%% `polyfit` using fast Chebyshev-Legendre transform
 % Recently, the command `cheb2leg` was added in Chebfun, which
 % converts a vector of Chebyshev coefficients (of the first kind) to
 % Legendre coefficients in $O(n(\log n)^2/\log\log n)$ operations [1,3]. 
@@ -90,7 +91,7 @@ for n = nn
     j = j+1;
 end
 
-loglog(nn, err,'k.-',LW,lw), hold on
+loglog(nn, err,'k.-',LW,lw,MS,24), hold on
 loglog(nn,nn.^(-3/2),'k--',LW,lw)
 legend('|| |x| - p_n ||_2','n^{-3/2}')
 xlabel('n',FS,fs), ylabel('|| |x| - p_n ||_2',FS,fs)
