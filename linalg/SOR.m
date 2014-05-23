@@ -3,8 +3,6 @@
 
 %%
 % (Chebfun example linalg/SOR.m)
-
-%%
 % [Tags: #linearalgebra, #spectralradius, #SOR]
 
 %%

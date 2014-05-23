@@ -3,6 +3,8 @@
 
 %%
 % (Chebfun example stats/MercerKarhunenLoeve.m)
+% [Tags: #EIGS]
+
 plotopt = {'linewidth',2,'markersize',12};
 
 %%
@@ -10,7 +12,6 @@ plotopt = {'linewidth',2,'markersize',12};
 % eigenvalue decomposition of a symmetric positive definite matrix. One of
 % its main applications is to find convenient ways to express stochastic
 % processes, via the Karhunen-Loeve expansion [1]. 
-% 
 
 %% Mercer's theorem
 % Suppose $K(s,t)$ is a symmetric ($K(t,s)=K(s,t)$), continuous, and

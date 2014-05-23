@@ -2,11 +2,8 @@
 % Nick Hale and Nick Trefethen, 28th October 2013
 
 %%
-% (Chebfun Example approx/ResolutionWiggly.m)
-
-%%
-% [Tags: #interpolation, #best approximation, 
-% #least - squares, #POLYFIT, #REMEZ]
+% (Chebfun example approx/ResolutionWiggly.m)
+% [Tags: #interpolation, #best approximation, #least squares, #POLYFIT, #REMEZ]
 
 %%
 % One of the Chebfun team's favorite functions is this one, 
