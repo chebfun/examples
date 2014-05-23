@@ -6,17 +6,18 @@
 % [Tags: #Chebyshev, #coefficients, #CHEBPOLYPLOT]
 
 %%
-% Every function defined on [-1,1], so long as it is at least Lipschitz
-% continuous, has an absolutely and uniformly convergent Chebyshev series:
+% Every function defined on $[-1,1]$, so long as it is  a little bit
+% smooth (Lipschitz continuity is enough),
+% has an absolutely and uniformly convergent Chebyshev series:
 %
-%     f(x) = a_0 + a_1 T_1(x) + a_2 T_2(x) + ....
+% $$ f(x) = a_0 + a_1 T_1(x) + a_2 T_2(x) + \cdots . $$
 %
-% The same holds on an interval [a,b] with appropriately scaled and shifted
+% The same holds on an interval $[a,b]$ with appropriately scaled and shifted
 % Chebyshev polynomials.
 
 %%
 % For many functions you can compute these coefficients with the command
-% CHEBPOLY.  For example, here we compute the Chebyshev coefficients of a
+% `chebpoly`.  For example, here we compute the Chebyshev coefficients of a
 % cubic polynomial:
 x = chebfun('x');
 format long
@@ -32,19 +33,19 @@ disp('Cheb coeffs of 99x^2 + x^3:')
 a = chebpoly(p)'; a = a(end:-1:1)
 
 %%
-% Similarly, here are the Chebyshev coefficients down to level 1e-15 of
-% exp(x):
+% Similarly, here are the Chebyshev coefficients down to level $10^{-15}$ of
+% $\exp(x)$:
 disp('Cheb coeffs of exp(x):')
 a = chebpoly(exp(x))'; a = a(end:-1:1)
 
 %%
 % You can plot the absolute values of these numbers on a log scale with
-% CHEBPOLYPLOT:
+% `chebpolyplot`:
 FS = 'fontsize'; MS = 'markersize'; LW = 'linewidth';
-chebpolyplot(exp(x),'.-',LW,1,MS,16), grid on
-xlabel('degree n',FS,12)
-ylabel('|a_n|',FS,12)
-title('Chebyshev coefficients of exp(x)',FS,16)
+chebpolyplot(exp(x),'.-',LW,1,MS,20), grid on
+xlabel('degree n',FS,14)
+ylabel('|a_n|',FS,14)
+title('Chebyshev coefficients of exp(x)',FS,14)
 
 %%
 % Here's a similar plot for a function that needs thousands of terms to be
@@ -56,12 +57,10 @@ ylabel('|a_n|',FS,12)
 title('Chebyshev coefficients of exp(x)/(1+10000x^2)',FS,16)
 
 %%
-% These methods will work for any function f that's represented by a global
-% polynomial, i.e., a chebfun consisting of one fun. (Normally this means
-% that the Chebyshev series needs fewer than 65536 terms, Chebfun's default
-% value of MAXDEGREE. To change this default, type HELP CHEBFUNPREF.) What
+% These methods will work for any function $f$ that's represented by a global
+% polynomial, i.e., a chebfun consisting of one fun.   What
 % about Chebyshev coefficients for functions that are not smooth enough for
-% such a representation?  Here one can use the TRUNC option in the Chebfun
+% such a representation?  Here one can use the `trunc` option in the Chebfun
 % constructor. For example, suppose we are interested in the function
 f = sign(x);
 figure, plot(f,'k',LW,2), ylim([-1.5 1.5])
@@ -90,5 +89,5 @@ title('Same, also with Chebyshev interpolant',FS,16)
 %%
 % Reference
 %
-% [1] L. N. Trefethen, Approximation Theory and Approximation Practice,
-% draft book available at http://www.maths.ox.ac.uk/chebfun/ATAP/.
+% [1] L. N. Trefethen, _Approximation Theory and Approximation Practice_,
+% SIAM, 2013.
