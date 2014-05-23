@@ -3,6 +3,7 @@
 
 %%
 % (Chebfun example fun/BirthdayOdds.m)
+% [Tags: #probability, #gift]
 
 %%
 % The other day my buddy Pafnuty and I were at our friend Sergei's
@@ -32,14 +33,14 @@ p = zeros(1,N);
 % people in the room had distinct birthdays, for then the probabilty $q$
 % that everyone in the room had distinct birthdays was given by the
 % expression 
-% \[ q = 1\left(1-\frac{1}{365}\right) \left(1-\frac{2}{365}\right) \ldots 
-% \left(1-\frac{n-1}{365}\right),\] 
+% $$ q = 1\left(1-\frac{1}{365}\right) \left(1-\frac{2}{365}\right) \ldots 
+% \left(1-\frac{n-1}{365}\right), $$
 % or we could write 
-% \[ q = \prod_{k=0}^{n-1}\left(1-\frac{k}{365}\right).\]
-% From this the probability of getting at least one `collision' of
+% $$ q = \prod_{k=0}^{n-1}\left(1-\frac{k}{365}\right). $$
+% From this the probability of getting at least one "collision" of
 % birthdays was easy. We simply computed $1-q$ and after simplifying the
 % expression for $q$, we were able to write $p$ as 
-% \[ p=1-\frac{365!}{365^n(365-n)!}.\]
+% $$ p = 1-\frac{365!}{365^n(365-n)!}. $$
 % However, we quickly realized that the above expression is useless for our
 % calculators, so we applied the standard exp-log trick to the above
 % expression. This gave us a numerically tractable expression for $p$:
@@ -58,7 +59,7 @@ xlabel('Size of the party'), ylabel('Probability of finding at least one pair')
 
 %%
 % The plot looked nice on our graphical calculators and we were intrigued.
-% ``Let's make a chebfun out of it!", Pafnuty said. ``But for that we will
+% "Let's make a chebfun out of it!", Pafnuty said. "But for that we will
 % have to evaluate $p$ at non-integer values." 
 
 function prob = matchProb(n)
@@ -80,7 +81,7 @@ plot(p), hold off
 ceil(roots(p-.5))
 
 %% 
-% Pafnuty was quick to announce: ``I will never invite more than 23 people
+% Pafnuty was quick to announce: "I will never invite more than 23 people
 % to my birthday!". We then thought about the number of people in the same
 % room for a 99 percent chance of finding at least one pair sharing a
 % birthday. This time we got

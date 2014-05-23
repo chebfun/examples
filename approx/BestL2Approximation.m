@@ -2,7 +2,8 @@
 % Alex Townsend, 16th October 2013 
 
 %% 
-% (Chebfun example: approx/BestL2Approximation.m) 
+% (Chebfun example approx/BestL2Approximation.m)
+% [Tags: #least squares] 
 LW = 'linewidth'; lw = 1.6; 
 MS = 'markersize';
 FS = 'Fontsize'; fs = 16;

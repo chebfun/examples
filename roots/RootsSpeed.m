@@ -1,6 +1,4 @@
 %% Speed and Accuracy of Chebfun `roots`
-
-%%
 % Jared Aurentz and Nick Trefethen, 21st May 2014
 
 %%
