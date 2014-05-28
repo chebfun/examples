@@ -6,9 +6,9 @@
 % [Tags: #Chebyshev, #coefficients, #CHEBPOLYPLOT]
 
 %%
-% Every function defined on $[-1,1]$, so long as it is  a little bit
-% smooth (Lipschitz continuity is enough),
-% has an absolutely and uniformly convergent Chebyshev series:
+% Every function defined on $[-1,1]$, so long as it is a little bit smooth
+% (Lipschitz continuity is enough), has an absolutely and uniformly convergent
+% Chebyshev series:
 %
 % $$ f(x) = a_0 + a_1 T_1(x) + a_2 T_2(x) + \cdots . $$
 %
@@ -26,9 +26,9 @@ p = 99*x.^2 + x.^3;
 a = chebpoly(p)'
 
 %%
-% Notice that following the usual Matlab convention, the coefficients
-% appear in order from highest degree to lowest.  Thus it is often more
-% useful to write
+% Notice that following the usual MATLAB convention, the coefficients appear
+% in order from highest degree to lowest.  Thus it is often more useful to
+% write
 disp('Cheb coeffs of 99x^2 + x^3:')
 a = chebpoly(p)'; a = a(end:-1:1)
 
@@ -58,9 +58,9 @@ title('Chebyshev coefficients of exp(x)/(1+10000x^2)',FS,16)
 
 %%
 % These methods will work for any function $f$ that's represented by a global
-% polynomial, i.e., a chebfun consisting of one fun.   What
-% about Chebyshev coefficients for functions that are not smooth enough for
-% such a representation?  Here one can use the `trunc` option in the Chebfun
+% polynomial, i.e., a chebfun consisting of one fun.  What about Chebyshev
+% coefficients for functions that are not smooth enough for such a
+% representation?  Here one can use the `trunc` option in the Chebfun
 % constructor. For example, suppose we are interested in the function
 f = sign(x);
 figure, plot(f,'k',LW,2), ylim([-1.5 1.5])

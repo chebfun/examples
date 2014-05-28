@@ -22,13 +22,13 @@ function OrthPolys
 % polynomials. Here is a table of the polynomial, the weight function, the 
 % standard domain $[a,b]$, and the Chebfun routine name.
 %
-%      Name       |       w(x)     |   domain   | Chebfun routine
-% -------------------------------------------------------------------
-%     Legendre    |        1       |   [-1 1]   | legpoly(N)
-% Chebyshev(1st) |  1/sqrt(1-x^2) |   [-1 1]   | chebpoly(N)
-% Chebyshev(2nd) |   sqrt(1-x^2)  |   [-1 1]   | chebpoly(N,2)
-%     Laguerre    |     exp(-x)    |   [0 inf]  | lagpoly(N)
-%     Hermite     |    exp(-x^2)   | [-inf inf] | hermpoly(N)
+% |     Name       |       $w(x)$     |    domain    | Chebfun routine |
+% |--------------------------------------------------------------------|
+% |    Legendre    |  $      1      $ |   $[-1 1]$   | `legpoly(N)`    |
+% | Chebyshev(1st) |  $1/sqrt(1-x^2)$ |   $[-1 1]$   | `chebpoly(N)`   |
+% | Chebyshev(2nd) |  $ sqrt(1-x^2) $ |   $[-1 1]$   | `chebpoly(N,2)` |
+% |    Laguerre    |  $   exp(-x)   $ |   $[0 inf]$  | `lagpoly(N)`    |
+% |    Hermite     |  $  exp(-x^2)  $ | $[-inf inf]$ | `hermpoly(N)`   |
 
 %%
 % For each of these examples, there are readily derived recurrence
@@ -85,9 +85,9 @@ I = P'*(W.*P);
 err = norm(I-eye(N+1))
 
 %%
-% One useful application of orthogonal polynomials is to find best
-% polynomial approximations in weighted weighted $L^2$
-% inner-product space associated with $w(x)$, with 
+% One useful application of orthogonal polynomials is to find best polynomial
+% approximations in weighted weighted $L^2$ inner-product space associated
+% with $w(x)$, with
 %
 % $$  P^*_n = \sum \langle f, P_j \rangle P_j . $$
 %%
@@ -103,8 +103,7 @@ plot(f,'b',P_star,'--r',LW,lw)
 title('Least-squares approximation to |x| wrt w = exp(pi*x)',FS,12);
 
 %%
-% Notice that the approximation is much closer for larger $x$,
-% as $w(x) = \exp(\pi x)$
-% gives more weight to the error introduced there.
+% Notice that the approximation is much closer for larger $x$, as $w(x) =
+% \exp(\pi x)$ gives more weight to the error introduced there.
 
 end

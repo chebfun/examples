@@ -6,26 +6,23 @@
 % [Tags: #rational, #exponential, #PADEAPPROX]
 
 %%
-% Approximation of the exponential function has many
-% applications, some of which are described in other
-% Chebfun examples. Here we consider approximating $e^z$ via a rational
-% function in a region in the complex plane, in the context of computing
-% the matrix exponential $e^A$ via the scaling and squaring method, the
-% most commonly used method for this purpose, cf. chapter 10 of [2].
-% Constructions of rational approximations to $e^z$ on a real interval are
-% described in [3].
+% Approximation of the exponential function has many applications, some of
+% which are described in other Chebfun examples. Here we consider
+% approximating $e^z$ via a rational function in a region in the complex
+% plane, in the context of computing the matrix exponential $e^A$ via the
+% scaling and squaring method, the most commonly used method for this purpose,
+% cf. chapter 10 of [2]. Constructions of rational approximations to $e^z$ on
+% a real interval are described in [3].
 
 %%
-% In brief, the scaling and squaring method is based on a type
-% $(2^sm,2^sm)$ rational approximation to the exponential in a region
-% in the complex plane that contains the eigenvalues of $A$,
-% where $s$ and $m$ are
-% suitably chosen integer parameters. It first computes $e^A$ by first
-% choosing an integer $s$ such that $A/2^s$ has norm of order $1$, then
-% taking a rational (normally type $(m,m)$ Pade) approximation $r(z)$ to
-% $e^z$ where $m$ is chosen so that $e^{A/2^s}\approx r(A/2^s)$.  Then we
-% compute $e^A\approx (r(A/2^s))^{2^s}$ via repeated squaring of the
-% matrix.
+% In brief, the scaling and squaring method is based on a type $(2^sm,2^sm)$
+% rational approximation to the exponential in a region in the complex plane
+% that contains the eigenvalues of $A$, where $s$ and $m$ are suitably chosen
+% integer parameters. It first computes $e^A$ by first choosing an integer $s$
+% such that $A/2^s$ has norm of order $1$, then taking a rational (normally
+% type $(m,m)$ Pade) approximation $r(z)$ to $e^z$ where $m$ is chosen so that
+% $e^{A/2^s}\approx r(A/2^s)$.  Then we compute $e^A\approx (r(A/2^s))^{2^s}$
+% via repeated squaring of the matrix.
 
 %%
 % (Note that the letter e in the name Pade should have an accent aigu,
@@ -42,23 +39,21 @@
 %
 % $$ Y:=X\mbox{diag}((r(\lambda_i/2^s))^{2^s})X^{-1}\approx e^A, $$
 %
-% and the
-% error satisfies
+% and the error satisfies
 %
-% $$ \|e^A- Y\|_2 \leq \kappa_2(X)\max_{z\in {\cal
+% $$ \|e^A - Y\|_2 \leq \kappa_2(X)\max_{z\in {\cal
 % D}}\left|(r(z/2^s))^{2^s}-e^{z}\right|, $$
 %
-% where $\cal{D}$ is a region in
-% the complex plane that contains the eigenvalues of $A$, and
-% $\kappa_2(X)=\|X\|_2 \|X^{-1}\|_2$ is the 2-norm condition number of the
-% eigenvectors.  The term
-% $\max_i\left|(r(\lambda_i/2^s))^{2^s}-e^{\lambda_i}\right|$ represents
-% the exact error if $A$ is a normal matrix: the term $\kappa_2(X)$ can
-% have nontrivial effects on the method for nonnormal $A$, but this is
-% outside the scope of this example.  Below we investigate the error
-% $\left|(r(z/2^s))^{2^s}-e^{z}\right|$ where $z$ takes points in the
-% complex plane.  If this is small in the whole region $\cal D$, then $Y$
-% is a good approximation to $e^A$.
+% where $\cal{D}$ is a region in the complex plane that contains the
+% eigenvalues of $A$, and $\kappa_2(X)=\|X\|_2 \|X^{-1}\|_2$ is the 2-norm
+% condition number of the eigenvectors. The term
+% $\max_i\left|(r(\lambda_i/2^s))^{2^s}-e^{\lambda_i}\right|$ represents the
+% exact error if $A$ is a normal matrix: the term $\kappa_2(X)$ can have
+% nontrivial effects on the method for nonnormal $A$, but this is outside the
+% scope of this example.  Below we investigate the error
+% $\left|(r(z/2^s))^{2^s}-e^{z}\right|$ where $z$ takes points in the complex
+% plane.  If this is small in the whole region $\cal D$, then $Y$ is a good
+% approximation to $e^A$.
 
 %%
 % The type $(k,m)$ Pade approximant of the exponential is explicitly

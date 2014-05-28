@@ -11,15 +11,14 @@
 %
 % $$ f(x) = T_m(x) + T_{m+1}(x) + \cdots + T_n(x), $$
 %
-% where $T_k$ is the Chebyshev polynomial of degree $k$,
-% as challenging functions for
-% minimax approximation by polynomials of lower order.  We can construct
-% such functions in a single Chebfun command:
+% where $T_k$ is the Chebyshev polynomial of degree $k$, as challenging
+% functions for minimax approximation by polynomials of lower order. We can
+% construct such functions in a single Chebfun command:
 fmn = @(m,n) sum(chebpoly(m:n),2);
 
 %%
-% For example, here we plot `f(30,40)` and its best
-% approximation of degree $29$:
+% For example, here we plot `f(30,40)` and its best approximation of
+% degree $29$:
 LW = 'linewidth'; FS = 'fontsize'; fs = 14;
 tic, m = 30; n = 40;
 f = fmn(m,n);

@@ -9,10 +9,9 @@ MS = 'markersize';
 FS = 'Fontsize'; fs = 16;
 
 %% Least-squares approximation 
-% If $f:[-1,1]\rightarrow R$ is an $L^2$-integrable function, then its 
-% least-squares or
-% best $L^2$ approximation of degree $n$ is the polynomial $p_n$ of degree at most
-% $n$ such that 
+% If $f:[-1,1]\rightarrow R$ is an $L^2$-integrable function, then its least-
+% squares or best $L^2$ approximation of degree $n$ is the polynomial $p_n$ of
+% degree at most $n$ such that
 %
 % $$ \| f - p_n \|_2 = \mbox{minimum}. $$
 %
@@ -80,7 +79,7 @@ fprintf('L^2 approximation of degree %u in t = %1.3f\n',n,t)
 % Computing the Legendre coefficients for piecewise smooth functions is a little
 % trickier. The Legendre coefficients are computed by quadrature rules and then a
 % chebfun object is constructed via Chebyshev coefficients computed using the 
-% cheb2leg command. The algorithm for piecewise smooth function requires $O(n^2)$
+% `cheb2leg command. The algorithm for piecewise smooth function requires $O(n^2)$
 % operations, but the implicit constant is much smaller. Here is the best 
 % $L^2$-approximation to the piecewise smooth absolute value function.
 f = abs(x);

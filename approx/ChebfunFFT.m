@@ -8,41 +8,40 @@
 %%
 % One of the most frequently used computations in Chebfun is the one-to-one
 % operation of converting function values at Chebyshev points to Chebyshev
-% expansion coefficients. This operation is achieved by the CHEBPOLY
-% command. The inverse operation of mapping Chebyshev coefficients to
-% function values is computed with CHEBPOLYVAL. In each case, the FFT (or
-% IFFT) is used. Thus, the conversion process is very fast, with O(nlogn)
-% complexity.
+% expansion coefficients. This operation is achieved by the `chebpoly`
+% command. The inverse operation of mapping Chebyshev coefficients to function
+% values is computed with `chebpolyval`. In each case, the FFT (or IFFT) is
+% used. Thus, the conversion process is very fast, with $O(nlogn)$ complexity.
 %
-% This transformation is so fundamental to Chebfun that it is useful to 
-% understand where it comes from. In order to do so, we consider an example 
+% This transformation is so fundamental to Chebfun that it is useful to
+% understand where it comes from. In order to do so, we consider an example
 % computation.
 %%
-% Suppose that we have some function values at Chebyshev points, and we
-% wish to compute the corresponding coeffcients of the truncated Chebyshev
-% series. Let's pick a sample Chebfun to work with.
+% Suppose that we have some function values at Chebyshev points, and we wish
+% to compute the corresponding coeffcients of the truncated Chebyshev series.
+% Let's pick a sample Chebfun to work with.
 fc = chebfun('exp(x).*sin(pi*x) + x'); n = length(fc) - 1;
 %%
 % Chebfuns are defined by the values taken at Chebyshev points. We can
-% access this data by looking in the 'vals' field.
+% access this data by looking in the `'vals'` field.
 fvals = fc.values{1}; 
 %% 
 % We can plot the chebfun and its values at Chebsyhev points with the
 % following code, noting that this is equivalent to the command
-% PLOT(FC,'.-').
+% $plot(fc,'.-')$.
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize'; ms = 14; lw = 0.7;
 plot(fc), hold on
 cpts = chebpts(n+1);
 plot(cpts,fvals,'.',MS,ms)
 grid on, hold off, xlim(1.26789*[-1 1])
 %%
-% The kth Chebyshev polynomial on the unit interval can be viewed as the 
-% real part of the monomial z^k on the unit disc in the complex plane, z^k 
-% = Re(z^(k)) = 1/2(z^(k) + z^(-k)). Thus, a sum of n+1 Chebyshev 
-% polynomials is equivalent to a truncated Laurent series in the variable 
-% z, with equal coefficients for the z^(k) and z^(-k) terms.
+% The $k$th Chebyshev polynomial on the unit interval can be viewed as the
+% real part of the monomial $z^k$ on the unit disc in the complex plane,
+% $z^k = Re(z^(k)) = 1/2(z^(k) + z^(-k))$. Thus, a sum of n+1 Chebyshev
+% polynomials is equivalent to a truncated Laurent series in the variable $z$,
+% with equal coefficients for the $z^(k)$ and $z^(-k)$ terms.
 %%
-% In a similar way, the Chebyshev points on [-1,1] can be interpreted as 
+% In a similar way, the Chebyshev points on $[-1,1]$ can be interpreted as 
 % the real parts of equispaced nodes on the unit circle. 
 t1 = linspace(0,pi,n+1);
 t2 = linspace(pi,2*pi,n+1); t2 = t2(2:end-1);
@@ -58,19 +57,19 @@ plot(xx,0*xx,'.r',MS,ms),
 hold off, grid on
 %%
 % The interplay between the unit interval and the unit circle allows us to
-% utilise the tools of Fourier analysis. This is because a truncated 
-% Laurent series with equal coefficients for the z^(k) and z^(-k) terms is 
-% equivalent to a Fourier series in the variable s, where z = exp(i*s). 
+% utilise the tools of Fourier analysis. This is because a truncated Laurent
+% series with equal coefficients for the $z^(k)$ and $z^(-k)$ terms is
+% equivalent to a Fourier series in the variable $s$, where $z = exp(is)$.
 % Thus, in this setting, Fourier and Laurent coefficients are identical.
-% Moreover, the vector of coefficients will be symmetric since the same 
-% factor multiplies the z^(k) and z^(-k) terms. The Chebyshev coefficients
-% are then simply the first n+1 terms of this vector with the first and 
-% last coefficients divided by 2. 
+% Moreover, the vector of coefficients will be symmetric since the same factor
+% multiplies the $z^(k)$ and $z^(-k)$ terms. The Chebyshev coefficients are
+% then simply the first $n+1$ terms of this vector with the first and last
+% coefficients divided by $2$.
 %%
 % The following code performs this process step-by-step.
 %%
-% First, we extend the vector of function values to a vector representing 
-% equispaced values on the unit circle, going round anticlockwise from x=1. 
+% First, we extend the vector of function values to a vector representing
+% equispaced values on the unit circle, going round anticlockwise from $x=1$.
 valsUnitDisc = [flipud(fvals) ; fvals(2:end-1)];
 %%
 % Next, we take the FFT of the values to give Fourier/Laurent coeffcients.
@@ -80,22 +79,22 @@ valsUnitDisc = [flipud(fvals) ; fvals(2:end-1)];
 % have appeared due to rounding errors.
 FourierCoeffs = real(fft(valsUnitDisc));
 %% 
-% Next we extract the first n+1 values of the vector. Note that Matlab's 
+% Next we extract the first $n+1$ values of the vector. Note that the MATLAB
 % FFT routine requires us to divide through by the degree in order to 
 % obtain the Fourier coefficients. We also flip the vector to make it 
 % consistent with Chebfun's coeffcient ordering conventions.
 ChebCoeffs = flipud(FourierCoeffs(1:n+1))/n;
 %% 
-% Lastly, we divide the first and last entries by 2.
+% Lastly, we divide the first and last entries by $2$.
 ChebCoeffs(1) = ChebCoeffs(1)/2;
 ChebCoeffs(end) = ChebCoeffs(end)/2;
 %% 
-% This process replicates CHEBPOLY exactly.
+% This process replicates `chebpoly` exactly.
 format long
 display([chebpoly(fc)' ChebCoeffs chebpoly(fc)'-ChebCoeffs])
 %%
 % In order to go back from coefficients to function values (in order to 
-% replicate CHEBPOLYVAL), we simply need to reverse the steps described.
+% replicate `chebpolyval`), we simply need to reverse the steps described.
 %%
 % References:
 %

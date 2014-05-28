@@ -50,8 +50,8 @@ title('f and least - squares approximant of half the degree')
 
 %%
 % Qualitatively, the behavior is similar on the left half of the interval, but
-% it is very different on the right half, where the least - squares approximant,
-% unlike the interpolant, roughly tracks the low-wave - number signal. A plot of
+% it is very different on the right half, where the least-squares approximant,
+% unlike the interpolant, roughly tracks the low-wave-number signal. A plot of
 % the error shows that its amplitude has approximately cut in half.
 hold off, plot(f - pleastsq, 'k', LW, lw), ylim([ - 2.5 2.5])
 title('error of least - squares approximant of half the degree')

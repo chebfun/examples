@@ -6,20 +6,19 @@
 % [Tags: #rational, #Newton, #ABS]
 
 %%
-% Peter Lax mentioned to me recently an example that no doubt various
-% people have thought about over the years.  Suppose we think of $x^2$ as
-% a given number and we try to find its square root by solving the
-% equation
+% Peter Lax mentioned to me recently an example that no doubt various people
+% have thought about over the years.  Suppose we think of $x^2$ as a given
+% number and we try to find its square root by solving the equation
 %
 % $$ r^2 = x^2 $$
 %
-% for $r$ using Newton's method beginning from the guess $r=1$.
-% The successive iterates are given by the formula
+% for $r$ using Newton's method beginning from the guess $r=1$. The successive
+% iterates are given by the formula
 %
-% $$  r := (r^2+x^2)/2r .  $$
+% $$ r := (r^2+x^2)/2r . $$
 %
-% After $k$ steps we have a rational function of type $(2^k,2^k)$, and
-% these functions will approach the function $|x|$.
+% After $k$ steps we have a rational function of type $(2^k,2^k)$, and these
+% functions will approach the function $|x|$.
 
 %%
 % Let's see the iteration in action:
@@ -50,9 +49,9 @@ for k = 0:5
 end
 
 %%
-% It's interesting to look at the error.  In the outer half
-% of the interval, we've already achieved machine precision, whereas
-% near $x=0$ the errors remain large.
+% It's interesting to look at the error.  In the outer half of the interval,
+% we've already achieved machine precision, whereas near $x=0$ the errors
+% remain large.
 clf, semilogy(abs(r-abs(x)),LW,lw)
 axis([-1 1 1e-18 10]), grid on
 xlabel('x',FS,fs)
@@ -77,14 +76,13 @@ xlabel('x',FS,fs)
 title('Error',FS,fs)
 
 %%
-% Evidently we are getting convergence to $|x|$, for all $x$.
-% In the $\infty$-norm, the rate looks pretty disappointing.
-% Donald Newman showed that the optimal type $(n,n)$
-% rational approximants to $|x|$ achieve accuracy $O(\exp(-C \sqrt n))$
-% [1,2], whereas here the maximum error is exactly $2^{-k}$ after $k$ steps,
-% which corresponds to $1/n$ for the type $(n,n)$ approximation.
-% Away from $x=0$, however, the accuracy is $O(\exp(-Cn))$,
-% thanks to the quadratic convergence of Newton's method.
+% Evidently we are getting convergence to $|x|$, for all $x$. In the
+% $\infty$-norm, the rate looks pretty disappointing. Donald Newman showed
+% that the optimal type $(n,n)$ rational approximants to $|x|$ achieve
+% accuracy $O(\exp(-C \sqrt n))$ [1,2], whereas here the maximum error is
+% exactly $2^{-k}$ after $k$ steps, which corresponds to $1/n$ for the type
+% $(n,n)$ approximation. Away from $x=0$, however, the accuracy is
+% $O(\exp(-Cn))$, thanks to the quadratic convergence of Newton's method.
 
 %%
 % Incidentally, note that this last curve is not very close to symmetrical

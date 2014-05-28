@@ -13,10 +13,11 @@ LW = 'linewidth'; FS = 'fontsize'; format compact
 % In the late nineteenth century, Karl Weierstrass rocked the analysis community
 % when he constructed an example of a function that is everywhere continuous but
 % nowhere differentiable. His now eponymous function, also one of the first
-% appearances of fractal geometry, is defined as the sum $$ \sum_{k=0}^{\infty}
-% a^k \cos(b^k \pi x), $$ where $0 < a < 1$ and $b$ is a positive odd integer
-% with $ab < 1 + \frac32 \pi$. Since its publication, Weierstrass' work has been
-% generalized in many directions.
+% appearances of fractal geometry, is defined as the sum
+% $$ \sum_{k=0}^{\infty} a^k \cos(b^k \pi x), $$
+% where $0 < a < 1$ and $b$ is a positive odd integer with $ab < 1 + \frac32
+% \pi$. Since its publication, Weierstrass' work has been generalized in many
+% directions.
 
 %%
 % Chebfun is designed for work with functions with a bit of smoothness, but in
@@ -24,10 +25,11 @@ LW = 'linewidth'; FS = 'fontsize'; format compact
 % lying on the edge of discontinuity.
 
 %%
-% Let us consider the Weierstrass-type function $$ F(x) = \sum_{k=0}^{\infty}
-% 2^{-k} \cos\left( \frac{\pi}{2} 4^k x \right) $$ on the interval $[-1, 1]$.
-% With its default parameter settings, Chebfun resolves the first eight iterates
-% to machine precision, but not the ninth.
+% Let us consider the Weierstrass-type function
+% $$ F(x) = \sum_{k=0}^{\infty} 2^{-k} \cos\left( \frac{\pi}{2} 4^k x \right) $$
+% on the interval $[-1, 1]$.
+% With its default parameter settings, Chebfun resolves the first eight
+% iterates to machine precision, but not the ninth.
 f_k = @(k) @(x) 2^-k * cos(pi/2*x*4^k);
 F{1} = chebfun(f_k(0));
 for k = 1:8,
@@ -101,11 +103,9 @@ disp(str)
 %%
 % References:
 %
-% [1] K. Weierstrass, _Abhandlungen aus der Functionenlehre_. J. Springer,
-% 1886.
+% [1] K. Weierstrass, _Abhandlungen aus der Functionenlehre_. J. Springer, 1886.
 %
 % [2] G. H. Hardy, "Weierstrass's non-differentiable function."
 % _Transactions of the American Mathematical Society_, 17, no. 3 (1916), 301-325.
 %
-% [3] L. N. Trefethen, Approximation theory and approximation practice. SIAM,
-% 2013.
+% [3] L. N. Trefethen, Approximation theory and approximation practice. SIAM, 2013.

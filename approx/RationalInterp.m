@@ -17,19 +17,18 @@
 % rational interpolation involves sample points in an interval.  In
 % particular, if $f$ is a function defined on $[a,b]$ and $m$ and $n$ are
 % nonnegative integers, then one may ask for a rational function of type
-% $(m,n)$ that interpolates $f$ at the $N+1$ Chebyshev points in $[a,b]$, where
-% $N=m+n$.  By "type $(m,n)$", we mean representable as a quotient $p(x)/q(x)$
-% with $p$ of degree at most $m$ and $q$ of degree at most $n$.
-% If $N>m+n$, then the
-% problem is overdetermined one may still ask for a rational approximant to
-% $f$ but now based on some kind of least-squares fit.
+% $(m,n)$ that interpolates $f$ at the $N+1$ Chebyshev points in $[a,b]$,
+% where $N = m+n$.  By "type $(m,n)$", we mean representable as a quotient
+% $p(x)/q(x)$ with $p$ of degree at most $m$ and $q$ of degree at most $n$.
+% If $N>m+n$, then the problem is overdetermined one may still ask for a
+% rational approximant to $f$ but now based on some kind of least-squares fit.
 
 %%
-% Here are three examples taken from Chapter 26 of [4]; some of our wording
-% is also copied from there. The first is a problem that can be solved
+% Here are three examples taken from Chapter 26 of [4]; some of our wording is
+% also copied from there. The first is a problem that can be solved
 % analytically. Suppose we seek a type $(1,1)$ rational function $r$ with
-% $r(-1)=1+\varepsilon$, $r(0)=1$, and $r(1)=1+2\varepsilon$, where $\varepsilon$ is a
-% parameter. The exact solution is
+% $r(-1)=1+\varepsilon$, $r(0)=1$, and $r(1)=1+2\varepsilon$, where
+% $\varepsilon$ is a parameter. The exact solution is
 x = chebfun('x');
 r = @(ep) 1 + (4/3)*ep*x./(x-(1/3));
 
@@ -52,7 +51,7 @@ end
 % $1/(3-4\varepsilon))$.
 
 %%
-% So we see that rational interpolation can be tricky!  "Spurious"
+% So we see that rational interpolation can be tricky! "Spurious"
 % pole-zero pairs of rational approximations may appear in unexpected
 % places, leading to approximants that lack the properties one might like.
 % This happens in exact arithmetic, and it happens even more often in
@@ -63,17 +62,20 @@ end
 % Chebfun has a command `ratinterp` for computing rational interpolants,
 % which uses Chebyshev points by default but can also be applied with
 % arbitrary points.  We could have generated the above pictures with the
-% commands `fj = [1+ep 1 1+2*ep]; [p,q] = ratinterp(fj,1,1); r = p./q;`
+% commands
+%
+%    fj = [1+ep 1 1+2*ep];
+%    [p,q] = ratinterp(fj,1,1);
+%    r = p./q;
 
 %%
-% Here is our second example.  Define
+% Here is our second example. Define
 f = cos(exp(x));
 
 %%
-% and suppose we want to construct rational interpolants of type
-% $(n,n)$ to $f$
-% based on samples at $2n+1$ Chebyshev points in $[-1,1]$. Here is a table of
-% the maximum errors obtained by `ratinterp` for $n=1,2,3,4,5,6$:
+% and suppose we want to construct rational interpolants of type $(n,n)$ to
+% $f$ based on samples at $2n+1$ Chebyshev points in $[-1,1]$. Here is a table
+% of the maximum errors obtained by `ratinterp` for $n=1,2,3,4,5,6$:
 disp('    (n,n)       Error ')
 for n = 1:6
   [p,q] = ratinterp(f,n,n);

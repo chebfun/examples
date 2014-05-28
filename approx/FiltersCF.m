@@ -13,19 +13,18 @@
 %%
 % Mathematically, digital filters are polynomial ("FIR" or "finite impulse
 % response") or rational ("IIR" or "infinite impulse response") approximations
-% to prescribed functions.
-% The classic method for computing FIR filters, called the Parks_McLellan
-% method by engineers, is the Remez algorithm, available
-% in the `remez` command of Chebfun [1].  However, complicated filter
-% designs are not always easy by this method, for the Remez algorithm
-% is nonlinear and may fail to converge if there is not a good enough
-% initial guess.
+% to prescribed functions. The classic method for computing FIR filters,
+% called the Parks McLellan method by engineers, is the Remez algorithm,
+% available in the `remez` command of Chebfun [1].  However, complicated
+% filter designs are not always easy by this method, for the Remez algorithm
+% is nonlinear and may fail to converge if there is not a good enough initial
+% guess.
 
 %%
-% It seems that CF (Caratheodory-Fejer) approximation may be
-% a promising alternative, either for computing the filter itself
-% or at least for generating an initial guess.  (For a reference on
-% CF approximations, see Chapter 20 of [2].)
+% It seems that CF (Caratheodory-Fejer) approximation may be a promising
+% alternative, either for computing the filter itself or at least for
+% generating an initial guess. (For a reference on CF approximations, see
+% Chapter 20 of [2].)
 % Consider for example this function with "pass bands":
 x = chebfun('x');
 LW = 'linewidth';
@@ -46,11 +45,10 @@ end
 toc
 
 %%
-% In practice, filter specifications usually have
-% "don't care" regions between pass and stop bands.
-% Here to give an idea of the possibilities we make
-% f a little smoother by convolving it with a narrow
-% hat function.  Now degrees $100$ and $200$ give good filters:
+% In practice, filter specifications usually have "don't care" regions between
+% pass and stop bands. Here to give an idea of the possibilities we make $f$ a
+% little smoother by convolving it with a narrow hat function.  Now degrees
+% $100$ and $200$ give good filters:
 s = chebfun('s', [-.02 .02]);
 phi = 50-50^2*abs(s);
 f2 = conv(f,phi);

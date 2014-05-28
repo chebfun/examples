@@ -6,15 +6,14 @@
 % [Tags: #bump, #gaussian, #Chebfun2]
 
 %% Adding bumps
-% A Gaussian bump is a rank-1 function because it is separable, i.e., it
-% can be written as a
-% product of two univariate functions [2]:
+% A Gaussian bump is a rank-1 function because it is separable, i.e., it can
+% be written as a product of two univariate functions [2]:
 %
 % $$ e^{-\gamma(x^2+y^2)} = e^{-\gamma x^2}e^{-\gamma y^2}. $$
 %
-% To illustrate Chebfun2, we can shift these
-% Gaussian bump functions to arbitrary locations and add them together. In this
-% experiment we add up $100$ of them:
+% To illustrate Chebfun2, we can shift these Gaussian bump functions to
+% arbitrary locations and add them together. In this experiment we add up
+% $100$ of them:
 
 FS = 'FontSize'; fs = 16;
 gam = 100; j = 1;
@@ -31,9 +30,9 @@ for n = 1:100
 end
 
 %% The surprise 
-% Generically, the sum of $100$ rank 1 functions is a rank $100$ function. However,
-% in this case the numerical rank is significantly less than the mathematical
-% rank:
+% Generically, the sum of $100$ rank 1 functions is a rank $100$ function.
+% However, in this case the numerical rank is significantly less than the
+% mathematical rank:
 fprintf('Rank of function is %u\n',rank(f))
 
 %% Why the surprise?
@@ -42,22 +41,22 @@ fprintf('Rank of function is %u\n',rank(f))
 %
 % $$ f(x,y) \approx \sum_k \sigma_k \phi_k(x) \psi_k(y), $$
 %
-% the singular values decay supergeometrically. This phenomenon is exploited in
-% the Fast Gauss Transform [1]. Here is a plot showing the supergeometric decay:
+% the singular values decay supergeometrically. This phenomenon is exploited
+% in the Fast Gauss Transform [1]. Here is a plot showing the supergeometric
+% decay:
 clf, semilogy(svd(f))
 title('Decay of singular values of f',FS,fs),legend('SVD')
 xlabel('Index',FS,fs),ylabel('Magnitude',FS,fs)
 
 %% Playing around
-% Once we have a function we can also see what it looks like along a
-% cross-section (like along $y=\pi/12$), which is represented by a smooth
-% chebfun:
+% Once we have a function we can also see what it looks like along a cross-
+% section (like along $y=\pi/12$), which is represented by a smooth chebfun:
 plot(f(:,pi/12)), title('Cross-section along y=\pi/12',FS,fs)
 
 %%
 % Or, we can calculate its maximum along each column, a function which is
-% represented by a piecewise smooth chebfun with several points of discontinuity
-% of its slope:
+% represented by a piecewise smooth chebfun with several points of
+% discontinuity of its slope:
 plot(max(f)), title('Maximum in the y-direction',FS,fs)
 xlabel('x',FS,fs), ylabel('Maximum',FS,fs)
 

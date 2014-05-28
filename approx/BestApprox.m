@@ -6,10 +6,10 @@
 % [Tags: #REMEZ, #Pachon, #bestapproximation, #rational, #Caratheodory]
 
 %%
-% Chebfun's REMEZ command, written by Ricardo Pachon, can compute best
-% (i.e. infinity-norm or minimax) approximations  of a real function on a
-% real interval. For example, here is an absolute value function on [-1,1]
-% and its best approximation by a polynomial of degree 10:
+% Chebfun's `remez` command, written by Ricardo Pachon, can compute best
+% (i.e. infinity-norm or minimax) approximations of a real function on a
+% real interval. For example, here is an absolute value function on $[-1,1]$
+% and its best approximation by a polynomial of degree $10$:
 
 x = chebfun('x');
 f = abs(x-0.5);
@@ -27,13 +27,12 @@ ylim([-.05 .05])
 title('Degree 10 polynomial error curve',FS,fs)
 
 %%
-% In Chebfun Version 3, REMEZ could only compute
-% polynomial approximations [1],
-% but Version 4 introduced some capabilities with rational approximations
-% too.  For example, here is the error curve for type (5,5) best rational
-% approximation of the same function f, plotted on the same scale.  Note
-% that there are again 12 points of equioscillation, but this time, they
-% are more closely clustered near the singularity.
+% In Chebfun Version 3, `remez` could only compute polynomial approximations
+% [1], but Version 4 introduced some capabilities with rational approximations
+% too.  For example, here is the error curve for type $(5,5)$ best rational
+% approximation of the same function `f`, plotted on the same scale.  Note that
+% there are again 12 points of equioscillation, but this time, they are more
+% closely clustered near the singularity.
 [p,q,rh,err] = remez(f,5,5);
 hold off, plot(f-p./q,LW,1.6), hold on
 plot([-1 1],err*[1 1],'--k',LW,1)
@@ -42,13 +41,13 @@ ylim([-.05 .05])
 title('Type (5,5) rational error curve',FS,fs)
 
 %%
-% For an introduction to the theory of these approximations,
-% see Chapters 10 and 24 of [3].
+% For an introduction to the theory of these approximations, see Chapters 10
+% and 24 of [3].
 
 %%
-% For rational approximation, Chebfun's REMEZ command is currently not very
-% robust.  An often better alternative is CF approximation; see [2] and
-% the Chebfun CF command.
+% For rational approximation, Chebfun's `remez` command is currently not very
+% robust.  An often better alternative is CF approximation; see [2] and the
+% Chebfun `cf` command.
 
 %%
 % References:

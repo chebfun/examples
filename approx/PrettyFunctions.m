@@ -39,10 +39,10 @@ subplot(2,3,5), contour(F5,'numpts',n), plot(F5,'.k',MS,ms), axis(d)
 subplot(2,3,6), contour(F6,'numpts',n), plot(F6,'.k',MS,ms), axis(d)
 
 
-%% `plot`
-% The `plot` command can be used to visualise the surface of a chebfun2. The
-% height of the surface above $(x,y)$
-% is equal to the value of $f(x,y)$. Here are four examples.
+%% The `plot` command
+% The `plot` command can be used to visualise the surface of a chebfun2.
+% The height of the surface above $(x,y)$ is equal to the value of $f(x,y)$.
+% Here are four examples.
 
 C=1000; g1=@(x,y) tanh(C*x)/tanh(C).*tanh(C*y)/tanh(C); G1 = chebfun2(g1);
 g2 = @(x,y) 1./(1+200*((x-.3).^2.*(y+.5).^2));          G2 = chebfun2(g2);
@@ -55,10 +55,9 @@ subplot(2,2,3), plot(G3), zlim([-1 3])
 subplot(2,2,4), plot(G4), zlim([-1 3])
 
 
-%% `waterfall` 
-% The `waterfall` command displays the lines
-% on which the function was sampled in
-% order to form the chebfun2 approximant. The positions of the lines were
+%% The `waterfall` command
+% The `waterfall` command displays the lines on which the function was sampled
+% in order to form the chebfun2 approximant. The positions of the lines were
 % calculated by the adaptive construction process. Here are Franke's function
 % and the lines on which it was sampled to form an approximation.
 h = @(x,y) .75*exp(-((9*x-2).^2 + (9*y-2).^2)/4) + ...

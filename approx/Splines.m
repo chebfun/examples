@@ -43,9 +43,9 @@ end
 
 %%
 % One of Chebfun's features is its ability to locate discontinuities
-% automatically in `splitting on' mode.  To illustrate this, suppose we
-% construct a new chebfun `s2` by sampling `s` with splitting on. The accuracy is
-% very good:
+% automatically in `splitting on` mode.  To illustrate this, suppose we
+% construct a new chebfun `s2` by sampling `s` with splitting on. The accuracy
+% is very good:
 s2 = chebfun(@(x) s(x),[0 10],'splitting','on');
 norm(s-s2,inf)
 
@@ -57,13 +57,14 @@ s2.ends'
 
 %%
 % It is interesting that breakpoints near $2,3,\dots,8$ match these values not
-% to $15$ or $16$ digits but to about the cube root of that precision. This does not
-% reflect poor performance of the splitting algorithm, but just the fact that
-% the function being sampled has two continuous derivatives.  If it had only one
-% continuous derivative, we'd get $8$ digits of accuracy, and if only the function
-% itself were continuous, we'd expect $15$ or $16$ digits.  When not even the
-% function is continuous, Chebfun captures discontinuities down to the very last
-% bit.  For information about edge detection in Chebfun, see [1].
+% to $15$ or $16$ digits but to about the cube root of that precision. This
+% does not reflect poor performance of the splitting algorithm, but just the
+% fact that the function being sampled has two continuous derivatives.  If it
+% had only one continuous derivative, we'd get $8$ digits of accuracy, and if
+% only the function itself were continuous, we'd expect $15$ or $16$ digits.
+% When not even the function is continuous, Chebfun captures discontinuities
+% down to the very last bit.  For information about edge detection in Chebfun,
+% see [1].
 
 %% Reference
 %
