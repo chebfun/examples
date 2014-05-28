@@ -1,4 +1,4 @@
-%% Encryption of a message with SCRIBBLE
+%% Encryption of a message with `scribble`
 % Nick Trefethen, April 2012
 
 %%
@@ -6,8 +6,8 @@
 % [Tags: #encryption, #message]
 
 %%
-% `scribble` produces piecewise linear complex chebfuns whose plots look like
-% words, like this:
+% The `scribble` command produces piecewise linear complex chebfuns whose
+% plots look like words, like this:
 message = scribble('This is the message');
 LW = 'linewidth'; lw = 2;
 plot(message, LW, lw), axis equal
@@ -23,7 +23,7 @@ encrypted = message + key;
 plot(encrypted, 'm', LW, lw), axis equal
 
 %%
-% So we've invented a new encryption scheme!  For of course the original message
+% So we've invented a new encryption scheme! For of course the original message
 % can be recovered by subtracting off that key:
 message2 = encrypted - key;
 plot(message2, LW, lw), axis equal
