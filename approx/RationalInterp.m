@@ -64,9 +64,12 @@ end
 % arbitrary points.  We could have generated the above pictures with the
 % commands
 %
-%    fj = [1+ep 1 1+2*ep];
-%    [p,q] = ratinterp(fj,1,1);
-%    r = p./q;
+%%
+% `fj = [1+ep 1 1+2*ep];`
+%%
+% `[p,q] = ratinterp(fj,1,1);`
+%%
+% `r = p./q;`
 
 %%
 % Here is our second example. Define

@@ -50,6 +50,7 @@ x = chebfun('x', [0 2*pi]);
 f = sqrt(4 + 2*sin(2*x));
 [xx, yy, zz] = cylinder(f);
 surf(xx,yy,zz)
+zlim([0 8])
 
 %%
 % The volume of this object can be computed as
@@ -77,6 +78,7 @@ zG = pi/V*sum(x.*f.^2)
 hold on
 colormap hsv, alpha(.1)
 plot3(0,0,zG,'.r','MarkerSize',40)
+zlim([0 8])
 hold off
 
 %%

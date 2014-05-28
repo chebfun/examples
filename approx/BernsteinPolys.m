@@ -36,7 +36,7 @@ function BernsteinPolys()
 % you finish tossing.
 
 %%
-% Let's demonstrate in Chebfun.  Here is a continuous function on [0,1]:
+% Let's demonstrate in Chebfun.  Here is a continuous function on $[0,1]$:
 LW = 'linewidth'; lw = 1.6;
 s = chebfun('s',[0 1]);
 f = min(abs(s-.3),2*abs(s-.7));

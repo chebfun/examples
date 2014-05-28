@@ -12,18 +12,26 @@
 % approximation errors are these:
 %
 % - Type $(0,0)$:  error = $0.500$
+%
 % - Type $(1,1)$:  error = $0.0668$
+%
 % - Type $(2,2)$:  error = $0.00736$
+%
 % - Type $(3,3)$:  error = $0.000799$
+%
 % - Type $(4,4)$:  error = $0.0000865$
+%
 % - Type $(5,5)$:  error = $0.00000934$
+%
 % - Type $(6,6)$:  error = $0.000001008$
+%
 % - Type $(7,7)$:  error = $0.0000001087$
+%
 % - Type $(8,8)$:  error = $0.00000001172$
 %
 % As $n$ increases to infinity, it is known that the asymptotic behavior is
 %
-% $$ \text{error} ~ 2 C^(-n-\frac{1}{2}) $$,
+% $$ \mathrm{error} \sim 2 C^{-n-1/2}, $$
 %
 % where $C$ is a number known as Halphen's constant with the following
 % approximate numerical value:
@@ -51,7 +59,7 @@ xlabel('n',FS,14), ylabel('error',FS,14)
 % One way to characterize Halphen's constant mathematically is that it is
 % the inverse of the unique positive value of $s$ where the function
 %
-% $$ \sum_{k=1}^\infty  \frac{k s^n}{1-(-s)^n}
+% $$ \sum_{k=1}^\infty  \frac{k s^n}{1-(-s)^n} $$
 %
 % takes the value $1/8$.  This is an easy computation for Chebfun:
 s = chebfun('s',[1/12,1/6]);

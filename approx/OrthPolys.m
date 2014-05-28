@@ -9,7 +9,7 @@ function OrthPolys
 
 %%
 % *Orthogonal* polynomials are, as the name suggests, polynomials which
-% are orthogonal to each other in some weighted $L^2$ inner product, i.e., 
+% are orthogonal to each other in some weighted $L^2$ inner product, i.e.,
 %
 % $$ \int_a^b |w(x)P_j(x)P_k(x) dx = \langle P_j, P_k \rangle = 0 $$
 %
@@ -19,22 +19,22 @@ function OrthPolys
 
 %%
 % Chebfun has commands built-in for some of the standard orthogonal
-% polynomials. Here is a table of the polynomial, the weight function, the 
+% polynomials. Here is a table of the polynomial, the weight function, the
 % standard domain $[a,b]$, and the Chebfun routine name.
 %
-% |     Name       |       $w(x)$     |    domain    | Chebfun routine |
-% |--------------------------------------------------------------------|
-% |    Legendre    |  $      1      $ |   $[-1 1]$   | `legpoly(N)`    |
-% | Chebyshev(1st) |  $1/sqrt(1-x^2)$ |   $[-1 1]$   | `chebpoly(N)`   |
-% | Chebyshev(2nd) |  $ sqrt(1-x^2) $ |   $[-1 1]$   | `chebpoly(N,2)` |
-% |    Laguerre    |  $   exp(-x)   $ |   $[0 inf]$  | `lagpoly(N)`    |
-% |    Hermite     |  $  exp(-x^2)  $ | $[-inf inf]$ | `hermpoly(N)`   |
+%      Name       |      w(x)      |   domain   | Chebfun routine
+% ----------------------------------------------------------------
+%     Legendre    |        1       |   [-1 1]   |  legpoly(N)
+%  Chebyshev(1st) |  1/sqrt(1-x^2) |   [-1 1]   |  chebpoly(N)
+%  Chebyshev(2nd) |   sqrt(1-x^2)  |   [-1 1]   |  chebpoly(N,2)
+%     Laguerre    |     exp(-x)    |   [0 inf]  |  lagpoly(N)
+%     Hermite     |    exp(-x^2)   | [-inf inf] |  hermpoly(N)
 
 %%
 % For each of these examples, there are readily derived recurrence
 % relations which allow fast computation of the polynomials, and Chebfun
 % exploits these. However, sometimes we wish to construct orthogonal
-% polynomials with non-standard weight functions, and orthogonalisation 
+% polynomials with non-standard weight functions, and orthogonalisation
 % via the Gram-Schmidt process is one method of doing so.
 
 %%
