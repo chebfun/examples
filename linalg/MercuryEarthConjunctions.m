@@ -6,10 +6,9 @@
 % [Tags: #linearalgebra, #rootfinding, #determinant]
 
 %%
-% In an example in [1]
-% the positions of Earth and Mercury are given, relative to the sun at
-% one foci of their elliptical orbits at (0,0), by the parametric
-% equations
+% In an example in [1] the positions of Earth and Mercury are given, relative
+% to the sun at one foci of their elliptical orbits at $(0,0)$, by the
+% parametric equations
 %
 % $$ x_M(t) = -11.9084+57.9117\cos(2\pi t/87.97), $$
 %
@@ -33,8 +32,7 @@ M = @(t) [-11.9084 + 57.9117 * cos(2*pi*t/87.97),...
 f = chebfun(@(t) det(M(t)),[0 600],'vectorize');  
 
 %%
-% The roots of the determinant give the days at which a conjunction
-% occurs.
+% The roots of the determinant give the days at which a conjunction occurs.
 zeros = roots(f);
 
 %%
