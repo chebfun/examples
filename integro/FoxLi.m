@@ -13,10 +13,9 @@
 %
 % $$  v(x) = \sqrt{iF/\pi} \int_{-1}^1 K(x,s) u(s) ds. $$
 %
-% $L$ maps a function $u$ defined on $[-1,1]$ to another
-% function $v = Lu$ defined 
-% on $[-1,1]$.  The number $F$ is a positive real parameter, the Fresnel number, 
-% and the kernel function $K(x,s)$ is 
+% $L$ maps a function $u$ defined on $[-1,1]$ to another function $v = Lu$
+% defined on $[-1,1]$.  The number $F$ is a positive real parameter, the
+% Fresnel number, and the kernel function $K(x,s)$ is
 %
 % $$ K(x,s) = \exp(-iF(x-s)^2). $$
 
@@ -29,7 +28,7 @@ L = sqrt(1i*F/pi) * chebop(@(u) fred(K,u));    % Fredholm integral operator
 
 %% 
 % Computing the $80$ eigenvalues of largest complex magnitude requires just a call
-% to `eigs` with the 'lm' option:
+% to `eigs` with the `'lm'` option:
 tic, lam = eigs(L,80,'lm'); toc
 
 %%
@@ -41,8 +40,7 @@ title('largest 80 eigenvalues of Fox-Li operator','fontsize',16)
 axis equal, axis(1.05*[-1 1 -1 1]), hold off
 
 %%
-% For a remarkable analysis of such patterns, 
-% see [Boettcher et al. 2010].
+% For a remarkable analysis of such patterns, see [Boettcher et al. 2010].
 
 %%
 % References:
