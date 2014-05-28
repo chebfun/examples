@@ -1,5 +1,5 @@
 %% Abscissa of the linearized Vlasov-Poisson operator
-% Toby Driscoll, 20 October 2010
+% Toby Driscoll, October 2010
 
 %%
 % (Chebfun example integro/VlasovPoisson.m)

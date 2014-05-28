@@ -1,5 +1,5 @@
-%% Convolution Of Probability Distributions
-% Nick Hale and Alex Townsend, 15th January 2014
+%% Convolution of probability distributions
+% Nick Hale and Alex Townsend, January 2014
 
 %%
 % (Chebfun example stats/ProbabilityConvolution.m)

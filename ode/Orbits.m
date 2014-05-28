@@ -1,5 +1,5 @@
 %% Orbiting around fixed stars
-% Nick Trefethen, 16th November 2011
+% Nick Trefethen, November 2011
 
 %%
 % (Chebfun example ode/Orbits.m)

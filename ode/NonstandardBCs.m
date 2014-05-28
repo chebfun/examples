@@ -1,5 +1,5 @@
 %% Nonstandard 'boundary' conditions
-% Asgeir Birkisson, 18th October 2011
+% Asgeir Birkisson, October 2011
 
 %%
 % (Chebfun example ode/NonstandardBCs.m)

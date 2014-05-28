@@ -1,5 +1,5 @@
-%% Marching Squares for Bivariate Rootfinding
-% Alex Townsend, 4th March 2013
+%% Marching squares for bivariate rootfinding
+% Alex Townsend, March 2013
 
 %% 
 % (Chebfun2 example roots/MarchingSquares.m)

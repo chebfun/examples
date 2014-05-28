@@ -1,5 +1,5 @@
 %% Eigenstates of the Schroedinger equation
-% Nick Trefethen, 25th January 2012
+% Nick Trefethen, January 2012
 
 %%
 % (Chebfun Example ode-eig/Eigenstates.m)

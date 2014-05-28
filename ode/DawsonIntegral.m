@@ -1,5 +1,5 @@
 %% Dawson's integral
-% Kuan Xu, 17th October 2012
+% Kuan Xu, October 2012
 
 %%
 % (Chebfun example ode/DawsonIntegral.m)

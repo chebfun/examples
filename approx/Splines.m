@@ -1,5 +1,5 @@
 %% Splines
-% Nick Trefethen, 26th February 2013
+% Nick Trefethen, February 2013
 
 %%
 % (Chebfun example approx/Splines.m)

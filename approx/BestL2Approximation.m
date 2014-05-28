@@ -1,5 +1,5 @@
 %% Least-squares approximation in Chebfun
-% Alex Townsend, 16th October 2013 
+% Alex Townsend, October 2013 
 
 %% 
 % (Chebfun example approx/BestL2Approximation.m)

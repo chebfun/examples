@@ -1,5 +1,5 @@
-%% Does a chebfun of degree n have n roots? 
-% Alex Townsend, 23rd October 2013 
+%% Does a chebfun of degree `n` have `n` roots? 
+% Alex Townsend, October 2013 
 
 %%
 % (Chebfun example roots/FundamentalTheoremOfAlgebra.m)

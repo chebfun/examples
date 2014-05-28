@@ -1,5 +1,5 @@
 %% Generalized polynomial chaos
-% Toby Driscoll, 16th December 2011
+% Toby Driscoll, December 2011
 
 %%
 % (Chebfun example stats/GeneralizedPolynomialChaos.m)

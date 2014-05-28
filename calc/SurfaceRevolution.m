@@ -1,5 +1,5 @@
 %% Surfaces of revolution
-% Georges Klein, 4th March 2013
+% Georges Klein, March 2013
 
 %%
 % (Chebfun example calc/SurfaceRevolution.m)

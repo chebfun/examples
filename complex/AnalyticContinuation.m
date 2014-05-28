@@ -1,5 +1,5 @@
 %% Analytic continuation via rational approximation
-% Nick Trefethen, 6th March 2013
+% Nick Trefethen, March 2013
 
 %%
 % (Chebfun example complex/AnalyticContinuation.m)

@@ -1,5 +1,5 @@
-%% A Bouncing Ball
-% Filomena Di Tommaso, February 26th, 2013
+%% A bouncing ball
+% Filomena Di Tommaso, February 2013
 
 %%
 % (Chebfun example ode/BouncingBall.m)

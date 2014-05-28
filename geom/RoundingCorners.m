@@ -1,5 +1,5 @@
-%% Rounding Corners by Convolution
-% Nick Trefethen, 20th November 2012
+%% Rounding corners by convolution
+% Nick Trefethen, November 2012
 
 %%
 % (Chebfun example geom/RoundingCorners.m)

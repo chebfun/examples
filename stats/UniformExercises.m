@@ -1,5 +1,5 @@
-%% Uniform Distribution -- Exercises from a Textbook
-% Jie Gao, 5th July 2013
+%% Exercises from a textbook: Uniform distribution
+% Jie Gao, July 2013
 
 %%
 % (Chebfun example stats/UniformExercises.m)

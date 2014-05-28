@@ -1,5 +1,5 @@
-%% A Drowning Man and Snell's Law
-% Mohsin Javed, 30th October 2013
+%% A drowning man and Snell's Law
+% Mohsin Javed, October 2013
 
 %%
 % (Chebfun example calc/SnellsLaw.m)

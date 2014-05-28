@@ -1,5 +1,5 @@
 %% The mystery of Bernoulli polynomials
-% Stefan Guettel, 8th February 2012
+% Stefan Guettel, February 2012
 
 %%
 % (Chebfun example roots/BernoulliPolynomials.m)

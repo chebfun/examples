@@ -1,5 +1,5 @@
 %% Bernstein polynomials 
-% Nick Trefethen, 15th May 2012
+% Nick Trefethen, May 2012
 
 %%
 % (Chebfun example approx/BernsteinPolys.m)

@@ -1,5 +1,5 @@
-%% Singular value decomposition of compact operators: A tool for computing frequency responses of PDEs 
-% Binh K. Lieu and Mihailo R. Jovanovic, 6th January 2012
+%% Singular value decomposition of compact operators: A tool for computing frequency responses of PDEs
+% Binh K. Lieu and Mihailo R. Jovanovic, January 2012
 
 %%
 % (Chebfun example pde/SVDFrequencyResponse.m)

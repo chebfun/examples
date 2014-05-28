@@ -1,5 +1,5 @@
 %% Resonance exploited by Carrier and Pearson's vandal
-% Nick Trefethen, 12th August 2012
+% Nick Trefethen, August 2012
 
 %%
 % (Chebfun example ode/ResonantVandal.m)

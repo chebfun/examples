@@ -1,4 +1,4 @@
-%% The Birthday Paradox
+%% The birthday paradox
 % Mohsin Javed, Alex Townsend, and Nick Hale, LNT's birthday, 2012
 
 %%

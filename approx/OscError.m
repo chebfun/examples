@@ -1,5 +1,5 @@
 %% Approximations and oscillation of error 
-% Mohsin Javed, 22nd October 2013
+% Mohsin Javed, October 2013
 
 %%
 % (Chebfun example approx/OscError.m)

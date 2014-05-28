@@ -1,5 +1,5 @@
-%% DEMO OF PIECEWISE OPERATORS
-% Nick hale, 9 November 2010
+%% Demo of piecewise operators
+% Nick hale, November 2010
 
 %%
 % (Chebfun Example ode/PiecewiseLinopDemo.m)

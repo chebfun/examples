@@ -1,5 +1,5 @@
-%% Mercury-Earth Conjunctions
-% Tonatiuh Sanchez-Vizuet and Matthew Moye, 17th June 2012
+%% Mercury-Earth conjunctions
+% Tonatiuh Sanchez-Vizuet and Matthew Moye, June 2012
 
 %%
 % (Chebfun example linalg/MercuryEarthConjunctions.m)

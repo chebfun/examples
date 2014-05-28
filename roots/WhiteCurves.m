@@ -1,5 +1,5 @@
 %% The white curves of Ortiz and Rivlin
-% Stefan Guettel, 2nd November 2011
+% Stefan Guettel, November 2011
 
 %%
 % (Chebfun example roots/WhiteCurves.m)

@@ -1,5 +1,5 @@
 %% Chebyshev polynomials as plotted by Higham and Higham
-% Nick Trefethen, 13th December 2011
+% Nick Trefethen, December 2011
 
 %%
 % (Chebfun example approx/ChebPolysHigham.m)

@@ -1,5 +1,5 @@
 %% Exact Chebyshev expansion coefficients of a function
-% Mark Richardson, 13th June 2012
+% Mark Richardson, June 2012
 
 %%
 % (Chebfun example approx/ExactChebCoeffs.m)

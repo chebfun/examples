@@ -1,5 +1,5 @@
-%% Parametric Surfaces
-% Rodrigo Platte, 4th March 2013.
+%% Parametric surfaces
+% Rodrigo Platte, March 2013.
 
 %% 
 % (Chebfun2 example: geom/ParametricSurfaces.m)

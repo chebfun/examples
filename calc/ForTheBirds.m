@@ -1,5 +1,5 @@
 %% Optimizing a bird's flight path
-% Toby Driscoll, 1st November 2012
+% Toby Driscoll, November 2012
 
 %%
 % (Chebfun example calc/ForTheBirds.m)

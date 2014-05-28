@@ -1,5 +1,5 @@
 %% Orthogonal polynomials via the Lanczos process
-% Pedro Gonnet, 1st November 2011
+% Pedro Gonnet, November 2011
 
 %%
 % (Chebfun example approx/OrthPolysLanczos.m)

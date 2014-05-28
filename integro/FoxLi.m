@@ -1,5 +1,5 @@
 %% Eigenvalues of the Fox-Li integral operator
-% Toby Driscoll and Nick Trefethen, 7 October 2010
+% Toby Driscoll and Nick Trefethen, October 2010
 
 %%
 % (Chebfun example integro/FoxLi.m)

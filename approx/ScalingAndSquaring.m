@@ -1,5 +1,5 @@
 %% Rational approximation to the exponential in a complex region
-% Yuji Nakatsukasa and Stefan Guettel, 23rd July 2012
+% Yuji Nakatsukasa and Stefan Guettel, July 2012
 
 %%
 % (Chebfun example approx/ScalingAndSquaring.m)

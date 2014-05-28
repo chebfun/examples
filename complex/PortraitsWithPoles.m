@@ -1,5 +1,5 @@
-%% Phase Portraits for Functions with Poles
-% Nick Trefethen, 4th March 2013
+%% Phase portraits for functions with poles
+% Nick Trefethen, March 2013
 
 %%
 % (Chebfun2 example complex/PortraitsWithPoles.m)

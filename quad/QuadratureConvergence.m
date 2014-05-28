@@ -1,5 +1,5 @@
 %% Quadrature convergence rates for differentiable functions
-% Nick Trefethen, 13th June 2012
+% Nick Trefethen, June 2012
 
 %%
 % (Chebfun example quad/QuadratureConvergence.m)

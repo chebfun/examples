@@ -1,5 +1,5 @@
 %% Four bugs on a rectangle
-% Hrothgar, 5th November 2013
+% Hrothgar, November 2013
 
 %%
 % (Chebfun example ode/FourBugs.m)

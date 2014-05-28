@@ -1,5 +1,5 @@
 %% Pretty functions approximated by Chebfun2
-% Alex Townsend, 4th March 2013 
+% Alex Townsend, March 2013 
 
 %%
 % (Chebfun2 example approx/PrettyFunctions.m)

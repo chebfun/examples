@@ -1,5 +1,5 @@
 %% Half-wave rectifier
-% Toby Driscoll, May 18, 2011
+% Toby Driscoll, May 2011
 
 %%
 % (Chebfun example ode/Rectifier.m)

@@ -1,5 +1,5 @@
-%% Constrained Optimization in Chebfun 
-% Alex Townsend, 16th January 2014
+%% Constrained optimization in chebfun 
+% Alex Townsend, January 2014
 
 %% 
 % (Chebfun Example opt/ConstrainedOptimization.m) 

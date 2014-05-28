@@ -1,5 +1,5 @@
-%% Least-squares data fitting and POLYFIT
-% Nick Trefethen, 1st October 2011
+%% Least-squares data fitting and `polyfit`
+% Nick Trefethen, October 2011
 
 %%
 % (Chebfun example stats/LeastSquares.m)

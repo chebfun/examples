@@ -1,5 +1,5 @@
 %% Mercer's theorem and the Karhunen-Loeve expansion
-% Toby Driscoll, 20th December 2011
+% Toby Driscoll, December 2011
 
 %%
 % (Chebfun example stats/MercerKarhunenLoeve.m)

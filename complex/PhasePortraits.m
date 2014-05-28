@@ -1,5 +1,5 @@
-%% Phase Portraits
-% Alex Townsend, 4th March 2013
+%% Phase portraits
+% Alex Townsend, March 2013
 
 %%
 % (Chebfun2 example complex/PhasePortraits.m)

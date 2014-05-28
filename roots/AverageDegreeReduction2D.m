@@ -1,5 +1,5 @@
 %% 2D subdivision and the average degree reduction
-% Alex Townsend, 21st August 2013
+% Alex Townsend, August 2013
 
 %%
 % (Chebfun2 Example roots/AverageDegreeReduction2D.m)

@@ -1,5 +1,5 @@
 %% The FFT in Chebfun
-% Mark Richardson, 9th May 2011
+% Mark Richardson, May 2011
 
 %%
 % (Chebfun example approx/ChebfunFFT.m)

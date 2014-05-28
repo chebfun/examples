@@ -1,5 +1,5 @@
 %% Roots of random polynomials
-% Nick Trefethen, 6th November 2011
+% Nick Trefethen, November 2011
 
 %%
 % (Chebfun example roots/RandomPolynomials.m)

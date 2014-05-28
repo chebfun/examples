@@ -1,5 +1,5 @@
 %% Linear EXP initial-value problem
-% Tom Maerz, 05 October 2010
+% Tom Maerz, October 2010
 
 %%
 % (Chebfun example ode/LinExpIVP.m)

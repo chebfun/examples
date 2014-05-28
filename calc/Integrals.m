@@ -1,5 +1,5 @@
-%% Definite and Indefinite Integrals
-% Nick Trefethen, 23rd October 2012
+%% Definite and indefinite integrals
+% Nick Trefethen, October 2012
 
 %%
 % (Chebfun example calc/Integrals.m) 

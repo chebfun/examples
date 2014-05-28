@@ -1,5 +1,5 @@
 %% Three body problem complex singularities
-% Marcus Webb, 23rd August 2011
+% Marcus Webb, August 2011
 
 %%
 % (Chebfun example ode/ThreeBodyProblem.m)

@@ -1,5 +1,5 @@
 %% Conformal map to a square
-% Toby Driscoll, 28th January 2013
+% Toby Driscoll, January 2013
 
 %%
 % (Chebfun example complex/ConformalSquare.m)

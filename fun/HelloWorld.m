@@ -1,5 +1,5 @@
 %% Hello World
-% Alex Townsend, 4th March 2013
+% Alex Townsend, March 2013
 
 %% 
 % (Chebfun2 Example: Fun/HelloWorld.m)

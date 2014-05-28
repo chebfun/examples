@@ -1,5 +1,5 @@
 %% Spectral radius of the SOR iteration matrix
-% Nick Trefethen, 16th October 2012
+% Nick Trefethen, October 2012
 
 %%
 % (Chebfun example linalg/SOR.m)

@@ -1,5 +1,5 @@
-%% Lorenz Attractor in the Complex Plane using `ratinterp`
-% Marcus Webb, 10th March 2013
+%% Lorenz Attractor in the complex plane using RATINTERP
+% Marcus Webb, March 2013
 
 %%
 % (Chebfun example ode/LorenzAttractor.m)

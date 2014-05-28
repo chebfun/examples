@@ -1,5 +1,5 @@
 %% Wikipedia integro-differential equation example
-% Mark Richardson, 27 September 2010
+% Mark Richardson, September 2010
 
 %%
 % (Chebfun example integro/WikiIntegroDiff.m)

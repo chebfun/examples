@@ -1,5 +1,5 @@
 %% A greedy algorithm for choosing interpolation points
-% Nick Trefethen, 27 November 2011
+% Nick Trefethen, November 2011
 
 %%
 % (Chebfun example approx/GreedyInterp.m)

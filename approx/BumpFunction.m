@@ -1,5 +1,5 @@
-%% Adding Together Bump Functions
-% Alex Townsend, 4th March 2013 
+%% Adding together bump functions
+% Alex Townsend, March 2013 
 
 %%
 % (Chebfun2 example approx/BumpFunction.m)

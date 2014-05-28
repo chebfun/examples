@@ -1,5 +1,5 @@
 %% Phase portraits and trajectories
-% Alex Townsend, 4th March 2013
+% Alex Townsend, March 2013
 
 %%
 % (Chebfun2 example veccalc/AutonomousSystems.m)

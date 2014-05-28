@@ -1,5 +1,5 @@
 %% Blowup equation (Frank-Kamenetskii)
-% Nick Trefethen, 25 September 2010
+% Nick Trefethen, September 2010
 
 %%
 % (Chebfun example ode/BlowupFK.m)

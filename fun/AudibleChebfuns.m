@@ -1,5 +1,5 @@
 %% Can one hear the shape of a chebfun?
-% Stefan Güttel, 9th November 2011
+% Stefan Güttel, November 2011
 
 %%
 % (Chebfun example fun/AudibleChebfuns.m)

@@ -1,5 +1,5 @@
 %% Simple computations with probability distributions
-% Mark Richardson, 21 May 2011
+% Mark Richardson, May 2011
 %
 %%
 % (Chebfun example stats/Expectations.m)

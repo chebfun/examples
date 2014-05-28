@@ -1,5 +1,5 @@
 %% Event handling in Chebfun2v 
-% Alex Townsend, 9th June 2013
+% Alex Townsend, June 2013
 
 %% 
 % (Chebfun2 example veccalc/EventHandling.m)

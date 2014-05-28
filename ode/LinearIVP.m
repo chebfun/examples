@@ -1,5 +1,5 @@
 %% Linear sine/cosine initial-value problem
-% Nick Trefethen and Tom Maerz, 30 September 2010
+% Nick Trefethen and Tom Maerz, September 2010
 
 %%
 % (Chebfun example ode/LinearIVP.m)

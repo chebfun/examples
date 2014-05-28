@@ -1,5 +1,5 @@
 %% Chebyshev interpolation of oscillatory entire functions
-% Mark Richardson, 4th October 2011
+% Mark Richardson, October 2011
 %
 %%
 % (Chebfun example approx/Entire.m)

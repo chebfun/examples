@@ -1,5 +1,5 @@
 %% B-splines and convolution
-% Nick Trefethen, 24th July 2012
+% Nick Trefethen, July 2012
 
 %%
 % (Chebfun example approx/BSplineConv.m)

@@ -1,5 +1,5 @@
 %% Lee and Greengard ODE examples
-% Nick Trefethen, 12th June 2012
+% Nick Trefethen, June 2012
 
 %%
 % (Chebfun Example ode/LeeGreengardODEs.m)

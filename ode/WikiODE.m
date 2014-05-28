@@ -1,5 +1,5 @@
 %% Wikipedia ODE examples
-% Mark Richardson, 27 September 2010
+% Mark Richardson, September 2010
 
 %%
 % (Chebfun example ode/WikiODE.m)

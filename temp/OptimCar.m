@@ -1,4 +1,4 @@
-%% OPTIMAL PERFORMANCE OF A CAR
+%% Optimal performance of a car
 % Asgeir Birkisson, November 2010
 
 %%

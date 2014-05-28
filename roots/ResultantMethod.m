@@ -1,5 +1,5 @@
 %% A new bivariate rootfinder in Chebfun2 based on Bezout resultants
-% Alex Townsend, 21st May 2013 
+% Alex Townsend, May 2013 
 
 %% 
 % (Chebfun2 example: roots/ResultantMethod.m)

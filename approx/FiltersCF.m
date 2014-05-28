@@ -1,5 +1,5 @@
-%% Digital Filters via CF Approximation
-% Nick Trefethen, 16 April 2014
+%% Digital filters via CF approximation
+% Nick Trefethen, April 2014
 
 %%
 % (Chebfun example approx/FiltersCF.m)

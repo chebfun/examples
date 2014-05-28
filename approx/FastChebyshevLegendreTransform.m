@@ -1,5 +1,5 @@
 %% A fast Chebyshev-Legendre transform
-% Alex Townsend and Nick Hale, 7th August 2013
+% Alex Townsend and Nick Hale, August 2013
 
 %% 
 % (Chebfun Example approx/FastChebyshevLegendreTransform.m)

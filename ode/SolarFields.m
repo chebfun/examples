@@ -1,5 +1,5 @@
 %% Nonlinear ODE modeling solar magnetic fields
-% Nick Hale & Natasha Flyer, September 2010
+% Nick Hale and Natasha Flyer, September 2010
 
 %%
 % (Chebfun example ode/SolarFields.m)

@@ -1,5 +1,5 @@
 %% Computing common roots of two bivariate functions
-% Yuji Nakatsukasa, Vanni Noferini, and Alex Townsend, 6th February 2013
+% Yuji Nakatsukasa, Vanni Noferini, and Alex Townsend, February 2013
 
 %%
 % (Chebfun example roots/BivariateRoots.m)

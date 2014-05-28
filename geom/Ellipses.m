@@ -1,5 +1,5 @@
 %% An ellipse rolling around another ellipse
-% Nick Trefethen, 18th October 2011
+% Nick Trefethen, October 2011
 
 %%
 % (Chebfun example geom/Ellipses.m)

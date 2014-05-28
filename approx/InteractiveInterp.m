@@ -1,5 +1,5 @@
-%% Interactive Interpolation
-% Nick Hale, 21st November 2012
+%% Interactive interpolation
+% Nick Hale, November 2012
 
 %%
 % (Chebfun example approx/InteractiveInterp.m) 

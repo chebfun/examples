@@ -1,5 +1,5 @@
-%% Jump Conditions in BVPS
-% Nick Hale, 25th November 2011
+%% Jump conditions in BVPs
+% Nick Hale, November 2011
 
 %%
 % (Chebfun Example ode/JumpConditions.m)

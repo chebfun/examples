@@ -1,5 +1,5 @@
 %% Resolution of wiggly functions
-% Nick Hale and Nick Trefethen, 28th October 2013
+% Nick Hale and Nick Trefethen, October 2013
 
 %%
 % (Chebfun example approx/ResolutionWiggly.m)

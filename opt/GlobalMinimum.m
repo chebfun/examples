@@ -1,5 +1,5 @@
 %% The global minimum of a complicated function
-% Alex Townsend, 4th March 2013
+% Alex Townsend, March 2013
 
 %% 
 % (Chebfun2 example opt/GlobalMinimum.m)

@@ -1,5 +1,5 @@
-%% Delta and Heaviside Hyperfunctions
-% Mohsin Javed, 17th April 2012
+%% Delta and Heaviside hyperfunctions
+% Mohsin Javed, April 2012
 
 %%
 % (Chebfun example complex/Hyperfuns.m)

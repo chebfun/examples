@@ -1,5 +1,5 @@
 %% Merry Christmas!
-% Stefan Güttel & Nick Hale, 13th December 2011
+% Stefan Güttel & Nick Hale, December 2011
 
 %%
 % (Chebfun example fun/XmasCard.m)

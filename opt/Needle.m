@@ -1,5 +1,5 @@
 %% Needle on a corrugated surface
-% Nick Trefethen and Hrothgar, 11th December 2013
+% Nick Trefethen and Hrothgar, December 2013
 
 %%
 % (Chebfun example opt/Needle.m)

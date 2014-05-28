@@ -1,4 +1,4 @@
-%% Transient Growth
+%% Transient growth
 % Nick Trefethen, July 2011
 
 %%

@@ -1,5 +1,5 @@
 %% A pathological function of Weierstrass
-% Hrothgar, 29th October 2013
+% Hrothgar, October 2013
 
 %%
 % (Chebfun example approx/WeierstrassFunction.m)

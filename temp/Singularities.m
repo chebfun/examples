@@ -1,5 +1,5 @@
 %% Types of singularities
-% Hrothgar, 12th November 2013
+% Hrothgar, November 2013
 
 %%
 % (Chebfun example complex/Singularities.m)

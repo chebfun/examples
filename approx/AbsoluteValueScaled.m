@@ -1,5 +1,5 @@
-%% Absolute value approximations by rationals 2
-% Yuji Nakatsukasa,  31st July 2012
+%% Absolute value approximations by rationals II
+% Yuji Nakatsukasa, July 2012
 
 %%
 % (Chebfun example approx/AbsoluteValueScaled.m)

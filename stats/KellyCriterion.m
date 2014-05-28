@@ -1,5 +1,5 @@
 %% Optimal bet-sizing and the Kelly Criterion
-% Mark Richardson, 24th October 2012
+% Mark Richardson, October 2012
 
 %%
 % (Chebfun example statistics/KellyCriterion.m)

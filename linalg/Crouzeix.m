@@ -1,5 +1,5 @@
 %% Crouzeix's conjecture
-% Nick Trefethen and Michael Overton, 16th October 2013
+% Nick Trefethen and Michael Overton, October 2013
 
 %%
 % (Chebfun Example linalg/Crouzeix.m)

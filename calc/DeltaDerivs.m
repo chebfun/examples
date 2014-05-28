@@ -1,5 +1,5 @@
 %% Delta functions and derivatives
-% Nick Trefethen, 1st August 2012
+% Nick Trefethen, August 2012
 
 %%
 % (Chebfun example calc/DeltaDerivs.m) 
