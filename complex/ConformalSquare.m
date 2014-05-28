@@ -21,9 +21,7 @@
 %%
 % Let $f(z)$ be the map from the interior of the unit disk to the interior
 % of a region bounded by a polygon with $n$ vertices. Then
-
-%%
-% \[  f'(z) = c \prod_{k=1}^n \left(1-\frac{z}{z_k}\right)^{\alpha_k-1}  \]
+% $$ f'(z) = c \prod_{k=1}^n \left(1-\frac{z}{z_k}\right)^{\alpha_k-1}. $$
 
 %%
 % In this formula, the points $z_1,\ldots,z_n$ are the inverse images of
@@ -44,7 +42,7 @@ zpre = [ 1, 1i, -1, -1i ];
 fprime = @(z) ( (1-z/zpre(1)).*(1-z/zpre(2)).*(1-z/zpre(3)).*(1-z/zpre(4)) ).^(-0.5);
 
 %%
-% Now we'll integrate $f'$ to get the mapping along the ray [0,1].
+% Now we'll integrate $f'$ to get the mapping along the ray $[0,1]$.
 z = chebfun('z',[0 1]);
 w = cumsum( fprime(z) )
 
@@ -63,8 +61,8 @@ hold on, axis equal, axis(1.35*[-1 1 -1 1]), axis off
 %%
 % Now we'll start to make things interesting by integrating along different
 % rays from the origin. We have to account for the direction of the ray in
-% our integration, through the relation $\int f'(z)\,dz = \int f'(z(r))\,
-% z'(r)\,dr$.
+% our integration, through the relation
+% $\int f'(z)\,dz = \int f'(z(r))\, z'(r)\,dr$.
 for t = linspace(0,2*pi,33)
     z = chebfun('r',[0 1])*exp(1i*t);
     subplot(1,2,1), plot(real(z),imag(z),'b',LW,1.5)
@@ -85,7 +83,7 @@ plot(w(1)*zpre([1:4 1]),'k--',LW,2), plot(w(1)*zpre,'r.',MS,20)
 % We finish the picture by plotting the images of circles of different
 % radii. We have to use the chain rule to account for integrating over the
 % curved paths. We also have to account for the integration constant, which
-% was implicitly defined by f(0)=0, by using the value of w we computed
+% was implicitly defined by $f(0)=0$, by using the value of $w$ we computed
 % along the first ray.
 for r = [.5 .6 .7 .8 .9 .97]
     z = r*zcirc;
