@@ -8,10 +8,10 @@
 function procrustes
 close all
 %% Shape analysis on a beach holiday
-% Procrustes analysis is a method for analysing 
-% sets of shapes (see [1]). Let's suppose we pick up a
-% pebble from the beach and want to know how closely its shape matches the
-% outline of a frisbee. Here is a plot of the frisbee and the pebble.
+% Procrustes analysis is a method for analysing sets of shapes (see [1]).
+% Let's suppose we pick up a pebble from the beach and want to know how
+% closely its shape matches the outline of a frisbee. Here is a plot of the
+% frisbee and the pebble.
 
 figure(1)
 t = chebfun('x',[0,2*pi]);
@@ -23,15 +23,12 @@ title('Frisbee and pebble','FontSize',14), hold off
 %% 
 % Two shapes are equivalent if one can be obtained from the other by
 % translating, scaling and rotating. Before comparison we thus:
-
-%%
+%
 % 1. Translate the shapes so they have mean zero.
-
-%%
+%
 % 2. Scale so the shapes have Root Mean Squared Distance (RMSD) to the
-% origin of 1.
-
-%% 
+%    origin of $1$.
+% 
 % 3. Rotate to align major axis.
 
 %% 
@@ -77,10 +74,9 @@ end
 [f,g] = ShapeAnalysis(f,g);
 
 %%
-% To calculate the Procrustes distance in the discrete case
-% we would measure the error between
-% the two shapes at a finite number of reference points and compute the
-% vector 2-norm. In Chebfun we calculate the continuous analogue:
+% To calculate the Procrustes distance in the discrete case we would measure
+% the error between the two shapes at a finite number of reference points and
+% compute the vector $2$-norm. In Chebfun we calculate the continuous analogue:
 
 norm(f-g)
 
@@ -89,16 +85,16 @@ norm(f-g)
 % reference points on the two shapes (to compare).  They then work out the
 % difference between corresponding reference points.  The error computed
 % depends on this correspondence.  A different correspondence gives a
-% different error.   In the continuous case this correspondence becomes the
+% different error.  In the continuous case this correspondence becomes the
 % parameterisation. A different parameterisation of the two curves gives a
 % different error. This continuous version of Procrustes (as implemented in
 % this example) is therefore more of an 'eyeball' check than a robust
 % statistical analysis.
 
 %% A shape and its reflection
-% At the beach shapes reflect on the surface of the sea. An interesting 
-% question is: How close, in shape, is a pebble to its reflection?  Here is
-% a plot of a pebble and its reflection. 
+% At the beach shapes reflect on the surface of the sea. An interesting
+% question is: How close, in shape, is a pebble to its reflection?  Here is a
+% plot of a pebble and its reflection.
 
 figure(2)
 % pebble
