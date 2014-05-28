@@ -7,14 +7,12 @@
 
 %%
 % A surface of revolution can be created by rotating a planar generator curve
-% around an axis lying in the same plane as the curve.
-% Chebfun has a command `cylinder` for such calculations, which takes
-% a chebfun as input and produces a Chebfun2 as output.
-% A classical example is
-% the unit sphere, which can be obtained by rotating $\sqrt{1-x^2}$ defined on
-% $[-1,1]$ around the $x$-axis. Here we have to rotate $\sqrt{1.0001-x^2}$
-% because Chebfun2 cannot represent functions with square root
-% singularities. 
+% around an axis lying in the same plane as the curve. Chebfun has a command
+% `cylinder` for such calculations, which takes a chebfun as input and
+% produces a Chebfun2 as output. A classical example is the unit sphere, which
+% can be obtained by rotating $\sqrt{1-x^2}$ defined on $[-1,1]$ around the
+% $x$-axis. Here we have to rotate $\sqrt{1.0001-x^2}$ because Chebfun2 cannot
+% represent functions with square root singularities.
 x = chebfun('x');
 f = sqrt(1.0001-x.^2);
 plot(f,'linewidth',1.6), axis equal
@@ -26,20 +24,19 @@ cylinder(f), axis equal
 % polynomial around an axis.
 
 %%
-% In the `cylinder` command,
-% the input chebfun defines the radius along
-% the unit height of the cylinder. Omitting output arguments causes the cylinder
-% to be displayed with a `surf` command and no outputs to be returned.
-% For the cone example, we can proceed as follows:
+% In the `cylinder` command, the input chebfun defines the radius along the
+% unit height of the cylinder. Omitting output arguments causes the cylinder
+% to be displayed with a `surf` command and no outputs to be returned. For the
+% cone example, we can proceed as follows:
 f = chebfun(@(x) -3*x + 3);
 cylinder(f)
 
 %%
-% By default the surface of revolution has height $1$ and is displayed as if the
-% generator curve was rotated around the $z$-axis. We can get the
+% By default the surface of revolution has height $1$ and is displayed as if
+% the generator curve was rotated around the $z$-axis. We can get the
 % $(x,y,z)$-coordinates, stretch the $z$-coordinates to match the interval of
-% definition of the generator chebfun, and rearrange the coordinates so that the
-% generator chebfun is rotated around the $x$-axis:
+% definition of the generator chebfun, and rearrange the coordinates so that
+% the generator chebfun is rotated around the $x$-axis:
 f = chebfun(@(x) 2.8*sin(0.2*x - 0.1) + 6.3, [-5 35]);
 ends = f.ends;
 [xx, yy, zz] = cylinder(f);
@@ -47,7 +44,7 @@ zzstr = diff(ends)*zz + ends(1);
 surf(zzstr,flipud(yy),xx)
 
 %%
-% Let us create yet another surface and study some of its 
+% Let us create yet another surface and study some of its
 % properties within Chebfun.
 x = chebfun('x', [0 2*pi]);
 f = sqrt(4 + 2*sin(2*x));
@@ -57,10 +54,10 @@ surf(xx,yy,zz)
 %%
 % The volume of this object can be computed as
 %
-% $$ V = \pi \int_a^b f^2(x)\, \mathrm{d}x. $$ 
+% $$ V = \pi \int_a^b f^2(x)\, \mathrm{d}x. $$
 %
-% This is a basic computation in Chebfun and we compare the
-% result with the exact value:
+% This is a basic computation in Chebfun and we compare the result with the
+% exact value:
 V = pi*sum(f.^2)
 error = V - 8*pi^2
 
@@ -72,8 +69,7 @@ error = V - 8*pi^2
 A = 2*pi*sum(f.*sqrt(1 + abs(diff(f)).^2))
 
 %%
-% The coordinates of the center of gravity are $x_G=0$, $y_G=0$,
-% and
+% The coordinates of the center of gravity are $x_G=0$, $y_G=0$, and
 %
 % $$ z_G = \frac{\pi}{V} \int_a^b x f^2(x)\, \mathrm{d}x. $$
 

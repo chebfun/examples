@@ -2,7 +2,7 @@
 % Nick Trefethen, August 2012
 
 %%
-% (Chebfun example calc/DeltaDerivs.m) 
+% (Chebfun example calc/DeltaDerivs.m)
 % [Tags: #delta, #impulse, #deltafunction, #DIRAC, #CUMSUM]
 
 %%
@@ -35,7 +35,7 @@ norm(f,2)
 norm(f,inf)
 
 %%
-% If we integrate $f$ with `cumsum`, each delta function becomes a jump:. The
+% If we integrate $f$ with `cumsum`, each delta function becomes a jump. The
 % value at the left is $0$ because `cumsum` always does that, and the value
 % at the right is $0$ because $f$ has zero mean.
 g = cumsum(f);
