@@ -24,6 +24,15 @@ function Crouzeix
 % see the Chebfun Example [linalg/FieldOfValues](FieldOfValues.html).
 
 %%
+% For example, here are the eigenvalues and field of values of the
+% "Grcar matrix" of dimension $30$, rotated (for no particular reason)
+% by multiplication by $\exp(1.4i)$.
+A = exp(1.4i)*gallery('grcar',30);
+plot(eig(A),'.k','markersize',16)
+hold on, plot(fov(A),'m','linewidth',1.6)
+hold off, axis equal, axis off
+
+%%
 % Intriguingly, the inequality of Crouzeix's conjecture has been established
 % with a weaker constant [2]:
 % $$ \|p(A)\| \le 11.08 \|p\|_{W(A)}. $$
