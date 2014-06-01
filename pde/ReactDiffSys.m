@@ -31,21 +31,20 @@ v0 = 1 + erf(10*(x-0.7));
 w0 = 0;
 
 %%
-% Here is the anonymous function defining the problem for PDE15S.
-f = @(u,v,w,D) [ 0.1*D(u,2) - 100*u.*v  ...
-                 0.2*D(v,2) - 100*u.*v ...
-                .001*D(w,2) + 200*u.*v ];  
-%%
-% (Here the fourth input, D, points f to the derivative operator.)
-            
+% Here is the anonymous function defining the problem for PDE15S.            
+f = @(t,x,u,v,w) [ 0.1*diff(u,2) - 100*u.*v  ...
+                 0.2*diff(v,2) - 100*u.*v ...
+                .001*diff(w,2) + 200*u.*v ];  
+                        
 %%
 % We solve the system and plot the result:
-[tt uu] = pde15s(f,0:.1:2,[u0 v0 w0],'neumann');
+[tt,uu] = pde15s(f,0:.1:2,[u0 v0 w0],'neumann');
 cols = get(0,'DefaultAxesColorOrder');
 plot3(0,0,NaN,0,0,NaN,0,0,NaN), hold on     % Used for legend entries
 legend('u','v','w') 
 for k = 1:numel(uu)
     waterfall(uu{k},tt,'simple','linewidth',1.6,'edgecolor',cols(k,:))
+%     waterfall(uu{k},tt)
 end
 FS = 'fontsize';
 xlabel('x',FS,14), ylabel('t',FS,14), grid on, hold off

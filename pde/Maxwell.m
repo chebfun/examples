@@ -18,13 +18,12 @@
 %%
 % Here is how we can pose Maxwell's equations for solving in PDE15S, in a
 % medium with c=1.
-pdefun = @(E,B,diff) [ diff(B), diff(E) ];
-bc.left = @(E,B,diff) E;
+pdefun = @(t,x,E,B) [ diff(B), diff(E) ];
+bc.left = @(t,x,E,B) E;
 bc.right = bc.left;
 
 %%
-% Note how the spatial differentiation operator has to be accepted as an
-% input argument in each case. Now we can define an initial condition and 
+% Now we can define an initial condition and 
 % solve the problem. 
 d = [-2,2];
 x = chebfun('x',d);

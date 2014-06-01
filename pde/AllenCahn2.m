@@ -24,7 +24,7 @@
 u0 = chebfun('3.*exp(-x.^2/4)-1',[-16 16]);
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 opts = pdeset('Eps',1e-6,'plot','off');
-pdefun = @(u, t, x, diff) diff(u, 2)+u-u.^3;
+pdefun = @(t, x, u) diff(u, 2)+u-u.^3;
 t50 = 0:50; bc.left = -1; bc.right = -1;
 [t, u] = pde15s(pdefun, t50, u0, bc, opts);
 clf, waterfall(u, t, 'simple', LW, 1), grid on, 

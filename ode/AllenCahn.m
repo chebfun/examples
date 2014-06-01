@@ -21,7 +21,7 @@ Eps = 2;
 dom = [0,10];
 x = chebfun('x',dom);
 f = sin(x);
-% cheboppref('plotting',0.01)
+cheboppref('plotting',0.01)
 N = chebop(@(u) Eps*diff(u,2)+u-u.^3,dom,1,-1);
 tic, u = N\f; t = toc;
 

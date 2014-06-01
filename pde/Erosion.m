@@ -45,9 +45,11 @@ L.op = @(u) diff(u,2);  % 2nd-derivative operator
 L.lbc = @(u) diff(u);   % Neumann BC at left
 L.rbc = @(u) diff(u);   % Neumann BC at right
 dt = 0.01;
-expmL = expm(dt*L);     % exponential of the operator
-u = expmL*u0;
-plot(u,LW,lw), axis(ax), grid on
+% expmL = expm(dt*L);     % exponential of the operator
+% u = expmL*u0;
+u = expm(L,dt,u0);     % exponential of the operator
+
+plot(u{1},LW,lw), axis(ax), grid on
 title(sprintf('t = %4.2f     length = %d',0.01,length(u)),FS,fs)
 
 
@@ -58,8 +60,9 @@ figure
 % there are no further warning messages.  The rightmost maximum has extra
 % amplitude, since it effectively corresponded to a wider initial spike
 % thanks to the Neumann boundary condition.
-u = expmL*u;
-plot(u,LW,lw), axis(ax), grid on
+% u = expmL*u;
+u = expm(L,dt,u);
+plot(u{1},LW,lw), axis(ax), grid on
 title(sprintf('t = %4.2f     length = %d',0.02,length(u)),FS,fs)
 
 figure
@@ -67,6 +70,7 @@ figure
 %%
 % At t = 0.1, there is not much of the original structure left.  The
 % length of the chebfun has also been reduced.
-u = expm(0.08*L)*u;
-plot(u,LW,lw), axis(ax), grid on
+% u = expm(0.08*L)*u;
+u = expm(L,8*dt,u);
+plot(u{1},LW,lw), axis(ax), grid on
 title(sprintf('t = %4.2f     length = %d',0.1,length(u)),FS,fs)
