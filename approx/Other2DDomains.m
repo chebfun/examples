@@ -1,5 +1,5 @@
 %% Chebfun2 objects on non-rectangular domains
-% Alex Townsend, 9th June 2013
+% Alex Townsend, June 2013
 
 %% 
 % (Chebfun2 Example: approx/Other2DDomains.m)

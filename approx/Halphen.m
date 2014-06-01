@@ -6,26 +6,34 @@
 % [Tags: #Halphen, #rational, #9.28903, #exponential]
 
 %%
-% A well-known problem in approximation theory is, how well can exp(x) be
-% approximated in the infinity norm on the infinite interval (-infty,0] by
-% rational functions of type (n,n)? To three places, the first few
+% A well-known problem in approximation theory is, how well can $e^x$ be
+% approximated in the infinity norm on the infinite interval $(-\infty,0]$ by
+% rational functions of type $(n,n)$? To three places, the first few
 % approximation errors are these:
 %
-%   Type (0,0):  error = 0.500
-%   Type (1,1):  error = 0.0668
-%   Type (2,2):  error = 0.00736
-%   Type (3,3):  error = 0.000799
-%   Type (4,4):  error = 0.0000865
-%   Type (5,5):  error = 0.00000934
-%   Type (6,6):  error = 0.000001008
-%   Type (7,7):  error = 0.0000001087
-%   Type (8,8):  error = 0.00000001172
+% - Type $(0,0)$:  error = $0.500$
 %
-% As n increases to infinity, it is known that the asymptotic behavior is
+% - Type $(1,1)$:  error = $0.0668$
 %
-%    error ~ 2 C^(-n-1/2),
+% - Type $(2,2)$:  error = $0.00736$
 %
-% where C is a number known as Halphen's constant with the following
+% - Type $(3,3)$:  error = $0.000799$
+%
+% - Type $(4,4)$:  error = $0.0000865$
+%
+% - Type $(5,5)$:  error = $0.00000934$
+%
+% - Type $(6,6)$:  error = $0.000001008$
+%
+% - Type $(7,7)$:  error = $0.0000001087$
+%
+% - Type $(8,8)$:  error = $0.00000001172$
+%
+% As $n$ increases to infinity, it is known that the asymptotic behavior is
+%
+% $$ \mathrm{error} \sim 2 C^{-n-1/2}, $$
+%
+% where $C$ is a number known as Halphen's constant with the following
 % approximate numerical value:
 halphen_const = 9.289025491920818918755449435951
 
@@ -37,7 +45,7 @@ halphen_const = 9.289025491920818918755449435951
 
 %%
 % Here is a plot showing that the asymptotic behavior matches the actual
-% errors very closely even for small n:
+% errors very closely even for small $n$:
 LW = 'linewidth'; MS = 'markersize'; FS = 'fontsize';
 n = 0:10;
 err = [.5 .0668 7.36e-3 7.99e-4 8.65e-5 9.35e-6 ...
@@ -49,11 +57,11 @@ xlabel('n',FS,14), ylabel('error',FS,14)
 
 %%
 % One way to characterize Halphen's constant mathematically is that it is
-% the inverse of the unique positive value of s where the function
+% the inverse of the unique positive value of $s$ where the function
 %
-%    SUM from k=1 to infty of  ks^n/(1-(-s)^n)
+% $$ \sum_{k=1}^\infty  \frac{k s^n}{1-(-s)^n} $$
 %
-% takes the value 1/8.  This is an easy computation for Chebfun:
+% takes the value $1/8$.  This is an easy computation for Chebfun:
 s = chebfun('s',[1/12,1/6]);
 f = 0*s; k = 0; normsk = 999;
 while normsk > 1e-16

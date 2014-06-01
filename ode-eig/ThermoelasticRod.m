@@ -1,5 +1,5 @@
 %% Stability of a thermoelastic rod
-% Toby Driscoll, 8th November 2011
+% Toby Driscoll, November 2011
 
 %%
 % (Chebfun example ode-eig/ThermoelasticRod.m)

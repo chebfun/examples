@@ -1,19 +1,20 @@
 %% 2D subdivision and the average degree reduction
-% Alex Townsend, 21st August 2013
+% Alex Townsend, August 2013
 
 %%
-% (Chebfun2 Example: AverageDegreeReduction2D.m)
+% (Chebfun2 Example roots/AverageDegreeReduction2D.m)
 % [Tags: #roots, #Chebfun2, #subdivision]
 function AverageDegreeReduction2D
 
 %% 2D subdivision
 % Generally, Chebfun2 approximates globally smooth functions $f(x,y)$ by global
 % low rank polynomial interpolants. However, in the bivariate rootfinding
-% algorithm to solve the problem: find $(x,y)$ such that
+% algorithm to solve
 %
-% $$f(x,y) = g(x,y) = 0,$$
+% $$ f(x,y) = g(x,y) = 0, $$
 %
-% we use piecewise smooth interpolants if the polynomial degrees are larger than 16 in the $x$- or
+% we use piecewise smooth interpolants if
+% the polynomial degrees are larger than $16$ in the $x$- or
 % $y$-variable (of $f$ or $g$). In bivariate rootfinder the resultant based
 % method recursively subdivides
 % the rectangular domain and the functions $f(x,y)$ and $g(x,y)$ are approximated
@@ -43,7 +44,7 @@ function AverageDegreeReduction2D
 % parameter is typically about $1/2$ because under subdivision the degree
 % reduction is directly determined by the degree reduction in $h(x)$.
 % The average degree reduction parameter for univariate functions is
-% discussed in [3].  For example,
+% discussed in [2].  For example,
 
 M = 2000;
 f = @(x,y) sin(M*x).*sin(M*y);
@@ -103,7 +104,7 @@ max(m,n)./2.^(0:.5:1.5)
 % The symmetric Cauchy function is given by $f(x,y) = 1/(x+y)$ defined on
 % $[a,b]\times[a,b]$, where $0<a<b$. This is a 2D generalisation of
 % functions of the form $1/(x+c)$, which has been used to investigate 
-% the parameter $\tau$ in the univariate case [3]. The numerical degree 
+% the parameter $\tau$ in the univariate case [2]. The numerical degree 
 % of $f(x,y)$ can be determined by using Eliott's method for all $0<a<b$.
 
 %%
@@ -188,13 +189,13 @@ end
 %% References
 %%
 % [1] Y. Nakatsukasa, V. Noferini, and A. Townsend, Computing the common zeros
-% of two bivariate functions via Bezout resultants, submitted, 2013.
-%%
-% [2] A. Townsend, A new bivariate rootfinding algorithm based on a
-% resultant method, Chebfun2 Example, May 2013.
-%%
-% [3] A. Townsend, 1D Subdivision and the average degree reduction, Chebfun
+% of two bivariate functions via Bezout resultants, 
+% _Numerische Mathematik_, to appear.
+%
+% [2] A. Townsend, 1D Subdivision and the average degree reduction, Chebfun
 % Example, May 2013.
-%%
-% [4] A. Townsend and L. N. Trefethen, An extension of Chebfun to two
-% dimensions, submitted, 2013.
+%
+% [3] A. Townsend and L. N. Trefethen, An extension of Chebfun to two
+% dimensions, _SIAM Journal on Scientific Computing_, 35
+% (2013), C495-C518.
+

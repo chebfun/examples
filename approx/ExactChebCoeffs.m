@@ -1,5 +1,5 @@
 %% Exact Chebyshev expansion coefficients of a function
-% Mark Richardson, 13th June 2012
+% Mark Richardson, June 2012
 
 %%
 % (Chebfun example approx/ExactChebCoeffs.m)
@@ -18,26 +18,25 @@
 % Chebsyhev series expansion may be obtained using a contour integral
 % technique described by Elliott [1]. Here is how it works:
 %
-% The Chebsyhev coefficients of a Lipschitz-continuous function f can be 
+% The Chebsyhev coefficients of a Lipschitz-continuous function $f$ can be 
 % determined by the integral
 % $$ a_n = \frac{2}{\pi} \int_{-1}^{1} \frac{f(x)T_n(x)}{\sqrt{1-x^2}} 
 % {\rm d} x.$$ 
 
 %%
-% If f(x) is analytic within a particular contour C in the complex plane, 
+% If $f(x)$ is analytic within a particular contour $C$ in the complex plane, 
 % then by Cauchy's integral formula, we can also write
 % $$ f(x) = \frac{1}{2 \pi i} \int_{C} \frac{f(z)}{z-x} {\rm d} z. $$
 
 %%
-% If C is large enough to enclose the unit interval, then the second of 
-% these two  formulas can be subsituted into the first and the orders of
+% If $C$ is large enough to enclose the unit interval, then the second of 
+% these two formulas can be subsituted into the first and the orders of
 % integration interchanged to give
-%
 % $$ a_n = \frac{1}{\pi^2 i} \int_C f(z) \int_{-1}^{1} 
 % \frac{T_n(x) {\rm d} x}{(z-x)\sqrt{1-x^2}} {\rm d} z. $$
 
 %%
-% The integral with respect to x can be computed exactly so that we end up
+% The integral with respect to $x$ can be computed exactly so that we end up
 % with
 % $$a_n = \frac{1}{\pi i} \int_{C} \frac{f(z)}{\sqrt{z^2-1}(z \pm 
 % \sqrt{z^2-1})^n} {\rm d} z. $$
@@ -63,7 +62,7 @@ f  = @(x) 1./(5+x);
 fc = chebfun(f);
 k = 1:length(fc);
 %%
-% The function has a pole at -5 with residue 1. Substituing 
+% The function has a pole at $-5$ with residue $1$. Substituing 
 % these values into the above formula then gives the following exact 
 % expression for the Chebyshev expansion coefficients:
 % $$ a_n =  \frac{1}{\sqrt{6}} \frac{(-1)^n}{(5+\sqrt{24})^n} $$
@@ -71,7 +70,7 @@ k = 1:length(fc);
 %%
 % The theoretical coefficients match those computed by Chebfun, apart 
 % from floating point representation and aliasing effects. The $a_0$ 
-% coefficient is out by the usual factor of 2. 
+% coefficient is out by the usual factor of $2$. 
 exact_coeffs = flipud( (1/sqrt(6)*(-1).^(k-1)./(5+sqrt(24)).^(k-1))' );
 cheb_coeffs = chebpoly(fc)';
 display([exact_coeffs cheb_coeffs exact_coeffs-cheb_coeffs])

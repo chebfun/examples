@@ -1,5 +1,5 @@
 %% Lee and Greengard ODE examples
-% Nick Trefethen, 12th June 2012
+% Nick Trefethen, June 2012
 
 %%
 % (Chebfun Example ode/LeeGreengardODEs.m)
@@ -13,16 +13,24 @@
 % and Greengard's interesting collection of examples.  These problems are
 % linear.
 
+%%
+% The following discussion is based on Chebfun's classical
+% spectral discretizations (rectangular collocation).  
+% It would be interesting to revisit the same examples with
+% the alternative ultraspherical discretizations introduced
+% with version 5 to see whether certain values of $\varepsilon$
+% can be reduced further.
+
 %% Example 1. Viscous shock
 % The first example is
 % $$ \varepsilon u''(x) + 2 x u'(x) = 0, \quad u(-1) = -1, ~ u(1) = 1. $$
 % The following anonymous function produces a Chebfun solution as a
-% function of ep:
+% function of $\varepsilon$:
 uep = @(ep) chebop(@(x,u) ep*diff(u,2) + 2*x.*diff(u),[-1,1],-1,1)\0;
 
 %%
-% Here we plot the solution for ep = 0.01, 0.0001.  It works fine, but Lee
-% and Greengard can go down to 1e-14.
+% Here we plot the solution for $\varepsilon = 0.01, 0.0001$.
+% It works fine, but Lee and Greengard can go down to $10^{-14}$.
 FS = 'fontsize'; LW = 'linewidth';
 for k = 1:2
     ep = 10^(-2*k);
@@ -42,7 +50,7 @@ end
 unu = @(nu) chebop(@(x,u) x.^2.*diff(u,2)+x.*diff(u)+(x.^2-nu^2).*u,[0,600],0,1)\0;
 
 %%
-% The solution for nu = 100 looks just as in Lee and Greengard:
+% The solution for $\nu = 100$ looks just as in Lee and Greengard:
 nu = 100;
 tic, u = unu(nu); t = toc;
 clf, plot(u,LW,1.2), grid on
@@ -82,7 +90,7 @@ end
 % This time we have
 % $$ \varepsilon u''(x) + x u'(x) - 0.5u(x) = 0, \quad u(-1) = 1, ~ u(1) = 2. $$
 % With a global discretization and standard defaults, Chebfun can go down
-% to 1e-5 or so.  With a breakpoint introduced at $x=0$ by specifying
+% to $10^{-5}$ or so.  With a breakpoint introduced at $x=0$ by specifying
 % the domain [-1 0 1], we get a little further, though not as far
 % as Lee and Greengard:
 uep = @(ep) chebop(@(x,u) ep*diff(u,2)+x.*diff(u)-0.5*u,[-1 0 1],1,2)\0;
@@ -98,7 +106,8 @@ end
 %% Example 6. Exponential ill-conditioning
 % Finally we consider
 % $$ \varepsilon u''(x) - x u'(x) + u(x) = 0, \quad u(-1) = 1, ~ u(1) = 2. $$
-% The pictures look fine down to Lee and Greengard's value of ep = 1/70:
+% The pictures look fine down to Lee and Greengard's value of
+% $\varepsilon = 1/70$:
 uep = @(ep) chebop(@(x,u) ep*diff(u,2)-x.*diff(u)+u,[-1 0 1],1,2)\0;
 for k = 1:2
     ep = (1/35)/k;

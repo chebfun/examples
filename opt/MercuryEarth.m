@@ -1,5 +1,5 @@
 %% Mercury-Earth minimum separation
-% Tonatiuh Sanchez-Vizuet and Matthew Moye, 19th June 2012
+% Tonatiuh Sanchez-Vizuet and Matthew Moye, June 2012
 
 %%
 % (Chebfun example opt/MercuryEarth.m)

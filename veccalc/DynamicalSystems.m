@@ -1,5 +1,5 @@
 %% Classification of linear dynamical systems
-% Georges Klein, 4th March 2013
+% Georges Klein, March 2013
 
 %%
 % (Chebfun2 example VectorCalculus/LinearDynamicalSystems.m)

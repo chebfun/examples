@@ -1,5 +1,5 @@
 %% A scribble for Chebfun2 
-% Nick Hale and Alex Townsend, 30th August 2013
+% Nick Hale and Alex Townsend, August 2013
 
 %%
 % (Chebfun2 Example fun/Scribble2.m)

@@ -1,5 +1,5 @@
 %% Central Limit Theorem
-% Nick Trefethen and Mohsin Javed, 30th July 2012
+% Nick Trefethen and Mohsin Javed, July 2012
 
 %%
 % (Chebfun example stats/CentralLimitTheorem.m)

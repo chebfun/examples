@@ -1,5 +1,5 @@
 %% A greedy algorithm for choosing interpolation points
-% Nick Trefethen, 27 November 2011
+% Nick Trefethen, November 2011
 
 %%
 % (Chebfun example approx/GreedyInterp.m)
@@ -13,16 +13,16 @@
 
 %%
 % Suppose we don't know any of the theory and just let an algorithm pick
-% effective points on the fly.  Specifically, suppose f is a continuous
-% function on [-1,1]. We could take the first interpolation point x0 to be
-% a point where f achieves its maximum absolute value and compute the
-% corresponding interpolant p0 of degree 0.  Then we could take the second
-% interpolation point x1 to be a point where f-p0 achieves its maximum
-% absolute value. And so on.
+% effective points on the fly.  Specifically, suppose $f$ is a continuous
+% function on $[-1,1]$. We could take the first interpolation point $x_0$ to
+% be a point where $f$ achieves its maximum absolute value and compute the
+% corresponding interpolant $p_0$ of degree $0$.  Then we could take the
+% second interpolation point $x_1$ to be a point where $f-p_0$ achieves its
+% maximum absolute value. And so on.
 
 %%
-% Using Chebfun's interp1 command, it is easy to try out this idea. An
-% interesting choice for f is the absolute value:
+% Using Chebfun's `interp1` command, it is easy to try out this idea. An
+% interesting choice for $f$ is the absolute value:
 x = chebfun('x');
 f = abs(x);
 
@@ -42,7 +42,7 @@ for n = 0:4
 end
 
 %%
-% Let's continue to n = 8, 16, 32, 64, 128:
+% Let's continue to $n = 8, 16, 32, 64, 128$:
 for n = 5:128
    s = [s; maxpos];
    p = interp1(s,f,dom);
@@ -70,12 +70,11 @@ hold off, semilogy(lebesgue(s),'k',LW,1.4)
 hold on, semilogy(lebesgue(scheb),'r',LW,1.4)
 
 %%
-% The flavor of this kind of algorithm is reminiscent of the
-% theory of Leja points [1,2], though the details are different since
-% Leja points are determined just by the domain of approximation whereas
-% here we are adaptively working with the function f itself.
-% For an explanation related to
-% potential theory of why effective interpolation grids tend to cluster
+% The flavor of this kind of algorithm is reminiscent of the theory of Leja
+% points [1,2], though the details are different since Leja points are
+% determined just by the domain of approximation whereas here we are
+% adaptively working with the function $f$ itself. For an explanation related
+% to potential theory of why effective interpolation grids tend to cluster
 % near boundaries, see Chapter 12 of [3].
 
 %%

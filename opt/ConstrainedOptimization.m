@@ -1,5 +1,5 @@
-%% Constrained Optimization in Chebfun 
-% Alex Townsend, 16th January 2014
+%% Constrained optimization in chebfun 
+% Alex Townsend, January 2014
 
 %% 
 % (Chebfun Example opt/ConstrainedOptimization.m) 
@@ -7,17 +7,17 @@
 
 function ConstrainedOptimization 
 
-LW = 'linewidth'; lw = 2; FS = 'fontsize'; fs = 16; MS = 'markersize'; ms = 20; 
+LW = 'linewidth'; lw = 1.6;
+FS = 'fontsize'; fs = 14;
+MS = 'markersize'; ms = 20; 
 
 %% One-dimensional constrained optimization
 % By virtue of Chebfun's capabilities with global rootfinding and global
 % optimization, some constrained optimization is possible. For example, for
-% $x\in[0,10]$, solve 
+% $x\in[0,10]$, we can solve 
 %
-%  $$\max( \sin(x)^2 + \sin(x^2) ) \quad \text{s.t.}\quad
-% \lfloor x\rfloor = \text{prime}.$$
-%
-
+% $$ \max( \sin(x)^2 + \sin(x^2) ), \quad \quad
+% \lfloor x \rfloor = \mbox{prime}. $$
 x = chebfun('x', [0 10]); 
 objective = chebfun( @(x) sin(x).^2 + sin(x.^2), [0 10] ); 
 constrain = 0*x; 
@@ -27,8 +27,9 @@ for j = 1:length(p)
 end
 g = objective.*constrain; 
 [mx, loc] = max( g );
-plot(g), hold on, plot(loc, mx, 'r.', MS, ms), hold off
-title(sprintf('constrained maximum = %1.3f', mx), FS, fs), set(gca, FS, fs)
+plot(g,LW,lw), hold on, plot(loc, mx, 'r.', MS, ms), hold off
+title(sprintf('constrained maximum = %1.3f',mx),FS,fs), set(gca,FS,fs)
+ylim([-2 3]);
 
 %% 
 % Here, to deal with the simple constraint on the independent variable a
@@ -37,44 +38,43 @@ title(sprintf('constrained maximum = %1.3f', mx), FS, fs), set(gca, FS, fs)
 
 %% Another constraint
 % A similar thing can be done with other constraints.  
-% For example, consider, for $x\in[0,10]$,
+% For example, for $x\in[0,10]$, consider
 %
-% $$ \min(\sin(x)^2+\sin(x^2)) \quad \text{s.t.} \quad |\sin(10x)|<1/2.$$
+% $$ \min(\sin(x)^2+\sin(x^2)), \quad \quad |\sin(10x)|<1/2. $$
 %
-
+% We can proceed like this:
 x = chebfun('x', [0 10]); 
 objective = chebfun( @(x) sin(x).^2 + sin(x.^2), [0 10] ); 
 constrain = (abs(sin(10*x)) < 1/2); 
 g = objective.*constrain; 
 [mx, loc] = max( g );
-plot(g), hold on, plot(loc, mx, 'r.', MS, ms), hold off
+plot(g,LW,lw), hold on, plot(loc,mx,'r.',MS,ms), hold off
 title(sprintf('constrained maximum = %1.3f', mx),FS,fs), set(gca,FS,fs)
+ylim([-2 3]);
 
 %% Two-dimensional constrained optimization
 % Chebfun2 also has capabilities for global rootfinding and optimization
 % and hence, also some constrained optimization. For example, consider maximizing 
 % 
-% $$\cos((x-1/10)y)^2 + x \sin(3x+y)$$ 
+% $$ \cos((x-1/10)y)^2 + x \sin(3x+y) $$ 
 %
-% over the following heart-shaped region:
-  
+% over this heart-shaped region:
 t = chebfun('t',[0,2*pi]);
 x = 2*sin(t); y = 2*cos(t)-(1/2)*cos(2*t)-(1/4)*cos(3*t)-(1/8)*cos(4*t);
 constrain = x + 1i*y; 
-plot( constrain, 'k-', LW, lw), axis equal, title('Constraint', FS, fs)
+plot(constrain,'k-',LW,lw), axis equal, title('Constraint',FS,fs)
+axis([-3 3 -3 3])
 
 %%
 % Here is a contour plot of the objective function: 
 
 objective = chebfun2(@(x,y) cos((x-.1).*y).^2 + x.*sin(3*x+y), [-3 3 -3 3]); 
-
 contour(objective, LW, lw), axis equal, hold on
 plot( constrain, 'k-', LW, lw), set(gca, FS, fs)
 axis([-3 3 -3 3])
-
 %%
 % We can solve this by first finding all the local extrema of the objective
-% function, restricting to those that lie inside the heart-shaped region, and
+% function, restricting to those that lie inside the heart, and
 % then picking the maximum:
 
 r = roots( grad( objective ) ); 
@@ -84,9 +84,8 @@ plot(r(:,1), r(:,2), '.k', MS, ms)
 max_inside = max(objective(r(:,1), r(:,2)));
 max_boundary = max(objective(constrain));
 max_overall = max(max_inside, max_boundary)
-
 %% 
-% The maximum occurs inside the heart-shaped region. Let's plot it: 
+% The maximum occurs inside the heart. Let's plot it: 
 
 [ignored, loc] = max(objective(r(:,1), r(:,2)));
 plot( r(loc,1), r(loc,2), 'r.', MS, 40)
@@ -101,7 +100,7 @@ title(sprintf('Overall maximum = %1.3f', max_overall), FS, fs)
 end
 
 %% Inpolygon
-% The script below is an overload of the INPOLYGON command in MATLAB. 
+% The script below is an overload of the `inpolygon` command in MATLAB. 
 % Functionality may be added into a new release of Chebfun, in which case this 
 % script will be removed. 
 
@@ -118,19 +117,18 @@ function [in,on] = inpolygon(x,y,p)
 tol = 100*eps;
   
 p = p(:); % concatenate to column chebfun. 
-if ( all(abs(p(p.ends,'left') - p(p.ends,'right')) > 100*eps) || ...
-        all(abs(p.vals(1) - p.vals(end)) > 100*eps))
+if ( all(abs(p(p.domain,'left') - p(p.domain,'right')) > 100*eps) )
     error('CHEBFUN:inpolygon:closed','Chebfun must form closed curve.');
 end
 
 pgon = 1;   %Is it a polygon?
-for k = 1:numel(p.nfuns)
-    if ( p.funs(k).n > 2 ), pgon = 0; break; end 
+for k = 1:numel(p.funs{:})
+    if ( length(p.funs{k}) > 2 ), pgon = 0; break; end 
 end
 
-% If it is a polygon use MATLAB inbuilt INPOLYGON command.
-if (pgon)
-    [in, on] = inpolygon( x, y, real(p.vals), imag(p.vals) );
+% If it is a polygon use MATLAB inbuilt `inpolygon` command.
+if ( pgon )
+    [in, on] = inpolygon( x, y, real(p.values{:}), imag(p.values{:}) );
     return
 end
 

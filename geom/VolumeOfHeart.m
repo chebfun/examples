@@ -1,5 +1,5 @@
-%% The Volume of a Heart and the Divergence Theorem
-% Rodrigo Platte,  April 2013.
+%% The volume of a heart and the Divergence Theorem
+% Rodrigo Platte, April 2013.
 
 %% 
 % (Chebfun2 example /geom/VolumeOfHeart.m)

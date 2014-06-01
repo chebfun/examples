@@ -1,6 +1,7 @@
-%% Newton's Method
-% Kuan Xu, 24th October 2012
-%
+%% Newton's method
+% Kuan Xu, October 2012
+
+%%
 % (Chebfun example roots/NewtonRaphson.m)
 % [Tags: #Newton, #ROOTS]
 

@@ -1,4 +1,4 @@
-%% Transient Growth
+%% Transient growth
 % Nick Trefethen, July 2011
 
 %%
@@ -6,12 +6,12 @@
 % [Tags: #linearalgebra, #norm, #transient]
 
 %%
-% If A is a matrix whose eigenvalues are in the open left
+% If $A$ is a matrix whose eigenvalues are in the open left
 % half of the complex plane, then the corresponding dynamical system
-% defined by the equation du/dt = Au is asymptotically stable, with
-% all solutions decaying to zero as t->infinity.  Since the solution
-% is u(t) = exp(tA)*u(0), another way to say this is that the
-% quantity norm(expm(tA)) decays to zero as t->infty.
+% defined by the equation $\frac{du}{dt} = Au$ is asymptotically stable, with
+% all solutions decaying to zero as $t \to \infty$.  Since the solution
+% is $u(t) = e^{tA} u(0)$, another way to say this is that the
+% quantity $\| e^{tA} \|$ decays to zero as $t \to \infty$.
 
 %%
 % Along the way, however, there may be transient growth, and this is
@@ -24,8 +24,8 @@ A = [-1 0 0 0 0 0 -625; 0 -1 -30 400 0 0 250; -2 0 -1 0 0 0 30;
      200 0 0 -150 -100 -1 -1000; 1 0 0 0 0 0 -1]
 
 %%
-% Here (adapted from linalg/NonnormalQuiz.m) is a code to compute and
-% plot norm(expm(tA)) as a function of t:
+% Here (adapted from [linalg/NonnormalQuiz](NonnormalQuiz.html)) is a code to compute and
+% plot $\| e^{tA} \|$ as a function of $t$:
  
 e = chebfun(@(t) norm(expm(t*A)),[0 2.5],'vectorize','splitting','on');
 LW = 'linewidth'; FS = 'fontsize'; plot(e,'b',LW,2)

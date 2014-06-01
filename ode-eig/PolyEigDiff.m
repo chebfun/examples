@@ -1,5 +1,5 @@
 %% Polynomial eigenproblems with differential operators
-% Stefan Güttel, 30 August 2011
+% Stefan Güttel, August 2011
 
 %%
 % (Chebfun example ode-eig/PolyEigDiff.m)

@@ -3,9 +3,7 @@
 
 %%
 % (Chebfun example stats/Histogram.m)
-
 % [Tags: #histogram, #HIST]
-%%
 
 function Histogram
 

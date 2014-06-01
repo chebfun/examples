@@ -1,5 +1,5 @@
-%% Absolute value approximations by rationals 2
-% Yuji Nakatsukasa,  31st July 2012
+%% Absolute value approximations by rationals II
+% Yuji Nakatsukasa, July 2012
 
 %%
 % (Chebfun example approx/AbsoluteValueScaled.m)
@@ -69,9 +69,9 @@ legend('Newton','scaled Newton','location','best')
 % the type $(2^k,2^k-1)$ best rational approximation to $\mbox{sign}(x)$ on
 % the interval $[b,1]$ due to Zolotarev. Since the best type $(n,n)$
 % approximation to $\mbox{sign}(x)$ yields accuracy
-% $O(\mbox{exp}(-C\sqrt{n}))$ [5, Ch.4], we can show that also for $|x|$,
-% the above process (with an appropriately chosen $b$) yields the optimal
-% accuracy $O(\mbox{exp}(-C\sqrt{2^k}))$.
+% $O(\mbox{exp}(-C\sqrt{n}))$ [5, Ch.4], we can show that also for $|x|$, the
+% above process (with an appropriately chosen $b$) yields the optimal accuracy
+% $O(\mbox{exp}(-C\sqrt{2^k}))$.
 % 
 
 %%

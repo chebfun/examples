@@ -1,5 +1,5 @@
-%% Normal Distribution -- Exercises from a Textbook
-% Jie Gao and Nick Trefethen, 23rd April 2013
+%% Exercises from a textbook: Normal distribution
+% Jie Gao and Nick Trefethen, April 2013
 
 %%
 % (Chebfun example stats/NormalExercises.m)

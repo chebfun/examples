@@ -1,5 +1,5 @@
 %% The global minimum of a complicated function
-% Alex Townsend, 4th March 2013
+% Alex Townsend, March 2013
 
 %% 
 % (Chebfun2 example opt/GlobalMinimum.m)
@@ -64,7 +64,7 @@ fprintf('Total time taken = %1.4fs\n',t)
 contour(g), hold on, plot(X(1), X(2), 'k.', 'markersize', 20), hold off
 
 %%
-% To see that the computed point is the global minimum we do the follow 
+% To see that the computed point is the global minimum we make the following
 % plot:
 
 plot(g), hold on, plot3(X(1),X(2),Y,'k.','markersize',40)
@@ -78,4 +78,5 @@ zlim([-10 10]), view(-24.5,4)
 % 100-Digit Challenge: A Study in High-Accuracy Numerical Computing, SIAM, 2004.
 %
 % [3] A. Townsend and L. N. Trefethen, An extension of Chebfun to two 
-%     dimensions, submitted to SISC, (2013).
+% dimensions, SIAM Journal on Scientific Computing,
+% 35 (2013), C495-C518.

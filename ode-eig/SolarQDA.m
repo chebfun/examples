@@ -1,5 +1,5 @@
 %% Model of a quantum dot array for solar energy
-% Toby Driscoll, May 7, 2011
+% Toby Driscoll, May 2011
 
 %%
 % (Chebfun example ode-eig/SolarQDA.m)

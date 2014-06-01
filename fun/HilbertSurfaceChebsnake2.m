@@ -1,5 +1,5 @@
 %% A Hilbert curve on a surface and Chebsnake2
-% Georges Klein, 4th March 2013
+% Georges Klein, March 2013
 
 %%
 % (Chebfun2 example fun/HilbertSurfaceChebsnake2.m)

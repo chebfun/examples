@@ -1,5 +1,5 @@
 %% Time independent Black-Scholes with jumps
-% Alex Townsend, 28th October 2011
+% Alex Townsend, October 2011
 
 %%
 % Chebfun example ode/BlackScholes.m

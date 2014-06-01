@@ -1,5 +1,5 @@
 %% Restricted-denominator approximations
-% Stefan Güttel, 18th April 2012
+% Stefan Güttel, April 2012
 
 %%
 % (Chebfun example approx/RestrictedDenominatorApproximations.m)

@@ -1,5 +1,5 @@
-%% Phase Portraits for Functions with Poles
-% Nick Trefethen, 4th March 2013
+%% Phase portraits for functions with poles
+% Nick Trefethen, March 2013
 
 %%
 % (Chebfun2 example complex/PortraitsWithPoles.m)
@@ -46,17 +46,18 @@ plot(h), axis(d), axis square on
 %%
 % These experiments are promising.  In fact, I am not sure how robust the
 % technique is; some careful exploration may be needed, and one might want to
-% loosen the Chebfun2 convergence criterion, since the aim here is only to draw
-% a plot in any case.  Also, the "smash" process as I've defined it isn't
-% scale-invariant; instead of 1 in the denominator, there should be a number
+% loosen the Chebfun2 convergence criterion, since the aim here is only to
+% draw a plot in any case.  Also, the "smash" process as I've defined it isn't
+% scale-invariant; instead of $1$ in the denominator, there should be a number
 % representing a typical magnitude of $f$.
 
 %% 
 % Perhaps it is worth emphasizing that although it is appealing to be able to
 % use Chebfun2 to draw phase portraits for a wider range of functions than one
 % might have imagined, ultimately there is no good reason for the phase
-% portraitist to use Chebfun2.  A phase portrait is just a pixel-by-pixel image;
-% it gets no benefit from the global high-accuracy representations of Chebfun2.
+% portraitist to use Chebfun2.  A phase portrait is just a pixel-by-pixel
+% image; it gets no benefit from the global high-accuracy representations of
+% Chebfun2.
 
 %% References 
 % [1] E. Wegert, Visual Complex Functions: An Introduction with Phase Portraits,

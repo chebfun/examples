@@ -1,5 +1,5 @@
 %% Complex roots near the real axis
-% Nick Trefethen, 26th October 2011
+% Nick Trefethen, October 2011
 
 %%
 % (Chebfun example roots/RootsNearAxis.m)

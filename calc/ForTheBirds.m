@@ -1,5 +1,5 @@
 %% Optimizing a bird's flight path
-% Toby Driscoll, 1st November 2012
+% Toby Driscoll, November 2012
 
 %%
 % (Chebfun example calc/ForTheBirds.m)
@@ -17,8 +17,8 @@ close all
 % She wants to return to her nest, which is another 13 km away along the
 % shoreline. However, it's more difficult to fly over water than over land,
 % so the path of least energy may not be the most direct one. Instead, she
-% may be better off flying to a point that is x km along the shore line,
-% then traveling the remaining 13-x km over land.
+% may be better off flying to a point that is $x$ km along the shore line,
+% then traveling the remaining $13-x$ km over land.
 
 %%
 island = [0,5];  nest = [13,0];    % coordinates of start/end
@@ -34,8 +34,8 @@ text(-1,island(2)/2,'5'), text(2,-1,'x'), text(8,-1,'13-x')
 
 
 %% Finding the optimal path
-% We know that the landfall spot x is between 0 and 13, so we will define a
-% chebfun for it over that range.
+% We know that the landfall spot $x$ is between $0$ and $13$, so we will
+% define a chebfun for it over that range.
 x = chebfun('x',[0 13]);
 
 %%
@@ -48,22 +48,21 @@ land_length = 13-x;
 
 %%
 % Let's say it takes 40% more energy per km to fly over water than over
-% land. If we normalize so that the energy to fly over land is 1 energy
+% land. If we normalize so that the energy to fly over land is $1$ energy
 % unit per km, then the total energy is
 total_energy = 1*land_length + 1.4*water_length;
 
 %%
-% (If we had not chosen to normalize the energy, then the total energy
-% would be proportional to this quantity, which is irrelevant to
-% minimization.)
+% (If we had not chosen to normalize the energy, then the total energy would
+% be proportional to this quantity, which is irrelevant to minimization.)
 
 %%
 clf, plot(total_energy,LW,2), grid on
 xlabel('landfall point x'), ylabel('total energy of flight')
 
 %%
-% As you can see from the curve, there is a unique value of x that
-% minimizes the total energy.
+% As you can see from the curve, there is a unique value of $x$ that minimizes
+% the total energy.
 [energy_optimal,x_optimal] = min(total_energy)
 
 %%
@@ -73,13 +72,13 @@ find( diff(total_energy)==0 )
 
 %% Exploring the assumptions
 % The "40% more energy" assumption for water flying is a guess at best. How
-% does the optimal point vary as a function of the water-to-land ratio?
-% Let's explore it over a range from 1 (same energy for both) to 2 (twice
-% as much energy over water).
+% does the optimal point vary as a function of the water-to-land ratio? Let's
+% explore it over a range from 1 (same energy for both) to 2 (twice as much
+% energy over water).
 
 %%
 % Each value of the W-to-L ratio will give a different optimal landfall
-% point x. We will produce this value by mimicking the optimization step
+% point $x$. We will produce this value by mimicking the optimization step
 % above. For example,
 WL_ratio = 1.05;
 total_energy = land_length + WL_ratio*water_length;
@@ -110,15 +109,15 @@ total_energy = land_length + WL_ratio*water_length;
 
 
 %% Function function
-% Rather than just exploring the behavior for individual water-to-land
-% ratios, we can construct a new chebfun that captures the entire
-% relationship. First, we encode the fact that the total energy function is
-% dependent on the W-L ratio:
+% Rather than just exploring the behavior for individual water-to-land ratios,
+% we can construct a new chebfun that captures the entire relationship. First,
+% we encode the fact that the total energy function is dependent on the W-L
+% ratio:
 total_energy_function = @(WL) land_length + WL*water_length;
 
 %%
 % It's a little tricky, but the output of that function of the WL parameter
-% is a chebfun in the landfall variable x. (Remember, functions can map
+% is a chebfun in the landfall variable $x$. (Remember, functions can map
 % anything to anything, not just numbers to numbers.) The optimal location,
 % which depends on WL, is still found as a critical point of the total
 % energy. (It's slightly easier to work with the derivative of the energy
@@ -132,19 +131,18 @@ optimal_landfall_function(1.4)
 
 %%
 % So, now we construct a chebfun to capture the dependence on WL. (The
-% 'vectorize' argument tells chebfun that our function expects only one
+% `'vectorize'` argument tells chebfun that our function expects only one
 % value of WL at a time.)
 optimal_landfall = chebfun( optimal_landfall_function, [1.1 5], 'vectorize');
 clf, plot(optimal_landfall,LW,2), grid on
 xlabel('water-to-land energy ratio'), ylabel('optimal landfall position')
 
 %%
-% In practice, it's easy to observe the behavior of birds but very
-% difficult to estimate the true value of WL. We can turn the problem
-% around. It's reasonable to assume that evolution has honed the instinct
-% of our bird to behave optimally. So if, for example, we observed that
-% x=4.5 was chosen on average, then we might conclude that the actual
-% water-to-land energy ratio is
+% In practice, it's easy to observe the behavior of birds but very difficult
+% to estimate the true value of WL. We can turn the problem around. It's
+% reasonable to assume that evolution has honed the instinct of our bird to
+% behave optimally. So if, for example, we observed that $x=4.5$ was chosen on
+% average, then we might conclude that the actual water-to-land energy ratio is
 find( optimal_landfall==4.5 )
 
 %%

@@ -1,5 +1,5 @@
 %% Implicit functions and fun with contours
-% Stefan Güttel, 30th July 2012
+% Stefan Güttel, July 2012
 
 %%
 % (Chebfun example fun/ContourFun.m)

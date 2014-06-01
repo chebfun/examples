@@ -1,5 +1,5 @@
 %% Logistic map and chaos
-% Nick Trefethen, 17th July 2013
+% Nick Trefethen, July 2013
 
 %%
 % (Chebfun Example ode/Logistic.m)

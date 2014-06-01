@@ -1,20 +1,20 @@
 %% Chebyshev interpolation of oscillatory entire functions
-% Mark Richardson, 4th October 2011
+% Mark Richardson, October 2011
 %
 %%
 % (Chebfun example approx/Entire.m)
 % [Tags: #entire, #interpolation, #ellipse, #resolution]
-% 
+%
 %%
 % In this example we explore the approximation properties of Chebyshev
-% interpolation for entire functions, that is, functions that are analytic 
+% interpolation for entire functions, that is, functions that are analytic
 % everywhere in the complex plane.
 
 %% 1. Analytic functions
-% In the following discussion, it will be helpful to utilise the notion of 
-% a Bernstein r-ellipse, which we define as the
-% image of the circle abs(z)=r under the mapping x = (z + 1/z) / 2. 
-% Here are some such ellipses, which we denote by Er:
+% In the following discussion, it will be helpful to utilise the notion of a
+% Bernstein $r$-ellipse, which we define as the image of the circle $|z|=r$
+% under the mapping $x = (z + z^{-1}) / 2$. Here are some such ellipses, which we
+% denote by $E_r$:
 rr = 1 + (1:10)/10;
 circ = exp(1i*chebfun('t',[0 2*pi]));
 clf, hold on
@@ -24,54 +24,54 @@ for k = 1:numel(rr)
 end
 hold off, axis equal, box on
 %%
-% Suppose we have a function f that is analytic on [-1,1] and that can be
-% analytically continued to the closed r-ellipse for some r > 1. Then 
-% [1, Chap. 8], the infinity-norm error arising from interpolating f by 
-% a polynomial in n+1 Chebyshev points is 
+% Suppose we have a function $f$ that is analytic on $[-1,1]$ and that can be
+% analytically continued to the closed $r$-ellipse for some $r > 1$. Then
+% [1, Chap. 8], the $\infty$-norm error arising from interpolating $f$ by
+% a polynomial in $n+1$ Chebyshev points is
 %
-%                max| f - p_n | <= 4 M / ( r^n (r-1) ) ,
+% $$ \max \| f - p_n \| \leq \frac{4 M}{r^n (r-1)}, $$
 %
-% where M is the maximum absolute value taken by f on the ellipse Er. 
-% This is a geometric rate of convergence. If we require an accuracy of 
-% 0 < ep  < 1 for our approximations, then it will suffice to obtain the 
-% smallest n satisfying
+% where $M$ is the maximum absolute value taken by $f$ on the ellipse $E_r$.
+% This is a geometric rate of convergence. If we require an accuracy of
+% $0 < \varepsilon < 1$ for our approximations, then it will suffice to obtain the
+% smallest $n$ satisfying
 %
-%                       4 M / ( r^n (r-1) ) <= ep .
+% $$ \frac{4 M}{r^n (r-1)} \leq \varepsilon. $$
 %
 % Some trivial rearrangement of this expression gives
-% 
-%             [log(4/ep) - log(r-1) + log(M)]/log(r) <= n .
 %
-% Choosing an n larger than this will ensure that the interpolant is 
-% of accuracy ep. 
+% $$ \frac{\log(4/\varepsilon) - \log(r-1) + \log(M)}{\log(r)} \leq n. $$
+%
+% Choosing an $n$ larger than this will ensure that the interpolant is
+% of accuracy $\varepsilon$.
 %
 %% 2. Oscillatory entire functions
 %
-% When the function f is entire, one may expect the convergence to be 
-% even better than geometric, and this is indeed the case. Consider for 
-% example, for some positive integer N, the entire function 
+% When the function $f$ is entire, one may expect the convergence to be
+% even better than geometric, and this is indeed the case. Consider for
+% example, for some positive integer $N$, the entire function
 %
-%                          f(x) = sin(pi N x) .
+% $$ f(x) = \sin(\pi N x). $$
 %
-% Because f is analytic in the entire complex plane, the convergence
-% result above must hold for any value of r > 1. An estimate for the
-% parameter M may be obtained by observing that on a given ellipse, 
+% Because $f$ is analytic in the entire complex plane, the convergence
+% result above must hold for any value of $r > 1$. An estimate for the
+% parameter $M$ may be obtained by observing that on a given ellipse,
 % a complex exponential is maximised where the ellipse intersects the
 % (negative) imaginary axis, i.e.,
 %
-%                    M <= 1/2 exp[ pi N(r - 1/r)/2 ] .
-% 
-% Since this relationship holds for every r > 1, we must find the minimum
-% value of the following expression over all r > 1,
+% $$ M \leq \frac{1}{2} \exp(\pi N \frac{r-r^{-1}}{2}). $$
 %
-%           [log(2/e) - log(r-1) + pi N(r - 1/r)/2] / log(r) .
+% Since this relationship holds for every $r > 1$, we must find the minimum
+% value of the following expression over all $r > 1$,
 %
-% For a given oscillation parameter N and precision ep, this may be 
-% accomplished using Chebfun. This provides an interesting way to validate 
-% the performance of the Chebfun constructor. The plot below shows the 
-% function on the LHS of the equation above plotted for different values of 
-% N. The minimum of each function -- and the estimate for the minimum 
-% Chebfun degree required for accuracy ep = machine epsilon --
+% $$ \frac{\log(2/e) - \log(r-1) + \pi N \frac{r-r^{-1}}{2}}{ \log(r) }. $$
+%
+% For a given oscillation parameter $N$ and precision $\varepsilon$, this may be
+% accomplished using Chebfun. This provides an interesting way to validate the
+% performance of the Chebfun constructor. The plot below shows the function on
+% the LHS of the equation above plotted for different values of
+% $N$. The minimum of each function --- and the estimate for the minimum
+% Chebfun degree required for accuracy $\varepsilon = \varepsilon_{mach}$ ---
 % is plotted in each case as a red dot.
 ee = eps; NN = 10:100:1010;
 clf, hold on
@@ -97,9 +97,8 @@ text(8.02,3350, sprintf('N = %3i',NN(6)))
 hold off, xlabel('\rho')
 shg, grid on, ylim([0 3.5e3]), box on
 %%
-% How do these estimates for the length of the polynomial interpolant 
-% compare with Chebfun lengths resulting from Chebfun's adaptive construction
-% process?
+% How do these estimates for the length of the polynomial interpolant compare
+% with Chebfun lengths resulting from Chebfun's adaptive construction process?
 est = ceil(estimates);
 fprintf('            function        estimate   chebfun length \n')
 for k = 1:numel(NN)

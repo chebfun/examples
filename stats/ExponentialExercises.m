@@ -1,5 +1,5 @@
-%% Exponential Distribution -- Exercises from a Textbook
-% Jie Gao and Nick Trefethen, 6th May 2013
+%% Exercises from a textbook: Exponential distribution
+% Jie Gao and Nick Trefethen, May 2013
 
 %%
 % (Chebfun example stats/ExponentialExercises.m)

@@ -1,40 +1,39 @@
 %% Dawson's integral
-% Kuan Xu, 17th October 2012
+% Kuan Xu, October 2012
 
 %%
 % (Chebfun example ode/DawsonIntegral.m)
 % [Tags: #linearODE, #special function, #Dawson]
 
 %%
-% Here is an ODE which is simple and linear.
+% Here is a simple linear ODE boundary value problem:
 % 
-% $$ \frac{dF}{dx}+2xF = 1 \mbox{  with  } F(0) = 0. $$
+% $$ \frac{dF}{dx}+2xF = 1, ~~~~ F(0) = 0. $$
 %
-% Chebfun and Chebop can crack this ODE with ease in a few lines. 
+% Chebfun can crack this problem in a few lines. 
 % Instead of a boundary condition, we will specify an 
 % interior point condition.
 
 function DawsonIntegral
 
 LW = 'linewidth'; lw = 2;
-
 tic
-W = 5; H = 1;
+W = 5; H = 0.8;
 L = chebop(-W,W);
 L.op = @(x,f) diff(f,1) + 2*x.*f;   % ODE
 L.bc = @(x,f) f(0);                 % interior point condition
 f = L\1; 
 toc
-plot(f,LW,lw), xlim([-W W]), hold on, grid on;
+plot(f,LW,lw), axis([-W W -H H]), hold on, grid on;
 
 %%
-% Equation (1) can be solved analytically:
+% The problem can be solved analytically:
 %
 % $$ F(x) = e^{-x^2} \int_0^x e^{t^2} dt. $$
 %
 % Users with access to the Matlab Symbolic Toolbox
 % could also solve it with the following code:
-
+%
 % y = sym('y'); 
 % f(y) = sym('f(y)');
 % f = dsolve(diff(f) + 2*y*f == 1, f(0) == 0);
@@ -44,8 +43,10 @@ plot(f,LW,lw), xlim([-W W]), hold on, grid on;
 %%
 % Equation (2) is known as Dawson's integral or Dawson's function,
 % featuring a dipole structure about the origin.  With the Symbolic
-% Toolbox, you could plot the exact solution like this: fexact =
-% chebfun(@(x) mfun('dawson',x), [-W W]); plot(fexact, '-.r'), hold off;
+% Toolbox, you could plot the exact solution like this:
+%
+% fexact = chebfun(@(x) mfun('dawson',x), [-W W]);
+% plot(fexact, '-.r'), hold off
 
 %%
 % On my machine, running the last few lines takes about 0.13 seconds.
@@ -57,15 +58,16 @@ x = chebfun('x',[0,W]);
 fr = exp(-x.^2).*cumsum(exp(x.^2));  % right of x=0
 fl = newDomain(-flipud(fr),[-W 0]);  % left of x=0
 f = join(fl,fr);                     % must be an easier way to do this!
-f = chebfun(f, [-W,W]);              % is there a better way to do this?
+f = chebfun(f, [-W 0 W]);              % is there a better way to do this?
 plot(f,LW,lw), grid on
 
 %%
 % How big is the discrepancy between $F$ and $f$?   You can find
 % out by running these three lines:
+%
 % semilogy(abs(f-fexact));
 % title('error when evaluate F directly');
-% grid on, hold off; 
+% grid on, hold off
 
 %%
 % If you do, you'll find that the accuracy is only about 5 digits. It's not
@@ -93,15 +95,15 @@ toc
 
 % semilogy(abs(f-fexact)), grid on
 
-function w = cef(z,N)  % Weideman's beautiful complex error function routine
-M = 2*N;  M2 = 2*M;  k = (-M+1:1:M-1)';      % M2 = no. of sampling points.
-L = sqrt(N/sqrt(2));                         % Optimal choice of L.
-theta = k*pi/M; t = L*tan(theta/2);          % Define variables theta and t.
-f = exp(-t.^2).*(L^2+t.^2); f = [0; f];      % Function to be transformed.
-a = real(fft(fftshift(f)))/M2;               % Coefficients of transform.
-a = flipud(a(2:N+1));                        % Reorder coefficients.
-Z = (L+1i*z)./(L-1i*z); p = polyval(a,Z);    % Polynomial evaluation.
-w = 2*p./(L-1i*z).^2+(1/sqrt(pi))./(L-1i*z); % Evaluate w(z).
+function w = cef(z,N)      % Weideman's complex error function routine
+  M = 2*N;  M2 = 2*M;  k = (-M+1:1:M-1)';      % M2 = no. of sampling points.
+  L = sqrt(N/sqrt(2));                         % Optimal choice of L.
+  theta = k*pi/M; t = L*tan(theta/2);          % Define variables theta and t.
+  f = exp(-t.^2).*(L^2+t.^2); f = [0; f];      % Function to be transformed.
+  a = real(fft(fftshift(f)))/M2;               % Coefficients of transform.
+  a = flipud(a(2:N+1));                        % Reorder coefficients.
+  Z = (L+1i*z)./(L-1i*z); p = polyval(a,Z);    % Polynomial evaluation.
+  w = 2*p./(L-1i*z).^2+(1/sqrt(pi))./(L-1i*z); % Evaluate w(z).
 end
 
 %%
@@ -121,19 +123,19 @@ end
 % References
 %
 % [1] Press, William H.; Teukolsky, Saul A.; Vetterling, William T.;
-% Flannery, Brian P. Numerical recipes. The art of scientific computing.
+% Flannery, Brian P. _Numerical recipes. The Art of Scientific Computing_.
 % Third edition. Cambridge University Press, Cambridge, 2007.
 %
-% [2] Rybicki, G.B., Dawson's integral and the sampling theorem. Computers 
-% in Physics, vol. 3 (1989), no. 2, pp. 85-87.
+% [2] Rybicki, G.B., Dawson's integral and the sampling theorem. _Computers 
+% in Physics_, vol. 3 (1989), no. 2, pp. 85-87.
 %
 % [3] http://en.wikipedia.org/wiki/Dawson_function
 %
 % [4] Cody, W.J., Pociorek, K.A., and Thatcher, H.C., Chebyshev 
-% approximations for Dawson's integral. Mathematics of Computation, 
+% approximations for Dawson's integral. _Mathematics of Computation_, 
 % vol. 24 (1970), pp. 171-178.
 %
 % [5] Weideman, J. A. C., Computation of the complex error function. 
-% SIAM J. Numer. Anal. 31 (1994), no. 5, 1497-1518.
+% _SIAM Journal on Numerical Analysis_, 31 (1994), no. 5, 1497-1518.
 
 end

@@ -1,5 +1,5 @@
-%% Undergraduate Multivariable Calculus
-% Alex Townsend, 4th March 2013 
+%% Undergraduate multivariable calculus
+% Alex Townsend, March 2013 
 
 %%
 % (Chebfun2 example veccalc/UndergraduateCalculus.m)

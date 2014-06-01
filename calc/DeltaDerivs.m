@@ -1,9 +1,9 @@
 %% Delta functions and derivatives
-% Nick Trefethen, 1st August 2012
+% Nick Trefethen, August 2012
 
 %%
-% (Chebfun example calc/DeltaDerivs.m) 
-% [Tags: #DIRAC, #delta, #impulse, #deltafunction]
+% (Chebfun example calc/DeltaDerivs.m)
+% [Tags: #delta, #impulse, #deltafunction, #DIRAC, #CUMSUM]
 
 %%
 % Here is a sine wave on the interval $[0,20]$ to which have been added a
@@ -35,8 +35,8 @@ norm(f,2)
 norm(f,inf)
 
 %%
-% If we integrate $f$ with CUMSUM, each delta function becomes a jump:. The
-% value at the left is $0$ because CUMSUM always does that, and the value
+% If we integrate $f$ with `cumsum`, each delta function becomes a jump. The
+% value at the left is $0$ because `cumsum` always does that, and the value
 % at the right is $0$ because $f$ has zero mean.
 g = cumsum(f);
 plot(g,'r',LW,1.6)

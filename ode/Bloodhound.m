@@ -1,5 +1,5 @@
-%% BLOODHOUND Supersonic Car
-% Tanya Morton, 2nd January 2013
+%% BLOODHOUND supersonic car
+% Tanya Morton, January 2013
 
 %%
 % (Chebfun example ode/Bloodhound.m)
@@ -7,7 +7,7 @@
 
 %%
 % This script solves the equation of motion for the acceleration phase of
-% the BLOODHOUND Supersonic Car using Chebfun.
+% the BLOODHOUND supersonic car using Chebfun.
 %
 % The car is powered by a jet engine and a rocket and aims to reach a speed
 % in excess of 1000 mph. More details on the project can be found on the

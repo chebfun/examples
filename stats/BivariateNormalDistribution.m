@@ -1,5 +1,5 @@
-%% The Bivariate Normal Distribution
-% Alex Townsend, 4th March 2013
+%% The bivariate normal distribution
+% Alex Townsend, March 2013
 
 %% 
 % (Chebfun2 example stats/BivariateNormalDistribution.m)

@@ -1,5 +1,5 @@
-%% Sampling from a Probability Distribution
-% Toby Driscoll, 8th December 2011
+%% Sampling from a probability distribution
+% Toby Driscoll, December 2011
 
 %%
 % (Chebfun example stats/ResamplingRandomVariables.m)

@@ -1,5 +1,5 @@
-%% Koch Snowflake
-% Anthony Austin, 27th November 2012
+%% Koch snowflake
+% Anthony Austin, November 2012
 
 %%
 % (Chebfun example fun/KochSnowflake.m)

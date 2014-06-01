@@ -1,5 +1,5 @@
 %% MathJax introduction
-% Nick Hale, 5th March 2012
+% Nick Hale, March 2012
 
 %%
 % (Chebfun example fun/MathJax.m)

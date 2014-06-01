@@ -1,19 +1,19 @@
 %% Mean Value Theorem
-% Kuan Xu, 23rd October 2012
+% Kuan Xu, October 2012
 
 %%
 % (Chebfun example calc/MeanValueTheorem.m)
 % [Tags: #calculus, #ROOTS]
 
 %%
-% The mean value theorem states that for an arc between two endpoints, 
-% there is at least one point at which the tangent to the arc is parallel 
-% to the secant through the endpoints. More specifically, if a function 
-% $f$ is continuous on the closed interval $[a, b]$ $(a < b)$ and it is 
-% differentiable on the open interval $(a, b)$, then there exists a point 
+% The Mean Value Theorem states that for an arc between two endpoints, there
+% is at least one point at which the tangent to the arc is parallel to the
+% secant through the endpoints. More specifically, if a function $f$ is
+% continuous on the closed interval $[a, b]$ $(a < b)$ and it is
+% differentiable on the open interval $(a, b)$, then there exists a point
 % $c \in (a, b)$ such that
 %
-% $$f^{\prime}(c) = \frac{f(b) - f(a)}{b-a}.$$  
+% $$ f^{\prime}(c) = \frac{f(b) - f(a)}{b-a}. $$
 %
 % Here is an example, where we try to locate a suitable point $c$. Let's
 % consider $f(x) = (x-1)(x-2)(x-3)$ on the interval $[-6, 6]$.
@@ -25,7 +25,7 @@ x = chebfun('x', dom);
 f = (x-1).*(x-2).*(x-3);
 
 %%
-% We calculate the value of (1):
+% We calculate the slope of the secant:
 
 sl = (f(b) - f(a))/(b - a);
 

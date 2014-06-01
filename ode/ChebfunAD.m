@@ -1,5 +1,5 @@
 %% Automatic differentiation in Chebfun
-% Asgeir Birkisson, 16th November 2011
+% Asgeir Birkisson, November 2011
 
 %%
 % (Chebfun example ode/ChebfunAD.m)

@@ -1,5 +1,5 @@
 %% A parameter dependent ODE with breakpoints
-% Asgeir Birkisson, 25th January 2012
+% Asgeir Birkisson, January 2012
 
 %%
 % (Chebfun example ode/ParameterODE.m)

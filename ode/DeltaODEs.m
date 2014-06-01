@@ -1,5 +1,5 @@
-%% Delta Functions and ODEs
-% Mohsin Javed, 3rd July 2012
+%% Delta functions and ODEs
+% Mohsin Javed, July 2012
 
 %%
 % (Chebfun example ode/DeltaODEs.m)

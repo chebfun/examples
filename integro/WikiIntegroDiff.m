@@ -1,5 +1,5 @@
 %% Wikipedia integro-differential equation example
-% Mark Richardson, 27 September 2010
+% Mark Richardson, September 2010
 
 %%
 % (Chebfun example integro/WikiIntegroDiff.m)
@@ -11,33 +11,41 @@
 %
 % http://en.wikipedia.org/wiki/Integro-differential_equation
 %
-%        u'(x) + 2u(x) + 5\int_{0}^{t} u(t) dt = 1,     x >= 0
-%                                              = 0,     x  < 0
-%                    u(0) = 0 
+% $$ u'(x) + 2u(x) + 5\int_0^t u(t) dt = 1~ (x\ge 0), ~~
+% = 0~ (x<0) $$
 %
+% with $u(0)=0$.
+
 %% 
-% Begin by defining the domain d, chebfun variable x and operator N.
+% Begin by defining the domain $d$, chebfun variable $x$ and operator $N$.
 d = [0 5];
 x = chebfun('x',d);
 N = chebop(d);
+
 %%
-% The problem has a single Dirichlet boundary condition at x = 0.
+% The problem has a single Dirichlet boundary condition at $x=0$.
 N.lbc = 0;
+
 %%
 % Define the operator using Chebfun's overloaded DIFF and CUMSUM commands.
 N.op = @(u) diff(u) + 2*u + 5*cumsum(u);
+
 %%
-% Set the RHS of the IDE.
+% Set the right-hand side of the integro-differential equation.
 rhs = 1;
+
 %%
 % Solve the IDE using backslash.
 u = N\rhs;
+
 %%
-% Analytic solution:
+% Here is the analytic solution:
 u_exact = 0.5*exp(-x).*sin(2*x);
+
 %%
 % How close is the computed solution to the true solution?
 accuracy = norm(u-u_exact)
+
 %%
 % Plot the computed solution
 plot(u,'linewidth',1.6), grid on

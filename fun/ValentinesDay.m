@@ -1,5 +1,5 @@
 %% Happy Valentines Day!
-% Anonymous, 14th February 2012
+% Anonymous, February 2012
 
 %%
 % (Chebfun example fun/ValentinesDay.m)

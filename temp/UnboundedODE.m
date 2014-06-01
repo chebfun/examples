@@ -1,4 +1,4 @@
-%% AN ODE ON AN UNBOUNDED INTERVAL
+%% An ODE on an unbounded interval
 % Nick Hale, November 2010
 
 %%

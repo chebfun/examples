@@ -1,5 +1,5 @@
 %% Piecewise operators demo
-% Nick Hale, 25th November 2011
+% Nick Hale, November 2011
 
 %%
 % (Chebfun Example ode/PiecewiseDemo.m)

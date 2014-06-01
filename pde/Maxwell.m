@@ -1,5 +1,5 @@
 %% Maxwell's equations
-% Toby Driscoll, November 10, 2010
+% Toby Driscoll, November 2010
 
 %%
 % (Chebfun example pde/Maxwell.m)

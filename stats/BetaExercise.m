@@ -1,5 +1,5 @@
-%% Beta Distribution -- Exercises from a Textbook
-% Jie Gao, 2nd July 2013
+%% Exercises from a textbook: Beta distribution
+% Jie Gao, July 2013
 
 %%
 % (Chebfun example stats/BetaExercise.m)

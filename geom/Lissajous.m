@@ -6,27 +6,22 @@
 % [Tags: #complex, #sinewaves, #geometry, #Lissajous]
 
 %%
-% Lissajous figures or Lissajous curves are the
-% curves in the x-y plane obtained by taking x and y to
-% vary sinusoidally with respect to a parameter t,
-% typically with different frequencies.  They are
-% named after the 19th century French mathematician
-% Jules Antoine Lissajous.
+% Lissajous figures or Lissajous curves are the curves in the $x$-$y$ plane
+% obtained by taking $x$ and $y$ to vary sinusoidally with respect to a
+% parameter $t$, typically with different frequencies.  They are named after
+% the 19th century French mathematician Jules Antoine Lissajous.
 
 %%
-% To keep things simple let's assume that the
-% sine waves in both directions have amplitude
-% 1 and the frequencies are both positive integers,
-% hence rationally related.  Then the Lissajous
-% figure is a closed curve (i.e., 2pi-periodic
-% with respect to t) that we can define by parameters
-% m, n, and d.
+% To keep things simple let's assume that the sine waves in both directions
+% have amplitude $1$ and the frequencies are both positive integers, hence
+% rationally related.  Then the Lissajous figure is a closed curve (i.e.,
+% $2\pi$-periodic with respect to $t$) that we can define by parameters $m$,
+% $n$, and $d$.
 %
-%   x(t) = sin(mt),  y(t) = sin(nt+d*pi).
+% $$ x(t) = \sin(mt), \qquad y(t) = \sin(nt+d\pi). $$
 
 %%
-% For example, here are the cases m=5, n=6 with
-% d=0 and d=1/2:
+% For example, here are the cases $m=5$, $n=6$ with $d=0$ and $d=1/2$:
 t = chebfun('t',[0 2*pi]);
 m = 5; n = 6;
 x = sin(m*t);
@@ -41,19 +36,19 @@ title(sprintf('m=%d  n=%d  d=%3.1f',m,n,0.5),FS,12)
 axis([-1 1 -1 1]), axis square off
 
 %%
-% As usual with 2D computations, it's convenient to
-% use complex arithmetic, defining
+% As usual with 2D computations, it's convenient to use complex arithmetic,
+% defining
 %
-%   z(t) = x(t) + iy(t).
+% $$ z(t) = x(t) + iy(t). $$
 %
-% Here's an anonymous function that returns a Chebfun 
-% corresponding to parameters m,n,d:
+% Here's an anonymous function that returns a Chebfun corresponding to
+% parameters $m$, $n$, $d$:
 lissajous = @(m,n,d) sin(m*t) + 1i*cos(n*t+pi*d);
 
 %%
 % Here are six Lissajous curves drawn at random:
 clf
-rand('seed',1);
+rng(2);
 colors = [1 0 0; 0 .8 0; 1 .75 0; 0 1 1; 1 0 1; 0 0 .75];
 for np = 1:6
   subplot(2,3,np)
@@ -66,8 +61,8 @@ for np = 1:6
 end
 
 %%
-% Just for fun, let's draw a cube in which each
-% face is a different Lissajous figure:
+% Just for fun, let's draw a cube in which each face is a different
+% Lissajous figure:
 clf
 f = lissajous(23,5,.5);
 plot3(real(f),imag(f),1+0*t,'r'), hold on

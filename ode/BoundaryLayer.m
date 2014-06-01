@@ -1,5 +1,5 @@
 %% Boundary layer for advection-diffusion equation
-% Nick Trefethen, 22 October 2010
+% Nick Trefethen, October 2010
 
 %%
 % (Chebfun example ode/BoundaryLayer.m)

@@ -1,5 +1,5 @@
 %% Rouche's Theorem
-% Anthony Austin, 18th November 2012
+% Anthony Austin, November 2012
 
 %%
 % (Chebfun example complex/RoucheTheorem.m)

@@ -1,5 +1,5 @@
 %% The Rosenbrock function in 2D optimisation (revisited)
-% Nick Hale, 4th March 2013
+% Nick Hale, March 2013
 
 %%
 % (Chebfun example opt/Rosenbrock2.m)

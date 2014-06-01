@@ -1,5 +1,5 @@
 %% Types of isolated singularities
-% Hrothgar, 12th November 2013
+% Hrothgar, November 2013
 
 %%
 % (Chebfun example complex/Singularities.m)
@@ -29,7 +29,7 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % Strictly speaking, $f$ is not defined at $z = 0$. However,
 % expanding $f$ as a Laurent series reveals that there are no
 % nonzero coefficients for negative powers of $z$:
-% $$ f(z) = \frac1z \sum_{k=0}^\infty \frac{(-1)^k z^{2k+1}}{(2k+1)!} 
+% $$ f(z) = \frac1z \sum_{k=0}^\infty \frac{(-1)^k z^{2k+1}}{(2k+1)!}
 %         = \sum_{k=0}^\infty \frac{(-1)^k z^{2k}}{(2k+1)!}
 %         = 1 - \frac{z^2}{3!} + \frac{z^4}{4!} - \frac{z^5}{6!} + \cdots. $$
 % The singularity at $z = 0$ can be removed simply by defining
@@ -107,7 +107,7 @@ plot(essential)
 % [1] Wegert, Elias. Visual Complex Functions: An Introduction
 % with Phase Portraits, vol. 1. Birkhauser/Springer, 2012.
 %
-% [2] M. J. Ablowitz and A. S. Fokas. Complex Variables: Introduction 
+% [2] M. J. Ablowitz and A. S. Fokas. Complex Variables: Introduction
 %     and Applications. Cambridge University Press, 1997.
 %
 end

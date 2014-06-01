@@ -1,5 +1,5 @@
 %% Optimization of a parameterised integral
-% Nick Hale, 17th October 2011
+% Nick Hale, October 2011
 
 %%
 % (Chebfun example opt/OptimInt.m)

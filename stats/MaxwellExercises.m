@@ -1,5 +1,5 @@
-%% Maxwell Distribution -- Exercises from a Textbook
-% Jie Gao, 23rd September 2013
+%% Exercises from a textbook: Maxwell distribution
+% Jie Gao, September 2013
 
 %%
 % (Chebfun example stats/MaxwellExercises.m)

@@ -1,14 +1,14 @@
 %% Chebyshev polynomials as plotted by Higham and Higham
-% Nick Trefethen, 13th December 2011
+% Nick Trefethen, December 2011
 
 %%
 % (Chebfun example approx/ChebPolysHigham.m)
 % [Tags: #Higham, #Chebyshevpolynomial, #PLOT3, #CHEBPOLY]
 
 %%
-% On p. 259 of their Matlab Guide, 2nd ed. [1], Higham and Higham
-% present an attractive 3D plot of several Chebyshev polynomials.
-% Here is their plot reproduced in Chebfun.
+% On p. 259 of their MATLAB Guide, 2nd ed. [1], Higham and Higham present an
+% attractive 3D plot of several Chebyshev polynomials. Here is their plot
+% reproduced in Chebfun.
 
 k = [0 2 4 10 20 40 60];
 x = chebfun('x'); one = 1 + 0*x;

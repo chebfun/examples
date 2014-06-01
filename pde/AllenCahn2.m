@@ -1,5 +1,5 @@
 %% Allen-Cahn metastability
-% Nick Trefethen, 25th November 2013
+% Nick Trefethen, November 2013
 
 %% 
 % (Chebfun Example pde/AllenCahn2.m)

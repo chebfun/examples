@@ -1,5 +1,5 @@
 %% Checking vector calculus
-% Alex Townsend, 4th March 2013
+% Alex Townsend, March 2013
 
 %% 
 % (Chebfun example veccalc/CheckingVectorCalculus.m)

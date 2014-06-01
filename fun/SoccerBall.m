@@ -1,5 +1,5 @@
-%% Chebfun Soccerball
-% Filomena Di Tommaso,  24th July 2013
+%% Chebfun soccerball
+% Filomena Di Tommaso, July 2013
 
 %%
 % (Chebfun example fun/SoccerBall.m)

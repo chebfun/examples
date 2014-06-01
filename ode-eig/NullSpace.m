@@ -1,5 +1,5 @@
 %% The nullspace of a linear operator
-% Nick Hale & Stefan Güttel, 12th December 2011
+% Nick Hale and Stefan Güttel, December 2011
 
 %%
 % (Chebfun example ode-eig/NullSpace.m)

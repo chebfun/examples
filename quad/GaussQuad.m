@@ -1,5 +1,5 @@
 %% Gauss quadrature nodes and weights
-% Nick Hale, 8th November 2011
+% Nick Hale, November 2011
 
 %%
 % (Chebfun example quad/GaussQuad.m)

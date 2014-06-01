@@ -1,5 +1,5 @@
 %% Arc length in the complex plane
-% Kuan Xu, 5th November 2012
+% Kuan Xu, November 2012
 
 %%
 % (Chebfun example complex/ComplexArcLength.m)
