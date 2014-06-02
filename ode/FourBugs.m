@@ -24,7 +24,7 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % which we will use Chebfun to solve. What paths
 % will the bugs take, and when will they collide?
 xx = [-1 1 1 -1];  yy = [-1 -1 1 1]/2;
-uu = [1 0 -1 0];  vv = [0 1 0 -1];
+uu = [1 0 -1 0];   vv = [0 1 0 -1];
 quiver(xx, yy, uu, vv, 1/3, 'k-'), hold on
 plot(xx, yy, 'k.', MS, 18), text(-.07,0,'?','FontSize',60)
 hold off
@@ -106,7 +106,7 @@ bugs(:,3) = -bugs(:,1);  bugs(:,4) = -bugs(:,2);  bugs(:,5) = bugs(:,1);
 %%
 % Here is a plot of their movement toward the origin.
 plot(bugs, LW, 2), hold on
-plot(xx, yy, 'k.', MS, 18), hold off, axis equal off
+plot(xx, yy, 'k.', MS, 18), axis equal off
 title('The dance of four bugs on a rectangle', FS, 14)
 
 %%
@@ -178,6 +178,7 @@ fprintf('{t_rhomb} estimated by Chebfun:      %-16.16f    %-16.16f\n', t_rhomb_e
 %%
 % Let us plot the special configurations.
 % First, the first rhombus:
+tt = sort([t_rect_est, t_rhomb_est]);
 plot(bugs, 'interval', [-1.5 tt(3)], LW, 2), hold on
 plot(bugs(tt(3),:), 'k.-', MS, 18), hold off
 axis equal, zoom(1.8), axis off

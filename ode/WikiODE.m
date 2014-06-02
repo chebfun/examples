@@ -6,11 +6,11 @@
 % [Tags: #linearODE, #wikipedia]
 
 %%
-% Here, we solve three simple linear problems 
-% considered in the Wikipedia article on ODEs: 
-%
+% Here, we solve three simple linear problems considered in the Wikipedia
+% article on ODEs:
+% <blockquote>
 % http://en.wikipedia.org/wiki/Linear_differential_equation
-%
+% </blockquote>
 % The problems are solved in the order they appear in the article, with
 % boundary conditions imposed to make the solutions unique.
 %
@@ -55,8 +55,7 @@ norm(y-y_exact)
 plot(y,'linewidth',2), grid on
 
 %% Problem 2: Simple harmonic oscillator 
-% $$ L(y) = y'' + \pi^2 y = 0,  \qquad
-% y(-1) = -1, ~~ y'(1) = -\pi. $$
+% $$ L(y) = y'' + \pi^2 y = 0,  \qquad y(-1) = -1, ~~ y'(1) = -\pi. $$
 
 %%
 d = [-1 1];

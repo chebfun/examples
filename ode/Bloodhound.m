@@ -17,13 +17,13 @@
 %
 % $$ a(t)v' + b(t)v + cv^2 = d(t), \qquad t \in [0,50],~~ v(0) = 0 . $$
 %
-% Here $a$ is a piecewise linear function and 
-% $b$ and $d$ are piecewise constant. The
-% break occurs at the discontinuity caused by the rocket ignition.
+% Here $a$ is a piecewise linear function and $b$ and $d$ are piecewise
+% constants. The break occurs at the discontinuity caused by the rocket
+% ignition.
 %
-% You can vary the parameters of the run, such as the rocket start
-% time or the mass of the car,
-% to see the effect on the time taken to reach 1000 miles per hour.
+% One can vary the parameters of the run, such as the rocket start time or the
+% mass of the car, to see the effect on the time taken to reach 1000 miles per
+% hour.
 
 %%
 % Define the domain.
@@ -41,13 +41,14 @@ RSFC = 102/220;        % Rocket Specific Fuel Consumption
 %%
 % The mass satisfies
 %
-% mass = original - (jet fuel burned) - (rocket fuel burned)
+% $$ \mathrm{mass} = \mathrm{original}
+%                    - \mathrm{(jet~fuel~burned)}
+%                    - \mathrm{(rocket~fuel~burned)} $$
 mass = @(t) MassOriginal - (JSFC*JetThrust*t) - ...   % in kg, t in seconds
     (RSFC*RocketThrust.*(t-RocketStart).*(t>RocketStart));
 
 %%
-% Create a chebfun for mass to capture the
-% piecewise linear behaviour.
+% Create a chebfun for mass to capture the piecewise linear behaviour.
 cmass = chebfun(mass, dom, 'splitting', 'on');
 
 %%
@@ -67,14 +68,14 @@ surfacedrag = (2/5)*cmass*9.81;   % in N
 % Create a chebop to represent the differential equation.
 % Newton's 2nd law (variable mass): 
 %
-% d(mass * v) / dt = thrust - drag, 
-% mass*dv/dt + d(mass)/dt*v = thrust - drag
+% $$ \frac{d(mv)}{dt} = \mathrm{thrust} - \mathrm{drag}, $$
+% $$ m \frac{dv}{dt} + \frac{dm}{dt} v = \mathrm{thrust} - \mathrm{drag}. $$
 N = chebop(@(t,v) cmass.*diff(v) + diff(cmass).*v - cthrust + ...
     aerodrag(v) + surfacedrag, dom);
 
 %%
-% Set up the right-hand side
-% of the differential equation so that $N(v) = rhs$.
+% Set up the right-hand side of the differential equation so that
+% $ N(v) = \mathrm{rhs} $.
 rhs = 0;
 
 %%

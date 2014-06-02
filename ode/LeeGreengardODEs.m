@@ -8,24 +8,22 @@
 %%
 % In 1997 Lee and Greengard published a paper called "A fast adaptive
 % numerical method for stiff two-point boundary value problems" [1]. The
-% algorithm described there, being adaptive, can handle far stiffer
-% problems than Chebfun.  Nevertheless Chebfun does pretty well with Lee
-% and Greengard's interesting collection of examples.  These problems are
-% linear.
+% algorithm described there, being adaptive, can handle far stiffer problems
+% than Chebfun. Nevertheless Chebfun does pretty well with Lee and Greengard's
+% interesting collection of examples. These problems are linear.
 
 %%
-% The following discussion is based on Chebfun's classical
-% spectral discretizations (rectangular collocation).  
-% It would be interesting to revisit the same examples with
-% the alternative ultraspherical discretizations introduced
-% with version 5 to see whether certain values of $\varepsilon$
-% can be reduced further.
+% The following discussion is based on Chebfun's classical spectral
+% discretizations (rectangular collocation). It would be interesting to
+% revisit the same examples with the alternative ultraspherical
+% discretizations introduced with Version 5 to see whether certain values of
+% $\varepsilon$ can be reduced further.
 
 %% Example 1. Viscous shock
 % The first example is
 % $$ \varepsilon u''(x) + 2 x u'(x) = 0, \quad u(-1) = -1, ~ u(1) = 1. $$
-% The following anonymous function produces a Chebfun solution as a
-% function of $\varepsilon$:
+% The following anonymous function produces a Chebfun solution as a function
+% of $\varepsilon$:
 uep = @(ep) chebop(@(x,u) ep*diff(u,2) + 2*x.*diff(u),[-1,1],-1,1)\0;
 
 %%
@@ -91,7 +89,7 @@ end
 % $$ \varepsilon u''(x) + x u'(x) - 0.5u(x) = 0, \quad u(-1) = 1, ~ u(1) = 2. $$
 % With a global discretization and standard defaults, Chebfun can go down
 % to $10^{-5}$ or so.  With a breakpoint introduced at $x=0$ by specifying
-% the domain [-1 0 1], we get a little further, though not as far
+% the domain `[-1, 0, 1]`, we get a little further, though not as far
 % as Lee and Greengard:
 uep = @(ep) chebop(@(x,u) ep*diff(u,2)+x.*diff(u)-0.5*u,[-1 0 1],1,2)\0;
 for k = 1:2

@@ -25,14 +25,12 @@ x = chebfun('x');
 N.init = 2*(x.^2-1);
 
 %%
-% We now solve the problem using the nonlinear backslash operator.
-% By calling `\` with two output arguments,
-% we also get the norms of the updates at each
+% We now solve the problem using the nonlinear backslash operator. By calling
+% `\` with two output arguments, we also get the norms of the updates at each
 % iteration returned in a vector. Before solving the problem, we set the
-% `cheboppref` field
-% `'display'` to be `'iter'` in order to display information about
-% the solution process. We then plot the solution and the norm of the
-% updates:
+% `cheboppref` field `'display'` to be `'iter'` in order to display
+% information about the solution process. We then plot the solution and the
+% norm of the updates:
 cheboppref.setDefaults('display','iter')
 [u,info] = solvebvp(N,1);
 nrmdu = info.normDelta;
@@ -57,11 +55,10 @@ xlim([1 length(nrmdu)]), grid on
 accuracy = norm(N(u)-1)
 
 %% 2. Alternative boundary conditions
-% If we want to change the boundary-value problem above
-% to impose different boundary
-% conditions, we can reuse the chebop created and only change the relevant
-% fields. For example, suppose we want to solve the same equation with
-% the new boundary conditions
+% If we want to change the boundary-value problem above to impose different
+% boundary conditions, we can reuse the chebop created and only change the
+% relevant fields. For example, suppose we want to solve the same equation
+% with the new boundary conditions
 %
 % $$ u(-1) = 1,~~  u'(1) + u(1) = 0. $$
 %
@@ -76,7 +73,8 @@ xlim([1 length(nrmdu)]), grid on
 accuracy = norm(N(u)-1)
 
 %%
-% This example can also be found among the Scalar boundary-value problem demos in Chebgui.
+% This example can also be found among the scalar boundary-value problem demos
+% in Chebgui.
 
 %%
 % Reference:

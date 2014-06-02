@@ -8,7 +8,7 @@
 %%
 % The solution to the advection-diffusion problem
 % 
-% $$ 0.2u" + u' = -1, ~~    u(-10) = u(10) = 1 $$
+% $$ 0.2u'' + u' = -1, ~~    u(-10) = u(10) = 1 $$
 %
 % has a boundary layer at the left:
 
