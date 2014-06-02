@@ -42,7 +42,7 @@ MS = 'markersize'; FS = 'fontsize'; fs = 12;
 
 f = chebfun(@(x) 1./(1 + 1000*(x-.1).^2));  % A Runge-type function  
 c_cheb = chebpoly(f).';                     % Chebyshev coeffs in O(NlogN)
-c_leg = chebtech.cheb2leg(c_cheb);          % Leg coeffs with the new algorithm
+c_leg = cheb2leg(c_cheb);                   % Leg coeffs with the new algorithm
 
 semilogy(flipud(abs(c_leg)), 'xr',MS,4), hold on  % plot them
 semilogy(flipud(abs(c_cheb)), '.b', MS,8)
@@ -59,7 +59,7 @@ xlabel('n', FS, fs), set(gca, FS, fs), hold off
 
 f = chebfun(@(x) abs(x-.1).^(7/4)); N = length(f);  % |x-.1|^(7/4)
 c_cheb = chebpoly(f)';                              % Chebyshev coeffs
-c_leg = chebtech.cheb2leg(c_cheb);                           % Legendre coeffs
+c_leg = cheb2leg(c_cheb);                           % Legendre coeffs
 
 semilogy(flipud(abs(c_leg)), 'xr',MS,4), hold on,         % plot them
 semilogy(flipud(abs(c_cheb)), '.b',MS,8),
@@ -85,7 +85,7 @@ ns = sprintf('No. of evaluation points = %u\n',N);
 
 s = tic;                                                % evaluate f
 c_leg = t.^(N-1:-1:0);                                  % via Legendre coeffs
-cheb_vals = chebtech2.coeffs2vals(chebtech.leg2cheb(c_leg)); % and time it...
+cheb_vals = coeffs2vals(leg2cheb(c_leg));               % and time it...
 tt = toc(s);
 
 ts = sprintf('Evaluation time = %1.2fs\n', tt);
@@ -130,7 +130,7 @@ toc
 %%
 % We can now form a chebfun from solution using `leg2cheb`:
 tic
-c_cheb = chebtech.leg2cheb(c_leg);
+c_cheb = leg2cheb(c_leg);
 u = chebfun(c_cheb, 'coeffs');                 
 toc
 

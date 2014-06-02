@@ -5,7 +5,7 @@
 % (Chebfun example roots/BernoulliPolynomials.m)
 % [Tags: #Bernoulli, #Reimann, #ROOTS]
 
-%% 
+%%
 % If there is another class of polynomials that is as fascinating and
 % important  to mathematics as orthogonal polynomials, then these are
 % probably the Bernoulli polynomials $B_j(x)$. These
@@ -42,13 +42,13 @@ B(0,1:14)
 % function, but if you have one available (see [4], for example), you can
 % verify that the function values $f(j), j = 0,\dots,13$, coincide with the
 % above Bernoulli numbers (for $j=1$ the sign is switched) with code like this:
-% 
-%   f = chebfun(@(x) -x.*zeta(1-x),[0,13]);
-%   plot(f,LW,lw); hold on
-%   j = 0:13;
-%   f(j)
-%   plot(j,f(j),'ro',LW,lw); 
-%   axis([0,13,-.4,1.1]); 
+%
+%    f = chebfun(@(x) -x.*zeta(1-x),[0,13]);
+%    plot(f,LW,lw); hold on
+%    j = 0:13;
+%    f(j)
+%    plot(j,f(j),'ro',LW,lw);
+%    axis([0,13,-.4,1.1]);
 
 %%
 % Note that (except for $j=1$) every second Bernoulli number is zero. These
@@ -58,8 +58,8 @@ B(0,1:14)
 % non-integer index.
 
 %%
-% Bernoulli polynomials have the property that the number of (distinct) 
-% roots in the interval $[0,1]$ is at most $3$. We can easily verify this 
+% Bernoulli polynomials have the property that the number of (distinct)
+% roots in the interval $[0,1]$ is at most $3$. We can easily verify this
 % assertion numerically:
 for j = 1:100,
     nrRoots(1,j) = length(roots(B(:,j)));
@@ -68,9 +68,9 @@ nrRoots(1:14)
 fprintf('The maximal number of roots is %d.\n',max(nrRoots))
 
 %%
-% The multiplicity and location of complex roots has been of interest to 
+% The multiplicity and location of complex roots has been of interest to
 % mathematicians for a long time. It is known that all roots
-% of the Bernoulli polynomials are distinct (Brillhart 1969, Dilcher 2008). 
+% of the Bernoulli polynomials are distinct (Brillhart 1969, Dilcher 2008).
 % It is also known that there exists a parabolic region above and below
 % the interval $[0,1]$ which is free of roots (Dilcher 1983/88):
 figure
@@ -82,10 +82,10 @@ end
 hold off
 
 %%
-% Another interesting observation is the following: If one appropriately 
-% scales the even/odd Bernoulli polynomials, then these converge to 
-% cosine/sine functions, respectively. Let us visualize the first $50$ 
-% rescaled Bernoulli polynomials of odd degree, and compute the distance 
+% Another interesting observation is the following: If one appropriately
+% scales the even/odd Bernoulli polynomials, then these converge to
+% cosine/sine functions, respectively. Let us visualize the first $50$
+% rescaled Bernoulli polynomials of odd degree, and compute the distance
 % to the expected limit function in the uniform norm:
 err = [];
 limit = sin(2*pi*x);
@@ -106,19 +106,19 @@ semilogy(0.5.^(0:99),'r--',LW,lw)
 hold off
 axis([0,100,1e-16,1])
 
-%% 
-% The last property we like to mention and visualize here is the behavior 
-% of extrema of Bernoulli polynomials on $[0,1]$. D. H. Lehmer (1940) showed 
-% that the $j$ th degree Bernoulli polynomial is bounded by 
-% 
+%%
+% The last property we like to mention and visualize here is the behavior
+% of extrema of Bernoulli polynomials on $[0,1]$. D. H. Lehmer (1940) showed
+% that the $j$ th degree Bernoulli polynomial is bounded by
+%
 % $$ 2j! /(2\pi)^j $$
 %
-% for $j>1$, except when $j= 2(\hbox{mod}4)$, in which case the bound becomes 
+% for $j>1$, except when $j= 2(\hbox{mod}4)$, in which case the bound becomes
 %
-% $$ 2*\zeta(j) j! /(2\pi)^j, $$ 
+% $$ 2*\zeta(j) j! /(2\pi)^j, $$
 %
 % again with the Riemann zeta function.
-fact = cumprod([1,1:99]); 
+fact = cumprod([1,1:99]);
 bound = 2*fact./(2*pi).^(0:99);
 for j = 1:100,
     M(j) = max(B(:,j));
@@ -131,7 +131,7 @@ hold on
 semilogy(bound,'r--',LW,lw)
 axis([0,100,1e-5,1e80])
 
-%% 
+%%
 % This bound looks quite sharp, and in fact, if one were to remove the
 % $\zeta(j)$ factor from the bound, then it would be invalid every
 % 4th index.
@@ -149,5 +149,5 @@ axis([0,100,1e-5,1e80])
 % 2011 "Special Functions in the 21st Century" conference in Washington,
 % http://math.nist.gov/~DLozier/SF21/SF21slides/Dilcher.pdf
 %
-% [4] Paul Godfrey, Special Functions math library, 
-% http://www.mathworks.com/matlabcentral/fileexchange/978 
+% [4] Paul Godfrey, Special Functions math library,
+% http://www.mathworks.com/matlabcentral/fileexchange/978
