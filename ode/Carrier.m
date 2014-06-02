@@ -7,12 +7,13 @@
 
 %% 1. The original problem
 % The Carrier equation can be found in Section 9.7 of the well-known
-% textbook of Bender & Orszag 1978, and is given as follows:
+% textbook of Bender & Orszag [1], and is given as follows:
 %
-% eps u" + 2(1-x^2)u + u^2 = 1,    u(-1) = 0,  u(1) = 0.
+% $$ \varepsilon u'' + 2(1-x^2)u + u^2 = 1,\qquad  
+% u(-1) = 0,~~  u(1) = 0. $$
 %
-% This is a nonlinear ODE BVP with multiple solutions.
-% We can find a solution with Chebfun (taking eps = 0.01) as
+% This is a nonlinear ODE boundary-value problem with multiple solutions.
+% We can find a solution with Chebfun (taking $\varepsilon=0.01$) as
 % follows.  We set up the operator and boundary conditions:
 N = chebop(-1,1);
 N.op = @(x,u) 0.01*diff(u,2) + 2*(1-x.^2).*u + u.^2;
@@ -25,9 +26,11 @@ N.init = 2*(x.^2-1);
 
 %%
 % We now solve the problem using the nonlinear backslash operator.
-% By calling \ with two output arguments, we also get the norms of the updates at each
+% By calling `\` with two output arguments,
+% we also get the norms of the updates at each
 % iteration returned in a vector. Before solving the problem, we set the
-% cheboppref 'display' to be 'iter' in order to display information about
+% `cheboppref` field
+% `'display'` to be `'iter'` in order to display information about
 % the solution process. We then plot the solution and the norm of the
 % updates:
 cheboppref.setDefaults('display','iter')
@@ -54,12 +57,13 @@ xlim([1 length(nrmdu)]), grid on
 accuracy = norm(N(u)-1)
 
 %% 2. Alternative boundary conditions
-% If we want to change the BVP above to impose different boundary
+% If we want to change the boundary-value problem above
+% to impose different boundary
 % conditions, we can reuse the chebop created and only change the relevant
 % fields. For example, suppose we want to solve the same equation with
 % the new boundary conditions
 %
-%     u(-1) = 1,  u'(1) + u(1) = 0.
+% $$ u(-1) = 1,~~  u'(1) + u(1) = 0. $$
 %
 % We can execute the following commands:
 N.lbc = 1;
@@ -72,11 +76,10 @@ xlim([1 length(nrmdu)]), grid on
 accuracy = norm(N(u)-1)
 
 %%
-% This example can also be found among the Sclar BVP demos in CHEBGUI.
-
+% This example can also be found among the Scalar boundary-value problem demos in Chebgui.
 
 %%
 % Reference:
 %
-% C. Bender and S. A. Orzsag, Advanced Mathematical Methods
-% for Scientists and Engineers, McGraw-Hill, 1978 (Sectin 9.7).
+% [1] C. Bender and S. A. Orzsag, _Advanced Mathematical Methods
+% for Scientists and Engineers_, McGraw-Hill, 1978 (Section 9.7).
