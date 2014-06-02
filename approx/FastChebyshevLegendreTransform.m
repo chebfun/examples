@@ -85,7 +85,7 @@ ns = sprintf('No. of evaluation points = %u\n',N);
 
 s = tic;                                                % evaluate f
 c_leg = t.^(N-1:-1:0);                                  % via Legendre coeffs
-cheb_vals = coeffs2vals(leg2cheb(c_leg));               % and time it...
+cheb_vals = chebtech2.coeffs2vals(leg2cheb(c_leg));     % and time it...
 tt = toc(s);
 
 ts = sprintf('Evaluation time = %1.2fs\n', tt);
