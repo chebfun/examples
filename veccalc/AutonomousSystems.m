@@ -40,7 +40,7 @@ for ic = .5:.5:3                                 % initial conditions
     [t y] = ode45(F,[0 40],[ic,0]);              % solve autonomous system
     plot(y,'r'), hold on                         % plot trajectory
 end
-quiver(F,'b'), axis equal                 % vector field
+quiver(F,'b'), axis equal                        % vector field
 title('The eye of a nonlinear pendulum',FS,14), hold off
 
 %% Duffing oscillator
@@ -67,4 +67,3 @@ plot(r(:,1),r(:,2),'k.','markersize',25)
 % [1] A. Townsend and L. N. Trefethen, An extension of Chebfun to two 
 % dimensions, _SIAM Journal on Scientific Computing_, 35
 % (2013), C495-C518.
-
