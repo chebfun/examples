@@ -9,10 +9,12 @@
 % Stability regions are a standard tool in the analysis of numerical
 % formulas for ODE initial-value problems. Given a formula -- 2nd-order
 % Adams-Bashforth, say, or 3rd-order backward differentiation -- the
-% stability region is the region of the complex lambda*dt - plane where the
+% stability region is the region of the complex $\lambda \Delta t$-plane
+% where the
 % associated scalar constant-coefficient recurrence relation is stable.
-% Here dt is the time step size, and lambda is the parameter in the scalar
-% constant-coefficient linear model problem du/dt = lambda*u.
+% Here $\Delta t$ is the time step
+% and $\lambda$ is the parameter in the scalar
+% constant-coefficient linear model problem $du/dt = \lambda u$.
 
 %%
 % Small stability regions indicate that you might need very small
@@ -29,7 +31,7 @@ x = [0 0]; y = [-8 8]; K = 'k'; LW = 'linewidth'; FS = 'fontsize';
 
 %%
 % The Adams-Bashforth formulas are the simplest family of explicit
-% linear multistep methods; they are the basis of the Matlab code ODE113.
+% linear multistep methods; they are the basis of the Matlab code `ode113`.
 % Here are stability
 % regions for the Adams-Bashforth formulas of orders 1, 2, 3.  (We can't
 % go higher without extra effort, because at order 4 this method would give
@@ -48,7 +50,7 @@ title('Adams-Bashforth orders 1,2,3',FS,16)
 %%
 % The Runge-Kutta formulas are one-step methods, a bit trickier
 % to derive but simpler to apply; they are the basis of the
-% Matlab codes ODE23 and ODE45.  To plot their stability regions,
+% Matlab codes `ode23` and `ode45`.  To plot their stability regions,
 % we need to solve an equation.  We can do that with a Newton iteration,
 % which we terminate here after 3 or 4 steps.
 % Here are stability regions of RK formulas of order 1,2,3,4.
@@ -74,8 +76,8 @@ title('Runge-Kutta orders 1,2,3,4',FS,16)
 
 %%
 % Finally we look at the backward differentiation formulas of orders 1-6, which
-% are related to the Matlab code ODE15S.
-% In this case the stability regions are the *exteriors* of the curves drawn.
+% are related to the Matlab code `ode15s`.
+% In this case the stability regions are the _exteriors_ of the curves drawn.
 clf, plot(8*y,x,K,LW,1), hold on, plot(x,8*y,K) 
 d = 1-1./z; r = 0;
 for i = 1:6
@@ -88,13 +90,13 @@ title('Backward differentiation orders 1-6 (exteriors of curves)',FS,16)
 %%
 % Here is a close-up.   The order 1 and 2 RK formulas are A-stable,
 % meaning that their stability regions contain the whole left half-plane.
-% The stability regions of the order 3,4,5,6 formulas contain the negative
+% The stability regions of the order 3, 4, 5, 6 formulas contain the negative
 % real axis but not the whole left half-plane.
 axis(6*[-1 1 -1 1])
 title('Backward differentiation close-up',FS,16)
 
 %%
-% References:
+% References
 % 
-% E. Hairer and G. Wanner, Solving Ordinary Differential Equatins II, Stiff
-% and Differential-Algebraic Problems, Springer, 1996.
+% E. Hairer and G. Wanner, _Solving Ordinary Differential Equations II: Stiff
+% and Differential-Algebraic Problems_, Springer, 1996.

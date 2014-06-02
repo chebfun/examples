@@ -44,7 +44,7 @@ norm(A - X)                % interpolation error
 m = 200;
 x = linspace(-1,1,m);
 [xx yy]=meshgrid(x);
-[ss tt]=chebpts2(m);
+[ss tt]=chebfun2.chebpts2(m);
 
 B = flipud(A);             % flip because of matrix indexing
 for k = [1 3 5 7 10]
