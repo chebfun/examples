@@ -7,14 +7,13 @@
 
 %%
 % Chebfun can solve systems of ODEs with periodic boundary conditions.
-% For example, consider the equation 
+% For example, consider the equations
 %
-%   u  -  v' = 0,
-%   u" +  v  = cos(x),
+% $$ u - v' = 0, \qquad u'' + v = \cos(x) $$
 %
-% on the interval [-pi, pi] with periodic boundary conditions on u and v.
+% on the interval $[-\pi, \pi]$ with periodic boundary
+% conditions on $u$ and $v$.
 % A Chebfun solution could be put together like this:
-
 d = [-pi,pi];
 A = chebop(d);
 A.op = @(x,u,v) [u-diff(v); diff(u,2)+v];
@@ -31,8 +30,8 @@ plot(u,LW,lw), title('Solutions u and v',FS,fs), legend('u','v');
 %%
 % For this problem, the solution can actually be computed
 % analytically.  How close were we?
-true = [cos(x+3*pi/4) cos(x+pi/4)]/sqrt(2);
-err = max([norm(u{1}-true(:,1),inf) norm(u{2}-true(:,2),inf)])
+exact = [cos(x+3*pi/4) cos(x+pi/4)]/sqrt(2);
+err = max([norm(u{1}-exact(:,1),inf) norm(u{2}-exact(:,2),inf)])
 
 %%
 % We show this also works for piecewise problems by artificially
@@ -41,4 +40,4 @@ err = max([norm(u{1}-true(:,1),inf) norm(u{2}-true(:,2),inf)])
 A.domain = [-pi,0,pi];
 u = A\f;
 plot(u,LW,lw), title('Solutions u and v',FS,fs), legend('u','v');
-err = max([norm(u{1}-true(:,1),inf) norm(u{2}-true(:,2),inf)])
+err = max([norm(u{1}-exact(:,1),inf) norm(u{2}-exact(:,2),inf)])
