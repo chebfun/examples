@@ -15,18 +15,18 @@
 %%
 % For example, consider the linear boundary-value problem
 %
-%    -eps*y" + (2-x^2)y = 1,     y(-1) = y(1) = 0
+% $$ -\varepsilon y'' + (2-x^2)y = 1, \qquad    y(-1) = y(1) = 0 $$
 %
-% with eps<<1.  In Chebfun, we can set up the problem conveniently with a couple
+% with $\varepsilon \ll 1$.
+% In Chebfun, we can set up the problem conveniently with a couple
 % of anonymous functions:
 d = [-1,1];
 x = chebfun('x',d);
-L = @(eps) -eps*diff(d,2) + diag(2-x.^2) & 'dirichlet';
-% L = @(eps) chebop(@(x,u)-eps*diff(u,2) + (2-x.^2).*u,d,0,0);
+L = @(eps) chebop(@(x,u)-eps*diff(u,2) + (2-x.^2).*u,d,0,0);
 y = @(eps) L(eps)\1;
 
 %%
-% Here are the solutions for three values of eps:
+% Here are the solutions for three values of $\varepsilon$:
 LW = 'linewidth'; FS = 'fontsize';
 figure, tic
 for j = 1:4
@@ -39,35 +39,39 @@ end
 toc
 
 %%
-% It is clear almost at a glance what form the solution is taking as eps
-% decreases to zero.  Away from -1 and +1, the eps*y" term is negligible and the
+% It is clear almost at a glance what form the solution is
+% taking as $\varepsilon \to 0$.
+% Away from $\pm 1$, the $\varepsilon y''$ term is negligible and the
 % solution is approximately that of the rest of the equation,
 %
-%     y_interior = 1/(2-x^2).
+% $$ y_{\mbox{interior}} = {1\over 2-x^2}. $$
 %
-% Near -1 and 1, on the other hand, eps*y" becomes significant as the solution
+% Near $\pm 1$, on the other hand,
+% $\varepsilon y''$ becomes significant as the solution
 % quickly bends down to meet the boundary condition.
 
 %%
 % In matched asymptotics the solution away from the boundary layers is called
-% the "outer solution".  Here we have two boundary layers, each of which has an
-% "inner solution". To analyze the right boundary layer, for example, we make
-% the approximation x=1.  This gives a constant coefficient second-order
-% equation, with an exponentially growing solution exp(x/sqrt(eps)) and an
-% exponentially decaying solution exp(-x/sqrt(eps)).  One of our two free
+% the _outer solution_.  Here we have two boundary layers, each of which has an
+% _inner solution_. To analyze the right boundary layer, for example, we make
+% the approximation $x=1$.  This gives a constant coefficient second-order
+% equation, with an exponentially growing
+% solution $\exp(x\varepsilon^{-1/2} )$ and an
+% exponentially decaying solution $\exp(-x\varepsilon^{-1/2})$.
+% One of our two free
 % parameters is used up by the fact that only the first of these is appropriate
 % at the right boundary.  The other parameter is used to satisfy the boundary
 % condition, giving
 %
-%     y_right = 1 - exp((x-1)/sqrt(eps)).
+% $$ y_{\mbox{right}} = 1 - \exp(\varepsilon^{-1/2}(x-1)). $$
 %
 % Similarly at the left boundary we have
 %
-%     y_left = 1 - exp(-x-1)/sqrt(eps)).
+% $$ y_{\mbox{left}} = 1 - \exp(\varepsilon^{-1/2}(-x-1)). $$
 
 %%
 % The three solutions can be combined to give an asymptotic model valid
-% throughout [-1,1]:
+% throughout $[-1,1]$:
 model = @(eps) 1./(2-x.^2) - exp((x-1)/sqrt(eps)) - exp((-x-1)/sqrt(eps));
 
 %%
@@ -96,10 +100,11 @@ for j = 1:4
 end
 
 %%
-% These plots reveal global convergence at a rate O(sqrt(eps))as eps shrinks to
-% zero, with the maximal error being attained in a matching region near the
-% boundaries of width O(sqrt(eps)). In the interior the accuracy is higher,
-% O(eps).
+% These plots reveal global convergence at
+% a rate $O(\varepsilon^{1/2})$ as $\varepsilon\to 0$,
+% with the maximal error being attained in a matching region near the
+% boundaries of width $O(\varepsilon^{1/2})$.
+% In the interior the accuracy is higher, $O(\varepsilon)$.
 
 %%
 % Matched asymptotics is a highly developed field and has been applied to linear
