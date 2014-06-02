@@ -38,6 +38,7 @@ RSFC = 102/220; % Rocket Specific Fuel Consumption
 % mass = original - (jet fuel burned) - (rocket fuel burned)
 mass = @(t) MassOriginal - (JSFC*JetThrust*t) - ...   % in kg, t in seconds
     (RSFC*RocketThrust.*(t-RocketStart).*(t>RocketStart));
+% mass = @(t) MassOriginal - (JSFC*JetThrust*t);
 % create a chebfun for mass to capture the piecewise linear behaviour  
 cmass = chebfun(mass, dom, 'splitting', 'on');
 

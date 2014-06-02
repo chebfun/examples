@@ -30,7 +30,7 @@ N.init = 2*(x.^2-1);
 % cheboppref 'display' to be 'iter' in order to display information about
 % the solution process. We then plot the solution and the norm of the
 % updates:
-cheboppref('display','iter')
+cheboppref.setDefaults('display','iter')
 [u,info] = solvebvp(N,1);
 nrmdu = info.normDelta;
 LW = 'linewidth'; MS = 'markersize'; FS = 'fontsize';
@@ -45,7 +45,7 @@ accuracy = norm(N(u)-1)
 %%
 % Running from a different initial guess gives a different solution:
 N.init = 2*(x.^2-1).*(1-2./(1+20*x.^2));
-cheboppref('display','off')
+cheboppref.setDefaults('display','off')
 [u,info] = solvebvp(N,1);
 nrmdu = info.normDelta;
 subplot(1,2,1), plot(u,LW,1.6), title('Solution',FS,14)

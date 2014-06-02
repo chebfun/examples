@@ -31,7 +31,6 @@ FS = 'fontsize'; LW = 'linewidth'; MS = 'markersize';
 for n = nn
   N.init = e(:,k);        % Initial guess (with continuation)
   % Define the operator for the n
-%   N.op = @(P) diag(1-mu.^2)*diff(P,2) + n*(n+1)*P + a^2*(1+n)/n*P.^round(1+2/n);
   N.op = @(P) (1-mu.^2).*diff(P,2) + n*(n+1)*P + a^2*(1+n)/n*P.^round(1+2/n);
   e(:,k+1) = N\0;          % Solve the nonlinear system via backslash
   plot(e(:,k+1),LW,1.6)    % Plot solution

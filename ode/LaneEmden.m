@@ -75,16 +75,16 @@ x = chebfun('x',d);
 N = chebop(d);
 n = 1.5; eps = 1e-8;
 N.op = @(x,u,v) x.*diff(u,2) + 2*diff(u) + x.*v.^2.*(u+eps).^n;
-N.lbc = @(u,v) [u-1,diff(u)];
+N.lbc = @(u,v) [u-1;diff(u)];
 N.rbc = @(u,v) u;
-% N.init = [1-x.^2,1];
-N.init = [cos(pi/2*x),pi];
+% N.init = [1-x.^2;1];
+N.init = [cos(pi/2*x);pi];
 uv = N\0;
 
 %%
 
 plot(uv,'Linewidth',2), hold on, 
-axis([0 1 0 1.05*uv(1,2)]),
+axis([0 1 0 1.05*feval(uv{2},1)]),
 title('Solution u and radius v'), legend('u','v')
 xlabel('x'), ylabel('u')
 
@@ -92,7 +92,7 @@ xlabel('x'), ylabel('u')
 % Thus the radius of the polytrope describing the structure of a white
 % dwarf is
 
-v = uv(:,2);
+v = uv{2};
 fprintf('Polytropic range for white dwarfs: [0,%1.4f)\n',v(1));
 
 %% References

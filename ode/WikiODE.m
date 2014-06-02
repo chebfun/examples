@@ -61,7 +61,7 @@ N.op = @(y) diff(y,2) + pi^2*y;
 N.lbc = -1; 
 %%
 % and a Neumann condition on the right.
-N.rbc = @(x,u) diff(u) + pi;
+N.rbc = @(u) diff(u) + pi;
 
 %%
 % Define the linear operator.

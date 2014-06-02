@@ -34,10 +34,9 @@ title(['alpha = ',num2str(alpha),', length(v) = ',int2str(length(v_10))])
 % If we steepen the jumps by making the problem more stiff, we are well
 % advised to "continue from" the previous solution, by using it as the
 % initial guess to nonlinear iterations. This is done by setting the .init
-% field of N. The representation length will close in on 1025, which is the
-% default maximum size, so we increase it temporarily.
+% field of N.
 
-cheboppref('maxdegree',2048);
+% cheboppref('maxdegree',2048);
 
 alpha = 20;
 N.op = @(t,v) diff(v) + ep*v - ep*( exp(alpha*(sin(t)-v)) - 1 );
@@ -48,7 +47,6 @@ xlabel('t'), ylabel('v(t)'),
 title(['alpha = ',num2str(alpha),', length(v) = ',int2str(length(v_20))])
 
 %%
-
 alpha = 40;
 N.op = @(t,v) diff(v) + ep*v - ep*( exp(alpha*(sin(t)-v)) - 1 );
 N.init = v_20;
@@ -57,7 +55,7 @@ plot(v_40,LW,lw)
 xlabel('t'), ylabel('v(t)'), 
 title(['alpha = ',num2str(alpha),', length(v) = ',int2str(length(v_40))])
 
-cheboppref('factory'); % Reset the maxium length
+% cheboppref('factory'); % Reset the maxium length
 
 %%
 % A comparison to one of Matlab's trusty built-in IVP solvers gives us some

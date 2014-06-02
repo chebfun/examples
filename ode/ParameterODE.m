@@ -144,8 +144,9 @@ ugammabreak = @(gamma) solvebvp(Nsbreak(s(gamma)),1);
 % chebop settings, but we can obtain solutions for even larger values of
 % gamma, up to 7, by increasing the number of gridpoints the solver can use
 % (beyond 7, we run into problems with matrices being close to singular)
-cheboppref('maxdegree',2^12+1)
-chebx = chebfun('x',[0 .5 1]);
+% cheboppref.setDefaults('dimensionValues',2.^(5:13))
+cheboppref.setDefaults('factory')
+chebx = chebfun('x',[0 0.5 1]);
 gammas = 1:7;
 sols = chebfun;
 res = []; trueerror = []; legs = [];

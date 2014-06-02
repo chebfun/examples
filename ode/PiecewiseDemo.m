@@ -35,7 +35,7 @@ A = linop(A)
 
 %%
 % What does it look like when we evaluate these piecewise operators? Well
-% without boundary conditions, with just have two independant blocks, which
+% without boundary conditions, we just have two independant blocks, which
 % can be evaluated at different sizes (here only  4x4 for x in [-1 0] and
 % 3x3 in [0 1], so that it fits on the screen!).
 
