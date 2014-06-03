@@ -15,7 +15,7 @@
 %
 %       u' + 1i * w * g' u = f,
 %
-% so that the indefinite integral of f * exp( 1i * w * g ) is 
+% so that the indefinite integral of f * exp( 1i * w * g ) is
 %
 %       u * exp( 1i * w * g ).
 
@@ -85,7 +85,7 @@ u = L \ f;
 % ensures that \ converges to a u with length independent of w.
 %
 % One could prevent the warning by applying a boundary condition consistent
-% with the rest of the system, that is 
+% with the rest of the system, that is
 %  L.lbc = {L(1,:),f(0)};
 
 %%
@@ -96,7 +96,7 @@ u(1).*exp(1i.*w.*g(1)) - u(0).*exp(1i.*w.*g(0))
 
 toc
 
-  
+
 %%
 % Here is a way to compute the integral using Clenshaw--Curtis quadrature.
 % As w becomes large, this takes an increasingly long time as the

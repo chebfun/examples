@@ -29,10 +29,10 @@
     tic
         [x w] = legpts(1e4);
     toc
-    
+
 %%
 % and just two or three seconds for hundreds of thousands:
-    
+
     tic
         [x w] = legpts(1e5);
     toc
@@ -45,9 +45,9 @@
 % of the code (borrowed from [3, p. 129]).
 
     n = 5; format short
-    
+
     beta = .5./sqrt(1-(2*(1:n-1)).^(-2)); % 3-term recurrence coeffs
-    T = diag(beta,1) + diag(beta,-1)      % Jacobi matrix 
+    T = diag(beta,1) + diag(beta,-1)      % Jacobi matrix
     [V,D] = eig(T);                       % Eigenvalue decomposition
     x = diag(D); [x,i] = sort(x);         % Legendre points
     w = 2*V(1,i).^2;                      % Quadrature weights
@@ -60,7 +60,7 @@
     [x2 w2] = legpts(n,'GW');
     norm(x-x2)
     norm(w-w2)
-   
+
 %%
 % (The slight difference, on the order of rounding error, occurs
 % because LEGPTS explicitly enforces that the nodes and weights are symmetric
@@ -68,8 +68,8 @@
 
     w*x
     w2*x2
-   
-%%   
+
+%%
 % In the code above we called MATLAB's EIG to solve the eigenvalue
 % problem, which, since requires O(n^3) time,
 % as we demonstrate by computing the nodes and weights
@@ -88,7 +88,7 @@
     xlabel('n'); ylabel('time (secs)'); legend('O(n^2)','GW','location','nw')
     title('Timing for Golub-Welsch algorithm')
     axis([10 1e4 1e-5  100])
-    
+
 %% Glaser-Liu-Rokhlin algorithm
 % In their 2007 paper [3], Glaser, Liu, and Rokhlin presented a
 % fast algorithm to compute the Gauss quadature nodes and weights in O(n)
@@ -110,20 +110,20 @@
         tt2(k) = toc;
     end
     scl = .5*tt2(5)/nn2(5);
-    loglog(nn2,scl*nn2,'--r',nn2,tt2,'.-b','linewidth',2); hold off, 
+    loglog(nn2,scl*nn2,'--r',nn2,tt2,'.-b','linewidth',2); hold off,
     legend('O(n^2)','GW','O(n)','GLR','location','nw')
     set(gca,'xtick',10.^(2:4)), xlim([0 1e4])
     title('Timing for both Golub-Welsch and Glaser-Liu-Rokhlin algorithms')
     axis([10 1e4 1e-5  100])
-    
+
 %%
 % We see that the GLR algorithm can compute 10000 nodes and weights in
-% around the same time as GW can do 500! 
+% around the same time as GW can do 500!
 % This gap will only widen as n is increased.
 
 %% Let's go crazy!
 % Using the GLR algorithm, my laptop and Chebfun can compute a million
-% Guass quadrature nodes and weights in a little under thirty seconds. 
+% Guass quadrature nodes and weights in a little under thirty seconds.
 % How quickly can you do it? :)
 
 % tic, [x w] = legpts(1e6); toc
@@ -152,14 +152,14 @@
 %% References
 %
 % [1] http://en.wikipedia.org/wiki/Gaussian_quadrature
-%  
-% [2] G.H. Golub and J.A. Welsch, "Calculation of Gauss quadrature rules", 
+%
+% [2] G.H. Golub and J.A. Welsch, "Calculation of Gauss quadrature rules",
 % Math. Comp. 23 (1969), 221-230.
 %
 % [3] L. N. Trefethen, Spectral Methods in MATLAB, SIAM, 2000.
 %
-% [4] A. Glaser, X. Liu and V. Rokhlin, "A fast algorithm for the 
-% calculation of the roots of special functions", SIAM Journal  
+% [4] A. Glaser, X. Liu and V. Rokhlin, "A fast algorithm for the
+% calculation of the roots of special functions", SIAM Journal
 % on Scientific Computing", 29 (2007), 1420-1438.
 %
 % [5] L. N. Trefethen, Approximation Theory and Approximation Practice,
