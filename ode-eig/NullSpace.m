@@ -19,7 +19,7 @@
 L = chebop(@(u) diff(u,2));
 
 %%
-% Clearly the nullspace, that is the nontrivial functions v for which 
+% Clearly the nullspace, that is the nontrivial functions v for which
 %
 %     L(v) = 0,
 %
@@ -38,7 +38,7 @@ V'*V
 norm(L*V)
 
 %%
-% where we find that V'V = I and LV ~ 0 as required. 
+% where we find that V'V = I and LV ~ 0 as required.
 
 %%
 % Clearly V doesn't correspond directly to 1 and x, since there is some
@@ -72,7 +72,7 @@ norm(L(x,V(:,2)))
 % the left. This removes ONE degree of freedom, and we are now left with a
 % rank 1 nullspace.
 
-L.lbc = 0; 
+L.lbc = 0;
 L.rbc = [];
 v = null(L)
 plot(v), shg
@@ -113,14 +113,14 @@ u_star = u + c_star*v
 plot(u_star)
 
 %%
-% So the condition we require is that u(pi) = bc_star, where 
+% So the condition we require is that u(pi) = bc_star, where
 
 bc_star = u_star(pi)
 
 %% Exotic constraints
 % The NULL function can also handle the exotic types of boundary conditions
 % that can be enforced in Chebfun (see [1]). For example, suppose we wish
-% to again compute the null-space of the 3rd-order piecewise-smoooth ODE 
+% to again compute the null-space of the 3rd-order piecewise-smoooth ODE
 %
 %       Lu := 0.001u''' + sign(x)*u'' + u, x in [-1 1]
 %

@@ -8,13 +8,14 @@
 function Drum
 
 %%
-% The axisymmetric harmonic vibrations of a circular drum can be described by the ODE
+% The axisymmetric harmonic vibrations of a circular drum can be described by
+% the ODE
 %
-% $$  u"(r) + r^{-1} u'(r) = -\omega^2 u(r),~~   u'(0)=1, u(1)=0, $$
+% $$  u''(r) + r^{-1} u'(r) = -\omega^2 u(r),~~   u'(0)=1, u(1)=0, $$
 %
 % where $r$ is the radial coordinate and $\omega$ is the frequency of
-% vibration. Only discrete positive values of $\omega$ are possible, 
-% corresponding to the eigenvalues of the differential equation. 
+% vibration. Only discrete positive values of $\omega$ are possible,
+% corresponding to the eigenvalues of the differential equation.
 
 %%
 % We multiply the ODE through by $r$ to avoid a potential division by zero.
@@ -35,21 +36,21 @@ B.op = @(r,u) r.*u;
 V = V(:,ii');
 err = omega - sort(roots( besselj(0,chebfun('r',[0 20])) ))
 
-%% 
-% We also get the eigenfunctions, which gives a way to visualize
-% deflections of the drums for pure frequencies. 
+%%
+% We also get the eigenfunctions, which gives a way to visualize deflections
+% of the drums for pure frequencies.
 V = V*diag(sign(V(0,:)));  % ensure V(0,k) > 0
 [rr,tt] = meshgrid(linspace(0,1,40),linspace(0,2*pi,60));
-for k = 1:4, 
+for k = 1:4,
   subplot(2,2,k), mesh(rr.*cos(tt),rr.*sin(tt),repmat(V(rr(1,:),k),60,1))
   zlim([-1 3]),caxis([-3 3]), view(-33,20), axis off
 end
 
-%% 
-% If the drum instead has a variable density given by $\rho(r)$, the
-% right-hand side of the original ODE becomes $-\omega^2\rho u$. In general,
-% the connection to Bessel functions is broken, but we will not miss a beat
-% using eigs.
+%%
+% If the drum instead has a variable density given by $\rho(r)$, the right-
+% hand side of the original ODE becomes $-\omega^2\rho u$. In general, the
+% connection to Bessel functions is broken, but we will not miss a beat using
+% `eigs`.
 
 %%
 % Constant density gives $\omega_2/\omega_1 = 2.2954$. Let's design a density
@@ -72,7 +73,7 @@ function ratio = evratio(a)
 end
 
 %%
-% Now, we create a chebfun to hit the target. 
+% Now, we create a chebfun to hit the target.
 ratfun = chebfun(@evratio,[0.5,1],'vectorize','eps',1e-11);
 astar = find(ratfun==2)
 clf, plot(ratfun), title('Eigenvalue ratio'), xlabel('a')

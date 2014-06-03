@@ -7,9 +7,9 @@
 %%
 
 %%
-% A well-known problem in quantum mechanics is the calculation of
-% eigenstates of a potential with the shape of a 'double well'.
-% Specifically, consider a potential function $V(x)$ defined on $[-1,1]$ by
+% A well-known problem in quantum mechanics is the calculation of eigenstates
+% of a potential with the shape of a "double well". Specifically, consider a
+% potential function $V(x)$ defined on $[-1,1]$ by
 %
 % $$ V(x) = 1.5, ~ x \in [-.2,.3], $$
 %
@@ -17,7 +17,7 @@
 % We seek eigenmodes of the steady-state Schroedinger equation associated
 % with this potential, specifically, functions $u(x)$ satisfying
 %
-% $$ -0.007u"(x) + V(x)u(x) = \lambda u(x),~~  u(-1) = u(1) = 0 $$
+% $$ -0.007u''(x) + V(x)u(x) = \lambda u(x),~~  u(-1) = u(1) = 0 $$
 %
 % for some constant $\lambda$.
 
@@ -50,14 +50,14 @@ for j = 1:neigs
 end
 
 %%
-% There is a great deal of such physics in such pictures. The lower
-% eigenmodes correspond to particles trapped on one side or the other,
-% with a state function decreasing exponentially within the barrier.
-% At higher energies the particles are not localized.
+% There is a great deal of such physics in such pictures. The lower eigenmodes
+% correspond to particles trapped on one side or the other, with a state
+% function decreasing exponentially within the barrier. At higher energies the
+% particles are not localized.
 
 %%
-% The Chebfun command `quantumstates` allows one to carry out
-% explorations like these much more easily.  
+% The Chebfun command `quantumstates` allows one to carry out explorations
+% like these much more easily.
 clf, x = chebfun('x',[-3,3])
 V = max(abs(x),1-3*abs(x));
 quantumstates(V)

@@ -24,7 +24,7 @@ for alpha = 0:5,
     fprintf('%d   %4.2e\n',alpha,norm(r))
 end;
 
-%% 
+%%
 % Let's consider, say, the Bessel function of order alpha = 5 and compute
 % its roots on [0,100];
 alpha = 5;
@@ -54,7 +54,7 @@ C.bc = 'dirichlet';
 
 D
 
-%% 
+%%
 % We may compare the exact Bessel function of order 5 with the computed
 % eigenvector V (after rescaling):
 
@@ -91,7 +91,7 @@ dom = [0 1]; a = 4; b = 1; c = 2;
 A = chebop(@(y) a*y, dom);
 B = chebop(@(y) b*diff(y), dom);
 C = chebop(@(y) c*diff(y,2), dom);
-C.bc = 'dirichlet'; 
+C.bc = 'dirichlet';
 [V,D] = polyeigs(A,B,C,5,1);
 
 %%
@@ -106,7 +106,7 @@ plot(V,LW,lw)
 
 norm(A*V + B*V*diag(D) + C*V*diag(D)^2)
 
-%% 
+%%
 % Because the problem is linear, the eigenvalues are known exactly and can
 % be compared to the computed ones, which turn out to be pretty accurate:
 
