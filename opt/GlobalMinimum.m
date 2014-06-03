@@ -6,8 +6,8 @@
 % [Tags: #100-Digit Challenge, #optimization, #Chebfun2]
 
 %% The SIAM 100-Dollar, 100-Digit Challenge
-% In February 2002, an article in SIAM News by Nick Trefethen set a challenge to
-% solve ten problems each to ten digits of precision (the solution of each
+% In February 2002, an article in SIAM News by Nick Trefethen set a challenge
+% to solve ten problems each to ten digits of precision (the solution of each
 % problem was a real number) [1].  One of the problems was to find the global
 % minimum of the complicated function
 
@@ -33,7 +33,7 @@ g = chebfun2(f);
 fprintf('Rank of function = %u\n', rank(g))
 
 %% 
-% For details about what we mean by the rank of a function see [3].   The
+% For details about what we mean by the rank of a function see [3]. The
 % minimum was found in [2] to 10,000 digits, and here are the first 16:
 
 exact = -3.306868647475237;  % minimum. 

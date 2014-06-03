@@ -21,9 +21,10 @@ figure, contour(x,y,ff,30,LW,1.2), colorbar
 axis([-2 2 -1.25 1.25]), hold on
 
 %%
-% Here is Chebfun code taken from opt/Rosenbrock.m to find the minimum and
-% plot the point where it is attained. (The minimum is actually achieved at
-% two points, because of symmetry, but Chebfun does not detect this.)
+% Here is Chebfun code taken from [opt/Rosenbrock](../opt/Rosenbrock.html) to
+% find the minimum and plot the point where it is attained. (The minimum is
+% actually achieved at two points, because of symmetry, but Chebfun does not
+% detect this.)
 tic
 fminx0 = @(x0) min(chebfun(@(y) f(x0,y),[-1.25 1.25]));
 fminx = chebfun(fminx0,[-2 2],'vectorize','splitting','on');
@@ -33,20 +34,19 @@ toc
 plot(minx,miny,'.k',MS,20)
 
 %% 2. Chebfun2 solution
-% The above discussion was state-of-the-art Chebfun in 2010,
-% but later it became more convenient and faster to solve such a problem
-% with Chebfun2, as shown in 
-% the Chebfun example "The Rosenbrock function in 2D optimization
-% (revisited)".  Let us do likewise for this Dixon-Szego example.
-% We can simply write
+% The above discussion was state-of-the-art Chebfun in 2010, but later it
+% became more convenient and faster to solve such a problem with Chebfun2, as
+% shown in the Chebfun example "The Rosenbrock function in 2D optimization
+% (revisited)".  Let us do likewise for this Dixon-Szego example. We can
+% simply write
 tic
 F = chebfun2(f,[-2,2,-1.25,1.25]);
 [minf,minx] = min2(F)
 toc
 
 %%
-% And here is a plot.  Chebfun2 has made an arbitrary choice
-% between the two equal global minima.
+% And here is a plot.  Chebfun2 has made an arbitrary choice between the two
+% equal global minima.
 hold off
 contour(F,30,LW,1.2), colorbar, axis([-2 2 -1.25 1.25])
 hold on, plot(minx(1),minx(2),'.k',MS,20)
