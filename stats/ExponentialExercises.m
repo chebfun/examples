@@ -153,11 +153,11 @@ hold on, plot(f,'k',LW,1.6), grid on
 
 %% 5. Problem 1(l), page 124
 
-%% 
+%%
 % _Suppose X has a negative exponential distribution with parameter lambda. If
 % P[X<=1] = P[X>1], what is var[X]?_
 
-%% 
+%%
 % This is equivalent to P[X<=1] = 1-P[X<=1], i.e. P[X<=1] = 1/2. In other
 % words, median = 1.
 
@@ -246,7 +246,7 @@ plot(f, 'b', 'linewidth', 1.6, 'interval', [0, 2]), grid on
 
 %%
 % References:
-% 
+%
 % [1] A. M. Mood, F. A. Graybill, and D. Boes, Introduction to the Theory of
 % Statistics, McGraw-Hill, 1974.
 %

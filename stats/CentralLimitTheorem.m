@@ -14,7 +14,7 @@
 % number of heads you get is given by the binomial distribution, and this
 % approaches the bell curve.
 
-%% 
+%%
 % More specifically, let $X_1, \dots , X_n$ be independent samples from a
 % distribution with mean $\mu$ and variance $\sigma^2<\infty$, and consider
 % the sample mean $$ S_n = n^{-1} \sum_{k=1}^n X_n . $$ The law of large
@@ -44,7 +44,7 @@ t = chebfun('t',[-3 3]);
 mu = sum(t.*X)
 variance = sum(t.^2.*X)
 
-%% 
+%%
 % Let us superimpose on the plot the normal distribution of this mean and
 % variance:
 
@@ -90,7 +90,7 @@ hold on, plot(gauss(sigma),'r',LW,lw), hold off
 x = chebfun('x',[0 1]);
 p = .6; q = 1-p;
 p1 = q*dirac(x-0)+p*dirac(x-1);
-plot(p1), xlim([-0.1 1.1]); 
+plot(p1), xlim([-0.1 1.1]);
 title('Probability distribution for getting a head in a single toss')
 
 %%
@@ -112,7 +112,7 @@ title('Probability distribution for number of heads in two tosses')
 sum(p2)
 
 %%
-% Every time we toss the coin again, the pdf of updated $X$ is given by 
+% Every time we toss the coin again, the pdf of updated $X$ is given by
 % convolving the old pdf of $X$ with the pdf of $X_1$. For $10$ coin
 % tosses, the final distribution of $X$ is given by
 n = 10;
@@ -135,10 +135,10 @@ sum(pn)
 mu = n*p                 % mean
 sigma = sqrt(n*p*q)      % std
 
-%% 
-% The probability distribution function for the corresponding 
+%%
+% The probability distribution function for the corresponding
 % normal random variable is given by
-fN = chebfun(@(x) 1/(sigma*sqrt(2*pi))*exp(-(x-mu).^2/(2*sigma.^2)), domain(pn));  
+fN = chebfun(@(x) 1/(sigma*sqrt(2*pi))*exp(-(x-mu).^2/(2*sigma.^2)), domain(pn));
 
 %%
 % We now plot this continuous distribution on top
@@ -166,7 +166,7 @@ title('The binomial distribution compared with the normal distribution')
 
 %%
 % References
-% 
+%
 % [1]. Papoulis, A., Probability, Random Variables and Stochastic Processes,
 % third edition, McGraw-Hill, 1991.
 %

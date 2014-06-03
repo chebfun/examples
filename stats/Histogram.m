@@ -19,9 +19,9 @@ plot(f,LW,1), hold on
 edges = 0:10;
 
 %%
-% and we want to 'bin' f into these bins.  Here is a "histogram" 
-% function that will do something along these lines.  In each
-% bin, the value it stores is the total integral of f in that interval.
+% and we want to "bin" $f$ into these bins.  Here is a `histogram` function
+% that will do something along these lines.  In each bin, the value it stores
+% is the total integral of $f$ in that interval.
 
 function h = hist(f,edges)
     nbins = length(edges)-1;
@@ -60,9 +60,9 @@ ylim([-1,max(h)+1])
 % illustrates some of the ways in which chebfuns can be manipulated.
 
 %%
-% Perhaps an overload of Matlab's HIST command should be included
-% in Chebfun?  Such an overload would certainly not use
-% delta functions internally, and it would require some careful
-% thinking about appropriate definitions.
+% Perhaps an overload of Matlab's `hist` command should be included in
+% Chebfun? Such an overload would certainly not use delta functions
+% internally, and it would require some careful thinking about appropriate
+% definitions.
 
 end

@@ -96,7 +96,7 @@ m = roots(chebfun(@(m) gint(m)-0.5, [0, 2]))
 % Let us plot the PDF, the mode (the green dashed line), and the median (the
 % black dashed line) of this distribution:
 hold off, plot(g, 'b', LW, 1.6), axis auto
-hold on, plot( [gmode,gmode], [0, 1], '--g', LW, 1.6 ), 
+hold on, plot( [gmode,gmode], [0, 1], '--g', LW, 1.6 ),
 plot( [m, m], [0, 1], '--k', LW, 1.6), grid on
 %%
 % We can see that the mode and median are very close to each other. In fact, the
@@ -144,7 +144,7 @@ plot( [m, m], [0, 1], '--k', LW, 1.6), grid on
 % We consider 3 possible priors: Beta(0,5,0.5) -- Jeffreys' prior Beta(1,1) --
 % uniform prior Beta(2,2) -- "skeptical" prior (i.e. favors values of theta near
 % 1/2). Let us plot these three prior densities in Chebfun:
-%% 
+%%
 % We can define a chebfun in terms of theta:
 theta = chebfun('theta', [0, 1]);
 %%
@@ -161,7 +161,7 @@ b_u = 1;
 f_u = theta.^(a_u-1).*(1-theta).^(b_u-1);
 B_u = sum(f_u);
 f_u = f_u/B_u;
-%% 
+%%
 % We next define the skeptical prior density, f_s:
 a_s = 2;
 b_s = 2;
@@ -170,7 +170,7 @@ B_s = sum(f_s);
 f_s = f_s/B_s;
 %%
 % Now we can plot them in one graph:
-hold off, plot(f_j, 'k', f_u, '--r', f_s, '--g', LW, 1.6), 
+hold off, plot(f_j, 'k', f_u, '--r', f_s, '--g', LW, 1.6),
 ylim([0 3.5]), grid on
 hleg1 = legend('Beta(0.5,0.5) Jeffreys prior', ...
     'Beta(1,1) uniform prior',...
@@ -257,7 +257,7 @@ pos_odds_s = P_H_0_s_n/P_H_1_s_n
 %%
 % We plot the corresponding new beta distributions for the Jeffreys', uniform,
 % and skeptical priors, respectively:
-hold off, plot(f_j_n, 'k', f_u_n, '--r', f_s_n, '--g', LW, 1.6), 
+hold off, plot(f_j_n, 'k', f_u_n, '--r', f_s_n, '--g', LW, 1.6),
 ylim([0 4.5]), grid on
 hleg2 = legend('Beta(13.5,3.5)', 'Beta(14,4)', 'Beta(15,5)');
 set(hleg2, 'Position', [.3,.5,.1,.2]);
@@ -296,25 +296,25 @@ nRows = size(col1,1);
 nCols = 3;
 for i = 1:nRows
     fprintf( 'Beta(%.1f,%.1f)    %.6f        %.6f           %.6f\n', ...
-    betaArgs(i,1), betaArgs(i,2), col1(i), col2(i), col3(i)); 
+    betaArgs(i,1), betaArgs(i,2), col1(i), col2(i), col3(i));
 end
 fprintf('==================================================================\n');
-    
+
 
 %%
 % By [2], we can conclude that we have strong evidence for H_0 since all three
 % Bayes factors are between 20 and 150.
 
-%% 
+%%
 % Acknowledgements:
-% 
+%
 % I am thankful to Prof. Nick Trefethen whose suggestions for improving the code
 % have been very useful. I also thank Mohsin Javed for allowing me to use his
 % code of fprintf.
 
-%% 
+%%
 % References:
-% 
+%
 % [1] A. M. Mood, F. A. Graybill, and D. Boes, Introduction to the Theory of
 % Statistics, McGraw-Hill, 1974.
 %

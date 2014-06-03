@@ -21,6 +21,7 @@
 %%
 % Let's start our iteration with the constant value $x=0.5$, and see how it
 % evolves for a range of values of $r$. Here are steps 0-3:
+set(gcf, 'position', [0 0 600 420])
 r = chebfun('r',[0 4]);
 x = 0.5 + 0*r;
 for n = 0:3
@@ -73,13 +74,13 @@ for n = 16:18
 end
 
 %%
-% The reader can have some fun examining these pictures. Where do we see period
-% 1, period 2, period 4, chaos? How does this match what is known about
+% The reader can have some fun examining these pictures. Where do we see
+% period 1, period 2, period 4, chaos? How does this match what is known about
 % dependence on $r$?
 
 %%
 % Let's see the final plot more fully:
-clf
+figure
 plot(x), ylim([0 1]), grid on
 
 %%
@@ -87,7 +88,7 @@ plot(x), ylim([0 1]), grid on
 plot(x,'interval',[3.902,3.908]), ylim([0 1]), grid on
 
 %%
-% REFERENCE
+% Reference
 %
 % [1] G. Strang, _Introduction to Applied Mathematics_,
 % Wellesley-Cambridge Press, 1986.

@@ -13,7 +13,7 @@
 % Chebfun can do with great accuracy.
 
 %%
-%  
+%
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 splitting off
 
@@ -37,8 +37,8 @@ legend('density','distribution','Location','northwest')
 
 %%
 % Sampling from this distribution involves applying the inverse of it to
-% uniformly sampled points. We could do this one-by-one using ROOTS, but 
-% for a large number of points it will be more efficient to find a 
+% uniformly sampled points. We could do this one-by-one using ROOTS, but
+% for a large number of points it will be more efficient to find a
 % representation of the inverse function. We use INV2 for this.
 cdfinv = inv2(cdf);
 plot(cdfinv,LW,2)
@@ -101,5 +101,5 @@ missing = 1 - ans(end)
 %%
 % Thus, a uniform variable that takes a value closer to 1 than this number
 % won't be mapped accurately back to the logit-normal variable we want, unless we
-% take further steps. Clearly, such events will be extremely rare. 
+% take further steps. Clearly, such events will be extremely rare.
 

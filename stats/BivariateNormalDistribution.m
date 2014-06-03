@@ -1,7 +1,7 @@
 %% The bivariate normal distribution
 % Alex Townsend, March 2013
 
-%% 
+%%
 % (Chebfun2 example stats/BivariateNormalDistribution.m)
 % [Tags: #normal distribution, #Chebfun2]
 
@@ -23,14 +23,14 @@ FS = 'FontSize'; fs = 16;
 
 mu1 = 0; mu2 = 0;          % means
 sigma1 = 1; sigma2 = 1;    % variances
-rho = .5;                  % coupling 
-d = 10*[-1 1 -1 1];        % truncated domain             
+rho = .5;                  % coupling
+d = 10*[-1 1 -1 1];        % truncated domain
 z = @(x,y) (x-mu1).^2./sigma1^2 - 2*rho*(x-mu1).*(y-mu2)/sigma1/sigma2 +...
-    (y-mu2).^2./sigma2^2; 
+    (y-mu2).^2./sigma2^2;
 p =chebfun2(@(x,y) 1/(2*pi*sigma1*sigma2*sqrt(1-rho^2))*...
-    exp(-z(x,y)./(2*(1-rho^2))), d); % bivariate joint pdf 
+    exp(-z(x,y)./(2*(1-rho^2))), d); % bivariate joint pdf
 
-contour(p,.001:.01:.2), 
+contour(p,.001:.01:.2),
 title('Bivariate normal distribution', FS, fs)
 
 %% Integrates to one
@@ -38,7 +38,7 @@ title('Bivariate normal distribution', FS, fs)
 
 fprintf('Integral of pdf %1.16f\n', integral2(p))
 
-%% 
+%%
 % The integral above is less than 1 because of numerical error and not because
 % we have restricted the domain of the probability density function to
 % [-10,10,10,-10].
@@ -50,17 +50,17 @@ fprintf('Integral of pdf %1.16f\n', integral2(p))
 % calculated by just integration over y with the sum command (sum of a chebfun2
 % defaults to integration over y).
 
-px = sum(p); 
-plot(px), 
+px = sum(p);
+plot(px),
 title('Marginal distribution', FS, fs)
 
 %%
-% A fundamental property is that each marginal distribution is a univariate 
+% A fundamental property is that each marginal distribution is a univariate
 % normal distribution:
 
 exact = chebfun(@(x) 1/(sqrt(2*pi)*sigma1)*...
                               exp(-(x-mu1).^2./sigma1^2/2),d(1:2));
-fprintf('Error of marginal = %1.3e\n',norm(px-exact')) 
+fprintf('Error of marginal = %1.3e\n',norm(px-exact'))
 
 %% Conditional probability distributions
 % Given that we know the realisation of $X$, what is the probability density
@@ -69,21 +69,21 @@ fprintf('Error of marginal = %1.3e\n',norm(px-exact'))
 % compute numerically the conditional probability distribution. We must restrict
 % the domain to $[-2,2] \times [-2,2]$ to prevent a NaN error.
 
-d = 2*[-1 1 -1 1]; 
+d = 2*[-1 1 -1 1];
 fy = chebfun2(@(x,y) p(x,y)./px(x), d); % conditional pdf
 
 % plot and compute error
 plot(fy)
 
 
-%% 
+%%
 % For the bivariate normal distribution the condition probability distribution
 % is known explicitly.  We can use this to check the accuracy of the conditional
 % probability computed by Chebfun2 if the realisation of $X$ is, say, $\pi/6$:
 
 x = pi/6;  % realisation of X
 
-% exact conditional probability distribution 
+% exact conditional probability distribution
 mu = mu1 + sigma1/sigma2*rho*(x-mu2); sigmasq = (1-rho^2)*sigma1^2;
 exact = chebfun(@(x) 1/(sqrt(2*pi*sigmasq))*...
                                  exp(-(x-mu).^2./sigmasq/2),d(1:2));

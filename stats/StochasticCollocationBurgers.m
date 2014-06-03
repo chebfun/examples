@@ -8,17 +8,17 @@
 % A differential equation with a stochastic parameter has a stochastic
 % solution. By sampling some functional of the solution over the stochastic
 % space, Chebfun can build an efficient representation that produces
-% whatever statistics we like about the ensemble. 
-% 
+% whatever statistics we like about the ensemble.
+%
 
 %%
-%  
+%
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 
 %%
 % Consider the steady, viscous Burgers' equation,
 %
-%    u(x) u'(x) - nu*u''(x) = 0,   u(-1) = 1+delta,  u(1) = -1  
+%    u(x) u'(x) - nu*u''(x) = 0,   u(-1) = 1+delta,  u(1) = -1
 %
 % For the nominal value delta=0, the solution has a symmetrically located
 % smoothed-out shock:
@@ -55,25 +55,25 @@ s_new = roots(u)
 % Each realization of delta requires the solution of a deterministic steady
 % Burgers problem. To speed this step up, we'll seed the iterations with an
 % initial shock profile. We create an anonymous function that returns a
-% Burgers chebop for any given delta value. 
+% Burgers chebop for any given delta value.
 
 u = chebop(@(u) u.*diff(u)-0.1*diff(u,2),[-1,1],1.05,-1)\0;  % generic shock
 N = @(delta) chebop(@(u) u.*diff(u)-0.1*diff(u,2),[-1,1],1+delta,-1,'init',u);
 
 %%
 % Now each evaluation of the function to be sampled involves locating the
-% zero crossing of a BVP solution. 
+% zero crossing of a BVP solution.
 
 s = @(delta) roots( N(delta)\0 );
 
 %%
 % The process is relatively slow, so we'll accelerate matters by
-% drastically reducing the error tolerances. 
+% drastically reducing the error tolerances.
 cheboppref('restol',1e-5)
 tic, shockfun = chebfun(s,[0,0.2],'eps',1e-3,'vectorize'), toc
 clf, plot(shockfun,LW,2), title('Shock location'), xlabel('delta')
 
-%% 
+%%
 % We see that 37 function evaluations suffice to represent the distribution
 % of s(delta) accurately to about three digits. Comparable Monte Carlo
 % sampling would take millions of realizations.
@@ -81,7 +81,7 @@ clf, plot(shockfun,LW,2), title('Shock location'), xlabel('delta')
 %%
 % Now we know everything we could want to about the shock location as a
 % random variable and can compute whatever statistics we like. It's
-% especially easy for the uniform distribution we assumed for delta. 
+% especially easy for the uniform distribution we assumed for delta.
 mu = mean(shockfun)
 sigma = std(shockfun)
 

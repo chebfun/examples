@@ -6,13 +6,13 @@
 % [Tags: #least-squares, #POLYFIT]
 
 %%
-% In Matlab, a standard command for least-squares fitting by a polynomial
-% to a set of discrete data points is POLYFIT.  The polynomial returned by
-% POLYFIT is represented in Matlab's usual manner by a vector of
+% In MATLAB, a standard command for least-squares fitting by a polynomial to a
+% set of discrete data points is `polyfit`.  The polynomial returned by
+% `polyfit` is represented in MATLAB's usual manner by a vector of
 % coefficients in the monomial basis.
 
 %%
-% In Chebfun, there is an overloaded POLYFIT command in the domain class
+% In Chebfun, there is an overloaded `polyfit` command in the domain class
 % that does the same thing, except that the polynomial is returned as a
 % chebfun rather than a coefficient vector. Here is an example:
 npts = 100;
@@ -24,7 +24,7 @@ hold on, plot(f,'r','linewidth',2)
 title('Discrete polynomial least-squares fit','fontsize',16)
 
 %%
-% Chebfun also has a POLYFIT command in the chebfun class, and this is for
+% Chebfun also has a `polyfit` command in the chebfun class, and this is for
 % continuous rather than discrete polynomial least-squares fitting.  For
 % example, here is a least-squares fit to a jagged function:
 f = chebfun('abs(x+.2)-.5*sign(x-.5) ','splitting','on');
