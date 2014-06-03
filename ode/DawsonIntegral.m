@@ -8,7 +8,7 @@
 %%
 % Here is a simple linear ODE boundary value problem:
 % 
-% $$ \frac{dF}{dx}+2xF = 1, ~~~~ F(0) = 0. \tag{1} $$
+% $$ {dF\over dx} + 2xF = 1, \qquad F(0) = 0.  $$
 %
 % Chebfun can crack this problem in a few lines. Instead of a boundary
 % condition, we will specify an interior point condition.
@@ -28,7 +28,7 @@ plot(f,LW,lw), axis([-W W -H H]), hold on, grid on;
 %%
 % The problem can be solved analytically:
 %
-% $$ F(x) = e^{-x^2} \int_0^x e^{t^2} dt. \tag{2} $$
+% $$ F(x) = e^{-x^2} \int_0^x e^{t^2} dt. $$
 %
 % Users with access to the Matlab Symbolic Toolbox
 % could also solve it with the following code:
@@ -121,20 +121,20 @@ end
 %%
 % References
 %
-% [1] Press, William H.; Teukolsky, Saul A.; Vetterling, William T.;
-% Flannery, Brian P. _Numerical recipes. The Art of Scientific Computing_.
+% [1] W. H. Press, S. A. Teukolsky, W. T. Vetterling, and
+% B. P. Flannery, _Numerical Recipes. The Art of Scientific Computing_.
 % Third edition. Cambridge University Press, Cambridge, 2007.
 %
-% [2] Rybicki, G.B., Dawson's integral and the sampling theorem. _Computers 
+% [2] G. B. Rybicki, Dawson's integral and the sampling theorem. _Computers 
 % in Physics_, vol. 3 (1989), no. 2, pp. 85-87.
 %
 % [3] http://en.wikipedia.org/wiki/Dawson_function
 %
-% [4] Cody, W.J., Pociorek, K.A., and Thatcher, H.C., Chebyshev 
+% [4] W. J. Cody, K. A. Pociorek, and H. C. Thatcher, Chebyshev 
 % approximations for Dawson's integral. _Mathematics of Computation_, 
 % vol. 24 (1970), pp. 171-178.
 %
-% [5] Weideman, J. A. C., Computation of the complex error function. 
+% [5] J. A. C. Weideman, Computation of the complex error function. 
 % _SIAM Journal on Numerical Analysis_, 31 (1994), no. 5, 1497-1518.
 
 end
