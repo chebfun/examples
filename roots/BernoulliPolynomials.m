@@ -7,17 +7,17 @@
 
 %%
 % If there is another class of polynomials that is as fascinating and
-% important  to mathematics as orthogonal polynomials, then these are
-% probably the Bernoulli polynomials $B_j(x)$. These
-% polynomials appear in the most varied areas of mathematics, and have a
-% variety of applications. In this example we have cited from the excellent
-% Wikipedia articles [1] and [2], and a talk of Karl Dilcher [3].
+% important to mathematics as orthogonal polynomials, then these are probably
+% the Bernoulli polynomials $B_j(x)$. These polynomials appear in the most
+% varied areas of mathematics, and have a variety of applications. In this
+% example we have cited from the excellent Wikipedia articles [1] and [2], and
+% a talk of Karl Dilcher [3].
 
 %%
 % Bernoulli polynomials are typically defined on the interval $[0,1]$. They
-% can be generated recursively by integrating and adding a constant such
-% that the definite integral equals zero. Let us build a quasimatrix whose
-% $(j+1)$ st column is $B_j(x)$, and plot the first 13 polynomials:
+% can be generated recursively by integrating and adding a constant such that
+% the definite integral equals zero. Let us build a quasimatrix whose
+% $(j+1)$th column is $B_j(x)$, and plot the first 13 polynomials:
 LW = 'linewidth'; lw = 1.6; format short
 x = chebfun('x',[0,1]);
 B = 0*x + 1;
@@ -34,21 +34,21 @@ axis([0,1,-.3,.3])
 B(0,1:14)
 
 %%
-% These numbers turn out to be the Taylor coefficients of $z/(\exp(z)-1)$.
-% Moreover, they are related to certain values of the famous
-% Riemann zeta function at integer arguments. In fact, the unresolved
-% Riemann Hypothesis has an alternative reformulation due to Marcel Riesz
-% (1916) in terms of Bernoulli numbers! Matlab doesn't come with a `zeta`
-% function, but if you have one available (see [4], for example), you can
-% verify that the function values $f(j), j = 0,\dots,13$, coincide with the
-% above Bernoulli numbers (for $j=1$ the sign is switched) with code like this:
+% These numbers turn out to be the Taylor coefficients of $z/(e^z-1)$.
+% Moreover, they are related to certain values of the famous Riemann zeta
+% function at integer arguments. In fact, the unresolved Riemann Hypothesis
+% has an alternative reformulation due to Marcel Riesz (1916) in terms of
+% Bernoulli numbers! MATLAB doesn't come with a `zeta` function, but if you
+% have one available (see [4], for example), you can verify that the function
+% values $f(j), j = 0,\dots,13$, coincide with the above Bernoulli numbers
+% (for $j=1$ the sign is switched) with code like this:
 %
-%    f = chebfun(@(x) -x.*zeta(1-x),[0,13]);
-%    plot(f,LW,lw); hold on
-%    j = 0:13;
-%    f(j)
-%    plot(j,f(j),'ro',LW,lw);
-%    axis([0,13,-.4,1.1]);
+%  f = chebfun(@(x) -x.*zeta(1-x),[0,13]);
+%  plot(f,LW,lw); hold on
+%  j = 0:13;
+%  f(j)
+%  plot(j,f(j),'ro',LW,lw);
+%  axis([0,13,-.4,1.1]);
 
 %%
 % Note that (except for $j=1$) every second Bernoulli number is zero. These
@@ -58,21 +58,21 @@ B(0,1:14)
 % non-integer index.
 
 %%
-% Bernoulli polynomials have the property that the number of (distinct)
-% roots in the interval $[0,1]$ is at most $3$. We can easily verify this
-% assertion numerically:
+% Bernoulli polynomials have the property that the number of (distinct) roots
+% in the interval $[0,1]$ is at most $3$. We can easily verify this assertion
+% numerically:
 for j = 1:100,
     nrRoots(1,j) = length(roots(B(:,j)));
 end
-nrRoots(1:14)
+nrRoots(1:12)
 fprintf('The maximal number of roots is %d.\n',max(nrRoots))
 
 %%
 % The multiplicity and location of complex roots has been of interest to
-% mathematicians for a long time. It is known that all roots
-% of the Bernoulli polynomials are distinct (Brillhart 1969, Dilcher 2008).
-% It is also known that there exists a parabolic region above and below
-% the interval $[0,1]$ which is free of roots (Dilcher 1983/88):
+% mathematicians for a long time. It is known that all roots of the Bernoulli
+% polynomials are distinct (Brillhart 1969, Dilcher 2008). It is also known
+% that there exists a parabolic region above and below the interval $[0,1]$
+% which is free of roots (Dilcher 1983/88):
 figure
 for j = 1:20,
     r = roots(B(:,j),'all');
@@ -107,15 +107,16 @@ hold off
 axis([0,100,1e-16,1])
 
 %%
-% The last property we like to mention and visualize here is the behavior
-% of extrema of Bernoulli polynomials on $[0,1]$. D. H. Lehmer (1940) showed
-% that the $j$ th degree Bernoulli polynomial is bounded by
+% The last property we like to mention and visualize here is the behavior of
+% extrema of Bernoulli polynomials on $[0,1]$. D. H. Lehmer (1940) showed that
+% the $j$ th degree Bernoulli polynomial is bounded by
 %
-% $$ 2j! /(2\pi)^j $$
+% $$ \frac{2j!}{(2\pi)^{\,j}} $$
 %
-% for $j>1$, except when $j= 2(\hbox{mod}4)$, in which case the bound becomes
+% for $j>1$, except when $j = 2~(\hbox{mod}~4)$, in which case the bound
+% becomes
 %
-% $$ 2*\zeta(j) j! /(2\pi)^j, $$
+% $$ \frac{2 j! \zeta(j)}{(2\pi)^{\,j}}, $$
 %
 % again with the Riemann zeta function.
 fact = cumprod([1,1:99]);
@@ -133,8 +134,7 @@ axis([0,100,1e-5,1e80])
 
 %%
 % This bound looks quite sharp, and in fact, if one were to remove the
-% $\zeta(j)$ factor from the bound, then it would be invalid every
-% 4th index.
+% $\zeta(j)$ factor from the bound, then it would be invalid every 4th index.
 
 %%
 % References:

@@ -6,7 +6,7 @@
 % [Tags: #Bessel, #ROOTS]
 
 %%
-% Here is the Bessel function J0 on the interval [0,100].
+% Here is the Bessel function $J_0$ on the interval $[0,100]$.
 J0 = chebfun(@(x) besselj(0,x),[0 100]);
 figure, plot(J0,'linewidth',1.6), grid on
 title('Bessel function J_0','fontsize',16)
@@ -17,13 +17,12 @@ r = roots(J0);
 hold on, plot(r,J0(r),'.r','markersize',20)
 
 %%
-% The number of roots can be found with the LENGTH command:
+% The number of roots can be found with the `length` command:
 number_of_roots = length(r)
 
 %%
-% Suppose you wanted to know the numbers of roots in
-% various intervals [a,b].
-% You could define an anonymous function:
+% Suppose you wanted to know the numbers of roots in various intervals
+% $[a,b]$. You could define an anonymous function:
 rootsab = @(a,b) length(roots(chebfun(@(x) besselj(0,x),[a b])));
 
 %%
