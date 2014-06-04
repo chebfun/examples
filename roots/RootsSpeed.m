@@ -33,7 +33,7 @@ toc
 norm(r-exact,inf)
 
 %%
-% This number is twice machine epsilon, which looks very good. (However, you
+% This number is twice machine epsilon, which looks very good. (Admittedly, you
 % couldn't ask for a better conditioned problem than this one, since the
 % derivative of $f$ at each root is large.)
 

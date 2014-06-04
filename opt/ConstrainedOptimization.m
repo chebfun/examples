@@ -38,7 +38,7 @@ ylim([-2 3]);
 % A similar thing can be done with other constraints.
 % For example, for $x\in[0,10]$, consider
 %
-% $$ \min(\sin(x)^2+\sin(x^2)), \quad \quad |\sin(10x)|<1/2. $$
+% $$ \min(\sin(x)^2+\sin(x^2)), \quad \quad |\sin(10x)|<{1\over 2}. $$
 %
 % We can proceed like this:
 x = chebfun('x', [0 10]);
