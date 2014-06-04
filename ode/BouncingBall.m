@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example ode/BouncingBall.m)
-% [Tags: #linearODE, #Ball, #physics]
+% [Tags: #linearODE, #ball, #physics]
 
 %%
 % This example simulates a bouncing ball. The trajectory of the ball is a
@@ -16,17 +16,16 @@ trajectory = chebfun;
 
 %%
 % Parameters:
-g = 9.81;                   % Force of gravity
-x0 = 0;                     % Initial point
-y0 = 0;
-v0 = 30;                    % Initial velocity
-theta(1) = pi/4;            % Starting angle
-k = 0.9;                    % Coefficient of rebound
-r = 1;                      % Radius of the ball
+g = 9.81;                   % gravitational constant
+x0 = 0; y0 = 0;             % initial position
+v0 = 30;                    % initial speed
+theta(1) = pi/4;            % initial angle
+k = 0.9;                    % coefficient of rebound
+r = 1;                      % radius of the ball
 
-i = 1;                      % Counter of the number of parabolas
-v_0x = v0*cos(theta);       % Initial velocity in the x direction
-v_0y(i) = v0*sin(theta);    % Initial velocity in the y direction
+i = 1;                      % counter of the number of bounces
+v_0x = v0*cos(theta);       % initial velocity in the x direction
+v_0y(i) = v0*sin(theta);    % initial velocity in the y direction
 
 %% 
 % The main loop:
@@ -56,7 +55,7 @@ while ( theta > 0.15 )
     x0 = x_ground(i);
     y0 = 0;
     
-    % Corner rebound ball:
+    % Angle of rebound:
     theta(i) = atan(v_0y(i+1)/v_0x);
     
     i = i+1;
@@ -68,7 +67,8 @@ final_part = chebfun(@(y) 0*y);
 trajectory = join(trajectory,final_part);
 
 %%
-% I shift the trajectory vertically by a quantity equal to the radius r in order
+% We shift the trajectory vertically by a quantity equal to the radius
+% $r$ in order
 % to visualize the impact with the ground:
 trajectory = trajectory + r;
 
@@ -78,11 +78,10 @@ n = 50;
 t = linspace(0, 2*pi, n); 
 t_ground = [0, t_ground, 5];
 x_ground = [0, x_ground, 900];
-% pause(2)
 
 c = 1;
-ks = 120;   % Coefficient of elasticity of a ball
-m = 0.313;  % Weight of the ball in gr
+ks = 120;   % coefficient of elasticity of a ball
+m = 0.313;  % weight of the ball in gr
 
 %%
 % Plot the result nicely:
