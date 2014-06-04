@@ -66,7 +66,7 @@ legend('[0,1]','Computed roots','Chebfun ellipse')
 title(sprintf('Degree %u with %u roots\n',length(f)-1,length(r)),FS,fs), hold off
 
 %%
-% More startling, we get fewer roots if we supply the 'all' flag:
+% More startling, we get fewer roots if we supply the `'all'` flag:
 
 rreal = roots(f); rall = roots(f,'all');
 fprintf('No. of real roots = %u\n',length(rreal));
