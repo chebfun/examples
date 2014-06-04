@@ -13,18 +13,19 @@ format long
 %
 % We use Problem 3.4 from p. 86 of [1] to motivate this example.
 %
-% Suppose a continuous random variable X has a probability density function
+% Suppose a continuous random variable $X$ has a probability density function
 % given by
 %
-% f(x) = 2e^(-2x),  x >=0
+% $$ f(x) = 2e^{-2x},~~~  x >=0, $$
+%
+% $$ f(x) = 0,  ~~~       x < 0. $$$
+%
+% What are: (a) $E(X)$ and (b) $E(X^2)$?
+
 %%
-% f(x) = 0,         x < 0.
-%%
-% What are: (a) E(X) and (b) E(X^2)?
-%%
-% (a) In order to compute the expectation E(X), we first need define a
-% chebfun over the semi-infinite interval [0 inf]. Since the density
-% function is defined to be zero for x<0, we don't need to concern
+% (a) In order to compute the expectation $E(X)$, we first need define a
+% chebfun over the semi-infinite interval $[0 \infty]$. Since the density
+% function is defined to be zero for $x<0$, we don't need to concern
 % ourselves with it there.
 x = chebfun('x',[0 inf]);
 %%
@@ -36,7 +37,7 @@ plot(f,LW,lw), grid on
 ylim([-0.2 2.2])
 xlabel('x'), ylabel('f(x)','rotation',0)
 %%
-% If f is a density function, then its integral should be 1, and we find
+% If $f$ is a density function, its integral should be $1$, and we find
 % that this is indeed the case to within rounding errors.
 sum(f)
 %%
