@@ -26,9 +26,9 @@
 %%
 % In order to solve the Blasius problem in Chebfun we'll need to truncate the
 % domain to something suitable, say $[0, 10]$. We can set up the chebop and
-% solve the differential equation with only a few lines of code. For this
-% example we can get away with quite a strict error tolerance.
+% solve the differential equation with only a few lines of code.
 
+cheboppref.setDefaults('errTol', 1e-15);
 dom = [0, 10];
 op  = @(u) 2*diff(u,3) + u.*diff(u,2);
 bc  = @(x,u) [u(0); feval(diff(u),0); feval(diff(u),dom(2))-1];
@@ -95,8 +95,9 @@ coeffs(end:-1:end-5)'
 % which suggests that convergence is limited by a singularity on the negative
 % $x$-axis. Indeed this is the case, and the singularity's location is known
 % to be approximately $x_0 = -5.6900380545$. We can see the singularity in
-% Chebfun by extending the domain of the chebop to somewhere near $x_0$
-% (although the resulting function is not fully accurate, as Chebfun warns).
+% Chebfun by extending the domain of the chebop to somewhere near $x_0$,
+% whereupon the boundary conditions at $x=0$ become interior point conditions.
+% (The resulting function is not fully accurate, as Chebfun warns.)
 
 N2 = chebop(op, [-5.6, 10], bc);
 v = N2\0
