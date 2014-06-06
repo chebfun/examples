@@ -10,7 +10,7 @@
 %
 % $$ 2u''' + u u'' = 0, \qquad u(0) = u'(0) = 0,\ u'(\infty) = 1 $$
 %
-% on the domain $x \in [0, \infty]$. The solution is a smooth monotonically
+% on the domain $x \in [0, \infty)$. The solution is a smooth monotonically
 % increasing function that rapidly decays to a linear polynomial away from the
 % origin.
 
