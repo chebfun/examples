@@ -8,7 +8,7 @@
 %%
 % Chapter 1 of the textbook by Bender and Orszag [1] contains an intense
 % review of a number of methods for solving ODEs exactly.  Here are some
-% examples illustrating techniques presented in that chapter.   In each
+% examples illustrating techniques presented in that chapter.  In each
 % case we solve an ODE with Chebfun and compare with the exact solution.
 % For simplicity we pose all the equations on the domain $[1,2]$:
 d = [1 2];
@@ -28,8 +28,8 @@ N = chebop(d);
 %
 % $$  y = 1 - {1\over C+\log(x)} $$
 %
-% for some constant $C$.  For the given boundary condition
-% the constant is $C=1$, so we have
+% for some constant $C$.  For the given boundary condition the constant is
+% $C=1$, so we have
 exact = 1 - 1./(1+log(x));
 
 %%
@@ -40,8 +40,8 @@ y = N\1;
 err = norm(y-exact,inf);
 
 %%
-% Here is a plot of the solution, using '.-' to show
-% the grid needed to resolve the solution.
+% Here is a plot of the solution, using `'.-'` to show the grid needed to
+% resolve the solution.
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 plot(y,'.-',LW,1,MS,18), grid on
 title(sprintf('xy'' = y^2-2y+1     Error = %6.2e',err),FS,14)
@@ -63,8 +63,8 @@ title(sprintf('xy'' = y^2-2y+1     Error = %6.2e',err),FS,14)
 %
 % $$  y = 2 \tan^{-1}(C\exp(x)) $$
 %
-% for some constant $C$.  We can satisfy the boundary condition
-% with $C=1/e$, so the exact solution is
+% for some constant $C$.  We can satisfy the boundary condition with $C=1/e$,
+% so the exact solution is
 exact = 2*atan(exp(x-1));
 
 %%

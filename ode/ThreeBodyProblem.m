@@ -16,24 +16,23 @@
 % dimensions. We will consider the two dimensional case, so that we can use
 % complex arithmetic to solve it in Chebfun.
 % 
-% $$ u'' = m_2(v-u)/|v-u|^3 + m_3(w-u)/|w-u|^3, $$
+% $$ u'' = \frac{m_2(v-u)}{|v-u|^3} + \frac{m_3(w-u)}{|w-u|^3}, $$
 %
-% $$ v'' = m_1(u-v)/|u-v|^3 + m_3(w-v)/|w-v|^3,  $$
+% $$ v'' = \frac{m_1(u-v)}{|u-v|^3} + \frac{m_3(w-v)}{|w-v|^3}, $$
 %
-% $$ w'' = m_1(u-w)/|u-w|^3 + m_2(v-w)/|v-w|^3 $$
+% $$ w'' = \frac{m_1(u-w)}{|u-w|^3} + \frac{m_2(v-w)}{|v-w|^3} $$
 %
 % subject to initial conditions.
 
 %% Figure of Eight Solution
-% In 2000 Chenciner and Montgomery [3] presented a paper showing the existence 
-% of "A remarkable periodic solution of the three-body problem in the case 
-% of equal masses". The solution had been found independently by Moore in 1993,
-% but this did not include an existence proof. The particles travel around a 
-% figure of eight shape (shown below). 
+% In 2000 Chenciner and Montgomery [3] presented a paper showing the existence
+% of "A remarkable periodic solution of the three-body problem in the case of
+% equal masses". The solution had been found independently by Moore in 1993,
+% but this did not include an existence proof. The particles travel around a
+% figure of eight shape (shown below).
 
 %% 
-% Here we use modified versions of the initial conditions given in the
-% paper.
+% Here we use modified versions of the initial conditions given in the paper.
 
 dom = [0,4*pi];
 a = 6.32591398/(2*pi); % scaling factor to give period 2pi
@@ -60,49 +59,47 @@ quiver(real([u(0,1),u(0,2),u(0,3)]),imag([u(0,1),u(0,2),u(0,3)]),...
 hold off
 
 %%
-% Such types of solutions to the $n$-body problem, where the particles
-% follow periodic paths, have since been called choreographies.
+% Such types of solutions to the $n$-body problem, where the particles follow
+% periodic paths, have since been called choreographies.
 
 %% Computing The Complex Singularities
-% Let us consider the chebfun representing the third particle, whose
-% initial value appears on the left in the above plot. This is a complex 
-% valued chebfun with domain $[0, 4\pi]$ (2 periods).
+% Let us consider the chebfun representing the third particle, whose initial
+% value appears on the left in the above plot. This is a complex valued
+% chebfun with domain $[0, 4\pi]$ (2 periods).
 v = u(:,3)
 
 %%
 % We can compute a rational interpolant for $v$ using the robust rational
-% interpolation and least squares algorithm described in [2], which is 
-% implemented by Chebfun in the function `ratinterp`. Then we can
-% consider this rational interpolant as an analytic
-% continuation of the underlying
-% function and analyse its singularities. 
+% interpolation and least squares algorithm described in [2], which is
+% implemented by Chebfun in the function `ratinterp`. Then we can consider
+% this rational interpolant as an analytic continuation of the underlying
+% function and analyse its singularities.
 
 %%
-% We are considering this function in complex time! An abstract concept 
-% which can inform us of properties of the solution in real time. 
-% For example, if there is a complex singularity $t_0$ near to the real line, 
-% the function is somewhat less smooth at time
-% $t = \mbox{real}(t_0)$ than it is elsewhere.
+% We are considering this function in complex time! An abstract concept which
+% can inform us of properties of the solution in real time. For example, if
+% there is a complex singularity $t_0$ near to the real line, the function is
+% somewhat less smooth at time $t = \mbox{real}(t_0)$ than it is elsewhere.
 
 %%
 % The above output shows that the degree of $v$ is about $400$.
-% In general, a good
-% choice for the degrees of the numerator and denominator for a rational
-% interpolant of a polynomial with robustness is about half the degree, so
-% we shall use a type $(151,150)$ rational interpolant. We don't expect 
-% there to be $150$ singularities -- `ratinterp` will remove extra poles of
-% small residue. For the robustness part, we use a tolerance of $10^{-12}$. 
-% The default tolerance is $10^{-14}$, but the system was solved above to a tolerance of
-% $10^{-13}$ and will have noise of this magnitude, which the robustness
-% procedure will ignore if the tolerance is set to around $10^{-12}$.
+% In general, a good choice for the degrees of the numerator and denominator
+% for a rational interpolant of a polynomial with robustness is about half the
+% degree, so we shall use a type $(151,150)$ rational interpolant. We don't
+% expect there to be $150$ singularities -- `ratinterp` will remove extra
+% poles of small residue. For the robustness part, we use a tolerance of
+% $10^{-12}$. The default tolerance is $10^{-14}$, but the system was solved
+% above to a tolerance of $10^{-13}$ and will have noise of this magnitude,
+% which the robustness procedure will ignore if the tolerance is set to around
+% $10^{-12}$.
 [p,q,rh,mu,nu,poles] = ratinterp(v,151,150, [], [], 1e-12);
 mu
 nu
 
 %%
-% We can see that the robustness of the algorithm
-% reduces the degree of the denominator drastically.
-% We still have a good error estimate on the real interval:
+% We can see that the robustness of the algorithm reduces the degree of the
+% denominator drastically. We still have a good error estimate on the real
+% interval:
 max(abs(rh(linspace(0,4*pi,100)) - v(linspace(0,4*pi,100))))
 
 %% Analysis of Singularities
@@ -110,20 +107,18 @@ max(abs(rh(linspace(0,4*pi,100)) - v(linspace(0,4*pi,100))))
 poles
 
 %%
-% A straightforward analysis considering the symmetries of the system 
-% (communicated to me by Viswanath) shows that if the solution that $v$ is 
-% approximating has any complex singularities, the real parts may only take 
-% the values $(\pi/3)[1,2,4,5]~ (\mbox{mod}2\pi)$.
+% A straightforward analysis considering the symmetries of the system
+% (communicated to me by Viswanath) shows that if the solution that $v$ is
+% approximating has any complex singularities, the real parts may only take
+% the values $(\pi/3)[1,2,4,5]~(\mbox{mod}\ 2\pi)$.
 real(poles)*3/pi
 
 %%
-% We have found poles with real parts approximately
-% $(\pi/3)[2,4,5,7,8,10]$, which agrees with the analysis. 
-% We do appear to have missed one singularity at $\pi/3$ and $11\pi/3$, but it is
-% typical to expect only the singularities near the centre of the interval
-% to be found.
-% We have also found two additional poles.  A plot shows that these are
-% further fromthe real line. 
+% We have found poles with real parts approximately $(\pi/3)[2,4,5,7,8,10]$,
+% which agrees with the analysis. We do appear to have missed one singularity
+% at $\pi/3$ and $11\pi/3$, but it is typical to expect only the singularities
+% near the centre of the interval to be found. We have also found two
+% additional poles.  A plot shows that these are further fromthe real line.
 
 plot(roots(q,'all'),'o','markersize',4,'color','b','markerfacecolor','b')
 hold on
@@ -135,19 +130,17 @@ plot([0,4*pi]+eps*1i,'-r')
 hold off
 
 %%
-% `chebellipseplot(v)` plots the Chebfun ellipse associated with $v$.
-% This ellipse is an estimate, based on the decay of the Chebyshev
-% coefficients of $v$, of the largest ellipse with foci $-1$ and $1$ in which
-% the underlying function approximated by $v$ is analytic. The poles appear
-% around the edge of this ellipse, which explains why we missed those
-% poles at the edges of the interval -- those zeros are too far out from the
-% ellipse.
+% `chebellipseplot(v)` plots the Chebfun ellipse associated with $v$. This
+% ellipse is an estimate, based on the decay of the Chebyshev coefficients of
+% $v$, of the largest ellipse with foci $-1$ and $1$ in which the underlying
+% function approximated by $v$ is analytic. The poles appear around the edge
+% of this ellipse, which explains why we missed those poles at the edges of
+% the interval -- those zeros are too far out from the ellipse.
 
 %%
 % Let us plot the configuration of the particles at time $t = (\pi/3)[1,2,4,5]$,
-% the real parts of the poles of our solution. The black particle is
-% particle 3, which has a complex singularity just off the real line at these
-% times.
+% the real parts of the poles of our solution. The black particle is particle
+% 3, which has a complex singularity just off the real line at these times.
 c = [1,2,4,5];
 t = pi/3*c;
 for j = 1:4
@@ -166,7 +159,8 @@ for j = 1:4
 end
 
 %% Without Robustness
-% Now let us do exactly the same with robustness switched off (tol=0):
+% Now let us do exactly the same with robustness switched off
+% ($\mathrm{tol}=0$):
 
 [p,q,rh,mu,nu,poles,res] = ratinterp(v,157,156, [], [], 0);
 clf, plot([0,4*pi]+eps*1i,'-r'), hold on
@@ -177,24 +171,24 @@ chebellipseplot(v)
 title('Without Robustness')
 
 %%
-% This is a demonstration of the phenomenon of spurious poles or 
-% "Froissart doublets" -- each pole is paired (almost) with a zero in the
-% numerator. Robust `ratinterp` removes such poles with an implementation
-% based on the singular value decomposition.
+% This is a demonstration of the phenomenon of spurious poles or "Froissart
+% doublets" -- each pole is paired (almost) with a zero in the numerator.
+% Robust `ratinterp` removes such poles with an implementation based on the
+% singular value decomposition.
 
 %% References
 % [1] Private communication with Divakar Viswanath, July 2011
 %
 % [2] A. Chenciner and R. Montgomery. A remarkable periodic solution of the
 % three-body problem in the case of equal masses. _Annals of Mathematics-
-% Second Series_, 152(3):881–902, 2000.
+% Second Series_, 152(3):881-902, 2000.
 %
 % [3] P. Gonnet, R. Pachón, and L.N. Trefethen. Robust rational 
 % interpolation and least-squares. _Electronic Transactions on 
-% Numerical Analysis_, 38:146–167, 2011.
+% Numerical Analysis_, 38:146-167, 2011.
 %
 % [4] Nick Trefethen. Rational interpolation, Robust and non-robust
 % http://www2.maths.ox.ac.uk/chebfun/examples/approx/html/RationalInterp.shtml
 %
 % [5] Wikipedia article:
-% 'http://en.wikipedia.org/wiki/Three_body_problem'
+% http://en.wikipedia.org/wiki/Three_body_problem

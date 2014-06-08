@@ -14,9 +14,9 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 %
 % $$ h(x) = \int_{-\infty}^\infty f(t) g(x-t) dt. $$
 %
-% Many standard distributions have simple convolutions, and here we investigate
-% some of them before computing the convolution 
-% of some more exotic distributions.
+% Many standard distributions have simple convolutions, and here we
+% investigate some of them before computing the convolution of some more
+% exotic distributions.
 
 %% Normal distribution
 % The normal distribution has the PDF
@@ -29,8 +29,8 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 normalDist = @(x, mu, s) exp(-.5*(x-mu).^2/s^2) / (s*sqrt(2*pi));
 
 %%
-% Now let's make two normal distributions with differing parameters, N1 =
-% $N(\mu_1, \sigma_1)$ and N2 = $N(\mu_2, \sigma_2)$. To make things easier,
+% Now let's make two normal distributions with differing parameters, `N1` as
+% $N(\mu_1, \sigma_1)$ and `N2` as $N(\mu_2, \sigma_2)$. To make things easier,
 % we'll truncate to a finite domain.
 dom = [-1.2 1.2];
 x = chebfun('x', dom);
@@ -42,16 +42,15 @@ s2 = .11; m2 = -.3;
 N2 = normalDist(x, m2, s2);
 
 %%
-% We can compute the distribution of the sum of two variables drawn from
-% these distributions by convolving `N1` and `N2`:
+% We can compute the distribution of the sum of two variables drawn from these
+% distributions by convolving `N1` and `N2`:
 N3 = conv(N1, N2);
 plot(N1, 'b', N2 ,'r', N3, 'k', LW, 1.6), set(gca, FS, 14)
 xlim([-1.5 1.5])
 
 %%
-% One can show (see, for example, [1])
-% that N3 should be equal to $N(\mu_1+\mu_2,
-% \sigma_1^2+\sigma_2^2)$.  Let us verify this:
+% One can show (see, for example, [1]) that `N3` should be equal to
+% $N(\mu_1+\mu_2, \sigma_1^2+\sigma_2^2)$. Let us verify this:
 N4 = normalDist(x, m1 + m2, sqrt(s1^2 + s2^2));
 norm(N4 - N3{dom(1), dom(2)})
 
@@ -61,9 +60,8 @@ norm(N4 - N3{dom(1), dom(2)})
 % $$ f(x, k, \theta) = \frac{x^{k-1}e^{-x/\theta}}
 % {\theta^k\Gamma(k)}, \quad x\ge0. $$
 %
-% As before,
-% let's compute the distribution for the sum of two variables drawn from such
-% distributions by using `conv`:
+% As before, let's compute the distribution for the sum of two variables drawn
+% from such distributions by using `conv`:
 
 gammaDist = @(x, k, t) x.^(k-1).*exp(-x./t) / (t^k*gamma(k));
 
@@ -115,14 +113,14 @@ E3 = gammaDist(x, 2, 1/lam);
 norm(E3 - E2{dom(1), dom(2)})
 
 %% Exotic distributions
-% Of course, the relationships verified above are available in closed form only
-% for certain special cases. For more exotic distributions the convolution
-% _must_ be computed numerically.
+% Of course, the relationships verified above are available in closed form
+% only for certain special cases. For more exotic distributions the
+% convolution _must_ be computed numerically.
 
 %%
-% Let's do this for two `exotic' (and discontinuous) probability distributions,
-% arbitrarily defined by summing a Heaviside function with a number of Gaussians
-% and then normalising.
+% Let's do this for two exotic (and discontinuous) probability distributions,
+% arbitrarily defined by summing a Heaviside function with a number of
+% Gaussians and then normalising.
 
 rng('default')
 x = chebfun('x', [-2 2]);
@@ -146,7 +144,7 @@ xlim([-4 4]);
 tic
 h = conv(F, G);
 toc
-hold on, plot(h, 'k', LW, 1.6), hold off 
+hold on, plot(h, 'k', LW, 1.6), hold off
 
 %% References
 %

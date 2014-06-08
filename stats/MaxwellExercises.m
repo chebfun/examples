@@ -60,7 +60,7 @@ stdm = sqrt(varm)
 %%
 % Let us plot the PDF, the mean, and the one-standard-deviation region of this
 % Maxwell distribution:
-hold off, plot(f, 'k', 'linewidth', 1.6, 'interval', [0, 10]), 
+hold off, plot(f, 'k', 'linewidth', 1.6, 'interval', [0, 10]),
 hold on, x = (meanm - stdm):.1:(meanm + stdm);
 h = area(x,f(x));
 set(h, 'FaceColor', [0.1 0.6 0.7])
@@ -93,9 +93,9 @@ P = fint(3.1) - fint(2.9)
 % We can evaluate the average speed of this particle:
 v_avg = sum(chebfun(@(x) x.*ff(x), [0, inf]))
 %%
-% Let us plot the PDF, the mean, and the one-standard-deviation region of 
+% Let us plot the PDF, the mean, and the one-standard-deviation region of
 % this Maxwell distribution:
-hold off, plot(f, 'k', 'linewidth', 1.6, 'interval', [0, 18]), 
+hold off, plot(f, 'k', 'linewidth', 1.6, 'interval', [0, 18]),
 hold on, x = 2.9:.1:3.1;
 h = area(x,f(x));
 set(h, 'FaceColor', [0.1 0.6 0.3])
@@ -111,7 +111,7 @@ m = 0.15;
 K_avg = 1/2*0.15*vsqr_avg
 %%
 % Reference:
-% 
+%
 % [1] A. M. Mood, F. A. Graybill, and D. Boes, Introduction to the Theory of
 % Statistics, McGraw-Hill, 1974.
 %

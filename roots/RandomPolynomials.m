@@ -6,16 +6,14 @@
 % [Tags: #random, #ROOTS]
 
 %%
-% If p(z) = a_0 + a_1 z + ... + a_n z^n is a polynomial with random
-% coefficients, its roots tend to lie near the unit circle [1,2].
-% To be specific, suppose a_0,...,a_(n-1) are independent real
-% numbers from the standard normal distribution, with a_n=1.
-% Here are typical pictures for n = 50 and 200, based on Matlab's
-% ROOTS command.  Incidentally, such computations are numerically
-% stable [4];
-% the well-known difficulties of polynomial rootfinding pertain mainly
-% to problems with roots away from the unit circle and coefficients
-% far from random.
+% If $p(z) = a_0 + a_1 z + \cdots + a_n z^n$ is a polynomial with random
+% coefficients, its roots tend to lie near the unit circle [1,2]. To be
+% specific, suppose $a_0,\ldots,a_{n-1}$ are independent real numbers from the
+% standard normal distribution, with $a_n=1$. Here are typical pictures for $n
+% = 50$ and $n = 200$, based on the MATLAB `roots` command. Incidentally, such
+% computations are numerically stable [4]; the well-known difficulties of
+% polynomial rootfinding pertain mainly to problems with roots away from the
+% unit circle and coefficients far from random.
 nn = [50 200];
 MS = 'markersize'; FS = 'fontsize'; ms = 12; fs = 12;
 for j = 1:2
@@ -29,18 +27,16 @@ for j = 1:2
 end
 
 %%
-% The reason these roots lie near the unit circle is that
-% the monomials 1, z, z^2,... are orthogonal polynomials defined on
-% that set.  For orthogonal polynomials defined on a different region
-% of the complex plane, we get roots tending to cluster on the
-% boundary of that region [3].  In particular, the best-known families
-% of orthogonal polynomials are defined over [-1,1], and random
-% polynomials expressed in these bases tend to have roots near
-% [-1,1].  The Chebfun ROOTS command provides an easy way to compute
-% roots of such polynomials stably.
-% For example, here is what happens if we repeat the 
-% experiment above but for random polynomials in the basis of
-% Chebyshev polynomials, i.e., p = a_0 + a_1 T_1 + ... + a_n T_n.
+% The reason these roots lie near the unit circle is that the monomials
+% $1, z, z^2,\ldots$ are orthogonal polynomials defined on that set. For
+% orthogonal polynomials defined on a different region of the complex plane,
+% we get roots tending to cluster on the boundary of that region [3]. In
+% particular, the best-known families of orthogonal polynomials are defined
+% over $[-1,1]$, and random polynomials expressed in these bases tend to have
+% roots near $[-1,1]$. The Chebfun `roots` command provides an easy way to
+% compute roots of such polynomials stably. For example, here is what happens
+% if we repeat the experiment above but for random polynomials in the basis of
+% Chebyshev polynomials, i.e., $p = a_0 + a_1 T_1 + \cdots + a_n T_n$.
 randn('seed',1)
 for j = 1:2
     subplot(1,2,j)
@@ -54,8 +50,8 @@ for j = 1:2
 end
 
 %%
-% Legendre polynomials are orthogonal over the same interval [-1,1],
-% so the results aren't much different:
+% Legendre polynomials are orthogonal over the same interval $[-1,1]$, so the
+% results aren't much different:
 for j = 1:2
     subplot(1,2,j)
     n = nn(j);

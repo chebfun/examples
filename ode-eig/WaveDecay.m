@@ -8,7 +8,8 @@
 %%
 % Here are eigenmodes $1$, $2$, $10$, $20$ of the wave equation
 % on $[-\pi/2,\pi/2]$:
-LW = 'linewidth'; lw = 1.6; FS = 'fontsize'; fs = 8;
+FS = 'fontsize'; fs = 12;
+figure('position', [0 0 600 480])
 L = chebop(-pi/2,pi/2);
 L.op = @(u) diff(u,2);
 L.bc = 'dirichlet';
@@ -21,15 +22,15 @@ for j = 1:4
   v = v/norm(v,inf);          % normalize to have amplitude 1
   lam = d(n);                 % nth eigenvalue
   subplot(4,1,j)
-  plot(v,LW,lw)
-  axis([-pi/2 pi/2 -1.6 1.6])
+  plot(v)
+  axis([-pi/2 pi/2 -1.6 2.2])
   if j < 4, set(gca,'xtick',[]), end
-  text(.3,1.1,sprintf('mode %d         lam = %6.3f',n,lam),FS,fs)
+  text(.3,1.6,sprintf('mode %d         lam = %6.3f',n,lam),FS,fs)
 end
 
 %%
 % Here are the same, but for the wave equation with a decay band:
-figure
+clf
 a = 0.2;
 x = chebfun('x',[-pi/2 pi/2]);
 middle = (abs(x)<=a);
@@ -43,9 +44,9 @@ for j = 1:4
   v = v/norm(v,inf);          % normalize to have amplitude 1
   lam = d(n);                 % nth eigenvalue
   subplot(4,1,j)
-  hold off, fill(a*[-1 1 1 -1],1.6*[-1 -1 1 1],[1 .8 .8])
-  hold on, plot(v,LW,lw)
-  axis([-pi/2 pi/2 -1.6 1.6])
+  hold off, fill(a*[-1 1 1 -1],[-1.6 -1.6 2.2 2.2],[1 .8 .8])
+  hold on, plot(v)
+  axis([-pi/2 pi/2 -1.6 2.2])
   if j < 4, set(gca,'xtick',[]), end
-  text(.3,1,sprintf('mode %d         lam = %6.3f',n,lam),FS,fs)
+  text(.3,1.6,sprintf('mode %d         lam = %6.3f',n,lam),FS,fs)
 end

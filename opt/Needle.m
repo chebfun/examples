@@ -33,30 +33,28 @@ close all, plot(h,LW,1), axis equal, axis([-4 4 -.4 2])
 % lie in $[-1,1]$.
 
 %%
-% This is obviously an optimization problem, but exactly
-% how should we formulate it?  One interpretation is that it
-% is a problem of _semiinfinite programming_, because it
-% mixes an objective function to minimize with a continuum
-% of constraints.  Presumably there are methods that could be
-% used to solve it in this framework.
+% This is obviously an optimization problem, but exactly how should we
+% formulate it?  One interpretation is that it is a problem of _semiinfinite
+% programming_, because it mixes an objective function to minimize with a
+% continuum of constraints.  Presumably there are methods that could be used
+% to solve it in this framework.
 
 %%
-% For us, when I hear the word "continuum", we think Chebfun.
-% Suppose we specify two variables: $x$, the horizontal
-% position of the center of the needle, and $\theta$, its angle
-% counterclockwise from the horizontal.  Given $x$ and $\theta$, we
-% then ask how low the needle can lie.  Let
+% For us, when I hear the word "continuum", we think Chebfun. Suppose we
+% specify two variables: $x$, the horizontal position of the center of the
+% needle, and $\theta$, its angle counterclockwise from the horizontal.  Given
+% $x$ and $\theta$, we then ask how low the needle can lie.  Let
 %%
 % $$ y(x,\theta) $$
 %%
-% be its minimal height, given that it does not cut below the surface.
-% Then $y(x,\theta)$ is just a maximum of a continuous function
-% over an interval, which we can compute with Chebfun like this:
+% be its minimal height, given that it does not cut below the surface. Then
+% $y(x,\theta)$ is just a maximum of a continuous function over an interval,
+% which we can compute with Chebfun like this:
 
 function y = minfun(x,theta)
 r = .5*cos(theta); hx = h{x-r,x+r};
 needle = chebfun(@(s) tan(theta)*(s-x),[x-r x+r]);
-y = max(hx-needle);
+y = max(hx - needle);
 end
 
 %%
@@ -71,11 +69,10 @@ axis equal, axis([-4 4 -.4 2])
 end
 
 %%
-% For example, here are needle positions for
-% $(x,\theta) = (-.6, -0.2)$ and
+% For example, here are needle positions for $(x,\theta) = (-.6, -.2)$ and
 % $(x,\theta) = (1.7, 1)$.
 subplot(2,1,1)
-plotneedle(-0.6,-0.2), title('needle with (x,theta) = (-.6, -0.2)',FS,14)
+plotneedle(-0.6,-0.2), title('needle with (x,theta) = (-0.6, -0.2)',FS,14)
 subplot(2,1,2)
 plotneedle(1.7,1), title('needle with (x,theta) = (1.7, 1)',FS,14)
 
@@ -83,24 +80,25 @@ plotneedle(1.7,1), title('needle with (x,theta) = (1.7, 1)',FS,14)
 % Now we just have to minimize over $x$ and $\theta$.
 % Let's first do that over a wide range.
 npts = 25;
-tic, x = linspace(-2,2,npts);
-theta = linspace(-1.5,1.5,npts);
+tic, x = linspace(-2,2,npts); theta = linspace(-1.5,1.5,npts);
 [xx,thth] = meshgrid(x,theta); yy = 0*xx;
 for k = 1:length(x)
   for j = 1:length(theta)
-    yy(j,k) = minfun(xx(j,k),thth(j,k));
+    yy(j,k) = minfun(xx(j,k), thth(j,k));
   end
 end
-close, contour(x,theta,yy,80), grid on, xlabel('x',FS,14), ylabel('theta',FS,14)
+xxp = linspace(-2,2,100); ttp = linspace(-1.5,1.5,100)';
+yyp = interp2(xx,thth,yy,xxp,ttp,'cubic');
+close, contour(xxp,ttp,yyp,80), grid on, xlabel('x',FS,14), ylabel('theta',FS,14)
 colorbar, title(['min value on grid: ' num2str(min(yy(:)))],FS,14), toc
 
 %%
 % In this picture we see that there are two promising
 % regions: one with $(x,\theta) \approx (-.5, -.4)$,
 % and one with $(x,\theta) \approx (.5, -.2)$.
-% The central white regions have an interesting interpretation:
-% if the needle is balanced on top of a mountain, then moving it
-% left or right, or tilting it, doesn't have much effect.
+% The central white regions have an interesting interpretation: if the needle
+% is balanced on top of a mountain, then moving it left or right, or tilting
+% it, doesn't have much effect.
 
 %%
 % Zooming in confirms this picture:
@@ -108,24 +106,24 @@ tic, x = linspace(-0.8,0.6,npts); theta = linspace(-0.5,0,npts);
 [xx,thth] = meshgrid(x,theta); yy = 0*xx;
 for k = 1:length(x)
   for j = 1:length(theta)
-    yy(j,k) = minfun(xx(j,k),thth(j,k));
+    yy(j,k) = minfun(xx(j,k), thth(j,k));
   end
 end
+xxp = linspace(-0.8,0.6,100); ttp = linspace(-0.5,0,100)';
+yyp = interp2(xx,thth,yy,xxp,ttp,'cubic');
 levels = 0.06:.003:0.12;
-contour(x,theta,yy,levels), grid on, xlabel('x',FS,14), ylabel('theta',FS,14)
+close, contour(xxp,ttp,yyp,levels), grid on, xlabel('x',FS,14), ylabel('theta',FS,14)
 title(['min value on grid: ' num2str(min(min(yy)))],FS,14), toc
 
 %%
-% The winner seems to be the region on the right.
-% From here the right thing to do is call a bivariate optimization
-% routine. In basic Matlab the simplest one is the direct
-% search code
-% |<http://www.mathworks.co.uk/help/matlab/ref/fminsearch.html fminsearch>|.
-% This requires the input to be a
-% single vector, so we'll need a wrapper:
+% The winner seems to be the region on the right. From here the right thing to
+% do is call a bivariate optimization routine. In basic Matlab the simplest
+% one is the direct search code
+% <a href='http://www.mathworks.co.uk/help/matlab/ref/fminsearch.html'>fminsearch</a>.
+% This requires the input to be a single vector, so we'll need a wrapper:
 
 function y = minfunwrapper(xvec)
-y = minfun(xvec(1),xvec(2));
+y = minfun(xvec(1), xvec(2));
 end
 
 %%
@@ -135,8 +133,7 @@ guess = [.41, -0.2];
 tic, [xvec,yval] = fminsearch(@minfunwrapper,guess,opts); toc
 
 %%
-% So it would seem that to 10 digits or more, the minimal
-% height is around
+% So it would seem that to 10 digits or more, the minimal height is around
 yval
 
 %%

@@ -6,42 +6,43 @@
 %
 format long
 %%
-% In this example, we use Chebfun to solve some probability distribution 
+% In this example, we use Chebfun to solve some probability distribution
 % problems from [1].
 
 %% 1. Expectation of a random variable
-% 
+%
 % We use Problem 3.4 from p. 86 of [1] to motivate this example.
-% 
-% Suppose a continuous random variable X has a probability density function 
+%
+% Suppose a continuous random variable $X$ has a probability density function
 % given by
-% 
-% f(x) = 2e^(-2x),  x >=0
+%
+% $$ f(x) = 2e^{-2x},~~~  x >=0, $$
+%
+% $$ f(x) = 0,  ~~~       x < 0. $$$
+%
+% What are: (a) $E(X)$ and (b) $E(X^2)$?
+
 %%
-% f(x) = 0,         x < 0.
-%%
-% What are: (a) E(X) and (b) E(X^2)?
-%%
-% (a) In order to compute the expectation E(X), we first need define a 
-% chebfun over the semi-infinite interval [0 inf]. Since the density 
-% function is defined to be zero for x<0, we don't need to concern 
+% (a) In order to compute the expectation $E(X)$, we first need define a
+% chebfun over the semi-infinite interval $[0 \infty]$. Since the density
+% function is defined to be zero for $x<0$, we don't need to concern
 % ourselves with it there.
 x = chebfun('x',[0 inf]);
 %%
 % Next we approximate the density function.
-f = 2*exp(-2*x); 
+f = 2*exp(-2*x);
 figure('Position',[100 200 520 180])
 LW = 'linewidth'; lw = 1.6;
 plot(f,LW,lw), grid on
 ylim([-0.2 2.2])
 xlabel('x'), ylabel('f(x)','rotation',0)
 %%
-% If f is a density function, then its integral should be 1, and we find 
+% If $f$ is a density function, its integral should be $1$, and we find
 % that this is indeed the case to within rounding errors.
 sum(f)
 %%
-% The expectation of a continuous random variable is defined as the 
-% integral over x = -inf...inf of the function xf(x). 
+% The expectation of a continuous random variable is defined as the
+% integral over x = -inf...inf of the function xf(x).
 xf = x.*f;
 plot(xf,LW,lw), grid on
 ylim([-0.05 0.4])
@@ -53,7 +54,7 @@ xlabel('x'), ylabel(sprintf('x f(x)\n'),'rotation',0)
 sum(xf{0,20})
 
 %%
-% b) For E(X^2), the answer is again 1/2 and we compute this in exactly the 
+% b) For E(X^2), the answer is again 1/2 and we compute this in exactly the
 % same way as before.
 xxf = x.^2.*f;
 plot(xxf,LW,lw), grid on
@@ -64,10 +65,10 @@ sum(xxf{0,20})
 
 %% 2. Mean, median and mode of a probability distribution
 %
-% This example is motivated by problem 3.33 on p. 94 of [1]. 
+% This example is motivated by problem 3.33 on p. 94 of [1].
 %%
-% The probability density function of a continuous random variable X is 
-% g(x) = 4x(9-x^2)/81, for 0<=x<=3, and zero otherwise. Find: a) the mean, 
+% The probability density function of a continuous random variable X is
+% g(x) = 4x(9-x^2)/81, for 0<=x<=3, and zero otherwise. Find: a) the mean,
 % b) the median, and c) the mode.
 %%
 % First, we define an appropriate Chebfun variable and the p.d.f.
@@ -84,20 +85,20 @@ mean = sum(x.*g)
 %%
 % b) The median is the value a for which P(X<=a) = 1/2. In order to solve
 % this problem we need to work with the cumulative distribution function,
-% which is simply the indefinite integral of the probability density. This 
+% which is simply the indefinite integral of the probability density. This
 % can be computed with the chebfun command CUMSUM.
 G = cumsum(g);
 plot(G,LW,lw), grid on
 xlabel('x'), ylabel(sprintf('G(x)\n'),'rotation',0)
 %%
-% Note again that as we would expect for any p.d.f., the integral is 1. In 
-% order to compute the the value of a, we may use one of the relational 
+% Note again that as we would expect for any p.d.f., the integral is 1. In
+% order to compute the the value of a, we may use one of the relational
 % operators that have been overloaded in Chebfun. Here it is:
 median = roots(G-0.5)
 median_exact = sqrt(9-9*sqrt(2)/2)
 %%
-% c) For the mode, we are simply looking for the position of the global 
-% maximum of the probability distribution. This is easily computed 
+% c) For the mode, we are simply looking for the position of the global
+% maximum of the probability distribution. This is easily computed
 % with the Chebfun command MAX.
 [gmax,mode] = max(g);
 display(mode)

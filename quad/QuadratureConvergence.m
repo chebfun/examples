@@ -7,7 +7,7 @@
 %%
 % As pointed out first by Folkmar Bornemann, the Gauss and Clenshaw-Curtis
 % quadrature formulas converge at a rate one power of $n$ faster than one
-% might expect.  For example, consider the function $f(x) = |x-.3|$.  Its
+% might expect. For example, consider the function $f(x) = |x-.3|$. Its
 % Chebyshev coefficients decrease at the rate $n^{-2}$:
 clf
 x = chebfun('x');
@@ -21,8 +21,8 @@ hold on, loglog(nn,.01*nn.^(-2),'--k',LW,2)
 text(4e2,.5e-9,'n^{-2}',FS,18)
 
 %%
-% Since the integral of an $O(n^{-2})$ tail is normally of size $O(n^{-1})$, you
-% might expect these quadrature formulas to have accuracy $O(n^{-1})$. But
+% Since the integral of an $O(n^{-2})$ tail is normally of size $O(n^{-1})$,
+% you might expect these quadrature formulas to have accuracy $O(n^{-1})$. But
 % in fact, it is $O(n^{-2})$ again:
 clf, exact = sum(f);
 errg = []; errc = [];
@@ -74,5 +74,5 @@ text(7e2,.5e-9,'n^{-2}',FS,18)
 % References:
 %
 % [1] S. Xiang and F. Bornemann, On the convergence rates of Gauss and
-% Clenshaw-Curtis quadrature for functions of limited regularity, 
+% Clenshaw-Curtis quadrature for functions of limited regularity,
 % _SIAM Journal on Numerical Analysis,_ 50 (2012), 2581-2587.

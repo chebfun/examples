@@ -6,10 +6,10 @@
 
 %%
 % gPC is a powerful way to express stochastic quantities with spectral
-% accuracy. We demonstrate the technique in one dimension. 
+% accuracy. We demonstrate the technique in one dimension.
 
 %%
-%  
+%
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 
 %% Strong approximation
@@ -38,7 +38,7 @@ plot(H(:,1:4),LW,2), title('Hermite polynomials')
 %%
 % The plot shows that the polynomials are not uniformly normalized, but that
 % won't be a problem. We can verify the orthogonality in a few cases:
-rho = exp(-z.^2/2);  rho = rho/sum(rho);  % Gaussian density 
+rho = exp(-z.^2/2);  rho = rho/sum(rho);  % Gaussian density
 sum( H(:,2).*H(:,5).*rho )
 
 
@@ -52,7 +52,7 @@ w = exp(-z.^2/4);  w = w/sqrt(sum(w.^2));  % square root of weight
 HW = repmat(w,[1 N+1]).*H;                 % multiply each column by w
 G = HW'*HW    % Gram matrix of mutual inner products
 
-%% 
+%%
 % The Gram matrix shows why it's so easy to use this basis for
 % least-squares approximation. If we accept that G is numerically diagonal,
 % then its inversion in the normal equations is trivial. Returning to our
@@ -61,12 +61,12 @@ mu = 1; sigma = 0.5;  y = exp(mu+sigma*z);
 rhs = (repmat(rho,[1 N+1]).*H)' * y;  % inner products of y and H_n
 c = rhs ./ diag(G)                    % solve the normal equations
 
-%% 
+%%
 % The rapid decrease in the coefficients reflects the spectral accuracy. A
 % plot shows how the weight function strongly emphasizes values of Z near 0
 % at the expense of the ends:
 clf, plot([y,H*c],LW,2), title('Weighted least squares for lognormal density')
-xlabel('Z'), ylabel('Y(Z)') 
+xlabel('Z'), ylabel('Y(Z)')
 
 %%
 % In Chebfun, we can avoid all the discussion and use of orthogonal
@@ -88,7 +88,7 @@ title('Weighted least squares using Chebyshev basis')
 % of a variable in their common range [0,1]. Specifically, both FY(Y) and
 % FZ(Z) are uniformly distributed and can be called a new variable U.
 % Solving, we get Y=FY^(-1)( FZ(Z) ), a quantity that we can approximate as
-% before. 
+% before.
 
 %%
 % For example, let Y be given by an exponential distribution on [0,inf],
@@ -97,14 +97,14 @@ title('Weighted least squares using Chebyshev basis')
 FY = chebfun(@(y) 1-exp(-y),[0 8]);
 
 %%
-% Let's again use the Hermite weight in Z to approximate Y. 
+% Let's again use the Hermite weight in Z to approximate Y.
 z = chebfun(@(z)z, [0 8] );
 w = exp(-z.^2/4) / sqrt(sum(exp(-z.^2/2)));  % sqrt of density
 FZ = cumsum( w.^2 );                         % distribution of Z
 
 %%
 % Because function composition can be very sensitive to roundoff, we have
-% to guarantee that the ranges of the distributions are exactly right. 
+% to guarantee that the ranges of the distributions are exactly right.
 FY = (FY-FY(0))/(FY(8)-FY(0));
 FZ = (FZ-FZ(0))/(FZ(8)-FZ(0));
 FYinv = inv2(FY);  % invert
@@ -112,7 +112,7 @@ y = FYinv(FZ);     % compose
 
 %%
 % Now that we have an expression for Y as parameterized by Z, we can
-% proceed as before with a least-squares approximation. 
+% proceed as before with a least-squares approximation.
 T = chebpoly(0:N,[0 8]);
 WT = repmat(w,[1 N+1]).*T;  wy = w.*y;
 c = WT \ wy
@@ -127,7 +127,7 @@ legend('exact','LS approximation','Location','southwest')
 w = 1./(1+z);      % sqrt of density
 FZ = cumsum( w.^2 );
 FZ = (FZ-FZ(0))/(FZ(8)-FZ(0));  % normalize exactly
-y = FYinv(FZ);     
+y = FYinv(FZ);
 WT = repmat(w,[1 N+1]).*T;  wy = w.*y;
 c = WT \ wy
 clf, plot([y,T*c],LW,2)
@@ -137,12 +137,12 @@ legend('exact','LS approximation','Location','southwest')
 
 %%
 % Note that both curves in the graph changed, because the parameterization
-% and the approximation are both different. 
+% and the approximation are both different.
 
 
 %%
 % References:
 %
 % [1] D. Xiu, Numerical Methods for Stochastic Computations, Princeton
-% University Press, 2010. 
+% University Press, 2010.
 %

@@ -7,12 +7,12 @@
 
 %%
 % This Example gives an idea of how Chebfun performs as a general-purpose
-% integrator.  We apply it to the set of test functions considered by
-% Kahaner [1], Gander & Gautschi [2], and Gonnet [3]:
+% integrator. We apply it to the set of test functions considered by Kahaner
+% [1], Gander & Gautschi [2], and Gonnet [3]:
 
 funs = {
     @(x) exp(x)
-    @(x) double( x >= 0.3 ) 
+    @(x) double( x >= 0.3 )
     @(x) sqrt(x)
     @(x) (23/25) * cosh(x) - cos(x)
     @(x) 1 ./ (x.^4 + x.^2 + 0.9)
@@ -56,10 +56,10 @@ f_exact = [ 1.7182818284590452354 , 0.7 , 2/3 , 0.4794282266888016674 , ...
     0.83867634269442961454 , -1 , 1.5643964440690497731 , ...
     0.16349494301863722618 , -0.63466518254339257343 , ...
     0.013492485649467772692 , 17.664383539246514971 , 7.5 ];
-    
+
 %%
-% To get an idea of what it is we are integrating, we plot the
-% different integrands:
+% To get an idea of what it is we are integrating, we plot the different
+% integrands:
 clf
 for i = 1:length(funs)
     xx = linspace( ranges(i,1) , ranges(i,2) , 200 );
@@ -67,16 +67,17 @@ for i = 1:length(funs)
 end
 
 %%
-% We now create and fill two arrays with the relative errors and times used 
-% for each quadrature routine and each function integrated to a relative tolerance 
-% of 1e-10.  We create the chebfuns with splitting and blowup on to 
-% account for difficult and singular integrands. (For more accurate timing results 
-% one could perform each integration, say, 10 times by setting runs=10.)
+% We now create and fill two arrays with the relative errors and times used
+% for each quadrature routine and each function integrated to a relative
+% tolerance of $10^{-10}$. We create the chebfuns with splitting and blowup on
+% to account for difficult and singular integrands. (For more accurate timing
+% results one could perform each integration, say, 10 times by setting
+% `runs = 10`.)
 errs = zeros(25,4);
 time = zeros(25,4);
 runs = 1; tol = 1e-10;
 for i = 1:length(funs)
-    
+
   % Chebfun
   tic
   for k = 1:runs
@@ -85,7 +86,7 @@ for i = 1:length(funs)
   end
   time(i,1) = toc/runs;
   errs(i,1) = abs( ( q-f_exact(i) ) / f_exact(i) );
-    
+
   % quad
   tic
   for k = 1:runs
@@ -93,7 +94,7 @@ for i = 1:length(funs)
   end
   time(i,2) = toc/runs;
   errs(i,2) = abs( ( q-f_exact(i) ) / f_exact(i) );
-    
+
   % quadl
   tic
   for k=1:runs
@@ -101,7 +102,7 @@ for i = 1:length(funs)
   end;
   time(i,3) = toc/runs;
   errs(i,3) = abs( ( q-f_exact(i) ) / f_exact(i) );
-    
+
   % quadgk
   tic
   for k=1:runs
@@ -109,13 +110,13 @@ for i = 1:length(funs)
   end
   time(i,4) = toc/runs;
   errs(i,4) = abs( ( q-f_exact(i) ) / f_exact(i) );
-    
+
 end
 
 %%
-% To give an idea of how the algorithms compare, we plot both the times 
+% To give an idea of how the algorithms compare, we plot both the times
 % and the achieved accuracies in bar charts.
-% First, consider the execution times.  The chart scales these 
+% First, consider the execution times.  The chart scales these
 % relative to the time required by quadgk.  What we see here is that
 % quad and quadl are typically about 10 times slower than quadgk,
 % and Chebfun is typically about 10 times slower than quad and quadl.
@@ -171,10 +172,10 @@ abs( ( q - f_exact(21) ) / f_exact(21) )
 % [1] David K. Kahaner, "Comparison of numerical quadrature
 %     formulas," in Mathematical Software, John R. Rice, ed., Academic
 %     Press, 1971, pp. 229-259.
-%         
+%
 % [2] Walter Gander & Walter Gautschi, "Adaptive quadrature --
 %     revisited", BIT Numerical Mathematics, 40(1):84-101, 2000.
-%         
+%
 % [3] Pedro Gonnet, "Increasing the reliability of adaptive
 %     quadrature using explicit interpolants", ACM Transactions on
 %     Mathematical Software, 37(3):26:1--26:32, 2010.

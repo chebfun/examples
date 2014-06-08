@@ -6,9 +6,9 @@
 % [Tags: #linearODE, #IVP]
 
 %%
-% This is an elementary example to illustrate how
-% one might use Chebfun to solve an ODE initial-value problem.
-% We take the world's second-simplest such problem,
+% This is an elementary example to illustrate how one might use Chebfun to
+% solve an ODE initial-value problem. We take the world's second-simplest such
+% problem,
 %
 % $$ u''+ u = 0 ,  ~~~~  u(0) = 1, ~   u'(0) = 0 $$
 %
