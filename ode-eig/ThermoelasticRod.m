@@ -37,7 +37,7 @@ format long,
 
 %%
 % First, we solve the eigenvalue problem in a stable case.
-N = chebop( @(u) diff(u,2), [0 1] );    % operator on 0<x<1
+N = chebop( @(x,u) diff(u,2), [0 1] );    % operator on 0<x<1
 N.lbc = 0;     % fixed end
 delta = 0.96;  % stable choice 
 N.bc = @(x,u) feval(diff(u),1) + u(1) - 4*delta*sum(u);  % Barber condition
