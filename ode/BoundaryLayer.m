@@ -15,14 +15,14 @@
 
 %%
 % In Chebfun, we can define the eps-dependent operator like this:
-dom = domain(0,1);
-L = @(eps) -eps*diff(dom,2) - diff(dom) & 'dirichlet';
+dom = [0,1];
+L = @(eps) chebop(@(u) -eps*diff(u,2) - diff(u),dom,'dirichlet');
 
 %%
-% Note that since the operator L above is linear, we are defining it to be
-% a linop. Another approach would be be to define a linear chebop as
-% follows:
-L2 = @(eps) chebop(@(u) -eps*diff(u,2)-diff(u),dom,0,0);
+% Another supported and perhaps more memorable syntax for specifying
+% boundary conditions is with the `&` operator:
+L = @(eps) chebop(@(u) -eps*diff(u,2) - diff(u),dom) & 'dirichlet';
+
 %%
 % For eps=0.1 we get this picture:
 u = L(0.1)\1;
