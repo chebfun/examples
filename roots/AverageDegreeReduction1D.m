@@ -167,21 +167,21 @@ end
 
 %% References
 %
-% [1] Z. Battels and L. N. Trefethen, An extension of MATLAB to
-% continuous functions and operators, _SIAM Journal on
-% Scientific Computing_, 25 (2004), pp.1743-1770.
+% 1. Z. Battels and L. N. Trefethen, An extension of MATLAB to continuous
+%    functions and operators, _SIAM Journal on Scientific Computing_, 25
+%    (2004), pp.1743-1770.
 %
-% [2] J. P. Boyd, Computing zeros on a real interval through Chebyshev
-% expansion and polynomial rootfinding, _SIAM Journal on
-% Numerical Analysis_, 40 (2002), pp. 1666-1682.
+% 2. J. P. Boyd, Computing zeros on a real interval through Chebyshev
+%    expansion and polynomial rootfinding, _SIAM Journal on Numerical
+%    Analysis_, 40 (2002), pp. 1666-1682.
 %
-% [3] J. P. Boyd, Finding the zeros of a univariate equation: Proxy
-% rootfinders, Chebyshev interpolation, and the companion matrix, _SIAM
-% Review_, 55 (2013), pp. 375-396.
+% 3. J. P. Boyd, Finding the zeros of a univariate equation: Proxy
+%    rootfinders, Chebyshev interpolation, and the companion matrix, _SIAM
+%    Review_, 55 (2013), pp. 375-396.
 %
-% [4] D. Elliott, The evaluation and estimation of the coefficients in the
-% Chebyshev series expansion of a function, _Mathematics of
-% Computation_, 18 (1964), pp. 274-284.
+% 4. D. Elliott, The evaluation and estimation of the coefficients in the
+%    Chebyshev series expansion of a function, _Mathematics of Computation_,
+%    18 (1964), pp. 274-284.
 %
-% [5] M. Richardson, Exact Chebyshev expansion coefficients of a function,
-% Chebfun Example, June 2012.
+% 5. M. Richardson, Exact Chebyshev expansion coefficients of a function,
+%    Chebfun Example, June 2012.

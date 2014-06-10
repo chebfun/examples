@@ -31,5 +31,3 @@ tic
 disp('Number of roots between 1000000 and 1001000:')
 n = rootsab(1000000,1001000)
 toc
-
-

@@ -65,13 +65,13 @@ end
 % However, $O(n^2)$ algorithms for this problem have been available for quite
 % a while, though they are not built into MATLAB. A key person in this effort
 % over the years has been Dario Bini of the University of Pisa.  See for
-% example [Bini et al. 2010].  This group also offers Fortran software.
-% Another notable contribution is [Chandrasekaran et al. 2007].
+% example [2].  This group also offers Fortran software. Another notable
+% contribution is [4].
 
 %%
 % The first author of this example, in collaboration with David Watkins and
 % others, has been developing alternative $O(n^2)$ algorithms for the
-% companion matrix eigenvalue problem [Aurentz et al. 2014].
+% companion matrix eigenvalue problem [1].
 
 %%
 % All this is for the companion matrix eigenvalue problem, which corresponds
@@ -79,22 +79,22 @@ end
 % when your roots are on or near the unit circle.  What about the Chebfun
 % context of roots on or near $[-1,1]$?  Here the analogous matrix structure
 % is a so-called _colleague matrix_, dating to Specht and Good around 1960;
-% see Chapter 18 of [Trefethen 2013].  What can be done in this case?
+% see Chapter 18 of [6].  What can be done in this case?
 
 %%
 % First of all we note what Chebfun currently does: following an idea of Boyd
-% [Boyd 2002], it subdivides the interval when necessary.  This is how a
-% superficially $O(n^3)$ algorithm is brought down to $O(n^2)$, enabling the
-% good performance seen above.  Note that intervals are different from
-% circles: if you split an interval in half, you get two intervals, but if you
-% split a circle in half, you don't get two circles.  Therefore this recursion
-% trick is not available in the monomial case.
+% [3], it subdivides the interval when necessary.  This is how a superficially
+% $O(n^3)$ algorithm is brought down to $O(n^2)$, enabling the good
+% performance seen above.  Note that intervals are different from circles: if
+% you split an interval in half, you get two intervals, but if you split a
+% circle in half, you don't get two circles.  Therefore this recursion trick
+% is not available in the monomial case.
 
 %%
 % But what about an $O(n^2)$ _linear algebra_ solution to the problem, rather
 % than relying on splitting of intervals? Here too there has been progress
-% [Eidelman et al. 2008], and we hope to have work of our own to report before
-% long. An interesting project for the future will be to see whether Chebfun
+% [5], and we hope to have work of our own to report before long. An
+% interesting project for the future will be to see whether Chebfun
 % rootfinding can be improved by the use of $O(n^2)$ linear algebra algorithms
 % rather than interval subdivision, while holding to Chebfun's principle of
 % doing everything in MATLAB without relying on Mex files to link to Fortran
@@ -102,32 +102,25 @@ end
 
 %% References
 %
-% [Aurentz et al. 2014]
-% J. Aurentz, T. Mach, R. Vandebril and D. S. Watkins, to appear.
+% 1. J. Aurentz, T. Mach, R. Vandebril and D. S. Watkins, to appear.
 %
-% [Bini et al. 2010]
-% D. A. Bini, P. Boito, Y. Eidelman, L. Gemignani, and
-% I. Gohberg, A fast implicit QR eigenvalue algorithm
-% for companion matrices, _Linear Algebra and its
-% Applications_, 432 (2010), 2006-2031.
+% 2. D. A. Bini, P. Boito, Y. Eidelman, L. Gemignani, and
+%    I. Gohberg, A fast implicit QR eigenvalue algorithm for companion
+%    matrices, _Linear Algebra and its Applications_, 432 (2010),
+%    2006-2031.
 %
-% [Boyd 2002] J. P. Boyd, Computing zeros on a real interval
-% through Chebyshev expansion and polynomial rootfinding,
-% _SIAM Journal on Numerical Analysis_, 40 (2002), 1666-1682.
+% 3. J. P. Boyd, Computing zeros on a real interval through Chebyshev
+%    expansion and polynomial rootfinding, _SIAM Journal on Numerical
+%    Analysis_, 40 (2002), 1666-1682.
 %
-% [Chandrasekaran et al. 2007]
-% S. Chandrasekaran, M. Gu, J. Xia and J. Zhu,
-% A fast QR algorithm for companion matrices,
-% _Operator Theory: Advances and Applications_, 179
-% (2007), 111-143.
+% 4. S. Chandrasekaran, M. Gu, J. Xia and J. Zhu, A fast QR algorithm for
+%    companion matrices, _Operator Theory: Advances and Applications_, 179
+%    (2007), 111-143.
 %
-% [Eidelman et al. 2008] Y. Eidelman, L. Gemignani, and
-% I. Gohberg, Efficient eigenvalue computation for
-% quasiseparable Hermitian matrices under low
-% rank perturbations, _Numerical Algorithms_,
-% 47 (2008), 253-273.
+% 5. Y. Eidelman, L. Gemignani, and
+% I. Gohberg, Efficient eigenvalue computation for quasiseparable Hermitian
+%    matrices under low rank perturbations, _Numerical Algorithms_, 47 (2008),
+%    253-273.
 %
-% [Trefethen 2013]
-% L. N. Trefethen, _Approximation Theory and Approximation
-% Practice_, SIAM, 2013.
-
+% 6. L. N. Trefethen, _Approximation Theory and Approximation Practice_, SIAM,
+%    2013.

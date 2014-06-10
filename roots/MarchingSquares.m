@@ -101,17 +101,15 @@ plot(r(:,1),r(:,2),'k.',MS,20)           % plot extrema
 
 %% References
 %
-% [1] S. Guettel, Implicit functions and fun with contours,
-% http://www.chebfun.org/examples/fun/html/ContourFun.shtml
+% 1. Chebfun Example [fun/ContourFun](../fun/ContourFun.html)
 %
-% [2] C. S. Coleman, Gulp!, _CODEE Newsletter_, 1995.
+% 2. C. S. Coleman, Gulp!, _CODEE Newsletter_, 1995.
 %
-% [3] A. Townsend and L. N. Trefethen, An extension of Chebfun to two
-%     dimensions, _SIAM Journal on Scientific Computing_, 35
-% (2013), C495-C518.
+% 3. A. Townsend and L. N. Trefethen, An extension of Chebfun to two
+%    dimensions, _SIAM Journal on Scientific Computing_, 35 (2013), C495-C518.
 %
-% [4] Marching Squares, Wikipedia article,
-% http://en.wikipedia.org/wiki/Marching_squares
+% 4. Marching Squares, Wikipedia article,
+%    http://en.wikipedia.org/wiki/Marching_squares
 %
-% [5] Marching Triangles, Wikipedia article,
-% http://en.wikipedia.org/wiki/Marching_triangles
+% 5. Marching Triangles, Wikipedia article,
+%    http://en.wikipedia.org/wiki/Marching_triangles

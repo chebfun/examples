@@ -134,8 +134,7 @@ ylabel('| \lambda_n |')
 
 captured = sum(lambdaShort(1:10)) / 2    % ... a smaller fraction is captured
 
-%%
-% Reference:
+%% References
 %
-% [1] D. Xu, _Numerical Methods for Stochastic Computations_, Princeton
-% University Press, 2010.
+% 1. D. Xu, _Numerical Methods for Stochastic Computations_, Princeton
+%    University Press, 2010.

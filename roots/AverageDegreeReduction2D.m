@@ -189,15 +189,13 @@ end
 end
 
 %% References
-%%
-% [1] Y. Nakatsukasa, V. Noferini, and A. Townsend, Computing the common zeros
-% of two bivariate functions via Bezout resultants,
-% _Numerische Mathematik_, to appear.
 %
-% [2] A. Townsend, 1D Subdivision and the average degree reduction, Chebfun
-% Example, May 2013.
+% 1. Y. Nakatsukasa, V. Noferini, and A. Townsend, Computing the common zeros
+%    of two bivariate functions via Bezout resultants, _Numerische
+%    Mathematik_, to appear.
 %
-% [3] A. Townsend and L. N. Trefethen, An extension of Chebfun to two
-% dimensions, _SIAM Journal on Scientific Computing_, 35
-% (2013), C495-C518.
-
+% 2. A. Townsend, 1D Subdivision and the average degree reduction, Chebfun
+%    Example, May 2013.
+%
+% 3. A. Townsend and L. N. Trefethen, An extension of Chebfun to two
+%    dimensions, _SIAM Journal on Scientific Computing_, 35 (2013), C495-C518.

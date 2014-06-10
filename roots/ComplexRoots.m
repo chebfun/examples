@@ -105,18 +105,17 @@ roots3(ff)
 
 end
 
-%%
-% References
+%% References
 %
-% [1] A. P. Austin, P. Kravanja and L. N. Trefethen, Numerical algorithms
-% based on analytic function values at roots of unity, SIAM Journal on
-% Numerical Analysis, to appear.
+% 1. A. P. Austin, P. Kravanja and L. N. Trefethen, Numerical algorithms based
+%    on analytic function values at roots of unity, SIAM Journal on Numerical
+%    Analysis, to appear.
 %
-% [2] L. M. Delves and J. N. Lyness, A numerical method for lcoating the zeros
-% of an analytic function, Mathematics of Computation 21 (1967), 543-560.
+% 2. L. M. Delves and J. N. Lyness, A numerical method for lcoating the zeros
+%    of an analytic function, Mathematics of Computation 21 (1967), 543-560.
 %
-% [3] D. Jackson, Roots and singular points of analytic functions, Annals of
-% Matheamtics 19 (1917), 142-151.
+% 3. D. Jackson, Roots and singular points of analytic functions, Annals of
+%    Matheamtics 19 (1917), 142-151.
 %
-% [4] J. E. McCune, Exact inversion of dispersion relations,
-% Physics of Fluids 9 (1966), 2082-2084.
+% 4. J. E. McCune, Exact inversion of dispersion relations, Physics of Fluids
+%    9 (1966), 2082-2084.

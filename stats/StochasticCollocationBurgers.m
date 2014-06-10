@@ -85,9 +85,7 @@ clf, plot(shockfun,LW,2), title('Shock location'), xlabel('delta')
 mu = mean(shockfun)
 sigma = std(shockfun)
 
-%%
-% References:
+%% References
 %
-% [1] D. Xu, Numerical Methods for Stochastic Computations, Princeton
-% University Press, 2010.
-
+% 1. D. Xu, Numerical Methods for Stochastic Computations, Princeton
+%    University Press, 2010.

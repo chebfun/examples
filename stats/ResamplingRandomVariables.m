@@ -102,4 +102,3 @@ missing = 1 - ans(end)
 % Thus, a uniform variable that takes a value closer to 1 than this number
 % won't be mapped accurately back to the logit-normal variable we want, unless we
 % take further steps. Clearly, such events will be extremely rare.
-

@@ -155,11 +155,10 @@ r = roots(GG); disp(r(2))
 % also has the additional benefit of reducing the volatility (read
 % annualised standard-deviation of logarithmic returns) which can result
 % from betting the full Kelly fraction.
+
+%% References
 %
-%%
-% References:
+% 1. J. L. Kelly, Jr, A New Interpretation of Information Rate, Bell Systems
+%    Technical Journal, 35, (1956), 917–-926
 %
-% [1] J. L. Kelly, Jr, A New Interpretation of Information Rate, Bell
-%       Systems Technical Journal, 35, (1956), 917–-926
-%
-% [2] Unknown author: http://www.elem.com/~btilly/kelly-criterion/
+% 2. Unknown author: http://www.elem.com/~btilly/kelly-criterion/

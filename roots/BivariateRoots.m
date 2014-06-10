@@ -155,22 +155,6 @@ plot(c2(y),'xk',MS,16)
 errors = abs(c2(y)-c1(x))
 
 %%
-% References:
-%
-% [1]  D. S. Bernstein, Matrix Mathematics: Theory, Facts, and Formulas,
-% Princeton University Press, 2nd edition, 2009.
-%
-% [2]  D. A. Bini and A. Marco. Computing curve intersection by means of
-% simultaneous iterations. Numerical Algorithms, 43(2):151-175, 2006.
-%
-% [3] D. Manocha and J. Demmel. Algorithms for intersecting parametric and
-% algebraic curves I: simple intersections. ACM Transactions on Graphics,
-% 13(1):73-100, 1994.
-%
-% [4] A. Townsend, V. Noferini, and Y. Nakatsukasa. Vector spaces of
-% linearizations for matrix polynomials: a bivariate polynomial approach.
-% Preprint: The Mathematical Institute, University of Oxford, Eprints Archive
-% 1638 (2012).
 
 end
 
@@ -205,3 +189,20 @@ end
 
 end
 
+
+%% References
+%
+% 1. D. S. Bernstein, Matrix Mathematics: Theory, Facts, and Formulas,
+%    Princeton University Press, 2nd edition, 2009.
+%
+% 2. D. A. Bini and A. Marco. Computing curve intersection by means of
+%    simultaneous iterations. Numerical Algorithms, 43(2):151-175, 2006.
+%
+% 3. D. Manocha and J. Demmel. Algorithms for intersecting parametric and
+%    algebraic curves I: simple intersections. ACM Transactions on Graphics,
+%    13(1):73-100, 1994.
+%
+% 4. A. Townsend, V. Noferini, and Y. Nakatsukasa. Vector spaces of
+%    linearizations for matrix polynomials: a bivariate polynomial approach.
+%    Preprint: The Mathematical Institute, University of Oxford, Eprints
+%    Archive 1638 (2012).

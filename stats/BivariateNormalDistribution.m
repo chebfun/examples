@@ -90,5 +90,5 @@ exact = chebfun(@(x) 1/(sqrt(2*pi*sigmasq))*...
 fprintf('Error in conditional pdf is %1.5e\n',norm(fy(x,:)-exact));
 
 %% References
-% [1] Wikipedia: Multivariate normal distribution.
-%     http://en.wikipedia.org/wiki/Multivariate_normal_distribution
+%
+% 1. http://en.wikipedia.org/wiki/Multivariate_normal_distribution

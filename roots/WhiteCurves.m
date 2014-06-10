@@ -63,8 +63,7 @@ for j = 1:4,        % j = n-m
 end
 axis([-1 1 -1 1])
 
-%%
-% References:
+%% References
 %
-% [1] E. L. Ortiz and T. J. Rivlin, Another look at the Chebyshev polynomials,
-% _American Mathematical Monthly_, 90 (1983), 3-10.
+% 1. E. L. Ortiz and T. J. Rivlin, Another look at the Chebyshev polynomials,
+%    _American Mathematical Monthly_, 90 (1983), 3-10.

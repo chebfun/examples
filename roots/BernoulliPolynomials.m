@@ -136,18 +136,17 @@ axis([0,100,1e-5,1e80])
 % This bound looks quite sharp, and in fact, if one were to remove the
 % $\zeta(j)$ factor from the bound, then it would be invalid every 4th index.
 
-%%
-% References:
+%% References
 %
-% [1] Wikipedia article on Bernoulli polynomials as of 08/01/2012,
-% http://en.wikipedia.org/wiki/Bernoulli_polynomials
+% 1. Wikipedia article on Bernoulli polynomials as of 08/01/2012,
+%    http://en.wikipedia.org/wiki/Bernoulli_polynomials
 %
-% [2] Wikipedia article on Bernoulli numbers as of 08/01/2012,
-% http://en.wikipedia.org/wiki/Bernoulli_numbers
+% 2. Wikipedia article on Bernoulli numbers as of 08/01/2012,
+%    http://en.wikipedia.org/wiki/Bernoulli_numbers
 %
-% [3] K. Dilcher, On Multiple Zeros of Bernoulli Polynomials, Talk at the
-% 2011 "Special Functions in the 21st Century" conference in Washington,
-% http://math.nist.gov/~DLozier/SF21/SF21slides/Dilcher.pdf
+% 3. K. Dilcher, On Multiple Zeros of Bernoulli Polynomials, Talk at the 2011
+%    "Special Functions in the 21st Century" conference in Washington,
+%    http://math.nist.gov/~DLozier/SF21/SF21slides/Dilcher.pdf
 %
-% [4] Paul Godfrey, Special Functions math library,
-% http://www.mathworks.com/matlabcentral/fileexchange/978
+% 4. Paul Godfrey, Special Functions math library,
+%    http://www.mathworks.com/matlabcentral/fileexchange/978

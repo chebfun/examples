@@ -244,12 +244,11 @@ hold on, plot ([meanx, meanx], [0, 1], '-.m', 'linewidth', 2),
 plot ([mode, mode], [0, 1], 'p'),
 plot(f, 'b', 'linewidth', 1.6, 'interval', [0, 2]), grid on
 
-%%
-% References:
+%% References
 %
-% [1] A. M. Mood, F. A. Graybill, and D. Boes, Introduction to the Theory of
-% Statistics, McGraw-Hill, 1974.
+% 1. A. M. Mood, F. A. Graybill, and D. Boes, Introduction to the Theory of
+%    Statistics, McGraw-Hill, 1974.
 %
-% [2] Prof. Jane M. Horgan, Chapter 17 Applications of the Exponential
-% Distribution. Available at: www.computing.dcu.ie/~jhorgan/chapter17slides.pdf
-% (Accessed: 6 May 2013)
+% 2. Prof. Jane M. Horgan, Chapter 17 Applications of the Exponential
+%    Distribution. Available at:
+%    www.computing.dcu.ie/~jhorgan/chapter17slides.pdf (Accessed: 6 May 2013)

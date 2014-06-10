@@ -25,8 +25,6 @@
 
 
 %% 2. Problem 2(a), page 124
-
-%%
 % _Find the mode of the beta distribution._
 
 %%
@@ -312,17 +310,15 @@ fprintf('==================================================================\n');
 % have been very useful. I also thank Mohsin Javed for allowing me to use his
 % code of fprintf.
 
-%%
-% References:
+%% References
 %
-% [1] A. M. Mood, F. A. Graybill, and D. Boes, Introduction to the Theory of
-% Statistics, McGraw-Hill, 1974.
+% 1. A. M. Mood, F. A. Graybill, and D. Boes, Introduction to the Theory of
+%    Statistics, McGraw-Hill, 1974.
 %
-% [2] Neil Laws, Part A Statistics: Bayesian Inference, Hilary Term 2013.
-% Available at: http://www.stats.ox.ac.uk/~laws/partA-stats/A-StatsBayes.pdf
-% (Accessed: 1 Jul 2013)
+% 2. Neil Laws, Part A Statistics: Bayesian Inference, Hilary Term 2013.
+%    Available at: http://www.stats.ox.ac.uk/~laws/partA-
+%    stats/A-StatsBayes.pdf (Accessed: 1 Jul 2013)
 %
-% [3] Neil Laws, Example from Carlin and Louis (2008), Bayesian Inference.
-% Available at:
-% http://www.stats.ox.ac.uk/~laws/partA-stats/2013A-BayesSlides.pdf (Accessed: 1
-% Jul 2013)
+% 3. Neil Laws, Example from Carlin and Louis (2008), Bayesian Inference.
+%    Available at: http://www.stats.ox.ac.uk/~laws/partA-stats/2013A-
+%    BayesSlides.pdf (Accessed: 1 Jul 2013)

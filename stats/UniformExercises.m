@@ -255,8 +255,7 @@ hold off, h1 = area(g{0, 20}); set(h1,FC,[0.3 0.5 0.2]),
 hold on, h2 = area(g{55, 170}); set(h2,FC,[0.3 0.5 0.2]),
 plot(g,'b',LW,2), xlim([0 360]), grid on
 
-%%
-% Reference:
+%% References
 %
-% [1] A. M. Mood, F. A. Graybill, and D. Boes, _Introduction
-% to the Theory of Statistics_, McGraw-Hill, 1974.
+% 1. A. M. Mood, F. A. Graybill, and D. Boes, _Introduction to the Theory of
+%    Statistics_, McGraw-Hill, 1974.

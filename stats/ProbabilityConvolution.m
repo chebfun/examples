@@ -148,8 +148,8 @@ hold on, plot(h, 'k', LW, 1.6), hold off
 
 %% References
 %
-% [1] http://en.wikipedia.org/wiki/List_of_convolutions_of_probability_distributions
+% 1. http://en.wikipedia.org/wiki/List_of_convolutions_of_probability_distribu
+%    tions
 %
-% [2] Nick Hale and Alex Townsend, "Convolution of compactly supported
-% functions", in preparation.
-
+% 2. Nick Hale and Alex Townsend, "Convolution of compactly supported
+%    functions", in preparation.

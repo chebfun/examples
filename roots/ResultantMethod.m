@@ -141,19 +141,18 @@ plot(roots(g), 'b', LW, lw)
 plot(r(:,1), r(:,2), 'k.', MS, ms), axis(d)
 title('Resultant method finds the solution',FS,fs)
 
-%% References:
-%%
-% [1] P. A. Browne, Numerical methods for two parameter eigenvalue problems,
-% PhD. Thesis, University of Bath, 2008.
-%%
-% [2] Y. Nakatsukasa, V. Noferini, and A. Townsend, Computing the common zeros
-% of two bivariate functions via Bezout resultants, (2013).
-%%
-% [3] A. J. Sommese and C. W. Wampler, The numerical solution of systems of
-% polynomials, World Scientific, 2005.
-%%
-% [4] A. Townsend, Marching Squares,
-% http://www2.maths.ox.ac.uk/chebfun/examples/roots/html/MarchingSquares.shtml
-%%
-% [5] A. Townsend and L. N. Trefethen, An extension of Chebfun to two
-% dimensions, submitted, (2013).
+%% References
+%
+% 1. P. A. Browne, Numerical methods for two parameter eigenvalue problems,
+%    PhD. Thesis, University of Bath, 2008.
+%
+% 2. Y. Nakatsukasa, V. Noferini, and A. Townsend, Computing the common zeros
+%    of two bivariate functions via Bezout resultants, (2013).
+%
+% 3. A. J. Sommese and C. W. Wampler, The numerical solution of systems of
+%    polynomials, World Scientific, 2005.
+%
+% 4. Chebfun Example [roots/MarchingSquares](../roots/MarchingSquares.html)
+%
+% 5. A. Townsend and L. N. Trefethen, An extension of Chebfun to two
+%    dimensions, submitted, (2013).

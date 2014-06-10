@@ -74,8 +74,7 @@ hold off, h = area(f{1,3});
 set(h,'FaceColor',[0.9 0.3 0.4]), axis auto
 hold on, plot(f,'k',LW,1.6,'interval',[-1 6]), grid on
 
-%%
-% Reference:
+%% References
 %
-% [1] A. M. Mood, F. A. Graybill, and D. Boes, Introduction to the Theory of
-% Statistics, McGraw-Hill, 1974.
+% 1. A. M. Mood, F. A. Graybill, and D. Boes, Introduction to the Theory of
+%    Statistics, McGraw-Hill, 1974.

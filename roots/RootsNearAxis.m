@@ -52,8 +52,7 @@ plot(roots(f,'all'),'or'), axis auto, axis equal
 % Chebfun Guide, and for more on the mathematics, see Chapters 8
 % and 18 of [1].
 
-%%
-% Reference:
+%% References
 %
-% [1] L. N. Trefethen, Approximation Theory and Approximation
-% Practice, SIAM, 2013.
+% 1. L. N. Trefethen, Approximation Theory and Approximation Practice, SIAM,
+%    2013.

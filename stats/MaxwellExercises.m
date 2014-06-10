@@ -109,12 +109,12 @@ vsqr_avg = sum(chebfun(@(x) x.^2.*ff(x), [0, inf]))
 % the formula K = 1/2*m*v^2:
 m = 0.15;
 K_avg = 1/2*0.15*vsqr_avg
-%%
-% Reference:
+
+%% References
 %
-% [1] A. M. Mood, F. A. Graybill, and D. Boes, Introduction to the Theory of
-% Statistics, McGraw-Hill, 1974.
+% 1. A. M. Mood, F. A. Graybill, and D. Boes, Introduction to the Theory of
+%    Statistics, McGraw-Hill, 1974.
 %
-% [2] John Baliga, Maxwell-Boltzmann Distribution. Available at:
-% http://academics.triton.edu/faculty/jbaliga/pdfs/MaxwellBoltzmannDistribution.pdf
-% (Accessed: 15 Sep 2013)
+% 2. John Baliga, Maxwell-Boltzmann Distribution. Available at: http://academi
+%    cs.triton.edu/faculty/jbaliga/pdfs/MaxwellBoltzmannDistribution.pdf
+%    (Accessed: 15 Sep 2013)

@@ -164,10 +164,9 @@ title('The binomial distribution compared with the normal distribution')
 % Theorem for distributions that combine discrete and continuous
 % components.
 
-%%
-% References
+%% References
 %
-% [1]. Papoulis, A., Probability, Random Variables and Stochastic Processes,
-% third edition, McGraw-Hill, 1991.
+% 1. Papoulis, A., Probability, Random Variables and Stochastic Processes,
+%    third edition, McGraw-Hill, 1991.
 %
-% [2]. http://www.chebfun.org/examples/approx/html/BSplineConv.shtml
+% 2. Chebfun Example [approx/BSplineConv](../approx/BSplineConv.html)

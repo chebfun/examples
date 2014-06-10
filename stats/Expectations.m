@@ -117,8 +117,7 @@ text(2.2,0.55,sprintf('mode   = %1.2f',mode),'color','k')
 hold off, ylim([-0.01 0.61])
 xlabel('x'), ylabel('g(x)','rotation',0)
 
-%%
-% References:
+%% References
 %
-% [1] M. Spiegel, J. Schiller and R. Srinivasan, Schaum's Outlines --
-% Probability and Statistics, 3rd. ed., 2009.
+% 1. M. Spiegel, J. Schiller and R. Srinivasan, Schaum's Outlines --
+%    Probability and Statistics, 3rd. ed., 2009.

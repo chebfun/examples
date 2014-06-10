@@ -139,10 +139,7 @@ legend('exact','LS approximation','Location','southwest')
 % Note that both curves in the graph changed, because the parameterization
 % and the approximation are both different.
 
-
-%%
-% References:
+%% References
 %
-% [1] D. Xiu, Numerical Methods for Stochastic Computations, Princeton
-% University Press, 2010.
-%
+% 1. D. Xiu, Numerical Methods for Stochastic Computations, Princeton
+%    University Press, 2010.

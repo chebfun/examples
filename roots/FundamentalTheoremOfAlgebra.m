@@ -106,13 +106,13 @@ norm(f(r))
 
 %% References
 %
-% [1] Z. Battles and L. N. Trefethen, An extension of MATLAB to continuous
-% functions and operators, _SIAM Journal on Scientific
-% Computing_, 25 (2004), pp. 1743-1770.
+% 1. Z. Battles and L. N. Trefethen, An extension of MATLAB to continuous
+%    functions and operators, _SIAM Journal on Scientific Computing_, 25
+%    (2004), pp. 1743-1770.
 %
-% [2] J. P. Boyd, Computing zeros on a real interval
-% through Chebyshev expansion and polynomial rootfinding, _SIAM Journal on
-% Numerical Analysis_, 40 (2002), pp. 1666-1682.
+% 2. J. P. Boyd, Computing zeros on a real interval through Chebyshev
+%    expansion and polynomial rootfinding, _SIAM Journal on Numerical
+%    Analysis_, 40 (2002), pp. 1666-1682.
 %
-% [3] L. N. Trefethen, _Approximation Theory
-% and Approximation Practice_, SIAM, 2013.
+% 3. L. N. Trefethen, _Approximation Theory and Approximation Practice_, SIAM,
+%    2013.

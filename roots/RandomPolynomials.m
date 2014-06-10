@@ -64,22 +64,19 @@ for j = 1:2
     title(['Legendre, n=' int2str(n)],FS,fs)
 end
 
-%%
-% References:
+%% References
 %
-% [1] J. Hammersley, The zeros of a random polynomial,
-% Proceedings of the Third Berkeley Symposium on Mathematical
-% Statistics and Probability, 1954-1955, U. California Press,
-% 1956, pp. 89-111.
+% 1. J. Hammersley, The zeros of a random polynomial, Proceedings of the Third
+%    Berkeley Symposium on Mathematical Statistics and Probability, 1954-1955,
+%    U. California Press, 1956, pp. 89-111.
 %
-% [2] L. A. Shepp and R. J. Vanderbei, The complex zeros of
-% random polynomials, Transactions of the American Mathematical
-% Society 347 (1995), 4365-4384.
+% 2. L. A. Shepp and R. J. Vanderbei, The complex zeros of random polynomials,
+%    Transactions of the American Mathematical Society 347 (1995), 4365-4384.
 %
-% [3] B. Shiffman and S. Zelditch, Equilibrium distribution of
-% zeros of random polynomials, International Mathematical Research
-% Notices, 2003, pp. 25-49.
+% 3. B. Shiffman and S. Zelditch, Equilibrium distribution of zeros of random
+%    polynomials, International Mathematical Research Notices, 2003, pp.
+%    25-49.
 %
-% [4] K.-C. Toh and L. N. Trefethen, Pseudozeros of polynomials and
-% pseudospectra of companion matrices, Numerische Mathematik, 68
-% (1994), 403-425.
+% 4. K.-C. Toh and L. N. Trefethen, Pseudozeros of polynomials and
+%    pseudospectra of companion matrices, Numerische Mathematik, 68 (1994),
+%    403-425.
