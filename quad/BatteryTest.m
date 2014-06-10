@@ -166,17 +166,15 @@ q = sum( chebfun( funs{21} , ranges(21,:), ...
 abs( ( q - f_exact(21) ) / f_exact(21) )
 
 
-%%
-% References :
+%% References
 %
-% [1] David K. Kahaner, "Comparison of numerical quadrature
-%     formulas," in Mathematical Software, John R. Rice, ed., Academic
-%     Press, 1971, pp. 229-259.
+% 1. David K. Kahaner, "Comparison of numerical quadrature formulas," in
+%    Mathematical Software, John R. Rice, ed., Academic Press, 1971, pp.
+%    229-259.
 %
-% [2] Walter Gander & Walter Gautschi, "Adaptive quadrature --
-%     revisited", BIT Numerical Mathematics, 40(1):84-101, 2000.
+% 2. Walter Gander & Walter Gautschi, "Adaptive quadrature -- revisited", BIT
+%    Numerical Mathematics, 40(1):84-101, 2000.
 %
-% [3] Pedro Gonnet, "Increasing the reliability of adaptive
-%     quadrature using explicit interpolants", ACM Transactions on
-%     Mathematical Software, 37(3):26:1--26:32, 2010.
-
+% 3. Pedro Gonnet, "Increasing the reliability of adaptive quadrature using
+%    explicit interpolants", ACM Transactions on Mathematical Software,
+%    37(3):26:1--26:32, 2010.

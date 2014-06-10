@@ -65,6 +65,6 @@ plot(r(:,1),r(:,2),'k.','markersize',25)
 % additional information about autonomous systems in Chebfun2.
 
 %% References
-% [1] A. Townsend and L. N. Trefethen, An extension of Chebfun to two
-% dimensions, _SIAM Journal on Scientific Computing_, 35
-% (2013), C495-C518.
+%
+% 1. A. Townsend and L. N. Trefethen, An extension of Chebfun to two
+%    dimensions, _SIAM Journal on Scientific Computing_, 35 (2013), C495-C518.

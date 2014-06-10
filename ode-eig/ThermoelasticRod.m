@@ -89,12 +89,10 @@ clf, plot(stability,LW,1.6), hold on, plot(dstar,0,'r*')
 xlabel('\delta'), ylabel('max \lambda'), grid on
 
 
-%%
-% References:
+%% References
 %
-% [1] J. R. Barber, "Contact problems involving a cooled punch," J. Elast.
-% 8 (1978), 409-423.
+% 1. J. R. Barber, "Contact problems involving a cooled punch," J. Elast. 8
+%    (1978), 409-423.
 %
-% [2] J. A. Pelesko, "Nonlinear stability, thermoelastic contact, and the
-% Barber condition", J. Appl. Mech. 68 (2001), 28-33.
-
+% 2. J. A. Pelesko, "Nonlinear stability, thermoelastic contact, and the
+%    Barber condition", J. Appl. Mech. 68 (2001), 28-33.

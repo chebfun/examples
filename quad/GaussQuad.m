@@ -151,19 +151,19 @@
 
 %% References
 %
-% [1] http://en.wikipedia.org/wiki/Gaussian_quadrature
+% 1. http://en.wikipedia.org/wiki/Gaussian_quadrature
 %
-% [2] G.H. Golub and J.A. Welsch, "Calculation of Gauss quadrature rules",
-% Math. Comp. 23 (1969), 221-230.
+% 2. G.H. Golub and J.A. Welsch, "Calculation of Gauss quadrature rules",
+%    Math. Comp. 23 (1969), 221-230.
 %
-% [3] L. N. Trefethen, Spectral Methods in MATLAB, SIAM, 2000.
+% 3. L. N. Trefethen, Spectral Methods in MATLAB, SIAM, 2000.
 %
-% [4] A. Glaser, X. Liu and V. Rokhlin, "A fast algorithm for the
-% calculation of the roots of special functions", SIAM Journal
-% on Scientific Computing", 29 (2007), 1420-1438.
+% 4. A. Glaser, X. Liu and V. Rokhlin, "A fast algorithm for the calculation
+%    of the roots of special functions", SIAM Journal on Scientific
+%    Computing", 29 (2007), 1420-1438.
 %
-% [5] L. N. Trefethen, Approximation Theory and Approximation Practice,
-% draft textbook at http://www.maths.ox.ac.uk/chebfun/ATAP.
+% 5. L. N. Trefethen, Approximation Theory and Approximation Practice, draft
+%    textbook at http://www.maths.ox.ac.uk/chebfun/ATAP.
 %
-% [6] L. N. Trefethen, "Is Gauss quadrature better than Clenshaw-Curtis?",
-% SIAM Review 50:67-87, 2008.
+% 6. L. N. Trefethen, "Is Gauss quadrature better than Clenshaw-Curtis?", SIAM
+%    Review 50:67-87, 2008.

@@ -7,13 +7,13 @@
 
 %%
 % In one dimension in a simple medium, Maxwell's equations can be written as
-% 
+%
 %   E_t = c^2 B_x,   B_t = E_x
 %
 % where E is the z-component of the electric field, B is the y-component
 % of the magnetic field, and c is the speed of light in the medium. A
 % typical boundary condition is to set E=0, which implies a perfect
-% conductor. 
+% conductor.
 
 %%
 % Here is how we can pose Maxwell's equations for solving in PDE15S, in a
@@ -23,8 +23,8 @@ bc.left = @(t,x,E,B) E;
 bc.right = bc.left;
 
 %%
-% Now we can define an initial condition and 
-% solve the problem. 
+% Now we can define an initial condition and
+% solve the problem.
 d = [-2,2];
 x = chebfun('x',d);
 E0 = exp(-16*x.^2);
@@ -40,10 +40,10 @@ soln = pde15s(pdefun,t,[E0,-E0],bc,pdeset('plot','on'));
 waterfall(E,t,'simple')
 view(10,72)
 
-%% 
+%%
 % In theory, energy is conserved. We can use this principle to check the
 % accuracy of the numerical solution.
-energy = sum( E.^2 + B.^2, 1 );  % integrate E^2 + B^2 in space 
+energy = sum( E.^2 + B.^2, 1 );  % integrate E^2 + B^2 in space
 plot(t,energy-energy(1),'.-')
 
 %%
@@ -65,12 +65,12 @@ A.rbc = @(E,B) E;
 % apply one exponentiation repeatedly.
 Phi = expm( (t(2)-t(1))*A );
 u = [E0,-E0];
-for n = 2:length(t), u=Phi*u; E(:,n) = u(:,1); B(:,n) = u(:,2); 
+for n = 2:length(t), u=Phi*u; E(:,n) = u(:,1); B(:,n) = u(:,2);
 plot(u), drawnow, pause(eps), end
 
 %%
 % For linear propagation, expm is far more accurate than
 % pde15s, as a check of energy conservation confirms.
-energy = sum( E.^2 + B.^2, 1 );  % integrate E^2 + B^2 in space 
+energy = sum( E.^2 + B.^2, 1 );  % integrate E^2 + B^2 in space
 plot(t,energy-energy(1),'.-')
 

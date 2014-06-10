@@ -8,16 +8,13 @@
 function needle()
 
 %%
-% The final problem for Oxford's Numerical Analysis
-% Problem Solving Squad this year was the following:
-%%
-% A needle of length $1$ rests on a surface defined
-% by the height function
-%%
+% The final problem for Oxford's Numerical Analysis Problem Solving Squad this
+% year was the following:
+% <blockquote>
+% A needle of length $1$ rests on a surface defined by the height function
 % $$ h(x) = 0.1 x^2 + 0.1\sin(6x) + 0.03\sin(12x). $$
-%%
-% What is the lowest possible height of the centre
-% of the needle?
+% What is the lowest possible height of the centre of the needle?
+% </blockquote>
 
 %%
 % Let's begin with a picture:

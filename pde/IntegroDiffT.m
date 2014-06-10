@@ -7,7 +7,7 @@
 
 %%
 % Here we demonstrate how to solve the time-dependent integro-differential
-% equation 
+% equation
 %
 %  u_t = 0.02 u"(x) + \int_{-1}^{1}u(\xi)d\xi \int_{-1}^{x}u(\xi)d\xi,
 %  u(-1) = u(1) = 0.
@@ -25,8 +25,8 @@ u0 = (1-x.^2).*exp(-30*(x+.5).^2);
 f = @(u,t,x,diff,sum,cumsum) 0.02*diff(u,2) + cumsum(u)*sum(u);
 
 %%
-% The 4th, 5th, and 6th arguments define the differential, integral 
-% (sum), and indefinite integral (cumsum) operators, respectively. 
+% The 4th, 5th, and 6th arguments define the differential, integral
+% (sum), and indefinite integral (cumsum) operators, respectively.
 % See 'help pde15s' for more details.
 
 %%
@@ -40,4 +40,4 @@ zlabel('z',FS,14)
 
 %%
 % This example can also be found as the "Integro-differential equation"
-% demo among the PDE-Scalar demos of CHEBGUI.
+% demo among the PDE-Scalar demos of Chebgui.

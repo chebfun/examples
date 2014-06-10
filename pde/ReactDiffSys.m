@@ -50,7 +50,6 @@ FS = 'fontsize';
 xlabel('x',FS,14), ylabel('t',FS,14), grid on, hold off
 
 %%
-% This example, which comes from Pedro Gonnet,
-% can also be found as the "Diffusion and
-% reaction of three chemicals" demo
-% among the PDE-Systems demos of CHEBGUI.
+% This example, which comes from Pedro Gonnet, can also be found as the
+% "Diffusion and reaction of three chemicals" demo among the PDE-Systems demos
+% of Chebgui.

@@ -123,8 +123,7 @@ toc
 % innumerable books and other sources.  One reference we have consulted is the
 % textbook by Robinett [1].
 
-%%
-% Reference
+%% References
 %
-% [1] Richard W. Robinett, _Quantum Mechanics_, 2nd ed., Oxford University
-% Press, 2006.
+% 1. Richard W. Robinett, _Quantum Mechanics_, 2nd ed., Oxford University
+%    Press, 2006.

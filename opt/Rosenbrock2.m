@@ -66,10 +66,9 @@ plot(g, 'k', LW, 2), shg
 g = roots(F - .5);
 plot(g, 'r', LW, 2), shg
 
-%%
-% References:
+%% References
 %
-% [1] H. H. Rosenbrock, "An automatic method for finding the greatest or least
-% value of a function", Computer Journal, 3 (1960), 175-184.
+% 1. H. H. Rosenbrock, "An automatic method for finding the greatest or least
+%    value of a function", Computer Journal, 3 (1960), 175-184.
 %
-% [2] http://www.chebfun.org/examples/opt/html/Rosenbrock.shtml
+% 2. Chebfun Example [opt/Rosenbrock](../opt/Rosenbrock.html)

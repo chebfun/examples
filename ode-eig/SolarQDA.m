@@ -96,8 +96,8 @@ energies = diag(E)
 semilogy(Psi.^2,LW,lw), ylabel('probability'),
 axis( [x([2 end-1]) 1e-3 1e-0]  )
 
-%%
-% References:
-% [1] W. M. Reid, T. Driscoll, and M. F. Doty, "Forming delocalized
-% intermediate states with realistic quantum dots." J. Appl. Phys. 111,
-% 056102 (2012). http://dx.doi.org/10.1063/1.3691113
+%% References
+%
+% 1. W. M. Reid, T. Driscoll, and M. F. Doty, "Forming delocalized
+%    intermediate states with realistic quantum dots." J. Appl. Phys. 111,
+%    056102 (2012). http://dx.doi.org/10.1063/1.3691113

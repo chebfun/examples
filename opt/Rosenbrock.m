@@ -96,16 +96,12 @@ fminx.ends
 % And here's the plot:
 close, plot(minx,miny,'.k',MS,20)
 
-%%
-% Reference:
+%% References
 %
-% [1] H. H. Rosenbrock, "An automatic method for finding
-% the greatest or least value of a function",
-% Computer Journal 3 (1960), 175-184.
+% 1. H. H. Rosenbrock, "An automatic method for finding the greatest or least
+%    value of a function", Computer Journal 3 (1960), 175-184.
 %
-% [2] S. Scheuring, Global Optimization in the Chebfun System,
-% thesis, MSc in Mathematical Modelling and Scientific Computing,
-% Oxford University, 2008.
+% 2. S. Scheuring, Global Optimization in the Chebfun System, thesis, MSc in
+%    Mathematical Modelling and Scientific Computing, Oxford University, 2008.
 %
-% [3] http://www.chebfun.org/examples/opt/html/Rosenbrock2.shtml
-
+% 3. Chebfun Example [opt/Rosenbrock2](../opt/Rosenbrock2.html)

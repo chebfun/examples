@@ -71,12 +71,13 @@ plot(g), hold on, plot3(X(1),X(2),Y,'k.','markersize',40)
 zlim([-10 10]), view(-24.5,4)
 
 %% References
-% [1] Lloyd N. Trefethen, A 100-Dollar, 100-Digit Challenge, SIAM News, 35
-% (2002).
 %
-% [2] Folkmar Bornemann, Dirk Laurie, Stan Wagon and Joerg Waldvogel, The SIAM
-% 100-Digit Challenge: A Study in High-Accuracy Numerical Computing, SIAM, 2004.
+% 1. Lloyd N. Trefethen, A 100-Dollar, 100-Digit Challenge, SIAM News, 35
+%    (2002).
 %
-% [3] A. Townsend and L. N. Trefethen, An extension of Chebfun to two 
-% dimensions, SIAM Journal on Scientific Computing,
-% 35 (2013), C495-C518.
+% 2. Folkmar Bornemann, Dirk Laurie, Stan Wagon and Joerg Waldvogel, The SIAM
+%    100-Digit Challenge: A Study in High-Accuracy Numerical Computing, SIAM,
+%    2004.
+%
+% 3. A. Townsend and L. N. Trefethen, An extension of Chebfun to two
+%    dimensions, SIAM Journal on Scientific Computing, 35 (2013), C495-C518.

@@ -70,9 +70,8 @@ text(7e2,.5e-9,'n^{-2}',FS,18)
 % (1984) for Gauss.  The general theorems seem to be new, however, and
 % their proofs require careful attention to details.
 
-%%
-% References:
+%% References
 %
-% [1] S. Xiang and F. Bornemann, On the convergence rates of Gauss and
-% Clenshaw-Curtis quadrature for functions of limited regularity,
-% _SIAM Journal on Numerical Analysis,_ 50 (2012), 2581-2587.
+% 1. S. Xiang and F. Bornemann, On the convergence rates of Gauss and
+%    Clenshaw-Curtis quadrature for functions of limited regularity, _SIAM
+%    Journal on Numerical Analysis,_ 50 (2012), 2581-2587.

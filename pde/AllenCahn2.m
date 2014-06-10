@@ -1,7 +1,7 @@
 %% Allen-Cahn metastability
 % Nick Trefethen, November 2013
 
-%% 
+%%
 % (Chebfun Example pde/AllenCahn2.m)
 % [Tags: #Allen-Cahn, #metastability, #EQUI, #PDE15S]
 
@@ -27,7 +27,7 @@ opts = pdeset('Eps',1e-6,'plot','off');
 pdefun = @(t, x, u) diff(u, 2)+u-u.^3;
 t50 = 0:50; bc.left = -1; bc.right = -1;
 [t, u] = pde15s(pdefun, t50, u0, bc, opts);
-clf, waterfall(u, t, 'simple', LW, 1), grid on, 
+clf, waterfall(u, t, 'simple', LW, 1), grid on,
 view([115 20]), colormap([0 0 0]), xlabel('t', FS, 14)
 
 %%
@@ -63,7 +63,7 @@ xlabel('t', FS, 14)
 % Let's see how the maximum decays with time:
 umax = max(u(:, :));
 plot(t100, umax, '.', MS, 14), grid on
-xlabel('t', FS, 14), ylabel('max(u)', FS, 14) 
+xlabel('t', FS, 14), ylabel('max(u)', FS, 14)
 
 %%
 % Where does the curve pass through zero?  All kinds of interpolation methods
@@ -72,7 +72,7 @@ xlabel('t', FS, 14), ylabel('max(u)', FS, 14)
 % Chebfun constructor:
 p = chebfun(umax, [min(t) max(t)], 'equi');
 plot(p, LW, 1.6), grid on
-xlabel('t', FS, 14), ylabel('max(u)', FS, 14) 
+xlabel('t', FS, 14), ylabel('max(u)', FS, 14)
 
 %%
 % The Gibbs wiggles show that for this coarsely sampled data set, this is not an

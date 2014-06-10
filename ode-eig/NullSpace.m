@@ -14,7 +14,7 @@
 %% Simple Example #1
 % Let's start as simply as we can, and take
 %
-%     u"(x) = 0, for x in [-1 1]
+%     u''(x) = 0, for x in [-1 1]
 
 L = chebop(@(u) diff(u,2));
 
@@ -151,5 +151,4 @@ norm(L(x,V(:,2)),1)
 
 %% References
 %
-% [1] http://www.maths.ox.ac.uk/chebfun/examples/ode/html/NonstandardBCs.shtml
-
+% 1. Chebfun Example [ode/NonstandardBCs](../ode/NonstandardBCs.html)

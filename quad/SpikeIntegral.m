@@ -37,8 +37,7 @@ sum(ff)
 % Time for creating this chebfun and integrating it:
 toc
 
-%%
-% References:
+%% References
 %
-% [1] D. K. Kahaner, "Comparison of numerical quadrature formulas", in
-% J. R. Rice, ed., _Mathematical Software_, Academic Press, 1971, 229-259.
+% 1. D. K. Kahaner, "Comparison of numerical quadrature formulas", in
+%    J. R. Rice, ed., _Mathematical Software_, Academic Press, 1971, 229-259.

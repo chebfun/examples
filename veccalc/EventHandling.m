@@ -121,13 +121,8 @@ isTerminal = 1;
 direction = -1;
 end
 
-%%
-% References
-%%
-% [1] F. Di Tommaso, A bouncing ball, Chebfun Example,
-% http://www2.maths.ox.ac.uk/chebfun/examples/ode/html/BouncingBall.shtml,
-% February 2013.
-%%
-% [2] A. Townsend, Phase portraits and trajectories, Chebfun2 Example,
-% http://www2.maths.ox.ac.uk/chebfun/examples/veccalc/html/AutonomousSystems.shtml,
-% March 2013.
+%% References
+%
+% 1. Chebfun Example [ode/BouncingBall](../ode/BouncingBall.html)
+%
+% 2. Chebfun Example [veccalc/AutonomousSystems](../veccalc/AutonomousSystems.html)

@@ -41,8 +41,6 @@ plot(x_m(mintime),y_m(mintime),'.r', 'markersize', 20)
 plot(x_e(mintime),y_e(mintime),'.r', 'markersize', 20)
 title('Mercury and Earth Orbits')
 
-%%
-% Reference:
+%% References
 %
-% [1] Charles F. Van Loan, Introduction to Scientific Computing, 1997, p.
-% 274.
+% 1. Charles F. Van Loan, Introduction to Scientific Computing, 1997, p. 274.

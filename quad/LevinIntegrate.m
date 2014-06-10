@@ -106,8 +106,8 @@ tic
 sum( f.*exp(1i.*w.*g) )
 toc
 
-%%
-% References:
+%% References
 %
-% [1] Levin, D., Procedures for computing one and two-dimensional integrals
-% of functions with rapid irregular oscillations, Maths Comp.,  38 (1982) 531--538
+% 1. Levin, D., Procedures for computing one and two-dimensional integrals of
+%    functions with rapid irregular oscillations, Maths Comp.,  38 (1982)
+%    531--538

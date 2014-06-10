@@ -62,11 +62,10 @@ title(['Re = ' sprintf('%5d',Re) ...
 % actually has little to do with what makes fluid flows unstable in practice,
 % and it is difficult to see the number $5772.22$ in the laboratory [2].
 
-%%
-% References:
+%% References
 %
-% [1] P. J. Schmid and D. S. Henningson, _Stability and Transition in Shear
-% Flows_, Springer, 2001.
+% 1. P. J. Schmid and D. S. Henningson, _Stability and Transition in Shear
+%    Flows_, Springer, 2001.
 %
-% [2] L. N. Trefethen and M. Embree, _Spectra and Pseudospectra: The Behavior of
-% Nonnormal Matrices and Operators_, Princeton U. Press, 2005.
+% 2. L. N. Trefethen and M. Embree, _Spectra and Pseudospectra: The Behavior
+%    of Nonnormal Matrices and Operators_, Princeton U. Press, 2005.

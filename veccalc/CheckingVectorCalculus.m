@@ -57,6 +57,6 @@ norm(curl(grad(f)))
 % additional information about vector calculus in Chebfun2.
 
 %% References
-% [1] A. Townsend and L. N. Trefethen, An extension of Chebfun to two
-% dimensions, SIAM Journal on Scientific Computing,
-% 35 (2013), C495-C518.
+%
+% 1. A. Townsend and L. N. Trefethen, An extension of Chebfun to two
+%    dimensions, SIAM Journal on Scientific Computing, 35 (2013), C495-C518.

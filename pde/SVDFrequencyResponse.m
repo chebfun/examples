@@ -188,21 +188,17 @@ axis tight
 
 %% References
 %
-% [1] http://www.ece.umn.edu/users/mihailo/software/chebfun-svd/
+% 1. http://www.ece.umn.edu/users/mihailo/software/chebfun-svd/
 %
-% [2] T. A. Driscoll, Automatic spectral collocation for integral,
-% integro-differential, and integrally reformulated differential equations,
+% 2. T. A. Driscoll, Automatic spectral collocation for integral, integro-
+%    differential, and integrally reformulated differential equations,
 % J. Comput. Phys. 229 (2010), 5980-5998.
 %
-
-%%
-% If you are using this software please cite:
+% 3. B. K. Lieu and M. R. Jovanovic, "Computation of frequency responses for
+%    linear time-invariant PDEs on a compact interval", Journal of
+%    Computational Physics (2011), submitted; available at:
+%    <http://arxiv.org/abs/1112.0579 arXiv:1112.0579v1>
 %
-% [3] B. K. Lieu and M. R. Jovanovic,
-% "Computation of frequency responses for linear time-invariant PDEs on a
-% compact interval", Journal of Computational Physics (2011), submitted;
-% available at: <http://arxiv.org/abs/1112.0579 arXiv:1112.0579v1>
-%
-% [4] L. N. Trefethen and others, Chebfun Version 4.0, The Chebfun
-% Development Team, 2011, <http://www.maths.ox.ac.uk/chebfun/>
+% 4. L. N. Trefethen and others, Chebfun Version 4.0, The Chebfun Development
+%    Team, 2011, http://www.maths.ox.ac.uk/chebfun/
 

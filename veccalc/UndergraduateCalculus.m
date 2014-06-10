@@ -173,5 +173,5 @@ norm(LHS-RHS)
 % Matlab.
 
 %% References
-%%
-% [1] http://www.chebfun.org/examples/geom/html/Area.shtml
+%
+% 1. Chebfun Example [geom/Area](../geom/Area.html)

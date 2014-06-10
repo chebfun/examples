@@ -232,10 +232,9 @@ end
 plot(0,0,'k.',MS,20), hold off
 title('An unstable node and collinear eigendirections',FS,14)
 
-%%
-% References:
-%%
-% [1] R. Abraham and J. E. Marsden, Foundations of Mechanics,
-% Benjamin-Cummings, 1978.
-%%
-% [2] S. H. Strogatz, Nonlinear Dynamics and Chaos, Addison-Wesley, 1994.
+%% References
+%
+% 1. R. Abraham and J. E. Marsden, Foundations of Mechanics, Benjamin-
+%    Cummings, 1978.
+%
+% 2. S. H. Strogatz, Nonlinear Dynamics and Chaos, Addison-Wesley, 1994.

@@ -75,20 +75,17 @@ legend('Gauss','Clenshaw-Curtis','location','southwest'), toc
 % faster with C-C. For details of the comparison, see [2], [4], and Chapter 19
 % of [3].
 
-%%
-% References:
+%% References
 %
-% [1] N. Hale and A. Townsend, Fast and accurate computation
-% of Gauss-Legendre and Gauss-Jacobi quadrature
-% nodes and weights, SIAM Journal on Scientific Computing,
-% 35 (2013), A652-A672.
+% 1. N. Hale and A. Townsend, Fast and accurate computation of Gauss-Legendre
+%    and Gauss-Jacobi quadrature nodes and weights, SIAM Journal on Scientific
+%    Computing, 35 (2013), A652-A672.
 %
-% [2] L. N. Trefethen, Is Gauss quadrature better than
-% Clenshaw-Curtis?, SIAM Review 50 (2008), 67-87.
+% 2. L. N. Trefethen, Is Gauss quadrature better than Clenshaw-Curtis?, SIAM
+%    Review 50 (2008), 67-87.
 %
-% [3] L. N. Trefethen, Approximation Theory and Approximation
-% Practice, SIAM, 2013.
+% 3. L. N. Trefethen, Approximation Theory and Approximation Practice, SIAM,
+%    2013.
 %
-% [4] J. A. C. Weideman and L. N. Trefethen, The kink
-% phenomenon in Fejer and Clenshaw-Curtis quadrature, Numerische
-% Mathematik, 107 (2007), 707-727.
+% 4. J. A. C. Weideman and L. N. Trefethen, The kink phenomenon in Fejer and
+%    Clenshaw-Curtis quadrature, Numerische Mathematik, 107 (2007), 707-727.

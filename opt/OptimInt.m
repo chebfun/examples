@@ -12,12 +12,12 @@
 % it is to make a Chebfun Example!).
 
 %%
-% PROBLEM.
+% **Problem.**
 % For what values of a does
 %    I(a) = int_{-1}^{1} sin(x) + sin(a x^2) dx = 1 ?
 
 %%
-% SOLUTION.
+% **Solution.**
 % Define the integrand as a function of x and a.
 F = @(x,a) sin(x) + sin(a*x.^2);
 

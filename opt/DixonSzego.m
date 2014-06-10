@@ -51,11 +51,8 @@ hold off
 contour(F,30,LW,1.2), colorbar, axis([-2 2 -1.25 1.25])
 hold on, plot(minx(1),minx(2),'.k',MS,20)
 
-%%
-% Reference:
+%% References
 %
-% [1] L. C. W. Dixon and G. P. Szego,
-% The global optimization problem: an introduction, in
-% L. C. W. Dixon and G. P. Szego (eds.),
-% Towards Global Optimisation 2, North-Holland, Amsterdam 1978,
-% pp. 1-15.
+% 1. L. C. W. Dixon and G. P. Szego, The global optimization problem: an
+%    introduction, in L. C. W. Dixon and G. P. Szego (eds.), Towards Global
+%    Optimisation 2, North- Holland, Amsterdam 1978, pp. 1-15.

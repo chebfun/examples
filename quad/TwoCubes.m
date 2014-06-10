@@ -116,12 +116,11 @@ error = abs(F-exact)
 % potential (integral of inverse-linear) rather than the force (integral of
 % inverse-square).
 
-%%
-% References:
+%% References
 %
-% [1] L. N. Trefethen, Ten digit problems, in D. Schleicher and M. Lackmann,
-% eds., Invitation to Mathematics: From Competitions to Research, Springer,
-% 2011.
+% 1. L. N. Trefethen, Ten digit problems, in D. Schleicher and M. Lackmann,
+%    eds., Invitation to Mathematics: From Competitions to Research, Springer,
+%    2011.
 %
-% [2] W. Hackbusch, Direct integration of the Newton potential over cubes,
-% Computing 68, 193-216, 2002.
+% 2. W. Hackbusch, Direct integration of the Newton potential over cubes,
+%    Computing 68, 193-216, 2002.
