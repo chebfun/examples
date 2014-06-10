@@ -104,14 +104,13 @@ wk = (2*V(1,:).^2)';
 % polynomial:
 norm( xi - roots(P(:,N+1)) )
 
-%%
-% References:
+%% References
 %
-% [1] http://en.wikipedia.org/wiki/Lanczos_algorithm
+% 1. http://en.wikipedia.org/wiki/Lanczos_algorithm
 %
-% [2] http://www.maths.ox.ac.uk/chebfun/examples/approx/html/OrthPolys.shtml
+% 2. http://www.maths.ox.ac.uk/chebfun/examples/approx/html/OrthPolys.shtml
 %
-% [3] G. H. Golub and J. H. Welsch, Calculation of Gauss quadrature rules,
-%     Math. Comp. 23 (1969), 221--230.
+% 3. G. H. Golub and J. H. Welsch, Calculation of Gauss quadrature rules,
+%    Math. Comp. 23 (1969), 221--230.
 
 

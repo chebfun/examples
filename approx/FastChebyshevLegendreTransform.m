@@ -148,19 +148,19 @@ norm(u - f)
 
 %% References
 %
-% [1] N. Hale and A. Townsend, Fast and accurate computation of Gauss-Legendre
-% and Gauss-Jacobi quadrature nodes and weights,
-% _SIAM Journal on Scientific Computing_, 35 (2013), A652-A672.
+% 1. N. Hale and A. Townsend, Fast and accurate computation of Gauss-Legendre
+%    and Gauss-Jacobi quadrature nodes and weights,
+%    _SIAM Journal on Scientific Computing_, 35 (2013), A652-A672.
 %
-% [2] N. Hale and A. Townsend, A fast, simple, and stable Chebyshev--Legendre
-% transform using an asymptotic formula, _SIAM Journal on Scientific
-% Computing_, 36 (2014), A148-A167.
+% 2. N. Hale and A. Townsend, A fast, simple, and stable Chebyshev--Legendre
+%    transform using an asymptotic formula, _SIAM Journal on Scientific
+%    Computing_, 36 (2014), A148-A167.
 %
-% [3] S. Olver and A. Townsend, A fast and well-conditioned spectral method, to
-% appear in _SIAM Review_, 55 (2013), 462-489
+% 3. S. Olver and A. Townsend, A fast and well-conditioned spectral method, to
+%    appear in _SIAM Review_, 55 (2013), 462-489
 %
-% [4] T. J. Stieltjes, Sur les polynomes de Legendre, _Annales de Faculte des
-% Sciences de Toulouse_, 4 (1890), G1-G17.
+% 4. T. J. Stieltjes, Sur les polynomes de Legendre, _Annales de Faculte des
+%    Sciences de Toulouse_, 4 (1890), G1-G17.
 %
-% [5] H. Wang and S. Xiang, On the convergence rates of Legendre approximation,
-% _Mathematics of Computation_, 81 (2012), 861-877.
+% 5. H. Wang and S. Xiang, On the convergence rates of Legendre approximation,
+%    _Mathematics of Computation_, 81 (2012), 861-877.

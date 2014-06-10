@@ -100,12 +100,11 @@ disp(str)
 % slowly converge to the global minimum of $F$ while Chebfun must deal with
 % polynomials of geometrically increasing degree.
 
-%%
-% References:
+%% References
 %
-% [1] K. Weierstrass, _Abhandlungen aus der Functionenlehre_. J. Springer, 1886.
+% 1. K. Weierstrass, _Abhandlungen aus der Functionenlehre_. J. Springer, 1886.
 %
-% [2] G. H. Hardy, "Weierstrass's non-differentiable function."
-% _Transactions of the American Mathematical Society_, 17, no. 3 (1916), 301-325.
+% 2. G. H. Hardy, "Weierstrass's non-differentiable function."
+%    _Transactions of the American Mathematical Society_, 17, no. 3 (1916), 301-325.
 %
-% [3] L. N. Trefethen, Approximation theory and approximation practice. SIAM, 2013.
+% 3. L. N. Trefethen, _Approximation theory and approximation practice_. SIAM, 2013.

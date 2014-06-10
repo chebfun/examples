@@ -68,9 +68,9 @@ title('Global maximum of f',FS,fs)
 
 %% References
 %
-% [1] L. Greengard and J. Strain, The fast Gauss transform, _SIAM
-% Journal on Scientific Computing_, 12 (1991), pp. 79-94.
+% 1. L. Greengard and J. Strain, The fast Gauss transform, _SIAM
+%    Journal on Scientific Computing_, 12 (1991), pp. 79-94.
 %
-% [2] A. Townsend and L. N. Trefethen, An extension of Chebfun to two
-% dimensions, _SIAM Journal on Scientific Computing_, 35
-% (2013), C495-C518.
+% 2. A. Townsend and L. N. Trefethen, An extension of Chebfun to two
+%    dimensions, _SIAM Journal on Scientific Computing_, 35
+%    (2013), C495-C518.

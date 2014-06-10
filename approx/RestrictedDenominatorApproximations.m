@@ -169,16 +169,15 @@ grid on
 % open, and one may wonder what special property of the (transplanted) 
 % exponential function is required to cause these effects.
 
-%%
-% References:
+%% References
 %
-% [1] J.-E. Andersson, Approximation of e^(-x) by rational functions with 
-% concentrated negative poles, J. Approx. Theory (32), pp. 85--95, 1981.
+% 1. J.-E. Andersson, Approximation of e^(-x) by rational functions with 
+%    concentrated negative poles, J. Approx. Theory (32), pp. 85--95, 1981.
 % 
-% [2] J. P. Boyd, Orthogonal rational functions on a semi-infinite
-% interval, J. Comput. Phys. (70), pp. 63--88, 1987.
+% 2. J. P. Boyd, Orthogonal rational functions on a semi-infinite
+%    interval, J. Comput. Phys. (70), pp. 63--88, 1987.
 %
-% [3] J. van den Eshof and M. Hochbruck, Preconditioning Lanczos 
-% approximations to the matrix exponential, SIAM J. Sci. Comput. (27), 
-% pp. 1438--1457, 2006.
+% 3. J. van den Eshof and M. Hochbruck, Preconditioning Lanczos 
+%    approximations to the matrix exponential, SIAM J. Sci. Comput. (27), 
+%    pp. 1438--1457, 2006.
 

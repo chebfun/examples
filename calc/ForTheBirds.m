@@ -145,7 +145,6 @@ xlabel('water-to-land energy ratio'), ylabel('optimal landfall position')
 % average, then we might conclude that the actual water-to-land energy ratio is
 find( optimal_landfall==4.5 )
 
-%%
-% References:
+%% References
 %
-% [1] J. Stewart, Calculus, 7th edition. Brooks/Cole, 2012. 
+% 1. J. Stewart, _Calculus_, 7th edition. Brooks/Cole, 2012. 

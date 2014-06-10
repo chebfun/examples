@@ -72,4 +72,5 @@ clf, waterfall(H,'-')
 % portraits example [1] and Section 1.7 of the Chebfun2 guide.
 
 %% References
-% [1] http://www2.maths.ox.ac.uk/chebfun/examples/complex/html/PhasePortraits.shtml
+%
+% 1. Chebfun example [complex/PhasePortraits](../complex/PhasePortraits.html)

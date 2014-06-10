@@ -113,9 +113,7 @@ fprintf('\n')
 % For more, including the definition of the "Chebfun ellipse" of
 % a function, see [1].
 
-%%
-% References:
+%% References
 %
-% [1] L.N. Trefethen, Approximation Theory and Approximation Practice,
-% SIAM, 2013.
-
+% 1. L.N. Trefethen, Approximation Theory and Approximation Practice,
+%    SIAM, 2013.

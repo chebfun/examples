@@ -49,16 +49,15 @@ title('Type (5,5) rational error curve',FS,fs)
 % robust.  An often better alternative is CF approximation; see [2] and the
 % Chebfun `cf` command.
 
-%%
-% References:
+%% References
 %
-% [1] R. Pachon and L. N. Trefethen, Barycentric-Remez algorithms
-% for best polynomial approximation in Chebfun,
-% BIT Numerical Mathematics 49 (2009), 721-741.
+% 1. R. Pachon and L. N. Trefethen, Barycentric-Remez algorithms
+%    for best polynomial approximation in Chebfun,
+%    BIT Numerical Mathematics 49 (2009), 721-741.
 %
-% [2] J. van Deun and L. N. Trefethen, A robust implementation of
-% the Caratheodory-Fejer approximation, BIT Numerical Mathematics
-% 51 (2011), 1039-1050.
+% 2. J. van Deun and L. N. Trefethen, A robust implementation of
+%    the Caratheodory-Fejer approximation, BIT Numerical Mathematics
+%    51 (2011), 1039-1050.
 %
-% [3] L. N. Trefethen, Approximation Theory and Approximation Practice,
-% SIAM, 2013.
+% 3. L. N. Trefethen, Approximation Theory and Approximation Practice,
+%    SIAM, 2013.

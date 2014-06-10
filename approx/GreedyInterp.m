@@ -77,16 +77,14 @@ hold on, semilogy(lebesgue(scheb),'r',LW,1.4)
 % to potential theory of why effective interpolation grids tend to cluster
 % near boundaries, see Chapter 12 of [3].
 
-%%
-% References
+%% References
 %
-% [1] L. Reichel, Newton interpolation at Leja points,
-% BIT Numerical Mathematics 30 (1990), 332-346.
+% 1. L. Reichel, Newton interpolation at Leja points, _BIT Numerical
+%    Mathematics_ 30 (1990), 332-346.
 %
-% [2] R. Taylor and V. Totik, Lebesgue constants for
-% Leja points, IMA Journal of Numerical Analysis, 30
-% (2010), 462--486.
+% 2. R. Taylor and V. Totik, Lebesgue constants for Leja points, _IMA Journal
+%    of Numerical Analysis_, 30 (2010), 462--486.
 %
-% [3] L. N. Trefethen, Approximation Theory and Approximation Practice,
-% SIAM, 2013.
+% 3. L. N. Trefethen, _Approximation Theory and Approximation Practice_, SIAM,
+%    2013.
 

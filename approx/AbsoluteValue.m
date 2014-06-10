@@ -89,11 +89,10 @@ title('Error',FS,fs)
 % about $x=0$.  I wonder why not?
 
 
-%%
-% References:
+%% References
 %
-% [1] D. J. Newman, Rational approximation of $|x|$, _Michigan Mathematical
-% Journal_, 11 (1964), 11-14.
+% 1. D. J. Newman, Rational approximation of $|x|$, _Michigan Mathematical
+%    Journal_, 11 (1964), 11-14.
 %
-% [2] L. N. Trefethen, _Approximation Theory and Approximation Practice_,
-% SIAM, 2013.
+% 2. L. N. Trefethen, _Approximation Theory and Approximation Practice_,
+%    SIAM, 2013.

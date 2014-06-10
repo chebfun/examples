@@ -24,7 +24,6 @@ xlabel('k',FS,fs), ylabel('x',FS,fs), set(gca,FS,fs)
 h = get(gca,'xlabel'); set(h,'position',get(h,'position')+[1.5 0.1 0])
 h = get(gca,'ylabel'); set(h,'position',get(h,'position')+[0 0.25 0])
 
-%%
-% Reference:
+%% References
 %
-% [1] D. J. Higham and N. J. Higham, Matlab Guide, 2nd ed., SIAM, 2005.
+% 1. D. J. Higham and N. J. Higham, Matlab Guide, 2nd ed., SIAM, 2005.

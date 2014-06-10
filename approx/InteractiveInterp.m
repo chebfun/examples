@@ -65,7 +65,6 @@ plot(0)
 
 end
 
-%%
-% References:
+%% References
 %
-% [1] http://www.chebfun.org/examples/approx/html/GreedyInterp.shtml
+% 1. Chebfun example [approx/GreedyInterp](../approx/GreedyInterp.html)

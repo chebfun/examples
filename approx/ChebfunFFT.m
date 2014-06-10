@@ -24,8 +24,8 @@ fc = chebfun('exp(x).*sin(pi*x) + x'); n = length(fc) - 1;
 %%
 % Chebfuns are defined by the values taken at Chebyshev points. We can
 % access this data by looking in the `'vals'` field.
-fvals = fc.values{1}; 
-%% 
+fvals = fc.values{1};
+%%
 % We can plot the chebfun and its values at Chebsyhev points with the
 % following code, noting that this is equivalent to the command
 % $plot(fc,'.-')$.
@@ -41,19 +41,19 @@ grid on, hold off, xlim(1.26789*[-1 1])
 % polynomials is equivalent to a truncated Laurent series in the variable $z$,
 % with equal coefficients for the $z^(k)$ and $z^(-k)$ terms.
 %%
-% In a similar way, the Chebyshev points on $[-1,1]$ can be interpreted as 
-% the real parts of equispaced nodes on the unit circle. 
+% In a similar way, the Chebyshev points on $[-1,1]$ can be interpreted as
+% the real parts of equispaced nodes on the unit circle.
 t1 = linspace(0,pi,n+1);
 t2 = linspace(pi,2*pi,n+1); t2 = t2(2:end-1);
 z1 = exp(1i*t1); z2 = exp(1i*t2);
-plot(z1,'.-r',MS,ms), hold on 
+plot(z1,'.-r',MS,ms), hold on
 plot(z2,'.k',MS,ms),
-xlim(1.1*[-1 1]), axis equal 
+xlim(1.1*[-1 1]), axis equal
 xx = fliplr(real(z1));
 for j = 2:n+1
     plot([xx(n+2-j) z1(j)],'--k',LW,lw)
 end
-plot(xx,0*xx,'.r',MS,ms), 
+plot(xx,0*xx,'.r',MS,ms),
 hold off, grid on
 %%
 % The interplay between the unit interval and the unit circle allows us to
@@ -73,35 +73,35 @@ hold off, grid on
 valsUnitDisc = [flipud(fvals) ; fvals(2:end-1)];
 %%
 % Next, we take the FFT of the values to give Fourier/Laurent coeffcients.
-% Note that in general, we expect the Chebyshev coefficients to be 
-% real-valued. Accordingly, we take the real part of this vector in order 
-% to eliminate any spurious imaginary components that may 
+% Note that in general, we expect the Chebyshev coefficients to be
+% real-valued. Accordingly, we take the real part of this vector in order
+% to eliminate any spurious imaginary components that may
 % have appeared due to rounding errors.
 FourierCoeffs = real(fft(valsUnitDisc));
-%% 
+%%
 % Next we extract the first $n+1$ values of the vector. Note that the MATLAB
-% FFT routine requires us to divide through by the degree in order to 
-% obtain the Fourier coefficients. We also flip the vector to make it 
+% FFT routine requires us to divide through by the degree in order to
+% obtain the Fourier coefficients. We also flip the vector to make it
 % consistent with Chebfun's coeffcient ordering conventions.
 ChebCoeffs = flipud(FourierCoeffs(1:n+1))/n;
-%% 
+%%
 % Lastly, we divide the first and last entries by $2$.
 ChebCoeffs(1) = ChebCoeffs(1)/2;
 ChebCoeffs(end) = ChebCoeffs(end)/2;
-%% 
+%%
 % This process replicates `chebpoly` exactly.
 format long
 display([chebpoly(fc)' ChebCoeffs chebpoly(fc)'-ChebCoeffs])
 %%
-% In order to go back from coefficients to function values (in order to 
+% In order to go back from coefficients to function values (in order to
 % replicate `chebpolyval`), we simply need to reverse the steps described.
-%%
-% References:
+
+%% References
 %
-% [1] Z. Battles and L. N. Trefethen, An extension of Matlab to continuous 
-%       functions and operators, SIAM J. Sci. Comp. 25 (2004), 1743-1770.
+% 1. Z. Battles and L. N. Trefethen, An extension of Matlab to continuous
+%    functions and operators, SIAM J. Sci. Comp. 25 (2004), 1743-1770.
 %
-% [2] L.N. Trefethen, Spectral methods in Matlab, SIAM, 2000.
+% 2. L.N. Trefethen, Spectral methods in Matlab, SIAM, 2000.
 %
-% [3] L.N. Trefethen, Approximation Theory and Approximation Practice.
-%       http://www.maths.ox.ac.uk/chebfun/ATAP/
+% 3. L.N. Trefethen, Approximation Theory and Approximation Practice.
+%    http://www.maths.ox.ac.uk/chebfun/ATAP/

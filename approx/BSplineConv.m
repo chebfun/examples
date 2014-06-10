@@ -71,11 +71,10 @@ title('B-spline of order 4',FS,fs)
 % is the distribution for the sum of two independent samples from $B_0$, $B_2$
 % is the distribution for the sum of three samples from $B_0$, and so on.
 
-%%
-% References:
+%% References
 %
-% [1] C. de Boor, On calculating with B-splines, Journal of Approximation
-% Theory 6 (1972), 50-62.
+% 1. C. de Boor, On calculating with B-splines, Journal of Approximation
+%    Theory 6 (1972), 50-62.
 %
-% [2] M. Cox, The numerical evaluation of B-splines, Journal of the
-% Institute of Mathematics and its Applications 10 (1972), 134-149.
+% 2. M. Cox, The numerical evaluation of B-splines, Journal of the
+%    Institute of Mathematics and its Applications 10 (1972), 134-149.

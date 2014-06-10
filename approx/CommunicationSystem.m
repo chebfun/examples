@@ -222,8 +222,7 @@ ylim([-1.2 1.2]), xlim([Sf.ends(1) Sf.ends(end)]), hold off
 % ease with which functional computing can make us understand mathematical
 % concepts in a variety of practical problems.
 
-%%
-% References
+%% References
 %
-% [1] Oppenheim and Willsky, Signals and Systems, second edition, Prentice
-% Hall, 1998.
+% 1. Oppenheim and Willsky, Signals and Systems, second edition, Prentice
+%    Hall, 1998.

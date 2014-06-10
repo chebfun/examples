@@ -57,8 +57,6 @@ r(1)
 f(0.5)
 r(0.5)
 
-
-%%
-% Reference:
+%% References
 %
-% [1] http://tiny.cc/wiki_diverge_series/
+% 1. http://tiny.cc/wiki_diverge_series/

@@ -66,8 +66,7 @@ s2.ends'
 % down to the very last bit.  For information about edge detection in Chebfun,
 % see [1].
 
-%% Reference
+%% References
 %
-% [1] R. Pachon, R. B. Platte, and L. N. Trefethen,
-% Piecewise-smooth chebfuns, _IMA Journal of Numerical
-% Analysis_, 30 (2010), 898-916.
+% 1. R. Pachon, R. B. Platte, and L. N. Trefethen, Piecewise-smooth chebfuns,
+%    _IMA Journal of Numerical Analysis_, 30 (2010), 898-916.

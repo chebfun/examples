@@ -57,8 +57,7 @@ title(sprintf('10 random points    Lambda = %5.2e',Lambda),FS,14)
 subplot(2,1,2), semilogy(Lfun,LW,1.6), grid on
 title(sprintf('30 random points    Lambda = %5.2e',Lambda),FS,14)
 
-%%
-% Reference
+%% References
 %
-% L. N. Trefethen, Approximation Theory and Approximation Practice,
-% SIAM, 2013.
+% 1. L. N. Trefethen, _Approximation Theory and Approximation Practice_,
+%    SIAM, 2013.

@@ -63,5 +63,3 @@ title('The third integral of f',FS,fs)
 f2 = diff(q,3);
 plot(f2,LW,1.6)
 title('f again, obtained via a third derivative')
-
-

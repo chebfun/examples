@@ -86,9 +86,7 @@ title('error of best approximant of half the degree')
 % _Minimax_: tracks the low-wave-number signal at high wave numbers, meaningless
 % for low wave numbers.
 
-%%
-% Reference:
-
-%%
-% [1] L. N. Trefethen, _Approximation Theory and Approximation Practice_, SIAM,
-% 2013.
+%% References
+%
+% 1. L. N. Trefethen, _Approximation Theory and Approximation Practice_, SIAM,
+%    2013.

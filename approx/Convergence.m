@@ -56,7 +56,7 @@ hold off
 %%
 % Again the fractional differentiability determines the convergence rate.
 
-%% Reference
+%% References
 %
-% L. N. Trefethen, Approximation Theory and Approximation Practice,
-% SIAM, 2013.
+% 1. L. N. Trefethen, Approximation Theory and Approximation Practice,
+%    SIAM, 2013.

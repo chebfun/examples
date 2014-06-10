@@ -60,7 +60,6 @@ Bn = chebfun(Bndata,[0 1]);
 warning on
 end
 
-
 %%
 % To illustrate the behavior of Bernstein polynomials, here we see slow
 % convergence as $n$ increases.
@@ -94,6 +93,5 @@ end
 % interpolation to nail this function to machine precision:
 
 length(f)
-
 
 end

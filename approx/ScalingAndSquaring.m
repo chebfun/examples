@@ -41,7 +41,7 @@
 %
 % and the error satisfies
 %
-% $$ \|e^A - Y\|_2 \leq \kappa_2(X)\max_{z\in {\cal
+% $$ \|e^A - Y\|\_2 \leq \kappa_2(X)\max_{z\in {\cal
 % D}}\left|(r(z/2^s))^{2^s}-e^{z}\right|, $$
 %
 % where $\cal{D}$ is a region in the complex plane that contains the
@@ -126,15 +126,14 @@ colorbar
 % plot.
 %
 
-%%
-% References:
+%% References
 %
-% [1] P. Gonnet, S. Guettel, and L. N. Trefethen: Robust Pade approximation
-% via SVD. _SIAM Review_, 55 (2013), 101-117.
+% 1. P. Gonnet, S. Guettel, and L. N. Trefethen: Robust Pade approximation
+%    via SVD. _SIAM Review_, 55 (2013), 101-117.
 %
-% [2] N. J. Higham. _Functions of Matrices: Theory and Computation_. SIAM,
-% Philadelphia, 2008.
+% 2. N. J. Higham. _Functions of Matrices: Theory and Computation_. SIAM,
+%    Philadelphia, 2008.
 %
-% [3] L. N. Trefethen, J. A. C. Weideman, and T. Schmelzer: Talbot
-% quadratures and rational approximations. _BIT Numerical
-% Mathematics_, 46 (2006), pp. 653-670.
+% 3. L. N. Trefethen, J. A. C. Weideman, and T. Schmelzer: Talbot
+%    quadratures and rational approximations. _BIT Numerical
+%    Mathematics_, 46 (2006), pp. 653-670.

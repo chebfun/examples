@@ -76,19 +76,18 @@ hold on, plot(h,1/8,'.r',MS,24)
 title('Halphen''s constant',FS,16)
 text(h,.135,sprintf('%16.13f',h),FS,18)
 
-%%
-% References:
+%% References
 %
-% [1] A. J. Carpenter, A. Ruttan, and R. S. Varga, Extended numerical
-% computations on the "1/9" conjecture in rational approximation theory, in
-% P. Graves-Morris, E. B. Saff, and R. S. Varga, eds., Rational
-% Approximation and Interpolation, Lecture Notes in Mathematics 1105,
-% Springer, 1984.
+% 1. A. J. Carpenter, A. Ruttan, and R. S. Varga, Extended numerical
+%    computations on the "1/9" conjecture in rational approximation theory, in
+%    P. Graves-Morris, E. B. Saff, and R. S. Varga, eds., Rational
+%    Approximation and Interpolation, Lecture Notes in Mathematics 1105,
+%    Springer, 1984.
 %
-% [2] A. A. Gonchar and E. A. Rakhmanov, Equilibrium distributions and
-% degree of rational approximation of analytic functions, Math. USSR
-% Sbornik 62 (1989), 305-348.
+% 2. A. A. Gonchar and E. A. Rakhmanov, Equilibrium distributions and
+%    degree of rational approximation of analytic functions, Math. USSR
+%    Sbornik 62 (1989), 305-348.
 %
-% [3] L. N. Trefethen, Approximation Theory and Approximation Practice,
-% SIAM, 2013.
+% 3. L. N. Trefethen, Approximation Theory and Approximation Practice,
+%    SIAM, 2013.
 

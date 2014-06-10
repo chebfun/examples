@@ -86,8 +86,7 @@ pinterp = chebfun(f,10);
 plot(pinterp,'--','color',[0 .8 0],LW,2)
 title('Same, also with Chebyshev interpolant',FS,16)
 
-%%
-% Reference
+%% References
 %
-% [1] L. N. Trefethen, _Approximation Theory and Approximation Practice_,
-% SIAM, 2013.
+% 1. L. N. Trefethen, _Approximation Theory and Approximation Practice_,
+%    SIAM, 2013.

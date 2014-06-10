@@ -99,12 +99,12 @@ title('Convergence of || |x| - p_n ||_2',FS,fs)
 
 %% References
 %
-% [1] N. Hale and A. Townsend, A fast, simple, and stable Chebyshev-Legendre
-% transform using an asymptotic formula, _SIAM Journal on
-% Scientific Computing_, 32 (2014), A148-A167.
+% 1. N. Hale and A. Townsend, A fast, simple, and stable Chebyshev-Legendre
+%    transform using an asymptotic formula, _SIAM Journal on Scientific
+%    Computing_, 32 (2014), A148-A167.
 %
-% [2] M. Powell, _Approximation Theory and Methods_,
-% Cambridge University Press, 1981.
+% 2. M. Powell, _Approximation Theory and Methods_, Cambridge University
+%    Press, 1981.
 %
-% [3] A. Townsend and N. Hale, A fast Chebyshev-Legendre transform,
-% Chebfun Example, August 2013.
+% 3. A. Townsend and N. Hale, A fast Chebyshev-Legendre transform, Chebfun
+%    Example, August 2013.

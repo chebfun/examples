@@ -70,9 +70,9 @@ legend( [h1(:,1), h2(:,1), h3(:,1), h4(:,1)], ...
 % the first kind rather than the second kind.
 
 %% References
-% 
-% [1] L. N. Trefethen, Approximation Theory and Approximation Practice, SIAM,
-% 2013.
 %
-% [2] P. J. Davis, Interpolation and Approximation, Blaisdell Publishing
-% Company, 1965.
+% 1. L. N. Trefethen, _Approximation Theory and Approximation Practice_, SIAM,
+%    2013.
+%
+% 2. P. J. Davis, _Interpolation and Approximation_, Blaisdell Publishing
+%    Company, 1965.

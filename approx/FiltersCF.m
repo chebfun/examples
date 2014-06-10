@@ -66,12 +66,11 @@ plot(f2-p,LW,1.2), grid on
 % For applications, one would need to transplant such computations
 % from a bounded to a periodic interval.
 
-%%
-% References
+%% References
 %
-% [1] T. W. Parks and J. H. McClellan, Chebyshev
-% approximation for nonrecursive digital filters with linear phase,
-% _IEEE Transactions on Circuit Theory_, CT-19 (1972), 189-194.
+% 1. T. W. Parks and J. H. McClellan, Chebyshev
+%    approximation for nonrecursive digital filters with linear phase,
+%    _IEEE Transactions on Circuit Theory_, CT-19 (1972), 189-194.
 %
-% [2] L. N. Trefethen, _Approximation Theory and Approximation
-% Practice_, SIAM, 2013.
+% 2. L. N. Trefethen, _Approximation Theory and Approximation
+%    Practice_, SIAM, 2013.

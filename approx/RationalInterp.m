@@ -151,20 +151,19 @@ spurious_poles = roots(q)
 % approximants comes from [1], though that paper discusses just roots of
 % unity on the unit circle, not Chebyshev points in $[-1,1]$.
 
-%%
-% References
+%% References
 %
-% [1] P. Gonnet, R. Pachon and L. N. Trefethen, Robust rational
-% interpolation and least-squares, _Electronic Transactions of Numerical
-% Analysis_, 38 (2011), 146-167.
+% 1. P. Gonnet, R. Pachon and L. N. Trefethen, Robust rational
+%    interpolation and least-squares, _Electronic Transactions of Numerical
+%    Analysis_, 38 (2011), 146-167.
 %
-% [2] _Journal of Computational and Applied Mathematics_
-% special issue on interpolation and extrapolation, volume 122,
-% numbers 1-2, October 2000.
+% 2. _Journal of Computational and Applied Mathematics_
+%    special issue on interpolation and extrapolation, volume 122,
+%    numbers 1-2, October 2000.
 %
-% [3] R. Pachon, P. Gonnet and J. van Deun, Fast and stable rational
-% interpolation in roots of unity and Chebyshev points,
-% _SIAM Journal on Numerical Analysis_, 50 (2012), 1713-1734.
+% 3. R. Pachon, P. Gonnet and J. van Deun, Fast and stable rational
+%    interpolation in roots of unity and Chebyshev points,
+%    _SIAM Journal on Numerical Analysis_, 50 (2012), 1713-1734.
 %
-% [4] L. N. Trefethen, _Approximation Theory and Approximation Practice_,
-% SIAM, 2013.
+% 4. L. N. Trefethen, _Approximation Theory and Approximation Practice_,
+%    SIAM, 2013.
