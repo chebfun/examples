@@ -63,8 +63,7 @@ end
 subplot(1,2,1), title( 'Delta function' );
 subplot(1,2,2), title( 'Heaviside function' );
 
-%%
-% Reference:
+%% References
 %
-% [1] Urs Graf, Introduction to Hyperfunctions and Their Integral
-% Transforms: An Applied and Computational Approach, Birkhaeuser, 2010.
+% 1. Urs Graf, Introduction to Hyperfunctions and Their Integral
+%    Transforms: An Applied and Computational Approach, Birkhaeuser, 2010.

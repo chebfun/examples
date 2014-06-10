@@ -121,4 +121,3 @@ chebsnake('fh');
 
 %%
 % Have (Cheb)fun!
-

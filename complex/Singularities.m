@@ -96,18 +96,17 @@ plot(essential)
 % appears infinitely many times, a fact that is implied by the following
 % famous theorem.
 %%
-% $\mathrm{\bf Big~Picard~Theorem~(1879).}$ Suppose $z_0 \in U \subset
+% **Big Picard Theorem (1879).** Suppose $z_0 \in U \subset
 % {\bf C}$ and $f : U \backslash \{z_0\} \to {\bf C}$ is an analytic
 % function with an essential singularity at $z_0$. Then $f$ takes on every
 % complex value, with at most one exception, in any neighborhood of $z_0$.
 
-%%
-% References:
+%% References
 %
-% [1] Wegert, Elias. Visual Complex Functions: An Introduction
-% with Phase Portraits, vol. 1. Birkhauser/Springer, 2012.
+% 1. Wegert, Elias. Visual Complex Functions: An Introduction
+%    with Phase Portraits, vol. 1. Birkhauser/Springer, 2012.
 %
-% [2] M. J. Ablowitz and A. S. Fokas. Complex Variables: Introduction
-%     and Applications. Cambridge University Press, 1997.
+% 2. M. J. Ablowitz and A. S. Fokas. Complex Variables: Introduction
+%    and Applications. Cambridge University Press, 1997.
 %
 end

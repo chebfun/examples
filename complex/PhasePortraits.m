@@ -5,7 +5,7 @@
 % (Chebfun2 example complex/PhasePortraits.m)
 % [Tags: #phase portraits, #Chebfun2]
 
-%% Phase portraits for complex functions 
+%% Phase portraits for complex functions
 % Phase portraits are a technique for visualising complex valued functions of
 % a single complex variable. They rely on the visual encoding of complex
 % numbers: if $z = re^{it}$ then the rainbow colours represent the phase of $z$.
@@ -14,7 +14,7 @@
 % portrait when asked to plot a chebfun2 object that is complex. For example,
 
 FS = 'FontSize'; fs = 14; d = pi*[-1 1 -1 1];
-f = chebfun2(@(z) sin(z),d); 
+f = chebfun2(@(z) sin(z),d);
 plot(f), title('Phase portrait for sin(z)',FS,fs);
 
 %% One complex variable, two real variables
@@ -49,6 +49,7 @@ plot(f), title('Phase portrait plot for sin(z)-sinh(z)',FS,fs)
 % functions. See, however, the Chebfun example "Phase portraits for functions
 % with poles".
 
-%% References 
-% [1] E. Wegert, Visual Complex Functions: An Introduction with Phase
-% Portraits, Birkhauser/Springer, Basel, 2012. 
+%% References
+%
+% 1. E. Wegert, Visual Complex Functions: An Introduction with Phase
+%    Portraits, Birkhauser/Springer, Basel, 2012.

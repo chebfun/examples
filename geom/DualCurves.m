@@ -87,11 +87,10 @@ title('A curve and its dual',FS,16)
            g = p+1i*q;   
     end
 
-%%
-% References
-%
-% [1] Wikipedia, "Dual curve", http://en.wikipedia.org/wiki/Dual_curve
-%
-% [2] Wikipedia, "Dual polygon", http://en.wikipedia.org/wiki/Dual_polygon
-
 end
+
+%% References
+%
+% 1. http://en.wikipedia.org/wiki/Dual_curve
+%
+% 2. http://en.wikipedia.org/wiki/Dual_polygon

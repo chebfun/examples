@@ -122,6 +122,6 @@ norm(f-g)
 
 end
 
-%% Reference
+%% References
 %
-% [1] http://en.wikipedia.org/wiki/Procrustes
+% 1. http://en.wikipedia.org/wiki/Procrustes

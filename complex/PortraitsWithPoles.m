@@ -59,8 +59,9 @@ plot(h), axis(d), axis square on
 % image; it gets no benefit from the global high-accuracy representations of
 % Chebfun2.
 
-%% References 
-% [1] E. Wegert, Visual Complex Functions: An Introduction with Phase Portraits,
-% Birkhauser/Springer, Basel, 2012.
+%% References
+%
+% 1. E. Wegert, Visual Complex Functions: An Introduction with Phase Portraits,
+%    Birkhauser/Springer, Basel, 2012.
 
 end

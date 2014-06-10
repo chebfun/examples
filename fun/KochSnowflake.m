@@ -70,20 +70,20 @@ function Kn = nextkoch(K)
 	N = length(K) - 1;     % Current number of unique vertices.
 	M = 4*N + 1;           % Total number of vertices after next step.
 	Kn = zeros(M, 1);      % New list of vertices.
-	
+
 	% Insert the current vertices into the new list.
 	Kn(1:4:M) = K(1:end);
-	
+
 	for (n = 1:1:N)
 		% Pick out a vertex and the next one in the sequence.
 		z1 = K(n);
 		z2 = K(n + 1);
-		
+
 		% Compute new points on the curve between these vertices.
 		w1 = 2*z1/3 + 1*z2/3;
 		w3 = 1*z1/3 + 2*z2/3;
 		w2 = (w1 + w3)/2 + 1i*sqrt(3)*(w1 - w3)/2;
-		
+
 		% Insert the new vertices into the list.
 		Kn(4*(n - 1) + 2) = w1;
 		Kn(4*(n - 1) + 3) = w2;
@@ -98,10 +98,10 @@ end
 
 function y = kochfn(K, t)
 	M = length(K);
-	
+
 	m1 = floor((M-1)*t) + 1;
 	m2 = min(m1 + 1, M);
-	
+
 	s = (M-1)*t + 1 - m1;
 	y = K(m1).*(1 - s) + K(m2).*s;
 end
@@ -156,7 +156,7 @@ set(h, 'EdgeColor', 'r', LW, 3.0)
 title('Koch Snowflake', FS, fs)
 axis equal
 
-%% 
+%%
 % How big is the snowflake chebfun?
 
 length(z)
@@ -169,7 +169,7 @@ z.nfuns
 % points, so it seems that the constructor has decided that a few of the
 % segments need an extra point or two to resolve.
 
-%% 
+%%
 % The preceding code built the snowflake curve by sampling the path and using
 % Chebfun's automatic edge detection feature to insert breakpoints at the
 % corners, where the path fails to be smooth.  We can build the curve more
@@ -296,10 +296,9 @@ D = log(4)/log(3)
 
 end
 
-%%
-% References:
+%% References
 %
-% [1] Falconer, K. J.  _The Geometry of Fractal Sets_.  Cambridge University
-%       Press, 1986.
+% 1. Falconer, K. J. _The Geometry of Fractal Sets_.  Cambridge University
+%    Press, 1986.
 
 

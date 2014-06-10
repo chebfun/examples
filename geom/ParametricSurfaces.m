@@ -187,11 +187,10 @@ hold on
 quiver3(x,y,z,-normal([x;y;z]),2,'k')
 hold off
 
-%%
-% References
+%% References
 %
-% [1] http://msenux.redwoods.edu/Math4Textbook/Plotting/ParametricSurfaces.pdf
+% 1. http://msenux.redwoods.edu/Math4Textbook/Plotting/ParametricSurfaces.pdf
 %
-% [2] Wikipedia, "Moebius strip", http://en.wikipedia.org/wiki/Mobius_strip
+% 2. http://en.wikipedia.org/wiki/Mobius_strip
 %
-% [3] Wikipedia, "Klein bottle", "http://en.wikipedia.org/wiki/Klein_bottle
+% 3. http://en.wikipedia.org/wiki/Klein_bottle

@@ -180,5 +180,5 @@ title( 'The imaginary part of the Fourier transform of 1/(x-a).' )
 
 %% References
 % 
-% [1] Saff, E. B. and Snider, A. D., Fundamentals of Complex Analysis,  
-% Prentice-Hall, 2003.
+% 1. Saff, E. B. and Snider, A. D., Fundamentals of Complex Analysis,  
+%    Prentice-Hall, 2003.

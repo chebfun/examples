@@ -97,22 +97,21 @@ plot(gw), axis equal
 vp = vertex(p); vp = vp([1:end 1]);
 hold on, plot(vp,'k'), xlim(1.5*[-1 1])
 
-%%
-% References:
+%% References
 %
-% [1] T. A. Driscoll, 
-% <http://dx.doi.org/10.1145/1067967.1067971 Algorithm 843: Improvements to the Schwarz-Christoffel Toolbox for MATLAB>,
-% ACM Transactions on Mathematical Software 31 (2005), 239-251.
+% 1. T. A. Driscoll, <http://dx.doi.org/10.1145/1067967.1067971 Algorithm 843:
+%    Improvements to the Schwarz-Christoffel Toolbox for MATLAB>, ACM
+%    Transactions on Mathematical Software 31 (2005), 239-251.
 %
-% [2] T. A. Driscoll and L. N. Trefethen, Schwarz-Christoffel Mapping,
-% Cambridge U. Press, 2002.
+% 2. T. A. Driscoll and L. N. Trefethen, _Schwarz-Christoffel Mapping_,
+%    Cambridge U. Press, 2002.
 %
-% [3] M. Richardson and L. N. Trefethen,
-% A sinc function analogue of Chebfun, SIAM Journal on
-% Scientific Computing 33 (2011), 2519-2535.
+% 3. M. Richardson and L. N. Trefethen,
+%    A sinc function analogue of Chebfun, SIAM Journal on
+%    Scientific Computing 33 (2011), 2519-2535.
 %
-% [4] F. Stenger, Numerical Methods Based on Sinc and
-% Analytic Functions, Springer, 1993.  
+% 4. F. Stenger, Numerical Methods Based on Sinc and
+%    Analytic Functions, Springer, 1993.  
 %
-% [5] F. Stenger, Handbook of Sinc Numerical Methods,
-% CRC Press, 2010.
+% 5. F. Stenger, Handbook of Sinc Numerical Methods,
+%    CRC Press, 2010.

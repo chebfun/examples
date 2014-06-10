@@ -66,7 +66,7 @@ end
 %     end
 % end
 
-%%
-% References:
-% [Valentines Day] Anonymous, 14th February 2013, 
-% http://www2.maths.ox.ac.uk/chebfun/examples/fun/html/ValentinesDay.shtml
+%% References
+%
+% 1. Anonymous, 14th February 2013, Chebfun Example
+%    [fun/ValentinesDay](../fun/ValentinesDay.html)

@@ -132,8 +132,7 @@ grid on, axis equal
 %%
 % It is clear that this curve does not enclose the origin.
 
-%%
-% Reference:
+%% References
 %
-% [1] Ahlfors, L. _Complex Analysis_, Third Edition.  New York:  
-%       McGraw-Hill, Inc., 1979.
+% 1. Ahlfors, L. _Complex Analysis_, Third Edition.  New York:  
+%    McGraw-Hill, Inc., 1979.

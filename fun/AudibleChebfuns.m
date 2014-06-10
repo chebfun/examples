@@ -82,16 +82,8 @@ y = 4*cos(x.^2) - 6*sin(3*x).^2;
 Y = [ y , 0*y ];
 chebtune(Y,4)
 
-%%
-% References:
-% 
-% [1] <https://svn.maths.ox.ac.uk/trac/chebfun/browser/trunk/%40chebfun/chebtune.m>
+%% References
 %
-% [2] http://www2.maths.ox.ac.uk/chebfun/examples/fun/audio/
-
-
-
-
-
-
-
+% 1. http://github.com/chebfun/chebfun/blob/master/%40chebfun/chebtune.m
+%
+% 2. http://www2.maths.ox.ac.uk/chebfun/examples/fun/audio/

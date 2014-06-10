@@ -111,16 +111,15 @@ subplot(1,2,2), plot(f,'k',LW,2)
 % For more on Schwarz-Christoffel mapping, see [1]. For general-purpose SC
 % mapping software, refer to [2] and [3].
 
-%%
-% References:
+%% References
 %
-% [1] T. A. Driscoll and L. N. Trefethen, Schwarz-Christoffel Mapping,
-% Cambridge U. Press, 2002.
+% 1. T. A. Driscoll and L. N. Trefethen, Schwarz-Christoffel Mapping,
+%    Cambridge U. Press, 2002.
 %
-% [2] T. A. Driscoll, <http://dx.doi.org/10.1145/1067967.1067971 Algorithm
-% 843: Improvements to the Schwarz-Christoffel Toolbox for MATLAB>, ACM
+% 2. T. A. Driscoll, <http://dx.doi.org/10.1145/1067967.1067971 Algorithm
+%    843: Improvements to the Schwarz-Christoffel Toolbox for MATLAB>, ACM
 % Transactions on Mathematical Software 31 (2005), 239-251.
 %
-% [3] T. A. Driscoll, Schwarz-Christoffel Mapping Toolbox for MATLAB.
-% http://www.math.udel.edu/~driscoll/SC
+% 3. T. A. Driscoll, Schwarz-Christoffel Mapping Toolbox for MATLAB.
+%    http://www.math.udel.edu/~driscoll/SC
 

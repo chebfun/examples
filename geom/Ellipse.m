@@ -27,9 +27,8 @@ arc_length = norm(sqrt(diff(x).^2+diff(y).^2),1)
 %
 %         "la valeur approchee de I sera I = 0,9927799272"
 
-%%
-% References
+%% References
 %
-% [1] S.-D. Poisson, Sur le calcul numerique des integrales definies,
-% Memoires de L'Academie Royale des Sciences de L'Institut de France 4 (1827),
-% pp. 571-602 (written in 1823).
+% 1. S.-D. Poisson, Sur le calcul numerique des integrales definies,
+%    Memoires de L'Academie Royale des Sciences de L'Institut de France 4 (1827),
+%    pp. 571-602 (written in 1823).

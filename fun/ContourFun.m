@@ -188,10 +188,7 @@ axis ij, axis image
 %%
 % I refrain from doing any calculations on this!
 
-%%
-% References:
+%% References
 %
-% [1] http://www2.maths.ox.ac.uk/chebfun/examples/geom/html/Area.shtml
+% 1. Chebfun Example [geom/Area](geom/Area.html) 
 %
-
-

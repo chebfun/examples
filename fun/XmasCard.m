@@ -111,12 +111,8 @@ function c = str2tune(str)
     end
 end
 
-%%
-% References
+%% References
 %
-% [1] http://www.maths.ox.ac.uk/chebfun/examples/fun/html/Birthday.shtml
+% 1. Chebfun Example [fun/Birthday](../fun/Birthday.html)
 %
-% [2] http://www.maths.ox.ac.uk/chebfun/examples/fun/html/AudibleChebfuns.shtml
-
-
-
+% 1. Chebfun Example [fun/AudibleChebfuns](../fun/AudibleChebfuns.html)

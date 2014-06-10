@@ -93,5 +93,3 @@ end
 % So here is what we suggest: LNT should throw a party where he invites one
 % friend for each year of his life. If no-one shares a birthday that would
 % make it a very special party indeed!
-
-

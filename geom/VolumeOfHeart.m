@@ -219,12 +219,8 @@ VolBox = lx*ly*lz
 
 Vol/VolBox
 
-
 %% References
-%%
-% [1] <http://www2.maths.ox.ac.uk/chebfun/examples/fun/html/ValentinesDay.shtml>
-%%
-% [2] <http://en.wikipedia.org/wiki/Parametric_surface>
-%%
-% [3] <http://www2.maths.ox.ac.uk/chebfun/chebfun2/examples/Fun/ValentinesDay.shtml>
-
+%
+% 1. Chebfun Example [fun/ValentinesDay](../fun/ValentinesDay.html)
+%
+% 2. http://en.wikipedia.org/wiki/Parametric_surface

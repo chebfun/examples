@@ -11,7 +11,7 @@
 % function then subtracted to make the mean zero:
 x = chebfun('x',[0 20]);
 f = 0.5*sin(x);
-randn('seed',3)
+rng(3)
 for j = 1:19
   f = f + randn*dirac(x-j);
 end

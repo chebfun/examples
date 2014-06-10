@@ -87,8 +87,6 @@ length(len)
 % this, though INV2 can successfully invert on a subinterval, e.g. with the
 % command g = inv2(len{0,0.1}). Further research is needed!
 
-%%
-% References:
+%% References
 %
-% [1] Chebfun Example "A Keyhole Contour Integral" at
-% http://www.chebfun.org/examples/complex/html/KeyholeContour.shtml
+% 1. Chebfun Example [complex/KeyholeContour](../complex/KeyholeContour.html)

@@ -106,13 +106,13 @@ end
 % appealing, because it produces the trajectory b in such a conveniently
 % usable form.  We can now illustrate this in various ways. First of all,
 % here is the solution trajectory for the Challenge problem:
- 
-plot(0,0,'.k')                   
-p0 = 0.5+0.1i; d0 = 1;            
-tfinal = 10;                    
-b = trajectory(p0,d0,tfinal);  
+
+plot(0,0,'.k')
+p0 = 0.5+0.1i; d0 = 1;
+tfinal = 10;
+b = trajectory(p0,d0,tfinal);
 LW = 'linewidth';
-plot(b,'r',LW,2)              
+plot(b,'r',LW,2)
 
 %%
 % The distance from the origin is this:
@@ -221,14 +221,12 @@ axis([0 20 1e-14 1e2])
 % systems.  One of the ideas that arises here is the notion of "shadowing"
 % [2].
 
-%%
-% References:
-%
-% [1] F. Bornemann, D. Laurie, S. Wagon, J. Waldvogel,
-% The SIAM 100-Digit Challenge, SIAM, 2004.
-%
-% [2] S. H. Strogatz, Nonlinear Dynamics and Chaos, 
-% Addison Wesley, 1994.
-
 end
 
+%% References
+%
+% 1. F. Bornemann, D. Laurie, S. Wagon, J. Waldvogel,
+%    The SIAM 100-Digit Challenge, SIAM, 2004.
+%
+% 2. S. H. Strogatz, Nonlinear Dynamics and Chaos,
+%    Addison Wesley, 1994.

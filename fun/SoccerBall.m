@@ -305,11 +305,13 @@ for n = 1:6
     end
 end
 
-%% References:
-% [1] http://en.wikipedia.org/wiki/Truncated\_icosahedron
-% [2] Christoph F\"{u}nfzig: Spherical techniques and their applications in a
-% scene graph system: collision detection and occlusion culling. University of
-% Braunschweig - Institute of Technology (2007), ISBN 978-3-86727-111-0, pp.
-% 1-143
+%% References
+%
+% 1. http://en.wikipedia.org/wiki/Truncated\_icosahedron
+%
+% 2. Christoph F\"{u}nfzig: Spherical techniques and their applications in a
+%    scene graph system: collision detection and occlusion culling. University
+%    of Braunschweig - Institute of Technology (2007), ISBN 978-3-86727-111-0,
+%    pp. 1-143
 
 

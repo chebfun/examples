@@ -54,17 +54,16 @@ f = chebfun2(@(x,y) (x.^2-1).*(y.^2-1)-.4*exp(-10*(x.^2+y.^2)));
 chebsnake2(f)
 
 
-%%
-% References:
+%% References
 %
-% [1] http://www2.maths.ox.ac.uk/chebfun/examples/approx/html/PrettyFunctions.shtml 
-% 
-% [2] http://www2.maths.ox.ac.uk/chebfun/examples/approx/html/BumpFunction.shtml
-% 
-% [3] D. Hilbert, Uber die stetige Abbildung einer Linie auf ein Flachenstuck, 
-%     Mathematische Annalen 38 (1891), 459-460.
+% 1. Chebfun Example [approx/PrettyFunctions](approx/PrettyFunctions.html)
 %
-% [4] http://www.chebfun.org/chebfun2/guide/guide2.shtml
+% 2. Chebfun Example [approx/BumpFunction](approx/BumpFunction.html)
 %
-% [5] http://www.chebfun.org/examples/fun/html/PiecewiseLinear.shtml
-% 
+% 3. D. Hilbert, Uber die stetige Abbildung einer Linie auf ein Flachenstuck,
+%    Mathematische Annalen 38 (1891), 459-460.
+%
+% 4. Chebfun Guide, [Chapters 11-15](../../docs/guide)
+%
+% 5. Chebfun Example [fun/PiecewiseLinear](fun/PiecewiseLinear.html)
+%

@@ -6,17 +6,15 @@
 % [Tags: #linear, #backslash, #wikipedia]
 
 %%
-% Here, we solve a first order linear integro-differential equation 
-% considered in the Wikipedia article: 
-%
-% http://en.wikipedia.org/wiki/Integro-differential_equation
+% Here, we solve a first order linear integro-differential equation
+% considered in the Wikipedia article [1]:
 %
 % $$ u'(x) + 2u(x) + 5\int_0^t u(t) dt = 1~ (x\ge 0), ~~
 % = 0~ (x<0) $$
 %
 % with $u(0)=0$.
 
-%% 
+%%
 % Begin by defining the domain $d$, chebfun variable $x$ and operator $N$.
 d = [0 5];
 x = chebfun('x',d);
@@ -50,3 +48,7 @@ accuracy = norm(u-u_exact)
 % Plot the computed solution
 plot(u,'linewidth',1.6), grid on
 title('Solution of integro-differential equation','fontsize',16)
+
+%% References
+%
+% 1. http://en.wikipedia.org/wiki/Integro-differential_equation

@@ -74,18 +74,14 @@ disp([sort(exact) sort(poles)])
 %%
 % For much more on these matters, see [1], [2] and [3].  
 
-%%
-% REFERENCES: 
-
-%%
-% [1] L. N. Trefethen, Approximation Theory and Approximation Practice,
-% SIAM, 2013.
-
-%%
-% [2] M. Webb, Computing complex singularities of differential
-% equations with Chebfun, SIAM Undergraduate Research Online, to appear.
-
-%%
-% [3] M. Webb, L. N. Trefethen, and P. Gonnet, Stability of barycentric
-% interpolatin formulas for extrapolation, SIAM J. Sci. Comput., 2012
+%% References
+%
+% 1. L. N. Trefethen, Approximation Theory and Approximation Practice,
+%    SIAM, 2013.
+%
+% 2. M. Webb, Computing complex singularities of differential
+%    equations with Chebfun, SIAM Undergraduate Research Online, to appear.
+%
+% 3. M. Webb, L. N. Trefethen, and P. Gonnet, Stability of barycentric
+%    interpolatin formulas for extrapolation, SIAM J. Sci. Comput., 2012
 

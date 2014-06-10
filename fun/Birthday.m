@@ -36,4 +36,3 @@ plot(exp(3i*s),'m',LW,lw), axis equal, grid on
 plot(exp((1+1i)*s),'g',LW,lw), axis equal, axis off
 snapnow
 plot(sinh(3*s),'r',LW,lw), axis equal, axis off
-
