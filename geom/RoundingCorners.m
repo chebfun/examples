@@ -39,4 +39,4 @@ W2 = conv(W,g);
 plot(W2,'r',LW,lw), axis(ax), axis square, grid on
 
 %%
-% Do you understand why thse picture looks different from the previous one?
+% Do you understand why this picture looks different from the previous one?
