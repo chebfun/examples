@@ -177,18 +177,17 @@ title('Without Robustness')
 % singular value decomposition.
 
 %% References
-% [1] Private communication with Divakar Viswanath, July 2011
 %
-% [2] A. Chenciner and R. Montgomery. A remarkable periodic solution of the
-% three-body problem in the case of equal masses. _Annals of Mathematics-
-% Second Series_, 152(3):881-902, 2000.
+% 1. Private communication with Divakar Viswanath, July 2011
 %
-% [3] P. Gonnet, R. Pachón, and L.N. Trefethen. Robust rational 
-% interpolation and least-squares. _Electronic Transactions on 
-% Numerical Analysis_, 38:146-167, 2011.
+% 2. A. Chenciner and R. Montgomery. A remarkable periodic solution of the
+%    three-body problem in the case of equal masses. _Annals of Mathematics-
+%    Second Series_, 152(3):881-902, 2000.
 %
-% [4] Nick Trefethen. Rational interpolation, Robust and non-robust
-% http://www2.maths.ox.ac.uk/chebfun/examples/approx/html/RationalInterp.shtml
+% 3. P. Gonnet, R. Pachón, and L.N. Trefethen. Robust rational interpolation
+%    and least-squares. _Electronic Transactions on Numerical Analysis_,
+%    38:146-167, 2011.
 %
-% [5] Wikipedia article:
-% http://en.wikipedia.org/wiki/Three_body_problem
+% 4. Chebfun Example [approx/RationalInterp](../approx/RationalInterp.html)
+%
+% 5. http://en.wikipedia.org/wiki/Three_body_problem

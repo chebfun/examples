@@ -71,12 +71,11 @@ title('Solutions for various n',FS,16)
 %
 % The solutions to this BVP generate the force-free fields we seek.
 
-%%
-% References:
+%% References
 %
-% [1] B.C. Low and Y.Q. Lou, "Modeling solar force-free magnetic fields", 
-% The Astrophysical Journal v. 352, 343-352, March 1990.
+% 1. B.C. Low and Y.Q. Lou, "Modeling solar force-free magnetic fields", The
+%    Astrophysical Journal v. 352, 343-352, March 1990.
 %
-% [2] N. Flyer, B. Fornberg, S. Thomas, and B. C. Low, "Magnetic Field
-% Confinement in the Solar Corona. I. Force-free Magnetic Fields", The
-% Astrophysical Journal v. 606, 1210-1222, May 2004.
+% 2. N. Flyer, B. Fornberg, S. Thomas, and B. C. Low, "Magnetic Field
+%    Confinement in the Solar Corona. I. Force-free Magnetic Fields", The
+%    Astrophysical Journal v. 606, 1210-1222, May 2004.

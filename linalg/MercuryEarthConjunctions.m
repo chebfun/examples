@@ -25,11 +25,11 @@
 % position vectors on a time interval.
 
 M = @(t) [-11.9084 + 57.9117 * cos(2*pi*t/87.97),...
-           56.6741 * sin(2*pi*t/87.97);   
+           56.6741 * sin(2*pi*t/87.97);
           -2.4987 + 149.6041 * cos(2*pi*t/365.25),...
            149.5832 * sin(2*pi*t/365.25)];
-       
-f = chebfun(@(t) det(M(t)),[0 600],'vectorize');  
+
+f = chebfun(@(t) det(M(t)),[0 600],'vectorize');
 
 %%
 % The roots of the determinant give the days at which a conjunction occurs.
@@ -44,8 +44,7 @@ plot(f,'linewidth',1.6), hold on, grid on
 plot(zeros(1:10),0,'.r','markersize',20)
 xlabel('Time(days)')
 
-%%
-% References:
+%% References
 %
-% [1] Charles F. Van Loan, Introduction to Scientific Computing,
-% Prentice-Hall, 1997, p. 274.
+% 1. Charles F. Van Loan, Introduction to Scientific Computing, Prentice-Hall,
+%    1997, p. 274.

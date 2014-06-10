@@ -201,26 +201,20 @@ title('Poles and Zeros of the Rational Interpolant', FS, 14)
 % squares approximation used by `ratinterp` are discussed in [1] and
 % Chapter 26 of [4].
 
-%%
-% References:
-
-%%
-% [1] M. Webb, Computing complex singularities of differential
-% equations with Chebfun, _SIAM Undergraduate Research Online_, 2013,
-% http://dx.doi.org/10.1137/12S011520.
-
-%%
-% [2] E. Lorenz, Deterministic nonperiodic flow, _Journal of the Atmospheric
-% Sciences_, 20 (1963), 130-141.
-
-%%
-% [3] D. Viswanath and S. Sahutoglu, Complex singularities and the Lorenz
-% attractor, _SIAM Review_, 52 (2010), 294-314.
-
-%%
-% [4] L. N. Trefethen, _Approximation Theory and Approximation Practice_,
-% SIAM, 2013.
-
-%%
-% [5] L.N. Trefethen, Analytic continuation via rational approximation,
-% Chebfun example, 6th March 2013
+%% References
+%
+% 1. M. Webb, Computing complex singularities of differential equations with
+%    Chebfun, _SIAM Undergraduate Research Online_, 2013,
+%    http://dx.doi.org/10.1137/12S011520.
+%
+% 2. E. Lorenz, Deterministic nonperiodic flow, _Journal of the Atmospheric
+%    Sciences_, 20 (1963), 130-141.
+%
+% 3. D. Viswanath and S. Sahutoglu, Complex singularities and the Lorenz
+%    attractor, _SIAM Review_, 52 (2010), 294-314.
+%
+% 4. L. N. Trefethen, _Approximation Theory and Approximation Practice_, SIAM,
+%    2013.
+%
+% 5. L.N. Trefethen, Analytic continuation via rational approximation, Chebfun
+%    example, 6th March 2013

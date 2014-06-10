@@ -90,8 +90,7 @@ title('Backward differentiation orders 1-6 (exteriors of curves)',FS,16)
 axis(6*[-1 1 -1 1])
 title('Backward differentiation close-up',FS,16)
 
-%%
-% References:
-% 
-% E. Hairer and G. Wanner, _Solving Ordinary Differential Equations II: Stiff
-% and Differential-Algebraic Problems_, Springer, 1996.
+%% References
+%
+% 1. E. Hairer and G. Wanner, _Solving Ordinary Differential Equations II:
+%    Stiff and Differential-Algebraic Problems_, Springer, 1996.

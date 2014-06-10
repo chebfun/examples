@@ -76,8 +76,7 @@ accuracy = norm(N(u)-1)
 % This example can also be found among the scalar boundary-value problem demos
 % in Chebgui.
 
-%%
-% Reference:
+%% References
 %
-% [1] C. Bender and S. A. Orzsag, _Advanced Mathematical Methods
-% for Scientists and Engineers_, McGraw-Hill, 1978 (Section 9.7).
+% 1. C. Bender and S. A. Orzsag, _Advanced Mathematical Methods for Scientists
+%    and Engineers_, McGraw-Hill, 1978 (Section 9.7).

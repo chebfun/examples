@@ -39,7 +39,6 @@ A = linop(L);   A.domain
 % This would still be the case if A were nonlinear and we were linearising
 % around a current iteration.
 
-
 %%
 % What are appropriate discretizations of such a piecewise operator? 
 % To begin with, let's see what happens when we have just 2 points in [-1,0]
@@ -139,4 +138,3 @@ plot(v,plotopt{:})
 % continuous, the second derivative of the solution must also have a jump.
 clf, plot((f-0.5)*.41,'k',plotopt{:})
 hold on, plot(diff(v,2),'r',plotopt{:})
-

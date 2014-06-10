@@ -118,23 +118,22 @@ end
 % Should we suggest to MathWorks that they rewrite their Dawson's function
 % after an 18-year delay?
 
-%%
-% References
-%
-% [1] W. H. Press, S. A. Teukolsky, W. T. Vetterling, and
-% B. P. Flannery, _Numerical Recipes. The Art of Scientific Computing_.
-% Third edition. Cambridge University Press, Cambridge, 2007.
-%
-% [2] G. B. Rybicki, Dawson's integral and the sampling theorem. _Computers 
-% in Physics_, vol. 3 (1989), no. 2, pp. 85-87.
-%
-% [3] http://en.wikipedia.org/wiki/Dawson_function
-%
-% [4] W. J. Cody, K. A. Pociorek, and H. C. Thatcher, Chebyshev 
-% approximations for Dawson's integral. _Mathematics of Computation_, 
-% vol. 24 (1970), pp. 171-178.
-%
-% [5] J. A. C. Weideman, Computation of the complex error function. 
-% _SIAM Journal on Numerical Analysis_, 31 (1994), no. 5, 1497-1518.
-
 end
+
+%% References
+%
+% 1. W. H. Press, S. A. Teukolsky, W. T. Vetterling, and
+%    B. P. Flannery, _Numerical Recipes. The Art of Scientific Computing_.
+%    Third edition. Cambridge University Press, Cambridge, 2007.
+%
+% 2. G. B. Rybicki, Dawson's integral and the sampling theorem. _Computers in
+%    Physics_, vol. 3 (1989), no. 2, pp. 85-87.
+%
+% 3. http://en.wikipedia.org/wiki/Dawson_function
+%
+% 4. W. J. Cody, K. A. Pociorek, and H. C. Thatcher, Chebyshev approximations
+%    for Dawson's integral. _Mathematics of Computation_, vol. 24 (1970), pp.
+%    171-178.
+%
+% 5. J. A. C. Weideman, Computation of the complex error function. _SIAM
+%    Journal on Numerical Analysis_, 31 (1994), no. 5, 1497-1518.

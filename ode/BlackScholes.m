@@ -48,4 +48,5 @@ fprintf('Double your money = £%1.2f\n',roots(y-100));
 % Don't lose all your money! 
 
 %% References
-% [1] http://en.wikipedia.org/wiki/Black-Scholes
+%
+% 1. http://en.wikipedia.org/wiki/Black-Scholes

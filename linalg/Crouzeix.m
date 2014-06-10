@@ -94,13 +94,12 @@ c(B,a)
 % counterexamples to Crouzeix conjecture for matrices of various dimensions,
 % and so far, we have found no counterexamples.
 
-%%
-% References:
-%
-% [1] M. Crouzeix, Bounds for analytical functions of matrices, _Integral
-% Equations and Operator Theory_, 48 (2004), 461-477.
-%
-% [2] M. Crouzeix, Numerical range and functional calculus in Hilbert space,
-% _Journal of Functional Analysis_, 244 (2007), 668-690.
-
 end
+
+%% References
+%
+% 1. M. Crouzeix, Bounds for analytical functions of matrices, _Integral
+%    Equations and Operator Theory_, 48 (2004), 461-477.
+%
+% 2. M. Crouzeix, Numerical range and functional calculus in Hilbert space,
+%    _Journal of Functional Analysis_, 244 (2007), 668-690.

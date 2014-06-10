@@ -142,11 +142,12 @@ r.imps
 norm(r,inf)
 
 %% References
-% [1] Stakgold, I. Green's functions and boundary value problems. Pure and
-% Applied Mathematics (New York). John Wiley & Sons Inc., New York, second
-% edition, 1998. A Wiley-Interscience Publication.
 %
-% [2] Kanwal, R. P. Generalized Functions: Theory and Applications, third
-% edition, 2004, Birkhauser.
+% 1. Stakgold, I. Green's functions and boundary value problems. Pure and
+%    Applied Mathematics (New York). John Wiley & Sons Inc., New York, second
+%    edition, 1998. A Wiley-Interscience Publication.
 %
-% [3] http://www2.maths.ox.ac.uk/chebfun/examples/ode/html/JumpConditions.shtml
+% 2. Kanwal, R. P. Generalized Functions: Theory and Applications, third
+%    edition, 2004, Birkhauser.
+%
+% 3. Chebfun Example [ode/JumpConditions](../ode/JumpConditions.html)

@@ -54,8 +54,7 @@ title('Which curve is which?',FS,16)
 [maxnorm1, maxt1] = max(e1)
 [maxnorm2, maxt2] = max(e2)
 
-%%
-% Reference:
+%% References
 %
-% L. N. Trefethen and M. Embree, Spectra and Pseudospectra: The Behavior
-% of Nonnormal Matrices and Operators, Princeton U. Press, 2005.
+% 1. L. N. Trefethen and M. Embree, Spectra and Pseudospectra: The Behavior of
+%    Nonnormal Matrices and Operators, Princeton U. Press, 2005.

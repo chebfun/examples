@@ -87,8 +87,7 @@ plot(x), ylim([0 1]), grid on
 % And let's zoom in on a small interval:
 plot(x,'interval',[3.902,3.908]), ylim([0 1]), grid on
 
-%%
-% Reference
+%% References
 %
-% [1] G. Strang, _Introduction to Applied Mathematics_,
-% Wellesley-Cambridge Press, 1986.
+% 1. G. Strang, _Introduction to Applied Mathematics_, Wellesley-Cambridge
+%    Press, 1986.

@@ -120,9 +120,8 @@ end
 % However, this problem is highly ill-conditioned and I have not
 % investigated how accurate the solution really is.
 
-%%
-% REFERENCE
+%% References
 %
-% [1] J.-Y. Lee and L. Greengard, "A fast adaptive numerical method for
-% stiff two-point boundary value problems", SIAM Journal on Scientific
-% Computing 18 (1997), 403-429.
+% 1. J.-Y. Lee and L. Greengard, "A fast adaptive numerical method for stiff
+%    two-point boundary value problems", SIAM Journal on Scientific Computing
+%    18 (1997), 403-429.

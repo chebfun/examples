@@ -85,6 +85,6 @@ f = exp(x.^2) + cos(x).*log(2+x) + diff(tanh(x.*u));
 % grasp, but we get a nice tree if we plot it graphically:
 plot(f.jacobian)
 
-%%
-% References:
-% [1] http://en.wikipedia.org/wiki/Automatic_differentiation.
+%% References
+%
+% 1. http://en.wikipedia.org/wiki/Automatic_differentiation

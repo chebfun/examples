@@ -35,9 +35,8 @@ end
 axis([-1 1 0 1.2])
 title('Frank-Kamenetskii blowup equation',FS,14)
 
-%%
-% Reference:
+%% References
 %
-% H. Fujita, On the nonlinear equations $\Delta u + \exp(u) = 0$
-% and $dv/dt = \Delta v + \exp(v)$,
-% _Bulletin of the American Mathematical Society_, 75 (1969), 132-135.
+% 1. H. Fujita, On the nonlinear equations $\Delta u + \exp(u) = 0$ and $dv/dt
+%    = \Delta v + \exp(v)$, _Bulletin of the American Mathematical Society_,
+%    75 (1969), 132-135.

@@ -104,6 +104,7 @@ title('Solution of the Lane-Emden equation for n=4.5',FS,16),
 norm(uv(1,2)-31.836463244694285264)
 
 %% References
-% [1] Chebyshev Spectral Methods and the Lane-Emden Problem by John Boyd.
 %
-% [2] http://www2.maths.ox.ac.uk/chebfun/examples/ode/html/LaneEmden.shtml
+% 1. Chebyshev Spectral Methods and the Lane-Emden Problem by John Boyd.
+%
+% 2. Chebfun Example [ode/LaneEmden](../ode/LaneEmden.html)

@@ -57,11 +57,9 @@ fprintf('Condition no. for monomials: %8.3f\n',cond(A))
 % dimension of the pancake to the smallest.  When the columns of $A$ are
 % monomials, the pancake is very flat indeed.
 
-%%
-% References:
+%% References
 %
-% [1] L. N. Trefethen, Householder triangularization of a quasimatrix,
-% IMA Journal of Numerical Analysis 30 (2010), 887-897.
+% 1. L. N. Trefethen, Householder triangularization of a quasimatrix, IMA
+%    Journal of Numerical Analysis 30 (2010), 887-897.
 %
-% [2] L. N. Trefethen and D. Bau, III, Numerical Linear Algebra,
-% SIAM, 1997.
+% 2. L. N. Trefethen and D. Bau, III, Numerical Linear Algebra, SIAM, 1997.

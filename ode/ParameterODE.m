@@ -13,11 +13,11 @@
 %
 %   (a(x,s)u')' = 1,   u(0) = u(1) = 0,
 %
-% be given, where 
+% be given, where
 %
 %   a(x,s) = 1+4s(x^2-x).
 %
-% and ' denotes the derivative w.r.t. x. 
+% and ' denotes the derivative w.r.t. x.
 %
 % The exact solution can be shown to be
 %
@@ -128,13 +128,13 @@ title('Norm of true error'), xlabel('\gamma')
 % for introducing a breakpoint in the solution at x = 1/2, so rather than
 % the solution being represented by a global chebfun, it is represented by
 % two pieces.
-% 
+%
 % We introduce a breakpoint in the operator as follows (notice the second
 % argument to the chebop constructor):
 Nsbreak = @(s) chebop(@(x,u) a(x,s).*diff(u,2) + ap(x,s).*diff(u), ...
                       [0 .5 1], 0, 0);
 
-%% 
+%%
 % We now redefine the anonymous function which gives the solution
 ugammabreak = @(gamma) solvebvp(Nsbreak(s(gamma)),1);
 
@@ -164,7 +164,7 @@ end
 % breakpoints:
 sols
 
-%% 
+%%
 % We plot all the solutions in a single plot
 figure, plot(sols)
 title('u(x,s(\gamma))')
@@ -180,6 +180,7 @@ title('Norm of true error'), xlabel('\gamma')
 % (But the residual norm gives infinity due to the jump in the residual at
 % the breakpoint).
 
-%%
-% Reference
-% [1] Paul Constantine's website: http://www.stanford.edu/~paulcon/ 
+%% References
+%
+% 1. Paul Constantine's website: http://www.stanford.edu/~paulcon/
+%

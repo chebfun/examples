@@ -26,7 +26,7 @@ A = [-1 0 0 0 0 0 -625; 0 -1 -30 400 0 0 250; -2 0 -1 0 0 0 30;
 %%
 % Here (adapted from [linalg/NonnormalQuiz](NonnormalQuiz.html)) is a code to compute and
 % plot $\| e^{tA} \|$ as a function of $t$:
- 
+
 e = chebfun(@(t) norm(expm(t*A)),[0 2.5],'vectorize','splitting','on');
 LW = 'linewidth'; FS = 'fontsize'; plot(e,'b',LW,2)
 xlabel('t',FS,14), ylabel('||e^{tA}||',FS,14)
@@ -48,12 +48,10 @@ fprintf('Maximum energy = %15.8f\n',max(e2))
 % Here's the time for this Example:
 toc
 
-
-%%
-% References:
+%% References
 %
-% [1] L. N. Trefethen and M. Embree, Spectra and Pseudospectra: The Behavior
-% of Nonnormal Matrices and Operators, Princeton U. Press, 2005.
+% 1. L. N. Trefethen and M. Embree, Spectra and Pseudospectra: The Behavior
+%    of Nonnormal Matrices and Operators, Princeton U. Press, 2005.
 %
-% [2] J. F. Whidborne and N. Amar, Computing the maximum transient
-% energy growth, BIT Numerical Mathematics 51 (2011), 447-457.
+% 2. J. F. Whidborne and N. Amar, Computing the maximum transient
+%    energy growth, BIT Numerical Mathematics 51 (2011), 447-457.

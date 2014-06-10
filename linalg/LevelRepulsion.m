@@ -72,10 +72,9 @@ title(['Zooming in: the gap width is ' num2str(minval)],FS,16)
 hold on, plot(minpos,E5(minpos),'.r',MS,18)
 hold on, plot(minpos,E6(minpos),'.r',MS,18)
 
-%%
-% References:
+%% References
 %
-% [1] P. Lax, Linear Algebra, Wiley, 1996.
+% 1. P. Lax, Linear Algebra, Wiley, 1996.
 %
-% [2] J. von Neumann and E. Wigner, Ueber das Verhalten von Eigenwerten
-% bei adiabatischen Prozessen, Phys. Zeit. 30 (1929), 467-470.
+% 2. J. von Neumann and E. Wigner, Ueber das Verhalten von Eigenwerten bei
+%    adiabatischen Prozessen, Phys. Zeit. 30 (1929), 467-470.

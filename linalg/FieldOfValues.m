@@ -10,7 +10,7 @@
 % the nonempty bounded convex set in the complex plane
 % consisting of all the Rayleigh quotients of A, that is,
 % all the numbers q'Aq, where q is a unit vector and
-% q' is its conjugate transpose.  
+% q' is its conjugate transpose.
 
 %%
 % The standard method for computing the field of
@@ -82,14 +82,11 @@ hold on, plot(eig(C),'.k',MS,ms)
 % in just about 10 lines of code.
 type fov
 
-%%
-% References:
+%% References
 %
-% [1] C. R. Johnson, Numerical determination of the
-% field of values of a general complex matrix,
-% SIAM J. Numer. Anal. 15 (1978), 595-602. 
+% 1. C. R. Johnson, Numerical determination of the field of values of a
+%    general complex matrix, SIAM J. Numer. Anal. 15 (1978), 595-602.
 %
-% [2] L. N. Trefethen and M. Embree, Spectra and Pseudospectra:
-% The Behavior of Nonnormal Matrices and Operators, Princeton U.
-% Press, 2005, chapter 17 on Numerical range, abscissa, and radius.
-
+% 2. L. N. Trefethen and M. Embree, Spectra and Pseudospectra: The Behavior of
+%    Nonnormal Matrices and Operators, Princeton U. Press, 2005, chapter 17 on
+%    Numerical range, abscissa, and radius.

@@ -7,12 +7,8 @@
 
 %%
 % Here, we solve three simple linear problems considered in the Wikipedia
-% article on ODEs:
-% <blockquote>
-% http://en.wikipedia.org/wiki/Linear_differential_equation
-% </blockquote>
-% The problems are solved in the order they appear in the article, with
-% boundary conditions imposed to make the solutions unique.
+% article on ODEs [1]. The problems are solved in the order they appear in the
+% article, with boundary conditions imposed to make the solutions unique.
 %
 %% Problem 1: Second-order problem
 %
@@ -126,3 +122,7 @@ norm(y-y_exact)
 %%
 % Plot the computed solution
 plot(y,'linewidth',2), grid on
+
+%% References
+%
+% 1. http://en.wikipedia.org/wiki/Linear_differential_equation

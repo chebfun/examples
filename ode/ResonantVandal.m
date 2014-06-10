@@ -67,9 +67,7 @@ title(['Breakaway time = ' num2str(breakaway_time)],'fontsize',14)
 % condition $d=20$ one cycle earlier?  Here's the answer:
 max(d{35,40})
 
-%%
-% Reference:
+%% References
 %
-% [1] G. E. Carrier and Carl. E. Pearson, _Ordinary Differential
-% Equations,_ Blaisdell, 1968.
-
+% 1. G. E. Carrier and Carl. E. Pearson, _Ordinary Differential Equations,_
+%    Blaisdell, 1968.

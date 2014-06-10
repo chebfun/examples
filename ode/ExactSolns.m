@@ -158,8 +158,7 @@ err = norm(y-exact,inf);
 plot(y,'.-',LW,1,MS,18), grid on
 title(sprintf('y'' = y/x + x/y     Error = %6.2e',err),FS,14)
 
-%%
-% Reference:
+%% References
 %
-% [1] C. Bender and S. A. Orszag, _Advanced Mathematical Methods
-% for Scientists and Engineers_, McGraw-Hill, 1978.
+% 1. C. Bender and S. A. Orszag, _Advanced Mathematical Methods for Scientists
+%    and Engineers_, McGraw-Hill, 1978.

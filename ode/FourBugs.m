@@ -198,9 +198,8 @@ plot(bugs(tt(4),:), 'k.-', MS, 18), hold off
 axis equal, zoom(52), axis off
 title(['rhombus, t = ' num2str(tt(4),10)], FS, 12)
 
-%%
-% References:
+%% References
 %
-% [1] S. J. Chapman, James Lottes, and Lloyd N. Trefethen.
-% "Four bugs on a rectangle." _Proceedings of the Royal Society A_,
-% 467, no. 2127 (2011): 881-896.
+% 1. S. J. Chapman, James Lottes, and Lloyd N. Trefethen. "Four bugs on a
+%    rectangle." _Proceedings of the Royal Society A_, 467, no. 2127 (2011):
+%    881-896.

@@ -66,7 +66,7 @@ B =  [ -3-2i   1+1i    -1i      0   -1+1i
            0  -2-3i    -1i     1i   -2-1i
           1i      0  -2-4i  -2-1i    2-1i
            0      1     1i  -2-4i      1i
-        1-2i      0      1      1   -2-3i ];    
+        1-2i      0      1      1   -2-3i ];
 format short, eig(B)
 %%
 % And here is its resolvent norm plot:
@@ -88,11 +88,7 @@ for j = 1:12
     axis([-10 10 0 8]), drawnow
 end
 
-
-%%
-% References:
+%% References
 %
-% [1] L. N. Trefethen and M. Embree, Spectra and Pseudospectra:
-% The Behavior of Nonnormal Matrices and Operators,
-% Princeton U. Press, 2005.
-
+% 1. L. N. Trefethen and M. Embree, Spectra and Pseudospectra: The Behavior of
+%    Nonnormal Matrices and Operators, Princeton U. Press, 2005.

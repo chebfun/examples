@@ -96,10 +96,9 @@ v = uv{2};
 fprintf('Polytropic range for white dwarfs: [0,%1.4f)\n',v(1));
 
 %% References
-% [1] Chandrasekhar, S. An Introduction to the Study of Stellar
-% Structure.
 %
-% [2] Horedt, George Paul (1986) 'Seven-digit tables of Lane-Emden functions'
+% 1. Chandrasekhar, S. An Introduction to the Study of Stellar Structure.
 %
-% [3] Wikipedia article:
-% 'http://en.wikipedia.org/wiki/Lane-Emden_equation'
+% 2. Horedt, George Paul (1986) 'Seven-digit tables of Lane-Emden functions'
+%
+% 3. http://en.wikipedia.org/wiki/Lane-Emden_equation
