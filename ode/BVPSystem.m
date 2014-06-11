@@ -1,11 +1,12 @@
 %% System of two nonlinear BVPs
 % Asgeir Birkisson, September 2010
+% Toby Driscoll, June 2014
 
 %%
 % (Chebfun example ode/BVPSystem.m)
 % [Tags: #nonlinearODE, #ODEsystem]
 
-%% 1. System of equations
+%% System of equations
 % Here is a system of two coupled nonlinear ODEs on the
 % interval [-1,1], with boundary conditions.
 %
@@ -18,7 +19,7 @@
 % u'(1) = 0,   v(1) = 0
 %
 
-%% 2.  Solution using multiple variables u and v
+%% Solution using multiple variables u and v
 % One way you can solve a problem like this with Chebfun is to work with
 % multiple variables, solving for two chebfuns u and v.
 % Here we do this, setting up the problem using anonymous functions that take
@@ -46,9 +47,9 @@ title('Norm of update vs. iteration no.',FS,12)
 box on, grid on
 xlabel('Iteration no.',FS,10), ylabel('Norm of update',FS,10)
 
-%% 3.  Solution using a single quasimatrix variable u
-% Another way to solve the same problem is to work with a single quasimatrix variable u
-% which has two components, u(:,1) and u(:,2).
+%% Solution using a single indexed variable u
+% Another way to solve the same problem is to work with a single chebmatrix variable u
+% that has two components, u{1} and u{2}.
 %
 % (u_1)'' - sin(u_2) = 0
 %
@@ -60,14 +61,20 @@ xlabel('Iteration no.',FS,10), ylabel('Norm of update',FS,10)
 %
 N = chebop(-1,1);
 x = chebfun('x');
-N.op = @(u) [ diff(u(:,1),2) - sin(u(:,2)); diff(u(:,2),2) + cos(u(:,1)) ];
-N.lbc = @(u)[ u(:,1)-1; diff(u(:,2)) ];
-N.rbc =  @(u)[ u(:,2); diff(u(:,1)) ];
+N.op = @(x,u) [ diff(u{1},2) - sin(u{2}); diff(u{2},2) + cos(u{1}) ];
+N.lbc = @(u)[ u{1}-1; diff(u{2}) ];
+N.rbc =  @(u)[ u{2}; diff(u{1}) ];
 N.init = [0*x; 0*x];
+
+%%
+% The solution process is the same as before.
 [u,info] = solvebvp(N,[0;0]);
 nrmduvec = info.normDelta;
 
-figure
+%%
+% The components of the solution, as in the problem definition, are
+% accessed via the curly braces notation of chebmatrices. 
+clf
 subplot(1,2,1), plot(u{1},LW,2), hold on
 plot(u{2},'--r',LW,2), hold off
 title('u_1(x) and u_2(x) vs. x',FS,12), legend('u_1','u_2')
