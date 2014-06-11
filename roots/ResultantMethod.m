@@ -145,18 +145,17 @@ title('Resultant method finds the solution',FS,fs)
 
 %% References
 %
-% [1] P. A. Browne, _Numerical methods for two-parameter eigenvalue problems_,
-% PhD. Thesis, University of Bath, 2008.
+% 1. P. A. Browne, _Numerical methods for two-parameter eigenvalue problems_,
+%    PhD. Thesis, University of Bath, 2008.
 %
-% [2] Y. Nakatsukasa, V. Noferini, and A. Townsend, Computing the common zeros
-% of two bivariate functions via Bezout resultants,  _Numerische Mathematik_,
-% to appear.
+% 2. Y. Nakatsukasa, V. Noferini, and A. Townsend, Computing the common zeros
+%    of two bivariate functions via Bezout resultants,  _Numerische
+%    Mathematik_, to appear.
 %
-% [3] A. J. Sommese and C. W. Wampler, _The Numerical Solution of Systems of
-% Polynomials Arising in Engineering and Science_, World Scientific, 2005.
+% 3. A. J. Sommese and C. W. Wampler, _The Numerical Solution of Systems of
+%    Polynomials Arising in Engineering and Science_, World Scientific, 2005.
 %
-% [4] Chebfun Example [roots/MarchingSquares](../roots/MarchingSquares.html)
+% 4. Chebfun Example [roots/MarchingSquares](../roots/MarchingSquares.html)
 %
-% [5] A. Townsend and L. N. Trefethen, An extension of Chebfun to two
-% dimensions, _SIAM Journal on Scientific Computing_, 35
-% (2013), C495-C518.
+% 5. A. Townsend and L. N. Trefethen, An extension of Chebfun to two
+%    dimensions, _SIAM Journal on Scientific Computing_, 35 (2013), C495-C518.

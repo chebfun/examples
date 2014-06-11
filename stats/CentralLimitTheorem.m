@@ -165,7 +165,7 @@ title('The binomial distribution compared with the normal distribution')
 
 %% References
 %
-% [1] Papoulis, A., _Probability, Random Variables and Stochastic Processes_,
-% third edition, McGraw-Hill, 1991.
+% 1. Papoulis, A., _Probability, Random Variables and Stochastic Processes_,
+%    third edition, McGraw-Hill, 1991.
 %
-% [2] Chebfun Example [approx/BSplineConv](../approx/BSplineConv.html)
+% 2. Chebfun Example [approx/BSplineConv](../approx/BSplineConv.html)

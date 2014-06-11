@@ -48,7 +48,6 @@ plot(x5,y5,'.-r')
 axis equal off
 A5 = abs(sum(x5.*diff(y5))) % Note, different from [1] was we include .1 in sqrt
 
+%% References
 %
-% References:
-%
-% [1] http://mathworld.wolfram.com/HeartCurve.html
+% 1. http://mathworld.wolfram.com/HeartCurve.html
