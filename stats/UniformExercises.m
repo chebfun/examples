@@ -1,4 +1,4 @@
-%% Exercises from a textbook: Uniform distribution
+%% Uniform distribution: Exercises from a textbook
 % Jie Gao, July 2013
 
 %%

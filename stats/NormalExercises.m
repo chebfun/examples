@@ -1,4 +1,4 @@
-%% Exercises from a textbook: Normal distribution
+%% Normal distribution: Exercises from a textbook
 % Jie Gao and Nick Trefethen, April 2013
 
 %%
