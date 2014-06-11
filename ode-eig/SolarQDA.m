@@ -8,7 +8,7 @@
 %%
 % Researchers at the University of Delaware are exploring the use of quantum
 % dot arrays (QDA) to capture solar energy. One simplified model of a QDA is
-% as a 1D Schroedinger eigenvalue problem. The governing equation is
+% as a 1D Schrödinger eigenvalue problem. The governing equation is
 %
 % $$ -\frac{\hbar^2}{2m} \psi'' + U(x) \psi = E \psi, $$
 %
@@ -52,7 +52,7 @@ vals = mat2cell(vals,1,ones(1,2*numwell+1));  % convert to cell
 emass = chebfun(vals,x);
 
 %%
-% Now we are ready to define the Schroedinger operator.
+% Now we are ready to define the Schrödinger operator.
 N = chebop(@(psi) -hbar^2./(2*emass).*diff(psi,2) + U.*psi, x);
 N.lbc = 0; N.rbc = 0;
 
