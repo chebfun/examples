@@ -33,7 +33,7 @@ abs((2*norm(F)^2 + 2*norm(G)^2) - (norm(F+G)^2 + norm(F-G)^2))
 % that points in the direction of steepest ascent of $f$. The gradient theorem
 % says that the integral of $\mathrm{grad}(f)$ over a curve only depends on
 % the values of $f$ at the endpoints of that curve. We can check this
-% numerically by using the Chebfun2v command integral. This command computes
+% numerically by using the Chebfun2v command `integral`. This command computes
 % the line integral of a vector valued function. Here we check one example to
 % confirm that the gradient theorem holds:
 
@@ -42,6 +42,23 @@ F = grad(f);                                 % gradient (chebfun2v)
 C = chebfun(@(t) t.*exp(100i*t),[0 pi/10]);  % spiral curve
 v = integral(F,C); ends = f(pi/10,0)-f(0,0); % line integral
 abs(v-ends)                                  % gradient theorem
+
+%%
+% Another consequence of the gradient theorem is that the integral of
+% $\mathrm{grad}(f)$ over any closed curve is zero. For example, here is
+% an exotic closed curve, which we plot superimposed on the vector field
+% $\mathrm{grad}(f)$.
+
+circ = @(p) chebfun(@(x) exp(2i*p*pi*x));
+C = (circ(1) + circ(3)/1.5 + circ(8)/3.5) / 2;
+figure('position', [0 0 600 400])
+quiver(F,0.5,'numpts',12), hold on
+plot(C, 'r'), axis equal off
+
+%%
+% Its integral should be zero.
+
+v = integral(F,C)
 
 %% Curl of the gradient
 % If the chebfun2v $F$ describes a vector velocity field of fluid flow, then

@@ -94,14 +94,18 @@ r = roots(p);
 end
 
 %%
-% Here is an example:
+% Here is an example, this time with a phase portrait to visually verify the roots:
 ff = @(z) cosh(exp(z)).*(z-.3).*(1+4*z.^2);
 roots3(ff)
+plot(chebfun2(ff)), hold on
+plot(z, 'k-'), axis equal
 
 %%
 % Here is another:
 ff = @(z) (z.^3-1/8).*exp((-1-2i)*z);
 roots3(ff)
+plot(chebfun2(ff)), hold on
+plot(z, 'k-'), axis equal
 
 end
 
