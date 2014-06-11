@@ -19,7 +19,7 @@ axis equal off
 
 %%
 % This 'heart curve' can be found on Wolfram's MathWorld site [1], where 
-% they compute its area. We do the same, and compare the result:
+% its area is computed.  We do the same, and compare the result:
 
 z = x+1i*y;
 A = abs(sum(x.*diff(y)))
@@ -48,6 +48,7 @@ plot(x5,y5,'.-r')
 axis equal off
 A5 = abs(sum(x5.*diff(y5))) % Note, different from [1] was we include .1 in sqrt
 
-%% References
 %
-% 1. http://mathworld.wolfram.com/HeartCurve.html
+% References:
+%
+% [1] http://mathworld.wolfram.com/HeartCurve.html
