@@ -31,7 +31,7 @@
 % For example, here are the eigenvalues and
 % field of values of a random matrix of dimension 20.
 % This is a case where the boundary is smooth.
-randn('seed',1), A = randn(20);
+rng(1), A = randn(20);
 LW = 'linewidth'; lw = 1.6; MS = 'markersize'; ms = 18;
 FA = fov(A);
 figure, plot(FA,LW,lw), axis equal, grid on

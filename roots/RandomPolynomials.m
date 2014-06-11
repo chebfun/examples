@@ -37,7 +37,7 @@ end
 % compute roots of such polynomials stably. For example, here is what happens
 % if we repeat the experiment above but for random polynomials in the basis of
 % Chebyshev polynomials, i.e., $p = a_0 + a_1 T_1 + \cdots + a_n T_n$.
-randn('seed',1)
+rng(1)
 for j = 1:2
     subplot(1,2,j)
     n = nn(j);
