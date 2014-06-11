@@ -1,9 +1,0 @@
-        <!--#include virtual="/chebfun/includes/comments.html" -->
-        </div> <!-- END CONTENT -->
-        <div class="hr1"> <hr /> </div>
-        <!--#include virtual="/chebfun/includes/footer.html" -->
-</div>
-<div id="footimg"></div>
-<!--#include virtual="/chebfun/includes/googleanalytics.html" -->
-</body>
-</html>
