@@ -6,9 +6,9 @@
 % [Tags: #centrallimittheorem, #convolution, #CONV, #probability, #delta, #deltafunction, #DIRAC]
 
 %%
-% The central limit theorem is one of the most striking results in the
+% The Central Limit Theorem is one of the most striking results in the
 % theory of probability.  It says that if you take the mean of $n$
-% independent samples from any random variable, then as $n\to\infty$, the
+% independent samples from almost any random variable, then as $n\to\infty$, the
 % distribution of these means approaches a normal distribution, i.e., a
 % Gaussian or bell curve. For example, if you toss a coin $n$ times, the
 % number of heads you get is given by the binomial distribution, and this
@@ -17,21 +17,24 @@
 %%
 % More specifically, let $X_1, \dots , X_n$ be independent samples from a
 % distribution with mean $\mu$ and variance $\sigma^2<\infty$, and consider
-% the sample mean $$ S_n = n^{-1} \sum_{k=1}^n X_n . $$ The law of large
+% the sample mean
+%
+% $$ S_n = n^{-1} \sum_{k=1}^n X_n . $$
+%
+% The law of large
 % numbers asserts that $S_n \to  \mu$ as almost surely as $n\to\infty$. The
-% central limit theorem asserts that the random variables $\sqrt n
+% Central Limit Theorem asserts that the random variables $\sqrt n
 % (S_n-\mu)$ converge in distribution to the normal distribution
 % $N(0,\sigma^2)$.  Details are given in many textbooks of probability and
-% statistics. (See for example [1].)
+% statistics. See for example [1].
 
 %%
-% The Chebfun CONV command makes it possible to illustrate the central
-% limit theorem for general distributions, because the probability
+% The Chebfun `conv` command makes it possible to illustrate the Central
+% Limit Theorem for general distributions, because the probability
 % distribution associated with the sum of random variables is given by a
 % convolution.  For example, consider this triangular probability
 % distribution:
-
-X = chebfun(0,'(4/3+x)/2',0,[-3 -4/3 2/3 3]);
+X = chebfun({0,'(4/3+x)/2',0},[-3 -4/3 2/3 3]);
 LW = 'linewidth'; lw = 1.6; ax = [-3 3 -.2 1.2];
 hold off, plot(X,LW,lw,'jumpline','b'), axis(ax), grid on
 FS = 'fontsize'; fs = 12;
@@ -39,7 +42,6 @@ title('Distribution of X',FS,fs)
 
 %%
 % $X$ has mean zero and variance $2/9$:
-
 t = chebfun('t',[-3 3]);
 mu = sum(t.*X)
 variance = sum(t.^2.*X)
@@ -47,7 +49,6 @@ variance = sum(t.^2.*X)
 %%
 % Let us superimpose on the plot the normal distribution of this mean and
 % variance:
-
 sigma = sqrt(variance);
 gauss = @(sigma) chebfun(@(t) exp(-.5*(t/sigma).^2)/(sigma*sqrt(2*pi)),[-3 3]);
 hold on, plot(gauss(sigma),'r',LW,lw)
@@ -56,7 +57,6 @@ title('Distribution of X compared with normal distribution',FS,fs)
 %%
 % Here is the distribution for the sum of two copies of $X$, renormalized
 % so that the variance is again $2/9$:
-
 X2 = conv(X,X);
 S2 = newdomain(sqrt(2)*X2,[-3,3]*sqrt(2));
 hold off, plot(S2,LW,lw,'jumpline','b'), axis(ax), grid on
@@ -65,7 +65,6 @@ hold on, plot(gauss(sigma),'r',LW,lw)
 
 %%
 % And here we have the renormalized sum of three:
-
 X3 = conv(X2,X);
 S3 = newdomain(sqrt(3)*X3,[-3,3]*sqrt(3));
 hold off, plot(S3,LW,lw,'jumpline','b'), axis(ax), grid on
@@ -124,11 +123,11 @@ plot(pn);
 title('The binomial distribution')
 
 %%
-% Again the probabilites sum to $1$.
+% Again the probabilities sum to $1$.
 sum(pn)
 
 %%
-% The central limit theorem says that as $n \to \infty$, the distribution
+% The Central Limit Theorem says that as $n \to \infty$, the distribution
 % of the binomial random variable $X$, converges to the normal distribution
 % $N(np,npq)$ [1]. We can easily verify this fact. Let $\mu = np$ and
 % $\sigma^2 = npq$:
@@ -166,7 +165,7 @@ title('The binomial distribution compared with the normal distribution')
 
 %% References
 %
-% 1. Papoulis, A., Probability, Random Variables and Stochastic Processes,
-%    third edition, McGraw-Hill, 1991.
+% [1] Papoulis, A., _Probability, Random Variables and Stochastic Processes_,
+% third edition, McGraw-Hill, 1991.
 %
-% 2. Chebfun Example [approx/BSplineConv](../approx/BSplineConv.html)
+% [2] Chebfun Example [approx/BSplineConv](../approx/BSplineConv.html)
