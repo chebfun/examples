@@ -104,8 +104,7 @@ v = N2\0
 hold off, plot(v, 'k-'), xlim([-5.7 10])
 title('A singularity of the Blasius function')
 
-%%
-% Reference:
+%% References
 %
-% [1] Boyd, John P. "The Blasius function in the complex plane."
-% _Experimental Mathematics_ 8, no. 4 (1999): 381-394.
+% 1. Boyd, John P. "The Blasius function in the complex plane."
+%    _Experimental Mathematics_ 8, no. 4 (1999): 381-394.

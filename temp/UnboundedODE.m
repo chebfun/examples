@@ -5,10 +5,10 @@
 % (Chebfun example ode/UnboundedODE.m)
 
 %%
-% Chebfun has some support for ODEs on unbounded intervals (although this 
+% Chebfun has some support for ODEs on unbounded intervals (although this
 % feature is still in the experimental stages!).
 %
-% Here we solve equation 
+% Here we solve equation
 %
 %    0.1 u'' + u' + u = 0 ,    u(0) = 1,   u(inf) = 0;
 
@@ -27,7 +27,7 @@ title('Solution',FS,fs)
 % close, plot(A*u,LW,lw)
 % title('Residual',FS,fs)
 
-%% 
+%%
 % We can also solve piecewise problems on unbounded domains. As an example,
 % we'll take the same equation, and artificial insert a breakpoint at x = 1
 

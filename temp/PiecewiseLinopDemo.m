@@ -66,6 +66,3 @@ v = B\1;
 %%
 % which we see does much the same as above.
 plot(u,'b',v,'--r','LineWidth',1.6)
-
-
-
