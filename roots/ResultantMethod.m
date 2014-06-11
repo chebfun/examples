@@ -6,14 +6,14 @@
 % [Tags: #roots, #Chebfun2, #Resultant, #Bezout]
 
 %%
-LW = 'linewidth'; lw = 2;
-FS = 'fontsize'; fs = 16;
+LW = 'linewidth'; lw = 1.6;
+FS = 'fontsize'; fs = 14;
 MS = 'markersize'; ms = 20;
 
 %% Bivariate rootfinding
 % Here we explore a new algorithm in Chebfun2 by Nakatsukasa, Noferini, and
-% the Example's author for computing the solutions to bivariate rootfinding
-% problems:
+% Townsend for computing the solutions to bivariate rootfinding
+% problems,
 %
 % $$ f(x,y) = g(x,y) = 0, \quad (x,y)\in [-1,1]\times[-1,1], $$
 %
@@ -24,9 +24,10 @@ MS = 'markersize'; ms = 20;
 % existing numerical methods for bivariate rootfinding can be found in [2].
 
 %%
-% Univariate rootfinding is one of the most important commands in 1D Chebfun
+% Univariate rootfinding is one of the most important capabilities of 1D Chebfun
 % and one expects that bivariate rootfinding will become equally crucial for
-% Chebfun2. Old Chebfun2 used a contouring algorithm based on Marching Squares
+% Chebfun2. Early versions of
+% Chebfun2 used a contouring algorithm based on Marching Squares
 % [5], which is adequate for many examples, but not completely robust (see
 % below). As of today, the new Chebfun2 employs a resultant method based on
 % Bezout matrices, regularisation, and 2D subdivision [2]. We have found this
@@ -35,7 +36,7 @@ MS = 'markersize'; ms = 20;
 % `roots`, but for details of the new algorithm we refer the reader to [2].
 
 %% Optional arguments and defaults
-% The new Chebfun2 roots command allows for a third argument to supply a user
+% The new Chebfun2 `roots` command allows for a third argument to supply a user
 % preferred method. The syntax `roots(f,g,'resultant')` and
 % `roots(f,g,'marchingsquares')` employ the new resultant based algorithm and
 % the old Marching Squares approach, respectively. For example
@@ -52,8 +53,9 @@ plot(r(:,1), r(:,2), 'k.', MS, ms)
 axis equal, hold off
 
 %%
-% By default the new Chebfun2 roots command employs the resultant method if the
-% degrees of $f$ and $g$ are less than 200 and Marching Squares, otherwise.
+% By default the new Chebfun2 `roots`
+% command employs the resultant method if the
+% degrees of $f$ and $g$ are less than 200 and Marching Squares otherwise.
 % However, we always treat the computed zeros from Marching Squares with
 % suspicion.
 
@@ -98,13 +100,13 @@ axis([-1,1,-1,1]), axis equal, hold off
 %%
 % The diagram above shows that we have found all the solutions, and we can get
 % a rough idea of the error in the computed solutions by computing the
-% residue:
+% residual:
 
 max( norm(f(r(:,1),r(:,2))), norm(g(r(:,1),r(:,2))))
 
 %%
-% For this example the exact solutions can be derived and checked to be very
-% accurate.
+% For this example the exact solutions can be derived and the
+% computed solutions checked to be very accurate.
 
 %% Example 3: Autonomous system
 % Here we repeat an example from [4]:
@@ -143,16 +145,18 @@ title('Resultant method finds the solution',FS,fs)
 
 %% References
 %
-% 1. P. A. Browne, Numerical methods for two parameter eigenvalue problems,
-%    PhD. Thesis, University of Bath, 2008.
+% [1] P. A. Browne, _Numerical methods for two-parameter eigenvalue problems_,
+% PhD. Thesis, University of Bath, 2008.
 %
-% 2. Y. Nakatsukasa, V. Noferini, and A. Townsend, Computing the common zeros
-%    of two bivariate functions via Bezout resultants, (2013).
+% [2] Y. Nakatsukasa, V. Noferini, and A. Townsend, Computing the common zeros
+% of two bivariate functions via Bezout resultants,  _Numerische Mathematik_,
+% to appear.
 %
-% 3. A. J. Sommese and C. W. Wampler, The numerical solution of systems of
-%    polynomials, World Scientific, 2005.
+% [3] A. J. Sommese and C. W. Wampler, _The Numerical Solution of Systems of
+% Polynomials Arising in Engineering and Science_, World Scientific, 2005.
 %
-% 4. Chebfun Example [roots/MarchingSquares](../roots/MarchingSquares.html)
+% [4] Chebfun Example [roots/MarchingSquares](../roots/MarchingSquares.html)
 %
-% 5. A. Townsend and L. N. Trefethen, An extension of Chebfun to two
-%    dimensions, submitted, (2013).
+% [5] A. Townsend and L. N. Trefethen, An extension of Chebfun to two
+% dimensions, _SIAM Journal on Scientific Computing_, 35
+% (2013), C495-C518.
