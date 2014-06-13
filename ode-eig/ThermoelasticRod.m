@@ -14,32 +14,29 @@
 %%
 % Linear stability analysis suggests a change from stable to unstable
 % behavior as the temperature difference between the walls increases. The
-% eigenvalue problem governing the stability of the perturbation phi(x) is
+% eigenvalue problem governing the stability of the perturbation $\phi(x)$ is
 % nondimensionally
 %
-%     phi''(x) = lambda*phi(x),   0 < x < 1
-%                                              / 1
-%                                             |
-%     phi(0) = 0,  phi'(1) + phi(1) = 4 delta |    phi(x) dx
-%                                             |
-%                                           0/
+% $$ \phi''(x) = \lambda phi(x),\qquad   0 < x < 1, $$
 %
-% where delta is a function of the thermal gradient. The transition from
-% stable to unstable happens at delta=1. The presence of the integral of
+% $$ \phi(0) = 0,~~  phi'(1) + phi(1) = 4 \delta\int_0^1\phi(x) dx , $$
+%
+% where the value of $\delta$ is a function of the thermal gradient. 
+% The transition from
+% stable to unstable happens at $\delta=1$. The presence of the integral of
 % phi in the boundary condition makes the problem unusual from a classical
 % standpoint, but from the Chebfun point of view it's just another linear
 % boundary condition.
 
 %%
-%
 LW = 'linewidth';
-format long,
+format long
 
 %%
 % First, we solve the eigenvalue problem in a stable case.
 N = chebop( @(x,u) diff(u,2), [0 1] );    % operator on 0<x<1
-N.lbc = 0;     % fixed end
-delta = 0.96;  % stable choice
+N.lbc = 0;              % fixed end
+delta = 0.96;           % stable choice
 N.bc = @(x,u) feval(diff(u),1) + u(1) - 4*delta*sum(u);  % Barber condition
 [Vs,Ls] = eigs(N,4,0);  % eigenmodes closest to zero
 
@@ -69,14 +66,14 @@ title(sprintf('Unstable, \\lambda = %.3f',Lu(1,1)))
 % coefficients out to degree 8.
 
 %%
-% Without knowing the transition value delta=1 in advance, we could locate
+% Without knowing the transition value $\delta=1$ in advance, we could locate
 % it through a simple Chebfun rootfinding search. First, we parameterize
 % the boundary conditions and the maximum real eigenvalue.
-BC = @(delta) @(x,u) [u(0), feval(diff(u),1) + u(1) - 4*delta*sum(u)];
+BC = @(delta) @(x,u) [u(0); feval(diff(u),1) + u(1) - 4*delta*sum(u)];
 maxlam = @(delta) eigs( chebop([0,1],@(u)diff(u,2),BC(delta)), 1, 0 );
 
 %%
-% Then, we construct a chebfun for the maximum lambda. A polynomial of
+% Then, we construct a chebfun for the maximum $\lambda$. A polynomial of
 % degree 10 captures the behavior of the maximum eigenvalue to
 % about 11 digits.
 stability = chebfun(maxlam,[0.5,2],'eps',1e-11,'vectorize')
@@ -91,8 +88,8 @@ xlabel('\delta'), ylabel('max \lambda'), grid on
 
 %% References
 %
-% 1. J. R. Barber, "Contact problems involving a cooled punch," J. Elast. 8
-%    (1978), 409-423.
+% 1. J. R. Barber, "Contact problems involving a cooled punch," _Journal
+% of Elasticity_, 8 (1978), 409-423.
 %
 % 2. J. A. Pelesko, "Nonlinear stability, thermoelastic contact, and the
-%    Barber condition", J. Appl. Mech. 68 (2001), 28-33.
+%    Barber condition", _Journal of Applied Mechanics_, 68 (2001), 28-33.
