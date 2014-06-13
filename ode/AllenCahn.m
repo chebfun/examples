@@ -7,16 +7,21 @@
 
 %%
 % The Allen-Cahn equation is a reaction-diffusion that arises in material
-% science: u_tt = Eps*u"+u-u^3=, where Eps is a small parameter.  Here as
-% an ODE boundary-value problem we shall consider a steady-state version 
-% of this problem on the interval [0,10] with a sinusouidal forcing term:
+% science:
 %
-% Eps*u" + u - u^3 = sin(x),    u(0) = 1,  u(10) = -1.
+% $$ u_{tt} = \varepsilon u'' +u-u^3, $$
+%
+% where $\varepsilon$ is a small parameter.  Here as
+% an ODE boundary-value problem we shall consider a steady-state version 
+% of this problem on the interval $[0,10]$ with a sinusoidal forcing term:
+%
+% $$ \varepsilon u'' + u - u^3 = \sin(x),\qquad u(0) = 1,~~  u(10) = -1. $$
 
 %%
-% If we try a very small value of Eps without a well-chosen initial guess,
+% If we try a very small value of $\varepsilon$
+% without a well-chosen initial guess,
 % Chebfun will not converge.  Instead let's begin by solving the problem
-% with the rather large initial guess Eps = 1:
+% with the rather large initial guess $\varepsilon = 2$:
 Eps = 2;
 dom = [0,10];
 x = chebfun('x',dom);
@@ -25,13 +30,14 @@ cheboppref.setDefaults('plotting',0.01)
 N = chebop(@(u) Eps*diff(u,2)+u-u.^3,dom,1,-1);
 tic, u = N\f; t = toc;
 
-LW = 'linewidth'; lw = 2; FS = 'fontsize'; fs = 14;
+LW = 'linewidth'; lw = 1.6; FS = 'fontsize'; fs = 14;
 close, plot(u,LW,lw)
 s = 'Eps = %5.1e    length(u) = %d    time = %3.1f secs';
 title(sprintf(s,Eps,length(u),t),FS,fs)
 
 %%
-% We now progressively reduce Eps to get sharper and sharper solutions. We
+% We now progressively reduce $\varepsilon$ to get
+% sharper and sharper solutions. We
 % use a simple continuation method, in which the initial guess for each
 % iteration is the previous solution.
 Epsvec = [.5 .2 .1 .03 .009 .003];
