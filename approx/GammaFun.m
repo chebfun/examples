@@ -19,7 +19,7 @@
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 gam = chebfun('gamma(x)',[-4 4],'blowup','on','splitting','on')
 plot(gam,'b',LW,1.6), hold on
-title('Gamma function',FS,16)
+title('Gamma function',FS,14)
 
 %%
 % We can now treat the gamma function like any other chebfun. 
@@ -47,10 +47,10 @@ title('Various related functions',FS,16)
 
 plot(r,gam(r),'.k',ri,gam_i(ri),'.k', ...
     rs,sqrtgam(rs),'.k',MS,18,LW,1.6), hold off
-title('Gamma function on [-4 4] and its critical points',LW,16)
+title('Gamma function on [-4 4] and its critical points',FS,16)
 
 %%
-% (5) Copute some integrals
+% (5) Compute some integrals
 sum(gam)
 sum(absgam)
 sum(sqrtgam)
