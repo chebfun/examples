@@ -12,7 +12,7 @@
 % distribution of these means approaches a normal distribution, i.e., a
 % Gaussian or bell curve. For example, if you toss a coin $n$ times, the
 % number of heads you get is given by the binomial distribution, and this
-% approaches the bell curve.
+% approaches a bell curve.
 
 %%
 % More specifically, let $X_1, \dots , X_n$ be independent samples from a
@@ -26,7 +26,7 @@
 % Central Limit Theorem asserts that the random variables $\sqrt n
 % (S_n-\mu)$ converge in distribution to the normal distribution
 % $N(0,\sigma^2)$.  Details are given in many textbooks of probability and
-% statistics. See for example [1].
+% statistics, such as [1].
 
 %%
 % The Chebfun `conv` command makes it possible to illustrate the Central
@@ -37,7 +37,7 @@
 X = chebfun({0,'(4/3+x)/2',0},[-3 -4/3 2/3 3]);
 LW = 'linewidth'; lw = 1.6; ax = [-3 3 -.2 1.2];
 hold off, plot(X,LW,lw,'jumpline','b'), axis(ax), grid on
-FS = 'fontsize'; fs = 12;
+FS = 'fontsize'; fs = 10;
 title('Distribution of X',FS,fs)
 
 %%
@@ -90,22 +90,22 @@ x = chebfun('x',[-1 2]);
 p = .6; q = 1-p;
 p1 = q*dirac(x-0)+p*dirac(x-1);
 plot(p1), xlim([-0.1 1.1]);
-title('Probability distribution for getting a head in a single toss')
+title('Probability distribution for getting a head in a single toss',FS,fs)
 
 %%
-% Now, let $X$ be the random variable which counts the number of heads when
+% Now, let $X$ be the random variable that counts the number of heads when
 % this coin is tossed $n$ times, i.e. $$ X = X_1 + X_2 + \ldots + X_n, $$
 % where $X_k$ is a random variable representing the $k^{th}$ toss. In
 % particular, $X_1, X_2, \ldots, X_n$ are identically distributed,
 % independent random variables and take the values $0$ and $1$ with
 % probabilities $1-p$ and $p$ respectively. The random variable $X$ thus
 % generated is called a binomial random variable of order $n$ [1]. If we
-% now take $n=2$, then $X=X_1+X_2$ and this corresponds to tossing the coin
-% a second time. The pdf of $X$ is given by the convolution of pdfs of
+% now take $n=2$, then $X=X_1+X_2$, and this corresponds to tossing the coin
+% a second time. The pdf of $X$ is given by the convolution of the pdfs of
 % $X_1$ and $X_2$ [1]. Since $X_1$ and $X_2$ are identical, we have
 p2 = conv(p1,p1);
 plot(p2), xlim([-.1 2.1])
-title('Probability distribution for number of heads in two tosses')
+title('Probability distribution for number of heads in two tosses',FS,fs)
 %%
 % We can verify that the probabilities add up to $1$.
 sum(p2)
@@ -116,11 +116,11 @@ sum(p2)
 % tosses, the final distribution of $X$ is given by
 n = 10;
 pn = p2;
-for k=3:n
+for k = 3:n
     pn = conv(pn,p1);
 end
 plot(pn);
-title('The binomial distribution')
+title('The binomial distribution',FS,fs)
 
 %%
 % Again the probabilities sum to $1$.
@@ -146,10 +146,10 @@ hold on
 plot(fN,'r')
 s = sprintf('%i Tosses, p = %2.1f, expected value = %i', n, p, n*p);
 xlabel(s);
-title('The binomial distribution compared with the normal distribution')
+title('The binomial distribution compared with the normal distribution',FS,fs)
 
 %%
-% We can see that even for a modest value of $n=10$, the binomial
+% We see that even for the modest value $n=10$, the binomial
 % distribution matches the normal distribution quite well.
 
 %%
