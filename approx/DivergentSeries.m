@@ -21,7 +21,7 @@ title('The integral f as a function of parameter x','fontsize',12)
 %%
 % One of the interesting features of $f$ is that its derivatives at $x=0$
 % are $(0!)^2, -(1!)^2, (2!)^2, -(3!)^2, \dots.$  Chebfun manages to
-% compute a few of these, at any rate, to high accuracy:
+% compute a few of these, at any rate, to good accuracy:
 for j = 0:6
   fj = diff(f,j);
   fprintf('%21.12f  (should be %7.0f)\n',fj(0),(-1)^j*factorial(j)^2)
@@ -33,11 +33,11 @@ end
 % the terms increase too fast: the radius of convergence is zero.
 
 %%
-% And this brings us to a famous old problem of divergent series, going
+% And this brings us to the famous old problem of divergent series, going
 % back to Euler in 1760 and with its own entry in Wikipedia [1].  What is
 % the value of the series $$ 0! - 1! + 2!- 3! + \cdots = ~? $$ Of course
 % the series simply doesn't converge, from one point of view. But this
-% hasn't stopped Euler and Hardy and many others from discussing what it
+% didn't stop Euler and Hardy and many others from discussing what it
 % might mean for such a series to have a limit. And of course we know one
 % pretty good candidate for an answer, namely the value $f(1)$ computed
 % above:

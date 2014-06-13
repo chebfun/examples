@@ -30,7 +30,7 @@
 
 %%
 % If $C$ is large enough to enclose the unit interval, then the second of
-% these two formulas can be subsituted into the first and the orders of
+% these two formulas can be substituted into the first and the orders of
 % integration interchanged to give
 % $$ a_n = \frac{1}{\pi^2 i} \int_C f(z) \int_{-1}^{1}
 % \frac{T_n(x) {\rm d} x}{(z-x)\sqrt{1-x^2}} {\rm d} z. $$
@@ -62,7 +62,7 @@ f  = @(x) 1./(5+x);
 fc = chebfun(f);
 k = 1:length(fc);
 %%
-% The function has a pole at $-5$ with residue $1$. Substituing
+% The function has a pole at $-5$ with residue $1$. Substituting
 % these values into the above formula then gives the following exact
 % expression for the Chebyshev expansion coefficients:
 % $$ a_n =  \frac{1}{\sqrt{6}} \frac{(-1)^n}{(5+\sqrt{24})^n} $$
@@ -83,5 +83,5 @@ xlabel('n'), ylabel('log(|a_n|)'), grid on
 %% References
 %
 % 1. D. Elliott, The evaluation and estimation of the coefficients in the
-%    Chebyshev series expansion of a function, Mathematics of
-%    Computation, 18 (1964), 274-284.
+%    Chebyshev series expansion of a function, _Mathematics of
+%    Computation_, 18 (1964), 274-284.
