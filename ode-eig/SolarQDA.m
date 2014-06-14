@@ -81,7 +81,7 @@ axis( [x([2 end-1]) 1e-3 1e-1]  )
 % small fluctuations in the well depths. Here we perturb by 2% variance.
 vals = [repmat([depth 0],1,numwell) depth];  % [ 0 -depth 0 ... -depth 0 ]
 
-randn('state',1138)
+rng(1138)
 vals(2:2:end) = vals(2:2:end) + 0.017*randn(1,numwell);
 
 vals = mat2cell(vals,1,ones(1,2*numwell+1));  % convert to cell
