@@ -18,7 +18,7 @@
 FS = 'FontSize'; fs = 16;
 gam = 100; j = 1;
 f = chebfun2(0);
-rand('state',1)
+rng(1)
 for n = 1:100
     x0 = 2*rand-1; y0 = 2*rand-1;
     df = chebfun2(@(x,y) exp(-gam*((x-x0).^2+(y-y0).^2)));

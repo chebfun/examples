@@ -28,13 +28,13 @@
 % domain to something suitable, say $[0, 10]$. We can set up the chebop and
 % solve the differential equation with only a few lines of code.
 
-cheboppref.setDefaults('errTol', 1e-15);
+cheboppref.setDefaults('errTol', 1e-14);
 dom = [0, 10];
 op  = @(u) 2*diff(u,3) + u.*diff(u,2);
 bc  = @(x,u) [u(0); feval(diff(u),0); feval(diff(u),dom(2))-1];
 N   = chebop(op, dom, bc);
 u   = N\0;
-u   = simplify(u) % FIXME: This should not be necessary!
+u   = simplify(u)
 
 %%
 % Here is what the solution looks like.
@@ -56,10 +56,6 @@ bc_residuals = bc(0,u)     % Residuals of boundary conditions
 a_exact    = 0.33205733621519630;
 a_computed = feval(diff(u,2), 0);
 a_exact - a_computed
-
-%%
-% This is about what we should expect, keeping in mind that the default error
-% tolerance of Chebfun's differential equation solver is $10^{-10}$.
 
 %%
 % Noticing that the Blasius function approaches a linear polynomial away from

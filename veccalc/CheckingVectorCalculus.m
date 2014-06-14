@@ -49,7 +49,7 @@ abs(v-ends)                                  % gradient theorem
 % an exotic closed curve, which we plot superimposed on the vector field
 % $\mathrm{grad}(f)$.
 
-circ = @(p) chebfun(@(x) exp(2i*p*pi*x));
+circ = @(p) chebfun(@(x) exp(2i*p*pi*x + 0.8i));
 C = (circ(1) + circ(3)/1.5 + circ(8)/3.5) / 2;
 figure('position', [0 0 600 400])
 quiver(F,0.5,'numpts',12), hold on

@@ -1,5 +1,5 @@
 %% Summing a divergent series
-% Nick Trefethen and Stefan Güttel, April 2012
+% Nick Trefethen and Stefan Guettel, April 2012
 
 %%
 % (Chebfun example approx/DivergentSeries.m)

@@ -89,7 +89,7 @@ tt = toc(s);
 ts = sprintf('Evaluation time = %1.2fs\n', tt);
 fprintf([ns, ts])
 
-semilogy(chebpts(length(f)), abs(f.values{:} - cheb_vals))
+semilogy(chebpts(length(f)), abs(f.values - cheb_vals.'))
 title('Absolute error', FS, fs), hold off
 axis([-1 1 1e-16 1e-12]), set(gca, FS, fs), hold off
 
