@@ -110,20 +110,20 @@ axis([-1 1 1e-18 10]), grid on
 % 1. http://www.chebfun.org/examples/approx/html/AbsoluteValue.shtml
 %
 % 2. R. Byers and H. Xu. A new scaling for Newton's iteration for the
-%    polar decomposition and its backward stability. SIAM J. Matrix Anal.
-%    Appl., 30(2):822-843, 2008.
+%    polar decomposition and its backward stability. _SIAM Journal
+%    on Matrix Analysis and Applications_, 30 (2008), 822-843.
 %
-% 3. N. J. Higham. Functions of Matrices: Theory and Computation. SIAM,
-%    Philadelphia, PA, USA, 2008.
+% 3. N. J. Higham. _Functions of Matrices: Theory and Computation_, SIAM,
+%    2008.
 %
-% 4. D. J. Newman, Rational approximation of abs(x), Michigan Mathematical
-%    Journal 11 (1964), 11-14.
+% 4. D. J. Newman, Rational approximation of $|x|$, _Michigan Mathematical
+%    Journal_, 11 (1964), 11-14.
 %
-% 5. P. P. Petrushev and V. A. Popov, Rational Approximation of Real
-%    Functions, Cambridge University Press, 2011.
+% 5. P. P. Petrushev and V. A. Popov, _Rational Approximation of Real
+%    Functions_, Cambridge University Press, 2011.
 %
-% 6. L. N. Trefethen, Approximation Theory and Approximation Practice,
-%    SIAM, to appear in late 2012.
+% 6. L. N. Trefethen, _Approximation Theory and Approximation Practice_,
+%    SIAM, 2013.
 
 
 

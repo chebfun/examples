@@ -224,5 +224,5 @@ ylim([-1.2 1.2]), xlim([Sf.ends(1) Sf.ends(end)]), hold off
 
 %% References
 %
-% 1. Oppenheim and Willsky, Signals and Systems, second edition, Prentice
+% 1. Oppenheim and Willsky, _Signals and Systems_, second edition, Prentice
 %    Hall, 1998.
