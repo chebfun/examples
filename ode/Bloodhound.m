@@ -1,4 +1,4 @@
-%% BLOODHOUND supersonic car
+%% Bloodhound supersonic car
 % Tanya Morton, January 2013
 
 %%
@@ -7,7 +7,7 @@
 
 %%
 % This script solves the equation of motion for the acceleration phase of
-% the BLOODHOUND supersonic car using Chebfun.
+% the Bloodhound supersonic car using Chebfun.
 %
 % The car is powered by a jet engine and a rocket and aims to reach a speed
 % in excess of 1000 mph. More details on the project can be found at the
@@ -103,7 +103,7 @@ hold on
 plot([0 50],[1000 1000],'r', 'LineWidth', 2); % 1000 mph line
 hold on; 
 text(20, 500, ['Time to 1000 mph = ' num2str(t1000, 3) ' seconds']);
-title('Velocity of the BLOODHOUND Supersonic Car (Acceleration Phase)')
+title('Velocity of the Bloodhound Supersonic Car (Acceleration Phase)')
 ylabel('velocity in mph')
 
 %%
