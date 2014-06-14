@@ -37,7 +37,8 @@ close all, plot(h,LW,1), axis equal, axis([-4 4 -.4 2])
 % to solve it in this framework.
 
 %%
-% For us, when I hear the word "continuum", we think Chebfun. Suppose we
+% Here in the Oxford Numerical Analysis Group, when 
+% we hear the word "continuum", we think Chebfun. Suppose we
 % specify two variables: $x$, the horizontal position of the center of the
 % needle, and $\theta$, its angle counterclockwise from the horizontal.  Given
 % $x$ and $\theta$, we then ask how low the needle can lie.  Let
