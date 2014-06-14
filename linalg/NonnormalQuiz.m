@@ -56,5 +56,5 @@ title('Which curve is which?',FS,16)
 
 %% References
 %
-% 1. L. N. Trefethen and M. Embree, Spectra and Pseudospectra: The Behavior of
-%    Nonnormal Matrices and Operators, Princeton U. Press, 2005.
+% 1. L. N. Trefethen and M. Embree, _Spectra and Pseudospectra: The Behavior of
+%    Nonnormal Matrices and Operators_, Princeton U. Press, 2005.

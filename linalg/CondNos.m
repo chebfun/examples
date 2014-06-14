@@ -59,7 +59,7 @@ fprintf('Condition no. for monomials: %8.3f\n',cond(A))
 
 %% References
 %
-% 1. L. N. Trefethen, Householder triangularization of a quasimatrix, IMA
-%    Journal of Numerical Analysis 30 (2010), 887-897.
+% 1. L. N. Trefethen, Householder triangularization of a quasimatrix, _IMA
+%    Journal of Numerical Analysis_, 30 (2010), 887-897.
 %
-% 2. L. N. Trefethen and D. Bau, III, Numerical Linear Algebra, SIAM, 1997.
+% 2. L. N. Trefethen and D. Bau, III, _Numerical Linear Algebra_, SIAM, 1997.

@@ -50,8 +50,8 @@ toc
 
 %% References
 %
-% 1. L. N. Trefethen and M. Embree, Spectra and Pseudospectra: The Behavior
-%    of Nonnormal Matrices and Operators, Princeton U. Press, 2005.
+% 1. L. N. Trefethen and M. Embree, _Spectra and Pseudospectra: The Behavior
+%    of Nonnormal Matrices and Operators_, Princeton U. Press, 2005.
 %
 % 2. J. F. Whidborne and N. Amar, Computing the maximum transient
-%    energy growth, BIT Numerical Mathematics 51 (2011), 447-457.
+%    energy growth, _BIT Numerical Mathematics_, 51 (2011), 447-457.

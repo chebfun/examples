@@ -46,5 +46,5 @@ xlabel('Time(days)')
 
 %% References
 %
-% 1. Charles F. Van Loan, Introduction to Scientific Computing, Prentice-Hall,
+% 1. Charles F. Van Loan, _Introduction to Scientific Computing_, Prentice-Hall,
 %    1997, p. 274.

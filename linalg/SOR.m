@@ -54,11 +54,11 @@ rho_exact = omega_exact - 1
 % 1. S. Frankel, Convergence rates of iterative treatments of partial
 %    differential equations, Mathematics of Computation 4 (1950), 56-75.
 %
-% 2. G. H. Golub and C. F. Van Loan, Matrix Computations, 4th ed., Johns
+% 2. G. H. Golub and C. F. Van Loan, _Matrix Computations_, 4th ed., Johns
 %    Hopkins, 2012.
 %
 % 3. R. J. LeVeque and L. N. Trefethen, Fourier analysis of the SOR iteration,
-%    IMA Journal of Numerical Analysis 8 (1988), 273-279.
+%    _IMA Journal of Numerical Analysis_, 8 (1988), 273-279.
 %
-% 4. D. M. Young, Iterative Methods for Solving Partial Difference Equations
-%    of Elliptic Type, PhD thesis, Harvard U., 1950.
+% 4. D. M. Young, _Iterative Methods for Solving Partial Difference Equations
+%    of Elliptic Type_, PhD thesis, Harvard U., 1950.

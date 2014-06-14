@@ -74,7 +74,8 @@ hold on, plot(minpos,E6(minpos),'.r',MS,18)
 
 %% References
 %
-% 1. P. Lax, Linear Algebra, Wiley, 1996.
+% 1. P. Lax, _Linear Algebra_, Wiley, 1996.
 %
 % 2. J. von Neumann and E. Wigner, Ueber das Verhalten von Eigenwerten bei
-%    adiabatischen Prozessen, Phys. Zeit. 30 (1929), 467-470.
+%    adiabatischen Prozessen, _Physicalische
+%    Zeitschrift_, 30 (1929), 467-470.
