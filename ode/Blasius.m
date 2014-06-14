@@ -94,9 +94,9 @@ coeffs(end:-1:end-5)'
 % whereupon the boundary conditions at $x=0$ become interior point conditions.
 % (The resulting function is not fully accurate, as Chebfun warns.)
 
-N2 = chebop(op, [-5.6, 10], bc);
+N2 = chebop(op, [-5.6, 11], bc);
 v = N2\0
-hold off, plot(v, 'k-'), xlim([-5.7 10])
+hold off, plot(v, 'k-'), xlim([-5.7 11])
 title('A singularity of the Blasius function')
 
 %% References
