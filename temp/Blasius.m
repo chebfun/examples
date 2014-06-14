@@ -11,20 +11,20 @@
 % $$ 2u''' + u u'' = 0, \qquad u(0) = u'(0) = 0,\ u'(\infty) = 1 $$
 %
 % on the domain $x \in [0, \infty)$. The solution is a smooth monotonically
-% increasing function that rapidly decays to a linear polynomial away from the
+% increasing function that converges rapidly to a linear polynomial away from the
 % origin.
 
 %%
 % This problem was first considered by its namesake Heinrich Blasius in 1908
-% but has received much attention from Weyl, von Neumann, Boyd, and others
-% since. Why? One of the reasons is that it is one of the simplest examples of
-% a nonlinear problem with a boundary layer. Another reason it has remained a
-% problem of interest is that the Blasius function, being smooth and
+% and has received much attention from Weyl, von Neumann, Boyd, and others
+% since. Why? One reason is that it is one of the simplest examples of
+% a nonlinear problem with a boundary layer. Another is
+% that the Blasius function, being smooth and
 % monotonic, seems that it must have a simple analytic representation. Yet
 % over a century of effort has not produced one.
 
 %%
-% In order to solve the Blasius problem in Chebfun we'll need to truncate the
+% In order to solve the problem in Chebfun we'll need to truncate the
 % domain to something suitable, say $[0, 10]$. We can set up the chebop and
 % solve the differential equation with only a few lines of code.
 
@@ -102,5 +102,5 @@ title('A singularity of the Blasius function')
 
 %% References
 %
-% 1. Boyd, John P. "The Blasius function in the complex plane."
-%    _Experimental Mathematics_ 8, no. 4 (1999): 381-394.
+% 1. John P. Boyd, "The Blasius function in the complex plane,"
+%    _Experimental Mathematics_, 8 (1999), 381-394.
