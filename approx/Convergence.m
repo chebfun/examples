@@ -58,5 +58,5 @@ hold off
 
 %% References
 %
-% 1. L. N. Trefethen, Approximation Theory and Approximation Practice,
+% 1. L. N. Trefethen, _Approximation Theory and Approximation Practice_,
 %    SIAM, 2013.

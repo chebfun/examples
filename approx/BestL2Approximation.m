@@ -27,7 +27,7 @@ n = 5; x = chebfun('x');
 f = abs(x);
 P = legpoly(0:n,[-1,1],'norm');         % Legendre-Vandermonde matrix
 cleg = P'*f;                            % compute Legendre coefficients
-pn = P*cleg;                            % Form chebfun of best L^2 approximation
+pn = P*cleg;                            % form chebfun of best L^2 approximation
 plot(f,LW,lw), hold on, plot(pn,'r',LW,lw)
 title('Best L^2 approximation to |x| of degree 5','fontsize',16), hold off
 

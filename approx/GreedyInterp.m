@@ -87,4 +87,3 @@ hold on, semilogy(lebesgue(scheb),'r',LW,1.4)
 %
 % 3. L. N. Trefethen, _Approximation Theory and Approximation Practice_, SIAM,
 %    2013.
-

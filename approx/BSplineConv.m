@@ -73,8 +73,8 @@ title('B-spline of order 4',FS,fs)
 
 %% References
 %
-% 1. C. de Boor, On calculating with B-splines, Journal of Approximation
-%    Theory 6 (1972), 50-62.
+% 1. C. de Boor, On calculating with B-splines, _Journal of Approximation
+%    Theory_, 6 (1972), 50-62.
 %
-% 2. M. Cox, The numerical evaluation of B-splines, Journal of the
-%    Institute of Mathematics and its Applications 10 (1972), 134-149.
+% 2. M. Cox, The numerical evaluation of B-splines, _Journal of the
+%    Institute of Mathematics and its Applications_, 10 (1972), 134-149.

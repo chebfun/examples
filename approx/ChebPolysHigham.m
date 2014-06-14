@@ -26,4 +26,4 @@ h = get(gca,'ylabel'); set(h,'position',get(h,'position')+[0 0.25 0])
 
 %% References
 %
-% 1. D. J. Higham and N. J. Higham, Matlab Guide, 2nd ed., SIAM, 2005.
+% 1. D. J. Higham and N. J. Higham, _Matlab Guide_, 2nd ed., SIAM, 2005.

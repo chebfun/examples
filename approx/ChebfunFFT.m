@@ -72,7 +72,7 @@ hold off, grid on
 % equispaced values on the unit circle, going round anticlockwise from $x=1$.
 valsUnitDisc = [flipud(fvals) ; fvals(2:end-1)];
 %%
-% Next, we take the FFT of the values to give Fourier/Laurent coeffcients.
+% Next, we take the FFT of the values to give Fourier/Laurent coefficients.
 % Note that in general, we expect the Chebyshev coefficients to be
 % real-valued. Accordingly, we take the real part of this vector in order
 % to eliminate any spurious imaginary components that may
@@ -99,9 +99,10 @@ display([chebpoly(fc)' ChebCoeffs chebpoly(fc)'-ChebCoeffs])
 %% References
 %
 % 1. Z. Battles and L. N. Trefethen, An extension of Matlab to continuous
-%    functions and operators, SIAM J. Sci. Comp. 25 (2004), 1743-1770.
+%    functions and operators, _SIAM Journal on Scientific
+%    Computing_, 25 (2004), 1743-1770.
 %
-% 2. L.N. Trefethen, Spectral methods in Matlab, SIAM, 2000.
+% 2. L.N. Trefethen, _Spectral Methods in MATLAB_, SIAM, 2000.
 %
-% 3. L.N. Trefethen, Approximation Theory and Approximation Practice.
-%    http://www.maths.ox.ac.uk/chebfun/ATAP/
+% 3. L.N. Trefethen, _Approximation Theory and Approximation Practice_,
+%    SIAM, 2013.

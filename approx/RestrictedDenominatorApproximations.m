@@ -1,5 +1,5 @@
 %% Restricted-denominator approximations
-% Stefan Güttel, April 2012
+% Stefan Guettel, April 2012
 
 %%
 % (Chebfun example approx/RestrictedDenominatorApproximations.m)
@@ -172,12 +172,13 @@ grid on
 %% References
 %
 % 1. J.-E. Andersson, Approximation of e^(-x) by rational functions with 
-%    concentrated negative poles, J. Approx. Theory (32), pp. 85--95, 1981.
+%    concentrated negative poles, _Journal of
+%    Approximation Theory_, 32 (1981), 85-95.
 % 
 % 2. J. P. Boyd, Orthogonal rational functions on a semi-infinite
-%    interval, J. Comput. Phys. (70), pp. 63--88, 1987.
+%    interval, _Journal of Computational Physics_, 70 (1987), 63-88.
 %
 % 3. J. van den Eshof and M. Hochbruck, Preconditioning Lanczos 
-%    approximations to the matrix exponential, SIAM J. Sci. Comput. (27), 
-%    pp. 1438--1457, 2006.
+%    approximations to the matrix exponential, _SIAM
+%    Journal on Scientific Computing_, 27 (2006), 1438-1457.
 
