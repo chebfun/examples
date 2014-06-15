@@ -40,7 +40,7 @@ rts = roots(bessel5);
 %   lambda^2*x^2*y'' + lambda*x*y' + (x^2-alpha^2)*y = 0
 
 %%
-% Using the POLYEIGS command of Chebfun, we can verify
+% Using the `polyeigs` command of Chebfun, we can verify
 % this assertion numerically on the domain given by the, say, 1st and 22nd
 % root of our Bessel function:
 

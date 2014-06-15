@@ -1,5 +1,5 @@
 %% The nullspace of a linear operator
-% Nick Hale and Stefan Güttel, December 2011
+% Nick Hale and Stefan Guettel, December 2011
 
 %%
 % (Chebfun example ode-eig/NullSpace.m)
@@ -30,7 +30,7 @@ norm(L*v)
 
 %%
 % Supposing we didn't know this, we could compute the space with the new
-% NULL function.
+% `null` function.
 
 V = null(L)
 plot(V)
@@ -43,8 +43,8 @@ norm(L*V)
 %%
 % Clearly V doesn't correspond directly to 1 and x, since there is some
 % freedom in how we orthogonalise the basis. However, we can check that
-% V and {1,x} correspond to the the same spaces by computing the angle
-% between the spaces with the SUBSPACE command.
+% V and {1,x} correspond to the same spaces by computing the angle
+% between the spaces with the `subspace` command.
 
 subspace(v,V)
 
@@ -86,13 +86,13 @@ norm(L(x,v))
 %% An application
 % Where might this be useful? Well, suppose we were interested in equation
 % (*) with a homogeneous Dirichlet condition at the left, and wanted to
-% know what inhomogenous Dirichlet condition gave the minimal 2-norm of the
+% know what inhomogeneous Dirichlet condition gave the minimal 2-norm of the
 % solution to Lu = 1.
 
 %%
 % Rather than solving the linear system for a number of different boundary
 % conditions (which would be computationally expensive) we could simply
-% solve for one, say again homogenous Dirichlet
+% solve for one, say again homogeneous Dirichlet
 
 L.rbc = 0;
 u = L\1;
@@ -118,7 +118,7 @@ plot(u_star)
 bc_star = u_star(pi)
 
 %% Exotic constraints
-% The NULL function can also handle the exotic types of boundary conditions
+% The `null` function can also handle the exotic types of boundary conditions
 % that can be enforced in Chebfun (see [1]). For example, suppose we wish
 % to again compute the null-space of the 3rd-order piecewise-smoooth ODE
 %
@@ -135,7 +135,7 @@ L.bc = @(u) sum(u)-u(0);
 x = chebfun('x',dom);
 
 %%
-% Here NULL has no problems!
+% Here `null` has no problems!
 
 V = null(L)
 plot(V), shg
