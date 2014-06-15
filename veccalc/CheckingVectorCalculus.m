@@ -76,4 +76,4 @@ norm(curl(grad(f)))
 %% References
 %
 % 1. A. Townsend and L. N. Trefethen, An extension of Chebfun to two
-%    dimensions, SIAM Journal on Scientific Computing, 35 (2013), C495-C518.
+%    dimensions, _SIAM Journal on Scientific Computing_, 35 (2013), C495-C518.
