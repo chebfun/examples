@@ -70,7 +70,7 @@ xlabel('x',FS,fs); ylabel('d^a x / d x ^a',FS,fs)
 %%
 % Of course, these generalised derivatives can be applied to more
 % complicated functions than simply the independent variable 'x'.
-% Here we demonstrate the behaviour of varying irrational derrivatives
+% Here we demonstrate the behaviour of varying irrational derivatives
 % of the trigonometric function sin(x).
 
 close
@@ -91,9 +91,9 @@ axis([-0.5 pi 0.0 1.01])
 
 %% Fractional integration
 % The definition of the Riemann-Liouville derivative can also to extended
-% fractional integration (in fact it is sometimes refered to as the
+% fractional integration (in fact it is sometimes referred to as the
 % Riemann-Liouville "differintegral" [2]). Chebfun can also handle
-% these types of operators, here extending the definition of cumsum to
+% these types of operators, here extending the definition of `cumsum` to
 % allow non-integer degree.
 
 close

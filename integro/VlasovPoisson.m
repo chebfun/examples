@@ -45,7 +45,7 @@ B = @(a) 0.5*fred(@(s,t) K(s,t,a),d);  % (A+A')/2 for any A
 numabs = @(a) eigs(B(a),1,'lr');       % e.v. with max real part
 
 %%
-% It's easy to show that for a=0, the numerical absicssa is T/2 on the
+% It's easy to show that for a=0, the numerical abscissa is T/2 on the
 % domain [0,T].
 numabs(0)
 
@@ -90,4 +90,4 @@ subplot(2,1,2), plot(Vp/Vp(1,2)), title('Eigenfunctions at (a^* + 1e-3)')
 %    plasmas, preprint.
 %
 % 2. E. Camporeale, D. Burgess, and T. Passot, Transient growth in stable
-%    collisionless plasma, Phys. Plasmas 16, 030703 (2009).
+%    collisionless plasma, _Physics of Plasmas_, 16, 030703 (2009).

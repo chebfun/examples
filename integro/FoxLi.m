@@ -50,11 +50,12 @@ axis equal, axis(1.05*[-1 1 -1 1]), hold off
 %
 % 2. T. A. Driscoll, <http://dx.doi.org/10.1016/j.jcp.2010.04.029 Automatic
 %    spectral collocation for integral, integro-differential, and integrally
-%    reformulated differential equations>, J. Comput. Phys. 229 (2010),
-%    5980-5998.
+%    reformulated differential equations>, _Journal of Computational
+%    Physics_, 229 (2010), 5980-5998.
 %
-% 3. A. G. Fox and T. Li, Resonant modes in a maser interferometer, Bell
-%    System Technical Journal 40 (1961), 453-488.
+% 3. A. G. Fox and T. Li, Resonant modes in a maser interferometer, _Bell
+%    System Technical Journal_, 40 (1961), 453-488.
 %
-% 4. L. N. Trefethen and M. Embree, Spectra and Pseudospectra, Princeton
+% 4. L. N. Trefethen and M. Embree, _Spectra and Pseudospectra: The
+%    Behavior of Nonnormal Matrices and Operators_, Princeton
 %    University Press, 2005 (Chapter 60).
