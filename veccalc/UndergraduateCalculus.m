@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun2 example veccalc/UndergraduateCalculus.m)
-% [Tags: #mulivriable calculus, #line integral, #Green's theorem, #Chebfun2]
+% [Tags: #mulivariable calculus, #line integral, #Green's theorem, #Chebfun2]
 
 %%
 % First year maths students at Oxford University take a course called
@@ -17,7 +17,6 @@
 % The first question on the first problem sheet is to compute the value of
 % $$\int_0^a \int_0^b xy\cos(x^2y+y) dxdy,$$ and we can compute this integral if
 % we set, for instance, $a=1$ and $b=5$. Here is a plot of the integrand:
-
 a = 1; b = 5;
 integrand = chebfun2(@(x,y) x.*y.*cos(x.^2.*y+y),[0 b 0 a]);
 plot(integrand), zlim([-10 10])
@@ -25,7 +24,6 @@ plot(integrand), zlim([-10 10])
 %%
 % The students calculate the answer in closed form, but Chebfun2 can compute the
 % integral numerically:
-
 ans = integral(integrand)            % computed quantity
 exact = -sin(1/2)^2 + sin(13)^2/26   % student's closed form
 
@@ -37,15 +35,14 @@ exact = -sin(1/2)^2 + sin(13)^2/26   % student's closed form
 % Show that the area bounded by the curve $r = a(1+\cos(\theta))$, $0\leq
 % \theta < 2\pi$ is exactly $3/2\pi a^2$. We answer this question with
 % the choice of $a = 2$. Here is a sketch of the curve:
-
 a = 2;
 c = chebfun(@(theta) a*(1+cos(theta)).*exp(1i*theta),[0 2*pi]);
 plot(c), axis equal   % sketch the curve
-title('Sketch of curve','fontsize',16)
+FS = 'fontsize';
+title('Sketch of curve',FS,14)
 
 %%
 % Here is the computed area bounded by the curve and the exact area:
-
 ans = integral(real(c).*diff(imag(c)))  % area bounded by curve
 exact = 1.5*pi*a^2
 
@@ -63,14 +60,13 @@ exact = 1.5*pi*a^2
 % $xy=1/2$. In general, a student's drawing skills are below par compared to
 % their mathematical ability, but Chebfun2 can draw a very accurate diagram!
 % Here is the region $D$:
-
 d = [0 5 0 5];
 u = chebfun2(@(x,y) x.^2-y.^2,d);
 v = chebfun2(@(x,y) x.*y-1/2,d);
 c1 = roots(u-1); c2 = roots(u+1); c3 = roots(v-1/2);
 plot(c1), hold on, plot(c2), plot(c3,'k'), axis square
-title('Region of integration','fontsize',16), hold off
-text(.5,.5,'D','fontsize',16)
+title('Region of integration',FS,14), hold off
+text(.5,.5,'D',FS,14)
 
 %%
 % The question tells the students to change to the variables $u=x^2-y^2$ and
@@ -90,7 +86,6 @@ text(.5,.5,'D','fontsize',16)
 % In this question it is easy to parameterise the curve by $x=2\cos(t)$ and
 % $y=\sin(t)$, and we can then use the integral command in chebfun2v to
 % compute the result:
-
 d = 3*[-1 1 -1 1];
 C1 = chebfun(@(t) 2*cos(t) + 1i*sin(t),[0 pi/2]);
 F = chebfun2v(@(x,y)y.^2,@(x,y) -x.^2,d);
@@ -98,7 +93,6 @@ integral(F,C1)
 
 %%
 % Here is the plot of the parameterised curve, and the vector field of F:
-
 plot(C1,'linewidth',2), axis(d), hold on
 quiver(F), hold off
 
@@ -111,7 +105,6 @@ quiver(F), hold off
 % For more general curves a parameterisation may be very difficult, or
 % impossible, to find. Instead, in this example, we can compute a numerical
 % parameterisation and then use the integral command in chebfun2v.
-
 level = chebfun2(@(x,y) x.^2/4 + y.^2-1,[0 3 0 3]);
 C2 = roots(level);
 integral(F,C2)
@@ -146,7 +139,6 @@ integral(f,c)
 % calculus identities, and one of them: $$\nabla\cdot(F\wedge G) = G\cdot(\nabla
 % \wedge F) - F\cdot(\nabla \wedge G).$$ We can verify this identity for a
 % chosen $F$ and $G$:
-
 F = chebfun2v(@(x,y) y,@(x,y) x.^2,@(x,y) x);
 G = chebfun2v(@(x,y) cos(2*x),@(x,y) x,@(x,y) x+y);
 subplot(1,2,1), quiver3(F,'numpts',5)
@@ -154,7 +146,7 @@ subplot(1,2,2), quiver3(G,'r','numpts',5)
 
 %%
 % The vector calculus identity holds with a small error. If done by hand
-% then LHS and RHS would be exactly equal.
+% then `LHS` and `RHS` would be exactly equal.
 
 LHS = div(cross(F,G));
 RHS = (dot(G,curl(F)) - dot(F,curl(G)));
@@ -170,7 +162,7 @@ norm(LHS-RHS)
 % students.  I believe they had not appreciated that vector calculus could be
 % done with a computer, and they were amazed at how visual vector calculus can
 % be.  The students are exceptionally bright, extremely enthusiastic and know
-% Matlab.
+% MATLAB.
 
 %% References
 %
