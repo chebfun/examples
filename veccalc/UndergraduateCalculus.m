@@ -7,29 +7,34 @@
 
 %%
 % First year maths students at Oxford University take a course called
-% Multivariable Calculus.  In that course they are asked to calculate things
-% with pen and paper, and the students have come to realise how cumbersome it
+% Multivariable Calculus.  In this course they are asked to calculate things
+% with pen and paper, and they come to realise how cumbersome it
 % can be to work out multidimensional integrals by hand. In this example we use
-% Chebfun2 to explore a few of their questions but, in general, we do NOT give
-% the answers.
+% Chebfun2 to explore a few of their questions but, in general,
+% we do _not_ give the answers.
 
 %% Integration of a scalar-valued function
 % The first question on the first problem sheet is to compute the value of
-% $$\int_0^a \int_0^b xy\cos(x^2y+y) dxdy,$$ and we can compute this integral if
+%
+% $$ \int_0^a \int_0^b xy\cos(x^2y+y) dxdy, $$
+%
+% and we can compute this integral if
 % we set, for instance, $a=1$ and $b=5$. Here is a plot of the integrand:
 a = 1; b = 5;
 integrand = chebfun2(@(x,y) x.*y.*cos(x.^2.*y+y),[0 b 0 a]);
 plot(integrand), zlim([-10 10])
 
 %%
-% The students calculate the answer in closed form, but Chebfun2 can compute the
+% The students calculate the answer in closed form,
+% but Chebfun2 can compute the
 % integral numerically:
 ans = integral(integrand)            % computed quantity
 exact = -sin(1/2)^2 + sin(13)^2/26   % student's closed form
 
 %% Computing the area enclosed by a curve
 % The students are also asked to compute several areas enclosed by curves. There
-% is nothing 2D about this problem and we can just use Chebfun (see [1]).
+% is nothing 2D about this problem and we can just use 
+% ordinary Chebfun (see [1]).
 
 %%
 % Show that the area bounded by the curve $r = a(1+\cos(\theta))$, $0\leq
@@ -37,9 +42,9 @@ exact = -sin(1/2)^2 + sin(13)^2/26   % student's closed form
 % the choice of $a = 2$. Here is a sketch of the curve:
 a = 2;
 c = chebfun(@(theta) a*(1+cos(theta)).*exp(1i*theta),[0 2*pi]);
-plot(c), axis equal   % sketch the curve
+plot(c), axis equal
 FS = 'fontsize';
-title('Sketch of curve',FS,14)
+title('Sketch of curve',FS,12)
 
 %%
 % Here is the computed area bounded by the curve and the exact area:
@@ -55,18 +60,25 @@ exact = 1.5*pi*a^2
 % First year students are expected to change routinely from Cartesian to polar,
 % cylindrical and spherical coordinates, and for less standard variable
 % transforms a hint is usually given in the question. In one question the
-% students are asked to evaluate $$\int_D (x^2+y^2) dxdy$$ over the finite
-% region $D$ in the positive quadrant bounded by the curves $x^2-y^2=\pm 1$ and
-% $xy=1/2$. In general, a student's drawing skills are below par compared to
-% their mathematical ability, but Chebfun2 can draw a very accurate diagram!
+% students are asked to evaluate
+%
+% $$ \int_D (x^2+y^2) dxdy $$
+%
+% over the finite
+% region $D$ in the positive quadrant bounded by the curves
+%
+% $$ x^2-y^2=\pm 1, \qquad xy=1/2.  $$
+%
+% In general, an Oxford student's drawing skills are not up to 
+% their mathematical ability, but Chebfun2 can draw an accurate diagram!
 % Here is the region $D$:
 d = [0 5 0 5];
 u = chebfun2(@(x,y) x.^2-y.^2,d);
 v = chebfun2(@(x,y) x.*y-1/2,d);
 c1 = roots(u-1); c2 = roots(u+1); c3 = roots(v-1/2);
 plot(c1), hold on, plot(c2), plot(c3,'k'), axis square
-title('Region of integration',FS,14), hold off
-text(.5,.5,'D',FS,14)
+title('Region of integration',FS,12), hold off
+text(.5,.5,'D',FS,12)
 
 %%
 % The question tells the students to change to the variables $u=x^2-y^2$ and
@@ -78,9 +90,12 @@ text(.5,.5,'D',FS,14)
 % Simple line integrals start appearing around week 4 of the course, and
 % students find the notation confusing at first, but are still very impressive
 % human calculators. Almost every student is able to solve the following
-% problem: calculate the integral of $$\int_C \left(y^2,-x^2\right)\cdot
-% d\mathbf{r},$$ where C is the portion of the ellipse $x^2/4+y^2=1$ that lies
-% in the positive quadrant?
+% problem: calculate the integral of
+%
+% $$ \int_C \left(y^2,-x^2\right)\cdot d\mathbf{r}, $$
+%
+% where $C$ is the portion of the ellipse $x^2/4+y^2=1$ that lies
+% in the positive quadrant.
 
 %%
 % In this question it is easy to parameterise the curve by $x=2\cos(t)$ and
@@ -92,13 +107,13 @@ F = chebfun2v(@(x,y)y.^2,@(x,y) -x.^2,d);
 integral(F,C1)
 
 %%
-% Here is the plot of the parameterised curve, and the vector field of F:
+% Here is the plot of the parameterised curve, and the vector field of $F$:
 plot(C1,'linewidth',2), axis(d), hold on
 quiver(F), hold off
 
 %%
-% The diagram shows that the vector field $F$ always points in a direction that
-% is approximately opposite to the direction of the curve's tangent vector and
+% The diagram shows that $F$ always points in a direction
+% approximately opposite to the direction of the curve's tangent vector and
 % hence, the result is negative --- a first order sanity check.
 
 %%
@@ -136,17 +151,20 @@ integral(f,c)
 %% Vector calculus identity
 % In the second half of the course the students begin to study the vector
 % calculus operators: div, grad, and curl. They are asked to prove many vector
-% calculus identities, and one of them: $$\nabla\cdot(F\wedge G) = G\cdot(\nabla
-% \wedge F) - F\cdot(\nabla \wedge G).$$ We can verify this identity for a
-% chosen $F$ and $G$:
+% calculus identities, one of which is
+%
+% $$ \nabla\cdot(F\wedge G) = G\cdot(\nabla
+% \wedge F) - F\cdot(\nabla \wedge G). $$
+%
+% We can verify this identity for a chosen $F$ and $G$:
 F = chebfun2v(@(x,y) y,@(x,y) x.^2,@(x,y) x);
 G = chebfun2v(@(x,y) cos(2*x),@(x,y) x,@(x,y) x+y);
 subplot(1,2,1), quiver3(F,'numpts',5)
 subplot(1,2,2), quiver3(G,'r','numpts',5)
 
 %%
-% The vector calculus identity holds with a small error. If done by hand
-% then `LHS` and `RHS` would be exactly equal.
+% The vector calculus identity holds with a small error. If it
+% were done by hand, `LHS` and `RHS` would be exactly equal.
 
 LHS = div(cross(F,G));
 RHS = (dot(G,curl(F)) - dot(F,curl(G)));
