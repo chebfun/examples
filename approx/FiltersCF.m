@@ -25,18 +25,17 @@
 % alternative, either for computing the filter itself or at least for
 % generating an initial guess. (For a reference on CF approximations, see
 % Chapter 20 of [2].)
-% Consider for example this function with "pass bands":
+% Here for example is a function with three "pass bands", together with
+% polynomial approximations of degrees $100$ and $1000$:
 x = chebfun('x');
 LW = 'linewidth';
 f = (abs(x)<.3) + (abs(x-.7)<.1) + (abs(x+.65)<.2);
 plot(f,'k',LW,1.2), grid on, axis([-1 1 -1 2]), shg
 
-%%
-% Here are polynomial approximations of degrees $100$ and $1000$:
 tic
 for m = [100 1000]
   p = cf(f,m,0,max(100,2*m));
-  plot(p,'r',f,'k',LW,1.2), grid on
+  plot(f,'k',p,'r',LW,1.2), grid on
   axis([-1 1 -1 2]), snapnow
 end
 
@@ -54,7 +53,7 @@ phi = 50-50^2*abs(s);
 f2 = conv(f,phi);
 for m = [100 200]
   p = cf(f2,m,0,max(100,2*m));
-  plot(p,'r',f2,'k',LW,1.2), grid on
+  plot(f2,'k',p,'r',LW,1.2), grid on
   axis([-1 1 -1 2]), snapnow
 end
 
