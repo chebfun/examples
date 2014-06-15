@@ -28,7 +28,7 @@ x = [0 0]; y = [-8 8]; K = 'k'; LW = 'linewidth'; FS = 'fontsize';
 
 %%
 % The Adams-Bashforth formulas are the simplest family of explicit linear
-% multistep methods; they are the basis of the Matlab code `ode113`. Here are
+% multistep methods; they are the basis of the MATLAB code `ode113`. Here are
 % stability regions for the Adams-Bashforth formulas of orders 1, 2, 3.  (We
 % can't go higher without extra effort, because at order 4 this method would
 % give a loop that would need to be lopped off.)  As the order increases, the
@@ -45,7 +45,7 @@ title('Adams-Bashforth orders 1,2,3',FS,16)
 
 %%
 % The Runge-Kutta formulas are one-step methods, a bit trickier to derive but
-% simpler to apply; they are the basis of the Matlab codes `ode23` and
+% simpler to apply; they are the basis of the MATLAB codes `ode23` and
 % `ode45`.  To plot their stability regions, we need to solve an equation.  We
 % can do that with a Newton iteration, which we terminate here after 3 or 4
 % steps. Here are stability regions of RK formulas of order 1,2,3,4. In this
@@ -71,7 +71,7 @@ title('Runge-Kutta orders 1,2,3,4',FS,16)
 
 %%
 % Finally we look at the backward differentiation formulas of orders 1-6,
-% which are related to the Matlab code `ode15s`. In this case the stability
+% which are related to the MATLAB code `ode15s`. In this case the stability
 % regions are the _exteriors_ of the curves drawn.
 clf, plot(8*y,x,K,LW,1), hold on, plot(x,8*y,K) 
 d = 1-1./z; r = 0;

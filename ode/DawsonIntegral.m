@@ -30,7 +30,7 @@ plot(f,LW,lw), axis([-W W -H H]), hold on, grid on;
 %
 % $$ F(x) = e^{-x^2} \int_0^x e^{t^2} dt. $$
 %
-% Users with access to the Matlab Symbolic Toolbox
+% Users with access to the MATLAB Symbolic Toolbox
 % could also solve it with the following code:
 %
 %  y = sym('y'); 

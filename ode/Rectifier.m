@@ -58,7 +58,7 @@ title(['alpha = ',num2str(alpha),', length(v) = ',int2str(length(v_40))])
 % cheboppref('factory'); % Reset the maxium length
 
 %%
-% A comparison to one of Matlab's trusty built-in IVP solvers gives us some
+% A comparison to one of MATLAB's trusty built-in IVP solvers gives us some
 % reason to wonder what's really happening in this equation.
 ep = 1e-3;  alpha = 40;
 dvdt = @(t,v) -ep*v + ep*( exp(alpha*(sin(t)-v)) - 1 );

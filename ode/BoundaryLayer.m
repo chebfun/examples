@@ -8,7 +8,7 @@
 %%
 % Consider the steady-state linear advection-diffusion equation
 %
-% $$ L_\varepsilon u = -\varepsilon u" - u' = 1,\qquad    u(0) = u(1) = 0 , $$
+% $$ L_\varepsilon u = -\varepsilon u'' - u' = 1,\qquad    u(0) = u(1) = 0 , $$
 %
 % where $\varepsilon>0$ is a small parameter.
 % The solution to this equation has a boundary layer near $x=0$.

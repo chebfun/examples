@@ -89,7 +89,7 @@ end
 
 %%
 % Here we are required to use the feval method to evaluate the residual
-% since Matlab doesn't allowing double indexing, i.e. we can't call
+% since MATLAB doesn't allowing double indexing, i.e. we can't call
 % Ns(s(gamma))(solgamma).
 %
 % Values of gamma up to 3 work fine, however, for gamma = 4, the
