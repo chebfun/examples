@@ -141,7 +141,7 @@ c = x + 1i*y;                         % flower curve
 
 f = chebfun2(@(x,y) cos(x.*y/10),[-8 8 -10 10]); % integrand
 
-contour(f), axis equal, hold on
+contour(f), axis equal tight, hold on
 plot(c,'k'), hold off
 
 %%
@@ -166,7 +166,7 @@ subplot(1,2,2), quiver3(G,'r','numpts',5)
 % The vector calculus identity holds with a small error. If it
 % were done by hand, `LHS` and `RHS` would be exactly equal.
 
-LHS = div(cross(F,G));
+LHS = divergence(cross(F,G));
 RHS = (dot(G,curl(F)) - dot(F,curl(G)));
 norm(LHS-RHS)
 

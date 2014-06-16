@@ -135,8 +135,7 @@ title('Solution to the catenary problem', FS, 12)
 xlabel('x', FS, 14), ylabel('y(x)', FS, 14)
 legend('exact','computed','location','north')
 
-%%
-% References:
+%% References
 %
-% [1] Charles Fox, _An Introduction to the Calculus of Variations_,
-% Courier Dover Publications, 1987.
+% 1. Charles Fox, _An Introduction to the Calculus of Variations_,
+%    Courier Dover Publications, 1987.
