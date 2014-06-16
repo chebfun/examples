@@ -9,7 +9,7 @@
 % Recently I heard a talk by Igor Pritsker of Oklahoma State
 % University at which he discussed
 % a theorem of Das in 1971 about the roots of random
-% real polynomials [1].  This can be very nicely illustrated in Chebfun.
+% real polynomials [1,3].  This can be very nicely illustrated in Chebfun.
 
 %%
 % Das's result asserts that for a random polynomial on $[-1,1]$ with
@@ -26,15 +26,15 @@
 % Here for example is a random polynomial of degree 30:
 rng('default');
 n = 30;
-cleg = randn(n+1,1);                           % Legendre coeffs
-ccheb = leg2cheb(cleg,'normalization');        % Chebyshev coeffs
+cleg = randn(n+1,1);                  % Legendre coeffs
+ccheb = leg2cheb(cleg,'norm');        % Chebyshev coeffs
 p = chebfun(ccheb,'coeffs');
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 plot(p,LW,1.6), axis([-1.1 1.1 -n n]), grid on
 rr = roots(p);
 hold on, plot(rr,p(rr),'.r',MS,16), hold off
 ratio = length(rr)/n;
-title(['fraction of real roots = ' num2str(ratio)],FS,12)
+title(['fraction of roots in [-1,1]: ' num2str(ratio)],FS,12)
 
 %%
 % Here are its roots in the complex plane, both real and complex:
@@ -52,17 +52,17 @@ set(gca,'xtick',-2:2)
 
 %%
 % Now let's construct ten random polynomials of degree 1000 and print
-% the fraction of real roots for each:
+% the fraction of roots in $[-1,1]$ for each:
 n = 1000;
 data = [];
 for k = 1:10
-  cleg = randn(n+1,1);                         % Legendre coeffs
-  ccheb = leg2cheb(cleg,'normalization');      % Chebyshev coeffs
+  cleg = randn(n+1,1);                % Legendre coeffs
+  ccheb = leg2cheb(cleg,'norm');      % Chebyshev coeffs
   p = chebfun(ccheb,'coeffs');
   rr = roots(p);
   ratio = length(rr)/n;
   data = [data ratio];
-  disp(['fraction of real roots = ' num2str(ratio)])
+  disp(['fraction of roots in [-1,1]: ' num2str(ratio)])
 end
 
 %%
@@ -71,8 +71,11 @@ mean(data)
 
 %%
 % One could vary these experiments in all kinds of ways, for example
-% defining random polynomials via Chebyshev expansions or by interpolation
-% of random data in Chebyshev or Legendre points.
+% defining random polynomials via Chebyshev or more generally
+% Jacobi expansions or by interpolation
+% of random data in Chebyshev or other points.  The case of
+% Jacobi expansions is considered in [2], though the proofs
+% there are not complete.
 
 %%
 % References:
@@ -80,3 +83,12 @@ mean(data)
 % 1. M. Das, Real zeros of a random sum of orthogonal polynomials,
 %     _Proceedings of the American Mathematical Society_, 27
 %     (1971), 147-153.
+%
+% 2. M. Das and S. S. Bhatt, Real roots of random
+%    harmonic equations, _Indian Journal of Pure and
+%    Applied Mathematics_, 13 (1982), 411-420.
+%
+% 3. J. E. Wilkins, The expected value of the number of
+%     real zeros of a random sum of Legendre polynomials,
+%     _Proceedings of the American Mathematical Society_, 125
+%     (1997), 1531-1536.
