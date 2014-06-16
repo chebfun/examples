@@ -148,4 +148,4 @@ title('Norm of error',FS,12), xlabel('\gamma',FS,12)
 
 %% References
 %
-% 1. Paul Constantine's website: http://www.stanford.edu/~paulcon/
+% 1. Paul Constantine's website: http://inside.mines.edu/~pconstan/
