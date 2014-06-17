@@ -77,8 +77,7 @@ mean(data)
 % Jacobi expansions is considered in [2], though the proofs
 % there are not complete.
 
-%%
-% References:
+%% References
 %
 % 1. M. Das, Real zeros of a random sum of orthogonal polynomials,
 %     _Proceedings of the American Mathematical Society_, 27
