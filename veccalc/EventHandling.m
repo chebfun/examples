@@ -83,11 +83,12 @@ F = chebfun2v(@(h,hp)hp, @(h,hp)-1-.01*hp, @(h,hp)1+0*h,[0 30 0 2]);
 % Here is the path taken by the bouncing ball:
 
 options = odeset('RelTol',100*eps, 'events', @p1Event1); % event: hitting ground
-h = []; v = []; x = [];            % store solution
+h = chebfun; v = chebfun; x = chebfun;            % store solution
 while ( 1 )
     sol = ode45(F, [t0, Tend], u0, options);
     t0 = sol.xe;
-    h = [h; sol.y(:,1)]; x = [x; sol.y(:,3)];
+    h = join(h,sol.y(:,1)); 
+    x = join(x,sol.y(:,3));
     if max(sol.y(:,1)) < 5e-3, break, end
     u0 = (sol.ye).*([1;-.85;1]);   % reverse the velocity
 end
@@ -115,9 +116,3 @@ value = y(1)-steps(y(3));
 isTerminal = 1;
 direction = -1;
 end
-
-%% References
-%
-% 1. Chebfun Example [ode/BouncingBall](../ode/BouncingBall.html)
-%
-% 2. Chebfun Example [veccalc/AutonomousSystems](../veccalc/AutonomousSystems.html)
