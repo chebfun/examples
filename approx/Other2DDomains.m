@@ -29,7 +29,7 @@ MS = 'markersize'; ms = 20;
 
 f = chebfun2(@(x,y) x.^2 + y.^2);
 c = chebfun(@(t) cos(pi*t) + 1i*sin(2*pi*t),[-.5 .5]);
-plot(c,'k',LW,lw), hold on, contour(f), axis equal
+plot(c,'k',LW,lw), hold on, contour(f), axis equal tight
 fprintf('Volume enclosed by curve = %1.3f\n',integral2(f,c))
 
 %%
@@ -102,7 +102,7 @@ x = -(2/15)*cos(u).*(3*cos(v)-30*sin(u)+90*cos(u).^4.*sin(u)- 60*cos(u).^6.*sin(
 y = -(1/15)*sin(u).*(3*cos(v)-3*cos(u).^2.*cos(v)-48*cos(u).^4.*cos(v)+48*cos(u).^6.*cos(v)-60*sin(u)+5*cos(u).*cos(v).*sin(u) ...
     -5*cos(u).^3.*cos(v).*sin(u)-80*cos(u).^5.*cos(v).*sin(u)+80*cos(u).^7.*cos(v).*sin(u));
 f = cos(5*x.*y) + y;
-surf([x;y;f]), view(0,90)
+surf([x;y;f]), ylim([-1 5]), view(0,90)
 
 %%
 % However, in this case the Jacobian becomes singular and most operations
