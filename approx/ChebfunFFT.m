@@ -8,7 +8,7 @@
 %%
 % One of the most frequently used computations in Chebfun is the one-to-one
 % operation of converting function values at Chebyshev points to Chebyshev
-% expansion coefficients. This operation is achieved by the `chebpoly`
+% expansion coefficients. This operation is achieved by the `chebcoeffs`
 % command. The inverse operation of mapping Chebyshev coefficients to function
 % values is computed with `chebpolyval`. In each case, the FFT (or IFFT) is
 % used. Thus, the conversion process is very fast, with $O(nlogn)$ complexity.
@@ -89,9 +89,9 @@ ChebCoeffs = flipud(FourierCoeffs(1:n+1))/n;
 ChebCoeffs(1) = ChebCoeffs(1)/2;
 ChebCoeffs(end) = ChebCoeffs(end)/2;
 %%
-% This process replicates `chebpoly` exactly.
+% This process replicates `chebcoeffs` exactly.
 format long
-display([chebpoly(fc)' ChebCoeffs chebpoly(fc)'-ChebCoeffs])
+display([chebcoeffs(fc)' ChebCoeffs chebcoeffs(fc)'-ChebCoeffs])
 %%
 % In order to go back from coefficients to function values (in order to
 % replicate `chebpolyval`), we simply need to reverse the steps described.

@@ -10,7 +10,7 @@
 % Ortiz and T. J. Rivlin considered the graph of 30 Chebyshev polynomials
 % $T_j(x)$, noticing the appearance of what they called "white curves":
 set(gcf, 'position', [0 0 600 420])
-plot(chebpoly(1:30), 'b-'), hold on
+plot(chebcoeffs(1:30), 'b-'), hold on
 axis([-1 1 -1 1])
 
 %%
@@ -25,9 +25,9 @@ axis([-1 1 -1 1])
 % correspond to smaller numbers of intersection points. Here are the
 % intersection points obtained with $n-m \leq 4$, obtained with Chebfun's
 % rootfinding capability:
-T_2 = chebpoly(2);
+T_2 = chebcoeffs(2);
 for j = 1:4,        % j = n-m
-    T_j = chebpoly(j);
+    T_j = chebcoeffs(j);
     for y = linspace(-1,1,200),
         x = roots(T_j - T_2(y));
         plot(x,y,'r.')
