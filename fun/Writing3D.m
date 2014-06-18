@@ -6,8 +6,8 @@
 % [Tags: #complex, #3D, #camorbit]
 
 %%
-% The SCRIBBLE command produces a chebfun defined on the 
-% domain [-1,1] that takes piecewise linear complex values.
+% The `scribble` command produces a chebfun defined on the 
+% domain $[-1,1]$ that takes piecewise linear complex values.
 % For example:
 s = scribble('There is no fun like chebfun.');
 LW = 'linewidth';
@@ -28,8 +28,7 @@ xlim(1.05*[-1 1]), axis equal, drawnow
 
 %%
 % It's a small step from here to plotting in 3D with
-% the PLOT3 command.  Here's an example
-
+% the `plot3` command.  Here's an example
 plot3(rs,sin(6*rs),is,'b',LW,2.0,'jumpline','none')
 axis equal, view(-1.5,6), drawnow
 
@@ -46,4 +45,4 @@ plot3(cos(rs),sin(rs),imag(s)+.05*rs,LW,2,'jumpline','none')
 axis([-1 1 -1 1 -1 1]), axis off
 set(gca,'cameraviewanglemode','manual')
 view(-540,20), pause(1)
-for j = 1:720, camorbit(1,0), drawnow, end
+for j = 1:360, camorbit(2,0), drawnow, end
