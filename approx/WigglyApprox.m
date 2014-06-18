@@ -14,7 +14,7 @@
 % where $T_k$ is the Chebyshev polynomial of degree $k$, as challenging
 % functions for minimax approximation by polynomials of lower order. We can
 % construct such functions in a single Chebfun command:
-fmn = @(m,n) sum(chebcoeffs(m:n),2);
+fmn = @(m,n) sum(chebpoly(m:n),2);
 
 %%
 % For example, here we plot `f(30,40)` and its best approximation of

@@ -13,7 +13,7 @@
 %%
 % For example, here we take the first $12$ Chebyshev polynomials on $[-1,1]$:
 N = 11;
-A = chebcoeffs(0:N);
+A = chebpoly(0:N);
 plot(A)
 fprintf('Condition no. for Chebyshev polynomials: %8.3f\n',cond(A))
 
