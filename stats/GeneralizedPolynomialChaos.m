@@ -75,7 +75,7 @@ xlabel('Z'), ylabel('Y(Z)')
 % inner product, they're (barely!) well-conditioned enough to do the job.
 % The main trick is to again recast everything in the L2 norm, then use
 % Chebfun's built in least-squares solutions.
-T = chebpoly(0:N,[-10 10]);
+T = chebcoeffs(0:N,[-10 10]);
 WT = repmat(w,[1 N+1]).*T;  wy = w.*y;
 c = WT \ wy
 hold on, plot(T*c,'r',LW,2)
@@ -113,7 +113,7 @@ y = FYinv(FZ);     % compose
 %%
 % Now that we have an expression for Y as parameterized by Z, we can
 % proceed as before with a least-squares approximation.
-T = chebpoly(0:N,[0 8]);
+T = chebcoeffs(0:N,[0 8]);
 WT = repmat(w,[1 N+1]).*T;  wy = w.*y;
 c = WT \ wy
 clf, plot([y,T*c],LW,2)

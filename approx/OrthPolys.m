@@ -25,8 +25,8 @@ function OrthPolys
 %      Name       |      w(x)      |   domain   | Chebfun routine
 % ----------------------------------------------------------------
 %     Legendre    |        1       |   [-1 1]   |  legpoly(N)
-%  Chebyshev(1st) |  1/sqrt(1-x^2) |   [-1 1]   |  chebpoly(N)
-%  Chebyshev(2nd) |   sqrt(1-x^2)  |   [-1 1]   |  chebpoly(N,2)
+%  Chebyshev(1st) |  1/sqrt(1-x^2) |   [-1 1]   |  chebcoeffs(N)
+%  Chebyshev(2nd) |   sqrt(1-x^2)  |   [-1 1]   |  chebcoeffs(N,2)
 %     Laguerre    |     exp(-x)    |   [0 inf]  |  lagpoly(N)
 %     Hermite     |    exp(-x^2)   | [-inf inf] |  hermpoly(N)
 

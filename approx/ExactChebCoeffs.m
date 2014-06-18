@@ -72,11 +72,11 @@ k = 1:length(fc);
 % from floating point representation and aliasing effects. The $a_0$
 % coefficient is out by the usual factor of $2$.
 exact_coeffs = flipud( (1/sqrt(6)*(-1).^(k-1)./(5+sqrt(24)).^(k-1))' );
-cheb_coeffs = chebpoly(fc)';
+cheb_coeffs = chebcoeffs(fc)';
 display([exact_coeffs cheb_coeffs exact_coeffs-cheb_coeffs])
 
 FS = 'fontsize'; fs = 14;
-chebpolyplot(fc,'linewidth',1.6)
+plotcoeffs(fc,'linewidth',1.6)
 title('Chebyshev coefficients of 1/(5+x)',FS,fs)
 xlabel('n'), ylabel('log(|a_n|)'), grid on
 

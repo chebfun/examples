@@ -40,7 +40,7 @@ MS = 'markersize'; FS = 'fontsize'; fs = 12;
 % fast transform in Chebfun:
 
 f = chebfun(@(x) 1./(1 + 1000*(x-.1).^2));  % A Runge-type function
-c_cheb = chebpoly(f).';                     % Chebyshev coeffs in O(NlogN)
+c_cheb = chebcoeffs(f).';                     % Chebyshev coeffs in O(NlogN)
 c_leg = cheb2leg(c_cheb);                   % Leg coeffs with the new algorithm
 
 semilogy(flipud(abs(c_leg)), 'xr',MS,4), hold on  % plot them
@@ -56,7 +56,7 @@ xlabel('n', FS, fs), set(gca, FS, fs), hold off
 % [5].  Here we witness this disparity for the function $|x-.1|^{7/4}$:
 
 f = chebfun(@(x) abs(x-.1).^(7/4)); N = length(f);  % |x-.1|^(7/4)
-c_cheb = chebpoly(f)';                              % Chebyshev coeffs
+c_cheb = chebcoeffs(f)';                              % Chebyshev coeffs
 c_leg = cheb2leg(c_cheb);                           % Legendre coeffs
 
 semilogy(flipud(abs(c_leg)), 'xr',MS,4), hold on,         % plot them
@@ -138,7 +138,7 @@ set(gca, FS, fs), xlabel('x', FS, fs), shg
 
 %%
 % Here is the error between the computed and the true solutions:
-norm(c_cheb - chebpoly(f).', inf)
+norm(c_cheb - chebcoeffs(f).', inf)
 norm(u - f)
 
 %% Conclusion

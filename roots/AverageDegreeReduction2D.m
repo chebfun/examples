@@ -138,7 +138,7 @@ m.'
 function compute_tau(f, N)
 % COMPUTE_TAU estimate the average degree reduction parameter
 g = chebfun2(f); tol = 1e-14;
-X = chebpoly2(g);
+X = chebcoeffs2(g);
 L = find(max(abs(rot90(X,2))) < tol,1,'last');
 x = linspace(-1,1,2.^N+1);
 tot = 0;
@@ -146,7 +146,7 @@ tot = 0;
 for j = 1:length(x)-1
     for k = 1:length(x)-1
         g = chebfun2(f, [x(j:j+1) x(k:k+1)]);
-        X = chebpoly2(g);
+        X = chebcoeffs2(g);
         len = find(max(abs(rot90(X,2))) < tol,1,'last');
         tot = tot + len;
     end
@@ -176,7 +176,7 @@ for levels = 0:3
     for j = 1:length(x)-1
         for k = 1:length(x)-1
             g = chebfun2(f, [x(j:j+1) x(k:k+1)]);
-            X = chebpoly2(g);
+            X = chebcoeffs2(g);
             len = find(max(abs(rot90(X,2))) < tol,1,'last');
             text(mean(x(j:j+1))-.1,mean(x(k:k+1)),sprintf('%u',len),FS,fs)
         end

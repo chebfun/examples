@@ -14,7 +14,7 @@ x = chebfun('x');
 f = abs(x-.3);
 fc = chebfun(@(x) f(x),1e5);
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
-chebpolyplot(fc,'loglog','.',MS,8), axis([1 1e5 1e-12 1])
+plotcoeffs(fc,'loglog','.',MS,8), axis([1 1e5 1e-12 1])
 xlabel('n',FS,12), ylabel('Chebyshev coefficient',FS,12)
 nn = round(2.^(1:.5:16));
 hold on, loglog(nn,.01*nn.^(-2),'--k',LW,2)
