@@ -65,7 +65,7 @@ r = chebfun2(@(r,t) r,[r1 r2 t1 t2]);
 t = chebfun2(@(r,t) t,[r1 r2 t1 t2]);
 [x,y] = pol2cart(t,r);
 f = cos(5*x.*y) + y;
-surf([x;y;f])
+surf([x;y;f]), zlim([-5 5])
 title('Function on sector domain',FS,fs)
 
 %%
@@ -102,7 +102,7 @@ x = -(2/15)*cos(u).*(3*cos(v)-30*sin(u)+90*cos(u).^4.*sin(u)- 60*cos(u).^6.*sin(
 y = -(1/15)*sin(u).*(3*cos(v)-3*cos(u).^2.*cos(v)-48*cos(u).^4.*cos(v)+48*cos(u).^6.*cos(v)-60*sin(u)+5*cos(u).*cos(v).*sin(u) ...
     -5*cos(u).^3.*cos(v).*sin(u)-80*cos(u).^5.*cos(v).*sin(u)+80*cos(u).^7.*cos(v).*sin(u));
 f = cos(5*x.*y) + y;
-surf([x;y;f]), ylim([-1 5]), view(0,90)
+surf([x;y;f]), view(0,90)
 
 %%
 % However, in this case the Jacobian becomes singular and most operations
