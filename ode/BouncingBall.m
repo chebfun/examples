@@ -11,7 +11,6 @@
 
 %%
 % Initialise:
-clc, clear all, close all
 trajectory = chebfun;
 
 %%
