@@ -8,7 +8,6 @@
 %%
 % Happy Valentines day to all Chebfun2 users! Copy and paste this M-file into
 % your Matlab to watch the love movie.
-
 d = [0 1 0 4*pi];
 t = chebfun2(@(t,th) t, d);
 th = chebfun2(@(t,th) th, d);
@@ -31,7 +30,7 @@ S = scribble('Happy Valentines Day!');
 surf(X, Y, Z, C), hold on
 % Add text:
 plot3(1.1*cos(2.5*real(S+1)), 0.8*sin(real(2.5*(S+1))),...
-    1.5*imag(S)-1.05, 'k', 'jumpline', '', 'linewidth', 5); hold off
+    1.5*imag(S)-1.05, 'k', 'jumpline', '', 'linewidth', 2), hold off
 % Make it pretty:
 axis tight off image
 colormap hot
@@ -50,7 +49,7 @@ end
 
 %%
 % If you would like to save this love movie to a GIF file then uncomment
-% the lines below (and the lines begining M = ...) and run the example. 
+% the lines below (and the lines beginning M = ...) and run the example. 
 
 % % Save to .gif:
 % [ignored, idx] = min(abs(TA-.75));
@@ -66,7 +65,8 @@ end
 %     end
 % end
 
-%% References
+%%
+% Reference
 %
 % 1. Anonymous, 14th February 2013, Chebfun Example
 %    [fun/ValentinesDay](../fun/ValentinesDay.html)
