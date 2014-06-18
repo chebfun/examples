@@ -7,12 +7,13 @@
 
 %%
 LW = 'linewidth'; lw = 2;
-FS = 'fontsize'; fs = 16;
+FS = 'fontsize'; fs = 14;
 MS = 'markersize'; ms = 20;
 
 %% The Chebfun2 constructor and rectangular domains
-% Chebfun2's constructor performs Gaussian elimination with
-% complete pivoting on matrices and hence is inherently tied to sampling
+% The Chebfun2 constructor performs a continuous
+% analogue of Gaussian elimination with
+% complete pivoting on matrices, and hence is inherently tied to sampling
 % a function at adaptively
 % selected tensor grids. Note that the grids are carefully selected so the
 % complexity is reduced for low rank functions [5].  However, we can still
@@ -42,12 +43,12 @@ F = cylinder(f);
 surf(F)
 
 %%
-% We can even represent and manipulate functions on such surfaces, see, for
-% example, [2,3,4] and the Chebfun2 guide.
+% We can even represent and manipulate functions on such surfaces. See, for
+% example, [2,3,4] and Chapter 15 of the Chebfun Guide.
 
 %% Sector domain
-% Sector shaped domains are rectangular when parametrised by polar coordinates
-% $r_1\leq r\leq r_2$, $\theta_1\leq \theta \leq \theta_2$ and thus functions
+% Sector-shaped domains are rectangular when parametrised by polar coordinates
+% $r_1\leq r\leq r_2$, $\theta_1\leq \theta \leq \theta_2$, and thus functions
 % on these domains can be easily represented using Chebfun2. For example,
 % take the following sector:
 
@@ -85,14 +86,13 @@ surf([x;y;f]), view(0,90), axis equal, hold off
 title('Function on warped sector domain',FS,fs)
 
 %%
-% Even for this warped sector domain the Jacobian is non-zero everywhere
+% Even for this warped sector domain the Jacobian is nonzero everywhere
 % and computing with the function using the implicit
 % change of variables is possible:
-
 plot(jacobian([x;y])), title('Jacobian',FS,fs)
 
 %% Shadow of a Klein bottle
-% Even further we can represent the same function on the shadow of the
+% Even further, we can represent the same function on the shadow of the
 % 3-dimensional immersion of the Klein bottle:
 clf
 u = chebfun2(@(u,v) u, [0 pi 0 2*pi]);
@@ -106,14 +106,14 @@ surf([x;y;f]), view(0,90)
 
 %%
 % However, in this case the Jacobian becomes singular and most operations
-% on the rectanglar domain becomes meaningless:
+% on the rectangular domain become meaningless:
 
 plot(jacobian([x;y])), title('Jacobian',FS,fs)
 
 %% The significance of conformal maps
 % A conformal map is a holomorphic function whose derivative does not
 % vanish (hence it preserves angles). This can be seen as a special case
-% of a change of variables. While conformal maps can be used they
+% of a change of variables. While conformal maps can be used, they
 % are not essential for extending Chebfun2 to non-rectangular domains.
 
 %% Method of frames
@@ -131,12 +131,13 @@ plot(jacobian([x;y])), title('Jacobian',FS,fs)
 %    http://www2.maths.ox.ac.uk/chebfun/examples/geom/html/ParametricSurfaces.shtml
 %    March 2013.
 %
-% 3. R. Platte, The volume of a heart and the divergence theorem, Chebfun2 Example,
+% 3. R. Platte, The volume of a torus, a heart, and a seashell, Chebfun Example,
 %    http://www2.maths.ox.ac.uk/chebfun/examples/geom/html/VolumeOfHeart.shtml
 %    March 2013.
 %
 % 4. A. Townsend and L. N. Trefethen, An extension of Chebfun to two
-%    dimensions, submitted, 2013.
+%    dimensions, _SIAM Journal on Scientific Computing_, 35
+%    (2013), C495-C518.
 %
 % 5. A. Townsend, Undergraduate multivariable calculus, Chebfun2 Example,
 %    http://www2.maths.ox.ac.uk/chebfun/examples/veccalc/html/UndergraduateCalculus.shtml
