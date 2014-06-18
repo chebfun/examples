@@ -107,7 +107,7 @@ v = normal(r);     % vector field perpendicular to S
 
 %%
 % We now plot the normal vectors and the field F over S.
-F = [0*z;0*z;z];    % Alex, I'd like to use this [0;0;1]*z instead, but didnt work                
+F = [0*z;0*z;z];   
 quiver3(x,y,z,v,'k',lw,2,'numpts',10); hold on
 quiver3(x,y,z,F,'g',lw,2,'numpts',10);
 surf(x,y,z,F'*v), colorbar
