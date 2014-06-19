@@ -1,5 +1,5 @@
 %% Fourier-based chebfuns
-% Grady Wright, 19th June 2014
+% Grady Wright, June 2014
 
 %%
 % [Tags: #periodic, #interpolation, #fourier]
@@ -102,4 +102,5 @@ f = chebfun(@(x) [(cos(sin(cos(x)))) exp(-x.^2./(x.^2-pi.^2).^2)],domain);
 plot(f,LW, lw)
 
 %% References
-% [1] Mathworld Heart Curve: \texttt{http://mathworld.wolfram.com/HeartCurve.html}
+%
+% 1. Mathworld Heart Curve: http://mathworld.wolfram.com/HeartCurve.html
