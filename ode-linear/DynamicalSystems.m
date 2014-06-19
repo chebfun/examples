@@ -2,7 +2,7 @@
 % Georges Klein, March 2013
 
 %%
-% (Chebfun2 example VectorCalculus/LinearDynamicalSystems.m)
+% (Chebfun2 example ode-linear/DynamicalSystems.m)
 % [Tags: #dynamical systems, #phase portrait, #Chebfun2]
 
 %%
