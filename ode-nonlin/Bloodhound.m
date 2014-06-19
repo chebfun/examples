@@ -2,7 +2,7 @@
 % Tanya Morton, January 2013
 
 %%
-% (Chebfun example ode/Bloodhound.m)
+% (Chebfun example ode-nonlin/Bloodhound.m)
 % [Tags: #nonlinearODE, #piecewise]
 
 %%

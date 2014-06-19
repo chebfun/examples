@@ -2,7 +2,7 @@
 % Alex Townsend, August 2011
 
 %%
-% (Chebfun example ode/ParamODEs.m)
+% (Chebfun example ode-nonlin/ParamODEs.m)
 % [Tags: #linearODE, #nonlinearODE, #parameter]
 
 %%

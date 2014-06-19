@@ -2,7 +2,7 @@
 % Hrothgar, June 2014
 
 %%
-% (Chebfun example ode/Blasius.m)
+% (Chebfun example ode-nonlin/Blasius.m)
 % [Tags: #chebop, #ode]
 
 %%

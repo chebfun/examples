@@ -2,7 +2,7 @@
 % Alex Townsend, October 2010
 
 %%
-% (Chebfun example approx/Convergence.m)
+% (Chebfun example cheb/Convergence.m)
 % [Tags: #Gibbsphenomenon, #discontinuity, #ABS, #fractional]
 
 %%

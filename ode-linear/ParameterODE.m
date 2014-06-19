@@ -2,7 +2,7 @@
 % Asgeir Birkisson, January 2012
 
 %%
-% (Chebfun example ode/ParameterODE.m)
+% (Chebfun example ode-linear/ParameterODE.m)
 % [Tags: #linearODE, #piecewise, #parameter, #breakpoint]
 
 %%

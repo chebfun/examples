@@ -2,7 +2,7 @@
 % Asgeir Birkisson, October 2010
 
 %%
-% (Chebfun example ode/Carrier.m)
+% (Chebfun example ode-nonlin/Carrier.m)
 % [Tags: #nonlinearODE]
 
 %% 1. The original problem

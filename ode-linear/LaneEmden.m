@@ -1,7 +1,8 @@
 %% Lane-Emden equation from astrophysics
 % Alex Townsend, May 2011
-%
-% (Chebfun example ode/LaneEmden.m)
+
+%%
+% (Chebfun example ode-linear/LaneEmden.m)
 % [Tags: #nonlinearODE, #astrophysics]
 
 %% 

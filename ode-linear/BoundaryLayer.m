@@ -2,7 +2,7 @@
 % Nick Trefethen, October 2010
 
 %%
-% (Chebfun example ode/BoundaryLayer.m)
+% (Chebfun example ode-linear/BoundaryLayer.m)
 % [Tags: #linearODE, #boundarylayer, #advectiondiffusion]
 
 %%

@@ -2,7 +2,7 @@
 % Nick Trefethen, November 2010
 
 %%
-% (Chebfun example ode/AllenCahn.m)
+% (Chebfun example ode-nonlin/AllenCahn.m)
 % [Tags: #linearODE, #AllenCahn]
 
 %%

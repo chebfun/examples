@@ -2,7 +2,7 @@
 % Nick Hale, November 2011
 
 %%
-% (Chebfun Example ode/JumpConditions.m)
+% (Chebfun Example ode-linear/JumpConditions.m)
 % [Tags: #linearODE, #jumpconditions]
 
 %%

@@ -2,7 +2,7 @@
 % Nick Hale and Natasha Flyer, September 2010
 
 %%
-% (Chebfun example ode/SolarFields.m)
+% (Chebfun example ode-nonlin/SolarFields.m)
 % [Tags: #nonlinearODE, #continuation, #astrophysics]
 
 %%

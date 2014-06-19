@@ -2,7 +2,7 @@
 % Toby Driscoll, May 2011
 
 %%
-% (Chebfun example ode/Rectifier.m)
+% (Chebfun example ode-nonlin/Rectifier.m)
 % [Tags: #nonlinearODE, #IVP]
 
 %%

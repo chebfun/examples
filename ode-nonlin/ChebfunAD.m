@@ -2,7 +2,7 @@
 % Asgeir Birkisson, November 2011
 
 %%
-% (Chebfun example ode/ChebfunAD.m)
+% (Chebfun example ode-nonlin/ChebfunAD.m)
 % [Tags: #automaticdifferention, #AD]
 
 %%

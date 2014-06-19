@@ -2,7 +2,7 @@
 % Nick Trefethen, July 2013
 
 %%
-% (Chebfun Example ode/Logistic.m)
+% (Chebfun Example ode-nonlin/Logistic.m)
 % [Tags: #logistic, #chaos]
 
 %%

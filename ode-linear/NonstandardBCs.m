@@ -2,7 +2,7 @@
 % Asgeir Birkisson, October 2011
 
 %%
-% (Chebfun example ode/NonstandardBCs.m)
+% (Chebfun example ode-linear/NonstandardBCs.m)
 % [Tags: #linearODE, #exoticBCs, #nonstandard]
 
 LW = 'linewidth';

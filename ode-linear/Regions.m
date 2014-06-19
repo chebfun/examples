@@ -2,7 +2,7 @@
 % Nick Trefethen, February 2011
 
 %%
-% (Chebfun example ode/Regions.m)
+% (Chebfun example ode-linear/Regions.m)
 % [Tags: #stabilityregions]
 
 %%

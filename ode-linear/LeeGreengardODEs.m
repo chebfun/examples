@@ -2,7 +2,7 @@
 % Nick Trefethen, June 2012
 
 %%
-% (Chebfun Example ode/LeeGreengardODEs.m)
+% (Chebfun example ode-linear/LeeGreengardODEs.m)
 % [Tags: #linearODE, #boundarylayer]
 
 %%

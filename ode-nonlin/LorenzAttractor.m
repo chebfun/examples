@@ -2,7 +2,7 @@
 % Marcus Webb, March 2013
 
 %%
-% (Chebfun example ode/LorenzAttractor.m)
+% (Chebfun example ode-nonlin/LorenzAttractor.m)
 % [Tags: #Lorenz, #dynamical systems, #autonomous, #RATINTERP, #analytic continuation, #poles, #rational function]
 
 %%

@@ -2,7 +2,7 @@
 % Nick Trefethen, November 2011
 
 %%
-% (Chebfun example ode/Orbits.m)
+% (Chebfun example ode-nonlin/Orbits.m)
 % [Tags: #nonlinearODE, #astrophysics, #IVP]
 
 %%

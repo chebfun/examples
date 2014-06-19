@@ -2,7 +2,7 @@
 % Tom Maerz, October 2010
 
 %%
-% (Chebfun example ode/LinExpIVP.m)
+% (Chebfun example ode-linear/LinExpIVP.m)
 % [Tags: #linearODE, #IVP]
 
 %%

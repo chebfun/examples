@@ -2,7 +2,7 @@
 % Nick Trefethen, December 2011
 
 %%
-% (Chebfun example approx/ChebPolysHigham.m)
+% (Chebfun example cheb/ChebPolysHigham.m)
 % [Tags: #Higham, #Chebyshevpolynomial, #PLOT3, #CHEBPOLY]
 
 %%

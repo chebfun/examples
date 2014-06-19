@@ -2,7 +2,7 @@
 % Mark Richardson, June 2012
 
 %%
-% (Chebfun example approx/ExactChebCoeffs.m)
+% (Chebfun example cheb/ExactChebCoeffs.m)
 % [Tags: #Chebyshevcoefficients, #residue]
 
 %% 1. Introduction

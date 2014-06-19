@@ -2,7 +2,7 @@
 % Nick Trefethen, September 2010
 
 %%
-% (Chebfun example approx/ChebyshevCoeffs.m)
+% (Chebfun example cheb/ChebyshevCoeffs.m)
 % [Tags: #Chebyshev, #coefficients, #PLOTCOEFFS]
 
 %%

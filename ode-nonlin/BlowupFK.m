@@ -2,7 +2,7 @@
 % Nick Trefethen, September 2010
 
 %%
-% (Chebfun example ode/BlowupFK.m)
+% (Chebfun example ode-nonlin/BlowupFK.m)
 % [Tags: #nonlinearODE, #blowup]
 
 %%

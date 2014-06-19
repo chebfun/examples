@@ -2,7 +2,7 @@
 % Alex Townsend, March 2013 
 
 %%
-% (Chebfun2 example approx/PrettyFunctions.m)
+% (Chebfun2 example approx2/PrettyFunctions.m)
 % [Tags: #CONTOUR, #PLOT, #PLOT3, #SURF, #SURFC, #MESH, #WATERFALL]
 
 %% Pretty functions

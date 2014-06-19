@@ -2,7 +2,7 @@
 % Nick Hale, November 2010
 
 %%
-% (Chebfun example ode/PeriodicSystem.m)
+% (Chebfun example ode-linear/PeriodicSystem.m)
 % [Tags: #linearODE, #ODEsystem, #periodic, #piecewise]
 
 %%

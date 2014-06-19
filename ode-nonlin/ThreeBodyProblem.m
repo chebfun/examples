@@ -2,7 +2,7 @@
 % Marcus Webb, August 2011
 
 %%
-% (Chebfun example ode/ThreeBodyProblem.m)
+% (Chebfun example ode-nonlin/ThreeBodyProblem.m)
 % [Tags: #nonlinearODE, #ODEsystem, #astrophysics, #rational]
 
 %% 

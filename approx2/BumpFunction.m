@@ -2,7 +2,7 @@
 % Alex Townsend, March 2013 
 
 %%
-% (Chebfun2 example approx/BumpFunction.m)
+% (Chebfun2 example approx2/BumpFunction.m)
 % [Tags: #bump, #gaussian, #Chebfun2]
 
 %% Adding bumps

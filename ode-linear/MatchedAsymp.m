@@ -2,7 +2,7 @@
 % Nick Trefethen, December 2010
 
 %%
-% (Chebfun example ode/MatchedAsymp.m)
+% (Chebfun example ode-linear/MatchedAsymp.m)
 % [Tags: #linearODE, #asymptotics]
 
 %%

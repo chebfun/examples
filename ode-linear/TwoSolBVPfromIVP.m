@@ -2,7 +2,7 @@
 % Asgeir Birkisson, May 2011
 
 %%
-% (Chebfun example ode/TwoSolBVPfromIVP.m)
+% (Chebfun example ode-linear/TwoSolBVPfromIVP.m)
 % [Tags: #nonlinearODE, #IVP]
 
 %%

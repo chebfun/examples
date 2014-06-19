@@ -2,7 +2,7 @@
 % Alex Townsend, October 2011
 
 %%
-% Chebfun example ode/BlackScholes.m
+% (Chebfun example ode-linear/BlackScholes.m)
 % [Tags: #linearODE, #piecewise, #jumpconditions, #blackscholes]
 
 %% 

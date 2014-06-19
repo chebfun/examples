@@ -2,7 +2,7 @@
 % Nick Trefethen, August 2012
 
 %%
-% (Chebfun example ode/ResonantVandal.m)
+% (Chebfun example ode-linear/ResonantVandal.m)
 % [Tags: #linearODE, #resonance, #CarrierPearson]
 
 %%

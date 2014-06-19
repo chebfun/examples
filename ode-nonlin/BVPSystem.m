@@ -1,9 +1,8 @@
 %% System of two nonlinear BVPs
-% Asgeir Birkisson, September 2010
-% Toby Driscoll, June 2014
+% Asgeir Birkisson and Toby Driscoll, September 2010
 
 %%
-% (Chebfun example ode/BVPSystem.m)
+% (Chebfun example ode-nonlin/BVPSystem.m)
 % [Tags: #nonlinearODE, #ODEsystem]
 
 %% System of equations

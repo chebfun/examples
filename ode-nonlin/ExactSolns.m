@@ -2,7 +2,7 @@
 % Nick Trefethen, December 2010
 
 %%
-% (Chebfun example ode/ExactSolns.m)
+% (Chebfun example ode-nonlin/ExactSolns.m)
 % [Tags: #nonlinearODE]
 
 %%

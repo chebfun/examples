@@ -1,9 +1,8 @@
 %% Piecewise operators demo
-% Nick Hale, November 2011
-% Toby Driscoll, 9 June 2014
+% Nick Hale and Toby Driscoll, November 2011
 
 %%
-% (Chebfun Example ode/PiecewiseDemo.m)
+% (Chebfun Example ode-linear/PiecewiseDemo.m)
 % [Tags: #linearODE, #piecewise]
 
 %%

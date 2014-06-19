@@ -2,7 +2,7 @@
 % Nick Trefethen, November 2010
 
 %%
-% (Chebfun example ode/AdvDiffJump.m)
+% (Chebfun example ode-linear/AdvDiffJump.m)
 % [Tags: #linearODE, #piecewise, #advectiondiffusion]
 
 %%

@@ -2,7 +2,7 @@
 % Filomena Di Tommaso, February 2013
 
 %%
-% (Chebfun example ode/BouncingBall.m)
+% (Chebfun example ode-linear/BouncingBall.m)
 % [Tags: #linearODE, #ball, #physics]
 
 %%

@@ -2,7 +2,7 @@
 % Mohsin Javed, July 2012
 
 %%
-% (Chebfun example ode/DeltaODEs.m)
+% (Chebfun example ode-linear/DeltaODEs.m)
 % [Tags: #DIRAC, #linearODE, #deltafunctions, #jumpconditions, #impulse, #delta]
 
 %% ODEs with Dirac-Delta functions on the RHS

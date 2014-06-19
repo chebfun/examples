@@ -2,7 +2,7 @@
 % Nick Trefethen and Tom Maerz, September 2010
 
 %%
-% (Chebfun example ode/LinearIVP.m)
+% (Chebfun example ode-linear/LinearIVP.m)
 % [Tags: #linearODE, #IVP]
 
 %%

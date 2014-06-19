@@ -2,7 +2,7 @@
 % Kuan Xu, October 2012
 
 %%
-% (Chebfun example ode/DawsonIntegral.m)
+% (Chebfun example ode-linear/DawsonIntegral.m)
 % [Tags: #linearODE, #special function, #Dawson]
 
 %%

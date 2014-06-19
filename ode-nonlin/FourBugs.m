@@ -2,7 +2,7 @@
 % Hrothgar, November 2013
 
 %%
-% (Chebfun example ode/FourBugs.m)
+% (Chebfun example ode-nonlin/FourBugs.m)
 % [Tags: #nonlinearODE]
 
 %%

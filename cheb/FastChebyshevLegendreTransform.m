@@ -2,7 +2,7 @@
 % Alex Townsend and Nick Hale, August 2013
 
 %%
-% (Chebfun Example approx/FastChebyshevLegendreTransform.m)
+% (Chebfun Example cheb/FastChebyshevLegendreTransform.m)
 % [Tags: #fast transform, #Legendre, #Chebyshev, #coefficients,
 % #FFT, #LEGPTS, #LEG2CHEB, #CHEB2LEG]
 

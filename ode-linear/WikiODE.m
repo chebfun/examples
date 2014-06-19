@@ -2,7 +2,7 @@
 % Mark Richardson, September 2010
 
 %%
-% (Chebfun example ode/WikiODE.m)
+% (Chebfun example ode-linear/WikiODE.m)
 % [Tags: #linearODE, #wikipedia]
 
 %%
