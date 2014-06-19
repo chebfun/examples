@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example approx/ChebyshevCoeffs.m)
-% [Tags: #Chebyshev, #coefficients, #CHEBPOLYPLOT]
+% [Tags: #Chebyshev, #coefficients, #PLOTCOEFFS]
 
 %%
 % Every function defined on $[-1,1]$, so long as it is a little bit smooth
