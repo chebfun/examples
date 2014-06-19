@@ -6,8 +6,8 @@
 
 %%
 % One of the new features of Chebfun version 5 is the ability to create
-% chebfuns of smooth periodic functions using Fourier series.  In this
-% example we introduce and explore some the functionality of this new tool. 
+% chebfuns of smooth periodic functions using Fourier series.  This
+% example introduces and demonstrates some of the functionality of this new tool. 
 LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 
 %% Construction and comparison
@@ -43,9 +43,27 @@ f_cheby = chebfun(@(x) cos(8*sin(x)),domain)
 ratio = length(f_cheby)/length(f)
 theoretical = pi/2
 
+%%
+% Trying to construct a fourfun from a non-periodic or non-smooth function
+% will typically result in a warning being issued and an `unhappy` fourfun,
+% as illustrated for the unit step function below:
+f = chebfun(@(x) 0.5*(1+sign(x)),domain,'periodic')
+plot(f,LW,lw);
+
+%%
+% The length of $f$ is 65536, which is the maximum number of samples used
+% in the construction process to try to resolve $f$. The famous Gibbs'
+% phenomenon can be seen near the discontinuity in the plot of $f$. Chebfun
+% can be used to represent this function in non-periodic mode (i.e. using
+% Chebyshev series) with the option of `splitting on`:
+f = chebfun(@(x) 0.5*(1+sign(x)),domain,'splitting','on')
+
+%%
+% Splitting is not an option for fourfuns.
+
 %% Basic operations
 % Many Chebfun operations can also be applied directly to a fourfun. 
-% Below we illustrate some of the basic ones.
+% Some of these basic operations are illustrated in the examples below.
 
 %%
 % Addition, subtraction, multiplication, division, and function composition
@@ -92,15 +110,39 @@ plot(f, LW, lw), axis equal
 area_heart = abs(sum(real(f).*diff(imag(f))))
 
 %%
-% According to [1], the true area enclosed is $180\pi$.
-% The relative error in the 
-% computation is then
+% According to [1], the true area enclosed is $180\pi$. The relative error
+% in the computation above is then
 err = (area_heart - 180*pi)/(180*pi)
 
 %%
-% Operations with array-valued fourfuns are also available.
-f = chebfun(@(x) [(cos(sin(cos(x)))) exp(-x.^2./(x.^2-pi.^2).^2)],domain);
-plot(f,LW, lw)
+% The convolution of two smooth periodic functions can be computed using
+% the `circconv` (circular convolution) function. The example below 
+% demonstrates this function in combination with the additional feature 
+% that allows fourfuns to be constructed from function values. The latter
+% is demonstrated first:
+rng('default'), rng(0);
+n = 201;
+x = fourpts(n);
+func_vals = exp(sin(2*pi*x)) + 0.05*randn(n,1);
+f = chebfun(func_vals,domain,'periodic')
+
+%%
+% Here $f$ interpolates the noisy `func_vals' at 101 equally spaced points
+% from $[-\pi,\pi)$ using the Fourier basis. The high frequencies in this
+% function can be smoothed by convolving it with a mollifier, in this case
+% a (normalized) Gaussian with variance 0.1.
+sigma = 0.1;
+g = chebfun(@(x) 1/(sigma*sqrt(2*pi))*exp(-0.5*(x/sigma).^2),domain,'periodic');
+
+%%
+% Note that the resulting respresentation of $g$ is actually the periodic 
+% extension of the Gaussian over $[-\pi,\pi]$.  The convolution of $f$ and
+% $g$ is computed and visualized using
+h = circconv(f,g);
+plot(g,'b',LW,lw), hold on
+plot(f,'r',LW,lw), plot(h,'k',LW,lw)
+legend('Molifier g','Noisy function f','Smoothed function h');
+hold off;
 
 %% References
 %
