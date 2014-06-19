@@ -34,7 +34,7 @@ K = @(s,t) exp(-abs(s-t));
 % Mercer decomposition numerically.
 F = fred( K, domain([-1,1]) );
 [Psi,Lambda] = eigs(F,20,'lm');
-Psi = Psi{1};
+Psi = chebfun(Psi);
 [lambda,idx] = sort(diag(Lambda),'descend');
 Psi = Psi(:,idx);
 
