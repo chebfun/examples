@@ -78,7 +78,7 @@ length(len)
 tic, g = inv(len); toc
 
 %%
-% Here we put circles around the dots to confirmthat we have the same
+% Here we put circles around the dots to confirm that we have the same
 % result as before:
 plot(s(g((0:N-1)*h)),'ok',MS,8)
 
