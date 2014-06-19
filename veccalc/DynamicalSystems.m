@@ -24,9 +24,9 @@
 % a chebfun2v object and the trajectories can be computed with `ode45`.
 % In each plot, the initial value of each solution is marked with a dot.
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
-g = chebfun2v(@(x,y) x, @(x,y) y);    % identity chebfun2v
-A = [2 -2;0 1]; [EV, EW] = eig(A);    % matrix of the system and eigenvalues
-G = A*g; T = [0 3];                   % phase plane and time interval
+g = chebfun2v(@(x,y) x, @(x,y) y);        % identity chebfun2v
+A = [2 -2;0 1]; [EV, EW] = eig(A);        % matrix of the system and eigenvalues
+G = A*g; T = [0 3];                       % phase plane and time interval
 fprintf('eigenvalues of A:\n'), disp(diag(EW)')
 fprintf('eigenvectors of A:\n'), disp(EV)
 quiver(G,'b',LW,2), hold on, axis equal
@@ -48,7 +48,7 @@ title('The origin is an unstable fixed point',FS,14)
 % portrait has an unstable fixed point at the origin.
 % If both eigenvalues have nonpositive real part, then the solution can not
 % grow infinitely large in absolute value. The origin is here a stable fixed
-% point, all trajectories approach that point.
+% point, and all trajectories approach that point.
 A = [-1 3; 0 -3]; [EV, EW] = eig(A);
 fprintf('eigenvalues of A:\n'), disp(diag(EW)')
 fprintf('eigenvectors of A:\n'), disp(EV)
@@ -234,7 +234,7 @@ title('An unstable node and collinear eigendirections',FS,14)
 
 %% References
 %
-% 1. R. Abraham and J. E. Marsden, _Foundations of Mechanics_, Benjamin-
-%    Cummings, 1978.
+% 1. R. Abraham and J. E. Marsden, _Foundations of Mechanics_,
+%    Benjamin-Cummings, 1978.
 %
 % 2. S. H. Strogatz, _Nonlinear Dynamics and Chaos_, Addison-Wesley, 1994.
