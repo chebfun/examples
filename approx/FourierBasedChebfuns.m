@@ -12,7 +12,7 @@ LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 
 %% Construction and comparison
 % A Fourier-based chebfun, or `fourfun` as we like to refer to them, can be
-% created with the use of the `periodic' flag in the chebfun constructor.
+% created with the use of the `'periodic'` flag in the chebfun constructor.
 % For, example, the function $f(x) = \cos(8\sin(x))$ for $-\pi \leq x \leq
 % \pi$ can be constructed as follows:
 % 
@@ -32,7 +32,7 @@ plotcoeffs(f)
 %%
 % Since $f$ is smooth and periodic, a Fourier representation requires fewer
 % terms than a Chebyshev representation of $f$ to reach machine precision.
-% We can check this by constructing $f$ without the `periodic' flag:
+% We can check this by constructing $f$ without the `'periodic'` flag:
 f_cheby = chebfun(@(x) cos(8*sin(x)),domain)
 
 %%
@@ -83,8 +83,9 @@ intf = sum(f)
 
 %%
 % Complex-valued fourfuns are also possible. For example:
-f = chebfun(@(x) 16*sin(x).^3 + 1i*(13*cos(x)-5*cos(2*x)-2*cos(3*x)-cos(4*x)),domain,'periodic')
-plot(f, LW, lw)
+f = chebfun(@(x) 1i*(13*cos(x)-5*cos(2*x)-2*cos(3*x)-cos(4*x)) + ...
+                 16*sin(x).^3, domain, 'periodic')
+plot(f, LW, lw), axis equal
 
 %%
 % The area enclosed by this curve can be computed as
