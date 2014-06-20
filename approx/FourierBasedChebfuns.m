@@ -6,12 +6,12 @@
 
 %%
 % One of the new features of Chebfun version 5 is the ability to create
-% chebfuns of smooth periodic functions using Fourier series.  This
-% example introduces and demonstrates some of the functionality of this new tool. 
+% chebfuns of smooth periodic functions using Fourier series. This example
+% introduces and demonstrates some of the functionality of this new tool.
 LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 
 %% Construction and comparison
-% A Fourier-based chebfun, or `fourfun` as we like to refer to them, can be
+% Fourier-based chebfuns, or "fourfuns" as we like to refer to them, can be
 % created with the use of the `'periodic'` flag in the chebfun constructor.
 % For, example, the function $f(x) = \cos(8\sin(x))$ for $-\pi \leq x \leq
 % \pi$ can be constructed as follows:
@@ -21,11 +21,10 @@ f = chebfun(@(x) cos(8*sin(x)),domain,'periodic')
 plot(f,LW,lw);
 
 %%
-% Here $f$ is represented to machine precision using a Fourier interpolant 
-% rather than a Chebyshev interpolant. The displayed information for $f$
-% above shows that it is of length 61, meaning that $f$ is resolved to 
-% machine precision using 61 samples, or $(61-1)/2=30$ (complex)
-% Fourier modes. These
+% Here $f$ is represented to machine precision using a Fourier interpolant
+% rather than a Chebyshev interpolant. The displayed information for $f$ above
+% shows that it is of length 61, meaning that $f$ is resolved to machine
+% precision using 61 samples, or $(61-1)/2=30$ (complex) Fourier modes. These
 % coefficients can be displayed graphically by
 plotcoeffs(f)
 
@@ -45,7 +44,7 @@ theoretical = pi/2
 
 %%
 % Trying to construct a fourfun from a non-periodic or non-smooth function
-% will typically result in a warning being issued and an `unhappy` fourfun,
+% will typically result in a warning being issued and an "unhappy" fourfun,
 % as illustrated for the unit step function below:
 f = chebfun(@(x) 0.5*(1+sign(x)),domain,'periodic')
 plot(f,LW,lw);
@@ -67,9 +66,9 @@ f = chebfun(@(x) 0.5*(1+sign(x)),domain,'splitting','on')
 
 %%
 % Addition, subtraction, multiplication, division, and function composition
-% can all be directly applied to a fourfun.  However one 
-% should be aware that operation should result in a smooth and periodic 
-% function. The following example illustrates some of these operations:
+% can all be directly applied to a fourfun.  However one should be aware that
+% operation should result in a smooth and periodic function. The following
+% example illustrates some of these operations:
 g = chebfun(@(x) sin(x),domain,'periodic');
 f = tanh(cos(1+2*g).^2)-0.5
 plot(f, LW, lw)
@@ -127,7 +126,7 @@ func_vals = exp(sin(2*pi*x)) + 0.05*randn(n,1);
 f = chebfun(func_vals,domain,'periodic')
 
 %%
-% Here $f$ interpolates the noisy `func_vals' at 101 equally spaced points
+% Here $f$ interpolates the noisy `func_vals` at 101 equally spaced points
 % from $[-\pi,\pi)$ using the Fourier basis. The high frequencies in this
 % function can be smoothed by convolving it with a mollifier, in this case
 % a (normalized) Gaussian with variance 0.1.

@@ -57,7 +57,7 @@ x = chebfun('x',[0,W]);
 fr = exp(-x.^2).*cumsum(exp(x.^2));  % right of x=0
 fl = newDomain(-flipud(fr),[-W 0]);  % left of x=0
 f = join(fl,fr);                     % must be an easier way to do this!
-f = chebfun(f, [-W 0 W]);              % is there a better way to do this?
+f = merge(f)
 plot(f,LW,lw), grid on
 
 %%
