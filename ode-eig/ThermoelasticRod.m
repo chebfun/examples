@@ -70,7 +70,7 @@ title(sprintf('Unstable, \\lambda = %.3f',Lu(1,1)))
 % it through a simple Chebfun rootfinding search. First, we parameterize
 % the boundary conditions and the maximum real eigenvalue.
 BC = @(delta) @(x,u) [u(0); feval(diff(u),1) + u(1) - 4*delta*sum(u)];
-maxlam = @(delta) eigs( chebop([0,1],@(u)diff(u,2),BC(delta)), 1, 0 );
+maxlam = @(delta) eigs( chebop(@(x,u)diff(u,2),[0 1],BC(delta)), 1, 0 );
 
 %%
 % Then, we construct a chebfun for the maximum $\lambda$. A polynomial of
