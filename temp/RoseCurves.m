@@ -14,8 +14,7 @@
 
 %%
 % The Wikipedia page about rose curves [1] contains a nice image of many roses
-% for different rational values of $k$. This Example reproduces part of that
-% image.
+% for different rational values of $k$. This Example reproduces that image.
 
 %%
 % In order to plot the roses, we will paramatrize them in the complex plane
@@ -47,4 +46,4 @@ title('Rose curve for parameter k = m/n')
 
 %% References
 %
-% 1. https://en.wikipedia.org/wiki/Rose_(mathematics)
+% 1. [https://en.wikipedia.org/wiki/Rose_curve](https://en.wikipedia.org/wiki/Rose_curve)
