@@ -32,7 +32,8 @@ dom = [0, 11];
 op  = @(u) 2*diff(u,3) + u.*diff(u,2);
 bc  = @(x,u) [u(0); feval(diff(u),0); feval(diff(u),dom(2))-1];
 N   = chebop(op, dom, bc);
-u   = N\0
+u   = N\0;
+u   = simplify(u)
 
 %%
 % Here is what the solution looks like.
