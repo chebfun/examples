@@ -73,7 +73,7 @@ fprintf('T is estimated to be %1.2f hrs.\n',yT2(1)/360)
 %% 3. Lane-Emden Equation from Astrophysics
 % The Lane-Emden equation from Astrophysics is 
 %%
-% x*u'' + 2*u' + x*u^n = 0, u'(0)=0, u(0)=1.
+% x*u'' + 2*u' + x*u^n = 0, u'(0) = 0, u(0) = 1.
 
 %%
 % The first root of the solution is important and since this is unknown it
@@ -91,17 +91,17 @@ N.rbc = @(u,v) u;
 x = chebfun(@(x) x,[0 1]);
 N.init = [cos(pi/2*x);3];
 %Solve
-uv = solvebvp(N,[0;0]);
+uv = solvebvp(N,0);
 uv1 = uv{1}; uv2 = uv{2};
 %Rescale solution and plot.
 t = chebfun('t',[0,uv2(1)]); u = uv1(t./uv2(1));
 plot(u,LW,2), hold on; 
-title('Solution of the Lane-Emden equation for n=4.5',FS,16),
+title('Solution of the Lane-Emden equation for n = 4.5',FS,16),
 
 %%
 % Let's compare the computed first root for n=4.5 to the result in [1]:
 
-norm(uv(1,2)-31.836463244694285264)
+norm(uv{2} - 31.836463244694285264)
 
 %% References
 %
