@@ -24,9 +24,10 @@ xlabel('k',FS,fs), ylabel('x',FS,fs), set(gca,FS,fs)
 h = get(gca,'xlabel'); set(h,'position',get(h,'position')+[1.5 0.1 0])
 h = get(gca,'ylabel'); set(h,'position',get(h,'position')+[0 0.25 0])
 
+%%
 % Fornberg also includes the Legendre polynomials for comparison. This can 
 % be easily done in Chebfun by replacing `chebpoly` with `legpoly` above.
-% Here is the result
+% Here is the result:
 clf;
 for j = 1:length(k)
   plot3(j*one,x,legpoly(k(j)),'linewidth',1.6), hold on
@@ -42,4 +43,5 @@ h = get(gca,'ylabel'); set(h,'position',get(h,'position')+[0 0.25 0])
 %% References
 %
 % 1. B. Fornberg, _A Practical Guide to Pseudospectral Methods_, Cambridge University Press, 1996.
+%
 % 2. D. J. Higham and N. J. Higham, _Matlab Guide_, 2nd ed., SIAM, 2005.
