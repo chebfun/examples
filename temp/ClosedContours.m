@@ -1,16 +1,17 @@
 %% Integrals over closed contours using periodic chebfuns
-% Mohsin Javed, 26th June, 2014
+% Mohsin Javed, June 2014
 
 %%
 % (Chebfun example complex/ClosedContours.m)
 % [Tags: #contour, #contourintegral, #periodic]
+
 %%
-%  
+%
 LW = 'linewidth'; lw = 1.5;
 
 %%
 % In this example, we compute a few integrals over closed contours in the complex
-% plane using periodic chebfuns. 
+% plane using periodic chebfuns.
 %%
 % Consider a smooth and closed contour $\Gamma$ in the complex plane and let
 % us say we want to compute
@@ -27,7 +28,7 @@ LW = 'linewidth'; lw = 1.5;
 % Here is a simple example. Consider the function:
 f = @(z) (1-2*z)./(z.*(z-1).*(z-3));
 
-%% 
+%%
 % Say we want to integrate this funciton on a circle of radius $2$. To do this
 % in Chebfun's periodic mode, we first parametrize the circle:
 z = chebfun(@(t) 2*exp(2*pi*1i*t), [0, 1], 'periodic');
