@@ -5,9 +5,6 @@
 % (Chebfun example pde/BSexponential.m)
 % [Tags: #heatequation, #finance, #linearPDE, #EXPM]
 
-plotopt = {'linewidth',2};
-ver chebfun
-
 %%
 % The Black-Scholes partial differential equation is the foundation of much of
 % modern finance. Suppose you have a European-style call option (right to buy)
@@ -47,7 +44,7 @@ A.rbc = 0;    % Homogenous BCs.
 % difference between the strike price (for us, 50) and the stock price.
 vT = max( 0, s-50 );
 clf
-plot(vT, [40 60], plotopt{:}), hold on, ylim([-.5 14])
+plot(vT, [40 60]), hold on, ylim([-.5 14])
 wT = vT - u;  % Adjusted variable - satisfies w_t = A*w, B*w = 0.
 
 %%
@@ -57,7 +54,7 @@ wT = vT - u;  % Adjusted variable - satisfies w_t = A*w, B*w = 0.
 for t = 0.1:0.1:0.5
    w = expm(A, -t, wT);
    v = w + u;
-   plot(v, [40 60], 'k', plotopt{:})
+   plot(v, [40 60], 'k')
 end
 
 %%
