@@ -11,17 +11,19 @@
 % for a certain stock, to be exercised at a time $T$ in the future. Then, as a
 % function of the stock price $s$, the value $v(t,s)$ of the option is governed
 % by
-% $$ v_t = -\frac{\sigma^2}{2}s^2v_{ss} -rsv_s + rv,
-% \quad s>0, \quad t > 0, $$
+% \[ v_t = -\frac{\sigma^2}{2}s^2v_{ss} -rsv_s + rv,
+% \quad s>0, \quad t > 0, \]
 % subject to
-% $$ v(0, T) = 0, \quad v(t, s)\rightarrow s \text{ as } s\rightarrow \infty. $$
+% \[ v(0, T) = 0, \quad v(t, s)\rightarrow s \text{ as } s\rightarrow
+% \infty. \]
 
 %%
 % It's much more convenient for us to work on a finite domain, so we will
 % truncate and replace the asymptotic condition with a Neumann condition.
 d = [0 500];
 s = chebfun('s', d);
-A = chebop(@(s,v) -sigma^2/2*s.^2.*diff(v,2) - r*S.*diff(v) + r*v, d);
+sigma = 0.45;  r = 0.03;
+A = chebop(@(s,v) -sigma^2/2*s.^2.*diff(v,2) - r*s.*diff(v) + r*v, d);
 A.lbc = 0;
 A.rbc = @(v) diff(v) - 1;    % replaces v->s as s->infinity
 
