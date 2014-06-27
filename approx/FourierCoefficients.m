@@ -7,23 +7,28 @@ LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 
 %%
 % The Fourier series of a function $u \in L^{2}[-\pi,\pi]$ is given as
-% $$ 
-% \mathcal{F}[u] = \sum_{k=-\infty}^{\infty} c_k e^{ikx} 
-% $$
+%
+% $$ \mathcal{F}[u] = \sum_{k=-\infty}^{\infty} c_k e^{ikx} $$
+%
 % where 
-% $$ 
-% c_k &= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)e^{-ikx} dx.
-% $$ 
+%
+% $$ c_k = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)e^{-ikx} dx. $$
+%
 % Alternatively, we can express the series in terms of sines and cosines:
-% $$ 
-% \mathcal{F}[u] = \sum_{k=0}^{\infty} a_k \cos(k x) +  \sum_{k=1}^{\infty} b_k \sin(k x)
-% $$
+%
+% $$ \mathcal{F}[u] = \sum_{k=0}^{\infty} a_k \cos(k x) +
+% \sum_{k=1}^{\infty} b_k \sin(k x) $$
+%
 % where 
-% $$ 
-% a_0 &= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) dx, \\
-% a_k &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x)\cos(kx) dx,\; k>0, \\
-% b_k &= \frac{1}{\pi} \int_{-\pi}^{\pi} f(x)\sin(kx) dx,\; k>0.
-% $$
+%
+% $$ a_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x)\cos(kx) dx, \quad
+% b_k = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x)\sin(kx) dx, $$
+%
+% for $k>0$ and
+%
+% $$ a_0 = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) dx. $$
+
+%%
 % Similar expressions hold for more general intervals $[a,b]$ by shifting
 % and scaling appropriately.
 %
@@ -31,13 +36,13 @@ LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 % `fourcoeffs` command. The smoothness of $u$ over $[-\pi,\pi]$ dictates
 % the technique for determining the coefficients.
 
-%% Smooth, periodic functions
+%% Smooth periodic functions
 % Typically, if $u$ and its periodic extension are twice continuously
 % differentiable over $[-\pi,\pi]$ and $u'''(x)$ is piecewise continuous
 % on $[-\pi,\pi]$ (or more specifically of bounded variation) then the
 % Fourier coefficients of $u$ can be quickly computed by first constructing
 % $u$ with the '`periodic`' flag in the Chebfun, then calling `fourcoeffs`.
-% Here is an example for a simple Fourier polynomail:
+% Here is an example for a simple Fourier polynomial:
 u = chebfun(@(x) 1 - 4*cos(x) + 6*sin(2*x),[-pi,pi],'periodic');
 c = fourcoeffs(u).'; c = c(end:-1:1);
 disp('Fourier coeffs of 1 + cos(x) + sin(2*x):')
@@ -69,7 +74,7 @@ b
 % coefficients necessary to resolve the function to machine precision
 % (assuming this number is less than 65537).  However, a specific number
 % can be obtained with an additional input argument.  We illustrate this
-% feature on the function $f(x) = 3/(5 - 4cos(x))$, which is analytic in a 
+% feature on the function $f(x) = 3/(5 - 4\cos(x))$, which is analytic in a 
 % strip in the complex plane and has exact Fourier coefficients given by
 % $c_k = 2^{-|k|}$:
 numCoeffs = 11;
@@ -79,7 +84,7 @@ disp('Fourier coeffs of 3/(5-4cos(x)):')
 c
 
 %%
-% We see the computed results match the exact results to machine precision.
+% We see that the computed results match the exact results to machine precision.
 
 %%
 % Here is an example for a less smooth function:
@@ -90,14 +95,14 @@ disp('Fourier coeffs of |sin(x)|^3')
 c
 
 %%
-% We see that the coefficients are decaying much more slowly in this case
-% in fact the number of terms required to resolve this funtion to machine
+% We see that the coefficients decay much more slowly in this case
+% in fact the number of terms required to resolve this function to machine
 % precision is:
 length(u)
 
 %%
 % The reason is that this function has only two continuous derivatives in
-% $L^{2}[-\pi,\pi]$ and a piecewise continuous third derivative so that its
+% $L^{2}[-\pi,\pi]$ and a piecewise continuous third derivative, so its
 % Fourier coefficients decay as $O(|k|^{-4})$ [1].  This decay rate 
 % can be seen by plotting the Fourier coefficients on a log-log scale, 
 % which can be easily done for the positive mode coefficients (i.e. $k>0$)
@@ -113,14 +118,16 @@ hold off
 % with fewer than two continuous derivatives can also be computed.  However,
 % the functions must first be constructed using the default, 'non-periodic',
 % option.  In this case the Fourier coefficients are computed using the
-% integral formulas (via Chebfun's sum method) instead of the Fast 
+% integral formulas (via Chebfun's `sum` method) instead of the Fast 
 % Fourier Transform.
 %
 % The quintessential example of a non-smooth function is that of the square
 % wave (or periodic extension of the step function), which can be defined
-% by the $|sgn|$ (or sign) function 
-% $$ u(x) = \sgn(sin(x)) $$ 
-% This can be constructed in Chebfun with 'splitting' turned on
+% by the `sign` function as
+%
+% $$ u(x) = \mbox{sign}(\sin(x)) $$ 
+%
+% This can be constructed in Chebfun with 'splitting' turned on,
 sq_wave = @(x) sign(sin((x)));
 u = chebfun(sq_wave,[-pi,pi],'splitting','on');
 
@@ -135,12 +142,12 @@ b
 
 %%
 % The exact values of the coefficients are 
-% $$b_k = \frac{4}{\pi}\begin{cases}  1/k,\; k\text{odd}, \\
-%                                       0, \; k\text{even},
-% \end{cases}
-% $$
-% for $k\geq 1$.  These values can be easily seen in the computed results:
-disp('   k                      pi/4*b_k')
+%
+% $$ b_k = \frac{4}{k\pi} ~~(k \mbox{ odd}) $$
+%
+% with $b_k = 0$ for $k$ even, $k\ge 1$.
+% These values can be easily seen in the computed results:
+disp('            k               pi/4*b_k')
 disp([(1:7)' pi/4*real(b)])
 
 %%
@@ -158,10 +165,11 @@ u_trunc = chebfun(c,[-pi,pi],'periodic','coeffs');
 plot(u,'k-',u_trunc,'b-',LW,lw)
 
 %%
-% This represents the best 15-mode trignometric approximation to the square
+% This represents the best 15-mode trigonometric approximation to the square
 % wave over $[-\pi,\pi]$ in the $L^2$ sense. The oscillations in the
-% approximation are called the Gibbs' phenomenon.
+% approximation are called the Gibbs phenomenon.
 
+%%
 % To see the actual 'wave' it is useful to plot the approximation over 
 % a larger interval, which can be done for $-4\pi \leq x \leq 4\pi$ as follows:
 u = chebfun(sq_wave,[-4*pi,4*pi],'splitting','on');
@@ -173,7 +181,8 @@ plot(u,'k-',u_trunc,'b-',LW,lw)
 % the larger domain, we simply construct `u_trunc` over the larger domain.
 
 %%
-% Here is one last example for the sawtooth wave, again computed over $[-\pi,\pi]$
+% Here is one last example for the sawtooth wave,
+% again computed over $[-\pi,\pi]$
 % then expanded to a larger domain:
 sawtooth = @(x) (mod(x+pi,2*pi))/(2*pi);
 u = chebfun(sawtooth,[-pi,pi],'splitting','on');
@@ -185,7 +194,7 @@ u_trunc = chebfun(u_trunc,[-4*pi,4*pi],'periodic');
 plot(u,'k-',u_trunc,'b-',LW,lw)
 
 %%
-% To hear this wave using try `chebtune(u_trunc)`.
+% To hear this wave using try `chebtune(u_trunc,6)`.
 
 %% References
 % [1] L.N. Trefethen, _Spectral Methods in MATLAB_, SIAM, 2000.
