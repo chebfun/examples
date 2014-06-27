@@ -16,7 +16,7 @@ MS = 'markersize'; FS = 'fontsize'; fs = 12;
 %
 % $$ p(x) = \sum_{n=0}^N c_n^{leg} P_n(x), $$
 %
-% where $P_n(x)$ is the degree $n$ Legendre polynomial, are desirable due to
+% where $P_n(x)$ is the degree $n$ Legendre polynomial, are advantageous due to
 % their orthogonality in the standard $L^2$ inner product. Recently, a new
 % algorithm has been derived and implemented in Chebfun by Hale and Townsend
 % that converts between $N$ Legendre and Chebyshev coefficients in
@@ -24,7 +24,7 @@ MS = 'markersize'; FS = 'fontsize'; fs = 12;
 % based on a long-established asymptotic formula for Legendre polynomials [4],
 % which was previously used in Chebfun's `legpts` command [1]. The transform
 % comes in two parts: (1) The forward transform, `leg2cheb`, which converts
-% Legendre to Chebyshev coefficients and (2) The inverse transform,
+% Legendre to Chebyshev coefficients, and (2) The inverse transform,
 % `cheb2leg`, which converts in the other direction.
 
 %%
@@ -40,7 +40,7 @@ MS = 'markersize'; FS = 'fontsize'; fs = 12;
 % fast transform in Chebfun:
 
 f = chebfun(@(x) 1./(1 + 1000*(x-.1).^2));  % A Runge-type function
-c_cheb = chebcoeffs(f).';                     % Chebyshev coeffs in O(NlogN)
+c_cheb = chebcoeffs(f).';                   % Chebyshev coeffs in O(NlogN)
 c_leg = cheb2leg(c_cheb);                   % Leg coeffs with the new algorithm
 
 semilogy(flipud(abs(c_leg)), 'xr',MS,4), hold on  % plot them
@@ -152,12 +152,12 @@ norm(u - f)
 %    and Gauss-Jacobi quadrature nodes and weights,
 %    _SIAM Journal on Scientific Computing_, 35 (2013), A652-A672.
 %
-% 2. N. Hale and A. Townsend, A fast, simple, and stable Chebyshev--Legendre
+% 2. N. Hale and A. Townsend, A fast, simple, and stable Chebyshev-Legendre
 %    transform using an asymptotic formula, _SIAM Journal on Scientific
 %    Computing_, 36 (2014), A148-A167.
 %
-% 3. S. Olver and A. Townsend, A fast and well-conditioned spectral method, to
-%    appear in _SIAM Review_, 55 (2013), 462-489
+% 3. S. Olver and A. Townsend, A fast and well-conditioned spectral method,
+%    _SIAM Review_, 55 (2013), 462-489
 %
 % 4. T. J. Stieltjes, Sur les polynomes de Legendre, _Annales de Faculte des
 %    Sciences de Toulouse_, 4 (1890), G1-G17.

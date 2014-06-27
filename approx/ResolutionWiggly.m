@@ -13,7 +13,7 @@ LW = 'linewidth'; lw = 1.2;
 hold off, plot(f, LW, lw, LW, lw), ylim([ - 2.5 2.5])
 
 %%
-% The degree of $f$ is of moderate size:
+% The degree of $f$ is moderate:
 np = length(f)
 
 %%
@@ -37,7 +37,7 @@ title('error of interpolant of half the degree')
 
 %%
 % Note that near the right-hand boundary the approximation improves again, 
-% reflecting the fundamental phenomenon that polynomials have power
+% reflecting the fundamental phenomenon that polynomials have less
 % approximation power near the endpoints of an interval than in the middle, as
 % discussed in Chapter 22 of [1].
 
@@ -60,7 +60,9 @@ title('error of least - squares approximant of half the degree')
 % Finally, here is what happens with best minimax approximation. Now we have beautifully
 % smooth tracking of the low-wave-number signal on the right, but no accuracy at
 % all on the left.
+warning off
 pbest = remez(f, nphalf - 1, 'maxiter', 100);
+warning on
 plot(f, 'b', pbest, 'r', LW, lw), ylim([ - 2.5 2.5])
 title('f and best approximant of half the degree')
 

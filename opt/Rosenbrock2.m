@@ -5,9 +5,6 @@
 % (Chebfun example opt/Rosenbrock2.m)
 % [Tags: #Rosenbrock, #optimization, #Chebfun2]
 
-LW = 'LineWidth';  lw = 1;
-MS = 'MarkerSize'; ms = 20;
-
 %% 1. The Rosenbrock function
 % One of the very first Chebfun examples [2] demonstrated how standard 1D
 % Chebfun can do a reasonable job of minimizing or maximizing a function
@@ -15,12 +12,14 @@ MS = 'MarkerSize'; ms = 20;
 f = @(x,y) (1-x).^2 + 100*(y-x.^2).^2;
 
 %%
-% With the introduction of Chebfun2 in 2013, this take become much simpler.
+% With the introduction of Chebfun2 in 2013, this task became much simpler.
 F = chebfun2(f, [-1.5 1.5 -1 3]);
 [minf, minx] = min2(F)
 
 %%
 % We can plot the function and the computed minimum like this:
+LW = 'LineWidth';  lw = 1;
+MS = 'MarkerSize'; ms = 20;
 contour(F, 10:10:300, LW, lw), colorbar, shg
 hold on, plot(minx(1), minx(2), '.k', MS, ms), hold off
 
@@ -69,6 +68,6 @@ plot(g, 'r', LW, 2), shg
 %% References
 %
 % 1. H. H. Rosenbrock, "An automatic method for finding the greatest or least
-%    value of a function", Computer Journal, 3 (1960), 175-184.
+%    value of a function", _Computer Journal_, 3 (1960), 175-184.
 %
 % 2. Chebfun Example [opt/Rosenbrock](../opt/Rosenbrock.html)
