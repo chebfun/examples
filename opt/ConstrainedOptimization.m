@@ -1,4 +1,4 @@
-%% Constrained optimization in chebfun
+%% Constrained optimization in Chebfun
 % Alex Townsend, January 2014
 
 %%

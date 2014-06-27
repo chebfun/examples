@@ -13,10 +13,8 @@ f = @(x) sech(10*(x-0.2)).^2 + sech(100*(x-0.4)).^4 + ...
 % (which appears as F21F in [1]) over $[0, 1]$.
 
 %%
-% We create a Chebfun representation and plot the function, increasing
-% `minsamples` so that the spikes are not missed by an overly coarse initial
-% sample:
-ff = chebfun(f,[0 1], 'splitting','on','minsamples',129);
+% We create a Chebfun representation and plot the function.
+ff = chebfun(f,[0 1], 'splitting','on');
 LW = 'linewidth';
 plot(ff,'b',LW,1.6,'numpts',1e4), grid on
 title('Spike function','FontSize',14)
@@ -30,7 +28,7 @@ title('Zoom, on semilogy axes','FontSize',14)
 % Now we compute the integral.  In order to estimate the time for this
 % computation, we create the chebfun again without plotting it.
 tic
-ff = chebfun(f,[0 1], 'splitting','on','minsamples',129);
+ff = chebfun(f,[0 1], 'splitting','on');
 sum(ff)
 
 %%
