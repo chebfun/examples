@@ -16,8 +16,8 @@ LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 % For, example, the function $f(x) = \cos(8\sin(x))$ for $-\pi \leq x \leq
 % \pi$ can be constructed as follows:
 % 
-domain = [-pi,pi];
-f = chebfun(@(x) cos(8*sin(x)),domain,'periodic')
+dom = [-pi,pi];
+f = chebfun(@(x) cos(8*sin(x)),dom,'periodic')
 plot(f,LW,lw);
 
 %%
@@ -32,7 +32,7 @@ plotcoeffs(f)
 % Since $f$ is smooth and periodic, a Fourier representation requires fewer
 % terms than a Chebyshev representation of $f$ to reach machine precision.
 % We can check this by constructing $f$ without the `'periodic'` flag:
-f_cheby = chebfun(@(x) cos(8*sin(x)),domain)
+f_cheby = chebfun(@(x) cos(8*sin(x)),dom)
 
 %%
 % The ratio of length of the Chebyshev series to the Fourier series should
@@ -46,7 +46,7 @@ theoretical = pi/2
 % Trying to construct a fourfun from a non-periodic or non-smooth function
 % will typically result in a warning being issued and an "unhappy" fourfun,
 % as illustrated for the unit step function below:
-f = chebfun(@(x) 0.5*(1+sign(x)),domain,'periodic')
+f = chebfun(@(x) 0.5*(1+sign(x)),dom,'periodic')
 plot(f,LW,lw);
 
 %%
@@ -55,7 +55,7 @@ plot(f,LW,lw);
 % phenomenon can be seen near the discontinuity in the plot of $f$. Chebfun
 % can be used to represent this function in non-periodic mode (i.e. using
 % Chebyshev series) with the option of `splitting on`:
-f = chebfun(@(x) 0.5*(1+sign(x)),domain,'splitting','on')
+f = chebfun(@(x) 0.5*(1+sign(x)),dom,'splitting','on')
 
 %%
 % Splitting is not an option for fourfuns.
@@ -69,7 +69,7 @@ f = chebfun(@(x) 0.5*(1+sign(x)),domain,'splitting','on')
 % can all be directly applied to a fourfun.  However one should be aware that
 % operation should result in a smooth and periodic function. The following
 % example illustrates some of these operations:
-g = chebfun(@(x) sin(x),domain,'periodic');
+g = chebfun(@(x) sin(x),dom,'periodic');
 f = tanh(cos(1+2*g).^2)-0.5
 plot(f, LW, lw)
 
@@ -101,7 +101,7 @@ intf = sum(f)
 %%
 % Complex-valued fourfuns are also possible. For example:
 f = chebfun(@(x) 1i*(13*cos(x)-5*cos(2*x)-2*cos(3*x)-cos(4*x)) + ...
-                 16*sin(x).^3, domain, 'periodic')
+                 16*sin(x).^3, dom, 'periodic')
 plot(f, LW, lw), axis equal
 
 %%
@@ -123,15 +123,15 @@ rng('default'), rng(0);
 n = 201;
 x = fourpts(n);
 func_vals = exp(sin(2*pi*x)) + 0.05*randn(n,1);
-f = chebfun(func_vals,domain,'periodic')
+f = chebfun(func_vals,dom,'periodic')
 
 %%
-% Here $f$ interpolates the noisy `func_vals` at 101 equally spaced points
+% Here $f$ interpolates the noisy `func_vals` at 201 equally spaced points
 % from $[-\pi,\pi)$ using the Fourier basis. The high frequencies in this
 % function can be smoothed by convolving it with a mollifier, in this case
 % a (normalized) Gaussian with variance 0.1.
 sigma = 0.1;
-g = chebfun(@(x) 1/(sigma*sqrt(2*pi))*exp(-0.5*(x/sigma).^2),domain,'periodic');
+g = chebfun(@(x) 1/(sigma*sqrt(2*pi))*exp(-0.5*(x/sigma).^2),dom,'periodic');
 
 %%
 % Note that the resulting respresentation of $g$ is actually the periodic 
