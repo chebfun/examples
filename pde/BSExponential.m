@@ -11,11 +11,9 @@
 % for a certain stock, to be exercised at a time $T$ in the future. Then, as a
 % function of the stock price $s$, the value $v(t,s)$ of the option is governed
 % by
-% \[ v_t = -\frac{\sigma^2}{2}s^2v_{ss} -rsv_s + rv,
-% \quad s>0, \quad t > 0, \]
+% $$ v_t = -\frac{\sigma^2}{2}s^2v_{ss} -rsv_s + rv, \quad s>0, \quad t > 0, $$
 % subject to
-% \[ v(0, T) = 0, \quad v(t, s)\rightarrow s \text{ as } s\rightarrow
-% \infty. \]
+% $$ v(0, T) = 0, \quad v(t, s)\rightarrow s \text{ as } s\rightarrow \infty. $$
 
 %%
 % It's much more convenient for us to work on a finite domain, so we will
