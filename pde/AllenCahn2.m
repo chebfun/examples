@@ -7,18 +7,21 @@
 
 %% 1. The metastability phenomenon
 % Oxford's Numerical Analysis Problem Solving Squad faced a problem this month involving
-% the 1D Allen-Cahn equation, which is the following nonlinear PDE: $$ u_t =
-% u_{xx} + u(1-u^2) . $$ This equation has three constant solutions: $u(x)=-1$,
+% the 1D Allen-Cahn equation, which is the following nonlinear PDE:
+%
+% $$ u_t = u_{xx} + u(1-u^2) . $$
+%
+% This equation has three constant solutions: $u(x)=-1$,
 % $u(x)=1$, and $u(x) = 0$, the first two stable and the third unstable.
 % Depending on initial and boundary conditions, solutions tend to develop
 % structures that locally approximate the value $1$ or $-1$, but as time passes,
-% these structures eventually simplify. One of the built-in demos in CHEBGUI
+% these structures eventually simplify. One of the built-in demos in Chebgui
 % illustrates this behavior.
 
 %%
 % For example, if $x$ ranges over the whole real line with boundary conditions
 % $u(x) \to -1$ as $|x|\to \infty$, here is the solution for the initial
-% function $$ u(x) = 3 e^{-x^2/4} - 1, $$ computed with Chebfun's PDE15S
+% function $$ u(x) = 3 e^{-x^2/4} - 1, $$ computed with Chebfun's `pde15s`
 % command. Thanks to the exponential decay, we can approximate the real line by
 % the finite interval $[-16, 16]$.
 u0 = chebfun('3.*exp(-x.^2/4)-1',[-16 16]);
@@ -40,7 +43,6 @@ xlabel('t', FS, 14)
 %%
 % The time scale has become MUCH longer as we can see by increasing the time
 % axis by a factor of 200:
-u0 = chebfun('3.*exp(-x.^2/16)-1', [-16 16]);
 t10000 = 0:200:10000;
 [t, u] = pde15s(pdefun, t10000, u0, bc, opts);
 waterfall(u, t, 'simple', LW, 1), grid on, view([115 20]), colormap([0 0 0])
