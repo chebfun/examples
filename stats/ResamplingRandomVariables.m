@@ -5,8 +5,8 @@
 % (Chebfun example stats/ResamplingRandomVariables.m)
 
 %%
-% One common problem in applications of random variables is to draw samples
-% from a given distribution. It's easy to find functions for generating
+% A common problem in applications of random variables is to draw samples
+% from a given distribution. It's easy to find computer codes for generating
 % pseudorandom numbers that are distributed uniformly or normally, and
 % these usually must be converted to simulate a different target
 % distribution. The key steps are integration and function inversion, which
@@ -31,29 +31,29 @@ density = f/sum(f);
 %%
 % Now we integrate to get the cumulative distribution function.
 cdf = cumsum(density);
-plot([density,cdf],LW,2), axis([-pi pi 0 1])
-title('von Mises distribution')
+plot([density,cdf],LW,1.6), axis([-pi pi 0 1])
+title('von Mises distribution',FS,12)
 legend('density','distribution','Location','northwest')
 
 %%
-% Sampling from this distribution involves applying the inverse of it to
-% uniformly sampled points. We could do this one-by-one using ROOTS, but
-% for a large number of points it will be more efficient to find a
-% representation of the inverse function. We use INV2 for this.
-cdfinv = inv2(cdf);
-plot(cdfinv,LW,2)
-title('Inverse of von Mises distribution')
+% Sampling from this distribution involves applying its inverse to
+% uniformly sampled points. We could do this one-by-one using `roots`, but
+% for a large number of points it is more efficient to find a chebfun
+% for the inverse function with `inv`:
+cdfinv = inv(cdf);
+plot(cdfinv,LW,1.6)
+title('Inverse of von Mises distribution',FS,12)
 
 %%
 % Now the resampling is easy. We compare the resulting histogram to the
 % original von Mises density.
-u = rand(1e4,1);  % uniform
-x = cdfinv(u);    % von Mises
+u = rand(1e4,1);                           % uniform
+x = cdfinv(u);                             % von Mises
 [count,bin] = hist(x,36);
 count = count/sum(count*(bin(2)-bin(1)));  % renormalize, total area = 1
 cla, bar(bin,count), hold on
-plot(density,'r',LW,2), axis tight
-title('Sampled points and the orignal density')
+plot(density,'r',LW,1.6), axis tight
+title('Sampled points and the orignal density',FS,12)
 
 
 %% Logit-normal distribution
@@ -64,36 +64,36 @@ f = @(x) exp( -(log(x./(1-x))).^2/(2*sig^2))./(x.*(1-x));
 density = chebfun(f,[0 1]);
 density = density/sum(density);
 cdf = cumsum(density);
-clf, plot([density,cdf],LW,2)
-title('logit-normal distribution')
+clf, plot([density,cdf],LW,1.6)
+title('logit-normal distribution',FS,12)
 legend('density','distribution','Location','northwest')
 
 %%
-% However, because F'=f=0 at the ends, the inverse function has vertical
-% asymptotes at the ends, and a straightforward inversion will fail. To
+% However, because $F'=f=0$ at the ends, the inverse function has 
+% infinite slope at the ends, and a straightforward inversion will fail. To
 % cope with this, we'll take some shortcuts. First, we'll use symmetry
-% to restrict attention to x greater than 1/2. Second, we'll put Chebfun
+% to restrict attention to $x> 1/2$. Second, we'll put Chebfun
 % into splitting mode to help cope with the endpoint slope. Finally,
 % we'll truncate the domain of the cdf slightly.
 splitting on
-cdfinv = inv2( cdf{0.5,1-1e-3} );
-clf,plot(cdfinv,LW,2)
-title('Inverse of the logit-normal distribution')
+cdfinv = inv( cdf{0.5,1-1e-3} );
+clf, plot(cdfinv,LW,1.6)
+title('Inverse of the logit-normal distribution',FS,12)
 
 %%
 % To apply the result for resampling, we have to reflect uniform values
-% less than 1/2 back into [1/2,1], and reflect the results back.
+% less than $1/2$ back into $[1/2,1]$, and reflect the results back.
 u = rand(1e4,1);
 flag = (u < 0.5);  u(flag) = 1-u(flag);
 x = cdfinv( u );  x(flag) = 1-x(flag);
 [count,bin] = hist(x,36);
 count = count/sum(count*(bin(2)-bin(1)));  % renormalize, total area = 1
 clf, bar(bin,count), hold on
-plot(density,'r',LW,2), axis tight
-title('Sampled points and the orignal density')
+plot(density,'r',LW,1.6), axis tight
+title('Sampled points and the orignal density',FS,12)
 
 %%
-% We can see what our truncation of the orignal random variable costs us by
+% We can see what our truncation of the original random variable costs us by
 % looking at the domain of the inverse cdf:
 cdfinv.ends.'
 missing = 1 - ans(end)
