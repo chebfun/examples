@@ -53,11 +53,11 @@ diag(Lu)
 % unstable in the second case.
 LW = 'linewidth'; MS = 'markersize';
 subplot(1,2,1)
-plot(Vs(:,1),LW,1.6)
-title(sprintf('Stable, \\lambda = %.3f',Ls(1,1)))
+plot(Vs(:,4),LW,1.6)
+title(sprintf('Stable, \\lambda = %.3f',Ls(4,4)))
 subplot(1,2,2)
-plot(Vu(:,1),LW,1.6)
-title(sprintf('Unstable, \\lambda = %.3f',Lu(1,1)))
+plot(Vu(:,4),LW,1.6)
+title(sprintf('Unstable, \\lambda = %.3f',Lu(4,4)))
 
 %%
 % The solutions above look linear, but they do have significant Chebyshev
