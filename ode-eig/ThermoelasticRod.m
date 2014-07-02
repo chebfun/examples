@@ -17,20 +17,16 @@
 % eigenvalue problem governing the stability of the perturbation $\phi(x)$ is
 % nondimensionally
 %
-% $$ \phi''(x) = \lambda phi(x),\qquad   0 < x < 1, $$
+% $$ \phi''(x) = \lambda \phi(x),\qquad   0 < x < 1, $$
 %
-% $$ \phi(0) = 0,~~  phi'(1) + phi(1) = 4 \delta\int_0^1\phi(x) dx , $$
+% $$ \phi(0) = 0,~~  \phi'(1) + \phi(1) = 4 \delta\int_0^1\phi(x) dx , $$
 %
 % where the value of $\delta$ is a function of the thermal gradient. 
 % The transition from
 % stable to unstable happens at $\delta=1$. The presence of the integral of
-% phi in the boundary condition makes the problem unusual from a classical
+% $\phi$ in the boundary condition makes the problem unusual from a classical
 % standpoint, but from the Chebfun point of view it's just another linear
 % boundary condition.
-
-%%
-LW = 'linewidth';
-format long
 
 %%
 % First, we solve the eigenvalue problem in a stable case.
@@ -42,6 +38,7 @@ N.bc = @(x,u) feval(diff(u),1) + u(1) - 4*delta*sum(u);  % Barber condition
 
 %%
 % The eigenvalues are all negative, indicating stability:
+format long
 diag(Ls)
 
 %%
@@ -54,6 +51,7 @@ diag(Lu)
 %%
 % Here we see the perturbation which is least stable in the first case, or
 % unstable in the second case.
+LW = 'linewidth'; MS = 'markersize';
 subplot(1,2,1)
 plot(Vs(:,1),LW,1.6)
 title(sprintf('Stable, \\lambda = %.3f',Ls(1,1)))
@@ -82,7 +80,7 @@ stability = chebfun(maxlam,[0.5,2],'eps',1e-11,'vectorize')
 % Finally, the transition in stability occurs when the eigenvalue passes
 % through zero.
 dstar = find(stability==0)
-clf, plot(stability,LW,1.6), hold on, plot(dstar,0,'r*')
+clf, plot(stability,LW,1.6), hold on, plot(dstar,0,'ro',MS,16)
 xlabel('\delta'), ylabel('max \lambda'), grid on
 
 
