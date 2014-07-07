@@ -31,7 +31,7 @@ sum(f)
 % By taking more and more terms, we can have any finite degree
 % of smoothness, and an infinite convolution gives us
 % a function in $C^\infty$.  It will have compact support 
-% of the sum of the values of $h$ is funite.
+% of the sum of the values of $h$ is finite.
 
 %%
 % This gives a nice way to construct partitions of unity.  For 
