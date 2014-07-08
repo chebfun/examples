@@ -52,8 +52,7 @@ plot(g,'m',LW,1.6), grid on, axis([-1 2 -.2 1.2])
 % have various applications, and among other things they are
 % related to the _Denjoy-Carleman theorem_ [1,2].
 
-%%
-% References
+%% References
 %
 % 1. P. J. Cohen, A simple proof of the Denjoy-Carleman theorem,
 % _American Mathematical Monthly,_ 75 (1968), 26-31.
