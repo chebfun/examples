@@ -69,8 +69,7 @@ title('Spy plot of bivariate Chebyshev coefficients',FS,14)
 % We hope this addition will make it easy to explore Padua interpolants in
 % Chebfun2!
 
-%%
-% References
+%% References
 %
 % 1. M. Caliari, S. De Marchi, and M. Vianello, "Bivariate polynomial
 %    interpolation on the square
