@@ -63,8 +63,7 @@ plot([-1 1],error*[+1 +1],'--k',LW,1.6)
 plot([-1 1],error*[-1 -1],'--k',LW,1.6), hold off
 title(['type (1,1) best approximation:  error = ' num2str(error)],FS,12)
 
-%%
-% References
+%% References
 %
 % 1. L. N. Trefethen, "Matlab programs for CF approximation,"
 %    in C. K. Chui, L. L. Schumaker, and J. D. Ward, eds.,
