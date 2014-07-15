@@ -20,7 +20,7 @@
 %%
 % If we try a very small value of $\varepsilon$ without a well-chosen initial
 % guess, Chebfun will not converge.  Instead let's begin by solving the problem
-% with the rather large initial guess $\varepsilon = 2$.
+% with the rather large value $\varepsilon = 2$.
 Eps = 2;
 dom = [0, 10];
 x = chebfun('x', dom);
