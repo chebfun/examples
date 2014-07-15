@@ -40,8 +40,8 @@ title(sprintf(s,Eps,length(u),t),FS,fs)
 % each iteration is the previous solution. For each value of $\varepsilon$, the
 % solution for the previous value of $\varepsilon$ is a good initial guess of
 % the new solution, so we can turn off damping for the Newton iteration:
-cheboppref.setDefaults('damped', 0)
-Epsvec = [1 .5 .2 .1 .03 .009 .003];
+cheboppref.setDefaults('damping', 0)
+Epsvec = [1 .5 .2 .1 .03 .01 .003];
 for j = 1:length(Epsvec)
   close all
   Eps = Epsvec(j);
