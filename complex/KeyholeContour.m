@@ -30,6 +30,7 @@ z = join( c(1) + s*(c(2)-c(1)), ...     % top of the keyhole
 %%
 % Plot the contour and the branch cut of the function $f$:
 LW = 'LineWidth'; lw = 1.2; FS = 'FontSize'; fs = 14;
+figure('position', [0 0 500 400])
 plot(z,LW,lw), axis equal, title('A keyhole contour in the complex plane',FS,fs);
 hold on, plot([-2.6 0],[0 0],'-r',LW,lw); hold off, xlim([-2.6 2.6])
 
