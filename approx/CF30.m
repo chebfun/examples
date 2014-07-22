@@ -41,12 +41,12 @@ tic, [p,q] = cf(f,1,1); toc
 % As far as the eye can tell, the error curve equioscillates between
 % 4 extremes:
 LW = 'linewidth'; FS = 'fontsize';
-errfun = f-p./q; error = norm(errfun,inf);
+errfun = f-p./q; err = norm(errfun,inf);
 plot(errfun,LW,1.6)
 grid on, ylim(0.02*[-1 1]), hold on
-plot([-1 1],error*[+1 +1],'--k',LW,1.6)
-plot([-1 1],error*[-1 -1],'--k',LW,1.6), hold off
-title(['type (1,1) CF approximation:  error = ' num2str(error)],FS,12)
+plot([-1 1],err*[+1 +1],'--k',LW,1.6)
+plot([-1 1],err*[-1 -1],'--k',LW,1.6), hold off
+title(['type (1,1) CF approximation:  error = ' num2str(err)],FS,12)
 
 %%
 % Let's compare with the best approximation.  It takes 
@@ -56,12 +56,12 @@ tic, [p,q] = remez(f,1,1); toc
 %%
 % Now in principle we have perfect equioscillation,
 % but the error is only very slightly smaller:
-errfun = f-p./q; error = norm(errfun,inf);
+errfun = f-p./q; err = norm(errfun,inf);
 plot(errfun,'m',LW,1.6)
 grid on, ylim(0.02*[-1 1]), hold on
-plot([-1 1],error*[+1 +1],'--k',LW,1.6)
-plot([-1 1],error*[-1 -1],'--k',LW,1.6), hold off
-title(['type (1,1) best approximation:  error = ' num2str(error)],FS,12)
+plot([-1 1],err*[+1 +1],'--k',LW,1.6)
+plot([-1 1],err*[-1 -1],'--k',LW,1.6), hold off
+title(['type (1,1) best approximation:  error = ' num2str(err)],FS,12)
 
 %% References
 %
