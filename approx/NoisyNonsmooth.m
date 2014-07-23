@@ -3,11 +3,11 @@
 
 %%
 % (Chebfun example approx/NoisyNonsmooth.m)
-% [Tags: #POLYFIT]
+% [Tags: #noise, #splitting]
 
 %%
-% Chebfun user Tyler Jones has raised a question of how one
-% can construct a function for a noisy function with discontinuities,
+% Chebfun user Tyler Jones has raised the question of how one
+% can construct a chebfun for a noisy function with discontinuities,
 % so that breakpoints are needed.  Here we illustrate how
 % this can be done.
 
