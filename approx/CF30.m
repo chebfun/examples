@@ -9,7 +9,7 @@
 % In 1986 the first of us published a 4-page proceedings paper called
 % "Matlab programs for CF approximation" [1].  It is possible
 % that this was the first paper ever published that contained
-% Matlab programs.  It presents two programs: CF, for complex
+% MATLAB programs.  It presents two programs: CF, for complex
 % polynomial or rational CF approximation on the unit disk,
 % and RCF, for real polynomial or rational CF approximation on
 % the unit interval.
@@ -29,8 +29,8 @@ f = sqrt(1.2-x);
 
 %%
 % The coefficients match nicely:
-chebcoeffs(p)
-chebcoeffs(q)
+poly(p)
+poly(q)
 
 %%
 % How long does it take?  In [1], the computation took
