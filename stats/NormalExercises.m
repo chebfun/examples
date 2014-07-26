@@ -27,7 +27,7 @@
 %%
 % The probability density function (PDF) of the normal distribution can be
 % defined like this:
-ff = @(x,mu,sigma) 1/(sqrt(2*pi*sigma))*exp(-0.5*((x-mu)/sigma).^2);
+ff = @(x,mu,sigma) 1/(sigma*sqrt(2*pi))*exp(-0.5*((x-mu)/sigma).^2);
 
 %%
 % The domain is the entire real line, and this is a case where Chebfun has no
