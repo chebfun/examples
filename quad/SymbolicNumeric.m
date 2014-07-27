@@ -91,8 +91,6 @@ gi = cumsum(g)
 plot(gi,LW,2.2,CO,[.7 0 .7]), grid on
 title('not symbolically integrable',FS,14)
 
-fi = cumsum(f)
-
 %% References
 %
 % 1.  L. N. Trefethen, Computing numerically with functions
