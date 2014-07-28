@@ -13,13 +13,14 @@ LW = 'LineWidth'; lw = 2;
 % simple examples!
 
 %% Simple Example #1
-% Let's start as simply as we can, and take \[u''(x) = 0\], for $x$ in [-1 1].
+% Let's start as simply as we can, and take
+% $$ (Lu)(x) := u''(x), \qquad x~~\text{in}~~[-1, 1]. $$
 
 L = chebop(@(u) diff(u, 2));
 
 %%
-% Clearly the nullspace, that is the nontrivial functions v for which \[L(v) =
-% 0\], for this operator is spanned the two functions
+% Clearly the nullspace --- that is the nontrivial functions $v$ for which
+% $ L(v) = 0 $ --- of this operator is spanned the two functions
 
 v = [1, chebfun('x')];
 norm(L(v))
@@ -34,19 +35,20 @@ V'*V
 norm(L(V))
 
 %%
-% where we find that V'V = I and LV ~ 0 as required.
+% where we find that $V^T V = I$ and $LV \approx 0$ as required.
 
 %%
-% Clearly V doesn't correspond directly to 1 and $x$, since there is some
-% freedom in how we orthogonalise the basis. However, we can check that V and
-% {1, $x$} correspond to the same spaces by computing the angle between the
+% Clearly `V` doesn't correspond directly to $1$ and $x$, since there is some
+% freedom in how we orthogonalise the basis. However, we can check that `V` and
+% $\{1, x\}$ correspond to the same spaces by computing the angle between the
 % spaces with the `subspace` command.
 
 subspace(v, V)
 
 %% Incomplete boundary conditions
-% Now let's consider the more complicated 2nd-order operator \[Lu = u'' +
-% .1*(1-x.^2)u' - sin(x)u\], $x$ in $[-\pi \pi]$ (*).
+% Now let's consider the more complicated 2nd-order operator
+% $$ Lu = u'' + 0.1x(1-x^2)u' + \sin(x)u \qquad (*) $$
+% for $x$ in $[-\pi, \pi]$.
 
 dom = [-pi, pi];
 L = chebop(@(x, u) diff(u, 2) + .1*x.*(1-x.^2).*diff(u) + sin(x).*u, dom);
@@ -77,7 +79,7 @@ norm(L(v))
 v(-pi)
 
 %% An application
-% Where might this be useful? Well, suppose we were interested in equation (*)
+% Where might this be useful? Well, suppose we were interested in equation $(*)$
 % with a homogeneous Dirichlet condition at the left, and wanted to know what
 % inhomogeneous Dirichlet condition gave the minimal 2-norm of the solution to
 % $Lu = 1$.
@@ -98,7 +100,7 @@ E = chebfun(@(c) norm(u + c*v, 2), [-10, 10], 'vectorize', 'splitting', 'on');
 plot(E)
 
 %%
-% We compute the 2-norm as a chebfun in the unknown variable c, which we can
+% We compute the 2-norm as a chebfun in the unknown variable $c$, which we can
 % then minimise to obtain the minimal energy solution
 
 [minE, c_star] = min(E)
@@ -106,16 +108,17 @@ u_star = u + c_star*v
 plot(u_star)
 
 %%
-% So the condition we require is that $u(\pi)$ = bc_star, where
+% So the condition we require is that $u(\pi)$ = `bc_star`, where
 
 bc_star = u_star(pi)
 
 %% Exotic constraints
 % The `null` function can also handle the exotic types of boundary conditions
 % that can be enforced in Chebfun (see [1]). For example, suppose we wish to
-% again compute the null-space of the 3rd-order piecewise-smoooth ODE \[Lu :=
-% 0.1u''' + sin(x)*u'' + u, \] $x$ in $[-1 1]$, with the 'boundary' condition
-% that \[sum(u) = u(0).\]
+% again compute the null-space of the 3rd-order piecewise-smoooth ODE
+% $$ Lu := 0.1u''' + \sin(x)u'' + u, \quad x~~\text{in}~~[-1,1] $$
+% with the 'boundary' condition that
+% $$ \int(u) = u(0). $$
 
 dom = [-1, 1];
 L = chebop(@(x, u) .1*diff(u, 3) + sin(x).*diff(u, 2) + u, dom);
@@ -135,4 +138,4 @@ norm(L(V), 1)
 
 %% References
 %
-% 1. Chebfun Example [ode/NonstandardBCs](../ode/NonstandardBCs.html)
+% 1. Chebfun Example [ode-linear/NonstandardBCs](../ode-linear/NonstandardBCs.html)
