@@ -22,7 +22,7 @@ L = chebop(@(u) diff(u, 2));
 % 0\], for this operator is spanned the two functions
 
 v = [1, chebfun('x')];
-norm(L*v)
+norm(L(v))
 
 %%
 % Supposing we didn't know this, we could compute the space with the `null()`
