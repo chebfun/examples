@@ -44,7 +44,7 @@ a = chebcoeffs(exp(x))'; a = a(end:-1:1)
 FS = 'fontsize'; MS = 'markersize'; LW = 'linewidth';
 plotcoeffs(exp(x),'.-',LW,1,MS,20), grid on
 xlabel('degree n',FS,14)
-ylabel('|a_n|',FS,14)
+ylabel('|a_n|',FS,14), ylim([1e-17 1e1])
 title('Chebyshev coefficients of exp(x)',FS,14)
 
 %%
@@ -52,9 +52,9 @@ title('Chebyshev coefficients of exp(x)',FS,14)
 % represented to 15 digits.  (Can you explain why it looks like a wide
 % stripe?)
 plotcoeffs(exp(x)./(1+10000*x.^2)), grid on
-xlabel('degree n',FS,12)
-ylabel('|a_n|',FS,12)
-title('Chebyshev coefficients of exp(x)/(1+10000x^2)',FS,16)
+xlabel('degree n',FS,12), ylabel('|a_n|',FS,12)
+ylim([1e-18 1])
+title('Chebyshev coefficients of exp(x)/(1+10000x^2)',FS,14)
 
 %%
 % These methods will work for any function $f$ that's represented by a global
@@ -64,7 +64,7 @@ title('Chebyshev coefficients of exp(x)/(1+10000x^2)',FS,16)
 % constructor. For example, suppose we are interested in the function
 f = sign(x);
 figure, plot(f,'k',LW,2), ylim([-1.5 1.5])
-title('sign(x)',FS,16)
+title('sign(x)',FS,14)
 
 %%
 % If we try to compute all the Chebyshev coefficients, we'll get an error.
@@ -77,14 +77,14 @@ a = chebcoeffs(p)'; a = a(end:-1:1)
 % the Chebyshev expansion:
 hold on
 plot(p,'m',LW,2)
-title('sign(x) and truncated Chebyshev series',FS,16)
+title('sign(x) and truncated Chebyshev series',FS,14)
 
 %%
 % This is not the same as the degree 9 polynomial interpolant through 10
 % Chebyshev points:
 pinterp = chebfun(f,10);
 plot(pinterp,'--','color',[0 .8 0],LW,2)
-title('Same, also with Chebyshev interpolant',FS,16)
+title('Same, also with Chebyshev interpolant',FS,14)
 
 %% References
 %

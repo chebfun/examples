@@ -26,7 +26,7 @@ plot(f,LW,lw);
 % shows that it is of length 61, meaning that $f$ is resolved to machine
 % precision using 61 samples, or $(61-1)/2=30$ (complex) Fourier modes. These
 % coefficients can be displayed graphically by
-plotcoeffs(f)
+plotcoeffs(f), ylim([1e-18 1])
 
 %%
 % Since $f$ is smooth and periodic, a Fourier representation requires fewer

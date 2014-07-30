@@ -115,7 +115,7 @@ title(['min value on grid: ' num2str(min(min(yy)))],FS,14), toc
 
 %%
 % The winner seems to be the region on the right. From here the right thing to
-% do is call a bivariate optimization routine. In basic Matlab the simplest
+% do is call a bivariate optimization routine. In basic MATLAB the simplest
 % one is the direct search code
 % <a href='http://www.mathworks.co.uk/help/matlab/ref/fminsearch.html'>fminsearch</a>.
 % This requires the input to be a single vector, so we'll need a wrapper:

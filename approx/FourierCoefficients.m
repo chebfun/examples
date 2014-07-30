@@ -107,7 +107,7 @@ length(u)
 % can be seen by plotting the Fourier coefficients on a log-log scale, 
 % which can be easily done for the positive mode coefficients (i.e. $k>0$)
 % using the `plotcoeffs` command:
-plotcoeffs(u,'loglog'), hold on
+plotcoeffs(u,'loglog'), ylim([1e-15 1]), hold on
 k = [100 length(u)/2];
 plot(k,10*k.^(-4),'k-',LW,lw)
 text(500,50*(500)^(-4),'O(k^{-4})','FontSize',12)
