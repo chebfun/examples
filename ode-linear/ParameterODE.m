@@ -60,13 +60,13 @@ Ns = @(s) chebop(@(x,u) a(x,s).*diff(u,2) + ap(x,s).*diff(u),[0 1], 0, 0);
 %
 % where $\gamma$ takes integer values (giving $s=0.9,0.99,0.999,\dots$). We
 % thus define $s$ as an anonymous function
-s = @(gamma) 1-10^(-gamma);
+s = @(gam) 1-10^(-gam);
 
 %%
 % We can then obtain the solution of the problem for different values
 % of $\gamma$. Again, we use anonymous functions to achieve the desired
 % effect.
-ugamma = @(gamma) solvebvp(Ns(s(gamma)),1);
+ugamma = @(g) solvebvp(Ns(s(g)),1);
 
 %%
 % Here, the `solvebvp` method is another way to call the chebop backslash
@@ -78,13 +78,13 @@ ugamma = @(gamma) solvebvp(Ns(s(gamma)),1);
 res = []; error = [];
 LW = 'linewidth'; FS = 'fontsize';
 ax = [0 1 -2.2 0.2];
-for gamma = 1:3
-    solgamma = ugamma(gamma);
+for g = 1:3
+    solgamma = ugamma(g);
     plot(solgamma,LW,1.6)
-    ss = sprintf('gamma = %1d    length(solution) = %4d',gamma,length(solgamma));
+    ss = sprintf('gamma = %1d    length(solution) = %4d',g,length(solgamma));
     title(ss,FS,12), axis(ax), grid on, snapnow
-    res(gamma) = norm(feval(Ns(s(gamma)),solgamma)-1);
-    error(gamma) = norm(solgamma - uexact(chebx,s(gamma)));
+    res(g) = norm(feval(Ns(s(g)),solgamma)-1);
+    error(g) = norm(solgamma - uexact(chebx,s(g)));
 end
 
 %%
@@ -124,7 +124,7 @@ Nsbreak = @(s) chebop(@(x,u) a(x,s).*diff(u,2)+ap(x,s).*diff(u),[0 .5 1],0,0);
 
 %%
 % We now redefine the anonymous function which gives the solution.
-ugammabreak = @(gamma) solvebvp(Nsbreak(s(gamma)),1);
+ugammabreak = @(g) solvebvp(Nsbreak(s(g)),1);
 
 %%
 % We're now all set to solve the problem using breakpoints for different
@@ -132,13 +132,13 @@ ugammabreak = @(gamma) solvebvp(Nsbreak(s(gamma)),1);
 % chebop settings.
 chebx = chebfun('x',[0 0.5 1]);
 res = []; error = []; legs = [];
-for gamma = 1:7
-    solgamma = ugammabreak(gamma);
+for g = 1:7
+    solgamma = ugammabreak(g);
     plot(solgamma,LW,1.6)
-    ss = sprintf('gamma = %1d    length(solution) = %4d',gamma,length(solgamma));
+    ss = sprintf('gamma = %1d    length(solution) = %4d',g,length(solgamma));
     title(ss,FS,12), axis(ax), grid on, snapnow
-    res(gamma) = norm(feval(Nsbreak(s(gamma)),solgamma)-1);
-    error(gamma) = norm(solgamma - uexact(chebx,s(gamma)));
+    res(g) = norm(feval(Nsbreak(s(g)),solgamma)-1);
+    error(g) = norm(solgamma - uexact(chebx,s(g)));
 end
 
 %%
