@@ -87,7 +87,7 @@ hold off
 % cosine/sine functions, respectively. Let us visualize the first $50$
 % rescaled Bernoulli polynomials of odd degree, and compute the distance
 % to the expected limit function in the uniform norm:
-err = [];
+err = zeros(100,1);
 limit = sin(2*pi*x);
 for j = 1:50,
     b = (-1)^(j)*(2*pi)^(2*j-1)/2/factorial(2*j-1)*B(:,2*j);
@@ -121,6 +121,7 @@ axis([0,100,1e-16,1])
 % again with the Riemann zeta function.
 fact = cumprod([1,1:99]);
 bound = 2*fact./(2*pi).^(0:99);
+M = zeros(100,1);
 for j = 1:100,
     M(j) = max(B(:,j));
     if mod(j-1,4) == 2 && exist('zeta','file')
@@ -128,9 +129,9 @@ for j = 1:100,
     end
 end
 semilogy(M,LW,lw);
-hold on
-semilogy(bound,'r--',LW,lw)
+hold on, semilogy(bound,'r--',LW,lw), hold off
 axis([0,100,1e-5,1e80])
+
 
 %%
 % This bound looks quite sharp, and in fact, if one were to remove the
