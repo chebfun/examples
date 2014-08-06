@@ -32,8 +32,9 @@ B.op = @(r,u) r.*u;
 % values are also zeros of the Bessel function $J_0$, which gives a way to
 % valudate the results.
 [V,D] = eigs(A,B);
-[omega,ii] = sort(sqrt(-diag(D))); omega
-V = [V{:,ii'}]
+[omega,ii] = sort(sqrt(-diag(D))); 
+omega
+V = [V{:,ii'}];
 err = omega - sort(roots( besselj(0,chebfun('r',[0 20])) ))
 
 %%
@@ -68,7 +69,7 @@ function ratio = evratio(a)
   B.op = @(r,u) r.*rho.*u;
   [V,D] = eigs(A,B,2,0);
   [omega,ii] = sort(sqrt(-diag(D)));
-  V = [V{:,ii'}]
+  V = [V{:,ii'}];
   ratio = omega(2)/omega(1);
 end
 
