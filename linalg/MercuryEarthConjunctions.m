@@ -33,7 +33,7 @@ f = chebfun(@(t) det(M(t)),[0 600],'vectorize');
 
 %%
 % The roots of the determinant give the days at which a conjunction occurs.
-zeros = roots(f);
+z = roots(f);
 
 %%
 % To get a visual interpretation of the roots, one can plot the determinant
@@ -41,7 +41,7 @@ zeros = roots(f);
 % times of the first ten conjunctions.
 figure
 plot(f,'linewidth',1.6), hold on, grid on
-plot(zeros(1:10),0,'.r','markersize',20)
+plot(z(1:10),0,'.r','markersize',20)
 xlabel('Time(days)')
 
 %% References
