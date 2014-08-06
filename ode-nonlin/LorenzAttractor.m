@@ -154,9 +154,9 @@ plot([0,5],[0,0],'k',LW,1.6)
 % of these computed locations:
 
 format short
-diff = sort([abs(poles1-poles2),abs(poles1-poles3),abs(poles2-poles3)]);
+diffpoles = sort([abs(poles1-poles2),abs(poles1-poles3),abs(poles2-poles3)]);
 disp('   poles in x         poles in y         poles in z         max. difference')
-disp([poles1, poles2, poles3, diff(:,1)])
+disp([poles1, poles2, poles3, diffpoles(:,1)])
 
 %%
 % Let $t_0$ denote the location of a singularity and $t_w$ the worst
@@ -167,7 +167,7 @@ disp([poles1, poles2, poles3, diff(:,1)])
 
 %%
 % Hence our worst case error for each pole is at least the following:
-0.5*diff(:,1)'
+0.5*diffpoles(:,1)'
 
 %%
 % It is remarkable that with just 6 lines of Chebfun we have been able to
