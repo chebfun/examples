@@ -7,8 +7,8 @@
 
 %%
 % Let us take as our domain a period of 1000 days.
-domain = [0 1000];
-t = chebfun('t', domain);
+dom = [0 1000];
+t = chebfun('t', dom);
 
 %%
 % Here are some equations we shall take as the elliptical orbits of the Earth
