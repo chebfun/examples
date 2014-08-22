@@ -74,8 +74,8 @@ u2 = chebfun(real(c2),n); v2 = chebfun(imag(c2),n);
 % did above.
 
 F = zeros(n); G = zeros(n);
-F(end,:) = chebcoeffs(u1); F(:,end) = F(:,end) - chebcoeffs(u2)';
-G(end,:) = chebcoeffs(v1); G(:,end) = G(:,end) - chebcoeffs(v2)';
+F(end,:) = fliplr(chebcoeffs(u1).'); F(:,end) = F(:,end) - flipud(chebcoeffs(u2));
+G(end,:) = fliplr(chebcoeffs(v1).'); G(:,end) = G(:,end) - flipud(chebcoeffs(v2));
 
 %%
 % Now we form the Bezoutian of $f(x,y)$ and $g(x,y)$ (seen as polynomials in
