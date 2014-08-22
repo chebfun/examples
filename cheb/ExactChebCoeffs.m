@@ -71,8 +71,8 @@ k = 1:length(fc);
 % The theoretical coefficients match those computed by Chebfun, apart
 % from floating point representation and aliasing effects. The $a_0$
 % coefficient is out by the usual factor of $2$.
-exact_coeffs = flipud( (1/sqrt(6)*(-1).^(k-1)./(5+sqrt(24)).^(k-1))' );
-cheb_coeffs = chebcoeffs(fc)';
+exact_coeffs = (1/sqrt(6)*(-1).^(k-1)./(5+sqrt(24)).^(k-1)).';
+cheb_coeffs = chebcoeffs(fc);
 display([exact_coeffs cheb_coeffs exact_coeffs-cheb_coeffs])
 
 FS = 'fontsize'; fs = 14;

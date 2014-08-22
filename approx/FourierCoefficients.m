@@ -44,7 +44,7 @@ LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 % $u$ with the '`periodic`' flag in the Chebfun, then calling `fourcoeffs`.
 % Here is an example for a simple Fourier polynomial:
 u = chebfun(@(x) 1 - 4*cos(x) + 6*sin(2*x),[-pi,pi],'periodic');
-c = fourcoeffs(u).'; c = c(end:-1:1);
+c = fourcoeffs(u);
 disp('Fourier coeffs of 1 + cos(x) + sin(2*x):')
 c
 
@@ -57,7 +57,7 @@ c
 % Also note that `fourcoeffs` by default returns the coefficients in
 % complex exponential form, i.e., the value of $c_k$ above.  The 
 % equivalent coefficients in terms of cosines and sines can be obtained as:
-[a,b] = fourcoeffs(u); a = a(end:-1:1).'; b = b(end:-1:1).';
+[a,b] = fourcoeffs(u);
 disp('Fourier cosine coeffs of 1 + cos(x) + sin(2*x)')
 a
 disp('Fourier sine coeffs of 1 + cos(x) + sin(2*x)')
@@ -79,7 +79,7 @@ b
 % $c_k = 2^{-|k|}$:
 numCoeffs = 11;
 u = chebfun(@(x) 3./(5 - 4*cos(x)),[-pi,pi],'periodic');
-c = fourcoeffs(u,numCoeffs).'; c = c(end:-1:1);
+c = fourcoeffs(u,numCoeffs);
 disp('Fourier coeffs of 3/(5-4cos(x)):')
 c
 
@@ -90,7 +90,7 @@ c
 % Here is an example for a less smooth function:
 numCoeffs = 17;
 u = chebfun(@(x) abs(sin(x)).^3,[-pi,pi],'periodic');
-c = fourcoeffs(u,numCoeffs).'; c = c(end:-1:1);
+c = fourcoeffs(u,numCoeffs); c = c(end:-1:1);
 disp('Fourier coeffs of |sin(x)|^3')
 c
 
@@ -136,7 +136,7 @@ u = chebfun(sq_wave,[-pi,pi],'splitting','on');
 % `fourcoeffs` method.  Since the square wave is odd, it makes sense to
 % look at the Fourier sine coefficients in this case:
 numCoeffs = 15;
-[a,b] = fourcoeffs(u,numCoeffs); b = b(end:-1:1).';
+[a,b] = fourcoeffs(u,numCoeffs);
 disp('Fourier sine coeffs of unit step function:')
 b
 
@@ -160,7 +160,7 @@ norm(a,inf)
 % of functions.  Here's an example for the above square wave using 15
 % Fourier modes:
 numModes = 15;
-c = fourcoeffs(u,2*numModes+1).';
+c = fourcoeffs(u,2*numModes+1);
 u_trunc = chebfun(c,[-pi,pi],'periodic','coeffs');
 plot(u,'k-',u_trunc,'b-',LW,lw)
 
@@ -186,7 +186,7 @@ plot(u,'k-',u_trunc,'b-',LW,lw)
 % then expanded to a larger domain:
 sawtooth = @(x) (mod(x+pi,2*pi))/(2*pi);
 u = chebfun(sawtooth,[-pi,pi],'splitting','on');
-c = fourcoeffs(u,2*numModes+1).';
+c = fourcoeffs(u,2*numModes+1);
 u_trunc = chebfun(c,[-pi,pi],'periodic','coeffs');
 
 u = chebfun(sawtooth,[-4*pi,4*pi],'splitting','on');

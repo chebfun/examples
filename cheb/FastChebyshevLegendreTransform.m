@@ -37,12 +37,12 @@
 % fast transform in Chebfun:
 
 f = chebfun(@(x) 1./(1 + 1000*(x-.1).^2));  % A Runge-type function
-c_cheb = chebcoeffs(f).';                   % Chebyshev coeffs in O(NlogN)
+c_cheb = chebcoeffs(f);                     % Chebyshev coeffs in O(NlogN)
 c_leg = cheb2leg(c_cheb);                   % Leg coeffs with the new algorithm
 LW = 'linewidth'; lw = 1.6;
 MS = 'markersize'; FS = 'fontsize'; fs = 12;
-semilogy(flipud(abs(c_leg)), 'xr',MS,4), hold on  % plot them
-semilogy(flipud(abs(c_cheb)), '.b', MS,8)
+semilogy(abs(c_leg), 'xr',MS,4), hold on  % plot them
+semilogy(abs(c_cheb), '.b', MS,8)
 legend('Legendre coefficients','Chebyshev coefficients')
 xlabel('n', FS, fs), set(gca, FS, fs), hold off
 
@@ -54,10 +54,10 @@ xlabel('n', FS, fs), set(gca, FS, fs), hold off
 % [5].  Here we witness this disparity for the function $|x-.1|^{7/4}$:
 
 f = chebfun(@(x) abs(x-.1).^(7/4)); N = length(f);    % |x-.1|^(7/4)
-c_cheb = chebcoeffs(f)';                              % Chebyshev coeffs
+c_cheb = chebcoeffs(f);                              % Chebyshev coeffs
 c_leg = cheb2leg(c_cheb);                             % Legendre coeffs
-semilogy(flipud(abs(c_leg)), 'xr',MS,4), hold on,     % plot them
-semilogy(flipud(abs(c_cheb)), '.b',MS,8),
+semilogy(abs(c_leg), 'xr',MS,4), hold on,     % plot them
+semilogy(abs(c_cheb), '.b',MS,8),
 semilogy(1:N,(1:N).^(-7/4-1+.5), 'k--', LW, lw)
 semilogy(1:N,(1:N).^(-7/4-1), 'k--', LW, lw)
 legend('Legendre coefficients','Chebyshev coefficients',...
@@ -78,8 +78,8 @@ t = .999i; f = chebfun(@(x) 1./sqrt(1 - 2*x.*t +t.^2)); % generating function
 N = length(f);
 ns = sprintf('No. of evaluation points = %u\n',N);
 s = tic;                                                % evaluate f
-c_leg = t.^(N-1:-1:0).';                                % via Legendre coeffs
-cheb_vals = chebtech2.coeffs2vals(leg2cheb(c_leg));     % and time it...
+c_leg = t.^(0:N-1).';                                   % via Legendre coeffs
+cheb_vals = chebtech2.coeffs2vals(flipud(leg2cheb(c_leg)).').'; % and time it...
 tt = toc(s);
 ts = sprintf('Evaluation time = %1.2fs\n', tt);
 fprintf([ns, ts])
@@ -116,7 +116,7 @@ A(end-1,:) = (-1).^(0:N-1);                    % left bc
 A(end,:) = ones(1,N);                          % right bc
 b = [zeros(N-2,1);f(-1);f(1)];                 % rhs
 P = spdiags([(1:N-2) 1 1]',0,N,N);             % preconditioner
-c_leg = flipud( (P*A) \ (P*b) );               % solve
+c_leg = ( (P*A) \ (P*b) );                     % solve
 toc
 
 %%
@@ -132,7 +132,7 @@ set(gca, FS, fs), xlabel('x', FS, fs), shg
 
 %%
 % Here is the error between the computed and the true solutions:
-norm(c_cheb - chebcoeffs(f).', inf)
+norm(c_cheb - chebcoeffs(f), inf)
 norm(u - f)
 
 %% Conclusion
