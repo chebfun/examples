@@ -62,7 +62,7 @@ plot3(x(:,1), x(:,2), F(x(:,1), x(:,2)), 'ok', 'MarkerFaceColor', 'k'), hold off
 
 C = chebcoeffs2(F);
 C(abs(C) < 1e-10) = 0;
-spy(rot90(C, 2)), shg
+spy(C), shg
 title('Spy plot of bivariate Chebyshev coefficients',FS,14)
 
 %%
