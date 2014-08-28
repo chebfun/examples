@@ -23,20 +23,17 @@ x = chebfun('x');
 format long
 disp('Cheb coeffs of 99x^2 + x^3:')
 p = 99*x.^2 + x.^3;
-a = chebcoeffs(p)'
+a = chebcoeffs(p)
 
 %%
-% Notice that following the usual MATLAB convention, the coefficients appear
-% in order from highest degree to lowest.  Thus it is often more useful to
-% write
-disp('Cheb coeffs of 99x^2 + x^3:')
-a = chebcoeffs(p)'; a = a(end:-1:1)
+% Notice that contrary to the usual MATLAB convention, the coefficients appear
+% in order from lowest degree to highest.
 
 %%
 % Similarly, here are the Chebyshev coefficients down to level $10^{-15}$ of
 % $\exp(x)$:
 disp('Cheb coeffs of exp(x):')
-a = chebcoeffs(exp(x))'; a = a(end:-1:1)
+a = chebcoeffs(exp(x))
 
 %%
 % You can plot the absolute values of these numbers on a log scale with
@@ -70,7 +67,7 @@ title('sign(x)',FS,14)
 % If we try to compute all the Chebyshev coefficients, we'll get an error.
 % On the other hand we can compute the first ten of them like this:
 p = chebfun(f,'trunc',10);
-a = chebcoeffs(p)'; a = a(end:-1:1)
+a = chebcoeffs(p)
 
 %%
 % Here's the degree 9 polynomial obtained by adding up these first terms of
