@@ -46,8 +46,7 @@ plot(r,f(r),'.k',MS,8), hold off
 % In the present version of the tiger's tail, this effect
 % has been eliminated by use of the `'nojump'` flag in `roots`.
 
-%%
-% Reference:
+%% Reference
 %
 % 1. L. N. Trefethen, _Approximation Theory and Approximation
-% Practice_, SIAM, 2013.
+%    Practice_, SIAM, 2013.
