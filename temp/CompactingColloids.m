@@ -15,7 +15,7 @@
 % This equation is stiff, and the initial conditions do not match with the
 % boundary conditions, which usually causes issues. We weren't able to solve
 % this with Mathematica, so we turned to Chebfun, (Note we use the option
-% `'AdjustBCs', false` in the call the PDESET() below.)
+% `'AdjustBCs', false` in the call the `pdeset` below.)
 
 %%
 % Define parameters:
@@ -28,9 +28,9 @@ u_init   = 0.3;  % Initially, the concentration of particles is uniform
 %%
 % Solving the AJR equation:
 % $$ u_t + [ (1-u)^{6.55} (u - (1.85/pe) \phi_m u' / (\phi_m-u)^2) ]' = 0, $$
-% for $x$ in $[0, 1]$ and $t$ in $[0, t_f]$, subject to
+% for $x$ in $[0, 1]$ and $t$ in $[0, \mathrm{time}_{\mathrm{end}}]$, subject to
 % $$ u - \frac{1.85}{100}\frac{\phi_m u'}{(\phi_m-u)^2} = 0 $$
-% at $x$ = 0 and $x$ = 1 
+% at $x$ = 0 and $x$ = 1
 % (no flux out of particles out of the top or bottom of the chamber).
 
 %%
@@ -43,7 +43,7 @@ u_init   = 0.3;  % Initially, the concentration of particles is uniform
 % evenly spread.
 
 %%
-% The following code is modified slightly from the CHEBGUI export option.
+% The following code is modified slightly from the Chebgui export option.
 
 % Create an interval of the space domain,
 dom = [0, 1];
