@@ -80,11 +80,11 @@ title('Hermite Functions',FS,16);
 
 %%
 % For an alternative method for computing eigenfunctions of the
-% Schroedinger equation checkout the command `quantumstates`.
+% Schroedinger equation, check out the command `quantumstates`.
 
 %%
-% To compute the polarization function $P(E)$ is evaluated at a set of
-% Chebyshev points and then interpolated with a polynomial
+% The polarization function $P(E)$ is evaluated at a set of
+% Chebyshev points and then interpolated with a polynomial.
 
 Emax = .1;
 x = chebfun('x',[-L,L]);
