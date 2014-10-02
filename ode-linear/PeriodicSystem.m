@@ -1,5 +1,5 @@
 %% A periodic ODE system
-% Nick Hale, November 2010, latest revision October 2014
+% Nick Hale, October 2014
 
 %%
 % (Chebfun example ode-linear/PeriodicSystem.m)
