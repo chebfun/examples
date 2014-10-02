@@ -14,7 +14,7 @@ LW = 'linewidth'; dom = [0 2*pi];
 % This is the default method for periodic boundary conditions.
 %
 % Consider the following first-order ODE
-%
+%gi
 % $$ u'(x) + a(x)u(x) = f(x) $$
 %
 % on $[0,2\pi]$, with periodic boundary conditions, and where $a(x)$ and $f(x)$  
@@ -102,23 +102,6 @@ length(v)/length(u)
 %% 
 % The second-order ODE we have solved is well-posed, and we can check that 
 % computing the Hill discriminant, and verifying that it is not 1:
-L.bc = [];
-L.lbc = @(c) [ c - 1 ; diff(c) ];
-c = L \ 0;
-L.lbc = @(s) [ s ; diff(s) - 1 ];
-s = L \ 0;
-HillDiscr = 1/2*(c(2*pi) + feval(diff(s), 2*pi))
-
-%%
-% If we take $a_1(x) = \sin(x)$ and $a_0(x)=1+ia_1(x)$, the solution we
-% obtain does not satisfy the differential equation:
-L = chebop(@(x,u) diff(u, 2) + sin(x).*diff(u) + (1+1i*sin(x)).*u, dom);
-L.bc = 'periodic';
-u = L \ f;
-norm(L*u - f, inf)
-
-%%
-% This correponds to a Hill discriminant equal to 1 (up to 14 digits):
 L.bc = [];
 L.lbc = @(c) [ c - 1 ; diff(c) ];
 c = L \ 0;
