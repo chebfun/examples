@@ -14,7 +14,7 @@ LW = 'linewidth'; dom = [0 2*pi];
 % This is the default method for periodic boundary conditions.
 %
 % Consider the following first-order ODE
-%gi
+%
 % $$ u'(x) + a(x)u(x) = f(x) $$
 %
 % on $[0,2\pi]$, with periodic boundary conditions, and where $a(x)$ and $f(x)$  
