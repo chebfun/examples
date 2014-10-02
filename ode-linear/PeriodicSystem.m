@@ -1,5 +1,5 @@
 %% A periodic ODE system
-% Nick Hale, November 2010
+% Nick Hale, November 2010, latest revision October 2014
 
 %%
 % (Chebfun example ode-linear/PeriodicSystem.m)
@@ -19,10 +19,13 @@ A.op = @(x,u,v) [u-diff(v); diff(u,2)+v];
 x = chebfun('x',d);
 f = [0;cos(x)];
 A.bc = 'periodic';
-u = A\f;
+u = A\f
 
 %%
-% We plot the result:
+% Because the boundardy conditions are periodic, the system of ODEs is solved 
+% with a Fourier collocation method, and the solution $u$ is represented by
+% a Fourier series. (This is what `periodic` means in the display of $u$
+% above.) We plot the result:
 LW = 'linewidth'; lw = 2; FS = 'fontsize'; fs = 14;
 plot(u,LW,lw), title('Solutions u and v',FS,fs), legend('u','v');
 
@@ -37,6 +40,11 @@ err = max([norm(u{1}-exact(:,1),inf) norm(u{2}-exact(:,2),inf)])
 % introducing a breakpoint at the origin.
 
 A.domain = [-pi,0,pi];
-u = A\f;
+u = A\f
+
+%%
+% The solution is now represented by a Chebyshev series, and the equation
+% has been solved with a Chebyshev collocation method, because Fourier
+% collocation methods don't work with breakpoints.
 plot(u,LW,lw), title('Solutions u and v',FS,fs), legend('u','v');
 err = max([norm(u{1}-exact(:,1),inf) norm(u{2}-exact(:,2),inf)])
