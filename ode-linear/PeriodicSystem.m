@@ -19,7 +19,8 @@ A.op = @(x,u,v) [u-diff(v); diff(u,2)+v];
 x = chebfun('x',d);
 f = [0;cos(x)];
 A.bc = 'periodic';
-u = A\f
+u = A\f;
+u{1}
 
 %%
 % Because the boundardy conditions are periodic, the system of ODEs is solved 
@@ -40,7 +41,8 @@ err = max([norm(u{1}-exact(:,1),inf) norm(u{2}-exact(:,2),inf)])
 % introducing a breakpoint at the origin.
 
 A.domain = [-pi,0,pi];
-u = A\f
+u = A\f;
+u{1}
 
 %%
 % The solution is now represented by a Chebyshev series, and the equation

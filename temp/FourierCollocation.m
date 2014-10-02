@@ -4,7 +4,7 @@
 %%
 % (Chebfun example temp/FourierCollocation)
 % [Tags: #linearODE, #periodic]
-FS = 'FontSize'; LW = 'linewidth'; dom = [0 2*pi];
+LW = 'linewidth'; dom = [0 2*pi];
 
 %%
 % A Fourier spectral collocation method is now available in Chebfun to
@@ -68,10 +68,10 @@ length(v)/length(u)
 %
 % $$ \Delta = \frac{c(2\pi) + s'(2\pi)}{2}, $$
 %
-% where $c(x)$ and $s(x)$ are the solutions of the homogeneous version of
-% this equation, corresponding to the initial conditions $c(0)=1$, $c'(0)=0$ 
-% and $s(0)=0$, $s'(0)=1$. The nonhomogeneous equation has a unique periodic 
-% solution if $\Delta \neq 1$ [1].
+% where $c(x)$ and $s(x)$ are the solutions of the homogeneous equation, 
+% corresponding to the initial conditions $c(0)=1$, $c'(0)=0$ and $s(0)=0$, 
+% $s'(0)=1$. The nonhomogeneous equation has a unique periodic solution if 
+% $\Delta \neq 1$ [1].
 %
 % Take $a_1(x)=\sin(\cos(x/2)^2)$, $a_0(x)=\cos(12\sin(x))$, and 
 % $f(x)=\exp(\cos(2x))$, and solve it with Fourier collocation.
@@ -100,8 +100,8 @@ hold on, plot(v, 'r', LW, 2)
 length(v)/length(u)
 
 %% 
-% The second-order ODE we have solved is well-posed, and we can check that computing the 
-% Hill discriminant, and verifying that it is not 1:
+% The second-order ODE we have solved is well-posed, and we can check that 
+% computing the Hill discriminant, and verifying that it is not 1:
 L.bc = [];
 L.lbc = @(c) [ c - 1 ; diff(c) ];
 c = L \ 0;
