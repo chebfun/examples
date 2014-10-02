@@ -4,17 +4,18 @@
 %%
 % (Chebfun example temp/FourierCollocation)
 % [Tags: #linearODE, #periodic]
-LW = 'linewidth'; dom = [0 2*pi];
+FS = 'FontSize'; LW = 'linewidth'; dom = [0 2*pi];
 
 %%
-% A Fourier spectral collocation method is now available in Chebfun to
-% solve ODEs with periodic boundary conditions. The solution is a chebfun
-% using a `fourtech` representation, that is, a trigonometric interpolant on 
-% equispaced points. 
-% This is the default method for periodic boundary conditions.
+% A Fourier spectral collocation method is now available in Chebfun to solve
+% ODEs with periodic boundary conditions. The solution is a chebfun using a
+% `fourtech` representation, that is, a trigonometric interpolant on
+% equispaced points. This is the default method for periodic boundary
+% conditions.
+
+%%
+% Consider the following first-order ODE:
 %
-% Consider the following first-order ODE
-%gi
 % $$ u'(x) + a(x)u(x) = f(x) $$
 %
 % on $[0,2\pi]$, with periodic boundary conditions, and where $a(x)$ and $f(x)$  
@@ -23,7 +24,8 @@ LW = 'linewidth'; dom = [0 2*pi];
 % $\overline{a}=\frac{1}{2\pi}\int_0^{2\pi}a(x)dx\neq ik$ for all integers k. 
 % In particular, if $a(x)=a$ is a constant coefficient, this means 
 % $a\neq ik$ for all $k$. 
-%
+
+%%
 % Take for example $a(x)=1+\sin(\cos(10x))$ and $f(x)=\exp(\sin(x))$, and solve 
 % it with Fourier collocation. Since $\overline{a}=1$, this a well-posed
 % problem.
@@ -68,11 +70,12 @@ length(v)/length(u)
 %
 % $$ \Delta = \frac{c(2\pi) + s'(2\pi)}{2}, $$
 %
-% where $c(x)$ and $s(x)$ are the solutions of the homogeneous equation, 
-% corresponding to the initial conditions $c(0)=1$, $c'(0)=0$ and $s(0)=0$, 
-% $s'(0)=1$. The nonhomogeneous equation has a unique periodic solution if 
-% $\Delta \neq 1$ [1].
-%
+% where $c(x)$ and $s(x)$ are the solutions of the homogeneous version of
+% this equation, corresponding to the initial conditions $c(0)=1$, $c'(0)=0$ 
+% and $s(0)=0$, $s'(0)=1$. The nonhomogeneous equation has a unique periodic 
+% solution if $\Delta \neq 1$ [1].
+
+%%
 % Take $a_1(x)=\sin(\cos(x/2)^2)$, $a_0(x)=\cos(12\sin(x))$, and 
 % $f(x)=\exp(\cos(2x))$, and solve it with Fourier collocation.
 a1 = chebfun(@(x) sin(cos(x/2).^2), dom);
@@ -100,8 +103,25 @@ hold on, plot(v, 'r', LW, 2)
 length(v)/length(u)
 
 %% 
-% The second-order ODE we have solved is well-posed, and we can check that 
-% computing the Hill discriminant, and verifying that it is not 1:
+% The second-order ODE we have solved is well-posed, and we can check that computing the 
+% Hill discriminant, and verifying that it is not 1:
+L.bc = [];
+L.lbc = @(c) [ c - 1 ; diff(c) ];
+c = L \ 0;
+L.lbc = @(s) [ s ; diff(s) - 1 ];
+s = L \ 0;
+HillDiscr = 1/2*(c(2*pi) + feval(diff(s), 2*pi))
+
+%%
+% If we take $a_1(x) = \sin(x)$ and $a_0(x)=1+ia_1(x)$, the solution we
+% obtain does not satisfy the differential equation:
+L = chebop(@(x,u) diff(u, 2) + sin(x).*diff(u) + (1+1i*sin(x)).*u, dom);
+L.bc = 'periodic';
+u = L \ f;
+norm(L*u - f, inf)
+
+%%
+% This correponds to a Hill discriminant equal to 1 (up to 14 digits):
 L.bc = [];
 L.lbc = @(c) [ c - 1 ; diff(c) ];
 c = L \ 0;
