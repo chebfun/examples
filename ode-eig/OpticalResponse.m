@@ -2,7 +2,7 @@
 % Jared L. Aurentz and John S. Minor, September 2014
 
 %%
-% (Chebfun example temp/OpticalResponse)
+% (Chebfun example ode-eig/OpticalResponse)
 % [Tags: #chebop]
 
 function OpticalResponse
