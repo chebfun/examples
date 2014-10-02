@@ -1,9 +1,10 @@
 %% The nonlinear optical response of a simple molecule
+%
 % Jared L. Aurentz and John S. Minor, September 2014
 
 %%
-% (Chebfun example temp/OpticalResponse)
-% [Tags: #chebop]
+% (Chebfun example)
+% [Tags: ]
 
 function OpticalResponse
 
@@ -79,12 +80,12 @@ plot(PSI,LW,2);
 title('Hermite Functions',FS,16);
 
 %%
-% For an alternative method for computing eigenfunctions of the Schroedinger
-% equation, check out the command `quantumstates`.
+% To see an alternative method for computing eigenfunctions of the
+% Schroedinger equation using Chebfun checkout the command `quantumstates`.
 
 %%
-% The polarization function $P(E)$ is evaluated at a set of Chebyshev points
-% and then interpolated with a polynomial.
+% A local function to compute the polarization is defined and passed to the
+% Chebfun constructor.
 
 Emax = .1;
 x = chebfun('x',[-L,L]);
@@ -101,8 +102,14 @@ xlabel('Electric Field',FS,16);
 ylabel('Polarization',FS,16);
 
 %%
-% Taking derivatives of $P(E)$ at $E = 0$ gives the various optical response
-% coefficients.
+% Unfortunately the errors in approximating $P(E)$ are significant enough
+% to affect the interpolant and a larger truncation tolerance was required to
+% get convergence in a reasonable time.
+
+%%
+% Taking derivatives of $P(E)$ at $E = 0$ gives the various optical
+% response coefficients. For this particular example it can be shown that
+% $\alpha = \frac14$, $\beta = 0$ and $\gamma \approx 0$.
 
 dP = diff(P);
 alpha = dP(0)
@@ -115,8 +122,8 @@ gamma = d3P(0)/6
 
 %% References
 %
-% [1] Juefei Zhou, Urszula B. Szafruga, David S. Watkins, and Mark G. Kuzyk,
-% _Optimizing potential energy functions for maximal intrinsic hyperpolarizability_,
-% Physical Reviews A, 76 (2007), 053831 pp. 1-10.
+% 1. Juefei Zhou, Urszula B. Szafruga, David S. Watkins, and Mark G. Kuzyk,
+%    _Optimizing potential energy functions for maximal intrinsic
+%    hyperpolarizability_, Physical Reviews A, 76 (2007), 053831 pp. 1-10.
 
 end
