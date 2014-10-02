@@ -115,8 +115,8 @@ gamma = d3P(0)/6
 
 %% References
 %
-% [1] Juefei Zhou, Urszula B. Szafruga, David S. Watkins, and Mark G. Kuzyk,
-% _Optimizing potential energy functions for maximal intrinsic hyperpolarizability_,
-% Physical Reviews A, 76 (2007), 053831 pp. 1-10.
+% 1. Juefei Zhou, Urszula B. Szafruga, David S. Watkins, and Mark G. Kuzyk,
+%    _Optimizing potential energy functions for maximal intrinsic
+%    hyperpolarizability_, Physical Reviews A, 76 (2007), 053831 pp. 1-10.
 
 end
