@@ -57,8 +57,8 @@ s_new = roots(u)
 % initial shock profile. We create an anonymous function that returns a
 % Burgers chebop for any given delta value.
 
-u = chebop(@(u) u.*diff(u)-0.1*diff(u,2),[-1,1],1.05,-1)\0;  % generic shock
-N = @(delta) chebop(@(u) u.*diff(u)-0.1*diff(u,2),[-1,1],1+delta,-1,'init',u);
+u = chebop(@(u) u.*diff(u) - 0.1*diff(u, 2), [-1, 1], 1.05, -1)\0;  % generic shock
+N = @(delta) chebop(@(u) u.*diff(u)-0.1*diff(u,2), [-1,1], 1 + delta, -1, u);
 
 %%
 % Now each evaluation of the function to be sampled involves locating the
@@ -69,7 +69,7 @@ s = @(delta) roots( N(delta)\0 );
 %%
 % The process is relatively slow, so we'll accelerate matters by
 % drastically reducing the error tolerances.
-cheboppref('restol',1e-5)
+cheboppref.setDefaults('errTol', 1e-5)
 tic, shockfun = chebfun(s,[0,0.2],'eps',1e-3,'vectorize'), toc
 clf, plot(shockfun,LW,2), title('Shock location'), xlabel('delta')
 
