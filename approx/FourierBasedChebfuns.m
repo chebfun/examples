@@ -2,7 +2,7 @@
 % Grady Wright, June 2014
 
 %%
-% [Tags: #periodic, #interpolation, #fourier]
+% [Tags: #trigfun, #periodic, #interpolation, #fourier]
 
 %%
 % One of the new features of Chebfun version 5 is the ability to create
@@ -11,7 +11,7 @@
 LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 
 %% Construction and comparison
-% Fourier-based chebfuns, or "fourfuns" as we like to refer to them, can be
+% Fourier-based chebfuns, or "trigfuns" as we like to refer to them, can be
 % created with the use of the `'periodic'` flag in the chebfun constructor.
 % For, example, the function $f(x) = \cos(8\sin(x))$ for $-\pi \leq x \leq
 % \pi$ can be constructed as follows:
@@ -43,8 +43,8 @@ ratio = length(f_cheby)/length(f)
 theoretical = pi/2
 
 %%
-% Trying to construct a fourfun from a non-periodic or non-smooth function
-% will typically result in a warning being issued and an "unhappy" fourfun,
+% Trying to construct a trigfun from a non-periodic or non-smooth function
+% will typically result in a warning being issued and an "unhappy" trigfun,
 % as illustrated for the unit step function below:
 f = chebfun(@(x) 0.5*(1+sign(x)),dom,'periodic')
 plot(f,LW,lw);
@@ -58,15 +58,15 @@ plot(f,LW,lw);
 f = chebfun(@(x) 0.5*(1+sign(x)),dom,'splitting','on')
 
 %%
-% Splitting is not an option for fourfuns.
+% Splitting is not an option for trigfuns.
 
 %% Basic operations
-% Many Chebfun operations can also be applied directly to a fourfun. 
+% Many Chebfun operations can also be applied directly to a trigfun. 
 % Some of these basic operations are illustrated in the examples below.
 
 %%
 % Addition, subtraction, multiplication, division, and function composition
-% can all be directly applied to a fourfun.  However one should be aware that
+% can all be directly applied to a trigfun.  However one should be aware that
 % operation should result in a smooth and periodic function. The following
 % example illustrates some of these operations:
 g = chebfun(@(x) sin(x),dom,'periodic');
@@ -99,7 +99,7 @@ plot(df, LW, lw)
 intf = sum(f)
 
 %%
-% Complex-valued fourfuns are also possible. For example:
+% Complex-valued trigfuns are also possible. For example:
 f = chebfun(@(x) 1i*(13*cos(x)-5*cos(2*x)-2*cos(3*x)-cos(4*x)) + ...
                  16*sin(x).^3, dom, 'periodic')
 plot(f, LW, lw), axis equal
@@ -117,11 +117,11 @@ err = (area_heart - 180*pi)/(180*pi)
 % The convolution of two smooth periodic functions can be computed using
 % the `circconv` (circular convolution) function. The example below 
 % demonstrates this function in combination with the additional feature 
-% that allows fourfuns to be constructed from function values. The latter
+% that allows trigfuns to be constructed from function values. The latter
 % is demonstrated first:
 rng('default'), rng(0);
 n = 201;
-x = fourpts(n);
+x = trigpts(n);
 func_vals = exp(sin(2*pi*x)) + 0.05*randn(n,1);
 f = chebfun(func_vals,dom,'periodic')
 
