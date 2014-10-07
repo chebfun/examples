@@ -9,7 +9,7 @@ FS = 'FontSize'; LW = 'linewidth'; dom = [0 2*pi];
 %%
 % A Fourier spectral collocation method is now available in Chebfun to solve
 % ODEs with periodic boundary conditions. The solution is a chebfun using a
-% `fourtech` representation, that is, a trigonometric interpolant on
+% `trigtech` representation, that is, a trigonometric interpolant on
 % equispaced points. This is the default method for periodic boundary
 % conditions.
 
