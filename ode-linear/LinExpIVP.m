@@ -14,7 +14,7 @@
 %
 % on the interval $[0,.005]$.  The solution is $\exp(\lambda x)$.
 d = [0,.005];                       % domain
-x = chebfun('x',d);                 % x variable
+x = chebfun('x', d);                % x variable
 L = chebop(d);                      % operator
 lambda = -10000;                    % specifying parameter lambda
 L.op = @(u) diff(u,1) - lambda*u;   % linear operator defining the ODE
@@ -26,3 +26,17 @@ FS = 'fontsize';
 xlabel('x',FS,12)
 ylabel('exp(x)',FS,12)
 title(sprintf('Solution of IVP for exp(x) -- error = %7.2e',err),FS,14) 
+
+%%
+% To solve IVPs, Chebfun uses a time-stepping method rather than a global 
+% spectral method. If we add a `cheobppref` object and turn the display on
+options = cheboppref();
+options.display = 'iter';
+
+%%
+% we get the following message when solving the IVP
+u = mldivide(L, 0, options);
+
+%%
+% Chebfun identifies that the boundary conditions correspont to an IVP and
+% automatically uses a time-stepping method.
