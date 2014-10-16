@@ -1,10 +1,6 @@
 %% Rootrace
 %
-
-%% 
-% Jared Aurentz
-%
-% October 2014
+% Jared Aurentz and Anthony Austin, October 2014
 
 
 %% roots of Chebyshev polynomials
@@ -12,7 +8,7 @@
 % Here is a so called rootrace between chebfun's roots command and matlab's
 % eig command.
 
-num_degrees = 10;
+num_degrees = 12;
 degrees = 2.^(1:num_degrees)';
 num_trials = flipud(degrees)/2;
 
