@@ -31,7 +31,7 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % recovered (R). The dynamics dictate a one-way track: susceptible members may
 % become infected, and infected individuals may recover, but that is all. So
 % beginning with a nonzero number of infected people, then after enough time
-% everyone ends up "recovered".
+% everyone ends up "recovered" (which is a word also used to mean "dead").
 
 %%
 % The model is a great simplification of how most diseases actually spread: it
@@ -39,8 +39,8 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % population, ignoring geographic constraints; it assumes everyone is equally
 % susceptible to the disease; and it treats the population as being continuous
 % rather than discrete. Nevertheless, its assumptions about immunity make it a
-% good model for measles, mumps, and rubella, all highly contagious diseases
-% that infected people eventually develop an immunity to.
+% good model for measles, mumps, and rubella, which are all highly contagious
+% diseases that infected people eventually develop an immunity to.
 
 %%
 % The SIR equations are
@@ -48,8 +48,11 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % $$ \frac{d I}{d t} = c I S - r I, $$
 % $$ \frac{d R}{d t} = r I. $$
 % The positive constants $c$ and $r$ are called the contact rate (or
-% transmission rate) and recovery rate, and are determined empirically for
-% a given disease.
+% transmission rate) and recovery rate, and are determined empirically for a
+% given disease. Looking at the for a while, you'll see that these equations
+% all make sense intuitively. For example, the rate of increase of the
+% population of "recovered" individuals is proportional to the size of
+% infected individuals.
 
 %%
 % Here is a chebop for the SIR model.
@@ -87,14 +90,20 @@ title('SIR model')
 xlabel('x')
 
 %%
-% The model wouldn't be very realistic if the population size varied much
-% over time, so let us verify that it is constant.
+% So beginning from a small fraction of infected people, eventually the entire
+% population gets the disease and recovers (or dies). Notice that if $I(0)=0$,
+% the solution component for $I$ would be the steady function $I(t)=0$, which
+% is an unstable (and biologically accurate) equilibrium of the system.
+
+%%
+% The model wouldn't be very realistic if the population size varied over
+% time, so let us verify that it is constant.
 plot(S+I+R)
 title('total population size')
 ylim([0 600])
 %%
-% (You can also see from the differential equations that the population is
-% constant by adding the equations together.)
+% It can also be seen from the differential equations that the population is
+% constant by adding the equations together.
 
 %% SIR with vital dynamics
 % The SIR model described above encounters problems when imposed on a long
@@ -103,14 +112,16 @@ ylim([0 600])
 % the _vital dynamics_ -- that is, birth and death -- of members of the
 % population.
 %%
-% SIR with vital dynamics still assumes a constant population size, but
-% it includes a birth rate and death rate (of equal size) that assures
-% that members of the population are replaced by susceptible individuals
-% over time. The equations are
+% SIR with vital dynamics still assumes a constant population size, but it
+% includes a birth rate and death rate (of equal magnitude) that assures that
+% members of the population are replaced by susceptible individuals over time.
+% The equations are
 % $$ \frac{d S}{d t} = \mu N - \mu S - \frac{c}{N} I S, $$
 % $$ \frac{d I}{d t} = \frac{c}{N} I S - (r+\mu) I, $$
 % $$ \frac{d R}{d t} = r I - \mu R, $$
-% where $\mu$ is the birth and death rate and $N$ is the population size.
+% where $\mu$ is the birth and death rate and $N$ is the total population
+% size. The other constants have changed to account for the fact that the
+% total population size is worked into the equations.
 
 N = 501;
 birth_rate    = .08;
@@ -150,12 +161,12 @@ norm(diff(S+I+R))
 % The vital dynamics therefore introduct a qualitative change in the solution
 % in that its components are no longer unimodal. Because the population
 % becomes susceptible again over time, there are intermittent outbreaks of the
-% disease. Eventually, however, the size of each subpopulation stabilizes.
+% disease. Eventually, however, the situation stabilizes.
 
 
 %% SEIR
 % The SEIR model expands upon the SIR model by adding an intermediate
-% compartment ("Exposed") for people who have been infected but are not
+% compartment ("exposed") for people who have been infected but are not
 % themselves infectious yet. The "exposed" category is significant for
 % diseases like influenza that have an incubation period.
 
@@ -200,6 +211,10 @@ plot([S E I R])
 legend('S','E','I','R')
 title('SEIR model with vital dynamics')
 xlabel('x')
+
+%%
+% And once more, verify the total population is constant:
+norm(diff(S+E+I+R))
 
 
 %% Other models
