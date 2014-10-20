@@ -4,7 +4,7 @@
 %%
 % (Chebfun example temp/FourierCollocation)
 % [Tags: #linearODE, #periodic]
-FS = 'FontSize'; LW = 'linewidth'; dom = [0 2*pi];
+LW = 'linewidth'; dom = [0 2*pi];
 
 %%
 % A Fourier spectral collocation method is now available in Chebfun to solve
