@@ -121,10 +121,10 @@ plot(t_eq, I(t_eq), 'k.', MS, 15)
 %%
 % What about the instantaneous mortality rate? A natural measure of
 % mortality rate is
-% $$ M(t) = \frac{\rho R(t)}{\int_0^t S(\xi) d\xi}, $$
+% $$ M(t) = \frac{\rho R(t)}{\int_0^t I(\xi) d\xi}, $$
 % where $0\leq\rho\leq 1$ denotes the average fraction of people who die from
 % the disease. That is, the mortality rate at time $t$ is the number of
-% recovered people over the total number of people who have been infected up
+% dead people over the total number of people who have been infected up
 % to time $t$. Here is the instantaneous mortality rate as a function of time.
 hold off
 rho = .4;                   % 40 percent of infected people die
@@ -132,7 +132,9 @@ plot(rho*R./cumsum(I))      % The instantaneous mortality rate
 ylim([0 1])
 xlabel('t')
 title('Instantaneous mortality rate for the SIR model')
-
+%%
+% It turns out that $M(t)$ is constant and equal to $\rho r$, the product of
+% $\rho$ with the recovery rate.
 %%
 % For this model, it is perhaps unsurprising that the instantaneous mortality
 % rate is constant. But it is important to note that in reality that is not
