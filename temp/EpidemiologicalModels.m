@@ -271,8 +271,8 @@ norm(diff(S+E+I+R))
 
 %% References
 %
-% [1] Daley, D. J. & Gani, J. _Epidemic Modeling: An Introduction._
-%     NY: Cambridge University Press (2005).
+% [1]: Daley, D. J. & Gani, J. _Epidemic Modeling: An Introduction._
+%      NY: Cambridge University Press (2005).
 %
-% [2] [Wikipedia: Compartmental models in
+% [2]: [Wikipedia: Compartmental models in
 %      epidemiology](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology)
