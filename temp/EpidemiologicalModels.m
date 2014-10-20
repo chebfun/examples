@@ -209,7 +209,7 @@ norm(diff(S+I+R))
 % susceptible and infected people.
 
 
-%% SEIR
+%% SEIR model
 % The SEIR model expands upon the SIR model by adding an intermediate
 % compartment ("exposed") for people who have been infected but are not
 % themselves infectious yet. The "exposed" category is significant for
@@ -265,7 +265,7 @@ norm(diff(S+E+I+R))
 %% Other models
 % There are endless variants of the basic SIR model to include factors like
 % passive immunity, variable transmission rates, stochastic processes, noise,
-% external factors (like the mosquitoe population in the case of malaria),
+% external factors (like the mosquito population in the case of malaria),
 % geographic setting, and so on.
 
 
