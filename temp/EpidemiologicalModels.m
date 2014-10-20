@@ -10,14 +10,14 @@
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 
 %%
-% Many mathematical models exist for the spread of diseases. This is partly
+% Many mathematical models exist for the spread of disease. This is partly
 % because as epidemiology matured, more sophisticated models were developed.
 % It is also because not all diseases spread in the same fashion. In this
-% Example we explore some of the more well-known models of disease spread.
-% All of the models presented are called "compartmental" models because they
-% group members of a population into compartments -- for example, "infected"
-% and "uninfected" -- which interact according to a system of differential
-% equations.
+% Example we explore some of the more well-known models of disease spread, all
+% variants of the famous SIR model. All of the models presented are called
+% "compartmental" because they group members of a population into compartments
+% -- for example, "infected" and "uninfected" -- which interact according to a
+% system of differential equations.
 
 %%
 % The systems of ODEs in this Example are initial value problems, and their
@@ -31,7 +31,8 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % recovered (R). The dynamics dictate a one-way track: susceptible members may
 % become infected, and infected individuals may recover, but that is all. So
 % beginning with a nonzero number of infected people, then after enough time
-% everyone ends up "recovered" (which is a word also used to mean "dead").
+% everyone ends up "recovered" (which is a word also used to mean "dead" -- R
+% really refers to noninfectious, nonsusceptible people).
 
 %%
 % The model is a great simplification of how most diseases actually spread: it
@@ -49,7 +50,7 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % $$ \frac{d R}{d t} = r I. $$
 % The positive constants $c$ and $r$ are called the contact rate (or
 % transmission rate) and recovery rate, and are determined empirically for a
-% given disease. Looking at the for a while, you'll see that these equations
+% given disease. Looking at them for a while, you'll see that these equations
 % all make sense intuitively. For example, the rate of increase of the
 % population of "recovered" individuals is proportional to the size of
 % infected individuals.
@@ -78,8 +79,8 @@ N.lbc = @(S,I,R) [ ...
 
 %%
 % We will use chebop's nonlinear backslash syntax to solve the problem. The
-% `deal` method allows the solution components to be dealt to multiple
-% outputs.
+% `deal` method allows the solution components (which are returned as a
+% chebmatrix) to be dealt to multiple outputs.
 [S,I,R] = deal(N\0);
 
 %%
@@ -87,7 +88,7 @@ N.lbc = @(S,I,R) [ ...
 plot([S I R])
 legend('S','I','R')
 title('SIR model')
-xlabel('x')
+xlabel('t')
 
 %%
 % So beginning from a small fraction of infected people, eventually the entire
@@ -104,6 +105,45 @@ ylim([0 600])
 %%
 % It can also be seen from the differential equations that the population is
 % constant by adding the equations together.
+
+%%
+% What is the largest number of people infected at a particular time?
+round(max(I))
+%%
+% Nearly half the population! At what time is the number of infected
+% people equal to the number of recovered people?
+t_eq = roots(I-R)
+plot([S I R]), legend('S','I','R'), xlabel('t'), hold on
+plot(t_eq*[1; 1], ylim(gca), 'k:')
+plot(t_eq, I(t_eq), 'k.', MS, 15)
+%%
+% Chebfun makes such computations embarrassingly easy.
+%%
+% What about the instantaneous mortality rate? A natural measure of
+% mortality rate is
+% $$ M(t) = \frac{\rho R(t)}{\int_0^t S(\xi) d\xi}, $$
+% where $0\leq\rho\leq 1$ denotes the average fraction of people who die from
+% the disease. That is, the mortality rate at time $t$ is the number of
+% recovered people over the total number of people who have been infected up
+% to time $t$. Here is the instantaneous mortality rate as a function of time.
+hold off
+rho = .4;                   % 40 percent of infected people die
+plot(rho*R./cumsum(I))      % The instantaneous mortality rate
+ylim([0 1])
+xlabel('t')
+title('Instantaneous mortality rate for the SIR model')
+
+%%
+% For this model, it is perhaps unsurprising that the instantaneous mortality
+% rate is constant. But it is important to note that in reality that is not
+% always true. In the case of the current Ebola outbreak in West Africa, for
+% instance, other factors are at play to make the transmission rate $c$
+% variable, actually an increasing function of time. When the transmission
+% rate $c$ is increasing so $dc(t)/dt > 0$, the number of infected people
+% increases faster than the already-infected people have a chance to die, so
+% the instantaneous mortality rate actually _decreases_. Once the infection
+% levels peak, however, the mortality rate skyrockets.
+
 
 %% SIR with vital dynamics
 % The SIR model described above encounters problems when imposed on a long
@@ -151,17 +191,20 @@ N.lbc = @(S,I,R) [ ...
 plot([S I R])
 legend('S','I','R')
 title('SIR model with vital dynamics')
-xlabel('x')
+xlabel('t')
 
 %%
 % And again we can verify that the population is constant.
 norm(diff(S+I+R))
 
 %%
-% The vital dynamics therefore introduct a qualitative change in the solution
-% in that its components are no longer unimodal. Because the population
+% The vital dynamics introduce two qualitative changes in the solution.
+% First, the solution components are no longer unimodal. Because the population
 % becomes susceptible again over time, there are intermittent outbreaks of the
-% disease. Eventually, however, the situation stabilizes.
+% disease, which eventually stabilize. Second, the steady state as $t\to\infty$
+% does not result in everyone being "recovered". Because of the birth/death
+% cycle, the steady state is that there is a constant _nonzero_ number of
+% susceptible and infected people.
 
 
 %% SEIR
@@ -210,7 +253,7 @@ N.lbc = @(S,E,I,R) [ ...
 plot([S E I R])
 legend('S','E','I','R')
 title('SEIR model with vital dynamics')
-xlabel('x')
+xlabel('t')
 
 %%
 % And once more, verify the total population is constant:
