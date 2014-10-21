@@ -54,7 +54,7 @@ D = diag(D);
 figure, plot(V, LW, 2)
 
 %%
-% The computed eigenvalues are very clsoe to the exact ones:
+% The computed eigenvalues are very close to the exact ones:
 Dexact = [0 1 1 4 4]';
 norm(D - Dexact, inf)
 
@@ -71,7 +71,7 @@ norm(L*V - D.'.*V, inf)
 %
 % $$ -u'' + 2q\cos(2x)u = \lambda u. $$
 %
-% They have been studied by the French mathematician \'Emile Mathieu to 
+% They have been studied by the French mathematician Emile Mathieu to 
 % model the vibrations of elliptical drumheads [2]. Given $q\neq 0$, 
 % the eigenvalues $\lambda(q)$ associated with periodic 
 % eigenfunctions are called the characteristic values of the Mathieu 
@@ -112,6 +112,6 @@ norm(L*V - D.'.*V, inf)
 % Graduate Studies in Mathematics, American Mathematical Society, 
 % Providence RI, 2012.
 %
-% [2] E. Mathieu, _M\'emoire sur le mouvement vibratoire d'une membrane de 
-% forme elliptique_, Journal de math\'ematiques pures et appliqu\'ees, 13
+% [2] E. Mathieu, _Memoire sur le mouvement vibratoire d'une membrane de 
+% forme elliptique_, Journal de mathematiques pures et appliquees, 13
 % (1868), pp. 137--203.
