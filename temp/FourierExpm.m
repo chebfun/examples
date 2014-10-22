@@ -7,7 +7,7 @@
 LW = 'linewidth'; dom = [0 2*pi];
 
 %%
-% Consider the time-dependent PDE on $[0,2\pi]x[0,T]$
+% Consider the time-dependent PDE on $[0,2\pi]\times [0,T]$
 %
 % $$ u_t = \mathcal{L}u, $$
 %
@@ -37,7 +37,7 @@ view(10, 70), axis([0 2*pi 0 T -1 1])
 %%
 % The diffusion has done its job: the solution at $T=1$ has very small
 % amplitude.
-norm(u{end})
+norm(u{end}, 'inf')
 
 %% 
 % Let us solve now the convection equation
