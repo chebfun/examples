@@ -42,14 +42,14 @@ view(10, 70), axis([0 2*pi 0 T -1 1])
 %%
 % The diffusion has done its job: the solution at $T=1$ has very small
 % amplitude.
-norm(u{end})
+norm(u{end}, inf)
 
 %% 
 % Let us solve now the convection equation
 %
 % $$ u_t = c(x)u_x, $$
 %
-% on $[0,2\pi]\times[0, 20]$, with $c(x)= -\frac{1}{5}-\sin^2(x-1))$,
+% on $[0,2\pi]\times[0, 20]$, with $c(x)= -\frac{1}{5}-\sin^2(x-1)$,
 % periodic boundary conditions, and initial condition 
 % $u(x,0)=\exp(-100(x-1)^2)$.
 T = 20; dt = 0.5;
