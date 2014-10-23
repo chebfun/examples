@@ -7,7 +7,7 @@
 LW = 'linewidth'; dom = [0 2*pi];
 
 %%
-% Consider the periodic Strum-Liouville eigenvalue problem
+% Consider the periodic Sturm`-Liouville eigenvalue problem
 %
 % $$ -\frac{d}{dx}\Big[p(x)\frac{du}{dx}\Big]+q(x)u=\lambda w(x)u, $$
 %
