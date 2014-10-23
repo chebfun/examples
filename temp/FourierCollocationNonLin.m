@@ -13,7 +13,7 @@ LW = 'linewidth'; dom = [0 2*pi];
 % 
 % $$ u' - u\cos(u) = \cos(4x), $$
 %
-% on [0, 2*pi], with periodic boundary conditions. For nonlinear ODEs, we 
+% on $[0, 2\pi]$, with periodic boundary conditions. For nonlinear ODEs, we 
 % need to specify an intial guess; let us try $\cos(x)$. 
 % We can solve the ODE on Chebfun as follows. 
 f = chebfun(@(x) cos(4*x), dom);
