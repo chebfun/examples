@@ -1,8 +1,8 @@
-%% Compartmental models in epidemiology
-% Hrothgar, 21 October 2014
+%% Modelling infectious disease outbreaks
+% Hrothgar, October 2014
 
 %%
-% (Chebfun example ode-nonlin/SIRModel.m)
+% (Chebfun example ode-nonlin/ModellingDiseases.m)
 % [Tags: #ode, #nonlinear, #system]
 
 %%
@@ -13,7 +13,7 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % Many mathematical models exist for the spread of disease. This is partly
 % because as epidemiology matured, more sophisticated models were developed.
 % It is also because not all diseases spread in the same fashion. In this
-% Example we explore some of the more well-known models of disease spread, all
+% Example we explore some of the better-known models of disease spread, all
 % variants of the famous SIR model. All of the models presented are called
 % "compartmental" because they group members of a population into compartments
 % -- for example, "infected" and "uninfected" -- which interact according to a
@@ -21,7 +21,7 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 
 %%
 % The systems of ODEs in this Example are initial value problems, and their
-% solution on large domains is made possible by Chebfun's new IVP
+% solution over large time intervals is made possible by Chebfun's new IVP
 % capabilities.
 
 
@@ -30,9 +30,8 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % groups members of a fixed population as susceptible (S), infected (I), or
 % recovered (R). The dynamics dictate a one-way track: susceptible members may
 % become infected, and infected individuals may recover, but that is all. So
-% beginning with a nonzero number of infected people, then after enough time
-% everyone ends up "recovered" (which is a word also used to mean "dead" -- R
-% really refers to noninfectious, nonsusceptible people).
+% beginning with a nonzero number of infected people, after enough time
+% everyone ends up recovered.
 
 %%
 % The model is a great simplification of how most diseases actually spread: it
@@ -52,8 +51,8 @@ LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 % transmission rate) and recovery rate, and are determined empirically for a
 % given disease. Looking at them for a while, you'll see that these equations
 % all make sense intuitively. For example, the rate of increase of the
-% population of "recovered" individuals is proportional to the size of
-% infected individuals.
+% population of recovered individuals is proportional to the size of the
+% population of infected individuals.
 
 %%
 % Here is a chebop for the SIR model.
@@ -66,7 +65,7 @@ op = @(x,S,I,R) [ ...
     diff(R) - recovery_rate*I
     ];
 
-N = chebop(op, [0,30]);
+N = chebop(op, [0, 30]);
 
 %%
 % The initial conditions will be that out of population of 501 there is a
@@ -79,8 +78,8 @@ N.lbc = @(S,I,R) [ ...
 
 %%
 % We will use chebop's nonlinear backslash syntax to solve the problem. The
-% `deal` method allows the solution components (which are returned as a
-% chebmatrix) to be dealt to multiple outputs.
+% Chebfun `deal` method allows the solution components (which are returned as
+% a chebmatrix) to be dealt to multiple outputs.
 [S,I,R] = deal(N\0);
 
 %%
@@ -94,17 +93,7 @@ xlabel('t')
 % So beginning from a small fraction of infected people, eventually the entire
 % population gets the disease and recovers (or dies). Notice that if $I(0)=0$,
 % the solution component for $I$ would be the steady function $I(t)=0$, which
-% is an unstable (and biologically accurate) equilibrium of the system.
-
-%%
-% The model wouldn't be very realistic if the population size varied over
-% time, so let us verify that it is constant.
-plot(S+I+R)
-title('total population size')
-ylim([0 600])
-%%
-% It can also be seen from the differential equations that the population is
-% constant by adding the equations together.
+% is an unstable equilibrium of the system.
 
 %%
 % What is the largest number of people infected at a particular time?
@@ -117,15 +106,16 @@ plot([S I R]), legend('S','I','R'), xlabel('t'), hold on
 plot(t_eq*[1; 1], ylim(gca), 'k:')
 plot(t_eq, I(t_eq), 'k.', MS, 15)
 %%
-% Chebfun makes such computations embarrassingly easy.
+% Chebfun makes such computations remarkably easy.
 %%
 % What about the instantaneous mortality rate? A natural measure of
 % mortality rate is
 % $$ M(t) = \frac{\rho R(t)}{\int_0^t I(\xi) d\xi}, $$
 % where $0\leq\rho\leq 1$ denotes the average fraction of people who die from
-% the disease. That is, the mortality rate at time $t$ is the number of
-% dead people over the total number of people who have been infected up
-% to time $t$. Here is the instantaneous mortality rate as a function of time.
+% the disease. That is, the mortality rate at time $t$ is the number of people
+% who have died from the disease divided by the total number of people who
+% have been infected up to time $t$. Here is the instantaneous mortality rate
+% as a function of time.
 hold off
 rho = .4;                   % 40 percent of infected people die
 plot(rho*R./cumsum(I))      % The instantaneous mortality rate
@@ -138,26 +128,24 @@ title('Instantaneous mortality rate for the SIR model')
 %%
 % For this model, it is perhaps unsurprising that the instantaneous mortality
 % rate is constant. But it is important to note that in reality that is not
-% always true. In the case of the current Ebola outbreak in West Africa, for
-% instance, other factors are at play to make the transmission rate $c$
+% always the case. In the case of the current Ebola outbreak in West Africa,
+% for instance, other factors are at play to make the transmission rate $c$
 % variable, actually an increasing function of time. When the transmission
-% rate $c$ is increasing so $dc(t)/dt > 0$, the number of infected people
-% increases faster than the already-infected people have a chance to die, so
-% the instantaneous mortality rate actually _decreases_. Once the infection
-% levels peak, however, the mortality rate skyrockets.
+% rate $c$ is increasing so $dc(t)/dt > 0$, the disease spreads increasingly
+% fast and the the instantaneous mortality rate actually _decreases_. Once the
+% infection levels peak, however, the mortality rate skyrockets.
 
 
 %% SIR with vital dynamics
 % The SIR model described above encounters problems when imposed on a long
-% time horizen. In particular, it assumes that members of the population
-% stick around forever. A modified version of the SIR model accounts for
-% the _vital dynamics_ -- that is, birth and death -- of members of the
-% population.
+% time horizon. In particular, it assumes that members of the population stay
+% alive forever. A modified version of the SIR model accounts for the _vital
+% dynamics_ -- that is, birth and death -- of members of the population.
 %%
 % SIR with vital dynamics still assumes a constant population size, but it
-% includes a birth rate and death rate (of equal magnitude) that assures that
-% members of the population are replaced by susceptible individuals over time.
-% The equations are
+% includes a birth rate and death rate (of equal magnitude) that has the
+% effect that members of the population are replaced by susceptible
+% individuals over time. The equations are
 % $$ \frac{d S}{d t} = \mu N - \mu S - \frac{c}{N} I S, $$
 % $$ \frac{d I}{d t} = \frac{c}{N} I S - (r+\mu) I, $$
 % $$ \frac{d R}{d t} = r I - \mu R, $$
