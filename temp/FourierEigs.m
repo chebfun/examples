@@ -45,7 +45,8 @@ LW = 'linewidth'; dom = [0 2*pi];
 %
 % with eigenfunctions $A\cos(\sqrt{\lambda_n}x)+B\sin(\sqrt{\lambda_n}x)$, 
 % and discrete and real eigenvalues $\lambda_n=n^2,n\geq0$, double for 
-% $n\geq1$ and simple for $n=0$. We can solve it in Chebfun as follows.
+% $n\geq1$ and simple for $n=0$. We can solve it in Chebfun as follows
+% with the `eigs` command.
 L = chebop(@(u) -diff(u, 2), dom);
 L.bc = 'periodic';
 k = 5; % number of eigenvalues we want
