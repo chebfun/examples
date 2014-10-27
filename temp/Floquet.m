@@ -14,7 +14,7 @@ LW = 'linewidth'; lw = 2.0;
 % Consider the $n$-dimensional linear system of ordinary differential equations:
 % $$\dot{x}(t) = A(t) x(t),$$
 % where in addition, the matrix $A(t)$ is periodic with period $T$, i.e.
-% $A(t+T) = A(t)$ for every $t\in[0,T)$. Let $\Phi(t)$ denote the principal
+% $A(t+T) = A(t)$ for all real values of $t$. Let $\Phi(t)$ denote the principal
 % fundamental matrix solution such that the columns of $\Phi(t)$ are
 % linearly independent, and $\Phi(0) = I$. Then, Floquet's theorem
 % decomposes the principal fundamental matrix as the product of a periodic
@@ -37,17 +37,17 @@ LW = 'linewidth'; lw = 2.0;
 % $$ \ddot{y} + (1+a\cos 2t)y = x-y.$$
 T = pi; d = [0,T]; a = 0.15;
 A = chebop(d);
-A.op = @(t,x1,x2,x3,x4) [diff(x1)-x2;
-                         diff(x2)-x3+(2+a.*cos(2*t)).*x1;
-                         diff(x3)-x4;
-                         diff(x4)-x1+(2+a.*cos(2*t)).*x3];
-A.lbc = @(x1,x2,x3,x4) [x1-1;x2;x3;x4];
+A.op = @(t,x1,x2,y1,y2) [diff(x1)-x2;
+                         diff(x2)-y1+(2+a.*cos(2*t)).*x1;
+                         diff(y1)-y2;
+                         diff(y2)-x1+(2+a.*cos(2*t)).*y1];
+A.lbc = @(x1,x2,y1,y2) [x1-1;x2;y1;y2];
 Phi = A\0;
-A.lbc = @(x1,x2,x3,x4) [x1;x2-1;x3;x4];
+A.lbc = @(x1,x2,y1,y2) [x1;x2-1;y1;y2];
 Phi = [Phi A\0];
-A.lbc = @(x1,x2,x3,x4) [x1;x2;x3-1;x4];
+A.lbc = @(x1,x2,y1,y2) [x1;x2;y1-1;y2];
 Phi = [Phi A\0];
-A.lbc = @(x1,x2,x3,x4) [x1;x2;x3;x4-1];
+A.lbc = @(x1,x2,y1,y2) [x1;x2;y1;y2-1];
 Phi = [Phi A\0];
 %%
 % Having solved for the principal fundamental matrix for one period, we
@@ -140,7 +140,8 @@ end
 %%
 % The solutions can then be plotted below:
 clf;plot(real(xsol),LW,lw)
-xlabel('t'),ylabel('x(t)'),title('Solution of the system of coupled oscillators with periodic parametric excitation')
+xlabel('t'),ylabel('x(t) and y(t)'),title('Solution of the system of coupled oscillators with periodic parametric excitation')
+legend('x(t)','x''(t)','y(t)','y''(t)')
 
 %% References
 %
