@@ -36,7 +36,7 @@ plot(0)
         end
         
         % initialise
-        x = []; d = domain(-1,1);
+        x = []; d = domain(-1,1); xx = linspace(-1,1,100);
         LW = 'LineWidth'; MS = 'MarkerSize'; FS = 'FontSize';
         % loop 
         while 1                          % keep clicking!
