@@ -144,13 +144,13 @@ end
 % Then, we obtain the solution by further mulitplying by the periodic
 % matrix $P(t)$. Since $P(t)$ is periodic on $[0,T]$, there is no problem
 % sampling it on a larger interval, unlike aperiodic chebfuns.
-xsol = chebfun(@(t) P{1,1}(t), 10*d, 'periodic').*temp(:,1);
+xsol = chebfun(@(t) P{1,1}(t), 10*d).*temp(:,1);
 for i = 2:n
-    xsol = [xsol chebfun(@(t) P{i,1}(t), 10*d, 'periodic').*temp(:,1)];
+    xsol = [xsol chebfun(@(t) P{i,1}(t), 10*d).*temp(:,1)];
 end
 for i = 1:n
     for j = 2:n
-        xsol(:,i) = xsol(:,i) + chebfun(@(t) P{i,j}(t), 10*d, 'periodic').*temp(:,j);
+        xsol(:,i) = xsol(:,i) + chebfun(@(t) P{i,j}(t), 10*d).*temp(:,j);
     end
 end
 %%
