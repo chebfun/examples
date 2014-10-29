@@ -66,10 +66,9 @@ view(10, 70), axis([0 2*pi 0 T 0 1])
 % This example from [2] shows the propagation of the initial condition at 
 % variable speed, which remains coherent and clean.
 
-%% References.
+%% References
 %
-% [1] J. S. Hesthaven, S. Gottlieb, and D. Gottlied, _Spectral Methods
-% for Time-Dependent Problems_, Cambridge University Press, New York, 2007.
+% 1. J. S. Hesthaven, S. Gottlieb, and D. Gottlied, _Spectral Methods for
+%    Time-Dependent Problems_, Cambridge University Press, New York, 2007.
 %
-% [2] L. N. Trefethen, _Spectral Methods in MATLAB_, SIAM, Philadelphia,
-% 2000.
+% 2. L. N. Trefethen, _Spectral Methods in MATLAB_, SIAM, Philadelphia, 2000.

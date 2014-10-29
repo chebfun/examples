@@ -109,10 +109,10 @@ norm(L*V - D.'.*V, inf)
 
 %% References
 %
-% [1] G. Teschl, _Ordinary Differential Equations and Dynamical Systems_, 
-% Graduate Studies in Mathematics, American Mathematical Society, 
-% Providence RI, 2012.
+% 1. G. Teschl, _Ordinary Differential Equations and Dynamical Systems_,
+%    Graduate Studies in Mathematics, American Mathematical Society,
+%    Providence RI, 2012.
 %
-% [2] E. Mathieu, _Memoire sur le mouvement vibratoire d'une membrane de 
-% forme elliptique_, Journal de mathematiques pures et appliquees, 13
-% (1868), pp. 137--203.
+% 2. E. Mathieu, _Memoire sur le mouvement vibratoire d'une membrane de forme
+%    elliptique_, Journal de mathematiques pures et appliquees, 13 (1868), pp.
+%    137--203.

@@ -3,29 +3,25 @@
 
 %%
 % (Chebfun example ode-nonlin/ModellingDiseases.m)
-% [Tags: #ode, #nonlinear, #system]
-
-%%
-%
-LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
+% [Tags: #ode, #nonlinear, #system, #ebola]
 
 %%
 % Many mathematical models exist for the spread of disease. This is partly
 % because as epidemiology matured, more sophisticated models were developed.
 % It is also because not all diseases spread in the same fashion. In this
-% Example we explore some of the better-known models of disease spread, all
-% variants of the famous SIR model. All of the models presented are called
-% "compartmental" because they group members of a population into compartments
-% -- for example, "infected" and "uninfected" -- which interact according to a
-% system of differential equations.
+% Example we explore one of the best-known models of disease spread, the
+% famous SIR model. The SIR model is called "compartmental" because it groups
+% members of a population into compartments -- for example, "infected" and
+% "uninfected" -- which interact according to a system of differential
+% equations.
 
 %%
-% The systems of ODEs in this Example are initial value problems, and their
-% solution over large time intervals is made possible by Chebfun's new IVP
-% capabilities.
+% The problem posed in this Example is an initial value problem, and its
+% solution over a large time interval is made possible by the new IVP
+% capabilities that will soon be released in a new version of Chebfun.
 
 
-%% SIR model
+%% The SIR model
 % The most famous mathematical model of epidemics is the SIR model. This model
 % groups members of a fixed population as susceptible (S), infected (I), or
 % recovered (R). The dynamics dictate a one-way track: susceptible members may
@@ -104,7 +100,7 @@ round(max(I))
 t_eq = roots(I-R)
 plot([S I R]), legend('S','I','R'), xlabel('t'), hold on
 plot(t_eq*[1; 1], ylim(gca), 'k:')
-plot(t_eq, I(t_eq), 'k.', MS, 15)
+plot(t_eq, I(t_eq), 'k.', 'MarkerSize', 15)
 %%
 % Chebfun makes such computations remarkably easy.
 %%
@@ -128,7 +124,7 @@ title('Instantaneous mortality rate for the SIR model')
 %%
 % For this model, it is perhaps unsurprising that the instantaneous mortality
 % rate is constant. But it is important to note that in reality that is not
-% always the case. In the case of the current Ebola outbreak in West Africa,
+% always the case. In the case of the 2014 Ebola epidemic in West Africa,
 % for instance, other factors are at play to make the transmission rate $c$
 % variable, actually an increasing function of time. When the transmission
 % rate $c$ is increasing so $dc(t)/dt > 0$, the disease spreads increasingly
@@ -138,8 +134,8 @@ title('Instantaneous mortality rate for the SIR model')
 
 %% References
 %
-% [1]: Daley, D. J. & Gani, J. _Epidemic Modeling: An Introduction._
-%      NY: Cambridge University Press (2005).
+% 1. Daley, D. J. & Gani, J. _Epidemic Modeling: An Introduction._
+%    NY: Cambridge University Press (2005).
 %
-% [2]: [Wikipedia: Compartmental models in
-%      epidemiology](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology)
+% 2. [Wikipedia: Compartmental models in
+%    epidemiology](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology)

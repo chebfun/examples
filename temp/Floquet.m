@@ -6,7 +6,6 @@
 % [Tags: #ode, #linear, #system, #periodic, #Floquet]
 
 %%
-%
 clear all;
 LW = 'linewidth'; lw = 2.0;
 
@@ -102,7 +101,7 @@ for i = 1:n
         for k = 2:n
             temp = temp + Phi{i,k}.*expmB{k,j};
         end
-        P(i,j) = chebfun(@(t) temp(t),d,'periodic');
+        P(i,j) = chebfun(@(t) temp(t), d, 'periodic');
     end
 end
 %%
@@ -145,24 +144,25 @@ end
 % Then, we obtain the solution by further mulitplying by the periodic
 % matrix $P(t)$. Since $P(t)$ is periodic on $[0,T]$, there is no problem
 % sampling it on a larger interval, unlike aperiodic chebfuns.
-xsol = chebfun(@(t)P{1,1}(t),10*d,'periodic').*temp(:,1);
+xsol = chebfun(@(t) P{1,1}(t), 10*d, 'periodic').*temp(:,1);
 for i = 2:n
-    xsol = [xsol chebfun(@(t)P{i,1}(t),10*d,'periodic').*temp(:,1)];
+    xsol = [xsol chebfun(@(t) P{i,1}(t), 10*d, 'periodic').*temp(:,1)];
 end
 for i = 1:n
     for j = 2:n
-        xsol(:,i) = xsol(:,i) + chebfun(@(t)P{i,j}(t),10*d,'periodic').*temp(:,j);
+        xsol(:,i) = xsol(:,i) + chebfun(@(t) P{i,j}(t), 10*d, 'periodic').*temp(:,j);
     end
 end
 %%
 % The solutions can then be plotted below:
-clf;plot(real(xsol),LW,lw)
-xlabel('t'),ylabel('x(t) and y(t)'),title('Solution of the system of coupled oscillators with periodic parametric excitation')
-legend('x(t)','x''(t)','y(t)','y''(t)')
+clf, plot(real(xsol), LW, lw)
+xlabel('t'), ylabel('x(t) and y(t)')
+title('Solution of the system of coupled oscillators with periodic parametric excitation')
+legend('x(t)', 'x''(t)', 'y(t)', 'y''(t)')
 
 %% References
 %
-% [1]: Chicone, C. _Ordinary Differential Equations with Applications (Texts in Applied Mathematics 34)_
-%      Springer, second edition, (2006).
+% 1. Chicone, C. _Ordinary Differential Equations with Applications (Texts in
+%    Applied Mathematics 34)_ Springer, second edition, (2006).
 %
-% [2]: [Wikipedia: Floquet Theory](http://en.wikipedia.org/wiki/Floquet_theory)
+% 2. [Wikipedia: Floquet Theory](http://en.wikipedia.org/wiki/Floquet_theory)
