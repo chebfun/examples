@@ -34,9 +34,9 @@ hold on, plot(u, 'b', LW, 2)
 norm(N*u - f, inf)
 
 %%
-% If we start with an other initial guess, we obtain an other solution.
-% Let us try $\sin(x)^2$, plot it in dashed green, and plot the solution
-% in dashed blue.
+% If we start with an other initial guess, we might obtain an other 
+% solution. Let us try $\sin(x)^2$, plot it in dashed green, and plot the 
+% solution in dashed blue.
 N.init = chebfun(@(x) sin(x).^2, dom);
 v = N \ f
 hold on, plot(N.init, '--g', LW, 2)
