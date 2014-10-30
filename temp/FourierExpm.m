@@ -1,4 +1,4 @@
-%% Time-dependent PDEs on a periodic interval
+%% Time-dependent PDEs on a periodic interval with `expm`
 % Hadrien Montanelli, October 2014
 
 %%
