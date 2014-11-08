@@ -18,6 +18,10 @@ examples living in the temp folder.
 
     * EigsViaDet - Fails on master due to the hscale bug.
 
+    * Also, the example ode-nonlin/ModellingDiseases needs to be updated and
+      republished to include mention of the new IVP capabilities (right now it
+      says the feature is coming soon).
+
 
 2. OTHER EXAMPLES IN TEMP.
 
