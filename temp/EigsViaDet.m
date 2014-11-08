@@ -54,7 +54,7 @@ A = spdiags([[b;0] a [0;b]],-1:1,N,N);
 
 %%
 % Here, computed the usual way, are
-% the ``exact'' eigenvalues in the interval $[-1,1]$:
+% the "exact" eigenvalues in the interval $[-1,1]$:
 format long
 e = eig(full(A)); e_exact = sort(e(abs(e)<=1))
 
@@ -120,7 +120,7 @@ c2 = chebfun(@(x) sign(fdet(x,a,b,N)),[-1,1],'splitting','on');
 plot(c2,LW,1.6,'jumpline','-'), grid on, ylim([-1.4 1.4]);
 e_edgedetect = roots(c2);
 hold on, plot(e_edgedetect,0*e_edgedetect,'.r',MS,14), hold off
-disp('         exact        via edge detecection     difference')
+disp('         exact        via edge detection      difference')
 e_exact = sort(e(abs(e)<=1));
 disp([e_exact e_edgedetect e_exact-e_edgedetect])
 
