@@ -1,0 +1,34 @@
+Notes by Hrothgar, Nov 2014.
+----
+To keep things straight, here is my understanding of the plan for each of the
+examples living in the temp folder.
+
+
+1. EXAMPLES THAT WILL BECOME PUBLIC AT v5.1 RELEASE.
+
+    * PeriodicSystem - Depends on `trig` stuff.
+
+    * FourierCollocation - Depends on `trig` stuff.
+
+    * FourierCollocationNonLin - Depends on `trig` stuff.
+
+    * FourierEigs - Depends on `trig` stuff.
+
+    * FourierExpm - Depends on `trig` stuff.
+
+    * EigsViaDet - Fails on master due to the hscale bug.
+
+
+2. OTHER EXAMPLES IN TEMP.
+
+    * BinousShaikhBellagi - Unfinished.
+
+    * CompactingColloids - Depends on the branch feature-pdes15s-noBCadjust,
+        which seems to have disappeared. And I can't find any record of a
+        pull request for it. We'll test it on master following the release.
+
+    * UnboundedODE - v5 doesn't (yet?) support ODEs on unbounded intervals.
+
+    * OptimCar - Not sure. Unfinished?
+
+    * PiecewiseLinopDemo - Not sure.
