@@ -3,6 +3,10 @@ Notes by Hrothgar, Nov 2014.
 To keep things straight, here is my understanding of the plan for each of the
 examples living in the temp folder.
 
+0. EXAMPLES THAT WILL BECOME PUBLIC BEFORE v5.1 RELEASE.
+
+    * TrapezoidEigs - To become public in the early morning hours of 18 Nov.
+
 
 1. EXAMPLES THAT WILL BECOME PUBLIC AT v5.1 RELEASE.
 
