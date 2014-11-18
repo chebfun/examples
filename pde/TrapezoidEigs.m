@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example pde/TrapezoidEigs.m)
-% [Tags: #Laplace equation, #eigenvalue]
+% [Tags: #Laplace equation, #eigenvalue, #method of particular solutions]
 
 function TrapezoidEigs()
 
@@ -23,7 +23,7 @@ hold on, text(.25,.55,'?',FS,30), hold off, axis off
 
 %%
 % One way to solve such problems is by the
-% _method of particular solutions_ [1,2].  In this trapezoid,
+% _method of particular solutions_ [2,3].  In this trapezoid,
 % every vertex angle is equal to $\pi$ divided by an integer except
 % the angle $3\pi/4$ at the origin.  It follows (this can
 % be proved by the Schwarz reflection principle) that any
@@ -48,7 +48,10 @@ hold on, text(.25,.55,'?',FS,30), hold off, axis off
 %%
 % We find these coefficients
 % by truncating the series at term $n$ and sampling
-% the boundary segments in $m\gg n$ points.  This yields a matrix 
+% the boundary segments in $m\gg n$ points.  (In principle each boundary
+% segment could be a continuum and we could do this part of the
+% problem with Chebfun quasimatrices, but experiments suggest this
+% is too slow.)  This yields a matrix 
 % $A$ depending on $\lambda$,
 %
 % $$ a_{ij} = \sin(4j\theta_k /3) J_{4j/3}(\lambda r_i), $$
@@ -107,7 +110,7 @@ end
 %%
 % The implementation of the method of particular solutions of
 % this Example, which is close to what might have been done
-% in [2], is not robust enough to treat more general problems
+% in [3], is not robust enough to treat more general problems
 % or higher eigenmodes.  
 % In general a robust implementation requires sampling in the
 % interior of the region as well as on the boundary to avoid
@@ -121,8 +124,8 @@ end
 % 
 % 1. A. Barnett and A. Hassell, Fast computation of high frequency Dirichlet
 %    eigenmodes via the spectral flow of the interior Neumann-to-Dirichlet
-%    map, _Communications of Pure and Applied Mathematics_ 67 (2014), 351--
-%    407.
+%    map, _Communications of Pure and Applied Mathematics_ 67 (2014),
+%    351--407.
 %
 % 2. T. Betcke and L. N. Trefethen, Reviving the method of particular
 %    solutions, _SIAM Review_ 47 (2005), 469--491.
