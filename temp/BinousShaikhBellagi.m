@@ -1,5 +1,5 @@
 %% Problems from Binous, Shaikh and Bellagi
-% Nick Trefethen, 17 September 2014
+% Nick Trefethen, September 2014
 
 %%
 % (chebfun example temp/BinousShaikhBellagi)

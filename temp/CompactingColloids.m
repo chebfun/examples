@@ -78,7 +78,7 @@ waterfall(u, t, 'LineWidth', 2)
 % Pe = 20, the particles diffuse across the cell so that there is a linear
 % concentration gradient.
 
-%% Reference:
+%% Reference
 %
 % 1. "The resolution of shocks and the effects of compressible sediments in
 %    transient settling", Auzerais, Jackson & Russel, J Fluid Mech, (1988).

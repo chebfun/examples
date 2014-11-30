@@ -7,7 +7,7 @@
 LW = 'linewidth'; dom = [0 2*pi];
 
 %%
-% Consider the periodic Strum-Liouville eigenvalue problem
+% Consider the periodic Sturm-Liouville eigenvalue problem
 %
 % $$ -\frac{d}{dx}\Big[p(x)\frac{du}{dx}\Big]+q(x)u=\lambda w(x)u, $$
 %
@@ -45,18 +45,18 @@ LW = 'linewidth'; dom = [0 2*pi];
 %
 % with eigenfunctions $A\cos(\sqrt{\lambda_n}x)+B\sin(\sqrt{\lambda_n}x)$, 
 % and discrete and real eigenvalues $\lambda_n=n^2,n\geq0$, double for 
-% $n\geq1$ and simple for $n=0$. We can solve it in Chebfun as follows.
+% $n\geq1$ and simple for $n=0$. We can solve it in Chebfun as follows
+% with the `eigs` command.
 L = chebop(@(u) -diff(u, 2), dom);
 L.bc = 'periodic';
 k = 5; % number of eigenvalues we want
 [V, D] = eigs(L, k);
-D = diag(D);
 figure, plot(V, LW, 2)
 
 %%
 % The computed eigenvalues are very close to the exact ones:
 Dexact = [0 1 1 4 4]';
-norm(D - Dexact, inf)
+norm(diag(D) - Dexact, inf)
 
 %%
 % The eigenfunctions are periodic
@@ -64,7 +64,7 @@ V{1:end}
 
 %%
 % and satisfy the differential equation to high precision:
-norm(L*V - D.'.*V, inf)
+norm(L*V - V*D, inf)
 
 %%
 % If $p(x)=w(x)=1$, $q(x)=2q\cos(2x)$, we obtain the Mathieu equations
@@ -84,7 +84,6 @@ L = chebop(@(x, u) -diff(u, 2) + 2*q*cos(2*x).*u, dom);
 L.bc = 'periodic';
 k = 5; % number of eigenvalues we want
 [V, D] = eigs(L, k);
-D = diag(D);
 figure, plot(V, LW, 2)
 
 %%
@@ -95,7 +94,7 @@ Dwolfram = [ -1.513956885056520;
               2.379199880488686;
               3.672232706497191;
               5.172665133358294 ];
-norm(D - Dwolfram, inf)
+norm(diag(D) - Dwolfram, inf)
 
 
 %%
@@ -104,14 +103,14 @@ V{1:end}
 
 %%
 % and satisfy the differential equation to high precision:
-norm(L*V - D.'.*V, inf)
+norm(L*V - V*D, inf)
 
 %% References
 %
-% [1] G. Teschl, _Ordinary Differential Equations and Dynamical Systems_, 
-% Graduate Studies in Mathematics, American Mathematical Society, 
-% Providence RI, 2012.
+% 1. G. Teschl, _Ordinary Differential Equations and Dynamical Systems_,
+%    Graduate Studies in Mathematics, American Mathematical Society,
+%    Providence RI, 2012.
 %
-% [2] E. Mathieu, _Memoire sur le mouvement vibratoire d'une membrane de 
-% forme elliptique_, Journal de mathematiques pures et appliquees, 13
-% (1868), pp. 137--203.
+% 2. E. Mathieu, _Memoire sur le mouvement vibratoire d'une membrane de forme
+%    elliptique_, Journal de mathematiques pures et appliquees, 13 (1868), pp.
+%    137--203.
