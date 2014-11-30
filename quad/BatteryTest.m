@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example quad/BatteryTest.m)
-% [Tags: #quadrature, #minsamples, #spike, #blowup]
+% [Tags: #quadrature, #minSamples, #spike, #blowup]
 
 %%
 % This Example gives an idea of how Chebfun performs as a general-purpose
@@ -58,18 +58,30 @@ f_exact = [ 1.7182818284590452354 , 0.7 , 2/3 , 0.4794282266888016674 , ...
     0.013492485649467772692 , 17.664383539246514971 , 7.5 ];
 
 %%
-% To get an idea of what it is we are integrating, we plot the different
-% integrands:
+% To get the flavor of our experiment, here are
+% integrands 1, 9, 21, and 22:
 clf
+ii = [1 9 21 22]; LW = 'linewidth'; FS = 'fontsize';
+for i = 1:4
+    xx = linspace( ranges(ii(i),1) , ranges(ii(i),2) , 200 );
+    axes('position',[.03+.5*mod(i-1,2) .53-.5*floor((i-1)/2) .44 .44])
+    plot( xx , funs{ii(i)}(xx) , LW, 1.6), grid on
+    set(gca,'xtick',[],'ytick',[])
+end
+
+%%
+% Here is the collection of all 25:
 for i = 1:length(funs)
     xx = linspace( ranges(i,1) , ranges(i,2) , 200 );
     subplot(5,5,i), plot( xx , funs{i}(xx) )
+    set(gca,FS,5)
 end
 
 %%
 % We now create and fill two arrays with the relative errors and times used
 % for each quadrature routine and each function integrated to a relative
-% tolerance of $10^{-10}$. We create the chebfuns with splitting and blowup on
+% tolerance of $10^{-10}$. We create the chebfuns with splitting on 
+% and `blowup=2` 
 % to account for difficult and singular integrands. (For more accurate timing
 % results one could perform each integration, say, 10 times by setting
 % `runs = 10`.)
@@ -82,7 +94,7 @@ for i = 1:length(funs)
   tic
   for k = 1:runs
     q = sum( chebfun( funs{i} , ranges(i,:) , ...
-      'splitting' , 'on' , 'blowup' , 'on' ) );
+      'splitting' , 'on' , 'blowup' , 2 ) );
   end
   time(i,1) = toc/runs;
   errs(i,1) = abs( ( q-f_exact(i) ) / f_exact(i) );
@@ -117,9 +129,9 @@ end
 % To give an idea of how the algorithms compare, we plot both the times
 % and the achieved accuracies in bar charts.
 % First, consider the execution times.  The chart scales these
-% relative to the time required by quadgk.  What we see here is that
-% quad and quadl are typically about 10 times slower than quadgk,
-% and Chebfun is typically about 10 times slower than quad and quadl.
+% relative to the time required by `quadgk`.  What we see here is that
+% `quad` and `quadl` are typically about 5 times slower than `quadgk`,
+% and Chebfun is typically about 5 times slower than `quad` and `quadl`.
 clf
 barh( time ./ (time(:,4)*ones(1,4) ) )
 FS = 'fontsize';
@@ -131,25 +143,29 @@ scrsz = get(0,'ScreenSize');
 set(gcf,'position',[0 0 600 scrsz(4)])
 
 %%
-% Now look at accuracies.  The plot shows relative errors
+% Now let us look at accuracies.  The next plot shows relative errors
 % scaled to the required tolerance of 1e-10.
-% Here we see that quad sometimes does better and sometimes
-% worse than prescribed; quadl and quadgk usually do better; and
+% Here we see that all the codes usually do better than prescribed,
+% with `quad` and `quadl` failing most often.
 % Chebfun, which is working in its default mode, usually
-% gets close to machine precision.
+% gets close to machine precision, and `quadgk` also usually gets many more
+% digits than requested.
 %%
 clf
-barh( errs / 1e-10 )
+barh( (errs+1e-20) / 1e-10 )
 title('Error',FS,14)
 legend('chebfun','quad','quadl','quadgk')
-axis([1e-8 1e12 0 26])
+axis([1e-6 1e11 0 26])
 set(gca,'XScale','log','YDir','reverse')
 set(gcf,'position',[0 0 600 scrsz(4)])
 set(gca,'xtick',10.^(-5:5:10))
 set(gca,'xticklabel',{'1e-15','1e-10','1e-5','1'})
 
 %%
-% Chebfun fails in one case: the 21st
+% Chebfun does poorly in two cases.  With the 19th function $\log(x)$,
+% it loses many digits of accuracy.  This is a problem of Chebfun's
+% treatment of singularities that we hope will be improved in the future.
+% There is also a failure with the 21st
 % function. To see what went wrong in that case, we plot the function and
 % its chebfun:
 close
@@ -160,21 +176,21 @@ hold on, plot( chebfun( funs{21} , ranges(21,:) , ...
 
 %%
 % Evidently Chebfun missed the third spike at x=0.6.
-% This can be fixed by increasing minsamples:
+% This can be fixed by increasing `minSamples`:
 q = sum( chebfun( funs{21} , ranges(21,:), ...
-    'splitting' , 'on' , 'blowup' , 'on' , 'minsamples', 65) );
+    'splitting' , 'on' , 'blowup' , 'on' , 'minSamples', 65) );
 abs( ( q - f_exact(21) ) / f_exact(21) )
 
-
-%% References
+%%
+% References
 %
 % 1. David K. Kahaner, "Comparison of numerical quadrature formulas," in
-%    Mathematical Software, John R. Rice, ed., Academic Press, 1971, pp.
-%    229-259.
+% Mathematical Software, John R. Rice, ed., Academic Press, 1971, pp.
+% 229-259.
 %
 % 2. Walter Gander & Walter Gautschi, "Adaptive quadrature -- revisited", BIT
-%    Numerical Mathematics, 40(1):84-101, 2000.
+% Numerical Mathematics, 40(1):84-101, 2000.
 %
 % 3. Pedro Gonnet, "Increasing the reliability of adaptive quadrature using
-%    explicit interpolants", ACM Transactions on Mathematical Software,
-%    37(3):26:1--26:32, 2010.
+% explicit interpolants", ACM Transactions on Mathematical Software,
+% 37(3):26:1--26:32, 2010.
