@@ -181,7 +181,7 @@ hold off, grid on
 % given by
 %
 % \begin{equation}
-%   g(y) = f(x(y))\ |dx/dy|.  \label{eq2}
+%   g(y) = f(x(y))\ \|dx/dy\|.  \label{eq2}
 % \end{equation}
 % 
 % The validity of this rule relies on some assumptions, the most relevant for
