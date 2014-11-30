@@ -13,7 +13,9 @@
 % maturity $t=T$. The value $V$ of such contract at time $t=0$, conditional 
 % to an underlying value $S_0$ is
 %
-% $$ V(S_0) = e^{-rT} E^Q[V(S_T)].  \eqno (1) $$
+% \begin{equation}
+%   V(S_0) = e^{-rT} E^Q[V(S_T)].  \label{eq1}
+% \end{equation}
 %
 % Such representation of the price is important for theoretical and
 % practical purposes. It suggests a straightforward Monte Carlo based 
@@ -23,17 +25,17 @@
 % is ubiquitous in the financial practice. For an introduction to 
 % risk-neutral pricing of financial derivatives, see [1].
 %
-% In this example we take an alternative route and present a Chebfun-based 
-% numerical procedure for the calculation of formula (1). We have not been
-% able to locate references to a procedure like the one we present here but
-% we wouldn't be surprised if one day we come across them, as it relies on   
+% In this example we take an alternative route and present a Chebfun-based
+% numerical procedure for the calculation of formula (\ref{eq1}). We have not
+% been able to locate references to a procedure like the one we present here
+% but we wouldn't be surprised if one day we come across them, as it relies on
 % little else than basic probability. (Admitedly, Chebfun makes it look
 % particularly simple.)
 %
 % Before starting we draw the attention to the related Chebfun example
 % "Black-Scholes PDE using operator exponential" by Toby Driscoll. The
 % object of study in that example is the Black-Scholes PDE, which is
-% connected to the representation of the price in formula (1) by the
+% connected to the representation of the price in formula (\ref{eq1}) by the
 % Feynman-Kac theorem.
 % 
 %% A Call Option on an Asset following a GBM 
@@ -51,7 +53,6 @@ plot(call,LW,1.6,'k','interval',[0 RHSplot]),
 ylim([-20 140])
 
 %%
-%
 % A model for the dynamics of the stock price, with a history stretching 
 % back to Sprenkle in 1961 (see [5]), is the geometric Brownian motion. This is a 
 % continuous-time stochastic process that specifies at any time $t>0$ a 
@@ -59,8 +60,8 @@ ylim([-20 140])
 % function (PDF) $f(S_t)$ of the following form:
 % 
 % $$ 
-% f(S_t) = \frac{1}{\sigma S \sqrt{2\pi t}} \exp(\ln(S_t/S_0) - (\mu -
-% \frac12\sigma^2)t)^2/2\sigma^2 t.
+% f(S_t) = \frac{1}{\sigma S \sqrt{2\pi t}} \exp(-(\ln(S_t/S_0) - (\mu -
+% \frac12\sigma^2)t)^2/2\sigma^2 t).
 % $$
 %
 % The parameter $\mu$ is the drift and it determines the trend (e.g.,
@@ -102,13 +103,13 @@ sum(lognPDF)
 %% Change from the original to the risk-neutral measure
 %
 % So far we have only presented the model that the asset price will follow.
-% Now we make the first step for the evaluation of formula (1). This step
-% is actually a critical one, encapsulating the key component of the
+% Now we make the first step for the evaluation of formula (\ref{eq1}). This
+% step is actually a critical one, encapsulating the key component of the
 % risk-neutral pricing theory: the probability measure of the process
 % governing the asset has to be changed in such a way that the resulting
 % process is a martingale. The new measure is known as the "risk-neutral
 % measure" and is equivalent (in some sense not discussed here) to the
-% original one. 
+% original one.
 %
 % The possibility of making this change of measure guarantees the lack of
 % arbitrage opportunities in the market (i.e., the possibility of making
@@ -171,7 +172,7 @@ hold off, grid on
 
 %% Distribution of the option payoff at maturity
 % 
-% Formula (1) takes the risk-neutral expectation of the random variable
+% Formula (\ref{eq1}) takes the risk-neutral expectation of the random variable
 % $V(S_T)$, where $V$ is the function specifying the contract's payoff. How
 % can we calculate the distribution of of a random variable which is itself
 % the function of another random variable? The answer of this question
@@ -179,22 +180,22 @@ hold off, grid on
 % random variable $x$ and $y(x)$ is a function of $x$, the distribution $g(y)$ is
 % given by
 %
-% $$
-% g(y) = f(x(y)) |\frac{dx}{dy}| \ \ \ \ \ \ (2)
-% $$
+% \begin{equation}
+%   g(y) = f(x(y))\ |dx/dy|.  \label{eq2}
+% \end{equation}
 % 
-% The validity of this rule relies on some assumptions, the most relevant
-% for us now being 
-% the possibility of inverting the function $V$, which in turn implies the
-% requierement of the function being monotonically increasing or decreasing. The usual way of dealing with
-% this requirement is to split the domain of the function in regions whith
-% this behaviour and then putting them together. 
+% The validity of this rule relies on some assumptions, the most relevant for
+% us now being the possibility of inverting the function $V$, which in turn
+% implies the requierement of the function being monotonically increasing or
+% decreasing. The usual way of dealing with this requirement is to split the
+% domain of the function in regions whith this behaviour and then putting them
+% together.
 %
 % For the case of the call option, we can apply directly this rule on the
 % ITM region to find out its contribution to the PDF of $V(S)$. In this
 % region, the transformation function simply is $y = S-K$ and
-% $dx/dy=1$. Substituting in (2), we find that the chebfun of the PDF in
-% the ITM region is
+% $dx/dy=1$. Substituting in (\ref{eq2}), we find that the chebfun of the PDF
+% in the ITM region is
 ITM = chebfun(@(S) lognHnd(S+K)*1,[0 RHS]);
 
 %%
@@ -247,8 +248,9 @@ hold off
 % where
 %
 % $$
-% d1 = \frac{1}{\sigma\sqrt{T}} \Bigl( \ln\Bigl(\frac{S}{K}\Bigr) +
-% \Bigl(r+\frac{\sigma^2}{2} \Bigr)T \Bigr), \ d_2 = d_1 - \sigma \sqrt{T},
+% d_1 = \frac{1}{\sigma\sqrt{T}} \Bigl( \ln\Bigl(\frac{S}{K}\Bigr) +
+% \Bigl(r+\frac{\sigma^2}{2} \Bigr)T \Bigr), \ \ \ \
+% d_2 = d_1 - \sigma \sqrt{T},
 % $$
 %
 % and $N(\cdot)$ is the CDF of the standard normal distribution. We leave
@@ -280,9 +282,9 @@ disp(['approx = ', num2str(approx,'%10.15f')])
 % 3. Calculate the total probability of ending in constant regions and use
 %    them as weight of Dirac deltas located at points equal to the constant
 %    values. For increasing/decreasing regions, obtain the function $y(x)$ in
-%    formula (2), invert it to obtain $x(y)$ and then differentiate it to
-%    obtain $dx/dy$; obain the composition $f(x(y))$ and calculate the
-%    contibutions with formula (2).
+%    formula (\ref{eq2}), invert it to obtain $x(y)$ and then differentiate it
+%    to obtain $dx/dy$; obain the composition $f(x(y))$ and calculate the
+%    contibutions with formula (\ref{eq2}).
 %
 % 4. Add all contributions to obtain the payoff's distribution at maturity.
 %
