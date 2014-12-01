@@ -32,7 +32,7 @@ FS = 'fontsize'; LW = 'linewidth';
 f = @(y,yp) y .* sqrt(1 + yp.^2);
 J = @(y) sum( f(y, diff(y)) );
 
-alpha = cosh(1);
+alpha = cosh(-1);
 beta  = cosh(1);
 
 %%
