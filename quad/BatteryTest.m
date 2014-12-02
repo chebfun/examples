@@ -150,7 +150,6 @@ set(gcf,'position',[0 0 600 scrsz(4)])
 % Chebfun, which is working in its default mode, usually
 % gets close to machine precision, and `quadgk` also usually gets many more
 % digits than requested.
-%%
 clf
 barh( (errs+1e-20) / 1e-10 )
 title('Error',FS,14)
@@ -175,22 +174,21 @@ hold on, plot( chebfun( funs{21} , ranges(21,:) , ...
     'splitting' , 'on' , 'blowup' , 'on' ) ), hold off
 
 %%
-% Evidently Chebfun missed the third spike at x=0.6.
+% Evidently Chebfun missed the third spike at $x=0.6$.
 % This can be fixed by increasing `minSamples`:
 q = sum( chebfun( funs{21} , ranges(21,:), ...
     'splitting' , 'on' , 'blowup' , 'on' , 'minSamples', 65) );
 abs( ( q - f_exact(21) ) / f_exact(21) )
 
-%%
-% References
+%% References
 %
 % 1. David K. Kahaner, "Comparison of numerical quadrature formulas," in
-% Mathematical Software, John R. Rice, ed., Academic Press, 1971, pp.
-% 229-259.
+%    Mathematical Software, John R. Rice, ed., Academic Press, 1971, pp.
+%    229-259.
 %
 % 2. Walter Gander & Walter Gautschi, "Adaptive quadrature -- revisited", BIT
-% Numerical Mathematics, 40(1):84-101, 2000.
+%    Numerical Mathematics, 40(1):84-101, 2000.
 %
 % 3. Pedro Gonnet, "Increasing the reliability of adaptive quadrature using
-% explicit interpolants", ACM Transactions on Mathematical Software,
-% 37(3):26:1--26:32, 2010.
+%    explicit interpolants", ACM Transactions on Mathematical Software,
+%    37(3):26:1--26:32, 2010.
