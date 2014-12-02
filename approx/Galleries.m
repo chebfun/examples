@@ -10,13 +10,13 @@
 % construct interesting matrices.  Beginning with the
 % release of Version 5.1 this month, Chebfun has a gallery command
 % too, which constructs interesting functions, i.e., chebfuns.
-% To see what's available, type help cheb/gallery.
+% To see what's available, type `help cheb/gallery`.
 
 %%
 % Here is a particularly attractive image.  The command
 f = cheb.gallery('rose');
 %%
-% produces a complex chebfun f that can be visualized strikingly
+% produces a complex chebfun `f` that can be visualized strikingly
 % with `fill`:
 fill(real(f),imag(f),[1 0 0]), axis equal off
 
