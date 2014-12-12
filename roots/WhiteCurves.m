@@ -44,7 +44,7 @@ x = chebfun('x');
 for j = 1:30,
     L = legpoly(j);
     q = (pi*j/2)^.5*(1-x.^2).^.25;
-    plot(L.*q)
+    plot(L.*q, 'color', [.6 .4 0])
 end
 axis([-1 1 -1 1])
 

@@ -29,6 +29,7 @@ A = [2 -2;0 1]; [EV, EW] = eig(A);        % matrix of the system and eigenvalues
 G = A*g; T = [0 3];                       % phase plane and time interval
 fprintf('eigenvalues of A:\n'), disp(diag(EW)')
 fprintf('eigenvectors of A:\n'), disp(EV)
+figure('position', [0 0 500 400])
 quiver(G,'b',LW,2), hold on, axis equal
 initvals = [.1 .05; -.1 -.05; -.1,-.05; -.1,0; .1,0];
 for k = 1:size(initvals,1)

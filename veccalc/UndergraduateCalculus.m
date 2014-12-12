@@ -76,7 +76,7 @@ d = [0 5 0 5];
 u = chebfun2(@(x,y) x.^2-y.^2,d);
 v = chebfun2(@(x,y) x.*y-1/2,d);
 c1 = roots(u-1); c2 = roots(u+1); c3 = roots(v-1/2);
-plot(c1), hold on, plot(c2), plot(c3,'k'), axis square
+plot(c1, 'b'), hold on, plot(c2, 'b'), plot(c3,'k'), axis square
 title('Region of integration',FS,12), hold off
 text(.5,.5,'D',FS,12)
 

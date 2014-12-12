@@ -2,7 +2,7 @@
 % Grady Wright, June 2014
 
 %%
-% [Tags: #periodic, #interpolation, #fourier, #gibbs, #leastsquares]
+% [Tags: #trigfun, #periodic, #interpolation, #fourier, #gibbs, #leastsquares]
 LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 
 %%
@@ -33,7 +33,7 @@ LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 % and scaling appropriately.
 %
 % The Fourier coefficients for many functions $u$ can be computed in Chebfun using the
-% `fourcoeffs` command. The smoothness of $u$ over $[-\pi,\pi]$ dictates
+% `trigcoeffs` command. The smoothness of $u$ over $[-\pi,\pi]$ dictates
 % the technique for determining the coefficients.
 
 %% Smooth periodic functions
@@ -41,23 +41,23 @@ LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 % differentiable over $[-\pi,\pi]$ and $u'''(x)$ is piecewise continuous
 % on $[-\pi,\pi]$ (or more specifically of bounded variation) then the
 % Fourier coefficients of $u$ can be quickly computed by first constructing
-% $u$ with the '`periodic`' flag in the Chebfun, then calling `fourcoeffs`.
+% $u$ with the `'trig'` flag in the Chebfun, then calling `trigcoeffs`.
 % Here is an example for a simple Fourier polynomial:
-u = chebfun(@(x) 1 - 4*cos(x) + 6*sin(2*x),[-pi,pi],'periodic');
-c = fourcoeffs(u);
+u = chebfun(@(x) 1 - 4*cos(x) + 6*sin(2*x),[-pi,pi],'trig');
+c = trigcoeffs(u);
 disp('Fourier coeffs of 1 + cos(x) + sin(2*x):')
 c
 
 %%
-% Note that `fourcoeffs` follows the MATLAB convention of having the 
+% Note that `trigcoeffs` follows the MATLAB convention of having the 
 % coefficients appear in order from highest degree to lowest degree. In the
 % code above we have reversed this order to match the way the coefficients
 % appear in the definitions above.
 %
-% Also note that `fourcoeffs` by default returns the coefficients in
+% Also note that `trigcoeffs` by default returns the coefficients in
 % complex exponential form, i.e., the value of $c_k$ above.  The 
 % equivalent coefficients in terms of cosines and sines can be obtained as:
-[a,b] = fourcoeffs(u);
+[a,b] = trigcoeffs(u);
 disp('Fourier cosine coeffs of 1 + cos(x) + sin(2*x)')
 a
 disp('Fourier sine coeffs of 1 + cos(x) + sin(2*x)')
@@ -70,7 +70,7 @@ b
 % coefficient for $\sin(2x)$.
 
 %%
-% The default behavior of `fourcoeffs` is to return all the Fourier
+% The default behavior of `trigcoeffs` is to return all the Fourier
 % coefficients necessary to resolve the function to machine precision
 % (assuming this number is less than 65537).  However, a specific number
 % can be obtained with an additional input argument.  We illustrate this
@@ -78,8 +78,8 @@ b
 % strip in the complex plane and has exact Fourier coefficients given by
 % $c_k = 2^{-|k|}$:
 numCoeffs = 11;
-u = chebfun(@(x) 3./(5 - 4*cos(x)),[-pi,pi],'periodic');
-c = fourcoeffs(u,numCoeffs);
+u = chebfun(@(x) 3./(5 - 4*cos(x)),[-pi,pi],'trig');
+c = trigcoeffs(u,numCoeffs);
 disp('Fourier coeffs of 3/(5-4cos(x)):')
 c
 
@@ -89,8 +89,8 @@ c
 %%
 % Here is an example for a less smooth function:
 numCoeffs = 17;
-u = chebfun(@(x) abs(sin(x)).^3,[-pi,pi],'periodic');
-c = fourcoeffs(u,numCoeffs); c = c(end:-1:1);
+u = chebfun(@(x) abs(sin(x)).^3,[-pi,pi],'trig');
+c = trigcoeffs(u,numCoeffs); c = c(end:-1:1);
 disp('Fourier coeffs of |sin(x)|^3')
 c
 
@@ -133,10 +133,10 @@ u = chebfun(sq_wave,[-pi,pi],'splitting','on');
 
 %%
 % We can obtain the Fourier coefficients of this function using again the
-% `fourcoeffs` method.  Since the square wave is odd, it makes sense to
+% `trigcoeffs` method.  Since the square wave is odd, it makes sense to
 % look at the Fourier sine coefficients in this case:
 numCoeffs = 15;
-[a,b] = fourcoeffs(u,numCoeffs);
+[a,b] = trigcoeffs(u,numCoeffs);
 disp('Fourier sine coeffs of unit step function:')
 b
 
@@ -155,13 +155,13 @@ disp([(1:7)' pi/4*real(b)])
 norm(a,inf)
 
 %%  Truncated Fourier approximations
-% The `fourcoeffs` function can also be used in combination with the
+% The `trigcoeffs` function can also be used in combination with the
 % Chebfun constructor to generate truncated Fourier series representations
 % of functions.  Here's an example for the above square wave using 15
 % Fourier modes:
 numModes = 15;
-c = fourcoeffs(u,2*numModes+1);
-u_trunc = chebfun(c,[-pi,pi],'periodic','coeffs');
+c = trigcoeffs(u,2*numModes+1);
+u_trunc = chebfun(c,[-pi,pi],'trig','coeffs');
 plot(u,'k-',u_trunc,'b-',LW,lw)
 
 %%
@@ -173,7 +173,7 @@ plot(u,'k-',u_trunc,'b-',LW,lw)
 % To see the actual 'wave' it is useful to plot the approximation over 
 % a larger interval, which can be done for $-4\pi \leq x \leq 4\pi$ as follows:
 u = chebfun(sq_wave,[-4*pi,4*pi],'splitting','on');
-u_trunc = chebfun(u_trunc,[-4*pi,4*pi],'periodic');
+u_trunc = chebfun(u_trunc,[-4*pi,4*pi],'trig');
 plot(u,'k-',u_trunc,'b-',LW,lw)
 
 %%
@@ -186,11 +186,11 @@ plot(u,'k-',u_trunc,'b-',LW,lw)
 % then expanded to a larger domain:
 sawtooth = @(x) (mod(x+pi,2*pi))/(2*pi);
 u = chebfun(sawtooth,[-pi,pi],'splitting','on');
-c = fourcoeffs(u,2*numModes+1);
-u_trunc = chebfun(c,[-pi,pi],'periodic','coeffs');
+c = trigcoeffs(u,2*numModes+1);
+u_trunc = chebfun(c,[-pi,pi],'trig','coeffs');
 
 u = chebfun(sawtooth,[-4*pi,4*pi],'splitting','on');
-u_trunc = chebfun(u_trunc,[-4*pi,4*pi],'periodic');
+u_trunc = chebfun(u_trunc,[-4*pi,4*pi],'trig');
 plot(u,'k-',u_trunc,'b-',LW,lw)
 
 %%

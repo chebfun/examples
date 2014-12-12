@@ -25,7 +25,7 @@ N = chebop(d);
 N.lbc = 0;
 
 %%
-% Define the operator using Chebfun's overloaded DIFF and CUMSUM commands.
+% Define the operator using Chebfun's overloaded `diff` and `cumsum` commands.
 N.op = @(u) diff(u) + 2*u + 5*cumsum(u);
 
 %%
