@@ -1,5 +1,5 @@
 %% Fourier Spectral Collocation 
-% Hadrien Montanelli, October 2014
+% Hadrien Montanelli, December 2014
 
 %%
 % (Chebfun example temp/FourierCollocation)

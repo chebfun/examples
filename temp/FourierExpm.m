@@ -1,5 +1,5 @@
 %% Time-dependent PDEs on a periodic interval with `expm`
-% Hadrien Montanelli, October 2014
+% Hadrien Montanelli, December 2014
 
 %%
 % (Chebfun example temp/FourierExpm)
@@ -18,34 +18,11 @@ LW = 'linewidth'; dom = [0 2*pi];
 %
 % $$ u(x,t) = e^{\mathcal{L}t}u(x,0). $$
 %
-% Two examples of well-posed problems are the heat equation, 
-% $\mathcal{L}u=u_{xx}$, and the convection equation, 
-% $\mathcal{L}u=c(x)u_x$.
-
-%%
-% Consider first the heat equation
-%
-% $$ u_t = u_{xx}, $$
-%
-% on $[0,2\pi]\times[0, 1]$, with periodic boundary conditions, and
-% initial condition $u(x,0)=\sin(3x)$.
-% We can solve it in Chebfun as follows with the `expm` command.
-T = 1; dt = 0.05;
-t = [0:dt:T];
-L = chebop(@(u) diff(u, 2), dom);
-L.bc = 'periodic';
-u0 = chebfun(@(x) sin(3*x), dom); 
-u = expm(L, t, u0);
-figure, waterfall(u, t, LW, 2)
-view(10, 70), axis([0 2*pi 0 T -1 1])
-
-%%
-% The diffusion has done its job: the solution at $T=1$ has very small
-% amplitude.
-norm(u{end}, inf)
+% Two examples of well-posed problems are the convection equation, 
+% $\mathcal{L}u=c(x)u_x$, and the heat equation, $\mathcal{L}u=u_{xx}$.
 
 %% 
-% Let us solve now the convection equation
+% Consider first the convection equation
 %
 % $$ u_t = c(x)u_x, $$
 %
@@ -65,6 +42,28 @@ view(10, 70), axis([0 2*pi 0 T 0 1])
 %%
 % This example from [2] shows the propagation of the initial condition at 
 % variable speed, which remains coherent and clean.
+
+%%
+% Consider now the heat equation
+%
+% $$ u_t = u_{xx}, $$
+%
+% on $[0,2\pi]\times[0, 1]$, with periodic boundary conditions, and
+% initial condition $u(x,0)=\sin(3x)$.
+% We can solve it in Chebfun as follows with the `expm` command.
+T = 1; dt = 0.05;
+t = [0:dt:T];
+L = chebop(@(u) diff(u, 2), dom);
+L.bc = 'periodic';
+u0 = chebfun(@(x) sin(3*x), dom); 
+u = expm(L, t, u0);
+figure, waterfall(u, t, LW, 2)
+view(10, 70), axis([0 2*pi 0 T -1 1])
+
+%%
+% The diffusion has done its job: the solution at $T=1$ has very small
+% amplitude.
+norm(u{end}, inf)
 
 %% References
 %

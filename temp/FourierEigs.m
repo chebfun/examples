@@ -1,5 +1,5 @@
 %% Periodic ODE eigenvalue problems
-% Hadrien Montanelli, October 2014
+% Hadrien Montanelli, December 2014
 
 %%
 % (Chebfun example temp/FourierEigs)
@@ -29,13 +29,14 @@ LW = 'linewidth'; dom = [0 2*pi];
 % $\lambda_0<\lambda_1\leq\lambda_2<\lambda_3\leq\lambda_4\ldots$, of 
 % multiplicity at most two for $n\geq1$ and one for $n=0$, with 
 % $\lambda_n\rightarrow\infty$ as $n\rightarrow\infty$.
-% Moreover, let $\Delta$ be the Hill discriminant defined by
+% Moreover, let $\Delta(\lambda)$ be the Hill discriminant defined by
 %
-% $$ \Delta = \frac{c(2\pi) + p(2\pi)s'(2\pi)}{2}, $$
+% $$ \Delta(\lambda) = \frac{c(2\pi) + p(2\pi)s'(2\pi)}{2}, $$
 % 
 % where $c(x)$ and $s(x)$ are the solutions of the Sturm-Liouville 
 % equations with initial conditions $c(0)=1$, $p(0)c'(0)=0$ and $s(0)=0$, 
-% $p(0)s'(0)=1$. The eigenvalues $\lambda_n$ correspond to $\Delta=1$.
+% $p(0)s'(0)=1$. The eigenvalues $\lambda_n$ are precisely those numbers 
+% $\lambda$ for which $\Delta(\lambda)$ takes the value 1.
 %
 % Let us first review two famous examples. 
 %
