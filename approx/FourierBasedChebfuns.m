@@ -12,12 +12,12 @@ LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 
 %% Construction and comparison
 % Fourier-based chebfuns, or "trigfuns" as we like to refer to them, can be
-% created with the use of the `'periodic'` flag in the chebfun constructor.
+% created with the use of the `'trig'` flag in the chebfun constructor.
 % For, example, the function $f(x) = \cos(8\sin(x))$ for $-\pi \leq x \leq
 % \pi$ can be constructed as follows:
 % 
 dom = [-pi,pi];
-f = chebfun(@(x) cos(8*sin(x)),dom,'periodic')
+f = chebfun(@(x) cos(8*sin(x)),dom,'trig')
 plot(f,LW,lw);
 
 %%
@@ -31,7 +31,7 @@ plotcoeffs(f), ylim([1e-18 1])
 %%
 % Since $f$ is smooth and periodic, a Fourier representation requires fewer
 % terms than a Chebyshev representation of $f$ to reach machine precision.
-% We can check this by constructing $f$ without the `'periodic'` flag:
+% We can check this by constructing $f$ without the `'trig'` flag:
 f_cheby = chebfun(@(x) cos(8*sin(x)),dom)
 
 %%
@@ -46,7 +46,7 @@ theoretical = pi/2
 % Trying to construct a trigfun from a non-periodic or non-smooth function
 % will typically result in a warning being issued and an "unhappy" trigfun,
 % as illustrated for the unit step function below:
-f = chebfun(@(x) 0.5*(1+sign(x)),dom,'periodic')
+f = chebfun(@(x) 0.5*(1+sign(x)),dom,'trig')
 plot(f,LW,lw);
 
 %%
@@ -69,7 +69,7 @@ f = chebfun(@(x) 0.5*(1+sign(x)),dom,'splitting','on')
 % can all be directly applied to a trigfun.  However one should be aware that
 % operation should result in a smooth and periodic function. The following
 % example illustrates some of these operations:
-g = chebfun(@(x) sin(x),dom,'periodic');
+g = chebfun(@(x) sin(x),dom,'trig');
 f = tanh(cos(1+2*g).^2)-0.5
 plot(f, LW, lw)
 
@@ -101,7 +101,7 @@ intf = sum(f)
 %%
 % Complex-valued trigfuns are also possible. For example:
 f = chebfun(@(x) 1i*(13*cos(x)-5*cos(2*x)-2*cos(3*x)-cos(4*x)) + ...
-                 16*sin(x).^3, dom, 'periodic')
+                 16*sin(x).^3, dom, 'trig')
 plot(f, LW, lw), axis equal
 
 %%
@@ -123,7 +123,7 @@ rng('default'), rng(0);
 n = 201;
 x = trigpts(n);
 func_vals = exp(sin(2*pi*x)) + 0.05*randn(n,1);
-f = chebfun(func_vals,dom,'periodic')
+f = chebfun(func_vals,dom,'trig')
 
 %%
 % Here $f$ interpolates the noisy `func_vals` at 201 equally spaced points
@@ -131,7 +131,7 @@ f = chebfun(func_vals,dom,'periodic')
 % function can be smoothed by convolving it with a mollifier, in this case
 % a (normalized) Gaussian with variance 0.1.
 sigma = 0.1;
-g = chebfun(@(x) 1/(sigma*sqrt(2*pi))*exp(-0.5*(x/sigma).^2),dom,'periodic');
+g = chebfun(@(x) 1/(sigma*sqrt(2*pi))*exp(-0.5*(x/sigma).^2),dom,'trig');
 
 %%
 % Note that the resulting respresentation of $g$ is actually the periodic 

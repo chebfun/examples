@@ -43,7 +43,7 @@ function [f,g]=ShapeAnalysis(f,g)
     % Plot original
     subplot(2,2,1)
     plot(f,'r',LW,2), hold on, axis equal, plot(g,'k',LW,2)
-    title('Orignal',FS,14)
+    title('Original',FS,14)
 
     % Translate mean to 0.
     f = f-mean(f); g = g-mean(g); 

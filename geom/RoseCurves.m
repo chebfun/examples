@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example geom/RoseCurves.m)
-% [Tags: #sinewaves, #geometry, #polar, #periodic]
+% [Tags: #sinewaves, #geometry, #polar, #trig]
 
 %%
 % A rose curve is a sinusoid in polar coordinates, that is,
@@ -27,10 +27,10 @@
 % as $2\pi$ times the least common multiple of $m$ and $n$.
 
 roseCurve = @(m,n) chebfun(@(t) cos(m/n*t).*cos(t)+1i*cos(m/n*t).*sin(t), ...
-                           [0, 2*pi*lcm(m,n)], 'periodic');
+                           [0, 2*pi*lcm(m,n)], 'trig');
 
 %%
-% The above command employs the new `'periodic'` flag for Fourier-based
+% The above command employs the new `'trig'` flag for Fourier-based
 % chebfuns, which for smooth periodic functions reduces the average number of
 % terms necessary to represent the function by a factor of about $\pi/2$:
 

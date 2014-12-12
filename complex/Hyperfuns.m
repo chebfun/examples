@@ -54,14 +54,14 @@ hyperHeaviside = @(ep) real(G(x+1i*ep)-G(x-1i*ep));
 % parameter $\varepsilon$ and plotting the corresponding functions below:
 % First, delta functions.
 for ep = .1:-.01:.001;
-    plot(hyperDelta(ep)), hold on
+    plot(hyperDelta(ep), 'color', [0 .7 0]), hold on
 end
 title('Delta function','fontsize',12), hold off
 
 %%
 % Next, Heaviside functions.
 for ep = .1:-.01:.001;
-    plot(hyperHeaviside(ep)), hold on
+    plot(hyperHeaviside(ep), 'color', [.2 0 .7]), hold on
 end
 title('Heaviside function','fontsize',12), hold off
 

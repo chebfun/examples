@@ -29,7 +29,7 @@ FS = 'fontsize';
 for A = [.2 .4 .6 .8 .87]
   N.op = @(u) diff(u,2) + A*exp(u);
   u = N\0;
-  plot(u,'linewidth',2), grid on, hold on
+  plot(u,'color',[.6 0 .5],'linewidth',2), grid on, hold on
   text(-.1,max(u)+.04,['A = ' num2str(A)],FS,14)
 end
 axis([-1 1 0 1.2])

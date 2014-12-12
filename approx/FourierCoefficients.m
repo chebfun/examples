@@ -41,9 +41,9 @@ LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 % differentiable over $[-\pi,\pi]$ and $u'''(x)$ is piecewise continuous
 % on $[-\pi,\pi]$ (or more specifically of bounded variation) then the
 % Fourier coefficients of $u$ can be quickly computed by first constructing
-% $u$ with the '`periodic`' flag in the Chebfun, then calling `trigcoeffs`.
+% $u$ with the `'trig'` flag in the Chebfun, then calling `trigcoeffs`.
 % Here is an example for a simple Fourier polynomial:
-u = chebfun(@(x) 1 - 4*cos(x) + 6*sin(2*x),[-pi,pi],'periodic');
+u = chebfun(@(x) 1 - 4*cos(x) + 6*sin(2*x),[-pi,pi],'trig');
 c = trigcoeffs(u);
 disp('Fourier coeffs of 1 + cos(x) + sin(2*x):')
 c
@@ -78,7 +78,7 @@ b
 % strip in the complex plane and has exact Fourier coefficients given by
 % $c_k = 2^{-|k|}$:
 numCoeffs = 11;
-u = chebfun(@(x) 3./(5 - 4*cos(x)),[-pi,pi],'periodic');
+u = chebfun(@(x) 3./(5 - 4*cos(x)),[-pi,pi],'trig');
 c = trigcoeffs(u,numCoeffs);
 disp('Fourier coeffs of 3/(5-4cos(x)):')
 c
@@ -89,7 +89,7 @@ c
 %%
 % Here is an example for a less smooth function:
 numCoeffs = 17;
-u = chebfun(@(x) abs(sin(x)).^3,[-pi,pi],'periodic');
+u = chebfun(@(x) abs(sin(x)).^3,[-pi,pi],'trig');
 c = trigcoeffs(u,numCoeffs); c = c(end:-1:1);
 disp('Fourier coeffs of |sin(x)|^3')
 c
@@ -161,7 +161,7 @@ norm(a,inf)
 % Fourier modes:
 numModes = 15;
 c = trigcoeffs(u,2*numModes+1);
-u_trunc = chebfun(c,[-pi,pi],'periodic','coeffs');
+u_trunc = chebfun(c,[-pi,pi],'trig','coeffs');
 plot(u,'k-',u_trunc,'b-',LW,lw)
 
 %%
@@ -173,7 +173,7 @@ plot(u,'k-',u_trunc,'b-',LW,lw)
 % To see the actual 'wave' it is useful to plot the approximation over 
 % a larger interval, which can be done for $-4\pi \leq x \leq 4\pi$ as follows:
 u = chebfun(sq_wave,[-4*pi,4*pi],'splitting','on');
-u_trunc = chebfun(u_trunc,[-4*pi,4*pi],'periodic');
+u_trunc = chebfun(u_trunc,[-4*pi,4*pi],'trig');
 plot(u,'k-',u_trunc,'b-',LW,lw)
 
 %%
@@ -187,10 +187,10 @@ plot(u,'k-',u_trunc,'b-',LW,lw)
 sawtooth = @(x) (mod(x+pi,2*pi))/(2*pi);
 u = chebfun(sawtooth,[-pi,pi],'splitting','on');
 c = trigcoeffs(u,2*numModes+1);
-u_trunc = chebfun(c,[-pi,pi],'periodic','coeffs');
+u_trunc = chebfun(c,[-pi,pi],'trig','coeffs');
 
 u = chebfun(sawtooth,[-4*pi,4*pi],'splitting','on');
-u_trunc = chebfun(u_trunc,[-4*pi,4*pi],'periodic');
+u_trunc = chebfun(u_trunc,[-4*pi,4*pi],'trig');
 plot(u,'k-',u_trunc,'b-',LW,lw)
 
 %%

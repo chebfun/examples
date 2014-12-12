@@ -78,7 +78,7 @@ plot([x0, x0], [-4, 4], '--k', LW, lw)
 sinTh1 = abs(real(sMan)-x0)/abs(sMan-x0); 
 sinTh2 = abs(real(dMan)-x0)/abs(dMan-x0);
 th1 = asin(sinTh1); th2 = asin(sinTh2);
-plot(x0+exp(1i*(pi/2+linspace(0,th1,100))))
+plot(x0+exp(1i*(pi/2+linspace(0,th1,100))), 'b')
 plot(x0+exp(1i*(3*pi/2+linspace(0,th2,100))), 'r'), hold off
 %%
 sinTh1/vLand - sinTh2/vWater

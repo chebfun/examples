@@ -20,7 +20,7 @@ circ = exp(1i*chebfun('t',[0 2*pi]));
 clf, hold on
 for k = 1:numel(rr)
     rho = rr(k);
-    plot((rho*circ + (rho*circ).^(-1))/2,'LineWidth',1.6)
+    plot((rho*circ + (rho*circ).^(-1))/2, 'b', 'LineWidth', 1.6)
 end
 hold off, axis equal, box on
 %%
@@ -85,7 +85,7 @@ for k = 1:numel(NN)
     estimates(k) = mn;
     ff = chebfun(@(x) sin(pi*N*x),'eps',ee);
     chebdegrees(k) = length(ff)-1;
-    plot(PP,'LineWidth',1.6)
+    plot(PP,'b','LineWidth',1.6)
     plot(pos,mn,'.r','MarkerSize',20)
 end
 text(8.02,200,  sprintf('N = %3i',NN(1)))

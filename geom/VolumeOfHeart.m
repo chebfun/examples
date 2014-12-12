@@ -170,7 +170,7 @@ quiver3(x,y,z,v,'k',lw,2,'numpts',10); hold on
 quiver3(x,y,z,F,'g',lw,2,'numpts',10);
 surf(x,y,z,F'*v), hold off
 axis equal tight, camlight, view(-45,5)
-colorbar, set(gcf,'position',[744 184 914 866])
+colorbar
 
 %%
 % Finally, we compute the volume of the heart.

@@ -42,7 +42,7 @@ z = roots(f);
 figure
 plot(f,'linewidth',1.6), hold on, grid on
 plot(z(1:10),0,'.r','markersize',20)
-xlabel('Time(days)')
+xlabel('Time (days)')
 
 %% References
 %
