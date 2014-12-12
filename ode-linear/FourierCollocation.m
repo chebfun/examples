@@ -2,7 +2,7 @@
 % Hadrien Montanelli, December 2014
 
 %%
-% (Chebfun example temp/FourierCollocation)
+% (Chebfun example ode-linear/FourierCollocation)
 % [Tags: #linearODE, #periodic]
 LW = 'linewidth'; dom = [0 2*pi];
 

@@ -2,7 +2,7 @@
 % Hadrien Montanelli, December 2014
 
 %%
-% (Chebfun example temp/FourierEigs)
+% (Chebfun example ode-eig/FourierEigs)
 % [Tags: #linearODE, #periodic, #eigenvalues]
 LW = 'linewidth'; dom = [0 2*pi];
 

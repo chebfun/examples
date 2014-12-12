@@ -78,10 +78,10 @@ end
 %% References
 %
 % 1. L.N. Trefethen, Ten digit algorithms, unpublished essay, 
-% `https://people.maths.ox.ac.uk/trefethen/tda.html`, 2005.
+% https://people.maths.ox.ac.uk/trefethen/tda.html, 2005.
 
 function plotframe(x,y,z)
-rand('seed',0);
+rng(0);
 MS = 'markersize';
 % Set the mood by plotting some "stars":
 fill(20*[-1 1 1 -1 -1],20*[-1 -1 1 1 -1],'k')

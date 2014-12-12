@@ -2,7 +2,7 @@
 % Hadrien Montanelli, December 2014
 
 %%
-% (Chebfun example temp/FourierExpm)
+% (Chebfun example pde/FourierExpm)
 % [Tags: #heatequation, #convection, #periodic, #linearPDE, #EXPM]
 LW = 'linewidth'; dom = [0 2*pi];
 

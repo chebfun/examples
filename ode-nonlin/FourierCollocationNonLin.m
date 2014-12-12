@@ -2,7 +2,7 @@
 % Hadrien Montanelli, December 2014
 
 %%
-% (Chebfun example temp/FourierCollocationNonLin)
+% (Chebfun example ode-nonlin/FourierCollocationNonLin)
 % [Tags: #nonlinearODE, #periodic]
 LW = 'linewidth'; dom = [0 2*pi];
 

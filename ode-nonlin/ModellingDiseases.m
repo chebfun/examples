@@ -3,7 +3,7 @@
 
 %%
 % (Chebfun example ode-nonlin/ModellingDiseases.m)
-% [Tags: #ode, #nonlinear, #system, #ebola]
+% [Tags: #ode, #nonlinear, #ivp, #system, #ebola]
 
 %%
 % Many mathematical models exist for the spread of disease. This is partly
@@ -17,8 +17,8 @@
 
 %%
 % The problem posed in this Example is an initial value problem, and its
-% solution over a large time interval is made possible by the new IVP
-% capabilities that will soon be released in a new version of Chebfun.
+% solution over a large time interval is made possible by the IVP
+% capabilities released with version 5.1 of Chebfun in December 2014.
 
 
 %% The SIR model
