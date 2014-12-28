@@ -45,12 +45,6 @@ xlim([-2.5 2.5]), axis equal
 set(gca,'xtick',-2:2)
 
 %%
-% You might guess by looking at the first of these pictures that this was a
-% polynomial of odd degree, but of course it is of even degree.
-% So there must be a real root outside $[-1,1]$, as indeed
-% we see in the second picture.
-
-%%
 % Now let's construct ten random polynomials of degree 1000 and print
 % the fraction of roots in $[-1,1]$ for each:
 n = 1000;
@@ -73,9 +67,8 @@ mean(data)
 % One could vary these experiments in all kinds of ways, for example
 % defining random polynomials via Chebyshev or more generally
 % Jacobi expansions or by interpolation
-% of random data in Chebyshev or other points.  The case of
-% Jacobi expansions is considered in [2], though the proofs
-% there are not complete.
+% of random data in Chebyshev or other points.  Such more
+% general problems have been treated recently in [2].
 
 %% References
 %
@@ -83,9 +76,9 @@ mean(data)
 %     _Proceedings of the American Mathematical Society_, 27
 %     (1971), 147-153.
 %
-% 2. M. Das and S. S. Bhatt, Real roots of random
-%    harmonic equations, _Indian Journal of Pure and
-%    Applied Mathematics_, 13 (1982), 411-420.
+% 2. D. S. Lubinsky, I. E. Pritsker, and X. Xie,
+%     Expected numer of real zeros for random linear combinations
+%     of orthogonal polynomials, manuscript, 2014.
 %
 % 3. J. E. Wilkins, The expected value of the number of
 %     real zeros of a random sum of Legendre polynomials,
