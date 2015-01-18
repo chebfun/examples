@@ -1,13 +1,17 @@
 %% A Bayesian Gradebook
 % Toby Driscoll, November 2013
 
+%%
+% (Chebfun example stats/BayesianGradebook.m)
+% [Tags: #probability, #bayesian]
+
 function BayesianGradebook
 
 %%
 % In the US and many other educational systems, students are typically given
 % many assessments (homework problems, projects, exams, etc) that are marked
 % with individual scores. These scores are usually averaged (often with weights)
-% to arrive a course score. 
+% to arrive a course score.
 %
 % It's not a very scientific process. One way of injecting more clarity (if not
 % "fairness") is to appeal to Bayesian statistics. How might that look?
@@ -39,7 +43,7 @@ function BayesianGradebook
 % a probability distribution.
 
 %% Prior distribution
-% Here is a chebfun for $\theta$. 
+% Here is a chebfun for $\theta$.
 theta = chebfun('x',[0 1]);
 
 %%
@@ -84,13 +88,13 @@ likelihood = @(x) phi(x,sigma)./q;
         for k = 1:m
             b = belief(:,k).*likelihood(scores(k));
             b = b / sum(b);
-            
+
             belief(:,k+1) = b;
             Mu(k) = E(theta,b);
             Sig2(k) = Var(theta,b);
             [~,Mode(k)] = max(b);
         end
-        
+
         fprintf('Method       %6s %6s %6s %6s\n','m-3','m-2','m-1','m')
         fprintf('------------------------------------------------\n')
         fprintf('Traditional   %6.3f %6.3f %6.3f %6.3f\n',Traditional(m-3:m))
@@ -123,7 +127,7 @@ ylabel('P(\theta|x)')
 % distribution; that is, the value of $\theta$ that maximizes probability.
 % However, the standard (and probably better) estimator is to use the expected
 % value of $\theta$. Both are shown in the output above and compared to the
-% traditional method of a running average. 
+% traditional method of a running average.
 
 %%
 % In this case, the different grading methods do not differ in any meaningful
@@ -134,7 +138,7 @@ ylabel('P(\theta|x)')
 %% Good student
 % It might seem like the Bayes method could hurt a very good student, because of
 % the initial prior that assumes a modest ability. In fact, these students turn
-% out to be the chief beneficiaries of the Bayes approach. 
+% out to be the chief beneficiaries of the Bayes approach.
 
 %%
 % If we shift all the scores in the previous example by 30 percentage points,
@@ -144,13 +148,13 @@ belief = bayes(scores);
 
 %%
 % As you can see, the Bayes estimator does start out a bit more skeptical than the
-% running average, but ends up giving the student a higher score. 
+% running average, but ends up giving the student a higher score.
 
 %%
-% The reason is the boundary. 
+% The reason is the boundary.
 cla, plot(belief,'linewidth',2)
 
-%% 
+%%
 % Because it's impossible to get a score greater than 1, scores close to the
 % upper limit are shortchanged in the traditional method. Looking back at the
 % definition of the likelihood function, we see that the factor $1/q$ multiplies
@@ -197,7 +201,7 @@ belief = bayes(scores);
 % Because we don't have much confidence in any one assignment, Bayes overlooks
 % the low scores more than the running average does. This could be considered
 % more accurate (though less comprehensible) than a drop-lowest-score ad hoc
-% policy. 
+% policy.
 
 %%
 % Perhaps the most illustrative numbers in this whole exercises are the Bayesian
