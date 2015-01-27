@@ -85,7 +85,7 @@ slope = logd2(1) - logd2(0)
 hold on
 x = chebfun('x', [0 dom(2)]);
 semilogy(.8e-9 * exp(slope*x), 'k--')
-legend('dist(x_1, x_2)', sprintf('exp(%1.2f x)', slope), ...
+legend('dist(traj_1, traj_2)', sprintf('exp(%1.2f x)', slope), ...
     'location', 'northwest')
 
 %%
@@ -99,5 +99,5 @@ legend('dist(x_1, x_2)', sprintf('exp(%1.2f x)', slope), ...
 % 1. Strogatz, Steven H. _Nonlinear dynamics and chaos: with applications to
 %    physics, biology and chemistry._ Perseus publishing, 2001.
 %
-% 2. Seydel, Rüdiger. Practical bifurcation and stability analysis. New York:
+% 2. Seydel, Rudiger. _Practical bifurcation and stability analysis._
 %    Springer, 2010.
