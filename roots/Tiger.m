@@ -49,4 +49,4 @@ plot(r,f(r),'.k',MS,8), hold off
 %% Reference
 %
 % 1. L. N. Trefethen, _Approximation Theory and Approximation
-% Practice_, SIAM, 2013.
+%    Practice_, SIAM, 2013.

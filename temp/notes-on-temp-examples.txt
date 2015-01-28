@@ -1,42 +1,20 @@
-Notes by Hrothgar, Nov 2014.
+Notes by Hrothgar, updated Jan 2015.
 ----
+
 To keep things straight, here is my understanding of the plan for each of the
 examples living in the temp folder.
 
 
-1. EXAMPLES THAT WILL BECOME PUBLIC AT v5.1 RELEASE.
+* BinousShaikhBellagi - Unfinished.
 
-    * PeriodicSystem - Depends on `trig` stuff.
+* CompactingColloids - Depends on the branch feature-pdes15s-noBCadjust,
+    which seems to have disappeared. And I can't find any record of a
+    pull request for it. We'll test it on master following the release.
 
-    * FourierCollocation - Depends on `trig` stuff.
+* IntegroDiffT - Not sure.
 
-    * FourierCollocationNonLin - Depends on `trig` stuff.
+* UnboundedODE - v5 doesn't (yet?) support ODEs on unbounded intervals.
 
-    * FourierEigs - Depends on `trig` stuff.
+* OptimCar - Not sure. Unfinished?
 
-    * FourierExpm - Depends on `trig` stuff.
-
-    * Galleries - Depends on cheb.gallery*.
-
-    * ThreePlanets - Depends on IVP stuff.
-
-    * EigsViaDet - Fails on master due to the hscale bug.
-
-    * Also, the example ode-nonlin/ModellingDiseases needs to be updated and
-      republished to include mention of the new IVP capabilities (right now it
-      says the feature is coming soon).
-
-
-2. OTHER EXAMPLES IN TEMP.
-
-    * BinousShaikhBellagi - Unfinished.
-
-    * CompactingColloids - Depends on the branch feature-pdes15s-noBCadjust,
-        which seems to have disappeared. And I can't find any record of a
-        pull request for it. We'll test it on master following the release.
-
-    * UnboundedODE - v5 doesn't (yet?) support ODEs on unbounded intervals.
-
-    * OptimCar - Not sure. Unfinished?
-
-    * PiecewiseLinopDemo - Not sure.
+* PiecewiseLinopDemo - Not sure.

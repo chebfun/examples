@@ -1,24 +1,24 @@
 %% Pricing other European Options: Puts, Digitals, Powers
 % Ricardo Pachon, December 2014
+
 %%
 % (Chebfun example applics/EuropeanOptions.m)
 % [Tags: #finance, #blackscholes, #option pricing]
 
 %%
-% In a previous Chebfun example we presented a methodology for the
-% calculation of a call option (see Pricing a European Call
-% Option). In this example we study further this method by applying it to
-% other contracts: the put option, the digital option, and the power
-% option. Since we already explained in some detail its conceptual
-% framework,
-% we mainly focus on the implementation aspect, highlighting the most
-% relevant features for each contract.
+% In a previous Chebfun example we presented a methodology for the calculation
+% of a call option (see the example "Pricing a European Call Option"). In this
+% example we study further this method by applying it to other contracts: the
+% put option, the digital option, and the power option. Since we already
+% explained in some detail its conceptual framework, we mainly focus on the
+% implementation aspect, highlighting the most relevant features for each
+% contract.
 %
 % Throughout this example we assume the underlying asset is governed by a
-% geometric Brownian motion (GBM) process. We start by defining the price of the asset at time $t=0$,
-% $S_0$, its volatility $\sigma$ and the risk-free interest rate $r$. We
-% also construct a chebfun for the probability density function (PDF) of the asset distribution at
-% expiring time $T$.
+% geometric Brownian motion (GBM) process. We start by defining the price of
+% the asset at time $t=0$, $S_0$, its volatility $\sigma$ and the risk-free
+% interest rate $r$. We also construct a chebfun for the probability density
+% function (PDF) of the asset distribution at expiring time $T$.
 
 S0 = 100;
 vol = 0.45;
@@ -38,7 +38,7 @@ xlabel('S_T',FS,fs), set(gca,FS,fs)
 set(gca,'YTick',0:0.003:0.015), grid on,
 %% European Put Option
 %
-% The payoff of a put option is given by $V(S_T) = max(0,K-S)$, where $K$
+% The payoff of a put option is given by $V(S_T) = \max(0,K-S)$, where $K$
 % is the strike.
 K = 150;
 T = 0.5;
@@ -66,9 +66,9 @@ OOM = 2*probOOM*dirac(x);
 % The contribution of the in-the-money (ITM) region, $S\in[0,K]$, to the
 % payoff distribution can be calculated by the simple rule
 %
-% $$
-% g(y) = f(x(y)) \Biggl|\frac{dx}{dy}\Biggr|,  \eqno  (1)
-% $$
+% \begin{equation}
+% g(y) = f(x(y)) \Bigl|\frac{dx}{dy}\Bigr|, \label{eq1}
+% \end{equation}
 %
 % where $g$ is the contribution to the payoff PDF, $x$ is the asset
 % distribution, and $y$ is the function of the ITM payoff, i.e., $y(x) = K
@@ -120,8 +120,8 @@ xlabel('S',FS,fs)
 ylabel('V(S)',FS,fs); set(gca,FS,fs);
 ylim([-.1 1.1])
 %%
-% Since the payoff is a piecewise constant function, the PDF of the digital option correspond to two Dirac deltas
-% and the price is the expected value.
+% Since the payoff is a piecewise constant function, the PDF of the digital
+% option correspond to two Dirac deltas and the price is the expected value.
 maxV = 1;
 probOOM = lognCDF(K);
 probITM = 1 - probOOM;
@@ -168,7 +168,7 @@ ylabel('V(S)',FS,fs); set(gca,FS,fs);
 %%
 % The following block of code performs all the steps we have discussed
 % before but for a power call. Notice how the ITM chebfun is
-% constructed following formula (1), with $y(x) = x^\alpha - K$.
+% constructed following formula (\ref{eq1}), with $y(x) = x^\alpha - K$.
 probOOM = lognCDF(K^alphainv);
 maxV = 50;
 x = chebfun('x',[0 maxV]);
@@ -186,7 +186,7 @@ plot([approx approx],[0 0.3],'b--',LW,1.6), hold off
 disp(['approx = ', num2str(approx,'%10.15f')])
 
 %%
-% It is difficult to asses whether power options are traded more or less
+% It is difficult to assess whether power options are traded more or less
 % than digitals, but certainly they are found less regularly in the
 % literature. The analytical formula of a power option can be found in
 % Question 2.32 of [1], while [2] reviews some of its applications.
@@ -199,8 +199,8 @@ disp(['approx = ', num2str(approx,'%10.15f')])
 
 %% References
 %
-% [1] T.F. Crack, _Heard on the Street: Quantitative Questions from Wall
-% Street Job Interviews_, Timothy Crack; Revised 15th Ed edition, 2014.
+% 1. T.F. Crack, _Heard on the Street: Quantitative Questions from Wall Street
+%    Job Interviews_, Timothy Crack; Revised 15th Ed edition, 2014.
 %
-% [2] R.G. Tompkins, "Power options: hedging nonlinear risks", _Journal of
-% Risk_ 2 (Winter 1999/2000), 29--45.
+% 2. R.G. Tompkins, "Power options: hedging nonlinear risks", _Journal of
+%    Risk_ 2 (Winter 1999/2000), 29--45.
