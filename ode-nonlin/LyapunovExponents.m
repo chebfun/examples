@@ -8,21 +8,20 @@
 %%
 % Lyapunov exponents are characteristic quantities of dynamical systems.
 % For a continuous-time dynamical system, the maximal Lyapunov exponent
-% is defined as follows.
-% Consider a trajectory $\mathbf{x}(t)$, $t\geq0$ in phase space and a
-% nearby trajectory $\mathbf{x}(t) + \delta(t)$, where $\delta(t)$ is a
-% vector of very small initial length (perhaps $10^{-9}$). As the system
-% evolves, track how $\delta(t)$ changes. The *maximal Lyapunov exponent*
-% of the system is the number $\lambda$ such that
-% $$ \| \delta(t) \| \approx \| \delta(0) \| e^{\lambda t} $$
-% if it exists.
+% is defined as follows [1].
+% Consider a trajectory $\mathbf{x}(t)$, $t\geq0$ in phase space and a nearby
+% trajectory $\mathbf{x}(t) + \delta(t)$, where $\delta(t)$ is a vector with
+% infinitesimal initial length. As the system evolves, track how $\delta(t)$
+% changes. The *maximal Lyapunov exponent* of the system is the number
+% $\lambda$, if it exists, such that
+% $$ \| \delta(t) \| \approx \| \delta(0) \| e^{\lambda t}. $$
 
 %%
 % The reason we've used the word "maximal" is that dynamical systems don't
 % just have a single Lyapunov exponent. Rather, every dynamical system has a
-% spectrum of Lyapunov exponents, with one for each dimension of its phase
-% space. Like the largest eigenvalue of a matrix, the largest Lyapunov
-% exponent is responsible for the dominant behavior of a system.
+% spectrum of Lyapunov exponents, one for each dimension of its phase space.
+% Like the largest eigenvalue of a matrix, the largest Lyapunov exponent is
+% responsible for the dominant behavior of a system.
 
 %%
 % Negative Lyapunov exponents are associated with dissipative systems;
@@ -42,7 +41,8 @@ N = chebop(@(t,x,y,z) [ diff(x) - 10*(y - x);
                         diff(z) + 8*z/3 - x.*y ], dom);
 
 %%
-% Now we solve for two trajectories that have a small initial separation.
+% Now we solve for two trajectories that have a small initial separation,
+% say $10^{-9}$.
 
 ep = 1e-9;
 N.lbc = @(x,y,z) [x+2; y+3; z-14];
@@ -51,9 +51,9 @@ N.lbc = @(x,y,z) [x+2; y+3; z-14+ep];
 [x2,y2,z2] = deal(N\0);    % Components of 2nd trajectory
 
 %%
-% Now find the distance between trajectories using the distance formula. This
-% distance, which is a function of time, is plotted using a log scale on the
-% y-axis.
+% Now we find the distance between trajectories using the distance formula.
+% This distance, which is a function of time, is plotted using a log scale on
+% the y-axis.
 
 d = sqrt(abs(x1-x2).^2 + abs(y1-y2).^2 + abs(z1-z2).^2);
 semilogy(d)
@@ -90,9 +90,11 @@ legend('dist(traj_1, traj_2)', sprintf('exp(%1.2f x)', slope), ...
 
 %%
 % This approximation isn't bad at all -- the maximal Lyapunov exponent for the
-% Lorenz system is known to be about $0.906$. To calculate it accurately we
-% could average over many trajectories.
-
+% Lorenz system is known to be about $0.9056$ [3].
+% To calculate it more accurately we could average over many trajectories.
+% It is remarkable that this characteristic quantity of the most famous
+% chaotic system is known to only a few decimal places; it is indicative of
+% the difficulty in analyzing complex behavior.
 
 %% References
 %
@@ -101,3 +103,7 @@ legend('dist(traj_1, traj_2)', sprintf('exp(%1.2f x)', slope), ...
 %
 % 2. Seydel, Rudiger. _Practical bifurcation and stability analysis._
 %    Springer, 2010.
+%
+% 3. Viswanath, Divakar. _Lyapunov exponents from random Fibonacci sequences
+%    to the Lorenz equations._ Doctoral dissertation. Cornell University,
+%    1998.
