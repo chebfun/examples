@@ -18,3 +18,14 @@ examples living in the temp folder.
 * OptimCar - Not sure. Unfinished?
 
 * PiecewiseLinopDemo - Not sure.
+
+* VdPOrbit.
+  Several things are keeping this example from running as it did in V4.
+    (1) Cannot do  diff(u,v)  for chebfuns u and v like before. We need
+        to use  adchebfun/seed  to accomplish the same.
+    (2) Applying an operatorBlock to an adchebfun does not return an
+        adchebfun like it should.
+    (3) Defining an operator as
+            @(t,y)  diff(y)
+        where y has multiple components appears not to be supported.
+  Perhaps others.
