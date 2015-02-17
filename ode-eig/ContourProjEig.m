@@ -192,17 +192,16 @@ T = toc
 % efficient method for computing eigenvalues of differential operators, but it
 % is nonetheless interesting!
 
-%%
-% References:
+%% References
 %
-% [1] Chatelin, Francoise.  _Eigenvalues of Matrices_ (Revised Edition).  SIAM,
-%         2012.
+% 1. Chatelin, Francoise.  _Eigenvalues of Matrices_ (Revised Edition).  SIAM,
+%    2012.
 %
-% [2] Kato, Tosio.  _Perturbation Theory for Linear Operators_ (Second Edition).
-%         New York:  Springer-Verlag, 1976.
+% 2. Kato, Tosio.  _Perturbation Theory for Linear Operators_ (Second
+%    Edition). New York:  Springer-Verlag, 1976.
 %
-% [3] Polizzi, Eric.  Density-matrix-based algorithm for solving eigenvalue
-%         problems.  _Physical Review B_, Vol. 79, No. 11, 2009.
+% 3. Polizzi, Eric.  Density-matrix-based algorithm for solving eigenvalue
+%    problems.  _Physical Review B_, Vol. 79, No. 11, 2009.
 %
-% [4] Stewart, G. W.  _Matrix Algorithms, Volume II:  Eigensystems_.  SIAM,
-%         2001.
+% 4. Stewart, G. W.  _Matrix Algorithms, Volume II:  Eigensystems_.  SIAM,
+%    2001.

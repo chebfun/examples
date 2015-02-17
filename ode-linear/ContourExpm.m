@@ -108,19 +108,18 @@ legend('Initial Data', 'Tf = 0.01', 'Tf = 0.1', 'Tf = 0.5', 'Tf = 1');
 % quadrature nodes used at the cost of needing to solve more boundary-value
 % problems.
 
-%%
-% References:
+%% References
 %
-% [1] Trefethen, L. N.  "Heat Equation via EXPM".
-%         http://www2.maths.ox.ac.uk/chebfun/examples/pde/html/Erosion.shtml
+% 1. Trefethen, L. N.  "Heat Equation via EXPM".
+%    http://www2.maths.ox.ac.uk/chebfun/examples/pde/html/Erosion.shtml
 %
-% [2] Trefethen, L. N.  "Ten Digit Algorithms".
-%         http://people.maths.ox.ac.uk/trefethen/tda.html
+% 2. Trefethen, L. N.  "Ten Digit Algorithms".
+%    http://people.maths.ox.ac.uk/trefethen/tda.html
 %
-% [3] Trefethen, L. N., Weideman, J. A. C., and Schmelzer, T.  Talbot
-%         quadratures and rational approximations.  _BIT Num. Math._, Vol. 46,
-%         2006, pp. 653-670.
+% 3. Trefethen, L. N., Weideman, J. A. C., and Schmelzer, T.  Talbot
+%    quadratures and rational approximations.  _BIT Num. Math._, Vol. 46,
+%    2006, pp. 653-670.
 %
-% [4] Weideman, J. A. C.  Optimizing Talbot's contours for the inversion of the
-%         Laplace transform.  SIAM J. Numer. Anal., Vol. 44, No. 6, 2006, pp.
-%         2342-2362.
+% 4. Weideman, J. A. C.  Optimizing Talbot's contours for the inversion of the
+%    Laplace transform.  SIAM J. Numer. Anal., Vol. 44, No. 6, 2006, pp.
+%    2342-2362.
