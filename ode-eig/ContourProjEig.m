@@ -80,7 +80,7 @@ L
 % The first thing the algorithm calls for are $M$ random vectors.  The
 % analogous objects to generate in the continuous case are $M$ arbitrary
 % functions.   We generate these by building chebfuns from random data at a
-% handful of Chebyshev points on $[0 \pi]$, gathering them as columns into a
+% handful of Chebyshev points on $[0, \pi]$, gathering them as columns into a
 % quasimatrix.  For later comparison, we start a timer as well so we can see
 % how long it takes the algorithm to run.
 
