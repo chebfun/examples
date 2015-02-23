@@ -1,0 +1,80 @@
+%% Best trigonometric polynomial approximation with the `trigremez` command
+% Mohsin Javed, February 2015
+
+%%
+% (Chebfun example approx/BestTrigApprox.m)
+% [Tags: #REMEZ, #TRIGREMEZ, #bestapproximation]
+
+%%
+% Chebfun's `trigremez` command, can be used to find the best
+% (i.e. infinity-norm or minimax) trigonometric polynomial 
+% approximations of a real-valued continuous function on a
+% periodic interval. For example, here is a periodic function 
+% on $[-pi, pi]$ and its best approximation by a trigonometric 
+% polynomial of degree $5$:
+
+f = chebfun(@(x) exp(sin(2*x)+cos(3*x)), [-pi, pi], 'trig');
+[p,err] = trigremez(f,5);
+LW = 'linewidth'; FS = 'fontsize'; fs = 14;
+plot(f,'b',p,'r',LW,1.6)
+title('Function and best trigonometric approximation',FS,fs)
+
+%%
+% The error equioscillates and the number of equioscillations
+% is at least one more than the number of functions used for the 
+% approximation. In the present case of a degree 5 trigonometric
+% approximation, 11 functions are used for the approximations and 
+% hence the error curve should have at least 12 points of 
+% equioscillation: 
+plot(f-p,LW,1.6), hold on
+plot([-pi pi], err*[1 1],'--k',LW,1)
+plot([-pi pi],-err*[1 1],'--k',LW,1)
+ylim([-.7 .7]), hold off
+title('Degree 5 trigonometric error curve',FS,fs)
+
+%%
+% The `trigremez` command works for any chebfun, even those 
+% which are defined without the `trig` flag, as long as they
+% are continuous in the interior of a bounded interval and
+% take the same value at the two endpoints. Here is an example:
+
+f = chebfun(@(x) 10*abs(x) + sin(80*pi*x) + 10*exp(-50*(x-.1).^2), 'splitting', 'on' );
+[p, err] = trigremez(f, 100);
+plot(f,'b',p,'r',LW,1.6)
+title('Function and best trigonometric approximation',FS,fs)
+
+%%
+% And here is how the error curve looks like:
+plot(f-p,LW,1.6), hold on
+plot([-pi pi], err*[1 1],'--k',LW,1)
+plot([-pi pi],-err*[1 1],'--k',LW,1)
+ylim(1.4*err*[-1 1]), hold off
+title('Degree 100 trigonometric error curve',FS,fs)
+
+%%
+% Here is another example where we first define 
+% a zig-zag function, which is aperiodic but we make
+% it periodic by subtracting off an appropriate linear
+% term:
+x = chebfun('x');
+g = cumsum(sign(sin(20*exp(x))));
+m = (g(1) - g(-1))/2;
+y = m*(x - 1) + g(1);
+f = g - y;
+[p, err] = trigremez(f, 15);
+plot(f,'b',p,'r',LW,1.6)
+title('Function and best trigonometric approximation',FS,fs)
+
+%%
+% Again, the error plot equioscillates beautifully:
+plot(f-p,LW,1.6), hold on
+plot([-1 1], err*[1 1],'--k',LW,1)
+plot([-1 1],-err*[1 1],'--k',LW,1)
+ylim(1.4*err*[-1 1]), hold off
+title('Degree 15 trigonometric error curve',FS,fs)
+
+%% References
+%
+% 1. M. Javed and L. N. Trefethen, Remez algorithm
+%    for best trigonometric approximation. (In preparation).
+%
