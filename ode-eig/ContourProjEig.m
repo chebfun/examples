@@ -25,7 +25,7 @@
 % eigenvalues of $A$ in the search interval.  If we had such an object, we
 % could use a Rayleigh-Ritz procedure [4] to compute the desired eigenvalues
 % and eigenvectors.  Indeed, a generalized eigenvalue $\mu$ and corresponding
-% eigenvector $u$ of the pencil $(W^*AW, W^*W)$ correspond to an ordinary
+% eigenvector $u$ of the pencil $(W^\*AW, W^\*W)$ correspond to an ordinary
 % eigenvalue $\lambda$ and eigenvector $v$ of $A$ by $\lambda = \mu$ and $u =
 % Wv$.
 %
