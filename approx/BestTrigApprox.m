@@ -20,9 +20,9 @@ plot(f,'b',p,'r',LW,1.6)
 title('Function and best trigonometric approximation',FS,fs)
 
 %%
-% The error equioscillates and the number of equioscillating
-% extreme points is at least one more than the number of 
-% functions used for the approximation. In the 
+% The error equioscillates, and the number of equioscillating
+% extreme points is at least one more than the dimension
+% of the approximation space. In the 
 % present case of a degree $5$ trigonometric
 % approximation, the dimension of the approximation
 % space is $11$, and hence the error curve must have at 
@@ -37,7 +37,7 @@ title('Degree 5 trigonometric error curve',FS,fs)
 % The $\verb|trigremez|$ command works for any chebfun, even 
 % a chebfun that is constructed without the `trig` flag, as
 % long as it is continuous in the interior of the domain 
-% and takes the same value at the endpoints. Here is an example:
+% and takes the same value at both endpoints. Here is an example:
 fh = @(x) 10*abs(x) + sin(20*pi*x) + 10*exp(-50*(x-.1).^2); 
 f = chebfun(fh, 'splitting', 'on' );
 
@@ -47,7 +47,7 @@ plot(f,'b',p,'r',LW,1.6)
 title('Function and best trigonometric approximation',FS,fs)
 
 %%
-% And here is how the error curve looks like:
+% And here is a plot of the error curve:
 plot(f-p,LW,1.6, 'color', [0 .7 0]), hold on
 plot([-pi pi], err*[1 1],'--k',LW,1)
 plot([-pi pi],-err*[1 1],'--k',LW,1)
@@ -57,7 +57,7 @@ title('Degree 8 trigonometric error curve',FS,fs)
 %%
 % Here is another example where we first define 
 % a zig-zag function, which is aperiodic, but then
-% made periodic by subtracting off an appropriate linear
+% make it periodic by subtracting off an appropriate linear
 % term:
 x = chebfun('x');
 g = cumsum(sign(sin(20*exp(x))));
@@ -79,7 +79,7 @@ title('Degree 15 trigonometric error curve',FS,fs)
 %%
 % The flavor of $\verb|trigremez|$ and the periodic 
 % Remez algorithm that it utilizes could not be 
-% more classic. Nevertheless, we are unaware of any 
+% more classical. Nevertheless, we are unaware of any 
 % previous computations of general periodic best 
 % approximations. Electrical engineers compute
 % approximations all the time that appear to be 
