@@ -52,7 +52,7 @@ plot(f-p,LW,1.6, 'color', [0 .7 0]), hold on
 plot([-pi pi], err*[1 1],'--k',LW,1)
 plot([-pi pi],-err*[1 1],'--k',LW,1)
 ylim(1.4*err*[-1 1]), hold off
-title('Degree 100 trigonometric error curve',FS,fs)
+title('Degree 8 trigonometric error curve',FS,fs)
 
 %%
 % Here is another example where we first define 
