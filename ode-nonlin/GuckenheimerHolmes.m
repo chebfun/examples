@@ -27,12 +27,12 @@
 % Here is an illustration with $b=0.55$, $c=1.5$, and
 % initial conditions $u=0.5$, $v=w=0.49$.  The plot shows
 % $v(t)$ for $t\in [0,800]$.
-a = 1; b = 0.5; c = 1.55;
+b = 0.55; c = 1.5;
 N = chebop(0,800);
 N.op = @(t,u,v,w) [ ...
-diff(u) - u.*(1 - a*u.^2 - b*v.^2 - c*w.^2)
-diff(v) - v.*(1 - a*v.^2 - b*w.^2 - c*u.^2)
-diff(w) - w.*(1 - a*w.^2 - b*u.^2 - c*v.^2)];
+    diff(u) - u.*(1 - u.^2 - b*v.^2 - c*w.^2)
+    diff(v) - v.*(1 - v.^2 - b*w.^2 - c*u.^2)
+    diff(w) - w.*(1 - w.^2 - b*u.^2 - c*v.^2)];
 N.lbc = @(u,v,w) [u-0.5; v-0.49; w-0.49];
 U = N\0; [u,v,w] = deal(U);
 LW = 'linewidth'; plot(v,LW,1.2)
