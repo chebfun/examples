@@ -11,9 +11,9 @@
 % to a function in terms of its derivatives at a point. For an entire
 % function, the Taylor series converges everywhere in the complex plane. For a
 % function which is analytic only in a neighborhood of a point $x_0$ and not
-% necessarily in the entire plane, the Taylor series centered at, the Taylor
-% series centered at $x_0$ converges in a disc whose radius is the distance
-% from $x_0$ to the nearest singularity.
+% necessarily in the entire plane, the Taylor series centered at $x_0$
+% converges in a disc whose radius is the distance from $x_0$ to the nearest
+% singularity.
 
 %%
 % For Chebyshev approximations of functions, these results have an analogue.
@@ -185,9 +185,9 @@ end
 
 %%
 % This part of the theory doesn't usually cause problems for us because we are
-% not typically interested in extrapolating a Chebyshev approximant beyond its
-% interval of definition. Nevertheless, it is good to be able to explain the
-% behavior!
+% not typically interested in evaluating a Chebyshev interpolant beyond its
+% interval of approximation. Nevertheless, it is good to be able to explain
+% the behavior!
 
 
 %% References
