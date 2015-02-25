@@ -5,37 +5,38 @@
 % (Chebfun example approx/TaylorsTheorem.m)
 % [Tags: #convergence, #Bernstein ellipse]
 
-LW = 'LineWidth';
-
 %%
-% The quintessential result in the theory of approximation is Taylor's
-% theorem, which gives a polynomial approximation to a function in terms of
-% its derivatives at a point. For an entire function, the Taylor series
-% converges uniformly everywhere in the complex plane. For a function that is
-% differentiable at a point $x_0$ but is not analytic, the Taylor series
-% centered at $x_0$ converges in a disc whose radius is the distance to the
-% nearest singularity.
+% One of the most elementary---but also most important---results in the theory
+% of approximation is Taylor's theorem, which gives a polynomial approximation
+% to a function in terms of its derivatives at a point. For an entire
+% function, the Taylor series converges everywhere in the complex plane. For a
+% function which is analytic only in a neighborhood of a point $x_0$ and not
+% necessarily in the entire plane, the Taylor series centered at, the Taylor
+% series centered at $x_0$ converges in a disc whose radius is the distance
+% from $x_0$ to the nearest singularity.
 
 %%
 % For Chebyshev approximations of functions, these results have an analogue.
-% Entire functions, as before, the Chebyshev series converges to the function
-% everywhere in the complex plane. For differentiable functions the result is
-% this: Given a function $f$ that is analytic on the real interval $[-1,1]$,
-% the Chebyshev series of $f$ converges in the largest _Bernstein ellipse_ in
-% which $f$ is analytic. A Bernstein ellipse is the image of a circle
-% $z=e^{i\theta}$ under the Joukowsky map $x\mapsto (x+1/x)/2$.
+% For entire functions, as before, the Chebyshev series converges to the
+% function everywhere in the complex plane. For analytic functions which are
+% not entire, the result is this: Given a function $f$ that is analytic on the
+% real interval $[-1,1]$, the Chebyshev series of $f$ converges in the largest
+% _Bernstein ellipse_ in which $f$ is analytic. A Bernstein ellipse is the
+% image of a circle $z=re^{i\theta}$ under the Joukowsky map
+% $z\mapsto (z+1/z)/2$.
 
 %% Convergence for an entire function
 %
 % The function $f(x) = \sin(x)$ is an entire function, so its Chebyshev series
 % converges everywhere in the complex plane. Let's approximate it on the
-% interval $[-\pi/2,\pi/2]$, which will be shown as a thick green line.
-% We will approximate $f$ on Chebyshev grids of size $5,7,9,11,\ldots$
-% and superimpose them on a plot of the function itself. Darker curves
-% correspond to approximants on denser grids:
+% interval $[-\pi/2,\pi/2]$, which will be shown as a thick green line. We
+% will approximate $f$ on Chebyshev grids of size $5,7,9,11,\ldots$ and
+% superimpose the approximations on a plot of the function itself. Darker
+% curves correspond to approximations on denser grids:
 
 x0 = 0;
 f = chebfun(@sin, [-7 7]);
+LW = 'LineWidth';
 for k = 2:8
     p = chebfun(@sin, x0+[-1 1]*pi/2, 'trunc', 2*k+1);
     plot(p, [-7 7], '-', 'color', [.5-k/20 1-k/10 .5-k/20]), hold on
@@ -45,26 +46,29 @@ plot(x0, f(x0), 'k.'), plot(f, 'k-')
 axis equal, axis([-7 7 -3 3])
 
 %%
-% Eventually we will reach a limit in accuracy due to the fact that these
-% computations are being done in floating point arithmetic, but in theory (or
-% using variable precision arithmetic), we could approximate the sine function
-% to arbitrary accuracy at any point on the real line by sampling it at
-% Chebyshev points only in this interval.
+% Many books have a version of this plot for Taylor series.
 
-%% Convergence for a differentiable function
+%%
+% Were we to continue with denser grids, we would eventually reach a limit in
+% accuracy due to the fact that these computations are being done in floating
+% point arithmetic. But in theory (or by using variable precision arithmetic),
+% we could approximate the sine function to arbitrary accuracy at any point on
+% the real line by sampling it at Chebyshev points only in this interval.
+
+%% Convergence for a non-entire analytic function
 %
-% The function $f(z) = \log|z-i|$ has a singularity at $z=i$ but is
-% well-behaved when constrained to the real axis:
+% The function $f(z) = \log|z-i|$ has a branch point at $z=i$ but is
+% well-behaved when restricted to the real axis:
 
 func = @(x) log(abs(x-1i));
 f = chebfun(func, [-5 5]);
 hold off, plot(f, 'k-'), hold on
 
 %%
-% We will compute a Chebyshev approximation of this function on interval
-% $[1.5, 2.5]$ and then extrapolate the approximation. Again, the interval
-% is drawn as a thick line, and the red curve is the Chebyshev approximant
-% extrapolated outside of it.
+% We will compute a Chebyshev approximation of this function on the interval
+% $[1.5, 2.5]$ and then evaluate the approximation outside of this interval.
+% Again, the interval is drawn as a thick line, and the red curve is the
+% Chebyshev approximation extrapolated outside of it.
 
 x0 = 2;     % Midpoint of interval of approximation
 r1 = 0.5;   % Radius of interval of approximation
@@ -90,19 +94,20 @@ ylim([-0.5 2])
 
 %%
 % The second approximation was computed from an interval more than twice the
-% length of the first, yet outside of the interval of definition it is hardly
-% any better. What's going on? A bit of approximation theory provides the
-% answer.
+% length of the first, yet outside of the interval of approximation it is
+% hardly any better. What's going on? A bit of approximation theory provides
+% the answer.
 
 %%
 % As mentioned in the introduction, Chebyshev series converge in Bernstein
 % ellipses. To calculate the ellipse parameter (which can be thought of as the
 % "radius") of the largest Bernstein ellipse in which $f$ is analytic, we can
 % do the following. Since the Joukowski map turns circles into ellipses, the
-% inverse Joukowski map turns ellipses into circles, of which we can easily
-% calculate the radius. We will need to apply a linear transformation (a shift
-% and a scaling) to transplant the interval of approximation to the interval
-% $[-1,1]$ where the theory applies.
+% inverse Joukowski map turns ellipses into circles, for which we can easily
+% calculate the radius. (The ellipse parameter $\rho$ is equal to the radius
+% of the corresponding circle.) We will need to apply a linear transformation
+% (a shift and a scaling) to transplant the interval of approximation to the
+% interval $[-1,1]$ where the theory applies.
 
 invJoukowski = @(z) z + sqrt(z^2 - 1);
 Joukowski = @(z) (z + 1./z)/2;
@@ -119,26 +124,22 @@ plot([x0-d2,x0-d2], [-0.5,2], 'b--')
 plot([x0+d2,x0+d2], [-0.5,2], 'b--')
 
 %%
-% A Chebyshev approximation to $f$ on the red interval can be expected to
-% converge between the red dashed lines, whereas a Chebyshev approxmation to
-% $f$ on the blue inteval can be expected to converge in between the blue
-% dashed lines.
-
-%%
-% So even disregarding any numerical problems we may encounter in
-% approximating this function, even theoretically the Chebyshev series will
-% not converge outside of the interval enclosed by the dashed lines. Expanding
-% the interval didn't get us much!
+% A Chebyshev interpolant to $f$ on the red interval can be expected to
+% converge (aside, perhaps, from numerical problems) between the red dashed
+% lines, whereas a Chebyshev interpolant to $f$ on the blue interval can be
+% expected to converge in between the blue dashed lines. Expanding the
+% interval didn't get us much!
 
 %% Bernstein ellipses and intervals of convergence
 %
-% A visualization of the Bernstein ellipse in the complex plane is
-% instructive. The approximation theory we've discussed is applicable to
-% functions on $[-1,1$, so in order to accommodate other intervals we shift
-% and scale them by a linear transformation. In this way the ellipse parameter
-% is dependent on the interval chosen to represent the function. Here is such
-% an ellipse corresponding to the function $f(x) = \log|x-i|$ approximated
-% on the interval $[0.4,3.6]$:
+% We can get a better understanding of the phenomenon just observed by
+% visualizing the corresponding Bernstein ellipses in the complex plane. The
+% approximation theory we've discussed is applicable to functions on $[-1,1]$,
+% so in order to accommodate other intervals we shift and scale them by a
+% linear transformation. In this way the ellipse parameter is dependent on the
+% interval chosen to represent the function. Here is such an ellipse
+% corresponding to the function $f(z) = \log|z-i|$ approximated on the
+% interval $[0.4,3.6]$:
 
 hold off
 x0 = 2;  r = 1.6;  dom = x0 + r*[-1,1]; % Original domain
@@ -152,20 +153,20 @@ axis equal, axis([-2.5 2.5 -2 2])
 %%
 % Suppose we approximate the function from the above example on a series of
 % larger and larger intervals each centered at the point $x_0=2$. If the
-% radius of the interval is called $r$, then the right linear transformation
-% to transplant the interval to $[-1,1]$ is the mapping $x\mapsto (x-2)/r$.
+% radius of the interval is $r$, then the right linear transformation to
+% transplant the interval to $[-1,1]$ is the mapping $x\mapsto (x-2)/r$.
 
 %%
 % Increasing the radius of the interval, in order words, corresponds to
-% contracting the function (after a suitable shift). If the function happens
-% to have a singularity, increasing the radius of the interval brings the
-% singularity closer to the origin, which reduces the size of the ellipse of
-% analyticity. In the following plot, Bernstein ellipses corresponding to the
-% regions of analyticity of Chebyshev approximants on increasingly large
-% intervals are shown: the darker the ellipse, the larger the interval. (The
-% interval, shown in the center, has been transplanted to lie in $[-1,1]$.)
-% The singularity of the transformed function is plotted in each case as a
-% small circle.
+% rescaling the argument of the function (after a suitable shift). If the
+% function happens to have a singularity, increasing the radius of the
+% interval brings the singularity closer to the origin, which reduces the size
+% of the ellipse of analyticity of the transformed function. In the following
+% plot, Bernstein ellipses corresponding to the regions of analyticity of
+% Chebyshev approximants on increasingly large intervals are shown: the darker
+% the ellipse, the larger the interval. (The interval, shown in the center,
+% has been transplanted to lie in $[-1,1]$.) The singularity of the
+% transformed function is plotted in each case as a small circle.
 
 for r = 1:0.3:3
     dom = x0 + r*[-1,1];                    % Original domain
@@ -177,7 +178,7 @@ end
 %%
 % In the limit of extremely large intervals, the singularity of the
 % transformed function is brought very close to the interval $[-1,1]$. So
-% although the Chebyshev approximation is good in the interval, it is garbage
+% although the Chebyshev approximation is good in the interval, it is useless
 % anywhere immediately outside it. On the other hand, Chebyshev approximations
 % on small intervals may be extrapolated with some success (though not to
 % machine precision).
