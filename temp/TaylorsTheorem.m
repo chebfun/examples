@@ -11,9 +11,9 @@
 % to a function in terms of its derivatives at a point. For an entire
 % function, the Taylor series converges everywhere in the complex plane. For a
 % function which is analytic only in a neighborhood of a point $x_0$ and not
-% necessarily in the entire plane, the Taylor series centered at $x_0$
-% converges in a disc whose radius is the distance from $x_0$ to the nearest
-% singularity.
+% necessarily in the entire plane, the Taylor series based at $x_0$
+% converges in the disc centered at $x_0$ whose radius is the distance from
+% $x_0$ to the nearest singularity.
 
 %%
 % For Chebyshev approximations of functions, these results have an analogue.
@@ -22,7 +22,7 @@
 % not entire, the result is this: Given a function $f$ that is analytic on the
 % real interval $[-1,1]$, the Chebyshev series of $f$ converges in the largest
 % _Bernstein ellipse_ in which $f$ is analytic. A Bernstein ellipse is the
-% image of a circle $z=re^{i\theta}$ under the Joukowsky map
+% image of a circle $z=re^{i\theta}$ under the Joukowski map
 % $z\mapsto (z+1/z)/2$.
 
 %% Convergence for an entire function
