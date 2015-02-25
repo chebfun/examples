@@ -50,11 +50,11 @@ plot3(u,v,w,'k'), view(10,10), axis equal, grid on
 xlabel u, ylabel v, zlabel w
 
 %%
-% These equations come from 
-% [3], where a plot is given on 
-% p. 201 that is claimed to correspond
-% to initial conditions $u=0.5$, $v=w=0.499$ (note not $0.49$).
-% I suspect there is a misprint in the initial conditions.
+% These equations come from
+% [3], where a plot is given on p. 201.
+% (The caption there reports initial conditions
+% $v=w=0.499$, but this is a misprint; we thank Phil Holmes for
+% confirming this by email 23 Feb. 2015.)
 % The discussion in [3] is adapted from the paper [2] by
 % Guckenheimer and Holmes, which in
 % turn gives credit to a related discussion by Busse
