@@ -1,5 +1,5 @@
-%% Best trigonometric polynomial approximation with the `trigremez` command
-% Mohsin Javed, February 2015
+%% Best trigonometric approximation with `trigremez`
+% Mohsin Javed and Nick Trefethen, February 2015
 
 %%
 % (Chebfun example approx/BestTrigApprox.m)
@@ -75,6 +75,23 @@ plot([-1 1], err*[1 1],'--k',LW,1)
 plot([-1 1],-err*[1 1],'--k',LW,1)
 ylim(1.4*err*[-1 1]), hold off
 title('Degree 15 trigonometric error curve',FS,fs)
+
+%%
+% Experienced best approximators are used to seeing error curves that 
+% look approximately like Chebyshev polynomials, and indeed, there are 
+% theorems to the
+% effect that for functions satisfying appropriate smoothness
+% conditions, the best polynomial approximation error curves
+% approach Chebyshev polynomials as the degree approaches
+% infinity.  In trigonometric rather than algebraic best
+% approximation, however, the error curves tend to look like
+% sine waves, not Chebyshev polynomials.  To the experienced
+% eye, this can be quite a surprise. The following example illustrates
+% this:
+f = chebfun('1./(1.01-cos(x))',[-pi,pi],'trig');
+plot(f-trigremez(f,40)), ylim([-1 1])
+title('Almost sinusoidal Error curve', FS, fs)
+
 
 %%
 % The flavor of $\verb|trigremez|$ and the periodic 
