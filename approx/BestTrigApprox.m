@@ -90,7 +90,7 @@ title('Degree 15 trigonometric error curve',FS,fs)
 % this:
 f = chebfun('1./(1.01-cos(x))',[-pi,pi],'trig');
 plot(f-trigremez(f,40)), ylim([-1 1])
-title('Almost sinusoidal Error curve', FS, fs)
+title('Almost sinusoidal error curve', FS, fs)
 
 
 %%
