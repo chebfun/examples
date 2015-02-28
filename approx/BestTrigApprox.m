@@ -16,8 +16,8 @@
 f = chebfun(@(x) exp(sin(2*x)+cos(3*x)), [-pi, pi], 'trig');
 [p,err] = trigremez(f,5);
 LW = 'linewidth'; FS = 'fontsize'; fs = 14;
-plot(f,'b',p,'r',LW,1.6)
-title('Function and best trigonometric approximation',FS,fs)
+plot(f,'k',p,'r',LW,1.6)
+title('Function (black) and best trigonometric approximation (red)',FS,fs)
 
 %%
 % The error equioscillates, and the number of equioscillating
@@ -27,10 +27,10 @@ title('Function and best trigonometric approximation',FS,fs)
 % approximation, the dimension of the approximation
 % space is $11$, and hence the error curve must have at 
 % least 12 points of equioscillation: 
-plot(f-p,LW,1.6, 'color', [0 .7 0]), hold on
+plot(f-p,LW,1.6), hold on
 plot([-pi pi], err*[1 1],'--k',LW,1)
 plot([-pi pi],-err*[1 1],'--k',LW,1)
-ylim([-.7 .7]), hold off
+ylim(5*err*[-1, 1]), hold off
 title('Degree 5 trigonometric error curve',FS,fs)
 
 %%
@@ -43,15 +43,15 @@ f = chebfun(fh, 'splitting', 'on' );
 
 %%
 [p, err] = trigremez(f, 8);
-plot(f,'b',p,'r',LW,1.6)
-title('Function and best trigonometric approximation',FS,fs)
+plot(f,'k',p,'r',LW,1.6)
+title('Function (black) and best trigonometric approximation (red)',FS,fs)
 
 %%
 % And here is a plot of the error curve:
-plot(f-p,LW,1.6, 'color', [0 .7 0]), hold on
+plot(f-p,LW,1.6), hold on
 plot([-pi pi], err*[1 1],'--k',LW,1)
 plot([-pi pi],-err*[1 1],'--k',LW,1)
-ylim(1.4*err*[-1 1]), hold off
+ylim(5*err*[-1 1]), hold off
 title('Degree 8 trigonometric error curve',FS,fs)
 
 %%
@@ -65,15 +65,15 @@ m = (g(1) - g(-1))/2;
 y = m*(x - 1) + g(1);
 f = g - y;
 [p, err] = trigremez(f, 15);
-plot(f,'b',p,'r',LW,1.6)
-title('Function and best trigonometric approximation',FS,fs)
+plot(f,'k',p,'r',LW,1.6)
+title('Function (black) and best trigonometric approximation (red)',FS,fs)
 
 %%
 % Again, the error plot equioscillates beautifully:
-plot(f-p,LW,1.6, 'color', [0 .7 0]), hold on
+plot(f-p,LW,1.6), hold on
 plot([-1 1], err*[1 1],'--k',LW,1)
 plot([-1 1],-err*[1 1],'--k',LW,1)
-ylim(1.4*err*[-1 1]), hold off
+ylim(5*err*[-1 1]), hold off
 title('Degree 15 trigonometric error curve',FS,fs)
 
 %%
