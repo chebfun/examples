@@ -82,10 +82,10 @@ tw = roots(w-0.5); wp = diff(w); tw = tw(wp(tw)>0); nw = length(tw);
 % reveals the exponential growth, with red, green, and blue
 % corresponding to $u$, $v$, and $w$.
 clf, FS = 'fontsize'; MS = 'markersize';
-semilogy(-1/3+(2:nu),diff(tu),'.',MS,14,'color',[.9 0 0])
+semilogy(2/3+(2:nu),diff(tu),'.',MS,14,'color',[.9 0 0 ])
 hold on
-semilogy(1/3+(2:nv),diff(tv),'.',MS,14,'color',[0 .7 0])
-semilogy(3/3+(2:nw),diff(tw),'.',MS,14,'color',[0 0 1])
+semilogy(1/3+(2:nv),diff(tv),'.',MS,14,'color',[0 .7 0 ])
+semilogy(0/3+(2:nw),diff(tw),'.',MS,14,'color',[0 0 1])
 xlabel('crossing number',FS,10)
 ylabel('time',FS,10)
 title ('Crossing times',FS,14), grid on
