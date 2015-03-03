@@ -22,9 +22,12 @@ f = chebfun(@(x) exp(-150*(x-.5).^2));
 [p,err] = remez(f,0);
 LW = 'linewidth'; lw = 1.6; FS = 'fontsize'; fs = 10;
 CO = 'color'; green = [0 .7 0]; ax = [-1 1 -1.2 1.2];
-subplot(2,2,1), plot(f,'b',p,'r',LW,lw), axis(ax)
+plot(f,'b',p,'r',LW,lw), axis(ax)
 grid on, title('f and its best approximation',FS,fs)
-subplot(2,2,2), plot(p-f,CO,green,LW,lw), grid on
+
+%%
+% The error looks like this:
+plot(p-f,CO,green,LW,lw), grid on
 title(['error = ' num2str(err)],FS,fs), axis(ax)
 
 %%
