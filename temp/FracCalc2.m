@@ -87,7 +87,7 @@ legend('J1', 'J2');
 % as 
 %
 % $$(J^\mu{\cal{P}}_n^{(0,\beta,0)})(x) = 
-%            \frac{B(\beta+n+1, mu)}{\Gamma(\mu)}{\cal{P}}^{(0,\beta,\mu)}(x).$$
+%           \frac{B(\beta+n+1, \mu)}{\Gamma(\mu)}{\cal{P}}^{(0,\beta,\mu)}(x).$$
 
 %%
 % Again, we can verify this relation in Chebfun:
@@ -127,7 +127,7 @@ legend('J1', 'J2');
 
 %% Fractional derivatives
 % Fractional derivatives are typically defined via fractional integrals, and
-% since we can now cimpute the latter, it should be no problem to compute the
+% since we can now compute the latter, it should be no problem to compute the
 % former.
 
 mu = .25;
@@ -142,7 +142,7 @@ Df_Caputo = fracInt(diff(f, n), n - mu);
 
 %%
 % For the Reimann-Liouville form we do the opposite, namely compute the
-% ceil($\mu$) - $mu$th integral and then differentiate the result ceil($\mu$)
+% ceil($\mu$) - $\mu$th integral and then differentiate the result ceil($\mu$)
 % times.
 
 Df_RL = diff(fracInt(f, n - mu), n); 
