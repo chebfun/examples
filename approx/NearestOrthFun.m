@@ -11,11 +11,11 @@ function NearestOrthFun()
 % orthonormal matrix $Q$ nearest to $A$ is well-known [4] (by an orthonormal
 % matrix, we mean a matrix with orthonormal columns). Specifically,
 % it is the following problem:
-%    $$ \mbox{argmin}\_U ||A-U||_\mbox{fro} \quad\mbox{subject to}\quad U^T U = I. $$
+%    $$ Q = \mbox{argmin}\_W ||A-W||_\mbox{fro} \quad\mbox{subject to}\quad W^T W = I. $$
 % This problem is a special case of the orthogonal Procrustes problem [3, p. 327].
 % There are different ways to find the unique solution to this problem.
 % One way that expresses $Q$ explicitly requires finding a matrix inverse
-% square root [5] as follows:
+% square root [6] as follows:
 %
 % $$ Q = A(A^T A)^{-1/2}. $$
 %
@@ -57,6 +57,20 @@ x = chebfun('x'); A = [1, cos(x), sin(x.^2), x.^3, x.^4, x.^5];
 %% Non-smooth functions on the interval [0,10]
 A = [cheb.gallery('stegosaurus'), cheb.gallery('wiggly'), cheb.gallery('blasius')];
 [Q,Q2] = nearestOrtho(A);
+%% A further comment
+% We mentioned in the introduction that the nearest orthonormal
+% matrix $Q$ to a given matrix $A$ is the orthonormal factor of
+% a polar deomposition $A = QH$.  The other factor $H$ is a Hermitian matrix.
+% Analogously, in the case considered in this Example of
+% functions rather than vectors, we are computing the nearest
+% orthognormal quasimatrix $Q$ to a given quasimatrix $A$, and that could
+% be regarded again as half of a polar decomposition $A = QH$. Here both
+% $A$ and $Q$ are quasimatrices, but $H$ is again a fully discrete matrix.
+% The Chebfun team may introduce at a later date a Chebfun command
+% POLDEC to compute the polar decomposition (analogous to Higham's
+% POLDEC command for matrices in the Matrix Computations Toolbox [5]), in
+% which case, this example could be simplified.
+
 %%
 function [Q,Q2] = nearestOrtho(A)
 [U,S,V] = svd(A);
@@ -67,9 +81,11 @@ Q = U*V'; % nearest quasimatrix to A with orthonormal columns
 m = size(A,2);
 figure;
 subplot(1,2,1);
-plot(Q2); grid on; title('QR orthonormalization')
+plot(Q2); 
+v=axis; v(4) = -v(3); axis(v); % make the scales look better
+grid on; title('QR orthonormalization')
 subplot(1,2,2);
-plot(Q); grid on; title('Optimal orthonormalization')
+plot(Q); axis(v); grid on; title('Optimal orthonormalization')
 fprintf(['Departure from orthogonality in the columns' ...
     ' of A = %3.2f\n'], norm(A'*A-eye(m)))
 fprintf(['Departure from orthogonality in the columns' ...
@@ -83,21 +99,24 @@ end
 
 %% References
 %
-% 1. Z. Battles, and L.N. Trefethen, An extension of MATLAB to continuous
+% 1. Z. Battles and L.N. Trefethen, An extension of MATLAB to continuous
 %    functions and operators, _SIAM J. Scientific Computing_ 25 (2004)
 %    1743-1770.
 %
 % 2. T.A. Driscoll, N. Hale, and L.N. Trefethen, editors, _Chebfun Guide_,
 %    Pafnuty Publications, Oxford, 2014.
 %
-% 3. G.H. Golub, C.F. Van Loan, _Matrix Computations_, 4th edition, The Johns
+% 3. G.H. Golub and C.F. Van Loan, _Matrix Computations_, 4th edition, The Johns
 %    Hopkins University Press, 2013.
 %
 % 4. N.J. Higham, Matrix nearness problems and applications, pp. 1-27, in
 %    Applications of Matrix Theory, Inst. Math. Appl. Conf. Ser. New Ser.,
 %    Vol. 22, Oxford Univ. Press, New York, 1989.
 %
-% 5. B.K.P. Horn, H.M. Hilden, S. Negahdaripour, Closed-form solution of
+% 5. N.J. Higham, The matrix computation toolbox,
+%    http://www.ma.man.ac.uk/~higham/mctoolbox/, 2008. 
+%
+% 6. B.K.P. Horn, H.M. Hilden, and S. Negahdaripour, Closed-form solution of
 %    absolute orientation using orthonormal matrices, _Journal of the Optical
 %    Society A_, 5 (1988) 1127-1135.
 end
