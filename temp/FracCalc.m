@@ -48,7 +48,7 @@ title('The function ''x'' and its half-derivative', FS, fs)
 % that the half derivative of $x$ is precisely $2\sqrt{x/\pi}$, which we can
 % verify:
 f = chebfun(@(x) 2*sqrt(x/pi), [0, 4], 'exps', [0.5, 0]);
-norm( f - xp05 , inf)
+norm(f - xp05, inf)
 
 %% Fractional differentiation
 % The Riemann-Liouville derivative definition above applies not only to
