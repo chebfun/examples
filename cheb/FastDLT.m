@@ -60,10 +60,6 @@ set(gca, FS, 14)
 % are excited, the signal $\sqrt{\sin(\theta)}P_n(\cos(\theta))$ can be
 % well-approximated by a handful of sinusoidal waves.
 
-%%
-% This is one fact that is exploited in our fast algorithm for computing a
-% discrete Legendre transform.
-
 %% Legendre nodes are nearly uniform on the unit circle
 % Another fact is that Legendre nodes are well-approximated by Chebyshev nodes
 % (Chebyshev points of the first kind), as we can see below:
@@ -82,12 +78,12 @@ xlabel('N', FS, 14), ylabel('Max abs diff', FS, 14), grid on
 
 %% 
 % These two facts mean that the DLT can be carefully related to a handful of
-% discrete cosine transforms, allowing it be calculated via the FFT, and
+% discrete cosine transforms, allowing it be calculated via the FFT,
 % requiring $O(N(\log N)^2/\log\log N)$ operations. The odd-looking complexity comes
 % about because of a balancing of computation costs, see [1].
 
 %% The inverse transform 
-% The inverse discrete Legendre transform takes samples of a function from a
+% The inverse discrete Legendre transform takes samples of a function from
 % Legendre nodes and computes the associated Legendre expansion coefficients.
 
 f = chebfun( @(x) 1./(1 + 10000*x.^2) ); 
@@ -101,7 +97,7 @@ norm( backToTheCoeffs - c_leg, inf )
 % relation. It has the same $O(N(\log N)^2/\log\log N)$ complexity.
 
 %% 
-% The DLT and IDLT complete the Chebyshev--Legendre cycle: (In the diagram 
+% DLT and IDLT complete the Chebyshev--Legendre cycle: (In the diagram 
 % below we give the Chebfun commands that compute each particular transform.) 
 %
 %                    -->-->-- coeffs2vals() -->-->--                      
