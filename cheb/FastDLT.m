@@ -112,8 +112,9 @@ norm( backToTheCoeffs - c_leg, inf )
 %       LEGCOEFFS       -->-->-- dlt()  -->-->--       LEGVALUES
 %                       --<--<-- idlt() --<--<--
 % 
+%%
 %  One can now move freely between Chebyshev and Legendre modes and values with
-%  fast algorithms in Chebfun. Hooary! 
+%  fast algorithms in Chebfun. Hooray! 
 
 %% References
 %  [1] N. Hale and A. Townsend, A fast, simple, and stable Chebyshev--Legendre
