@@ -117,11 +117,13 @@ norm( backToTheCoeffs - c_leg, inf )
 %  fast algorithms in Chebfun. Hooray! 
 
 %% References
-%  [1] N. Hale and A. Townsend, A fast, simple, and stable Chebyshev--Legendre
-%  transform using an asymptotic formula, SISC, 36 (2014), pp. A148--A167.
+%
+%  1. N. Hale and A. Townsend, A fast, simple, and stable Chebyshev--Legendre
+%     transform using an asymptotic formula, SISC, 36 (2014), pp. A148--A167.
 % 
-%  [2] N. Hale and A. Townsend, A fast FFT-based discrete Legendre transform, in
-%  preparation.
+%  2. N. Hale and A. Townsend, A fast FFT-based discrete Legendre transform,
+%     in preparation.
 %  
-%  [3] D. Potts, Fast algorithms for discrete polynomial transforms on arbitrary
-%  grids, Linear Algebra and its Applications, 336 (2003), pp. 353--370.
+%  3. D. Potts, Fast algorithms for discrete polynomial transforms on
+%     arbitrary grids, Linear Algebra and its Applications, 336 (2003), pp.
+%     353--370.
