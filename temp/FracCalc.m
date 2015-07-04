@@ -14,7 +14,8 @@
 x = chebfun('x', [0, 4]);
 LW = 'LineWidth'; lw = 1.2; FS = 'FontSize'; fs = 14;
 plot(x, '-', diff(x), '-', cumsum(x), '-', LW, lw)
-legend('x', 'x''', 'x^2/2'), axis([0 4 0 4]), xlabel('x', FS, fs)
+legend('x', 'x''', 'x^2/2','location','northwest')
+axis([0 4 0 4]), xlabel('x', FS, fs)
 title('The function ''x'' with its derivative and antiderivative', FS, fs)
 
 %% Half-derivative
@@ -35,8 +36,8 @@ title('The function ''x'' with its derivative and antiderivative', FS, fs)
 
 xp05 = diff(x, 0.5);
 hold on, plot(xp05, '-', LW, lw), axis([0, 4, 0, 4])
-legend('x', 'x''', 'x^2/2', 'd^{1/2}x / dx^{1/2}'); xlabel('x', FS, fs);
-title('The function ''x'' and its half-derivative', FS, fs)
+legend('x', 'x''', 'x^2/2', 'd^{1/2}x / dx^{1/2}','location','northwest')
+xlabel('x',FS,fs); title('The function ''x'' and its half-derivative',FS,fs)
 
 %%
 % Notice here that the second argument passed to diff, which for standard
@@ -48,7 +49,7 @@ title('The function ''x'' and its half-derivative', FS, fs)
 % that the half derivative of $x$ is precisely $2\sqrt{x/\pi}$, which we can
 % verify:
 f = chebfun(@(x) 2*sqrt(x/pi), [0, 4], 'exps', [0.5, 0]);
-norm( f - xp05 , inf)
+norm(f - xp05, inf)
 
 %% Fractional differentiation
 % The Riemann-Liouville derivative definition above applies not only to
@@ -64,7 +65,7 @@ for alpha = 0.1:.1:1
 end
 title('Fractional derivatives of x', FS, fs)
 xlabel('x', FS, fs); ylabel('d^a x / d x ^a', FS, fs)
-legend(num2str((0:.1:1)'))
+legend(num2str((0:.1:1)'),'location','northwest')
 
 %%
 % Of course, these generalised derivatives can be applied to more complicated
@@ -92,7 +93,7 @@ axis([-0.5, pi, 0.0, 1.01])
 %% Fractional integration
 % The definition of the Riemann-Liouville derivative can also to extended
 % fractional integration (in fact it is sometimes referred to as the
-% Riemann-Liouville `differintegral' [2]). Chebfun can also handle these types
+% Riemann-Liouville 'differintegral' [2]). Chebfun can also handle these types
 % of operators, here extending the definition of `cumsum` to allow non-integer
 % degree.
 
@@ -104,7 +105,7 @@ for k = 1:10;
 end
 title('Half-integrals of x^k for k = 1, ..., 10', FS, fs)
 xlabel('x', FS, fs);
-legend(num2str((1:10)'))
+legend(num2str((1:10)'),'location','northwest')
 
 %%
 % Here's another example:
@@ -117,7 +118,7 @@ for alpha = 0.1:.1:1
 end
 title('Fractional integrals of exp(x)-1', FS, fs)
 xlabel('x', FS, fs);
-legend(num2str((0:.1:1)'))
+legend(num2str((0:.1:1)'),'location','northwest')
 
 %% Fractional differential equations
 % Unfortunately there is not yet any functionality for fractional calculus

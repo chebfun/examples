@@ -19,21 +19,19 @@
 % One way you can solve a problem like this with Chebfun is to work with
 % multiple variables, solving for two chebfuns $u$ and $v$. Here we do this,
 % setting up the problem using anonymous functions that take two chebfuns as
-% input and return a chebmatrix of two chebfuns as output:
+% input and return the two chebfuns as output:
 N = chebop(-1, 1);
 x = chebfun('x');
 N.op = @(x,u,v)[ diff(u,2) - sin(v); diff(v,2) + cos(u)];
 N.lbc = @(u,v)[ u-1; diff(v)];
 N.rbc =  @(u,v)[ v; diff(u)];
 N.init = [0*x; 0*x];
-[sol,info] = N\[0; 0];
+[u, v, info] = N\[0; 0];
 nrmduvec = info.normDelta;
 
 %%
-% We extract the functions from the solution using the curly braces notation of
-% chebmatrices and plot them:
+% We can now plot the solution compomenents u and v:
 LW = 'linewidth'; FS = 'fontsize';
-u = sol{1}; v = sol{2};
 figure, subplot(1,2,1), plot(u, LW, 2)
 hold on, plot(v,'--r', LW, 2), hold off
 title('u and v vs. x', FS, 10), legend('u', 'v')
@@ -62,20 +60,17 @@ N.rbc =  @(u)[ u{2}; diff(u{1}) ];
 N.init = [0*x; 0*x];
 
 %%
-% The solution process is the same as before.
-[u,info] = N\[0; 0];
+% The solution process is the same, but now the solutions gets returned as the
+% chebmatrix u:
+u = N\[0; 0];
 nrmduvec = info.normDelta;
 
 %%
-% The components of the solution, as in the problem definition, are again
-% accessed via the curly braces notation of chebmatrices.
+% The now use the curly braces notation of chebmatrices to retrieve the solution
+% componennts.
 clf
-subplot(1,2,1), plot(u{1}, LW, 2), hold on
+plot(u{1}, LW, 2), hold on
 plot(u{2}, '--r', LW, 2), hold off
 title('u_1(x) and u_2(x) vs. x', FS, 10), legend('u_1', 'u_2')
 box on, grid on
 xlabel('x', FS, 10), ylabel('u_1(x) and u_2(x)', FS, 10)
-subplot(1,2,2), semilogy(nrmduvec, '-*', LW, 2)
-title('Norm of update vs. iteration no.', FS, 10)
-box on, grid on
-xlabel('iteration no.', FS, 10), ylabel('norm of update', FS, 10)
