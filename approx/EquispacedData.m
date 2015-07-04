@@ -124,7 +124,7 @@ title(s,FS,12)
 
 %%
 % Another globally smooth way to deal with equispaced data,
-% besides the Floater-Hormann approach, as to use
+% besides the Floater-Hormann approach, is to use
 % so-called _Gregory interpolants_ [2].  This idea, however,
 % has not been implemented in Chebfun.  
 
@@ -137,5 +137,5 @@ title(s,FS,12)
 % 107 (2007), 315--331.
 %
 % 2. M. Javed and L. N. Trefethen, Euler-Maclaurin and
-% Gregory interpolants, _Numerische Mathematik_, to appear
-% in 2015.
+% Gregory interpolants, _Numerische Mathematik_ 
+% (2015).
