@@ -107,6 +107,6 @@ title('Almost sinusoidal error curve', FS, fs)
 
 %% References
 %
-% 1. M. Javed and L. N. Trefethen, Remez algorithm
-%    for best trigonometric approximation. (In preparation).
-%
+% 1. M. Javed and L. N. Trefethen, The Remez algorithm
+%    for trigonometric approximation of
+%    periodic functions, submitted, 2015.
