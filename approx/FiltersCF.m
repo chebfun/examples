@@ -14,7 +14,7 @@
 % Mathematically, digital filters are polynomial ("FIR" or "finite impulse
 % response") or rational ("IIR" or "infinite impulse response") approximations
 % to prescribed functions. The classic method for computing FIR filters,
-% called the Parks McLellan method by engineers, is the Remez algorithm,
+% called the Parks-McLellan method by engineers, is the Remez algorithm,
 % available in the `remez` command of Chebfun [1].  However, complicated
 % filter designs are not always easy by this method, for the Remez algorithm
 % is nonlinear and may fail to converge if there is not a good enough initial
@@ -60,10 +60,6 @@ end
 %%
 % Here's the error:
 plot(f2-p,LW,1.2), grid on
-
-%%
-% For applications, one would need to transplant such computations
-% from a bounded to a periodic interval.
 
 %% References
 %
