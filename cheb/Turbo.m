@@ -13,8 +13,8 @@ function Turbo()
 f = chebfun(@exp);
 fturbo = chebfunturbo(@exp);
 MS = 'markersize'; LW = 'linewidth';
-plotcoeffs(f,'.k',MS,14), grid on, hold on
-plotcoeffs(fturbo,'or',MS,8)
+plotcoeffs(fturbo,'or',MS,8), grid on, hold on
+plotcoeffs(f,'.k',MS,14)
 title('Ordinary and turbocharged Cheb coeffs of exp(x)')
 
 %%
@@ -33,6 +33,7 @@ f10turbo = diff(fturbo,10); f10turbo(0)
 % Chebyshev coefficients by
 % contour integrals in the complex plane,
 % discretized to high precision by the trapezoidal rule.
+% Long ago,
 % Lyness and Moler showed the power of the idea for Taylor coefficients, using
 % circular contours [Lyness and Moler 1967],
 % and Fornberg showed that improved accuracy could
@@ -51,7 +52,7 @@ f10turbo = diff(fturbo,10); f10turbo(0)
 %%
 % The code |chebfunturbo| listed at the end of this Example
 % implements a simple, nonoptimal version of this idea.
-% We like to think of this as ``turbocharged'' since turbochargers
+% We like to think of this as "turbocharged" since turbochargers
 % take the exhaust tail from an engine and extract some extra
 % power from it.
 
@@ -79,12 +80,12 @@ n = length(f); nn = (0:4*n-1)';
 cexact = 2*besseli((0:4*n-1)',1); cexact(1) = cexact(1)/2;
 semilogy(0:n-1,abs(chebcoeffs(f)-cexact(1:n)),'.-k',LW,1,MS,3)
 semilogy(0:2*n-1,abs(chebcoeffs(fturbo)-cexact(1:2*n)),'.-r',LW,1,MS,3)
-title('Lines added to show accuracy')
+title('Lines added to show accuracy'), hold off
 
 %%
 % Using methods like this, we expect to introduce a
 % |turbo| option in the Chebyshev constructor.  We don't
-% imagine that this will be of much benefit for the typical Chebfun
+% imagine that this will be relevant to the typical Chebfun
 % computation, but there may be some applications where it makes
 % a difference. 
 
