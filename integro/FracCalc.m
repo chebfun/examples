@@ -12,7 +12,7 @@
 % constant function, $1$) and antiderivative ($x^2/2$).
 
 x = chebfun('x', [0, 4]);
-LW = 'LineWidth'; lw = 1.2; FS = 'FontSize'; fs = 14;
+LW = 'LineWidth'; lw = 1.2; FS = 'FontSize'; fs = 10;
 plot(x, '-', diff(x), '-', cumsum(x), '-', LW, lw)
 legend('x', 'x''', 'x^2/2','location','northwest')
 axis([0 4 0 4]), xlabel('x', FS, fs)
