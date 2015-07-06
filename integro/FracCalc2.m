@@ -1,4 +1,4 @@
-%% Fractional calculus in Chebfun (cont.)
+%% Fractional calculus in Chebfun: algorithms
 % Nick Hale, February 2015
 
 %%
@@ -152,7 +152,7 @@ Df_RL = diff(fracInt(f, n - mu), n);
 
 plot(Df_Caputo, 'b', Df_RL, '--r')
 legend('Caputo', 'Riemann-Liouville')
-title('Quarter-derivateive of $\exp(x)$', 'Interpreter', 'latex')
+title('Quarter-derivative of $\exp(x)$', 'Interpreter', 'latex')
 
 %%
 % we can see that they both satisfy |diff(diff(f, a), 1-a) = diff(f)|:
