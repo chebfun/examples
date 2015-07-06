@@ -77,7 +77,7 @@ legend(num2str((0:.1:1)'),'location','northwest')
 
 close
 u = chebfun('sin(x)', [0, 20]);
-for alpha = sqrt(2)*(0:2:10)/17
+for alpha = sqrt(2)*(2:2:10)/17
     u = [ u, diff(u(:,1), alpha) ];
     plot(u, LW, lw), ylim(1.2*[-1, 1]), drawnow, 
 end
