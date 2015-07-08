@@ -2,7 +2,7 @@
 % Mohsin Javed and Nick Trefethen, February 2015
 
 %%
-% (Chebfun example approx/BestTrigApprox.m)
+% (Chebfun example fourier/BestTrigApprox.m)
 % [Tags: #REMEZ, #TRIGREMEZ, #bestapproximation]
 
 %%

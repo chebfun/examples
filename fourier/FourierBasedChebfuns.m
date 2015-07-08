@@ -2,6 +2,7 @@
 % Grady Wright, June 2014
 
 %%
+% (Chebfun example fourier/FourierBasedChebfuns.m)
 % [Tags: #trigfun, #periodic, #interpolation, #fourier]
 
 %%

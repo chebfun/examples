@@ -2,6 +2,7 @@
 % Grady Wright, June 2014
 
 %%
+% (Chebfun example fourier/FourierCoefficients.m)
 % [Tags: #trigfun, #periodic, #interpolation, #fourier, #gibbs, #leastsquares]
 LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 
