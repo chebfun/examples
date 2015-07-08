@@ -13,7 +13,7 @@
 
 x = chebfun('x', [0, 4]);
 LW = 'LineWidth'; lw = 1.2; FS = 'FontSize'; fs = 10;
-plot(x, '-', diff(x), '-', cumsum(x), '-', LW, lw)
+h1 = plot(x, '-', diff(x), '-', cumsum(x), '-', LW, lw);
 legend('x', 'x''', 'x^2/2','location','northwest')
 axis([0 4 0 4]), xlabel('x', FS, fs)
 title('The function ''x'' with its derivative and antiderivative', FS, fs)
@@ -35,11 +35,10 @@ title('The function ''x'' with its derivative and antiderivative', FS, fs)
 % of the function $f(x) = x$. In Chebfun this is easily computed via
 
 xp05 = diff(x, 0.5);
-hold on, plot(xp05, '-', LW, lw), axis([0, 4, 0, 4])
-legend('x', 'x''', 'x^2/2', 'd^{1/2}x / dx^{1/2}','location','northwest')
+hold on, h2 = plot(xp05, '-', LW, lw); axis([0, 4, 0, 4]),
+leg1 = legend([h1; h2],'x', 'x''', 'x^2/2', 'd^{1/2}x / dx^{1/2}','location','northwest');
 xlabel('x',FS,fs)
 title('The function ''x'' and its half-derivative',FS,fs)
-
 %%
 % Notice here that the second argument passed to |diff|, which for standard
 % calculus is a positive integer specifying the number of times to differentiate
@@ -102,11 +101,9 @@ axis([-0.5, pi, 0.0, 1.01])
 % degree.
 
 close
-x = chebfun('x', [0, 1]); u = [];
-for k = 1:10;
-    u = [ u, cumsum(x.^k, 0.5) ];
-    plot(u, LW, lw), drawnow, hold on
-end
+x = chebfun('x', [0, 1]); 
+u =  cumsum(x.^(1:10), 0.5);
+plot(u, LW, lw),
 title('Half-integrals of x^k for k = 1, ..., 10', FS, fs)
 xlabel('x', FS, fs);
 legend(num2str((1:10)'),'location','northwest')
