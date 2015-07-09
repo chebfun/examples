@@ -60,9 +60,10 @@ f10turbo = diff(fturbo,10); f10turbo(0)
 % |chebfunturbo| starts from 
 % an ordinary chebfun, calling its length $n$.
 % Then it computes $4n$ roots of unity and also the corresponding
-% points on Bernstein ellipse
-% corresponding to a value $\rho_2$, which is taken to be to
-% be $\rho^{2/3}$.  (The mathematics of Bernstein
+% points on a Bernstein ellipse of parameter $\rho_2 = \rho^{2/3}$,
+% where $\rho$ is the Chebfun ellipse for the ordinary chebfun, an
+% estimate of the function's maximal Bernstein ellipse of analyticity.  (The
+% mathematics of Bernstein
 % ellipses is presented in Chapter 8 of [Trefethen 2013].)
 % To compute Chebyshev coefficients from the ellipse
 % data, it evaluates the function transplanted to the roots of
@@ -84,7 +85,7 @@ title('Lines added to show accuracy'), hold off
 
 %%
 % Using methods like this, we expect to introduce a
-% |turbo| option in the Chebyshev constructor.  We don't
+% |turbo| option in the chebfun constructor.  We don't
 % imagine that this will be relevant to the typical Chebfun
 % computation, but there may be some applications where it makes
 % a difference. 
