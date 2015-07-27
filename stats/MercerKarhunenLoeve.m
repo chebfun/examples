@@ -32,7 +32,7 @@ K = @(s,t) exp(-abs(s-t));
 %%
 % We can create the integral operator and find the leading terms of its
 % Mercer decomposition numerically.
-F = fred( K, domain([-1,1]) );
+F = chebop(@(u) fred(K, u));
 [Psi,Lambda] = eigs(F,20,'lm');
 Psi = chebfun(Psi);
 [lambda,idx] = sort(diag(Lambda),'descend');
@@ -120,7 +120,7 @@ hold on, plot3(S,T,K(S,T),'k.',plotopt{:})
 % (i.e., more randomness), the amount of variance captured by the first $10$
 % modes will decrease.
 K = @(s,t) exp(-4*abs(s-t));     % decrease correlation faster, then...
-F = fred( K, domain([-1,1]) );
+F = chebop(@(u) fred(K, u) );
 lambdaShort = sort( eigs(F,24,'lm'), 'descend' );
 
 
