@@ -145,7 +145,7 @@ for rabbits = 0.1:.2:1.9
 end
 xlim([0 5]), ylim([0 5])
 hold off
-title('Phase portrait for Lotka-Volterra equations, increased rabbit reproduction',...
+title('Phase portrait for L-V eqns., increased rabbit reproduction',...
     'interpreter','latex', 'fontsize',16)
 xlabel('Rabbits','interpreter','latex','fontsize',14)
 ylabel('Foxes','interpreter','latex','fontsize',14)
