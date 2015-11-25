@@ -155,8 +155,8 @@ ylabel('Foxes','interpreter','latex','fontsize',10)
 % population of foxes grew more than that of rabbits.
 
 %% References
-% 1. https://en.wikipedia.org/wiki/Phase_portrait
+% 1. http://en.wikipedia.org/wiki/Phase_portrait
 %
-% 2. https://en.wikipedia.org/wiki/Van_der_Pol_oscillator
+% 2. http://en.wikipedia.org/wiki/Van_der_Pol_oscillator
 %
-% 3. https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations
+% 3. http://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations
