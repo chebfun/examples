@@ -53,12 +53,12 @@ hold on
 for init = 0.2:0.4:0.2
     N.lbc = [init; 1];
     u = N\0;
-    plot(u, diff(u),'linewidth',2)
+    plot(u, diff(u))
 end
 title('Phase portrait of the van der Pol oscillator','interpreter','latex', ...
-    'fontsize',16)
-xlabel('$u$','interpreter','latex')
-ylabel('$u''$','interpreter','latex')
+    'fontsize',11)
+xlabel('$u$','interpreter','latex', 'fontsize',10)
+ylabel('$u''$','interpreter','latex', 'fontsize',10)
 hold off
 %% A mathematical pendulum
 %
@@ -77,13 +77,14 @@ hold on
 for init = 0:0.5:5
     N.lbc = [0, init];
     u = N\0;
-    plot(u, diff(u),'linewidth',2)
+    plot(u, diff(u))
 end
 hold off
 xlim([-2.5 25])
-title('Phase portrait for an undamped nonlinear pendulum','interpreter','latex')
-xlabel('$u$','interpreter','latex')
-ylabel('$u''$','interpreter','latex')
+title('Phase portrait for an undamped nonlinear pendulum','interpreter', ...
+    'latex', 'fontsize',11)
+xlabel('$u$','interpreter','latex','fontsize',10)
+ylabel('$u''$','interpreter','latex', 'fontsize',10)
 %%
 % We see that for small enough initial velocities, the pendulum swings back and
 % forth around the equilibria $u=0$, while for larger initial velocities, it
@@ -95,12 +96,13 @@ hold on
 for init = 0:0.5:5
     N.lbc = [0, init];
     u = N\0;
-    plot(u, diff(u),'linewidth',2)
+    plot(u, diff(u))
 end
 hold off
-title('Phase portrait for a damped nonlinear pendulum','interpreter','latex')
-xlabel('$u$','interpreter','latex')
-ylabel('$u''$','interpreter','latex')
+title('Phase portrait for a damped nonlinear pendulum','interpreter','latex', ...
+    'fontsize',11)
+xlabel('$u$','interpreter','latex','fontsize',10)
+ylabel('$u''$','interpreter','latex','fontsize',10)
 %% Lotka-Volterra predator-prey model
 % The final example we consider are the The Lotka-Volterra equations, which
 % model the populations of predators (say foxes) and prey (say rabbits) [3].
@@ -123,12 +125,13 @@ hold on
 for rabbits = 0.1:.2:1.9
     N.lbc = @(u,v) [u - rabbits; v - 1]; % Initial populations
     [u, v] = N\0;
-    plot(u, v, 'linewidth', 2)
+    plot(u, v)
 end
 hold off
-title('Phase portrait for Lotka-Volterra equations', 'interpreter','latex')
-xlabel('Rabbits','interpreter','latex','fontsize',14)
-ylabel('Foxes','interpreter','latex','fontsize',14)
+title('Phase portrait for Lotka-Volterra equations', 'interpreter','latex', ...
+    'fontsize',11)
+xlabel('Rabbits','interpreter','latex','fontsize',10)
+ylabel('Foxes','interpreter','latex','fontsize',10)
 %%
 % The cyclical behaviour of the populations is evident. What happens if we
 % increase the reproduction rate of the rabbits by 50%?
@@ -143,9 +146,9 @@ end
 xlim([0 5]), ylim([0 5])
 hold off
 title('Phase portrait for L-V eqns., increased rabbit reproduction',...
-    'interpreter','latex')
-xlabel('Rabbits','interpreter','latex')
-ylabel('Foxes','interpreter','latex')
+    'interpreter','latex','fontsize',11)
+xlabel('Rabbits','interpreter','latex','fontsize',10)
+ylabel('Foxes','interpreter','latex','fontsize',10)
 %%
 % Comparing the phase portraits, we observe that while the maximum rabbit
 % population increased, it was by much less than 50%. In fact, the maximum
