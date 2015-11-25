@@ -57,8 +57,8 @@ for init = 0.2:0.4:0.2
 end
 title('Phase portrait of the van der Pol oscillator','interpreter','latex', ...
     'fontsize',16)
-xlabel('$u$','interpreter','latex','fontsize',14)
-ylabel('$u''$','interpreter','latex','fontsize',14)
+xlabel('$u$','interpreter','latex')
+ylabel('$u''$','interpreter','latex')
 hold off
 %% A mathematical pendulum
 %
@@ -81,10 +81,9 @@ for init = 0:0.5:5
 end
 hold off
 xlim([-2.5 25])
-title('Phase portrait for an undamped nonlinear pendulum','interpreter','latex', ...
-    'fontsize',16)
-xlabel('$u$','interpreter','latex','fontsize',14)
-ylabel('$u''$','interpreter','latex','fontsize',14)
+title('Phase portrait for an undamped nonlinear pendulum','interpreter','latex')
+xlabel('$u$','interpreter','latex')
+ylabel('$u''$','interpreter','latex')
 %%
 % We see that for small enough initial velocities, the pendulum swings back and
 % forth around the equilibria $u=0$, while for larger initial velocities, it
@@ -99,10 +98,9 @@ for init = 0:0.5:5
     plot(u, diff(u),'linewidth',2)
 end
 hold off
-title('Phase portrait for a damped nonlinear pendulum','interpreter','latex', ...
-    'fontsize',16)
-xlabel('$u$','interpreter','latex','fontsize',14)
-ylabel('$u''$','interpreter','latex','fontsize',14)
+title('Phase portrait for a damped nonlinear pendulum','interpreter','latex')
+xlabel('$u$','interpreter','latex')
+ylabel('$u''$','interpreter','latex')
 %% Lotka-Volterra predator-prey model
 % The final example we consider are the The Lotka-Volterra equations, which
 % model the populations of predators (say foxes) and prey (say rabbits) [3].
@@ -128,8 +126,7 @@ for rabbits = 0.1:.2:1.9
     plot(u, v, 'linewidth', 2)
 end
 hold off
-title('Phase portrait for Lotka-Volterra equations', 'interpreter','latex', ...
-    'fontsize',16)
+title('Phase portrait for Lotka-Volterra equations', 'interpreter','latex')
 xlabel('Rabbits','interpreter','latex','fontsize',14)
 ylabel('Foxes','interpreter','latex','fontsize',14)
 %%
@@ -146,9 +143,9 @@ end
 xlim([0 5]), ylim([0 5])
 hold off
 title('Phase portrait for L-V eqns., increased rabbit reproduction',...
-    'interpreter','latex', 'fontsize',16)
-xlabel('Rabbits','interpreter','latex','fontsize',14)
-ylabel('Foxes','interpreter','latex','fontsize',14)
+    'interpreter','latex')
+xlabel('Rabbits','interpreter','latex')
+ylabel('Foxes','interpreter','latex')
 %%
 % Comparing the phase portraits, we observe that while the maximum rabbit
 % population increased, it was by much less than 50%. In fact, the maximum
