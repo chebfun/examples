@@ -141,7 +141,7 @@ hold on
 for rabbits = 0.1:.2:1.9
     N.lbc = @(u,v) [u - rabbits; v - 1]; % Initial populations
     [u, v] = N\0;
-    plot(u, v, 'linewidth', 2)
+    plot(u, v)
 end
 xlim([0 5]), ylim([0 5])
 hold off
