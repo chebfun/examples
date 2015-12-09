@@ -48,7 +48,7 @@ f = chebfun(@(t) zeta(s(t)),[5 50],'vectorize')
 % of [Trefethen 2013]) together with the numerically computed roots of $f$ in
 % in the ellipse.  A black X is also marked to show the pole of
 % the zeta function.
-chebellipseplot(f), xlim([-5 60]), axis equal, grid on
+plotregion(f), xlim([-5 60]), axis equal, grid on
 zeros_t = roots(f,'complex','norecursion'); MS = 'markersize';
 hold on, plot(zeros_t,'.r',MS,15)
 plot(0,3,'xk','markersize',12), hold off

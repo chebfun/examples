@@ -76,7 +76,8 @@ v = u(:,3)
 % function and analyse its singularities.
 
 %%
-% We are considering this function in complex time! An abstract concept which
+% We are considering this function in complex time! This
+% is an abstract concept which
 % can inform us of properties of the solution in real time. For example, if
 % there is a complex singularity $t_0$ near to the real line, the function is
 % somewhat less smooth at time $t = \mbox{real}(t_0)$ than it is elsewhere.
@@ -118,19 +119,19 @@ real(poles)*3/pi
 % which agrees with the analysis. We do appear to have missed one singularity
 % at $\pi/3$ and $11\pi/3$, but it is typical to expect only the singularities
 % near the centre of the interval to be found. We have also found two
-% additional poles.  A plot shows that these are further fromthe real line.
+% additional poles.  A plot shows that these are further from the real line.
 
 plot(roots(q,'all'),'o','markersize',4,'color','b','markerfacecolor','b')
 hold on
 plot(roots(p,'complex'), 'ok', 'markersize',5)
 axis equal, grid on
-chebellipseplot(v)
+plotregion(v)
 title('Poles, Zeros of Rational Interpolant and Bernstein Ellipse For v');
 plot([0,4*pi]+eps*1i,'-r')
 hold off
 
 %%
-% `chebellipseplot(v)` plots the Chebfun ellipse associated with $v$. This
+% `plotregion(v)` plots the Chebfun ellipse associated with $v$. This
 % ellipse is an estimate, based on the decay of the Chebyshev coefficients of
 % $v$, of the largest ellipse with foci $-1$ and $1$ in which the underlying
 % function approximated by $v$ is analytic. The poles appear around the edge
@@ -167,7 +168,7 @@ clf, plot([0,4*pi]+eps*1i,'-r'), hold on
 plot(roots(q,'complex'),'o','markersize',4,'color','b','markerfacecolor','b')
 plot(roots(p,'complex'), 'ok', 'markersize',5)
 axis equal, grid on
-chebellipseplot(v)
+plotregion(v)
 title('Without Robustness')
 
 %%
@@ -184,7 +185,7 @@ title('Without Robustness')
 %    three-body problem in the case of equal masses. _Annals of Mathematics-
 %    Second Series_, 152(3):881-902, 2000.
 %
-% 3. P. Gonnet, R. Pachón, and L.N. Trefethen. Robust rational interpolation
+% 3. P. Gonnet, R. Pachon, and L.N. Trefethen. Robust rational interpolation
 %    and least-squares. _Electronic Transactions on Numerical Analysis_,
 %    38:146-167, 2011.
 %

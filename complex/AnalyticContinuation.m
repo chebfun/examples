@@ -25,7 +25,7 @@ hold off, contour(x,y,abs(ff),lev1,'k')
 hold on, contour(x,y,abs(ff),lev2,'r')
 axis(6*[-1 1 -1 1]), axis square
 %%
-% Now, how might we calculate some of this structure based on the values of $f$
+% How might we calculate some of this structure based on the values of $f$
 % on $[-1,1]$? One idea would be to use polynomials.  The chebfun for $f$ is a
 % polynomial $p$ that matches $f$ to about 16 digits:
 z = chebfun('z');
@@ -37,7 +37,7 @@ length(p)
 % roughly within the Chebfun ellipse for $f$, which is approximately the
 % smallest Bernstein ellipse around $[-1,1]$ passing through a singularity of
 % $f$:
-hold off, chebellipseplot(p), axis(6*[-1 1 -1 1]), axis square
+hold off, plotregion(p), axis(6*[-1 1 -1 1]), axis square
 
 %%
 % To confirm this prediction, here is a contour plot of the absolute value
@@ -48,11 +48,12 @@ hold off, chebellipseplot(p), axis(6*[-1 1 -1 1]), axis square
 pp = p(zz);
 hold off, contour(x,y,abs(pp),lev1,'k')
 hold on, contour(x,y,abs(pp),lev2,'r')
-chebellipseplot(p), axis(6*[-1 1 -1 1]), axis square
+plotregion(p), axis(6*[-1 1 -1 1]), axis square
 
 %%
 % How can we compute $f$ further out in the complex plane?  The classic idea is
-% to use rational approximations.  Suppose we use the Chebfun RATINTERP command
+% to use rational approximations.  Suppose we use the Chebfun
+% `ratinterp` command
 % to compute a type (7,8) rational approximation to $f$ based on rational
 % interpolation in Chebyshev points in $[-1,1]$:
 [p,q,r,mu,nu,poles] = ratinterp(f,7,8);
@@ -80,8 +81,9 @@ disp([sort(exact) sort(poles)])
 %    SIAM, 2013.
 %
 % 2. M. Webb, Computing complex singularities of differential
-%    equations with Chebfun, SIAM Undergraduate Research Online, to appear.
+%    equations with Chebfun, SIAM Undergraduate Research Online, 2013.
 %
 % 3. M. Webb, L. N. Trefethen, and P. Gonnet, Stability of barycentric
-%    interpolatin formulas for extrapolation, SIAM J. Sci. Comput., 2012
+%    interpolation formulas for extrapolation, SIAM J. Sci. Comput. 34
+%    (2012), A3009--A3015.
 

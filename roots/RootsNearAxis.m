@@ -19,9 +19,9 @@ roots(f)
 %%
 % It has some roots near the interval in the complex plane, however, and the
 % chebfun will have some accuracy for these complex values. We can get an idea
-% of the relevant region with `chebellipseplot`, which plots the "Chebfun
+% of the relevant region with `plotregion`, which plots the "Chebfun
 % ellipse" for `f`:
-clf, chebellipseplot(f,LW,2), grid on
+clf, plotregion(f,LW,2), grid on
 xlim([-5 35]), axis equal
 hold on, plot(x,0*x,'k',LW,1.5)
 
@@ -54,5 +54,5 @@ plot(roots(f,'all'),'or'), axis auto, axis equal
 
 %% References
 %
-% 1. L. N. Trefethen, Approximation Theory and Approximation Practice, SIAM,
+% 1. L. N. Trefethen, _Approximation Theory and Approximation Practice_, SIAM,
 %    2013.

@@ -36,8 +36,8 @@ A.op = @(x,u) (diff(u,4)-2*alph^2*diff(u,2)+alph^4*u)/Re - ...
     2i*alph*u - 1i*alph*(1-x.^2).*(diff(u,2)-alph^2*u);
 B = chebop(-1,1);
 B.op = @(x,u) diff(u,2) - u;
-A.lbc = @(u) [u ; diff(u)];
-A.rbc = @(u) [u ; diff(u)];
+A.lbc = [0; 0];
+A.rbc = [0; 0];
 e = eigs(A,B,50,'LR');
 FS = 'fontsize'; MS = 'markersize';
 maxe = max(real(e));
