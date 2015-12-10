@@ -55,7 +55,7 @@
 % via `N.lbc` field rather than `N.bc` as is common for BVPs.
 mu = 5;
 N = chebop(@(t, u) diff(u, 2) - mu*(1-u.^2).*diff(u) + u, [0 50]);
-N.lbc = @(u) [u-0.1; diff(u)];
+N.lbc = [0.1; 0];
 tic, u = N\0; toc
 
 %%
@@ -96,13 +96,13 @@ title('Van der Pol oscillator with a nonzero forcing function')
 % converges if we decrease $\mu$ and $T$:
 mu = 1;
 N = chebop(@(t, u) diff(u, 2) - mu*(1-u.^2).*diff(u) + u, [0 4]);
-N.lbc = @(u) [u-2; diff(u)];
+N.lbc = [2; 0];
 
 %%
 % Now, before solving, we set the preference for the IVP solver to be
-% collocation rather `ode113`
+% collocation rather than `ode113`
 % (see help cheboppref for details):
-cheboppref.setDefaults('ivpSolver', 'collocation')
+cheboppref.setDefaults('ivpSolver', @chebcolloc2)
 tic, u = N\0; toc
 plot(u, LW, 1.2)
 cheboppref.setDefaults('factory');
