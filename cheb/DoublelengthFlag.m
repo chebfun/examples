@@ -16,6 +16,7 @@ f2 = chebfun('exp(x)','doublelength');
 MS = 'markersize'; LW = 'linewidth';
 hold off, plotcoeffs(f2,'.',MS,15)
 hold on, plotcoeffs(f,'or',MS,9,LW,1.2)
+plotcoeffs(f2,'.',MS,15) % needed to work around Matlab graphics bug
 
 %%
 % When you construct a chebfun with `doublelength`, it comes out
@@ -46,5 +47,5 @@ hold on, plotcoeffs(f,'r',LW,1.2)
 ff = @(t) 1./(2-cos(17*(t-1)));
 f = chebfun(ff,[-pi pi],'trig');
 f2 = chebfun(ff,[-pi pi],'trig','doublelength');
-hold off, plotcoeffs(f2,'.',MS,8)
-hold on, plotcoeffs(f,'.r',MS,8)
+hold off, plotcoeffs(f2,'.',MS,9)
+hold on, plotcoeffs(f,'.r',MS,6)
