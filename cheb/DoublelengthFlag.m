@@ -39,12 +39,6 @@ hold off, plotcoeffs(f2,LW,1.2)
 hold on, plotcoeffs(f,'r',LW,1.2)
 
 %%
-% If you play around with `doublelength`, you'll probably
-% notice that sometimes Chebfun doesn't seem to make
-% the right decision about where to chop the Chebyshev
-% series.  You are right, and we hope to improve this in a future release.
-
-%%
 % What about trigfuns, i.e., periodic Chebfun representations
 % of periodic functions?  The idea of `doublelength` here is analogous,
 % and to be precise, it is again actually the 
