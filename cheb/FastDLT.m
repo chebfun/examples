@@ -5,8 +5,6 @@
 % (Chebfun example cheb/FastDLT.m)
 % [Tags: #Legendre, #transform, #DCT]
 
-FS = 'FontSize';
-LW = 'LineWidth';
 
 %% The forward transform
 % The discrete (or finite) Legendre transform (DLT) evaluates a Legendre series
@@ -15,20 +13,25 @@ LW = 'LineWidth';
 % $$ f(x_k^{leg}) = \sum_{n=0}^{N-1} c_n^{leg} P_n( x_k^{leg} ), \qquad 0\leq
 %  k\leq N-1.$$
 %
-% It is considered an awkward task because the Legendre nodes are non-uniform
+% This is an awkward task because the Legendre nodes are non-uniform
 % and the Legendre polynomials have no explicit closed-form expression.
-% Therefore, FFT-based algorithms do not immediately apply and until recently
+% Therefore, FFT-based algorithms do not immediately apply, and until recently,
 % the transform required $O(N^2)$ operations. (See [3] for one of the earliest
 % fast DLT algorithms.)
 
 %%
 % In [2] we describe an algorithm to compute the transform in $O(N(\log
-% N)^2/\log\log N)$ operations, which is implemented in the `dlt()` command in
-% Chebfun. This allows us to compute the transform when N is 10000 or 100000, or
+% N)^2/\log\log N)$ operations, which is implemented in the command 
+% |legcoeffs2legvals| in Chebfun, which is part of a suite of 12
+% codes with hopefully self-explanatory names
+% |legcoeffs2chebcoeffs|, |chebcoeffs2legvals|, etc.  (The actual
+% implementation of |legcoeffs2legvals| is in |chebfun.dlt|, which the
+% user can also call if preferred.)  This allows us
+% to compute the transform when $N$ is 10000 or 100000, or
 % a million. Here it is in action:
-
+FS = 'FontSize'; LW = 'LineWidth';
 c = randn( 1e4, 1);
-tic, chebfun.dlt( c ); toc
+tic, legcoeffs2legvals( c ); toc
 
 %%
 % The transform computed above is still based on the FFT, but with a handful of
@@ -80,16 +83,18 @@ xlabel('N', FS, 14), ylabel('Max abs diff', FS, 14), grid on
 % These two facts mean that the DLT can be carefully related to a handful of
 % discrete cosine transforms, allowing it be calculated via the FFT,
 % requiring $O(N(\log N)^2/\log\log N)$ operations. The odd-looking complexity comes
-% about because of a balancing of computation costs, see [1].
+% about because of a balancing of computational costs, see [1].
 
 %% The inverse transform
-% The inverse discrete Legendre transform takes samples of a function from
+% The inverse discrete Legendre transform 
+% |legvals2legcoeffs| takes samples of a function from
 % Legendre nodes and computes the associated Legendre expansion coefficients.
+% (The implementation happens in the code |cheb.idlt|.)
 
 f = chebfun( @(x) 1./(1 + 10000*x.^2) );
 c_leg = legcoeffs(f);
-tic, f_leg = chebfun.dlt( c_leg ); toc
-backToTheCoeffs = chebfun.idlt( f_leg );
+tic, f_leg = legcoeffs2legvals( c_leg ); toc
+backToTheCoeffs = legvals2legcoeffs( f_leg );
 norm( backToTheCoeffs - c_leg, inf )
 
 %%
@@ -119,10 +124,11 @@ norm( backToTheCoeffs - c_leg, inf )
 %% References
 %
 % 1. N. Hale and A. Townsend, A fast, simple, and stable Chebyshev--Legendre
-%    transform using an asymptotic formula, SISC, 36 (2014), pp. A148--A167.
+%    transform using an asymptotic formula, _SIAM J.
+%    Sci. Comput._,  36 (2014), A148--A167.
 %
 % 2. N. Hale and A. Townsend, A fast FFT-based discrete Legendre transform, in
 %    preparation.
 %
 % 3. D. Potts, Fast algorithms for discrete polynomial transforms on arbitrary
-%    grids, Linear Algebra and its Applications, 336 (2003), pp. 353--370.
+%    grids, _Lin. Alg. and Applics._, 336 (2003), 353--370.
