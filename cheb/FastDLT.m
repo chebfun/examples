@@ -105,17 +105,18 @@ norm( backToTheCoeffs - c_leg, inf )
 % DLT and IDLT complete the Chebyshev--Legendre cycle: (In the diagram
 % below we give the Chebfun commands that compute each particular transform.)
 %
-%                    -->-->-- coeffs2vals() -->-->--
-%       CHEBCOEFFS   --<--<-- vals2coeffs() --<--<--   CHEBVALUES
-%         ^  |
-%         |  |
-%         |  v
-%       cheb2leg()
-%       leg2cheb()
-%         |  |
-%         |  |
-%       LEGCOEFFS       -->-->-- dlt()  -->-->--       LEGVALUES
-%                       --<--<-- idlt() --<--<--
+%                    -->-->-- chebcoeffs2chebvals() -->-->--
+%      CHEBCOEFFS    --<--<-- chebvals2chebcoeffs() --<--<--   CHEBVALUES
+%         ^  |                                                    ^  |
+%         |  |                                                    |  |
+%         |  v                                                    |  v
+% legcoeffs2chebcoeffs()                                     legvals2chebvals()
+% chebcoeffs2legcoeffs()                                     chebvals2legvals()
+%         |  |                                                    ^  |
+%         |  |                                                    |  |
+%         |  |                                                    |  v
+%       LEGCOEFFS    -->-->-- legcoeffs2legvals()  -->-->--     LEGVALUES
+%                    --<--<-- legvals2legcoeffs() --<--<--
 %
 %%
 % One can now move freely between Chebyshev and Legendre modes and values with
