@@ -26,10 +26,6 @@ p = 99*x.^2 + x.^3;
 a = chebcoeffs(p)
 
 %%
-% Notice that contrary to the usual MATLAB convention, the coefficients appear
-% in order from lowest degree to highest.
-
-%%
 % Similarly, here are the Chebyshev coefficients down to level $10^{-15}$ of
 % $\exp(x)$:
 disp('Cheb coeffs of exp(x):')
@@ -38,7 +34,7 @@ a = chebcoeffs(exp(x))
 %%
 % You can plot the absolute values of these numbers on a log scale with
 % `plotcoeffs`:
-FS = 'fontsize'; MS = 'markersize'; LW = 'linewidth';
+FS = 'fontsize'; MS = 'markersize'; LW = 'linewidth'; JL = 'jumpline';
 plotcoeffs(exp(x),'.-',LW,1,MS,20), grid on
 xlabel('degree n',FS,14)
 ylabel('|a_n|',FS,14), ylim([1e-17 1e1])
@@ -60,7 +56,7 @@ title('Chebyshev coefficients of exp(x)/(1+10000x^2)',FS,14)
 % representation?  Here one can use the `trunc` option in the Chebfun
 % constructor. For example, suppose we are interested in the function
 f = sign(x);
-figure, plot(f,'k',LW,2), ylim([-1.5 1.5])
+figure, plot(f,'k',LW,2,JL,'-k'), ylim([-1.5 1.5])
 title('sign(x)',FS,14)
 
 %%
