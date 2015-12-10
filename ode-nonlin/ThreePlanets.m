@@ -48,8 +48,7 @@ title('t = 0',FS,18)
 tmax = 100; dom = [0 tmax];
 N = chebop(@planetfun, dom);
 N.lbc = @(x,y,z) [x-x0; y-y0; z-z0; diff(x); diff(y); diff(z)];
-u = N\0;
-[x,y,z] = deal(u);
+[x,y,z] = N\0;
 
 %%
 % Here is a typical configuration for $t < t_c$:
@@ -67,7 +66,7 @@ title(['t = ' num2str(t) ],FS,18)
 % Of course, this problem really looks best in the form of
 % movie!  To see the movie, you can execute this M-file.
 % The final frame shows the system after it has split into
-% two subsyestems, drifting apart forever.
+% two subsystems, drifting apart forever.
 dt = .4; tmax = 100;
 for t = 0:dt:tmax
     plotframe(x(t),y(t),z(t))
