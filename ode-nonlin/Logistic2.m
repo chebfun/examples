@@ -21,16 +21,13 @@
 % begin with the chaos, which you see, for example, for $r=3.75$.
 % Here is what happens after ten iterations of the map:
 tic
-r = 3.75;
-x0 = chebfun('x',[0 1]);
-n = 10;
-x = x0;
+r = 3.75; x0 = chebfun('x',[0 1]);
+n = 10; x = x0;
 for k = 1:n, x = r*x.*(1-x); end
 LW = 'linewidth'; FS = 'fontsize';
 plot(x,LW,1)
 ss = sprintf('r=%4.2f     n=%d     length(x)=%d', r, n, length(x));
-title(ss,FS,12)
-axis([0 1 0 1])
+title(ss,FS,12), axis([0 1 0 1])
 
 %%
 % Note that the length of the chebfun is slightly less than the
@@ -40,13 +37,11 @@ axis([0 1 0 1])
 %% 2. Period 2
 % Here is the same plot except for $r=3.25$, where 
 % this dynamical system is of period 2:
-r = 3.25;
-x = x0;
+r = 3.25; x = x0;
 for k = 1:n, x = r*x.*(1-x); end
 plot(x,LW,1)
 ss = sprintf('r=%4.2f     n=%d     length(x)=%d', r, n, length(x));
-title(ss,FS,12)
-axis([0 1 0 1])
+title(ss,FS,12), axis([0 1 0 1])
 
 %%
 % One can see that $x$ takes essentially just 2 values.  
@@ -59,8 +54,7 @@ x = x0;
 for k = 1:n, x = r*x.*(1-x); end
 plot(x,LW,1)
 ss = sprintf('r=%4.2f     n=%d     length(x)=%d', r, n, length(x));
-title(ss,FS,12)
-axis([0 1 0 1])
+title(ss,FS,12), axis([0 1 0 1])
 
 %%
 % Here are the two limiting values:
@@ -72,13 +66,11 @@ x(0.5), x(0.8)
 
 %% 3. Period 4
 % For $r=3.5$, the system has period 4:
-r = 3.5;
-x = x0;
+r = 3.5; x = x0;
 for k = 1:n, x = r*x.*(1-x); end
 plot(x,LW,1)
 ss = sprintf('r=%4.2f     n=%d     length(x)=%d', r, n, length(x));
-title(ss,FS,12)
-axis([0 1 0 1])
+title(ss,FS,12), axis([0 1 0 1])
 
 %%
 % Here are the four limiting values, which again you may be
