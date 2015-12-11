@@ -73,7 +73,7 @@ u
 %%
 % For a phase portrait, we plot $u'$
 % against $u$, revealing the limit cycle of the oscillator.
-% We also superimpose a chebop ``quiver'' vector field on the plot:
+% We also superimpose a chebop "quiver" vector field on the plot:
 plot(u, diff(u), 'm', LW, 1.2), hold on
 quiver(N,[-2 2 -10 10]), hold off
 title('Phase plane and limit cycle')
@@ -81,7 +81,7 @@ title('Phase plane and limit cycle')
 %%
 % If we solve the ODE again but now with a nonzero forcing function
 % on the right, we see a solution lying near the limit cycle but not
-% on it.  (The ``quiver'' plot is no longer relevant now that there is
+% on it.  (The "quiver" plot is no longer relevant now that there is
 % a forcing function.)
 t = chebfun(@(t) t, [0 50]);
 f = 5*sin(5*t);
