@@ -51,36 +51,38 @@
 % To solve this ODE with $\mu = 5$ for $t \in [0,50]$
 % with initial conditions $u(0) = 0.1, \, u'(0) = 0$, we proceed
 % as follows.
-% Note that the initial conditions are imposed
-% via `N.lbc` field rather than `N.bc` as is common for BVPs.
 mu = 5;
 N = chebop(@(t, u) diff(u, 2) - mu*(1-u.^2).*diff(u) + u, [0 50]);
 N.lbc = [0.1; 0];
 tic, u = N\0; toc
 
 %%
-% The output from an IVP solution is, of course, a chebfun.
-% Unless the solution is quite simple, this will usually be a 
-% chebfun consisting of several pieces, i.e., several funs.
-% We can see the pieces by plotting the solution with dots at
-% the breakpoints:
+% The output from an IVP solution is, of course, a chebfun:
 breaks = u.domain(2:end-1);
 LW = 'linewidth';
 plot(u,LW,1.2), hold on
-plot(breaks, u(breaks), 'k.', 'markersize', 14)
-hold off
-title('Van der Pol oscillator, with Chebfun breakpoints marked by dots')
+plot(breaks, u(breaks), 'k.', 'markersize', 14), hold off
+title('Van der Pol oscillator')
+
+%%
+% Unless the solution is rather complicated, this solution to an IVP
+% will usually be a chebfun consisting of a single piece, i.e., one fun.
+% In a problem like this one the polynomial degree is rather high:
+u
 
 %%
 % For a phase portrait, we plot $u'$
-% against $u$, revealing the limit cycle of the oscillator:
-plot(u, diff(u), 'm', LW, 1.2)
+% against $u$, revealing the limit cycle of the oscillator.
+% We also superimpose a chebop ``quiver'' vector field on the plot:
+plot(u, diff(u), 'm', LW, 1.2), hold on
+quiver(N,[-2 2 -10 10]), hold off
 title('Phase plane and limit cycle')
 
 %%
 % If we solve the ODE again but now with a nonzero forcing function
 % on the right, we see a solution lying near the limit cycle but not
-% on it:
+% on it.  (The ``quiver'' plot is no longer relevant now that there is
+% a forcing function.)
 t = chebfun(@(t) t, [0 50]);
 f = 5*sin(5*t);
 uForced = N\f;
