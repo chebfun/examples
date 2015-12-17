@@ -7,7 +7,7 @@
 
 %%
 % Suppose a function has some noise.  What's the best way
-% to make a Chebfun of it?
+% to make a chebfun of it?
 
 %% 
 % For example, consider
@@ -17,7 +17,7 @@
 ff = @(x) tanh(8*(x-.5)) + 1e-6*sin((1:length(x))'.^2);
 
 %%
-% If you try to make a Chebfun of |ff|, there is no convergence:
+% If you try to make a chebfun of |ff|, there is no convergence:
 f = chebfun(ff); 
 
 %%
@@ -31,7 +31,7 @@ f = chebfun(ff,'eps',1e-6)
 % (black dots) superimposed on the those of |f| (blue circles).  The
 % match is very satisfactory.
 MS = 'markersize';
-plotcoeffs(f,'ob',MS,7), ylim([1e-18 1e2]), hold on
+plotcoeffs(f,'ob',MS,7), ylim([1e-10 10]), hold on
 f2 = chebfun(ff,'eps',1e-6,'doublelength');
 plotcoeffs(f2,'.k',MS,10), hold off
 
@@ -41,13 +41,13 @@ plotcoeffs(f2,'.k',MS,10), hold off
 % but with |eps| increased to $10^{-3}$.  As you'd
 % expect, there is a loss of accuracy.
 f = chebfun(ff,'eps',1e-3) 
-plotcoeffs(f,'ob',MS,7), ylim([1e-18 1e2]), hold on
+plotcoeffs(f,'ob',MS,7), ylim([1e-10 10]), hold on
 plotcoeffs(f2,'.k',MS,10), hold off
 
 %%
 % And here we are with |eps| tightened to $10^{-9}$:
 f = chebfun(ff,'eps',1e-9) 
-plotcoeffs(f,'ob',MS,7), ylim([1e-18 1e2]), hold on
+plotcoeffs(f,'ob',MS,7), ylim([1e-10 10]), hold on
 plotcoeffs(f2,'.k',MS,10), hold off
 
 %%
@@ -73,13 +73,14 @@ plotcoeffs(g,'ob',MS,4), ylim([1e-18 1e2])
 g = chebfun(gg,'eps',1e-6); plotcoeffs(g,'ob',MS,4), ylim([1e-18 1e2])
 
 %%
-% With |epsR| equal to $10^{-9}$, the plateau
+% With |eps| equal to $10^{-9}$, the plateau
 % is still treated as noise:
 g = chebfun(gg,'eps',1e-9); plotcoeffs(g,'ob',MS,4), ylim([1e-18 1e2])
 
 %%
-% With |eps| set to $10^{-12}$, however, Chebfun insists
-% on looking further and correctly captures the
+% With |eps| set to $10^{-12}$, however, Chebfun is unsatisfied the
+% the series of length 70, looks further, and 
+% correctly captures the
 % low-amplitude component.
 g = chebfun(gg,'eps',1e-12); plotcoeffs(g,'ob',MS,4), ylim([1e-18 1e2])
 
