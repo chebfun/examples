@@ -1,5 +1,5 @@
 %% Spike integral
-% Nick Hale, October 2010, revised December 2015
+% Nick Hale, October 2010
 
 %%
 % (Chebfun example quad/SpikeIntegral.m)
