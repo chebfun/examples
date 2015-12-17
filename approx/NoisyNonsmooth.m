@@ -14,7 +14,7 @@
 %% 1. An elementary noisy function with a jump
 % First let's take a function we know explicitly: 
 %
-% $$ f(x) = \hbox{sign}(x-0.1)/2 + \cos(4x) + \hbox{white noise of scale 1e-8} . $$
+% $$ f(x) = \hbox{sign}(x-0.1)/2+\cos(4x)+\hbox{white noise of scale } 10^{-8}. $$
 %
 % Here is an anonymous function that samples $f$:
 rng('default'); rng(0)
