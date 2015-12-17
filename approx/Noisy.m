@@ -26,12 +26,12 @@ f = chebfun(ff);
 f = chebfun(ff,'eps',1e-6) 
 
 %%
-% How did we do?  Well, one way to see is to compute a chebfun |f2| of
+% How did we do?  Well, one way to see is to construct a chebfun |f2| of
 % twice this degree.  Here are the Chebyshev coefficients of that function
 % (black dots) superimposed on the those of |f| (blue circles).  The
 % match is very satisfactory.
 MS = 'markersize';
-plotcoeffs(f,'ob',MS,7), hold on
+plotcoeffs(f,'ob',MS,7), ylim([1e-18 1e2]), hold on
 f2 = chebfun(ff,'eps',1e-6,'doublelength');
 plotcoeffs(f2,'.k',MS,10), hold off
 
@@ -41,13 +41,13 @@ plotcoeffs(f2,'.k',MS,10), hold off
 % but with |eps| increased to $10^{-3}$.  As you'd
 % expect, there is a loss of accuracy.
 f = chebfun(ff,'eps',1e-3) 
-plotcoeffs(f,'ob',MS,7), hold on
+plotcoeffs(f,'ob',MS,7), ylim([1e-18 1e2]), hold on
 plotcoeffs(f2,'.k',MS,10), hold off
 
 %%
 % And here we are with |eps| tightened to $10^{-9}$:
 f = chebfun(ff,'eps',1e-9) 
-plotcoeffs(f,'ob',MS,7), hold on
+plotcoeffs(f,'ob',MS,7), ylim([1e-18 1e2]), hold on
 plotcoeffs(f2,'.k',MS,10), hold off
 
 %%
@@ -62,26 +62,26 @@ f = chebfun(ff,'eps',1e-12);
 % Just for fun let's illustrate what Chebfun achieves by being
 % not completely flexible.  Here is a function that is not random,
 % but again has a plateau in its Chebyshev series down at the level of $10^{-6}$:
-% $$ g(x) =  \tanh(8(x-{\textstyle{1\over 2}})) + 10^{-6} \sin(200*exp(x)). $$
-gg = @(x) tanh(8*(x-.5)) + 1e-6*sin(200\exp(x));
+% $$ g(x) =  \tanh(8(x-{\textstyle{1\over 2}})) + 10^{-6} \sin(200\exp(x)). $$
+gg = @(x) tanh(8*(x-.5)) + 1e-6*sin(200*exp(x));
 g = chebfun(gg);
-plotcoeffs(g,'ob',MS,4)
+plotcoeffs(g,'ob',MS,4), ylim([1e-18 1e2])
 
 %%
-% If we construct a chebfun with $\hbox{\tt eps} = 10^{-6}$, the plateau
+% If we construct a chebfun with |eps| equal to $10^{-6}$, the plateau
 % is treated as noise and chopped off:
-g = chebfun(gg,'eps',1e-6); plotcoeffs(g,'ob',MS,4)
+g = chebfun(gg,'eps',1e-6); plotcoeffs(g,'ob',MS,4), ylim([1e-18 1e2])
 
 %%
-% With $\hbox{\tt eps} = 10^{-9}$, the plateau
+% With |epsR| equal to $10^{-9}$, the plateau
 % is still treated as noise:
-g = chebfun(gg,'eps',1e-9); plotcoeffs(g,'ob',MS,4)
+g = chebfun(gg,'eps',1e-9); plotcoeffs(g,'ob',MS,4), ylim([1e-18 1e2])
 
 %%
-% With $\hbox{\tt eps} = 10^{-11}$, however, Chebfun insists
+% With |eps| set to $10^{-12}$, however, Chebfun insists
 % on looking further and correctly captures the
 % low-amplitude component.
-g = chebfun(gg,'eps',1e-11); plotcoeffs(g,'ob',MS,4)
+g = chebfun(gg,'eps',1e-12); plotcoeffs(g,'ob',MS,4), ylim([1e-18 1e2])
 
 %%
 % Reference:
