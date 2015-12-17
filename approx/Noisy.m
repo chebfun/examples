@@ -54,7 +54,7 @@ plotcoeffs(f2,'.k',MS,10), hold off
 % This shows that the Chebfun constructor (the code |standardChop|) is
 % pretty flexible about settling for a bit less
 % accuracy than you hoped for.  It's not completely flexible, though,
-% and if we tighten |eps| by a further factor of 1000, however,
+% and if we tighten |eps| by a further factor of 1000,
 % there is nonconvergence again:
 f = chebfun(ff,'eps',1e-12);
 
@@ -78,10 +78,9 @@ g = chebfun(gg,'eps',1e-6); plotcoeffs(g,'ob',MS,4), ylim([1e-18 1e2])
 g = chebfun(gg,'eps',1e-9); plotcoeffs(g,'ob',MS,4), ylim([1e-18 1e2])
 
 %%
-% With |eps| set to $10^{-12}$, however, Chebfun is unsatisfied the
+% With |eps| set to $10^{-12}$, however, Chebfun is unsatisfied with 
 % the series of length 70, looks further, and 
-% correctly captures the
-% low-amplitude component.
+% correctly captures the low-amplitude component.
 g = chebfun(gg,'eps',1e-12); plotcoeffs(g,'ob',MS,4), ylim([1e-18 1e2])
 
 %%
