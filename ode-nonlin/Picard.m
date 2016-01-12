@@ -55,33 +55,33 @@ LW = 'linewidth'; FS = 'fontsize'; IN = 'interpret'; LT = 'latex';
 hold off
 ss = @(k) ['$k = ' int2str(k) '$'];
 for k = 0:4
-  plot(u,'b',LW,1), hold on, ylim([-3 10])
+  plot(u,'b',LW,1.6), hold on, ylim([-3 10])
   text(1.015*d,u(end),ss(k),IN,LT)
   u = u0 + cumsum(f(u,t));
 end
-plot(uexact,'r',LW,1), xlabel('t',FS,10), ylabel('u',FS,10)
+plot(uexact,'r',LW,1.6), xlabel('t',FS,10), ylabel('u',FS,10)
 title('Picard iterates $k = 0,\dots,4$',FS,12,IN,LT)
 
 %%
 % A second plot shows $k = 5,\dots,9$.
 hold off
 for k = 5:9
-  plot(u,'b',LW,1), hold on, ylim([0 7])
+  plot(u,'b',LW,1.6), hold on, ylim([0 7])
   text(1.015*d,u(end),ss(k),IN,LT)
   u = u0 + cumsum(f(u,t));
 end
-plot(uexact,'r',LW,1), xlabel('t',FS,10), ylabel('u',FS,10)
+plot(uexact,'r',LW,1.6), xlabel('t',FS,10), ylabel('u',FS,10)
 title('Picard iterates $k = 5,\dots,9$',FS,12,IN,LT)
 
 %%
 % A third plot shows $k = 10,\dots ,14$.
 hold off
 for k = 10:14
-  plot(u,'b',LW,1), hold on, ylim([1 6])
+  plot(u,'b',LW,1.6), hold on, ylim([1 6])
   text(1.015*d,u(end),ss(k),IN,LT)
   u = u0 + cumsum(f(u,t));
 end
-plot(uexact,'r',LW,1), xlabel('t',FS,10), ylabel('u',FS,10)
+plot(uexact,'r',LW,1.6), xlabel('t',FS,10), ylabel('u',FS,10)
 title('Picard iterates $k = 10,\dots,14$',FS,12,IN,LT)
 
 %%
