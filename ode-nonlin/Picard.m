@@ -14,7 +14,7 @@
 % *Theorem.*
 % _If $f$ is continuous with respect to $t$ and Lipschitz
 % continuous with respect to $u$, the first-order IVP_
-% $$ u'= f(t,u), \quad t\in [0,d], ~~ \quad u(0) = u_0 \eqno (1) $$
+% $$ u'= f(t,u), \quad t\in [0,d], ~~ \quad u(0) = u_0 $$
 % _has a unique solution._
 
 %%
@@ -26,9 +26,9 @@
 % The standard proof of the theorem is based on Picard (=
 % Picard-Lindelof) iteration,
 % and it can be illustrated in Chebfun using the
-% |cumsum| command.  The proof is based on noting that (1)
+% |cumsum| command.  The proof is based on noting that the ODE
 % is equivalent to
-% $$ u(t) = u_0 + \int_0^t f(s,u(s)) ds . \eqno (2) $$
+% $$ u(t) = u_0 + \int_0^t f(s,u(s)) ds . $$
 % In the Picard iteration, we successively consider
 %
 % $$ u^{(0)} = u_0, ~~~
@@ -59,7 +59,7 @@ for k = 0:4
   text(1.015*d,u(end),ss(k),IN,LT)
   u = u0 + cumsum(f(u,t));
 end
-plot(uexact,'r'), xlabel('t',FS,10), ylabel('u',FS,10)
+plot(uexact,'r',LW,1), xlabel('t',FS,10), ylabel('u',FS,10)
 title('Picard iterates $k = 0,\dots,4$',FS,12,IN,LT)
 
 %%
@@ -70,7 +70,7 @@ for k = 5:9
   text(1.015*d,u(end),ss(k),IN,LT)
   u = u0 + cumsum(f(u,t));
 end
-plot(uexact,'r'), xlabel('t',FS,10), ylabel('u',FS,10)
+plot(uexact,'r',LW,1), xlabel('t',FS,10), ylabel('u',FS,10)
 title('Picard iterates $k = 5,\dots,9$',FS,12,IN,LT)
 
 %%
@@ -81,7 +81,7 @@ for k = 10:14
   text(1.015*d,u(end),ss(k),IN,LT)
   u = u0 + cumsum(f(u,t));
 end
-plot(uexact,'r'), xlabel('t',FS,10), ylabel('u',FS,10)
+plot(uexact,'r',LW,1), xlabel('t',FS,10), ylabel('u',FS,10)
 title('Picard iterates $k = 10,\dots,14$',FS,12,IN,LT)
 
 %%
