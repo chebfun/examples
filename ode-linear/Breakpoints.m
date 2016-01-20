@@ -46,7 +46,7 @@ title('Boundary layers for \epsilon = 1e-1, 1e-2,..., 1e-5',FS,12)
 % not have such a capability at present.
 % For many problems, however, it is remarkable what one can
 % achieve by a method we might regard
-% as ``poor man's grid refinement'': simply
+% as "poor man's grid refinement": simply
 % add a Chebfun breakpoint or two near the region of rapid
 % change.  To make this happen, it is enough to define
 % the domain of the chebop by a vector of three or more points
