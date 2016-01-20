@@ -14,7 +14,7 @@
 % here are solutions to the 
 % linear advection-diffusion equation
 % $$ L_\varepsilon u = -\varepsilon u'' - u' = 1,\qquad    u(0) = u(1) = 0 , $$
-% with $\varepsilon = 10^{-1}, 10^{-2},\dots,  10^{-5}$
+% with $\varepsilon = 10^{-1}, 10^{-2},\dots,  10^{-5}$.
 dom = [0,1];
 L = @(ep) chebop(@(x,u) -ep*diff(u,2) - diff(u),dom,'dirichlet');
 LW = 'linewidth'; lw = 1.6; FS = 'fontsize'; MS = 'markersize';
@@ -33,22 +33,22 @@ title('Boundary layers for \epsilon = 1e-1, 1e-2,..., 1e-5',FS,12)
 %%
 % The lengths and timings are
 % excellent for the first three values of $\varepsilon$ and not
-% so bad for $\varepsilon = 10^{-4}$; but for
-% $\varepsilon = 10^{-5}$ we need a grid with thousands
+% so bad for $\varepsilon = 10^{-4}$, but for
+% $\varepsilon = 10^{-5}$, we need a grid with thousands
 % of points and the method cannot be regarded as satisfactory.
-% (This boundary layer is of width $(\varepsilon)$, but because
+% (This boundary layer is of width $O(\varepsilon)$, but because
 % of the quadratic clustering of Chebyshev grids at boundaries, the
 % length of the chebfuns only grows like $O(\varepsilon^{-1/2})$.)
+
+%%
 % There is a standard method used in scientific computing
 % for such problems, adaptive grid refinement, but Chebfun does
 % not have such a capability at present.
-
-%%
 % For many problems, however, it is remarkable what one can
 % achieve by a certain ``poor man's grid refinement'': simply
 % add a Chebfun breakpoint or two near the region of rapid
 % change.  This is a non-adaptive, a priori approach.  It cannot
-% cope with a full range of problems but it can do very well with many
+% cope with a full range of problems, but it can do very well with many
 % of them.  For example, here is the same problem as before with
 % a single breakpoint introduced at $x_b = 40\varepsilon$.
 % Just one curve is plotted, the one with $\varepsilon = 10^{-3}$.
@@ -66,7 +66,7 @@ for ep = 10.^(-1:-1:-8)
   end
 end
 grid on, axis([-0.03 1 0 1.03])
-title('The same computed with a breakpoint',FS,12)
+title('The same computed with a breakpoint, \epsilon = 1e-3',FS,12)
 
 %%
 % Quite an amazing improvement!  Notice that the breakpoint
@@ -76,7 +76,7 @@ title('The same computed with a breakpoint',FS,12)
 % of $u$ within the small region $[0, x_b]$, where a
 % reasonable number of gridpoints will be required in any case,
 % but rather to ensure that $u$ has no significant structure
-% on length scale $\varepsilon$ in the big interval $[x_b,1]$.
+% on a small length scale in the big interval $[x_b,1]$.
 % In fact, the second piece of each chebfun constructed above,
 % the representation of $u$ on $[x_b ,1]$, is just of
 % length 2, i.e., a linear polynomial:
@@ -123,7 +123,7 @@ for ep = 10.^(-1:-1:-8)
   end
 end
 grid on, axis([-2 2 -6 17])
-title('The same computed with a pair of breakpoints',FS,12)
+title('The same computed with two breakpoints \epsilon = 1e-4',FS,12)
 
 %%
 % Here we see the sizes of the three pieces:
