@@ -32,8 +32,8 @@
 % In the Picard iteration, we successively consider
 %
 % $$ u^{(0)} = u_0, ~~~
-% u^{(1)} = u_0 + \int_0^t u^{(0)}(s) ds,  ~~~
-% u^{(2)} = u_0 + \int_0^t u^{(1)}(s) ds, $$
+% u^{(1)} = u_0 + \int_0^t f(s,u^{(0)}(s)) ds,  ~~~
+% u^{(2)} = u_0 + \int_0^t f(s,u^{(1)}(s)) ds, $$
 %
 % and so on.  One can prove with the given assumptions that
 % this process converges to a unique solution of (1).
