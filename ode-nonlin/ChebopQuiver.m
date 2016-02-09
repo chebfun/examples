@@ -22,7 +22,9 @@
 % scalar problems (which get automatically reformulated to first order systems,
 % and where the phase plane plotted corresponds to plotting the derivative of
 % the solution against the solution). Here we show a few examples of how the
-% quiver method of chebop can be called.
+% quiver method of chebop can be called. First of all, we define variables for
+% specifying the colour of the trajectories we plot:
+CO = 'color'; red = [0.8500, 0.3250, 0.0980];
 
 %% The van der Pol equation
 %
@@ -53,7 +55,7 @@ hold on
 for init = 0.2:0.4:0.2
     N.lbc = [init; 1];
     u = N\0;
-    plot(u, diff(u))
+    plot(u, diff(u), CO, red)
 end
 title('Phase portrait of the van der Pol oscillator','interpreter','latex', ...
     'fontsize',11)
@@ -77,7 +79,7 @@ hold on
 for init = 0:0.5:5
     N.lbc = [0, init];
     u = N\0;
-    plot(u, diff(u))
+    plot(u, diff(u), CO, red)
 end
 hold off
 xlim([-2.5 25])
@@ -96,7 +98,7 @@ hold on
 for init = 0:0.5:5
     N.lbc = [0, init];
     u = N\0;
-    plot(u, diff(u))
+    plot(u, diff(u), CO, red)
 end
 hold off
 title('Phase portrait for a damped nonlinear pendulum','interpreter','latex', ...
@@ -125,7 +127,7 @@ hold on
 for rabbits = 0.1:.2:1.9
     N.lbc = @(u,v) [u - rabbits; v - 1]; % Initial populations
     [u, v] = N\0;
-    plot(u, v)
+    plot(u, v, CO, red)
 end
 hold off
 title('Phase portrait for Lotka-Volterra equations', 'interpreter','latex', ...
@@ -141,7 +143,7 @@ hold on
 for rabbits = 0.1:.2:1.9
     N.lbc = @(u,v) [u - rabbits; v - 1]; % Initial populations
     [u, v] = N\0;
-    plot(u, v)
+    plot(u, v, CO, red)
 end
 xlim([0 5]), ylim([0 5])
 hold off
