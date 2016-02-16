@@ -5,6 +5,7 @@
 % (Chebfun example complex/RationalHarmonic.m)
 % [Tags: #roots, #complex, #phase portraits, #Chebfun2]
 
+function RationalHarmonic
 %%
 % In astrophysics, the phenomenon of gravitational microlensing describes the
 % bending of light from a light source around massive objects. This can lead to
@@ -13,7 +14,7 @@
 % r(z)-\bar{z}$, where $r$ is a rational function in the complex variable $z$
 % and $\bar{z}$ is the complex conjugate of $z$. The positions of the observed
 % images correspond to the zeros of $f$.
-% 
+
 %%
 % The maximal possible number of observed images depends on the McMillan degree
 % of the rational function, which is defined as the maximum of the degrees of
@@ -30,6 +31,7 @@
 format compact
 n = 3;
 a = 0.7;
+
 %%
 % We are interested in the zeros of $f$, which we compute with Chebfun2. Since
 % $f$ has poles, we will rewrite the problem to involve finite functions only.
@@ -47,8 +49,17 @@ f_zeros = roots(p - q.*conj(z));
 
 %%
 % Let us plot the phase of $f$. Here we cannot replace $f(z)$ by $p(z) - \bar{z}
-% q(z)$, which has a different phase. Instead, we use the trick from the
-% Chebfun example "Phase portraits for functions with poles".
+% q(z)$, which has a different phase. Instead, we use the function |smash| from
+% the Chebfun example "Phase portraits for functions with poles", which leaves
+% the phase unchanged while removing the poles.
+
+function g = smash(f)
+    absf = abs(f);
+    g = f./(1+absf.^2);     % smooth function with same phase as f
+    g(isnan(g)) = 0;        % give 0 rather than NaN at poles
+end
+
+%%
 % We also mark the poles by white squares and the zeros by black dots.
 
 ff = @(z) z.^(n-1) ./ (z.^n - a^n) - conj(z);
@@ -56,8 +67,8 @@ chebfunpref.setDefaults('eps', 1e-8)
 f = chebfun2(@(z) smash(ff(z)), dom);
 
 plot(f)
-MFC = 'MarkerFaceColor'; MS = 'MarkerSize'; ms = 4;
 hold on
+MFC = 'MarkerFaceColor'; MS = 'MarkerSize'; ms = 4;
 plot(real(f_poles), imag(f_poles), 'ws', MFC, 'w', MS, ms)
 plot(real(f_zeros), imag(f_zeros), 'ko', MFC, 'k', MS, ms)
 hold off
@@ -123,3 +134,5 @@ hold off
 % 
 % 3. S. H. Rhie, n-point gravitational lenses with 5(n-1) images, ArXiv
 %    e-prints: astro-ph/0305166v1, (2003).
+
+end
