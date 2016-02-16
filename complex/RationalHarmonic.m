@@ -68,7 +68,7 @@ f = chebfun2(@(z) smash(ff(z)), dom);
 
 plot(f)
 hold on
-MFC = 'MarkerFaceColor'; MS = 'MarkerSize'; ms = 4;
+MFC = 'MarkerFaceColor'; MS = 'MarkerSize'; ms = 3;
 plot(real(f_poles), imag(f_poles), 'ws', MFC, 'w', MS, ms)
 plot(real(f_zeros), imag(f_zeros), 'ko', MFC, 'k', MS, ms)
 hold off
@@ -132,7 +132,7 @@ hold off
 % 2. R. Luce, O. S&egrave;te, and J. Liesen, "Sharp parameter bounds for certain
 %    maximal point lenses", General Relativity and Gravitation, (2014) 46:1736.
 % 
-% 3. S. H. Rhie, n-point gravitational lenses with 5(n-1) images, ArXiv
+% 3. S. H. Rhie, "n-point gravitational lenses with 5(n-1) images", ArXiv
 %    e-prints: astro-ph/0305166v1, (2003).
 
 end
