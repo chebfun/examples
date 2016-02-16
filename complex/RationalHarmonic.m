@@ -1,5 +1,5 @@
 %% Zeros of rational harmonic functions
-% Nick Trefethen, Olivier S&egrave;te, February 2016
+% Olivier S&egrave;te, February 2016
 
 %%
 % (Chebfun example complex/RationalHarmonic.m)
