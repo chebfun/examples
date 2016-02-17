@@ -26,7 +26,7 @@ function NearestPSDKernel()
 % finding a nearest symmetric positive semidefinite (PSD) kernel $\hat{K}(x,y)$, 
 % i.e., one that minimizes $||K-\hat{K}||_2$. A solution to this problem is 
 %
-% $$ \hat{K}(x,y) = \sum_{i=1}^{\infty} \max \{ \lambda_i,0 \}\ q_i(x)\ q_i(y). $$
+% $$ \hat{K}(x,y) = \sum_{i=1}^{\infty} \max ( \lambda_i,0 ) \ q_i(x)\ q_i(y). $$
 %
 % In other words, in order to get a nearest positive semidefinite 
 % kernel, we just need to remove terms in the spectral expansion of $K$ 
@@ -70,7 +70,7 @@ subplot(1,2,2), contourf(KHat), axis equal, title('Nearest PSD kernel')
 %% A symmetric positive semidefinite kernel of Gaussian bumps
 % Here we add $20$ Gaussian bumps with centers at the diagoanl of the 
 % domain, so that the kernel itself is positive semidefinite and therefore 
-% we expect $\hat{K}$ to be the same as $\hat{K}$.
+% we expect $\hat{K}$ to be the same as $K$.
 gam = 50;
 K = chebfun2(0);
 rng(1)
