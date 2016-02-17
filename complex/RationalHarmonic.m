@@ -66,7 +66,7 @@ ff = @(z) z.^(n-1) ./ (z.^n - a^n) - conj(z);
 chebfunpref.setDefaults('eps', 1e-8)
 f = chebfun2(@(z) smash(ff(z)), dom);
 
-plot(f)
+plot(f), axis equal
 hold on
 MFC = 'MarkerFaceColor'; MS = 'MarkerSize'; ms = 3;
 plot(real(f_poles), imag(f_poles), 'ws', MFC, 'w', MS, ms)
@@ -110,7 +110,7 @@ length(f_eps_zeros)
 
 f_eps = chebfun2(@(z) smash((ff(z) + epsilon./z).*(abs(z.*q(z)).^2)), dom);
 
-plot(f_eps)
+plot(f_eps), axis equal
 hold on
 plot(real(f_eps_poles), imag(f_eps_poles), 'ws', MFC, 'w', MS, ms)
 plot(real(f_eps_zeros), imag(f_eps_zeros), 'ko', MFC, 'k', MS, ms)
