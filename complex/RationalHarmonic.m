@@ -39,7 +39,6 @@ a = 0.7;
 % \bar{z} q(z)$, which can easily be computed in Chebfun2.
 
 dom = 1.4 * [-1, 1, -1, 1]; % set up domain
-chebfunpref.setDefaults('factory')
 z = chebfun2(@(z) z, dom);
 p = z.^(n-1);
 q = z.^n - a^n;
@@ -63,8 +62,7 @@ end
 % We also mark the poles by white squares and the zeros by black dots.
 
 ff = @(z) z.^(n-1) ./ (z.^n - a^n) - conj(z);
-chebfunpref.setDefaults('eps', 1e-8)
-f = chebfun2(@(z) smash(ff(z)), dom);
+f = chebfun2(@(z) smash(ff(z)), dom, 'eps', 1e-6);
 
 plot(f), axis equal
 hold on
@@ -108,7 +106,8 @@ length(f_eps_zeros)
 % as before. To speed up the computation, we multiply $f_\varepsilon$ by
 % $|zq(z)|^2$, which does not change the phase but removes the poles.
 
-f_eps = chebfun2(@(z) smash((ff(z) + epsilon./z).*(abs(z.*q(z)).^2)), dom);
+f_eps = chebfun2(@(z) smash((ff(z) + epsilon./z).*(abs(z.*q(z)).^2)), dom, ...
+    'eps', 1e-6);
 
 plot(f_eps), axis equal
 hold on
