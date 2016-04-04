@@ -1,17 +1,17 @@
 %% Computing with an atmospheric dataset in spherefun
-% Alex Townsend and Grady Wright, February 2016 
+% Alex Townsend and Grady Wright, April 2016 
 
 %% 1. Introduction 
-% Spherefun is a part of Chebfun for computing with functions on the sphere. 
-% The underlying approximation scheme is based on representing function 
-% on the sphere by certain structure-preserving low rank approximants [1]. 
-% Mathematically, most functions are of infinite rank on the sphere with a
-% notable exception being spherical harmonic functions. However, many 
-% functions are numerically of low rank. When a function is of low rank, 
-% Spherefun is surprizingly efficient. 
+% Spherefun is a part of Chebfun for computing with functions on the
+% sphere. The underlying approximation scheme is based on representing
+% function on the sphere by certain structure-preserving low rank
+% approximants [1]. Mathematically, most functions are of infinite rank on
+% the sphere with a notable exception being spherical harmonic functions.
+% However, many functions are numerically of low rank. When a function is
+% of low rank, Spherefun is surprisingly efficient.
 
 %% 2. Is atmospheric temperature of low rank? 
-% Recently, we were asked: Is the atmospheric temperature on the earth 
+% Recently, we were asked: Is the atmospheric temperature of the earth 
 % of low rank? In this example, we apply Spherefun to one atmospheric 
 % dataset and find that it can be well approximated by a low rank
 % function.
@@ -26,6 +26,7 @@ load AtmosphericData
 %% 
 % We can use Spherefun to construct an approximation of $f$ and visualize 
 % the dataset: 
+
 f = spherefun( Temp ); 
 surf(f), colormap(jet), colorbar, axis off, view([50 0]), hold on
 spherefun.plotEarth('k-'), hold off 
@@ -39,7 +40,7 @@ spherefun.plotEarth('k-'), hold off
 f
 
 %% 
-% Spherefun calculated the rank of $f$ as $185$.  Since the dataset is of
+% Spherefun calculated the rank of $f$ as 185.  Since the dataset is of
 % size 529x1024, we regard this as of low rank.  For a precise defintion,
 % see [2].
 
@@ -47,7 +48,7 @@ f
 %% 3. Investigating the atmospheric temperature
 % There are over a hundred commands in Spherefun and we can now 
 % investigate properties of atmospheric temperature over the earth. Before
-% we begin we convert the function to units of Celsius by subtracting
+% we begin, we convert the function to units of Celsius by subtracting
 % 273.15.
 
 f = f - 273.15;
@@ -59,6 +60,7 @@ mean2( f )
 
 %% 
 % What is the temperature at the North and South pole? 
+
 f( 0, 0, 1 ) % North pole
 f( 0, 0, -1) % South pole 
 
@@ -80,6 +82,7 @@ spherefun.plotEarth('k-'), hold off
 
 %% 
 % What is the zonal mean temperatue?
+
 zonalMean = mean(f,2);
 plot(zonalMean), xlim([0 pi])
 xlabel('Co-latitude, \theta'), ylabel('Temperature (Celsius)')
@@ -91,10 +94,9 @@ xlabel('Co-latitude, \theta'), ylabel('Temperature (Celsius)')
 
 [n, m] = length( f ); 
 steadyHeat = spherefun.Poisson( -(f - mean2(f)), 0, m, n ); 
-subplot(1,2,1)
 plot( f ), colormap(jet), axis off, view([50 0]), hold on
 spherefun.plotEarth('k-'), title('Original dataset'), snapnow, hold off
-subplot(1,2,2)
+
 plot( steadyHeat ), colormap(jet), axis off, view([50 0]), hold on
 spherefun.plotEarth('k-'), title('Steady Heat'), snapnow, hold off
 
@@ -115,13 +117,12 @@ spherefun.plotEarth('k-'), title('Filtered dataset'), snapnow, hold off
 % for smoothing global climate data [3].
 
 %% References 
-% [1] A. Townsend, H. Wilber, and G. B. Wright, Computing with functions on
-% polar and spherical geometries I. the sphere, submitted, 2016.
+% [1] A. Townsend, H. Wilber, and G. B. Wright, Computing with functions in
+% spherical and polar geometries I. The sphere, submitted, 2016.
 %%
 % [2] A. Townsend, Computing with functions in two dimensions, PhD Thesis, 
 % University of Oxford, 2014. 
-
 %%
 % [3] K. Marvel, D. Ivanova, and K. E. Taylor, Scale space methods for
-% climate model analysis, J. Geophys. Res. Atmospheres, 118, 5082?5097,
+% climate model analysis, J. Geophys. Res. Atmospheres, 118, 5082-5097,
 % 2013
