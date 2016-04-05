@@ -107,19 +107,18 @@ norm(u-uexact)
 
 %% 4. More complicated initial conditions
 % We conclude with a more interesting example, with an initial condition
-% consisting of two smooth, skewed bumps at antipodal positions.
+% consisting of two smooth, skewed bumps.
 bump = @(x,y,z,x0,y0,z0) exp(-10*(1*(x-x0).^2+2*(y-y0).^2+3*(z-z0).^2));
 rng(26)
 x0 = 1-2*rand(1,3); x0 = x0/norm(x0);
 z0 = x0(1,3); y0 = x0(1,2); x0 = x0(1,1);
 u0 = spherefun(@(x,y,z) bump(x,y,z,-x0,y0,z0)+bump(x,y,z,-x0,-y0,-z0));
 
-%%
-% A contour plot of the initial condition together with a black contour of
+% A contour plot of the initial condition together with a blue contour of
 % its mean value looks like
 u0mean = mean2(u0);
 plot(u0), caxis([0 1]), colormap(flipud(hot)), hold on
-contour(u0,u0mean*[1 1],'k-'), hold off
+contour(u0,u0mean*[1 1],'b-'), hold off
 title('Initial diffusion profile')
 
 %%
@@ -140,7 +139,7 @@ for k = 2:numel(t) % each time-step
     if ( mod(k,25)-1 == 0 )
         subplot(2,2,count)
         plot(u), caxis([0 1]), colormap(flipud(hot)), hold on
-        contour(u,u0mean*[1 1],'k-'), hold off
+        contour(u,u0mean*[1 1],'b-'), hold off
         title(sprintf('Time %1.2f',(k-1)*dt))
         count = count + 1;
     end
