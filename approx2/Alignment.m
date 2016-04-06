@@ -1,5 +1,5 @@
 %% Low-rank approximation and alignment with axes
-% Nick Trefethen, April 2015
+% Nick Trefethen, April 2016
 
 %%
 % (Chebfun example approx2/Alignment.m)
