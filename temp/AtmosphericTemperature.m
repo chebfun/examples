@@ -1,6 +1,10 @@
 %% Computing with an atmospheric dataset in spherefun
 % Alex Townsend and Grady Wright, April 2016 
 
+%%
+% (Chebfun example sphere/AtmosphericTemperature.m)
+% [Tags: #spherefun]
+
 %% 1. Introduction 
 % Spherefun is a part of Chebfun for computing with functions on the
 % sphere. The underlying approximation scheme is based on representing
