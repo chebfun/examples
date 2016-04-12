@@ -21,7 +21,8 @@
 % global atmospheric temperature (in Kelvin) of earth on 12-July-2005
 % obtained from the National Oceanic and Atmospheric Administration (NOAA)
 % Earth System Research Laboratory:
-load AtmosphericData
+load AtmosphericData;
+% load(websave('AtmosphericData.mat','http://math.boisestate.edu/~wright/AtmosphericData.mat'))
 
 %% 
 % We can use Spherefun to construct an approximation of $f$ and visualize 
