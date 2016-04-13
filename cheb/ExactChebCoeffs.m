@@ -45,7 +45,7 @@
 % $$ a_n = \frac{-2r_0}{\sqrt{z_0^2-1}(z_0 \pm \sqrt{z_0^2-1})^n}, $$
 % where $r_0$ is the residue of the pole at $z_0$.
 
-%% 3. A function with  pole
+%% 3. A function with a pole
 % As an example, consider the function $$ f(x) = \frac{1}{5 + x}. $$
 % This function can be represented in Chebfun by an interpolant in
 % 17 points.
