@@ -31,7 +31,7 @@ f = chebfun2(@(x,y) 1./(0.001+(x-.2).^2+(y-.5).^2),'eps',ep);
 r = rank(f), [m,n] = length(f)
 
 %%
-% Let's make a plot.  Each dot shows a pivot value chosen
+% Let's make a plot.  Each red circle shows a pivot value chosen
 % by Chebfun2's approximation to Gaussian elimination with
 % complete pivoting, in which
 % at each step, a rank-1 cross is subtracted corresponding to
@@ -40,11 +40,11 @@ r = rank(f), [m,n] = length(f)
 p = f.pivotValues; a = f.pivotLocations;
 x = a(:,1); y = a(:,2); n = length(p)
 x = x(1:n); y = y(1:n);
-plot(x,y,'.k'), hold on
 for j = 1:n
-  plot([-1 1],y(j)*[1 1],'-k')
+  plot([-1 1],y(j)*[1 1],'-k'), hold on
   plot(x(j)*[1 1],[-1 1],'-k')
 end
+plot(x,y,'or')
 set(gca,'xtick',[-1 0.2 1],'ytick',[-1 0.5 1])
 axis([-1 1 -1 1]), axis square, hold off
 
@@ -66,11 +66,11 @@ r = rank(g), [m,n] = length(g)
 p = g.pivotValues; a = g.pivotLocations;
 x = a(:,1); y = a(:,2); n = length(p)
 x = x(1:n); y = y(1:n);
-plot(x,y,'.k'), hold on
 for j = 1:n
-  plot([-1 1],y(j)*[1 1],'-k')
+  plot([-1 1],y(j)*[1 1],'-k'), hold on
   plot(x(j)*[1 1],[-1 1],'-k')
 end
+plot(x,y,'or')
 set(gca,'xtick',[-1 0.2 1],'ytick',[-1 0.5 1])
 axis([-1 1 -1 1]), axis square, hold off
 
