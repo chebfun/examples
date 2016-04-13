@@ -112,7 +112,7 @@ spherefun.plotEarth('k-'), title('Steady Heat'), snapnow, hold off
 % in the data, such as magnifying local extrema. 
 
 %%
-% In [3], this idea is applied to global climate data collected on the 
+% This idea is applied in [3] to global climate data collected on the 
 % surface of the sphere, such as air surface temperature, to identify
 % features in the data that are robust over multiple scales. The |smooth|
 % command in Spherefun uses a Gaussian filter to smooth a function f. It 
@@ -122,9 +122,9 @@ spherefun.plotEarth('k-'), title('Steady Heat'), snapnow, hold off
 
 %%
 % We can repeat the experiments of [3] easily on the surface air
-% temperature with this command.  In this paper, the authors analyze
-% smoothing at scales of 2, 10, and 20 degrees, which in radians are
-% correspond to $\sigma$ values
+% temperature with this command.  For example, in this paper the authors
+% analyze smoothing at scales of 2, 10, and 20 degrees, which in radians
+% are correspond to $\sigma$ values
 sig = [2 10 20]*pi/180;
 
 %%
@@ -142,13 +142,21 @@ for j=1:3
     snapnow, hold off
 end
 
+%%
+% This type of filtering has also been used on CT scans of the brain
+% to detect certain abnormalities [4].
+
 %% References 
 % [1] A. Townsend, H. Wilber, and G. B. Wright, Computing with functions in
 % spherical and polar geometries I. The sphere, submitted, 2016.
 %%
-% [2] A. Townsend, Computing with functions in two dimensions, PhD Thesis, 
+% [2] A. Townsend, Computing with Functions in Two Dimensions, PhD Thesis, 
 % University of Oxford, 2014. 
 %%
 % [3] K. Marvel, D. Ivanova, and K. E. Taylor, Scale space methods for
 % climate model analysis, J. Geophys. Res. Atmospheres, 118, 5082-5097,
 % 2013
+%%
+% [4] M. K. Chung, K. M. Dalton, and R. J. Davidoson, Tensor-based cortical
+% surface morphometry via weighted spherical harmonic representation, IEEE
+% Trans. On Medical Imag., 27, 1143-1151, 2008
