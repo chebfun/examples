@@ -94,8 +94,14 @@ xlabel('Co-latitude, \theta'), ylabel('Temperature (Celsius)')
 
 %% 4. Poisson solver 
 % We can also compute the steady heat profile with an external 
-% source $f$, assuming there are no internal heat sinks or sources. 
+% source, assuming there are no internal heat sinks or sources.
 % This requires solving Poisson's equation on the sphere.
+
+%% 
+% The solution to Poisson?s equation only makes sense if the right hand 
+% side has mean zero.  So, we first subtract a constant from the external 
+% heat source to ensure it has a mean of zero. For fun, we take the source
+% as $f$ from above. 
 
 [n, m] = length( f ); 
 steadyHeat = spherefun.Poisson( -(f - mean2(f)), 0, m, n ); 
