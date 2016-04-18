@@ -1,6 +1,10 @@
 %% Accuracy of Chebyshev coefficients via aliasing
 % Yuji Nakatsukasa, April 2016
 
+%%
+% (Chebfun example approx/AliasingCoefficients.m)
+% [Tags: #Chebyshev expansions, #aliasing]
+
 %% 1. One dimension
 % As shown in [1, Thm. 4.2], the Chebyshev coefficients
 % of the degree $n$ polynomial interpolant
@@ -52,33 +56,36 @@ p = chebfun(fori,round(length(f)/3));
 pc = p.coeffs;
 fc = f.coeffs;
 
-plotcoeffs(f,'.',LW,lw,MS,ms), hold on
-plotcoeffs(p,'r.',LW,lw,MS,ms)
-plot(0:length(pc)-1,abs(pc-fc(1:length(pc)))+eps,'.',CO,green,LW,lw,MS,ms)
+plotcoeffs(f,'.',CO,green,LW,lw,MS,ms), hold on
+plotcoeffs(p,'.b',LW,lw,MS,ms)
+plot(0:length(pc)-1,abs(pc-fc(1:length(pc)))+eps,'.r',LW,lw,MS,ms)
 
 h_legend = legend('f','p','f-p');
 set(h_legend,FS,fs)
 
 %%
-% The blue and red plots show the absolute values of the Chebyshev
+% The green and blue dots show the absolute values of the Chebyshev
 % coefficients for $f$ and the interpolant $p$. 
-% Our focus here is on the green dots, showing
+% Our focus here is on the red dots, showing
 % the error in Chebyshev coefficients.
 % Two observations can be made:
 % (i) the error grows geometrically with the degree until degree $n-1$, and 
-% (ii) (note the rightmost green dot) at the end the error is 
+% (ii) (note the rightmost red dot) at the end the error is 
 % much much smaller.
 % These effects clearly reflect the aliasing formulae given above. 
 
-%{
-% TO BE COMMENTED OUT OR DETAILED
-% The high accuracy of $c_0$ is closely connected to Gauss quadrature. 
-% If the
-% function error $||f-p||$ is $\epsilon$, then $\hat c_0$ has 
-% accuracy $O(\epsilon^2)$. Moreover, if $f$ is a polynomial of degree
-% $2n-1$ or less, then $\hat c_0$ would be exactly equal to $c_0$,
-% This is the same doubled-degree accuracy enjoyed by Gauss quadrature. 
-%}
+%%
+% Let us note the connection between the aliasing in
+% $\hat c_0$ and Gauss quadrature.  The exact integral of $f$ is
+% equal to the degree 0 coefficient $d_0$ in its Legendre expansion
+% $f(x)=\sum_{i=0}^\infty d_iP_i(x)$, where $P_i(x)$ is the Legendre
+% polynomial of degree $i$.  Gauss quadrature approximates this
+% by $\hat d_0$, the degree 0 coefficient of the degree $n$ polynomial
+% interpolant.  The error in Gauss quadrature, $\hat d_0 - d_0,$
+% can accordingly  be interpreted as the result
+% of aliasing the term $d_{2n}P_{2n}(x)$ and terms of higher degree. 
+% See section 8 of [2] for more details. 
+%
 
 %% 
 % The extremely high accuracy of the $n\mbox{th}$ coefficient 
@@ -103,9 +110,9 @@ pc = p.coeffs;
 fc = f.coeffs;
 
 clf
-plotcoeffs(f,'.',LW,lw,MS,ms), hold on
-plotcoeffs(p,'r.',LW,lw,MS,ms)
-plot(0:length(pc)-1,abs(pc-fc(1:length(pc)))+eps,'.',CO,green,LW,lw,MS,ms)
+plotcoeffs(f,'.',CO,green,LW,lw,MS,ms), hold on
+plotcoeffs(p,'.b',LW,lw,MS,ms)
+plot(0:length(pc)-1,abs(pc-fc(1:length(pc)))+eps,'.r',LW,lw,MS,ms)
 xlim([0 length(f)/2])
 
 h_legend = legend('f','p','f-p');
@@ -114,7 +121,7 @@ set(h_legend,FS,fs,'Location','Best')
 %%
 % For non-analytic functions the difference in accuracy is less
 % prominent, because the Chebyshev coefficients decay more slowly. 
-% The green plot is still roughly a 'mirrored' version of the blue
+% The red plot is still roughly a 'mirrored' version of the green
 % one, and the first and $n\mbox{th}$ coefficients
 % still have higher accuracy than most of the rest.
 % Again, these are all consequences of the aliasing formula.
@@ -149,3 +156,7 @@ ptc-pc(1:size(ptc,1),1:size(ptc,2))
 %
 % [1] L. N. Trefethen, Approximation Theory and Approximation Practice,
 % SIAM, 2013.
+%
+% [2] L. N. Trefethen and J. A. C, Weideman. The exponentially convergent
+% trapezoidal rule, 
+% SIAM Review (2014) 56 (3), 385-458.
