@@ -6,7 +6,7 @@
 % [Tags: #Chebyshev expansions, #aliasing]
 
 %% 1. One dimension
-% As shown in [1, Thm. 4.2], the Chebyshev coefficients
+% AAs shown in [1, Thm. 4.2], the Chebyshev coefficients
 % of the degree $n$ polynomial interpolant
 % $$ p=\sum_{i=0}^n \hat c_iT_i(x) $$
 % of a (Lipschitz continuous) function $f$ with Chebyshev expansion 
