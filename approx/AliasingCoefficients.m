@@ -6,7 +6,7 @@
 % [Tags: #Chebyshev expansions, #aliasing]
 
 %% 1. One dimension
-% AAs shown in [1, Thm. 4.2], the Chebyshev coefficients
+% As shown in [1, Thm. 4.2], the Chebyshev coefficients
 % of the degree $n$ polynomial interpolant
 % $$ p=\sum_{i=0}^n \hat c_iT_i(x) $$
 % of a (Lipschitz continuous) function $f$ with Chebyshev expansion 
@@ -83,7 +83,7 @@ set(h_legend,FS,fs)
 % by $\hat d_0$, the degree 0 coefficient of the degree $n$ polynomial
 % interpolant.  The error in Gauss quadrature, $\hat d_0 - d_0,$
 % can accordingly  be interpreted as the result
-% of aliasing the term $d_{2n}P_{2n}(x)$ and terms of higher degree. 
+% of aliasing the term $d_{2n+2}P_{2n+2}(x)$ and terms of higher degree. 
 % See section 8 of [2] for more details. 
 %
 
