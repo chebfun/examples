@@ -30,7 +30,7 @@
 % And if you like it's not just eight or ten shades but
 % sixteen or twenty! -- because for clarity, we begin by
 % describing the better-known and better-developed polynomial
-% special cases, i.e., type $(m,n)$ rational approxinations
+% special cases, i.e., type $(m,n)$ rational approximations
 % with $n=0$.
 
 %% 2. Polynomial approximation
@@ -39,7 +39,7 @@
 % a degree $m$ polynomial are as follows.  These approximants
 % can all be computed in Chebfun, and the mathematics
 % is presented in _Approximation Theory and Approximation Practice_
-% (ATAP).
+% (ATAP) [1].
 
 %%
 % _P1. Chebyshev interpolation_  (|chebfun| with |m+1| specified, _ATAP_ chap 4)
@@ -52,7 +52,7 @@
 
 %%
 % For example, here are degree 8 approximations of these kinds
-% to $f(x) = \exp(-60(x-0.1)^2)$.
+% to $f(x) = \exp(-50(x-0.1)^2)$.
 f = chebfun(@(x) exp(-50*(x-.1).^2),'trig'); m = 8;
 FS = 'FontSize';
 p1 = chebfun(f,m+1); subplot(2,2,1), yl = [-.5 1.2];
