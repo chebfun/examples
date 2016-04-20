@@ -83,7 +83,7 @@ set(h_legend,FS,fs)
 % by $\hat d_0$, the degree 0 coefficient of the degree $n$ polynomial
 % interpolant.  The error in Gauss quadrature, $\hat d_0 - d_0,$
 % can accordingly  be interpreted as the result
-% of aliasing the term $d_{2n}P_{2n}(x)$ and terms of higher degree. 
+% of aliasing the term $d_{2n+2}P_{2n+2}(x)$ and terms of higher degree. 
 % See section 8 of [2] for more details. 
 %
 
