@@ -98,7 +98,7 @@ xlabel('Co-latitude, \theta'), ylabel('Temperature (Celsius)')
 % This requires solving Poisson's equation on the sphere.
 
 %% 
-% The solution to Poisson?s equation only makes sense if the right hand 
+% The solution to Poisson's equation only makes sense if the right hand 
 % side has mean zero.  So, we first subtract a constant from the external 
 % heat source to ensure it has a mean of zero. For fun, we take the source
 % as $f$ from above. 
@@ -130,7 +130,7 @@ spherefun.plotEarth('k-'), title('Steady Heat'), snapnow, hold off
 % We can repeat the experiments of [3] easily on the surface air
 % temperature with this command.  For example, in this paper the authors
 % analyze smoothing at scales of 2, 10, and 20 degrees, which in radians
-% are correspond to $\sigma$ values
+% correspond to $\sigma$ values
 sig = [2 10 20]*pi/180;
 
 %%
