@@ -101,7 +101,7 @@ set(h_legend,FS,fs)
 %%
 % Let's repeat the computation with a non-analytic function.
 
-fori = @(x)abs((x-0.5).^3); % twice differentiable but not analytic 
+fori = @(x)abs((x - 0.5).^3); % twice differentiable but not analytic 
 
 f = chebfun(fori);
 p = chebfun(fori,round(length(f)/6));
