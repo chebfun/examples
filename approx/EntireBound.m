@@ -35,11 +35,14 @@
 % $$ \| f - p_n \|_\infty \le {4 M \rho^{-n}\over \rho - 1}. $$
 
 %% 2. The exponential function
-% Let us see this latter bound in action for the entire function $f(x) = e^x$.
+% Let us see this bound in action for the entire function $f(x) = e^x$.
 % Any $\rho$ is allowed, but $M$ must grow with $\rho$.  Since the rightmost
 % point of the $\rho$-ellipse is the point
 % $x = (\rho + \rho^{-1})/2$, we can take
 % $$ M = \exp((\rho + \rho^{-1})/2). $$
+% Here are the Chebyshev coefficients of $f$ together with
+% some straight lines above them corresponding to Bernstein
+% bounds for $\rho = 2,4,8,16,32$.
 
 ff = @(x) exp(x);
 fexact = chebfun(ff); nmax = length(fexact)-2;
@@ -62,10 +65,12 @@ axis([0 nmax 1e-16 1e3]), grid on, hold off
 %% 3. The function cos(100x)
 % Now we try another entire function whose convergence
 % curve is more interesting, $f(x) = \cos(100x)$.
-% Since the topmost
-% point of the $\rho$-ellipse is the point
+% Since the topmost point of the $\rho$-ellipse is
 % $x = i (\rho - \rho^{-1})/2$, we can take
 % $$ M = \cosh(100(\rho - \rho^{-1})/2). $$
+% Here are the Chebyshev coefficients of $f$ together with
+% some lines corresponding to
+% $\rho = 1.5, 2, 3, 3.5$.
 
 ff = @(x) cos(100*x);
 fexact = chebfun(ff); nmax = length(fexact)-2;
