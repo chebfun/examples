@@ -5,10 +5,11 @@
 % (Chebfun example approx/AliasingCoefficientsLeg.m)
 % [Tags: #Legendre expansions, #LEGPTS, #CHEB2LEG, #LEGVALS2LEGCOEFFS]
 
-%% One dimension
-% This is a follow-up example of approx/AliasingCoefficients, to explore the accuracy in the Legendre coefficients instead of Chebyshev. 
+%% 1. One dimension
+% This is a follow-up example of approx/AliasingCoefficients [1], 
+% to explore the accuracy in the Legendre coefficients instead of Chebyshev. 
 % A convenient way to obtain the Legendre coefficients of a Chebfun is
-% to use cheb2leg, which implements the algorithm in [1]. 
+% to use cheb2leg, which implements the algorithm in [2]. 
 % cheb2leg converts the coefficients $\hat c_i$ in a Chebyshev expansion
 % $$ p(x)=\sum_{i=0}^n \hat c_iT_i(x) $$
 % into a Legendre expansion
@@ -40,8 +41,6 @@ p = chebfun.interp1(s,fori(s),[-1 1]);
 
 fc = cheb2leg(f.coeffs); % convert to Legendre coefficients
 pc = cheb2leg(p.coeffs);
-
-%[s,w] = legpts(k);pc = legcoeffs2legvals(fori(s));
 
 semilogy(abs(fc),'.',CO,green,LW,lw,MS,ms),hold on
 plot(abs(pc),'b.',LW,lw,MS,ms)
