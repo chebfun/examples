@@ -40,7 +40,7 @@ f = chebfun(fori);
 fc = cheb2leg(f.coeffs);
 
 k = round(length(f)/3); % length=degree+1 of interpolant 
-s = legpts(k); % Gauss points and weights
+s = legpts(k); % Legendre points 
 pc = legvals2legcoeffs(fori(s));
 
 semilogy(abs(fc),'.',CO,green,LW,lw,MS,ms),hold on
