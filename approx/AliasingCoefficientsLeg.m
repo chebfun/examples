@@ -16,6 +16,9 @@
 % $$ p(x)=\sum_{i=0}^n \hat d_iP_i(x) $$
 % where $P_i(x)$ is the Legendre
 % polynomial of degree $i$. 
+% Also useful is the legvals2legcoeffs command, described in [3], which converts a vector of 
+% values at Legendre points into a vector of Legendre coefficients of the Legendre interpolant. 
+
  
 
 %% 
@@ -34,13 +37,11 @@ lw = 2; ms = 10; fs = 16;
 fori = @(x) log(sin(10*x)+2);
 
 f = chebfun(fori);
+fc = cheb2leg(f.coeffs);
 
 k = round(length(f)/3); % length=degree+1 of interpolant 
 s = legpts(k); % Gauss points and weights
-p = chebfun.interp1(s,fori(s),[-1 1]);
-
-fc = cheb2leg(f.coeffs); % convert to Legendre coefficients
-pc = cheb2leg(p.coeffs);
+pc = legvals2legcoeffs(fori(s));
 
 semilogy(abs(fc),'.',CO,green,LW,lw,MS,ms),hold on
 plot(abs(pc),'b.',LW,lw,MS,ms)
@@ -66,13 +67,11 @@ set(h_legend,FS,fs)
 fori = @(x)abs((x-0.5).^3); % twice differentiable but not analytic 
 
 f = chebfun(fori);
+fc = cheb2leg(f.coeffs);
 
 k = round(length(f)/5);
 s = legpts(k);
-p = chebfun.interp1(s,fori(s),[-1 1]);
-
-fc = cheb2leg(f.coeffs);
-pc = cheb2leg(p.coeffs);
+pc = legvals2legcoeffs(fori(s));
 
 clf
 semilogy(abs(fc),'.',CO,green,LW,lw,MS,ms),hold on
@@ -95,7 +94,7 @@ set(h_legend,FS,fs),shg
 % applying cheb2leg from both sides (left and right). 
 % To obtain a bivariate polynomial interpolant at the Legendre grid, 
 % we convert from values at Legendre grid points to bivariate Legendre
-% coefficients using the legvals2legcoeffs command, described in [3].
+% coefficients, again using the legvals2legcoeffs command.
 % 
 
 fori = @(x,y)(sin(x+y)+cos(x-y));
