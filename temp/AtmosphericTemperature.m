@@ -104,7 +104,7 @@ xlabel('Co-latitude, \theta'), ylabel('Temperature (Celsius)')
 % as $f$ from above. 
 
 [n, m] = length( f ); 
-steadyHeat = spherefun.Poisson( -(f - mean2(f)), 0, m, n ); 
+steadyHeat = spherefun.poisson( -(f - mean2(f)), 0, m, n ); 
 plot( f ), colormap(jet), axis off, view([50 0]), hold on
 spherefun.plotEarth('k-'), title('Original dataset'), snapnow, hold off
 
