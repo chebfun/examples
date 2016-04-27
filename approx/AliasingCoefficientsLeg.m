@@ -124,7 +124,7 @@ abs(fc(1:k,1:k)-ptc)
 % being more accurate than the rest (though not as
 % much as in the Chebyshev case). We suspect that this is because the terms
 % that get aliased to $P_i(x)P_j(y)$ with large $i,j$ are small to begin
-% with: for example, $|d_{k+1,k}|\ll d_{k+1,1}l$. 
+% with: for example, we typically have $|d_{k+1,k}|\ll |d_{k+1,1}|$. 
 
 %% References
 %
