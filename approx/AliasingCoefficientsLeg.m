@@ -1,11 +1,11 @@
-%% Accuracy of Legendre coefficients via Aliasing
+%% Accuracy of Legendre coefficients via aliasing
 % Yuji Nakatsukasa, April 2016
 
 %%
 % (Chebfun example approx/AliasingCoefficientsLeg.m)
-% [Tags: #Legendre expansions, #LEGPTS, #CHEB2LEG]
+% [Tags: #Legendre expansions, #LEGPTS, #CHEB2LEG, #LEGVALS2LEGCOEFFS]
 
-%% Legendre interpolation and Legendre coefficients
+%% One dimension
 % This is a follow-up example of approx/AliasingCoefficients, to explore the accuracy in the Legendre coefficients instead of Chebyshev. 
 % A convenient way to obtain the Legendre coefficients of a Chebfun is
 % to use cheb2leg, which implements the algorithm in [1]. 
@@ -93,16 +93,16 @@ set(h_legend,FS,fs),shg
 % As before, let's try an analogous experiment in Chebfun2. 
 % To obtain an accurate bivariate Legendre expansion we form a chebfun2
 % and convert its Chebyshev coefficients into Legendre coefficients by
-% applying cheb2leg from both sides. 
+% applying cheb2leg from both sides (left and right). 
 % To obtain a bivariate polynomial interpolant at the Legendre grid, 
 % we convert from values at Legendre grid points to bivariate Legendre
-% coefficients using the legvals2legcoeffs command. 
+% coefficients using the legvals2legcoeffs command, described in [3].
 % 
 
 fori = @(x,y)(sin(x+y)+cos(x-y));
 
 f = chebfun2(@(x,y)fori(x,y));
-fc = cheb2leg(cheb2leg(chebcoeffs2(f))'); % Legendre coefficients
+fc = cheb2leg(cheb2leg(chebcoeffs2(f))')'; % Legendre coefficients
 
 k = 6;
 s = legpts(k);
@@ -111,7 +111,7 @@ for ii = 1:k;
 xx = [xx;s']; yy = [yy s]; % Legendre grid
 end
 
-ptc = legvals2legcoeffs(legvals2legcoeffs(fori(xx,yy))'); % values at Legendre grid
+ptc = legvals2legcoeffs(legvals2legcoeffs(fori(xx,yy))')'; % values at Legendre grid
 
 format short e
 abs(fc(1:k,1:k)-ptc)
@@ -119,6 +119,18 @@ abs(fc(1:k,1:k)-ptc)
 %%
 % As in the one-dimensional case the
 % leading coefficient has the highest accuracy. 
-% We see some accuracy improvement in the last row and column with the 
-% lower-right corner being more accurate than the rest (though not as
-% much as in the Chebyshev case). At the moment we do not have an explanation for this. 
+% While there is no "very accurate lower-right corner", 
+% we see some accuracy improvement in the last row and column, with the 
+% lower-right element $d_{k,k}$ (corresponding to $P_k(x)P_k(y)$)
+% being more accurate than the rest (though not as
+% much as in the Chebyshev case). We suspect that this is because the terms
+% that get aliased to $P_i(x)P_j(y)$ with large $i,j$ are small to begin
+% with: for example, $|d_{k+1,k}|\ll_{k+1,1}l$. 
+
+%% References
+%
+% [1] http://www.chebfun.org/examples/approx/AliasingCoefficients.html
+% 
+% [2] N. Hale and A. Townsend, A fast, simple, and stable Chebyshev--Legendre transform using an asymptotic formula, SISC, 36 (2014), pp. A148-A167
+%
+% [3] N. Hale and A. Townsend, A fast FFT-based discrete Legendre transform, to appear in IMA Numer. Anal.
