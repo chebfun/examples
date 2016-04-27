@@ -36,7 +36,7 @@ fori = @(x) log(sin(10*x)+2);
 f = chebfun(fori);
 
 k = round(length(f)/3); % length=degree+1 of interpolant 
-[s,w] = legpts(k); % Gauss points and weights
+s = legpts(k); % Gauss points and weights
 p = chebfun.interp1(s,fori(s),[-1 1]);
 
 fc = cheb2leg(f.coeffs); % convert to Legendre coefficients
@@ -68,7 +68,7 @@ fori = @(x)abs((x-0.5).^3); % twice differentiable but not analytic
 f = chebfun(fori);
 
 k = round(length(f)/5);
-[s,w] = legpts(k);
+s = legpts(k);
 p = chebfun.interp1(s,fori(s),[-1 1]);
 
 fc = cheb2leg(f.coeffs);
