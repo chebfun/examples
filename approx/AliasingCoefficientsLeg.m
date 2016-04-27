@@ -17,7 +17,7 @@
 % where $P_i(x)$ is the Legendre
 % polynomial of degree $i$. 
 % Also useful is the legvals2legcoeffs command, described in [3], which converts a vector of 
-% values at Legendre points into a vector of Legendre coefficients of the Legendre interpolant. 
+% values at Legendre points into a vector of Legendre coefficients of the polynomial interpolant at the Legendre points. 
 
  
 
