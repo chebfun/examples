@@ -11,7 +11,7 @@
 % $$ u_t = -({1\over 2}u^2)_x - u_{xxx} . $$
 % For example, let's set to work on $[0, 20]$ with
 % a two-soliton initial condition
-% $$ u_0(x) = 3A^2 \sech(.5A(x-1))^2 + 3B^2 \sech(.5B(x-2))^2 $$
+% $$ u_0(x) = 3A^2 \hbox{sech}(.5A(x-1))^2 + 3B^2 \hbox{sech}(.5B(x-2))^2 $$
 % where the amplitude parameters $A$ and $B$ are quite close
 % to each other, taking values $25$ and $23$.
 % We can set up for the calculation like this:
