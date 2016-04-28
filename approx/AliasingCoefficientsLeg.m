@@ -76,7 +76,7 @@ pc = legvals2legcoeffs(fori(s));
 clf
 semilogy(abs(fc),'.',CO,green,LW,lw,MS,ms),hold on
 plot(abs(pc),'b.',LW,lw,MS,ms)
-plot(0:k-1,abs(pc(1:k)-fc(1:k))+eps,'.r',LW,lw,MS,ms*2),hold on
+plot(0:k-1,abs(pc(1:k)-fc(1:k))+eps,'.r',LW,lw,MS,ms),hold on
 
 h_legend = legend('f','p','f-p');
 set(h_legend,FS,fs),shg
