@@ -9,7 +9,7 @@
 % Chebfun's `spin` command makes it easy to compute solutions
 % of the KdV equation,
 % $$ u_t = -0.5(u^2)_x - u_{xxx}. $$
-% For example, let's set to work on $[0, 20]$ with
+% For example, let's set to work on $[0,20]$ with
 % a two-soliton initial condition
 % $$ u_0(x) = 3A^2 \hbox{sech}(.5A(x-1))^2 + 3B^2 \hbox{sech}(.5B(x-2))^2 $$
 % where the amplitude parameters $A$ and $B$ are quite close
@@ -34,6 +34,7 @@ S.init = 3*A^2*sech(.5*A*(x-3)).^2 + 3*B^2*sech(.5*B*(x-4)).^2;
 pause off
 tic, u = spin(S,spinpref('plot','off')); t = toc;
 plot(S.init), hold on, plot(u), hold off
+text(5,1500,'t = 0'), text(14.5,1500,'t = 0.015')
 
 %%
 % When `spin` is run is this simple mode without extra arguments,
@@ -53,6 +54,22 @@ plot(S.init), hold on, plot(u), hold off
 %%
 % However, the computation is much faster:
 t
+
+%%
+% Of course, the result of a spin computation is a chebfun.
+% So we can for example easily compute the amplitude of this
+% final function $u$:
+max(u)
+
+%%
+% This agrees reasonably well with the initial amplitude, as it should
+% since it's the same soliton.
+initial_amplitude = 3*A^2
+
+%% 
+% In fact, the KdV equation like other equations of completely
+% integrable systems has an infinite collection of conservation laws.
+% Chebfun could be used to explore these.
 
 %% 2. Non-soliton solutions
 % Soliton solutions are so celebrated that it is easy to forget
@@ -75,8 +92,9 @@ plot(S.init), hold on, plot(u), hold off
 
 %%
 % If we make the pulse still wider, we get a beautiful train
-% of solitons.
-S.init = 3*A^2*sech(.05*A*(x-3)).^2;
+% of solitons.  Note that a term centered at $x=23$ has been
+% added to make this wider pulse numerically periodic.
+S.init = 3*A^2*( sech(.05*A*(x-3)).^2 + sech(.05*A*(x-23)).^2 );
 u = spin(S,spinpref('plot','off','N',800,'dt',.00001));
 plot(S.init), hold on, plot(u), hold off
 
@@ -86,9 +104,47 @@ S.init = 500*(x-12).*exp(-(x-12).^2);
 u = spin(S,spinpref('plot','off','N',800,'dt',.00001));
 plot(S.init), hold on, plot(u), hold off
 
-%% 3. References
+%% 3. Conservation laws
+% The function $u$ is a conserved quantity 
+% for the KdV equation in the sense that its integral
+% remains constant.  Here we confirm this
+% numerically (the integral is zero since the function is :
+u0 = S.init;
+conserved1 = @(u) sum(u)
+conserved1(u), conserved1(u0)
+
+%%
+% Another conserved quantity is $u^2$:
+conserved2 = @(u) sum(u.^2)
+conserved2(u), conserved2(u0)
+
+%%
+% In fact, as a completely integrable system, the KdV equation
+% has an infinite set of conserved quantities [2,3].  Another
+% one is $u^3/3 - (u_x)^2$:
+conserved3 = @(u) sum(u.^3/3 - diff(u).^2)
+conserved3(u), conserved3(u0)
+
+%%
+% Another is  $u^4/4 - 3u(u_x)^2 + (9/5)(u_{xx})^2$:
+conserved4 = @(u) sum(u.^4/4 - 3*u.*diff(u).^2 + (9/5)*diff(u,2).^2)
+conserved4(u), conserved4(u0)
+
+%%
+
+
+%% 4. References
 % The mathematics of solitons is thoroughly understood.  See
-% for example [1].
+% for example [1].  For a quick introduction to the KdV equation,
+% see [2].
 %
 % [1] M. J. Ablowitz and H. Segur, _Solitons and the
 % Inverse Scattering Transform_, SIAM, 1981.
+%
+% [2] L. N. Trefethen and K. Embree, editors, article on
+% "The KdV equation",
+% _The (Unfinished) PDE Coffee Table Book_,
+% `https://people.maths.ox.ac.uk/trefethen/pdectb.html`.
+%
+% [3] G. Whitham, _Linear and Nonlinear Waves_, Wiley, 1974.
+
