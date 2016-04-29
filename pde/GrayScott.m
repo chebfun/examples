@@ -50,14 +50,16 @@ time_in_seconds = toc
 %% 4. Speedups on coarser grids
 % The initial conditions in the simulations above were
 % chosen with a line of symmetry tilted at a certain 
-% angle from the axis.  For a dynamical process as sensitive to
+% angle from the axis.  For a dynamical process so sensitive as this to
 % small perturbations, this provides a challenging test of
 % accuracy: is the symmetry preserved?  If we coarsen the
 % grid to $100\times 100$, we can speed up the computations
 % fourfold and still get plausible looking answers--which indeed
 % can be argued to be in some sense scientifically correct.  They
 % are clearly not mathematically correct, however, as the symmetry
-% is broken.  Here will illustrate this effect with rolls:
+% is broken.  Here we illustrate this effect with rolls.  Note that
+% the solution looks approximately the same as before, but the
+% details are different and the symmetry has been lost.
 b = 0.04; d = 0.1;
 S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
 tic, u = spin2(S,spinpref2('N',100,'dt',2,'plot','off'));
@@ -65,28 +67,10 @@ plot(u{2}), view(0,90), axis equal, axis off
 time_in_seconds = toc
 
 %%
-% And here with spots:
+% We get a similar effect with spots:
 b = 0.025; d = 0.085;
 S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
 tic, u = spin2(S,spinpref2('N',100,'dt',2,'plot','off'));
-plot(u{2}), view(0,90), axis equal, axis off
-time_in_seconds = toc
-
-% 
-% What if we make the grid still coarser?  Sometimes grid-alignment
-% effects appear, a sure sign of numerical error.
-% Here are the rolls with a $60\times 60$ grid.
-b = 0.04; d = 0.1;
-S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
-tic, u = spin2(S,spinpref2('N',60,'dt',2,'plot','off'));
-plot(u{2}), view(0,90), axis equal, axis off
-time_in_seconds = toc
-
-%%
-% And here are the spots.
-b = 0.025; d = 0.085;
-S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
-tic, u = spin2(S,spinpref2('N',60,'dt',2,'plot','off'));
 plot(u{2}), view(0,90), axis equal, axis off
 time_in_seconds = toc
 
