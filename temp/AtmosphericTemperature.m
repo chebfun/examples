@@ -1,5 +1,5 @@
 %% Computing with an atmospheric dataset in Spherefun
-% Alex Townsend and Grady Wright, April 2016 
+% Alex Townsend and Grady Wright, May 2016 
 
 %%
 % (Chebfun example sphere/AtmosphericTemperature.m)
@@ -17,8 +17,8 @@
 %% 2. Is surface air temperature of low rank? 
 % Recently, we were asked: Is the surface air temperature of the earth 
 % of low rank? In this example, we apply Spherefun to one atmospheric 
-% dataset and find that it can be well approximated by a low rank
-% function.
+% dataset and find that it can be well approximated by a
+% function of moderate rank.
 
 %% 
 % Here is a data set on a 529x1024 latitude-longitude grid containing the 
@@ -46,7 +46,7 @@ f
 %% 
 % Spherefun calculated the rank of $f$ as 185.  Since the dataset is of
 % size 529x1024, this shows that the low rank representation is achieving
-% some useful compression of the orignal dataset, although the results are
+% some useful compression of the original dataset, although the results are
 % not as dramatic as one often sees for smooth functions (see [2] for more
 % detailed discussions).
 
@@ -163,6 +163,6 @@ end
 % climate model analysis, J. Geophys. Res. Atmospheres, 118, 5082-5097,
 % 2013
 %%
-% [4] M. K. Chung, K. M. Dalton, and R. J. Davidoson, Tensor-based cortical
+% [4] M. K. Chung, K. M. Dalton, and R. J. Davidson, Tensor-based cortical
 % surface morphometry via weighted spherical harmonic representation, IEEE
 % Trans. On Medical Imag., 27, 1143-1151, 2008
