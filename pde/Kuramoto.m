@@ -9,7 +9,7 @@
 % The Kuramoto-Sivashinsky equation mixes a nonlinear
 % convective term, fourth-order diffusion, and second-order
 % _backward_ diffusion,
-% $$ u_t = -({1\over 2}u^2)_x - u_{xx} - u_{xxxx} . $$
+% $$ u_t = -({1\over 2}u^2)_x - u_{xx} - u_{xxxx}. $$
 % Its solutions have the remarkable property of being
 % (provably) chaotic.
 % For example, here is a calculation up to $t=100$
@@ -76,4 +76,8 @@ time_elapsed_in_seconds = toc
 
 %% 3. References
 %
-% [1] _PDE Coffee Table Book_.
+% [1] L. N. Trefethen and K. Embree, editors, article on
+% "The Kuramoto-Sivashinsky equation",
+% _The (Unfinished) PDE Coffee Table Book_,
+% `https://people.maths.ox.ac.uk/trefethen/pdectb.html`.
+
