@@ -21,7 +21,8 @@ ep1 = 0.00002; ep2 = 0.00001;
 b = 0.04; d = 0.1;
 %%
 % We now solve up to $t=3500$ with `spin2` and plot the $v$ variable.
-% What beautiful, random-seeming "rolls" appear!  
+% What beautiful, random-seeming "rolls" (or
+% "fingerprints") appear!  
 dom = [-1 1 -1 1]; x = chebfun('x',dom(1:2)); tspan = [0 3500];
 S = spinop2(dom,tspan);
 S.linearPart = @(u,v) [ep1*lap(u); ep2*lap(v)];
@@ -36,6 +37,7 @@ time_in_seconds = toc
 %% 2. Spots
 % If we change the values of the parameters just a bit,
 % the nature of the solution changes fundamentally.
+% Now we see spots instead of rolls.
 b = 0.025; d = 0.085;
 S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
 tic, u = spin2(S,spinpref2('N',200,'dt',2,'plot','off'));
@@ -60,6 +62,8 @@ time_in_seconds = toc
 % is broken.  Here we illustrate this effect with rolls.  Note that
 % the solution looks approximately the same as before, but the
 % details are different and the symmetry has been lost.
+% Moreover, the overall shape of the solution looks suspiciously
+% a little bit square -- a hint of some spurious grid alignment.
 b = 0.04; d = 0.1;
 S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
 tic, u = spin2(S,spinpref2('N',100,'dt',2,'plot','off'));
