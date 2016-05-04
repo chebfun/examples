@@ -141,7 +141,7 @@ surf(f), colormap(jet), axis off, view([50 0]), hold on
 spherefun.plotEarth('k-'), title('Original Temp.'), snapnow, hold off
 
 for j=1:3
-    fsmooth = smooth( f, sig(j) );
+    fsmooth = gaussfilt( f, sig(j) );
     surf(fsmooth), colormap(jet), axis off, view([50 0]), hold on
     spherefun.plotEarth('k-')
     title(['Smoothed Temp., \sigma=' num2str(sig(j)*180/pi) ' degrees'])
