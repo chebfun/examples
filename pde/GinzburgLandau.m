@@ -1,4 +1,4 @@
-%% Complex Ginsburg-Landau equation in 2D
+%% Complex Ginzburg-Landau equation in 2D
 % Nick Trefethen, May 2016
 
 %%
