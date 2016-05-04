@@ -6,7 +6,7 @@
 % [Tags: #KdV , #spin]
 
 %% 1. Soliton solutions
-% Chebfun's `spin` command makes it easy to compute solutions
+% Chebfun's `spin` command [1] makes it easy to compute solutions
 % of the KdV equation,
 % $$ u_t = -0.5(u^2)_x - u_{xxx}. $$
 % For example, let's set to work on $[0,20]$ with
@@ -127,7 +127,7 @@ conserved2(u), conserved2(u0)
 
 %%
 % In fact, as a completely integrable system, the KdV equation
-% has an infinite set of conserved quantities [2,3].  Another
+% has an infinite set of conserved quantities [3,4].  Another
 % one is $u^3/3 - (u_x)^2$:
 conserved3 = @(u) sum(u.^3/3 - diff(u).^2)
 conserved3(u), conserved3(u0)
@@ -142,16 +142,19 @@ conserved4(u), conserved4(u0)
 
 %% 5. References
 % The mathematics of solitons is thoroughly understood.  See
-% for example [1].  For a quick introduction to the KdV equation,
-% see [2].
+% for example [2].  For a quick introduction to the KdV equation,
+% see [3].
 %
-% [1] M. J. Ablowitz and H. Segur, _Solitons and the
+% [1] H. Montanelli and N. Bootland, Solving stiff PDEs
+% in 1D, 2D and 3D with exponential integrators, submitted, 2016.
+%
+% [2] M. J. Ablowitz and H. Segur, _Solitons and the
 % Inverse Scattering Transform_, SIAM, 1981.
 %
-% [2] L. N. Trefethen and K. Embree, editors, article on
+% [3] L. N. Trefethen and K. Embree, editors, article on
 % "The KdV equation",
 % _The (Unfinished) PDE Coffee Table Book_,
 % `https://people.maths.ox.ac.uk/trefethen/pdectb.html`.
 %
-% [3] G. Whitham, _Linear and Nonlinear Waves_, Wiley, 1974.
+% [4] G. Whitham, _Linear and Nonlinear Waves_, Wiley, 1974.
 

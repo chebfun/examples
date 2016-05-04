@@ -14,7 +14,7 @@
 % (provably) chaotic.
 % For example, here is a calculation up to $t=100$
 % on $[-100,100]$ with an initial condition featuring
-% two exponential bumps.  At $t=100$, we see a waveform
+% two exponential bumps using `spin` [1].  At $t=100$, we see a waveform
 % whose details are essentially random though the general
 % picture is dominated by oscillations with a wavelength of about $9$.
 tic, dom = [-100 100]; x = chebfun('x',dom); tspan = [0 100 200];
@@ -38,7 +38,7 @@ text(42,3.4,'t=0 and t=200',FS,12)
 %%
 % By looking at the dispersion relation for the linear
 % part of the equation, one can explain why
-% the characteristic wavelength is about 9 [1].
+% the characteristic wavelength is about 9 [2].
 % In fact, the wave number
 % $k$ most amplified by the linear terms in the equation is
 % $k = 1/\sqrt 2$, which corresponds to a wavelength
@@ -76,7 +76,10 @@ time_elapsed_in_seconds = toc
 
 %% 3. References
 %
-% [1] L. N. Trefethen and K. Embree, editors, article on
+% [1] H. Montanelli and N. Bootland, Solving stiff PDEs
+% in 1D, 2D and 3D with exponential integrators, submitted, 2016.
+%
+% [2] L. N. Trefethen and K. Embree, editors, article on
 % "The Kuramoto-Sivashinsky equation",
 % _The (Unfinished) PDE Coffee Table Book_,
 % `https://people.maths.ox.ac.uk/trefethen/pdectb.html`.

@@ -7,7 +7,7 @@
 
 %% 1. Rolls
 % The Gray-Scott equations are a pair of coupled reaction-diffusion
-% equations that lead to interesting patterns [1,2].
+% equations that lead to interesting patterns [1,2,3].
 % Let us look at two examples in 2D.
 
 %%
@@ -88,3 +88,7 @@ time_in_seconds = toc
 % "The Gray-Scott equations",
 % _The (Unfinished) PDE Coffee Table Book_,
 % `https://people.maths.ox.ac.uk/trefethen/pdectb.html`.
+%
+% [3] H. Montanelli and N. Bootland, Solving stiff PDEs
+% in 1D, 2D and 3D with exponential integrators, submitted, 2016.
+
