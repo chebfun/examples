@@ -32,7 +32,7 @@ S.init = 3*A^2*sech(.5*A*(x-3)).^2 + 3*B^2*sech(.5*B*(x-4)).^2;
 % $t=0.0078$, it overtakes the slower one, and around time
 % $t=0.0156$, it is as far ahead at was originally behind.
 pause off
-tic, u = spin(S,spinpref('plot','off')); time_in_seconds = toc;
+tic, u = spin(S,'plot','off'); time_in_seconds = toc;
 plot(S.init), hold on, plot(u), hold off
 text(4.4,1300,'t = 0'), text(13.5,1300,'t = 0.0156')
 
@@ -48,7 +48,7 @@ time_in_seconds
 % For practical work we can often do much better by fixing the grid and the
 % time step.  Here we do this and see that the image
 % looks the same:
-tic, u = spin(S,spinpref('plot','off','N',800,'dt',.000005));
+tic, u = spin(S,'plot','off','N',800,'dt',.000005);
 time_in_seconds = toc;
 plot(S.init), hold on, plot(u), hold off
 text(4.4,1300,'t = 0'), text(13.5,1300,'t = 0.0156')
@@ -61,7 +61,7 @@ time_in_seconds
 % Let's look at the propagation of a single soliton, the larger
 % one from the last experiment:
 S.init = 3*A^2*sech(.5*A*(x-3)).^2;
-u = spin(S,spinpref('plot','off','N',800,'dt',.000005));
+u = spin(S,'plot','off','N',800,'dt',.000005);
 plot(S.init), hold on, plot(u), hold off
 text(3.4,1300,'t = 0'), text(13.2,1300,'t = 0.0156')
 
@@ -94,7 +94,7 @@ observed_speed = (pos-3)/tmax
 % going much more slowly, plus some low-amplitude information that is
 % not in the form of solitons.
 S.init = 3*A^2*sech(.35*A*(x-3)).^2;
-u = spin(S,spinpref('plot','off','N',800,'dt',.000005));
+u = spin(S,'plot','off','N',800,'dt',.000005);
 plot(S.init), hold on, plot(u), hold off
 
 %%
@@ -102,13 +102,13 @@ plot(S.init), hold on, plot(u), hold off
 % of solitons.  Note that a term centered at $x=23$ has been
 % added to make this wider pulse numerically periodic.
 S.init = 3*A^2*( sech(.05*A*(x-3)).^2 + sech(.05*A*(x-23)).^2 );
-u = spin(S,spinpref('plot','off','N',800,'dt',.000005));
+u = spin(S,'plot','off','N',800,'dt',.000005);
 plot(S.init), hold on, plot(u), hold off
 
 %%
 % Let's try something a little bit random:
 S.init = 500*(x-12).*exp(-(x-12).^2);
-u = spin(S,spinpref('plot','off','N',800,'dt',.000005));
+u = spin(S,'plot','off','N',800,'dt',.000005);
 plot(S.init), hold on, plot(u), hold off
 
 %% 4. Conservation laws

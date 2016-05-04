@@ -30,7 +30,7 @@ S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
 S.init = chebfun2v(@(x,y) 1-exp(-80*((x+.05).^2+(y+.02).^2)), ...
                    @(x,y) exp(-80*((x-.05).^2+(y-.02).^2)),dom);
 pause off
-tic, u = spin2(S,spinpref2('N',200,'dt',2,'plot','off'));
+tic, u = spin2(S,'N',200,'dt',2,'plot','off');
 plot(u{2}), view(0,90), axis equal, axis off
 time_in_seconds = toc
 
@@ -40,7 +40,7 @@ time_in_seconds = toc
 % Now we see spots instead of rolls.
 b = 0.025; d = 0.085;
 S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
-tic, u = spin2(S,spinpref2('N',200,'dt',2,'plot','off'));
+tic, u = spin2(S,'N',200,'dt',2,'plot','off');
 plot(u{2}), view(0,90), axis equal, axis off
 time_in_seconds = toc
 
@@ -66,7 +66,7 @@ time_in_seconds = toc
 % a little bit square -- a hint of some spurious grid alignment.
 b = 0.04; d = 0.1;
 S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
-tic, u = spin2(S,spinpref2('N',100,'dt',2,'plot','off'));
+tic, u = spin2(S,'N',100,'dt',2,'plot','off');
 plot(u{2}), view(0,90), axis equal, axis off
 time_in_seconds = toc
 
@@ -74,7 +74,7 @@ time_in_seconds = toc
 % We get a similar effect with spots:
 b = 0.025; d = 0.085;
 S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
-tic, u = spin2(S,spinpref2('N',100,'dt',2,'plot','off'));
+tic, u = spin2(S,'N',100,'dt',2,'plot','off');
 plot(u{2}), view(0,90), axis equal, axis off
 time_in_seconds = toc
 

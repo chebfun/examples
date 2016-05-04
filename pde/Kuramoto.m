@@ -23,7 +23,7 @@ S.linearPart = @(u) - diff(u,2) - diff(u,4);
 S.nonlinearPart = @(u) -.5*diff(u.^2); % spin cannot parse "u.*diff(u)"
 S.init = exp(-((x+50)/10).^2) + exp(-((x-50)/10).^2);
 pause off
-tic, u = spin(S,spinpref('plot','off','N',800,'dt',.025)); t = toc;
+tic, u = spin(S,'plot','off','N',800,'dt',.025); t = toc;
 plot(S.init), hold on, plot(u{2}), ylim([-4 4]), hold off
 FS = 'fontsize'; text(42,3.4,'t=0 and t=100',FS,12)
 
@@ -55,7 +55,7 @@ text(42,3.4,'t=0 and t=200',FS,12)
 % the solution is broken.
 S.init = exp(-((x+50)/10).^2) + exp(-((x-49.9)/10).^2);
 pause off
-tic, u = spin(S,spinpref('plot','off','N',800,'dt',.05)); t = toc;
+tic, u = spin(S,'plot','off','N',800,'dt',.05); t = toc;
 plot(S.init), hold on, plot(u{2}), ylim([-4 4]), hold off
 text(42,3.4,'t=0 and t=100',FS,12)
 

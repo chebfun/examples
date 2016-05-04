@@ -43,14 +43,14 @@ S.nonlinearPart = @(u) u - (1+1.5i)*u.*(abs(u).^2);
 x = chebfun2(@(x,y) x,dom); y = chebfun2(@(x,y) y,dom);
 u1 = (1i*x+y).*exp(-.03*(x.^2+y.^2)); S.init = u1;
 npts = 80; dt = 4/npts; tic
-u = spin2(S,spinpref2('N',npts,'dt',dt,'plot','off'));
+u = spin2(S,'N',npts,'dt',dt,'plot','off');
 plot(real(u)), view(0,90), axis equal, axis off
 
 %%
 % Here is the analogous experiment with the real initial condition
 % $$ u_0(x,y) = (x+y) \exp(-0.03(x^2+y^2)). $$
 u2 = (x+y).*exp(-.03*(x.^2+y.^2)); S.init = u2;
-u = spin2(S,spinpref2('N',npts,'dt',dt,'plot','off'));
+u = spin2(S,'N',npts,'dt',dt,'plot','off');
 plot(real(u)), view(0,90), axis equal, axis off
 
 %%
@@ -67,7 +67,7 @@ S = spinop2(dom,tspan);
 S.linearPart = @(u) lap(u);
 S.nonlinearPart = @(u) u - (1+1.5i)*u.*(abs(u).^2);
 S.init = u1; tic
-u = spin2(S,spinpref2('N',npts,'dt',dt,'plot','off'));
+u = spin2(S,'N',npts,'dt',dt,'plot','off');
 plot(real(u)), view(0,90), axis equal, axis off
 
 %% 
@@ -80,7 +80,7 @@ plot(real(u)), view(0,90), axis equal, axis off
 % Now we run the second function to $t=48$.  This image is also
 % correct.  Note the preservation of the diagonal line of symmetry.
 S.init = u2;
-u = spin2(S,spinpref2('N',npts,'dt',dt,'plot','off'));
+u = spin2(S,'N',npts,'dt',dt,'plot','off');
 plot(real(u)), view(0,90), axis equal, axis off
 
 %%
@@ -95,7 +95,7 @@ S = spinop2(dom,tspan);
 S.linearPart = @(u) lap(u);
 S.nonlinearPart = @(u) u - (1+1.5i)*u.*(abs(u).^2);
 S.init = u1;
-tic, u = spin2(S,spinpref2('N',npts,'dt',dt,'plot','off'));
+tic, u = spin2(S,'N',npts,'dt',dt,'plot','off');
 plot(real(u)), view(0,90), axis equal, axis off
 
 %%
@@ -106,7 +106,7 @@ plot(real(u)), view(0,90), axis equal, axis off
 % been lost.
 npts = 128; dt = 4/npts; tic
 S.init = u2;
-u = spin2(S,spinpref2('N',npts,'dt',dt,'plot','off'));
+u = spin2(S,'N',npts,'dt',dt,'plot','off');
 plot(real(u)), view(0,90), axis equal, axis off
 
 %%
@@ -126,7 +126,7 @@ u1 = (1i*(x-8)+(y-2)).*exp(-.03*((x-8).^2+(y-2).^2)) + ...
      ((x+8)-(y+2)).*exp(-.03*((x+8).^2+(y+2).^2));
 S.init = u1;
 npts = 128; dt = 8/npts; tic
-u = spin2(S,spinpref2('N',npts,'dt',dt,'plot','off'));
+u = spin2(S,'N',npts,'dt',dt,'plot','off');
 plot(real(u{2})), view(0,90), axis equal, axis off
 
 %%
