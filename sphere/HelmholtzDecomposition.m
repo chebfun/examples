@@ -2,7 +2,8 @@
 % Alex Townsend and Grady Wright, May 2016 
 
 %% 
-% Chebfun Example (spherefun, spherefunv)
+% (Chebfun Example sphere/HelmholtzDecomposition.m)
+% [Tags: #spherefun, #vector-valued, #Helmholtz-Hodge] 
 
 %% The Helmholtz-Hodge decomposition 
 % A special case of the Helmholtz-Hodge theorem states that any vector 
