@@ -1,11 +1,11 @@
-%% Helmholtz-Hodge decomposition of a vector field on the sphere 
+%% Helmholtz-Hodge decomposition of a vector field
 % Alex Townsend and Grady Wright, May 2016 
 
 %% 
 % (Chebfun Example sphere/HelmholtzDecomposition.m)
 % [Tags: #spherefun, #vector-valued, #Helmholtz-Hodge] 
 
-%% The Helmholtz-Hodge decomposition 
+%% 1. The Helmholtz-Hodge decomposition 
 % A special case of the Helmholtz-Hodge theorem states that any vector 
 % field that is tangent to the sphere can be uniquely decomposed into a sum
 % of a surface divergence-free component and a surface curl-free component.
@@ -15,10 +15,8 @@
 %% 
 % In mathematical notation, the Helmholtz-Hodge decomposition says that
 % we can write any vector field tangent to the surface of the sphere 
-% as the following sum: 
-% 
-%  $$  \mathbf{f}   =    \nabla \phi    +     \nabla \times \psi, $$
-%
+% as the sum
+% $$ \mathbf{f} = \nabla \phi + \nabla \times \psi, $$
 % where $\phi$ and $\psi$ are scalar-valued potential functions that are unique
 % up to a constant. Here $\nabla$ is the surface gradient on the sphere, 
 % and we use the standard abuse of notation that $\nabla \times \psi$ means 
@@ -35,90 +33,87 @@
 %% 
 % To illustrate the Helmholtz-Hodge decomposition, we take the following 
 % vector field: 
-
 f = spherefunv( @(x,y,z) y.*z.*cos(x.*y.*z), ...
                 @(x,y,z) x.*z.*sin(4*x+.1*y+5*z.^2), @(x,y,z) 1+x.*y.*z ); 
 quiver3( f ), view([-36 8])
 
 %% 
 % The vector field is not tangent to the surface of the sphere, so we
-% project onto the tangent space: 
+% project it onto the tangent space: 
 f = tangent( f ); 
 quiver3( f ), view([-36 8])
 
-%% Computing the curl-free component
+%% 2. Computing the curl-free component
 % Since the divergence of a curl is zero, we know that 
-%
-%   $$ \nabla \dot \mathbf{f} =  \nabla \dot \nabla \phi = \nabla^2 \phi,$$  
-% 
+% $$ \nabla \dot \mathbf{f} =  \nabla \dot \nabla \phi = \nabla^2 \phi, $$
 % where the last equality holds because the divergence of a gradient is the
-% laplacian. Therefore, we can solve for $\phi$ in Helmholtz-Hodge decomposition
-% as follows: 
+% Laplacian. Therefore, we can solve for $\phi$ in the
+% Helmholtz-Hodge decomposition as follows: 
 
 phi = spherefun.poisson( divergence(f), 0, 251 ); 
 quiver3( gradient( phi ) ), hold on,
-contour( phi, 'b-', 'linewidth', 2 ), 
-title('Curl-free component of f','fontsize',16)
+LW = 'linewidth';
+contour( phi, 'b-', LW , 2 ), 
+title('Curl-free component of f')
 view([-36 8]), hold off
 
 %% 
-% This component is curl-free, in the sense that: 
+% We confirm that this component is curl-free: 
 norm( vorticity( gradient( phi ) ) ) 
 
-%% Computing the divergence-free component
+%% 3. Computing the divergence-free component
 % Since the vorticity (normal component of the surface curl) of a 
 % gradient field on the surface of the sphere is zero, we have the identity
-% 
-%  $$ \hat{\mathbf{n}} \cdot (nabla \times \mathbf{f}) = \hat{\mathbf{n}} \cdot (\nabla \times \psi). $$ 
-% 
+% $$ \hat{\mathbf{n}} \cdot (\nabla \times \mathbf{f}) 
+% = \hat{\mathbf{n}} \cdot (\nabla \times \psi). $$ 
 % Using the idenity that the vorticity of the surface curl of a scalar potential
 % is just the surface Laplacian of the potential, we have 
-% 
-%  $$ \hat{\mathbf{n}} \cdot (nabla \times \mathbf{f})  = \nabla^2 \psi. $$
-%
-% Therefore, we can solve for $\psi$ in Helmholtz-Hodge decomposition
+% $$ \hat{\mathbf{n}} \cdot (\nabla \times \mathbf{f}) = \nabla^2 \psi. $$
+% Therefore, we can solve for $\psi$ in the Helmholtz-Hodge decomposition
 % as follows: 
 
 psi = spherefun.poisson( vorticity(f), 0, 251 );
 quiver3( curl( psi ) ), hold on,
-contour( psi, 'r-', 'linewidth', 2 ), 
-title('Divergence-free component of f','fontsize',16)
+contour( psi, 'r-', LW , 2 ), 
+title('Divergence-free component of f')
 view([-36 8]), hold off
 
 %% 
 % By vector identities this component is divergence-free: 
 norm( divergence( curl( psi ) ) ) 
 
-%% Plotting the decomposition
-% Here, is a plot of the decomposition. 
+%% 4. Plotting the decomposition
+% Here is a plot of the decomposition. 
 subplot(1,3,1) 
-quiver3( gradient( phi ) ), title('Curl-free','fontsize',16), view([-36 8])
+quiver3( gradient( phi ) ), title('Curl-free'), view([-36 8])
 subplot(1,3,2)
-quiver3( curl( psi ) ), title('Divergence-free','fontsize',16), view([-36 8])
+quiver3( curl( psi ) ), title('Divergence-free'), view([-36 8])
 subplot(1,3,3)
-quiver3( f ), title('Tangent vector field','fontsize',16), view([-36 8])
+quiver3( f ), title('Tangent vector field'), view([-36 8])
 
 %% 
-% As a sanity check we see if the decomposition holds: 
+% As a sanity check we confirm that the decomposition holds: 
 h = grad( phi ) + curl( psi );
 norm( f - h ) 
 
-%% The Helmholtz decomposition command 
-% In Spherefun there is now a command called |helmholtzdecomp| that
-% computes the Helmholtz-Hodge decomposition of a vector that is tangent to
-% the surface. Therefore, this example can be replicated with the following
-% code: 
+%% 5. The helmholtzdecomp command 
+% Spherefun has a command command |helmholtzdecomp| that
+% computes the Helmholtz-Hodge decomposition of a vector field
+% that is tangent to the surface.
+% Therefore, this example can be replicated with the following code: 
 [phi, psi] = helmholtzdecomp( f ); 
-quiver( f ), hold on
-contour( phi, 'b-', 'linewidth', 2 )
-contour( psi, 'r-', 'linewidth', 2 )
-title('f (arrows), \phi (black), and \psi (red)','fontsize',16)
+clf, quiver( f ), hold on
+contour( phi, 'b-', LW , 2 )
+contour( psi, 'r-', LW , 2 )
+title('f (arrows), \phi (black), and \psi (red)')
 view([-36 8])
 
-%% References:
-% [1] E.J. Fuselier and G.B. Wright. Stability and error estimates for
-% vector field interpolation and decomposition on the sphere with RBFs.
-% SIAM J. Numer. Anal., 47 (2009), 3213-3239.
-%%
-% [2] A. Townsend, H. Wilber, and G. B. Wright, Computing with function on
-% polar and spherical geometries I. The sphere, to appear in SISC, 2016 
+%% 6. References
+%
+% [1] E. J. Fuselier and G. B. Wright, Stability and error estimates for
+% vector field interpolation and decomposition on the sphere with RBFs,
+% _SIAM J. Numer. Anal._, 47 (2009), 3213-3239.
+%
+% [2] A. Townsend, H. Wilber, and G. B. Wright, Computing with functions in
+% spherical and poler geometries I. The sphere, _SIAM J.
+% Sci. Comp._, to appear in 2016 
