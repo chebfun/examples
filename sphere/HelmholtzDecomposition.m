@@ -31,7 +31,7 @@
 % high and low pressure systems [1].
 
 %% 
-% To illustrate the Helmholtz-Hodge decomposition, we take the following 
+% To illustrate the decomposition, we take the following 
 % vector field: 
 f = spherefunv( @(x,y,z) y.*z.*cos(x.*y.*z), ...
                 @(x,y,z) x.*z.*sin(4*x+.1*y+5*z.^2), @(x,y,z) 1+x.*y.*z ); 
@@ -45,11 +45,10 @@ quiver3( f ), view([-36 8])
 
 %% 2. Computing the curl-free component
 % Since the divergence of a curl is zero, we know that 
-% $$ \nabla \dot \mathbf{f} =  \nabla \dot \nabla \phi = \nabla^2 \phi, $$
+% $$ \nabla \cdot \mathbf{f} = \nabla \cdot \nabla \phi = \nabla^2 \phi, $$
 % where the last equality holds because the divergence of a gradient is the
 % Laplacian. Therefore, we can solve for $\phi$ in the
 % Helmholtz-Hodge decomposition as follows: 
-
 phi = spherefun.poisson( divergence(f), 0, 251 ); 
 quiver3( gradient( phi ) ), hold on,
 LW = 'linewidth';
@@ -92,7 +91,7 @@ subplot(1,3,3)
 quiver3( f ), title('Tangent vector field'), view([-36 8])
 
 %% 
-% As a sanity check we confirm that the decomposition holds: 
+% As a sanity check we confirm that the decomposition has been successful:
 h = grad( phi ) + curl( psi );
 norm( f - h ) 
 
