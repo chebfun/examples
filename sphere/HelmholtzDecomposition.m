@@ -10,7 +10,7 @@
 % field that is tangent to the sphere can be uniquely decomposed into a sum
 % of a surface divergence-free component and a surface curl-free component.
 % In this Example, we show how this decomposition can be computed by
-% Spherefun and introduce the command |helmholtzdecomp|. 
+% Spherefun and introduce the command |helmholtzdecomp| [2]. 
 
 %% 
 % In mathematical notation, the Helmholtz-Hodge decomposition says that
@@ -96,7 +96,7 @@ h = grad( phi ) + curl( psi );
 norm( f - h ) 
 
 %% 5. The helmholtzdecomp command 
-% Spherefun has a command command |helmholtzdecomp| that
+% Spherefun has a command called |helmholtzdecomp| that
 % computes the Helmholtz-Hodge decomposition of a vector field
 % that is tangent to the surface.
 % Therefore, this example can be replicated with the following code: 
@@ -104,14 +104,14 @@ norm( f - h )
 clf, quiver( f ), hold on
 contour( phi, 'b-', LW , 2 )
 contour( psi, 'r-', LW , 2 )
-title('f (arrows), \phi (black), and \psi (red)')
+title('f (arrows), \phi (blue), and \psi (red)')
 view([-36 8])
 
 %% 6. References
 %
 % [1] E. J. Fuselier and G. B. Wright, Stability and error estimates for
 % vector field interpolation and decomposition on the sphere with RBFs,
-% _SIAM J. Numer. Anal._, 47 (2009), 3213-3239.
+% _SIAM J. Numer. Anal._, 47 (2009), pp. 3213-3239.
 %
 % [2] A. Townsend, H. Wilber, and G. B. Wright, Computing with functions in
 % spherical and poler geometries I. The sphere, _SIAM J.
