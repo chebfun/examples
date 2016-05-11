@@ -20,10 +20,10 @@ d = spherefunv(@(x,y,z) X(1)-x, @(x,y,z) X(2)-y, @(x,y,z) X(3)-z);
 %%
 % Here is the scalar function representing $|d|$, that is, the
 % the scalar distance between $X$ and points on the sphere:
-r = sqrt(d(1).^2 + d(2).^2 + d(3).^2); 
+r = sqrt(dot(d,d)); 
 
 %%
-% Here we confirm that the closest point on the sphere to $X$ is at
+% We confirm that the closest point on the sphere to $X$ is at
 % distance $0.5$:
 min_distance = min2(r)
 
