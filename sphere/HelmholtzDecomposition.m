@@ -114,5 +114,5 @@ view([-36 8])
 % _SIAM J. Numer. Anal._, 47 (2009), pp. 3213-3239.
 %
 % [2] A. Townsend, H. Wilber, and G. B. Wright, Computing with functions in
-% spherical and poler geometries I. The sphere, _SIAM J.
+% spherical and polar geometries I. The sphere, _SIAM J.
 % Sci. Comp._, to appear in 2016 
