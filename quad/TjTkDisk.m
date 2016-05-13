@@ -53,7 +53,10 @@ I = sum(chebfun(@(r) fr(r),[0 1],'vectorize'))
 Iexact = pi/4
 
 %% 2. Numerical integration of products of Chebyshev polynomials
-% What about Chebyshev polynomials?  Here's a table.
+% What about those products of Chebyshev polynomials?  Here is a
+% matrix showing the numerically computed integrals
+% for $k = 0,2,4,6,8,10$. As claimed above, the
+% matrix is tridiagonal.
 tic
 I = zeros(6);
 format short
@@ -69,13 +72,47 @@ end
 I = I + tril(I,-1)'
 time_elapsed_in_seconds = toc
 
-%% 3. An analytic expression for the integrals
+%% 3. Analytic expressions for the integrals
+% Let $I_{jk}$ denote the integral of $T_j(x) T_k(y)$ over
+% the unit disk. The following explicit formulas derived
+% by the first author (details not reported here) give the
+% integrals:
+
+%%
+% $$ I_{00} = \pi, $$
+
+%%
+% $$ I_{02} = I_{20} = -{\pi\over 2}, $$
+
+%%
+% $$ I_{kk} = {\pi (-1)^{k/2} \over 2 - 2k^2} 
+% \quad \hbox{($k$ even, $k\ge 2$)}, $$
+
+%%
+% $$ I_{k,k+2} = I_{k+2,k} = {\pi (-1)^{1+k/2} \over 4k + 4} 
+% \quad \hbox{($k$ even, $k\ge 2$)}, $$
+
+%%
+% In all other cases $I_{jk} = 0$.
+
+%%
+% Using these formulas, we can reproduce the matrix
+% above as follows:
+I = zeros(6);
+I(1,1) = pi;
+I(2,1) = -pi/2;
+for k = 2:2:10
+  I(1+k/2,1+k/2) = pi*(-1)^(k/2)/(2-2*k^2);
+end
+for k = 2:2:8
+  I(2+k/2,1+k/2) = -pi*(-1)^(k/2)/(4*k+4);
+end
+I = I + tril(I,-1)'
 
 %% 4. Application to integration of general functions
-% The results of the last section imply that it is very easy to
-% compute the integral of a chebfun2 over a disk: just take the
+% The results of the last section imply that there is an immediate
+% way to compute the integral of a chebfun2 over a disk: just take the
 % appropriate linear combination of its 
-% bivariate Chebyshev coefficients.  For example [to be completed...
-% and should we turn this into a new Chebfun2 command 
-% called sumdisk?].
+% bivariate Chebyshev coefficients.  We will probably develop
+% this idea into a new Chebfun2 `sumdisk` command.
 
