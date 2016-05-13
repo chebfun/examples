@@ -1,6 +1,10 @@
 %% Integrating Tj(x)*Tk(y) over the unit disk
 % Mikael Slevinsky, Nick Trefethen, and Klaus Wang, May 2016
 
+%%
+% (Chebfun example quad/TjTkDisk.m)
+% [Tags: #Chebyshev polynomials, #unit disk]
+
 %% 1. Numerical integration over the disk
 % In studying cubature formulas, we needed
 % to compute the integrals of products of Chebyshev polynomials
