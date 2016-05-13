@@ -1,25 +1,27 @@
-%% Solving the heat equation on the surface of the unit sphere
+%% Solving the heat equation on the unit sphere
 % Alex Townsend and Grady Wright, May 2016
 
 %%
-% ( Chebfun Example spherefun )
+% (Chebfun example spherefun)
 % [Tags: #spherefun, #heat, #diffusion]
 
-%% Introduction
+%% 1. Introduction
 % Spherefun has about 100 commands for computing with
 % scalar- and vector-valued functions [1]. There is also some
 % functionality for solving partial differential equations with the
 % |poisson| and |helmholtz| commands.  In this example, we show how the
-% latter of these commands can be used to solve the heat equation on the
-% surface of the sphere using an implicit time-stepping scheme.
+% latter can be used to solve the heat equation on the
+% sphere using an implicit time-stepping scheme.
 
 %%
 % The example code presented here can easily be adapted to solve more
 % complicated equations involving diffusion.
 
-%% Heat equation on the surface of the sphere
+%% 2. Heat equation on the sphere
+
+%%
 % <latex>
-% The heat equation on the surface of the sphere is defined by
+% The heat equation on the sphere is defined by
 % \begin{equation}
 %     u_t  =  \alpha\nabla^2 u,
 % \end{equation}
@@ -27,17 +29,19 @@
 % $\alpha>0$ is the coefficient of thermal diffusivity.  The definition is
 % completed by imposing an initial condition $u(\lambda,\theta,0) =
 % u_0(\lambda,\theta,0)$, where $-\pi \leq \lambda \leq \pi$ is the
-% longitudinal coordinate and $0 \leq \theta \leq \pi$ is the
-% latitudinal coordinate on the sphere.
+% longitudinal coordinate on the sphere and $0 \leq \theta \leq \pi$ is the
+% latitudinal coordinate.
 % </latex>
 
-%% Implicit temporal discretization
+%% 3. Implicit time discretization
+
+%%
 % <latex>
 % In this example we consider discretizing (1) using the second-order
-% accurate backward differentiation formula (BDF2). In this method, the
-% time derivative $u_t$ in (1) is replaced with the second-order accurate
+% backward differentiation formula (BDF2). In this method, the
+% time derivative $u_t$ in (1) is replaced by the second-order accurate
 % approximation $u_t \approx (3u_{n+1} - 4u_{n} + u_{n-1})/(2\Delta t)$,
-% where $\Delta t$ is the time-step and $u_n$ denotes the (approximate)
+% where $\Delta t$ is the time step and $u_n$ denotes the (approximate)
 % solution at time $t=n\Delta t$. Substituting this into (1) and
 % solving for $u_{n+1}$ gives the following partial differential equation
 % (PDE) for the approximate solution $u_{n+1}$:
@@ -54,16 +58,18 @@
 
 %%
 % The Spherefun command |helmholtz| can be used to solve (3)
-% in optimal complexity [2].
+% with optimal complexity [2].
 
-%% An example with an analytical solution
+%% 4. An example with an analytic solution
+
+%%
 % <latex>
 % We first consider solving (1) with an initial condition given by the
 % following sum of spherical harmonics $Y_{\ell}^{m}(\lambda,\theta)$:
 % $$ u_0(\lambda,\theta,0) = Y_{6}^{0}(\lambda,\theta) +
 % \sqrt{\frac{14}{11}} Y_{6}^{6}(\lambda,\theta), $$
-% which is sometimes called the soccer-ball function.  First, we
-% construct this initial condition in Spherefun and then plot it
+% which is sometimes called the soccer ball function.  First, we
+% construct this initial condition in Spherefun and plot it.
 % </latex>
 
 u0 = spherefun.sphharm(6,0) + sqrt(14/11)*spherefun.sphharm(6,5);
@@ -83,9 +89,9 @@ plot(u0), colormap(flipud(hot)), caxis([-1 1.5]), colorbar, axis('off')
 % Note that to bootstrap the BDF2 method (2) we first solve for $u_1$ using
 % one step of BDF1 (backward Euler).
 
-dt = 0.01;                         % Time-step
+dt = 0.01;                         % Time step
 tfinal = 1;                        % Stopping time
-nsteps = ceil(tfinal/dt);          % Number of time-steps
+nsteps = ceil(tfinal/dt);          % Number of time steps
 m = 20;                            % Spatial discretization
 alpha = 1/42;                      % Diffusion constant
 up = u0;                           % Previous time step
@@ -114,9 +120,9 @@ norm(u-utrue)
 
 %%
 % The error here is dominated by temporal errors from the BDF2 method, 
-% as opposed to spatical discretization errors.
+% as opposed to spatial discretization errors.
 
-%% A more complicated example
+%% 5. A more complicated example
 % In this second example we consider an initial condition for which 
 % there is no closed form solution.  We set the initial heat profile to a
 % sum of Gaussian bumps:
@@ -130,16 +136,17 @@ end
 plot(u0), colormap(flipud(hot)), colorbar, axis('off'), caxis([-0.05 1])
 
 %%
-% A necessary condition on the solution to the heat equation on the sphere 
-% is that the mean of the solution at any time is equal to the mean of the
+% Since the sphere has no boundary, the total amount of heat is
+% conserved: 
+% the mean of the solution at any time is equal to the mean of the
 % the initial condition.  We repeat the code above with this new initial
 % condition, but now also plot a contour that tracks the mean of the initial
 % condition solution, which can be computed using the command |mean2|:
 
 meanu0 = mean2(u0);                % Mean of initial condition
-dt = 0.01;                         % Time-step
+dt = 0.01;                         % Time step
 tfinal = 1;                        % Stopping time
-nsteps = ceil(tfinal/dt);          % Number of time-steps
+nsteps = ceil(tfinal/dt);          % Number of time steps
 m = 150;                           % Spatial discretization
 alpha = 1/42;                      % Diffusion constant
 up = u0;                           % Previous time step
@@ -167,17 +174,18 @@ end
 % precision:
 norm(meanu0 - mean2(u))
 
-%% Future
+%% 6. Future
 % In the future we hope to extend the technology of the new |spin2|
 % command in Chebfun, which is based on exponential integrators for stiff
 % PDEs, to Spherefun.  This has the potential to allow problems like the
 % heat equation to be solved much more efficiently and accurately in time.
 
-%% References
+%% 7. References
 %%
-% [1] A. Townsend, H. Wilber, and G. B. Wright, Computing with function on
-% polar and spherical geometries I. The sphere, to appear in SISC, 2016 
+% [1] A. Townsend, H. Wilber, and G. B. Wright, Computing with function in
+% polar and spherical geometries I. The sphere, to appear in 
+% _SIAM J. Sci. Comp._, 2016 
 %%
 % [2] A. Townsend and G. B. Wright, Fast spectral methods for partial
-% differential equations in spherical and polar geometries.
-% In preparation, 2016.
+% differential equations in spherical and polar geometries,
+% manuscript in preparation, 2016.
