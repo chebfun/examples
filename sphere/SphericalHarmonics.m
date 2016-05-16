@@ -22,7 +22,7 @@
 % where $a_{\ell}^{k}$, $0\leq k \leq \ell$, is a normalization factor
 % and $P_{\ell}^{k}$, $0\leq k \leq \ell$, is the degree $\ell$ and
 % order $k$ associated Legendre functions [1, Ch. 14].
-% Here we have used the following spherical coordinate parameterization 
+% Here, we have used the following spherical coordinate parameterization 
 % for a point on the unit sphere $(x,y,z)$:
 % % $$ x = \cos\lambda\sin\theta,\; y = \sin\lambda\sin\theta,\; z =
 % \cos\theta,$$
@@ -80,7 +80,7 @@
 % gives essentially uniform resolution of a function over the sphere.
 % </latex>
 
-%% Spherical harmonics in Spherefun
+%% 2. Spherical harmonics in Spherefun
 % While spherical harmonics have many properties that make them 
 % mathematically appealing to represent functions on the sphere, the
 % technology behind Spherefun does not rely on them.  Instead, it combines
@@ -108,20 +108,27 @@ plot(Y17)
 norm(laplacian(Y17)-(-17*18)*Y17)
 
 %%
-% We can also verify the orthomality of the spherical harmonics
+% We can also verify the orthogonality of spherical harmonics on the sphere
 Y13 = spherefun.sphharm(13,7);
 sum2(Y13.*Y17)
 sum2(Y13.*Y13)
 sum2(Y17.*Y17)
 
-%% Computing spherical harmonic coefficients
-% Add some text...
+%% 3. Computing spherical harmonic coefficients
+% While we have implemented a fast spherical harmonic transform in
+% Spherefun, one can use the |sum2| command to compute the spherical
+% harmonic coefficients. Classically, for a band-limited function $f$ with 
+% a bandwidth of $N$ this costs a totally $O(N^4)$ operations; however, 
+% in Spherefun if $f$ is of low rank then this is reduced to $O(N^3)$ 
+% operations. Here, we take a Gaussian bump on the sphere and then complete 
+% some of its low spherical harmonic modes. 
+
 % Example: Gaussian
 rng(10)
 x0 = 2*rand-1; y0 = sqrt(1-x0^2)*(2*rand-1); z0 = sqrt(1-x0^2-y0^2);
 sig = 0.05;
 f = spherefun(@(x,y,z) exp(-((x-x0).^2+(y-y0).^2+(z-z0).^2))/sig^2 )
-plot(f)
+plot(f), title('A Gaussian bump on the sphere',FS,16)
 
 %%
 % Spherical harmonic coefficients are computed as
@@ -135,15 +142,20 @@ for ell = 0:10
     end
 end
 semilogy(coeffs./b,'x-')
+title('The spherical harmonic coefficients of a Gaussian bump',FS,16)
+set(gca,FS,16)
 
-%%
-% Exact values can be computed...
+%% 
+% Why do we get the strange step effect??   
 
-%% Platonic solids
+%% 
+% Exact values seems hard... 
+
+%% 4. Platonic solids
 % Certain low order spherical harmonics can be combined so that they have
-% the same rotational symmetries of some of the platonic solids.  These
+% the same rotational symmetries of certain platonic solids.  These
 % combinations of spherical harmonics play a key role in the linear
-% stability analysis of some partial differential equation in spherical
+% stability analysis of partial differential equations in spherical
 % geometries; see, for example, the work of Busse on convection in
 % spherical shells [5].  The combination with tetrahedral symmetry is 
 % given by
