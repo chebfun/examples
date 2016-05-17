@@ -71,6 +71,7 @@
 % \begin{equation}
 % c_{\ell,m} = \int_{-\pi}^{\pi} \int_0^{\pi}
 % f(\lambda,\theta)Y_{ell}^{m}(\lambda,\theta)\,d\theta d\lambda,
+% \label{eq:sphCoeffs}
 % \end{equation}
 % and equality in (\ref{eq:sphHarmEx}) is understood in the mean-square 
 % sense. Truncating the outer sum of (\ref{eq:sphHarmEx}) to $N$ gives 
@@ -89,16 +90,16 @@
 % for approximating functions on the sphere to approximately machine 
 % precision [4]. This latter method allows for fast, highly adaptable
 % discretizations based on the FFT, with no setup cost.  While fast
-% spherical harmonic transforms are available, the precomputation cost for
-% these algorithms is too high to use to meet the requirements of 
-% Spherefun.  
+% spherical harmonic transforms are available [5], the precomputation cost
+% for these algorithms is too high to meet the requirements of Spherefun.
 
 %%
 % Nevertheless, given the dominance of spherical harmonics in many
 % applications, Spherefun provides many commands that can be used for
 % computing with spherical harmonics.  First amongst these is the |sphharm|
-% function.  For example, $Y_{17}^{13}$ can be constructed and plotted in
-% Spherefun using
+% function, which is used to construct a spherical harmonic of a given
+% degree and order. For example, $Y_{17}^{13}$ can be constructed and 
+% plotted as follows:
 Y17 = spherefun.sphharm(17,13);
 plot(Y17)
 
@@ -109,47 +110,126 @@ norm(laplacian(Y17)-(-17*18)*Y17)
 
 %%
 % We can also verify the orthogonality of spherical harmonics on the sphere
+% using |sum2|, which computes the integral of a function over the sphere: 
 Y13 = spherefun.sphharm(13,7);
 sum2(Y13.*Y17)
 sum2(Y13.*Y13)
 sum2(Y17.*Y17)
 
-%% 3. Computing spherical harmonic coefficients
-% While we have implemented a fast spherical harmonic transform in
-% Spherefun, one can use the |sum2| command to compute the spherical
-% harmonic coefficients. Classically, for a band-limited function $f$ with 
-% a bandwidth of $N$ this costs a totally $O(N^4)$ operations; however, 
-% in Spherefun if $f$ is of low rank then this is reduced to $O(N^3)$ 
-% operations. Here, we take a Gaussian bump on the sphere and then complete 
-% some of its low spherical harmonic modes. 
+% %% 
+% % The spherical harmonics of degree $\ell \leq 2$ 
+% N = 2;
+% for ell = 0:N
+%     for m = -ell:ell
+%         Y = spherefun.sphharm(ell,m);
+%         subplot(N+1,2*N+1,ell*(2*N+1)+(N+1)+m), plot(Y), axis off
+%     end
+% end
 
-% Example: Gaussian
-rng(10)
-x0 = 2*rand-1; y0 = sqrt(1-x0^2)*(2*rand-1); z0 = sqrt(1-x0^2-y0^2);
-sig = 0.05;
-f = spherefun(@(x,y,z) exp(-((x-x0).^2+(y-y0).^2+(z-z0).^2))/sig^2 )
-plot(f), title('A Gaussian bump on the sphere',FS,16)
+%% 
+% Here is a plot of the real spherical harmonics $Y_{\ell}^{m}$, 
+% $\ell=0,\ldots,4$ and $0\leq m \leq \ell$, with black contour lines
+% marking the lines where they are zero
+N = 4;
+for ell = 0:N
+    for m = 0:ell
+        Y = spherefun.sphharm(ell,m);
+        subplot(N+1,N+1,ell*(N+1)+m+1), plot(Y), hold on 
+        contour(Y,[0 0],'k-'), axis off, hold off
+    end
+end
 
 %%
-% Spherical harmonic coefficients are computed as
-k = 1;
-for ell = 0:10
+% The negative order real spherical harmonics are similar to the positve 
+% order ones and only differ by a rotation about the north and 
+% south poles.
+
+%% 3. Computing spherical harmonic coefficients
+% The computational cost of computing all the spherical harmonic
+% coefficients up to degree $N$ of a function directly using an
+% approximation of \ref{eq:sphCoeffs} scales like $O(N^4)$.  If $f$ is low
+% rank, then the coefficients can be obtained in $O(N^3)$ operations using
+% a fast multiplication algorithm and the |sum2| command in Spherefun. As
+% noted above, fast $O(N^2\log N)$ algorithms are available for this task
+% [5], but these are not yet available in Spherefun.
+
+%%
+% As an example, consider the restriction of a Gaussian function, 
+% $$ f(x,y,z) = \exp\left(-\frac{(x-x_0)^2 + (y-y_0)^2 + (z-z_0)^2}{\sigma^2}\right),$$
+% to the surface of the sphere.  Here we center the Gaussian at a 
+% random point $(x_0,y_0,z_0)$ on the sphere:
+rng(10)
+x0 = 2*rand-1; y0 = sqrt(1-x0^2)*(2*rand-1); z0 = sqrt(1-x0^2-y0^2);
+sig = 0.5;
+f = spherefun(@(x,y,z) exp(-((x-x0).^2+(y-y0).^2+(z-z0).^2)/sig^2) )
+plot(f), title('A Gaussian bump on the sphere')
+
+%%
+% The numerical rank of this function is only 14, so we consider it a low
+% rank function. The spherical harmonic coefficients of $f$ up to degree 12
+% can be computed as follows:
+N = 12; k = 1;
+coeffs = zeros((N+1)^2,3); shifts = coeffs(:,1);
+for ell = 0:N
     for m = -ell:ell
         Y = spherefun.sphharm(ell,m);
-        coeffs(k) = sum2(f.*Y);
-        b(k) = Y(x0,y0,z0);
+        coeffs(k,1) = sum2(f.*Y);
+        coeffs(k,2:3) = [ell m];
+        shifts(k) = Y(x0,y0,z0);
         k = k + 1;
     end
 end
-semilogy(coeffs./b,'x-')
-title('The spherical harmonic coefficients of a Gaussian bump',FS,16)
-set(gca,FS,16)
+%%
+% Since the Gaussian is analytic, the spherical harmonic coefficients decay
+% exponentially fast with increasing $\ell$ [2], as the following figure
+% illustrates:
+stem3(coeffs(:,2),coeffs(:,3),abs(coeffs(:,1)),'filled'), ylim([-N N])
+set(gca,'ZScale','log'), set(gca,'Xdir','reverse'), view([-13 18])
+xlabel('$\ell$','Interpreter','Latex'), ylabel('m'), zlabel('|coeffs|')
+
+%%
+% Here is the least squares projection of degree 6 of the Gaussian 
+% function given above:
+fproj = spherefun([]);
+k = 1;
+for ell = 0:6
+    for m = -ell:ell
+        fproj = fproj + coeffs(k,1)*spherefun.sphharm(ell,m);
+        k = k + 1;
+    end
+end
+plot(fproj), title('Degree 6 spherical harmonic projection of the Gaussian');
+
+%%
+% The error in this approximation looks as follows
+plot(f-fproj), colorbar, title('Error in the spherical harmonic projection')
+norm(f-fproj)
+
+%% Postive definite zonal kernels
+% Normalize spherical harmonic coefficients of the Gaussian
+ncoeffs = coeffs(:,1)./shifts;
+stem3(coeffs(:,2),coeffs(:,3),abs(ncoeffs),'filled')
+set(gca,'ZScale','log'), set(gca,'Xdir','reverse'), view([-13 18])
+xlabel('$\ell$','Interpreter','Latex'), ylabel('m'), zlabel('|coeffs|')
 
 %% 
-% Why do we get the strange step effect??   
+% Why do we get the strange step effect??  Funk-Hecke formula for zonal
+% kernel
 
 %% 
-% Exact values seems hard... 
+% The exact values at each step are [6]
+cexact = zeros((N+1)^2,1);
+k = 1;
+for ell = 0:N
+    for m = -ell:ell
+        cexact(k) = 2*sqrt(pi)^3*sig*exp(-2/sig^2).*besseli(ell+1/2,2/sig^2);
+        k = k + 1;
+    end
+ end
+
+%%
+% Check
+norm(ncoeffs(:,1)-cexact)
 
 %% 4. Platonic solids
 % Certain low order spherical harmonics can be combined so that they have
@@ -157,7 +237,7 @@ set(gca,FS,16)
 % combinations of spherical harmonics play a key role in the linear
 % stability analysis of partial differential equations in spherical
 % geometries; see, for example, the work of Busse on convection in
-% spherical shells [5].  The combination with tetrahedral symmetry is 
+% spherical shells [7].  The combination with tetrahedral symmetry is 
 % given by
 Y = spherefun.sphharm(3,2);
 plot(Y), colormap(jet(2))
@@ -186,5 +266,12 @@ plot(Y)
 % polar and spherical geometries I. The sphere, to appear in 
 % _SIAM J. Sci. Comp._, 2016 
 %%
-% [5] F. H. Busse, Patterns of convection in spherical shells. _J. Fluid
+% [5] M. Tygert, Fast algorithms for spherical harmonic expansions, III, _
+% J. Comput. Phys._, 229 , 6181?6192, 2010.
+%%
+% [6] Hubbert, S. and Baxter, B., _Radial basis functions for the sphere_, 
+% Progress in Multivariate Approximation, Volume 137 of the International
+% Series of Numerical Mathematics, Birkhauser, 33-47, 2001.
+%%
+% [7] F. H. Busse, Patterns of convection in spherical shells. _J. Fluid
 % Mech._, 72, 67-85, 1975.
