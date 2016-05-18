@@ -8,9 +8,9 @@
 %% 1. Introduction
 % <latex>
 % Spherical harmonics are the spherical analogue of trigonometric
-% polynomials on the interval. The degree $\ell\geq 0$, order $m$ ($-\ell \leq m
+% polynomials on $[-\pi,\pi)$. The degree $\ell\geq 0$, order $m$ ($-\ell \leq m
 % \leq m$) spherical harmonic is typically denoted as
-% $Y_{\ell}^{m}(\lambda,\theta)$, and can be expressed in real form as [1, Sec. 14.30]:
+% $Y_{\ell}^{m}(\lambda,\theta)$, and can be expressed as [1, Sec. 14.30]:
 % \begin{equation}
 % Y_{\ell}^{m}(\lambda,\theta) =
 % \begin{cases}
@@ -21,7 +21,7 @@
 % \end{equation}
 % where $a_{\ell}^{k}$, $0\leq k \leq \ell$, is a normalization factor
 % and $P_{\ell}^{k}$, $0\leq k \leq \ell$, is the degree $\ell$ and
-% order $k$ associated Legendre functions [1, Ch. 14].
+% order $k$ associated Legendre function [1, Ch. 14].
 % Here, we have used the following spherical coordinate parameterization 
 % for a point on the unit sphere $\mathbf{x} = (x,y,z)$:
 % % $$ x = \cos\lambda\sin\theta,\; y = \sin\lambda\sin\theta,\; z =
@@ -34,18 +34,18 @@
 % Spherical harmonics can be derived by solving the eigenvalue problem
 % for the surface Laplace (Laplace-Beltrami) operator on the sphere; for 
 % an alternative derivation see [2, Ch.\ 2].
-% This operator can be expressed in the spherical coordinates defined above
-% as
+% The Laplace-Beltrami operator can be expressed in the spherical 
+% coordinates defined above as
 % $$ \Delta = \frac{\partial^2}{\partial \theta^2}
 % - \frac{\cos\theta}{\sin\theta}\frac{\partial}{\partial\theta} +
 % \frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\lambda^2}. $$
-% Any degree $\ell\geq 0$ spherical harmonic has the property that 
+% Any degree $\ell\geq 0$ spherical harmonics has the property that 
 % $\Delta Y_{\ell}^{m} = -\ell(\ell + 1) Y_{\ell}^{m}$, 
-% $-m\leq \ell \leq m$.  So, there are 2\ell+1 eigenfunctions of $\Delta$ 
+% $-m\leq \ell \leq m$.  Therefore, there are 2\ell+1 eigenfunctions of $\Delta$ 
 % with eigenvalue $-\ell(\ell+1)$. Spherical harmonics can also be
 % expressed in Cartesian form as polynomials of $x$, $y$, and $z$ [2, Ch.
 % 2]. When viewed in this way, one finds that these polynomials all 
-% satisfy Laplace's equation in $\mathbb{R}^3$, i.e., they are _harmonic.
+% satisfy Laplace's equation in $\mathbb{R}^3$, i.e., they are _harmonic_.
 % This is where the name spherical harmonics originates and was first used
 % by Thompson (Lord Kelvin) and Tait [3, Appendix B].
 % </latex>
@@ -58,10 +58,11 @@
 % $m = -\ell,\ldots,\ell$, is orthonormal, i.e., 
 % $$ \int_{-\pi}^{\pi} \int_0^{\pi}
 % Y_{ell}^{m}(\lambda,\theta)Y_{ell'}^{m'}(\lambda,\theta)
-% \sin\theta\,d\theta d\lambda .$$
+% \sin\theta\,d\theta d\lambda = \delta_{\ell\ell'}\delta_{mm'},$$
+% where $\delta_{st}$ is equal to $1$ if $s=t$ and zero otherwise.
 % Furthermore, it can be shown that they form a complete orthonormal basis
-% for the set of all $L^{2}$ integrable functions on the sphere, 
-% $L^{2}(\mathbb{S})$, [2, Sec. 2.8]. For any $f\inL^{2}(\mathbb{S})$, we
+% for the set of $L^{2}$ integrable functions on the sphere, denoted by
+% $L^{2}(\mathbb{S})$ [2, Sec. 2.8]. Thus, for any $f\in L^{2}(\mathbb{S})$, we
 % have 
 % \begin{equation}
 % f(\lambda,\theta) = \sum_{\ell=0}^{\infty\sum_{m=-\ell}^\ell c_{\ell,m} Y_{\ell}^{m}(\lambda,\theta),
@@ -75,30 +76,30 @@
 % \end{equation}
 % and equality in (\ref{eq:sphHarmEx}) is understood in the mean-square 
 % sense. Truncating the outer sum of (\ref{eq:sphHarmEx}) to $N$ gives 
-% the best degree in $N$ approximation of $f$ in the $L^2$ norm on the 
-% sphere amongst all harmonic polynomials in $\mathbb{R}^3$ of degree 
+% the best degree $N$ approximation of $f$ in the $L^2$ norm on the 
+% sphere, among all harmonic polynomials in $\mathbb{R}^3$ of degree 
 % $N$ restricted to the sphere [2, Ch. 4].  A spherical harmonic expansion
 % gives essentially uniform resolution of a function over the sphere.
 % </latex>
 
 %% 2. Spherical harmonics in Spherefun
-% While spherical harmonics have many properties that make them 
-% mathematically appealing to represent functions on the sphere, the
+% While spherical harmonic expansions have many properties that make them 
+% mathematically appealing for representing functions on the sphere, the
 % technology behind Spherefun does not rely on them.  Instead, it combines
-% the double Fourier Sphere sphere method with a low rank 
-% approximation method (based on structure preserving Gaussian elimination) 
+% the double Fourier sphere method with a low rank technique (based on 
+% a structure-preserving Gaussian elimination procedure) 
 % for approximating functions on the sphere to approximately machine 
-% precision [4]. This hybrid method allows for fast, highly adaptable
+% precision [4]. This hybrid method allows for fast, highly adaptive
 % discretizations based on the FFT, with no setup cost.  While fast
 % spherical harmonic transforms are available [5], the precomputation cost
-% for these algorithms is too high to meet the requirements of Spherefun.
+% for these algorithms is currenly too high to be useful for Spherefun.
 
 %%
 % Nevertheless, given the dominance of spherical harmonics in many
-% applications, Spherefun provides several commands that can be used for
-% computing with spherical harmonics.  In this and the next four sections
-% we discuss some properties of spherical harmonics and show how 
-% Spherefun can be used to easily verify them.
+% applications, Spherefun allows one to compute with spherical harmonics. 
+% In this and the next four sections we discuss some properties of 
+% spherical harmonics and show how Spherefun can be used to easily verify 
+% them.
 
 %%
 % The command |sphharm| constructs a spherical harmonic of a
@@ -113,7 +114,7 @@ plot(Y17)
 norm(laplacian(Y17)-(-17*18)*Y17)
 
 %%
-% We can also verify the orthogonality of spherical harmonics on the sphere
+% We can also verify the orthonormality of spherical harmonics on the sphere
 % using |sum2|, which computes the integral of a function over the sphere: 
 Y13 = spherefun.sphharm(13,7);
 sum2(Y13.*Y17)
@@ -123,10 +124,10 @@ sum2(Y17.*Y17)
 %% 
 % Spherical harmonics become increasing oscillatory as their degree 
 % increases, similar to trigonometric polynomials. 
-% Here is a plot of the real spherical harmonics $Y_{\ell}^{m}$, 
-% $\ell=0,\ldots,4$ and $0\leq m \leq \ell$, illustrating this feature.
-% Black contour lines have been included to where the spherical harmonics
-% are zero
+% Here, is a plot of the real spherical harmonics $Y_{\ell}^{m}$, with
+% $\ell=0,\ldots,4$ and $0\leq m \leq \ell$ that illustrates this behavior.
+% Black contour lines have been included to highlight the zero curves of 
+% each spherical harmonic. 
 N = 4;
 for l = 0:N
     for m = 0:l
@@ -145,18 +146,18 @@ end
 % <latex>
 % The computational cost of computing all the spherical harmonic
 % coefficients up to degree $N$ of a function directly using an
-% approximation of \ref{eq:sphCoeffs} scales like $O(N^4)$.  If $f$ is low
+% approximation of (\ref{eq:sphCoeffs}) scales like $O(N^4)$.  If $f$ is low
 % rank, then the coefficients can be obtained in $O(N^3)$ operations using
 % a fast multiplication algorithm and the |sum2| command in Spherefun. As
 % noted above, fast $O(N^2\log N)$ algorithms are available for this task
-% [5], but these are not yet available in Spherefun.
+% [5], but these are not yet implemented in Spherefun.
 
 %%
 % <latex>
 % As an example, consider the restriction of a Gaussian function, 
 % $$ f(x,y,z) = \exp\left(-\frac{(x-x_0)^2 + (y-y_0)^2 + (z-z_0)^2}{\sigma^2}\right),$$
 % to the surface of the sphere.  Here we center the Gaussian at a 
-% random point $\mathbf{x}_0 = (x_0,y_0,z_0)$ on the sphere:
+% random point $\mathbf{x}_0 = (x_0,y_0,z_0)$ with $x0^2+y0^2+z0^2=1$:
 rng(10)
 x0 = 2*rand-1; y0 = sqrt(1-x0^2)*(2*rand-1); z0 = sqrt(1-x0^2-y0^2);
 sig = 0.5;
@@ -164,9 +165,9 @@ f = spherefun(@(x,y,z) exp(-((x-x0).^2+(y-y0).^2+(z-z0).^2)/sig^2) )
 plot(f), title('A Gaussian bump on the sphere')
 
 %%
-% The numerical rank of this function is only 21, so we consider it a low
-% rank function. The spherical harmonic coefficients of $f$ up to degree 12
-% can be computed as follows:
+% The numerical rank of this function is only 21, so we consider it to be 
+% a low rank function. The spherical harmonic coefficients of $f$ up to 
+% degree 12 can be computed as follows:
 N = 12; k = 1;
 coeffs = zeros((N+1)^2,3);
 for l = 0:N
@@ -196,14 +197,13 @@ for l = 0:7
         k = k + 1;
     end
 end
-plot(fproj), title('Degree 6 spherical harmonic projection of the Gaussian');
+plot(fproj), title('Degree 6 spherical harmonic projection of a Gaussian bump');
 
 %%
 % <latex>
-% As mentioned above, this is the best least squares approximation of
-% $f$ of degree 6. Here is what the difference between $f$ and the 
-% projection looks like, followed by the $L^2(\mathbb{S}^2)$ norm of the 
-% error
+% As mentioned above, this is the best $L^2$ approximation of
+% $f$ of degree 6 on the sphere. Here is what the error between $f$ and the 
+% projection looks like, followed by its $L^2(\mathbb{S}^2)$ norm.
 % </latex>
 plot(f-fproj), colorbar, title('Error in the spherical harmonic projection')
 norm(f-fproj)
@@ -213,7 +213,8 @@ norm(f-fproj)
 % A kernel $\Psi:\mathbf{S}^2 \times \mathbf{S}^2 \rightarrow \mathbf{R}$ is
 % called a zonal kernel on the sphere if for any
 % $\mathbf{x},\mathbf{y}\in\mathbf{S}^2$, the kernel can be expressed
-% solely as a function of the inner product of $\mathbf{x}$ and $\mathbf{y}$, i.e.
+% solely as a function of the inner product of $\mathbf{x}$ and
+% $\mathbf{y}$, i.e.,
 % $$ \Psi(\mathbf{x},\mathbf{y}) = \psi(\mathbf{x}^T\mathbf{y}), $$
 % where $\psi:[-1,1]\rightarrow\mathbf{R}$. For example, the Gaussian 
 % kernel 
@@ -239,23 +240,23 @@ norm(f-fproj)
 % \label{eq:funkHecke}
 % \end{equation}
 % where $a_{\ell}$ are the coefficients in the Legendre series expansion of
-% $\psi$, i.e.
+% $\psi$, i.e., 
 % \begin{equation}
 % f(t) = \sum_{\ell=0}^{\infty} a_{\ell} P_{k}(t),\;\text{where}\; 
 % a_{\ell} = \frac{2\ell+1}{2}\int_{-1}^{1}\psi(t)P_{\ell}(t)dt.
 % \end{equation}
-% Here $P_{\ell}$ denotes the Legendre polynomial of degree $\ell$.  This
+% Here, $P_{\ell}$ denotes the Legendre polynomial of degree $\ell$.  This
 % property is known as the Funk-Hecke formula and holds for any $\psi \in
 % L^1(-1,1)$ [2, Sec. 2.5].
 % </latex>
 
 %%
 % <latex>
-% Equation (\ref{eq:funkHecke}) implies that, for a fixed $\ell$, 
-% $c_{\ell}^{m}/Y_{\ell}^{m}(\mathbf{y})$, for $-\ell \leq m \leq \ell$, 
-% are equal. We can verify this is the case for the Gaussian by taking the
-% spherical harmonic coefficients computed in Section 2 and scaling them 
-% by the appropriate value of $Y_{\ell}^{m}(\mathbf{x}_0)$.
+% Equation (\ref{eq:funkHecke}) implies that, for a fixed $\ell$, the
+% values $c_{\ell}^{m}/Y_{\ell}^{m}(\mathbf{y})$, for $-\ell \leq m \leq \ell$, 
+% are all equal. We can verify this is the case of the Gaussian bump by 
+% taking the spherical harmonic coefficients computed previously and 
+% scaling them by the appropriate value of $Y_{\ell}^{m}(\mathbf{x}_0)$.
 % </latex>
 k = 1;
 zonalCoeffs = zeros((N+1).^2,1);
@@ -272,14 +273,14 @@ xlabel('$\ell$','Interpreter','Latex'), ylabel('m'), zlabel('|coeffs|')
 
 %%
 % <latex>
-% We can check the accuracy of the the computed spherical harmonic
-% coefficients using the Legendre expansion for $\psi$ in
+% Moreover, we can check the accuracy of the the computed spherical harmonic
+% coefficients by using the Legendre expansion for $\psi$ in
 % (\ref{eq:zonalGauss}).  The coefficients in this expansion are computed
 % in [6] and are given by
 % $$ a_{\ell} =
 % \frac{2\ell+1}{8\sigma}\sqrt{\pi}e^{-\sigma^2/2}I_{\ell+1/2}(2/\sigma^2),
 % $$
-% where $I$ denoes the modified Bessel function of the first kind.  The
+% where $I$ denotes the modified Bessel function of the first kind.  The
 % error in the computed spherical harmonic coefficients in Section 3 is
 % then
 % </latex>
@@ -298,7 +299,7 @@ max(abs(coeffs(:,1)-coeffsExact))
 %% 5. The Addition Theorem
 % <latex>
 % A related result to the Funk-Hecke formula is the Addition Theorem for
-% spherical harmonics [2, Sec 2.2].  This theorem says the for any 
+% spherical harmonics [2, Sec 2.2].  This theorem says that for any 
 % $\mathbf{x},\mathbf{y}\in\mathbf{S}^2$, and for $\ell=0,1,\ldots$
 % $$ \frac{4\pi}{2\ell + 1} \sum_{m=-\ell}^{\ell} 
 % Y_{\ell}^m(\mathbf{x})Y_{\ell}^m(\mathbf{y}) = 
@@ -326,7 +327,7 @@ rhs = spherefun(@(x,y,z) feval(p15,t(x,y,z)));
 plot(rhs)
 
 %%
-% Is the theorem correct?
+% Is the theorem correct? At least in this case, yes!
 norm(lhs-rhs)
 
 %% 6. Platonic solids
