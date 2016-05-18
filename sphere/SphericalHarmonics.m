@@ -7,7 +7,7 @@
 
 %% 1. Introduction
 % <latex>
-% Spherical harmonics are the spherical analogue of trigonometric
+% % Spherical harmonics are the spherical analogue of trigonometric
 % polynomials on $[-\pi,\pi)$. The degree $\ell\geq 0$, order $m$ ($-\ell \leq m
 % \leq m$) spherical harmonic is typically denoted as
 % $Y_{\ell}^{m}(\lambda,\theta)$, and can be expressed (in real form) as
@@ -52,7 +52,7 @@
 % polynomials of $x$, $y$, and $z$ [2, Ch. 2]. When viewed in this way, one
 % finds that these polynomials all satisfy Laplace's equation in
 % $\mathbb{R}^3$, i.e., they are \emph{harmonic}. This is where the name
-% spherical harmonics originates and was first used by Thomson (Lord
+% spherical harmonics originates and it was first used by Thomson (Lord
 % Kelvin) and Tait in their classic book \emph{Treatise on Natural Philosophy}
 % [3, Appendix B].
 % </latex>
@@ -136,7 +136,7 @@ sum2(Y17.*Y17)
 
 %% 
 % Spherical harmonics become increasing oscillatory as their degree 
-% increases, similar to trigonometric polynomials. 
+% increases, similarly to trigonometric polynomials. 
 % Here is a plot of the real spherical harmonics $Y_{\ell}^{m}$, with
 % $\ell=0,\ldots,4$ and $0\leq m \leq \ell$, that illustrates this behavior.
 % Black contour lines have been included indicating the zero curves of 
@@ -159,7 +159,7 @@ end
 % <latex>
 % The computational cost of computing all the spherical harmonic
 % coefficients up to degree $N$ of a function directly using an
-% approximation of (\ref{eq:sphCoeffs}) scales like $O(N^4)$.  If $f$ is low
+% approximation of (\ref{eq:sphCoeffs}) scales like $O(N^4)$.  If $f$ is of low
 % rank, then the coefficients can be obtained in $O(N^3)$ operations using
 % a fast multiplication algorithm and the \verb|sum2| command in Spherefun. As
 % noted above, fast $O(N^2\log N)$ algorithms are available for this task
@@ -197,7 +197,7 @@ end
 
 %%
 % Since the Gaussian is analytic, the spherical harmonic coefficients decay
-% exponentially fast with increasing $\ell$ [2], as the following figure
+% exponentially with increasing $\ell$ [2], as the following figure
 % illustrates:
 stem3(coeffs(:,2),coeffs(:,3),abs(coeffs(:,1)),'filled'), ylim([-N N])
 set(gca,'ZScale','log'), set(gca,'Xdir','reverse'), view([-13 18])
@@ -326,7 +326,7 @@ max(abs(coeffs(:,1)-coeffsExact))
 % Y_{\ell}^m(\mathbf{x})Y_{\ell}^m(\mathbf{y}) = 
 % P_{\ell}(\mathbf{x}^{T}\mathbf{y}), $$
 % where $P_{\ell}$ is the Legendre polynomial of degree $\ell$.  The
-% left hand side of this equation for $\ell = 14$ can be constructed as 
+% left-hand side of this equation for $\ell = 14$ can be constructed as 
 % follows:
 % </latex>
 rng(13)
@@ -353,7 +353,7 @@ norm(lhs-rhs)
 
 %% 6. Platonic solids
 % Certain low order spherical harmonics can be combined so that they have
-% the same rotational symmetries of certain platonic solids.  These
+% the same rotational symmetries as certain platonic solids.  These
 % combinations of spherical harmonics play a key role in the linear
 % stability analysis of partial differential equations in spherical
 % geometries; see, for example, the work of Busse on thermal convection in
