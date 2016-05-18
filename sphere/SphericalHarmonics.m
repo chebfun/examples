@@ -7,7 +7,7 @@
 
 %% 1. Introduction
 % <latex>
-% % Spherical harmonics are the spherical analogue of trigonometric
+% Spherical harmonics are the spherical analogue of trigonometric
 % polynomials on $[-\pi,\pi)$. The degree $\ell\geq 0$, order $m$ ($-\ell \leq m
 % \leq m$) spherical harmonic is typically denoted as
 % $Y_{\ell}^{m}(\lambda,\theta)$, and can be expressed (in real form) as
