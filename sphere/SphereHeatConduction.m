@@ -73,7 +73,7 @@
 % </latex>
 
 u0 = spherefun.sphharm(6,0) + sqrt(14/11)*spherefun.sphharm(6,5);
-plot(u0), colormap(flipud(hot)), caxis([-1 1.5]), colorbar, axis('off')
+plot(u0), colormap(jet), caxis([-0.5 1]), colorbar, axis('off')
 
 %%
 % <latex>
@@ -108,7 +108,7 @@ for n = 2:nsteps
     
     % Plot the solution every 25 time steps
     if ( mod(n, 25) == 0 )
-        plot( u ), colormap(flipud(hot)), caxis([-1 1.5])
+        plot( u ), colormap(jet), caxis([-0.5 1])
         title(sprintf('Time %1.2f',n*dt)), colorbar, axis('off'), snapnow
     end
 end
@@ -133,7 +133,7 @@ for bumps = 1:5
     x0 = 2*rand-1; y0 = sqrt(1-x0^2)*(2*rand-1); z0 = sqrt(1-x0^2-y0^2);
     u0 = u0 + spherefun(@(x,y,z) exp(-30*((x-x0).^2+(y-y0).^2+(z-z0).^2)));
 end
-plot(u0), colormap(flipud(hot)), colorbar, axis('off'), caxis([-0.05 1])
+plot(u0), colormap(jet), colorbar, axis('off'), caxis([0 1])
 
 %%
 % Since the sphere has no boundary, the total amount of heat is
@@ -163,8 +163,8 @@ for n = 2:nsteps
     
     % Plot the solution every 25 time steps
     if ( mod(n, 25) == 0 )
-        plot( u ), colormap(flipud(hot)), caxis([-0.05 1]), hold on
-        contour(u,[meanu0 meanu0],'b-'), hold off
+        plot( u ), colormap(jet), caxis([0 1]), hold on
+        contour(u,[meanu0 meanu0],'k-'), hold off
         title(sprintf('Time %1.2f',n*dt)), colorbar, axis('off'), snapnow
     end
 end
