@@ -15,8 +15,8 @@
 % \begin{equation}
 % Y_{\ell}^{m}(\lambda,\theta) =
 % \begin{cases}
-% \sqrt{2} a_{\ell}^{m} P_{\ell}^{m}(\cos\theta)\cos(m\lambda) & m > 0,\\
-% a_{\ell}^{0} P_{\ell}(\cos\theta) & m=0, \\
+% \sqrt{2} a_{\ell}^{m} P_{\ell}^{m}(\cos\theta)\cos(m\lambda) & m > 0,\cr
+% a_{\ell}^{0} P_{\ell}(\cos\theta) & m=0, \cr
 % \sqrt{2} a_{\ell}^{|m|} P_{\ell}^{|m|}(\cos\theta)\sin(m\lambda) & m < 0,
 % \end{cases}
 % \end{equation}
@@ -51,9 +51,9 @@
 % Spherical harmonics can also be expressed in Cartesian form as
 % polynomials of $x$, $y$, and $z$ [2, Ch. 2]. When viewed in this way, one
 % finds that these polynomials all satisfy Laplace's equation in
-% $\mathbb{R}^3$, i.e., they are \emph{harmonic}. This is where the name
+% $\mathbb{R}^3$, i.e., they are _harmonic_. This is where the name
 % spherical harmonics originates and it was first used by Thomson (Lord
-% Kelvin) and Tait in their classic book \emph{Treatise on Natural Philosophy}
+% Kelvin) and Tait in their classic book _Treatise on Natural Philosophy_
 % [3, Appendix B].
 % </latex>
 
@@ -266,7 +266,7 @@ norm(f-fproj)
 % a_{\ell} = \frac{2\ell+1}{2}\int_{-1}^{1}\psi(t)P_{\ell}(t)dt.
 % \end{equation}
 % Here, $P_{\ell}$ denotes the Legendre polynomial of degree $\ell$.  This
-% property is known as the \emph{Funk-Hecke} formula and holds for any $\psi \in
+% property is known as the _Funk-Hecke_ formula and holds for any $\psi \in
 % L^1(-1,1)$ [2, Sec. 2.5].
 % </latex>
 
@@ -319,7 +319,7 @@ max(abs(coeffs(:,1)-coeffsExact))
 
 %% 5. The Addition Theorem
 % <latex>
-% A related result to the Funk-Hecke formula is the \emph{Addition Theorem} for
+% A related result to the Funk-Hecke formula is the _Addition Theorem_ for
 % spherical harmonics [2, Sec 2.2].  This theorem says that for any 
 % $\mathbf{x},\mathbf{y}\in\mathbb{S}^2$, and for all $\ell=0,1,\ldots$
 % $$ \frac{4\pi}{2\ell + 1} \sum_{m=-\ell}^{\ell} 
@@ -382,7 +382,7 @@ plot(Y), hold on, contour(Y,[0 0],'k-'), axis off, hold off
 % [3] W. Thomson and P. G. Tait. _Treatise on Natural Philosophy_, 2nd ed.,
 % Vol. 1, Cambridge: At the University press, 1888.
 %%
-% [4] A. Townsend, H. Wilber, and G. B. Wright, Computing with function in
+% [4] A. Townsend, H. Wilber, and G. B. Wright, Computing with functions in
 % polar and spherical geometries I. The sphere, to appear in 
 % _SIAM J. Sci. Comp._, 2016.
 %%

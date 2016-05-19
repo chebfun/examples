@@ -182,7 +182,7 @@ norm(meanu0 - mean2(u))
 
 %% 7. References
 %%
-% [1] A. Townsend, H. Wilber, and G. B. Wright, Computing with function in
+% [1] A. Townsend, H. Wilber, and G. B. Wright, Computing with functions in
 % polar and spherical geometries I. The sphere, to appear in 
 % _SIAM J. Sci. Comp._, 2016 
 %%
