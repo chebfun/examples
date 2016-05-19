@@ -51,9 +51,10 @@
 % Spherical harmonics can also be expressed in Cartesian form as
 % polynomials of $x$, $y$, and $z$ [2, Ch. 2]. When viewed in this way, one
 % finds that these polynomials all satisfy Laplace's equation in
-% $\mathbb{R}^3$, i.e., they are _harmonic_. This is where the name
+% $\mathbb{R}^3$, i.e., they are {\em harmonic}. This is where the name
 % spherical harmonics originates and it was first used by Thomson (Lord
-% Kelvin) and Tait in their classic book _Treatise on Natural Philosophy_
+% Kelvin) and Tait in their classic book {\em Treatise on Natural
+% Philosophy}
 % [3, Appendix B].
 % </latex>
 
@@ -266,7 +267,7 @@ norm(f-fproj)
 % a_{\ell} = \frac{2\ell+1}{2}\int_{-1}^{1}\psi(t)P_{\ell}(t)dt.
 % \end{equation}
 % Here, $P_{\ell}$ denotes the Legendre polynomial of degree $\ell$.  This
-% property is known as the _Funk-Hecke_ formula and holds for any $\psi \in
+% property is known as the {\em Funk-Hecke} formula and holds for any $\psi \in
 % L^1(-1,1)$ [2, Sec. 2.5].
 % </latex>
 
@@ -319,8 +320,8 @@ max(abs(coeffs(:,1)-coeffsExact))
 
 %% 5. The Addition Theorem
 % <latex>
-% A related result to the Funk-Hecke formula is the _Addition Theorem_ for
-% spherical harmonics [2, Sec 2.2].  This theorem says that for any 
+% A related result to the Funk-Hecke formula is the {\em Addition Theorem}
+% for spherical harmonics [2, Sec 2.2].  This theorem says that for any
 % $\mathbf{x},\mathbf{y}\in\mathbb{S}^2$, and for all $\ell=0,1,\ldots$
 % $$ \frac{4\pi}{2\ell + 1} \sum_{m=-\ell}^{\ell} 
 % Y_{\ell}^m(\mathbf{x})Y_{\ell}^m(\mathbf{y}) = 
