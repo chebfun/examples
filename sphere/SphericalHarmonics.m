@@ -241,8 +241,7 @@ norm(f-fproj)
 % \psi(\mathbf{x}^T\mathbf{y})Y_{\ell}^{m}(\mathbf{x})dS = \frac{4\pi a_{\ell}}{2\ell+1} Y_{\ell}^{m}(\mathbf{y}), \quad (4) $$
 % where $a_{\ell}$ are the coefficients in the Legendre series expansion of
 % $\psi$, i.e., 
-% $$
-% \psi(t) = \sum_{\ell=0}^{\infty} a_{\ell} P_{k}(t),\;\text{where}\; 
+% $$ \psi(t) = \sum_{\ell=0}^{\infty} a_{\ell} P_{k}(t),\;\hbox{where}\; 
 % a_{\ell} = \frac{2\ell+1}{2}\int_{-1}^{1}\psi(t)P_{\ell}(t)dt.
 % $$
 % Here, $P_{\ell}$ denotes the Legendre polynomial of degree $\ell$.  This
