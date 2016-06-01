@@ -8,7 +8,7 @@
 %% 1. Introduction
 % Spherical harmonics are the spherical analogue of trigonometric
 % polynomials on $[-\pi,\pi)$. The degree $\ell\geq 0$, order $m$ ($-\ell \leq m
-% \leq m$) spherical harmonic is typically denoted by
+% \leq m$) spherical harmonic is denoted by
 % $Y_{\ell}^{m}(\lambda,\theta)$, and can be expressed (in real form) as
 % [1, Sec. 14.30]:
 % $$
@@ -23,13 +23,13 @@
 % \sqrt{2} a_{\ell}^{|m|} P_{\ell}^{|m|}(\cos\theta)\sin(m\lambda),\quad m < 0,
 % $$
 % where $a_{\ell}^{k}$, $0\leq k \leq \ell$, is a normalization factor
-% and $P_{\ell}^{k}$, $0\leq k \leq \ell$, is the degree $\ell$ and
+% and $P_{\ell}^{k}$, $0\leq k \leq \ell$, is the degree $\ell$,
 % order $k$ associated Legendre function [1, Ch. 14].
 % Here, we have used the following spherical coordinate parameterization 
-% for a point on the unit sphere ${\bf x} = (x,y,z)$:
-% $$ x = \cos\lambda\sin\theta,\; y = \sin\lambda\sin\theta,\; z =
+% for a point ${\bf x} = (x,y,z)$ on the unit sphere:
+% $$ x = \cos\lambda\sin\theta,~~ y = \sin\lambda\sin\theta,~~ z =
 % \cos\theta, $$
-% where $-\pi \leq \lambda \leq \pi$ and $0 \leq \theta \leq \pi$.
+% with $-\pi \leq \lambda \leq \pi$ and $0 \leq \theta \leq \pi$.
 
 %%
 % Spherical harmonics can be derived by solving the eigenvalue problem
@@ -55,8 +55,8 @@
 % Philosophy_ [3, Appendix B].
 
 %%
-% By choosing the normalization factors $a_{\ell}^{k}$, $\ell \geq 0$, $0
-% \leq k \leq \ell$, in (1) as
+% If the normalization factors $a_{\ell}^{k}$, $\ell \geq 0$, $0
+% \leq k \leq \ell$ in (1) are chosen as
 % $$ a_{\ell}^{k} = \sqrt{\frac{(2\ell+1)(\ell-k)!}{4\pi(\ell+k)!}}, $$
 % the set of spherical harmonics $\{Y_{\ell}^{m}\}$, $\ell=0,1,\ldots$, 
 % $m = -\ell,\ldots,\ell$, is orthonormal, i.e., 
@@ -64,26 +64,26 @@
 % \int_{-\pi}^{\pi} \int_0^{\pi}
 % Y_{\ell}^{m}(\lambda,\theta)Y_{\ell'}^{m'}(\lambda,\theta)
 % \sin\theta\,d\theta d\lambda = \delta_{\ell\ell'}\delta_{mm'}, $$
-% where $\delta_{st}$ is equal to $1$ if $s=t$ and zero otherwise.
+% where $\delta_{st}=1$ for $s=t$ and $\delta_{st}=0$ otherwise.
 % Furthermore, it can be shown that they form a complete orthonormal basis
 % for the set of $L^{2}$ integrable functions on the sphere, denoted by
 % $L^{2}({\bf S}^2)$ [2, Sec. 2.8].
 % Thus, for any $f\in L^{2}({\bf S}^2)$, we have 
 % $$
-% f(\lambda,\theta) = \sum_{\ell=0}^{\infty}\sum_{m=-\ell}^\ell c_{\ell}^{m} Y_{\ell}^{m}(\lambda,\theta), \quad (1) $$
+% f(\lambda,\theta) = \sum_{\ell=0}^{\infty}\sum_{m=-\ell}^\ell c_{\ell}^{m} Y_{\ell}^{m}(\lambda,\theta), \quad\quad (1) $$
 % where 
 % $$ c_{\ell}^m = \int_{{\bf S}^2} f Y_{\ell}^m\,dS =
 % \int_{-\pi}^{\pi} \int_0^{\pi}
 % f(\lambda,\theta)Y_{\ell}^m(\lambda,\theta)\,d\theta d\lambda,
-% \quad (2) $$
+% \quad\quad (2) $$
 % and equality in (1) is understood in the mean-square 
 % sense. Truncating the outer sum of (1) to $N$ gives 
 % the degree $N$ spherical harmonic projection of $f$. This is the best 
 % degree $N$ approximation of $f$ in the $L^2$ norm on the 
-% sphere, among all harmonic polynomials in ${\bf R}^3$ of degree 
+% sphere among all harmonic polynomials in ${\bf R}^3$ of degree 
 % $N$ restricted to the sphere [2, Ch. 4].  A spherical harmonic projection
 % gives essentially uniform resolution of a function over the sphere in a
-% similar way to a trigonometric (or Fourier) projection of a $2\pi$
+% similar way to a trigonometric (Fourier) projection of a $2\pi$
 % periodic function in one dimension.
 
 %% 2. Spherical harmonics in Spherefun
@@ -100,7 +100,7 @@
 % technology underlying approximations in Spherefun.
 
 %%
-% Nevertheless, given the dominance of spherical harmonics in many
+% Nevertheless, given the importance of spherical harmonics in many
 % applications, Spherefun allows one to compute with spherical harmonics. 
 % In this and the next four sections we discuss some properties of 
 % spherical harmonics and show how Spherefun can be used to easily verify 
@@ -131,7 +131,7 @@ sum2(Y17.*Y17)
 % Spherical harmonics become increasing oscillatory as their degree 
 % increases, similarly to trigonometric polynomials. 
 % Here is a plot of the real spherical harmonics $Y_{\ell}^{m}$, with
-% $\ell=0,\ldots,4$ and $0\leq m \leq \ell$, that illustrates this behavior.
+% $\ell=0,\ldots,4$ and $0\leq m \leq \ell$, illustrating this behavior.
 % Black contour lines have been included indicating the zero curves of 
 % each spherical harmonic, which highlights their transition from positive
 % to negative values.
@@ -149,7 +149,7 @@ end
 % order ones, differing only by a rotation about the polar axis.
 
 %% 3. Computing spherical harmonic coefficients
-% The computational cost of computing all the spherical harmonic
+% The cost of computing all the spherical harmonic
 % coefficients up to degree $N$ of a function directly using an
 % approximation of (2) scales like $O(N^4)$.  If $f$ is of low
 % rank, then the coefficients can be obtained in $O(N^3)$ operations using
@@ -194,8 +194,8 @@ set(gca,'ZScale','log'), set(gca,'Xdir','reverse'), view([-13 18])
 xlabel('$\ell$','Interpreter','Latex'), ylabel('m'), zlabel('|coeffs|')
 
 %%
-% Here is the degree seven spherical harmonic projection of the Gaussian 
-% function given above
+% Here is the degree 7 spherical harmonic projection of the Gaussian 
+% function given above.
 fproj = spherefun([]);
 k = 1;
 for l = 0:7
@@ -208,7 +208,7 @@ plot(fproj), title('Degree 7 spherical harmonic projection')
 colorbar, axis off
 
 %%
-% As mentioned above, this is the best $L^2$ approximation of
+% As mentioned earlier, this is the best $L^2$ approximation of
 % $f$ of degree 7 on the sphere. Here is what the error between $f$ and the 
 % projection looks like, followed by its $L^2({\bf S}^2)$ norm.
 plot(f-fproj), title('Error in the spherical harmonic projection')
@@ -218,8 +218,8 @@ norm(f-fproj)
 %% 4. Zonal kernels and the Funk-Hecke formula
 % A kernel $\Psi:{\bf S}^2 \times {\bf S}^2 \rightarrow {\bf R}$ is
 % called a zonal kernel on the sphere if for any
-% $\mathbf{x},\mathbf{y}\in{\bf S}^2$, the kernel can be expressed
-% solely as a function of the inner product of $\mathbf{x}$ and
+% $\mathbf{x},\mathbf{y}\in{\bf S}^2$, it can be expressed
+% as a function of the inner product of $\mathbf{x}$ and
 % $\mathbf{y}$, i.e.,
 % $$ \Psi(\mathbf{x},\mathbf{y}) = \psi(\mathbf{x}^T\mathbf{y}), $$
 % where $\psi:[-1,1]\rightarrow\mathbf{R}$. For example, the Gaussian 
@@ -227,8 +227,8 @@ norm(f-fproj)
 % $$ \Psi(\mathbf{x},\mathbf{y}) =
 % \exp\left(-\frac{\|\mathbf{x}-\mathbf{y}\|_2^2}{\sigma^2}\right) $$
 % restricted to the sphere is a zonal kernel since
-% $$ \|\mathbf{x}-\mathbf{y}\|_2 = \sqrt{2-2\mathbf{x}^T\mathbf{y}}, $$
-% for any points $\mathbf{x},\mathbf{y}\in{\bf S}^2$.  So, for the 
+% $$ \|\mathbf{x}-\mathbf{y}\|_2 = \sqrt{2-2\mathbf{x}^T\mathbf{y}} $$
+% for any $\mathbf{x},\mathbf{y}\in{\bf S}^2$.  So, for the 
 % Gaussian,
 % $$ \psi(t) = \exp\left(-\frac{2(1-t)}{\sigma^2}\right). \quad (3) $$
 
@@ -241,10 +241,10 @@ norm(f-fproj)
 % \psi(\mathbf{x}^T\mathbf{y})Y_{\ell}^{m}(\mathbf{x})dS = \frac{4\pi a_{\ell}}{2\ell+1} Y_{\ell}^{m}(\mathbf{y}), \quad (4) $$
 % where $a_{\ell}$ are the coefficients in the Legendre series expansion of
 % $\psi$, i.e., 
-% \begin{equation}
+% $$
 % \psi(t) = \sum_{\ell=0}^{\infty} a_{\ell} P_{k}(t),\;\text{where}\; 
 % a_{\ell} = \frac{2\ell+1}{2}\int_{-1}^{1}\psi(t)P_{\ell}(t)dt.
-% \end{equation}
+% $$
 % Here, $P_{\ell}$ denotes the Legendre polynomial of degree $\ell$.  This
 % property is known as the _Funk-Hecke formula_ and holds for any $\psi \in
 % L^1(-1,1)$ [2, Sec. 2.5].
@@ -252,7 +252,7 @@ norm(f-fproj)
 %%
 % Equation (4) implies that, for a fixed $\ell$, the
 % values $c_{\ell}^{m}/Y_{\ell}^{m}(\mathbf{y})$, for $-\ell \leq m \leq \ell$, 
-% are all equal. We can verify this is the case for the Gaussian by 
+% are all equal. We can verify this for the Gaussian by 
 % taking the spherical harmonic coefficients computed previously and 
 % scaling them by the appropriate value of $Y_{\ell}^{m}(\mathbf{x}_0)$.
 k = 1;
@@ -295,7 +295,7 @@ max(abs(coeffs(:,1)-coeffsExact))
 %% 5. The Addition Theorem
 % A related result to the Funk-Hecke formula is the _Addition Theorem_
 % for spherical harmonics [2, Sec 2.2].  This theorem says that for any
-% $\mathbf{x},\mathbf{y}\in{\bf S}^2$, and for all $\ell=0,1,\ldots$
+% $\mathbf{x},\mathbf{y}\in{\bf S}^2$ and all $\ell=0,1,\ldots,$
 % $$ \frac{4\pi}{2\ell + 1} \sum_{m=-\ell}^{\ell} 
 % Y_{\ell}^m(\mathbf{x})Y_{\ell}^m(\mathbf{y}) = 
 % P_{\ell}(\mathbf{x}^{T}\mathbf{y}), $$
@@ -314,7 +314,7 @@ lhs = 4*pi/(2*l+1)*lhs;
 plot(lhs), colorbar, axis off
 
 %%
-% The right hand side can be constructed using |legpoly|:
+% The right-hand side can be constructed using |legpoly|:
 p15 = legpoly(l);
 t = @(x,y,z) (x*x0 + y*y0 + z*z0);
 rhs = spherefun(@(x,y,z) feval(p15,t(x,y,z)));
@@ -346,7 +346,7 @@ Y = spherefun.sphharm(6,0) + sqrt(14/11)*spherefun.sphharm(6,5);
 plot(Y), hold on, contour(Y,[0 0],'k-'), axis off, hold off
 
 %% References
-% [1] F. W. Olver, D. W. Lozier, R. F. Boisver, and C. W. Clark, _NIST
+% [1] F. W. Olver, D. W. Lozier, R. F. Boisvert, and C. W. Clark, _NIST
 % Handbook of Mathematical Functions_, Cambridge University Press, 2010.
 %%
 % [2] K. Atkinson and W. Han, _Spherical Harmonics and Approximations on the Unit Sphere: An
@@ -356,14 +356,14 @@ plot(Y), hold on, contour(Y,[0 0],'k-'), axis off, hold off
 % Vol. 1, Cambridge: At the University press, 1888.
 %%
 % [4] A. Townsend, H. Wilber, and G. B. Wright, Computing with functions in
-% polar and spherical geometries I. The sphere, to appear in 
-% _SIAM J. Sci. Comp._, 2016.
+% polar and spherical geometries I. The sphere, 
+% _SIAM J. Sci. Comp._, to appear in 2016.
 %%
 % [5] M. Tygert, Fast algorithms for spherical harmonic expansions, III, 
 % _J. Comput. Phys._, 229 , 6181-6192, 2010.
 %%
-% [6] Hubbert, S. and Baxter, B., _Radial basis functions for the sphere_, 
-% Progress in Multivariate Approximation, Volume 137 of the International
+% [6] S. Hubbert and B. Baxter, _Radial basis functions for the sphere_, 
+% Progress in Multivariate Approximation, v. 137 of the International
 % Series of Numerical Mathematics, Birkhaeuser, 33-47, 2001.
 %%
 % [7] F. H. Busse, Patterns of convection in spherical shells. _J. Fluid
