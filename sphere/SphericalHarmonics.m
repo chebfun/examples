@@ -60,7 +60,7 @@
 % $$ a_{\ell}^{k} = \sqrt{\frac{(2\ell+1)(\ell-k)!}{4\pi(\ell+k)!}}, $$
 % the set of spherical harmonics $\{Y_{\ell}^{m}\}$, $\ell=0,1,\ldots$, 
 % $m = -\ell,\ldots,\ell$, is orthonormal, i.e., 
-% $$ \int_{{\bf S}^2} Y_{\ell}^{m}Y_{\ell'}^{m'}\,dS =
+% $$ \int_{S^2} Y_{\ell}^{m}Y_{\ell'}^{m'}\,dS =
 % \int_{-\pi}^{\pi} \int_0^{\pi}
 % Y_{\ell}^{m}(\lambda,\theta)Y_{\ell'}^{m'}(\lambda,\theta)
 % \sin\theta\,d\theta d\lambda = \delta_{\ell\ell'}\delta_{mm'}, $$
@@ -72,7 +72,7 @@
 % $$
 % f(\lambda,\theta) = \sum_{\ell=0}^{\infty}\sum_{m=-\ell}^\ell c_{\ell}^{m} Y_{\ell}^{m}(\lambda,\theta), \quad\quad (1) $$
 % where 
-% $$ c_{\ell}^m = \int_{{\bf S}^2} f Y_{\ell}^m\,dS =
+% $$ c_{\ell}^m = \int_{S^2} f Y_{\ell}^m\,dS =
 % \int_{-\pi}^{\pi} \int_0^{\pi}
 % f(\lambda,\theta)Y_{\ell}^m(\lambda,\theta)\,d\theta d\lambda,
 % \quad\quad (2) $$
@@ -237,7 +237,7 @@ norm(f-fproj)
 % $\mathbf{y}\in{\bf S}^2$, their spherical harmonic coefficients
 % satisfy
 % $$
-% c_{\ell}^{m} = \int_{{\bf S}^2}
+% c_{\ell}^{m} = \int_{S^2}
 % \psi(\mathbf{x}^T\mathbf{y})Y_{\ell}^{m}(\mathbf{x})dS = \frac{4\pi a_{\ell}}{2\ell+1} Y_{\ell}^{m}(\mathbf{y}), \quad (4) $$
 % where $a_{\ell}$ are the coefficients in the Legendre series expansion of
 % $\psi$, i.e., 
