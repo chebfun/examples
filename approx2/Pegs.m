@@ -19,7 +19,7 @@
 %%
 % A plot shows this this is a somewhat smoothed version of
 % the characteristic function of a tilted square:
-levels = .1:.2:.9
+levels = .1:.2:.9;
 contourf(f,levels), axis equal
 set(gca,'xtick',-1:1,'ytick',-1:1)
 FS = 'fontsize';
