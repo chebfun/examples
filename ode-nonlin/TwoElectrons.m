@@ -140,8 +140,8 @@ z(T)
 % period are still far from machine precision.
 % The match with the nonperiodic representation is good:
 zT = z{0,T};
-zTtrig = chebfun(zT,'trig','eps',1e-8);
-norm(z{0,T}-zTtrig)
+zTtrig = chebfun(zT,'trig','eps',1e-6);
+norm(zT-zTtrig)
 
 %%
 % These are the absolute values of the Fourier coefficients:
@@ -162,5 +162,6 @@ total_time_in_seconds = toc
 %%
 % For faster work, the first author has been
 % exploring electron problems in Julia using Julia's ode45
-% command, which runs ten times faster than Matlab's ode45.
+% command, which runs about four times faster than Matlab's ode45,
+% which in turn (at least for medium accuracies) is faster than Chebfun.
 
