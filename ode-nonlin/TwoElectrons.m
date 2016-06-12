@@ -14,11 +14,13 @@
 % sees all kinds of disordered and chaotic trajectories, and we
 % hope to explore some of the
 % possibilities in a future example.  In this example we consider
-% just  a very special configuration with $n=2$, in which
+% just a very special configuration with $n=2$, in which
 % the two electrons are assumed to be exactly symmetrical about a line
 % of reflection.  Here is a typical trajectory over a time interval
-% of length 40.  
+% of length 40.  (The "splitting on" command is commented on at the
+% end of this writeup.)
 LW = 'linewidth'; MS = 'markersize'; lw = 1.2;
+chebfunpref.setDefaults('splitting',true)
 N = chebop(0,40);
 N.op = @(t,z) diff(z,2) + 2*z./abs(z).^3 - 0.25i*imag(z)./imag(z).^3;
 V = 1; N.lbc = [1i; V];
@@ -69,10 +71,15 @@ plot(x), xlabel t, ylabel('x(t)'), ylim([-1.5 1.5])
 % interesting to explore "Pluto" trajectories just below this limit
 % starting from values such as $V=1.85$ or $1.86$.
 
-%% 3. Periodic trajectories
-% For certain special initial velocities, the orbits are periodic.
-% The simplest one, corresponding to $V\approx 1.446$, has
-% the electrons simply swinging back and forth:
+%% 3. Periodic trajectories: "swing orbits"
+% For certain special initial velocities, the trajectories are periodic.
+% So far, we have found two kinds of such trajectories.  In the first,
+% which we call "swing orbits", the
+% electrons go back and forth
+% between two extreme points, far from the nucleus,
+% at which the velocity is zero.  The
+% simplest swing orbit corresponds to 
+% $V\approx 1.446$ and looks like this:
 N.domain = [0 20];
 V = 1.446; N.lbc = [1i; V];
 z = N\0; x = real(z); y = imag(z);
@@ -86,23 +93,23 @@ plot(x), xlabel t, ylabel x
 
 %%
 % Here is an estimate of the period $T$:
-r = roots(x-.9*max(x)); r = r(deriv(x,r)>0); T = r(2)-r(1)
+[val,pos] = min(x,'local'); T = pos(3)-pos(2)
 
 %%
-% Here is another periodic solution:
+% Here is another swing orbit:
 V = 0.783; N.lbc = [1i; V];
 z = N\0; x = real(z); y = imag(z);
 plot(0,0,'.k',MS,8), hold on
 plot(x,y,x,-y,LW,lw), axis(1.2*[-1 1 -1 1]), axis square, hold off
+set(gca,'xtick',-1:1,'ytick',-1:1)
 
 %%
 % Since the orbit is more complicated, it is not surprising that
 % the period is longer:
-set(gca,'xtick',-1:1,'ytick',-1:1)
 r = roots(x-.9*max(x)); r = r(deriv(x,r)>0); T = r(2)-r(1)
 
 %%
-% And here a third periodic solution with a still longer period:
+% And here a third swing orbit with a still longer period:
 V = 1.17745; N.lbc = [1i; V];
 z = N\0; x = real(z); y = imag(z);
 plot(0,0,'.k',MS,8), hold on
@@ -113,7 +120,7 @@ T = mean(r(end-1:end))
 
 %%
 % Readers trying these computations on their own may enjoy
-% experimenting with the command |comet(z)|, which shows the planets
+% experimenting with the command |comet(z)|, which shows the electrons
 % flying about.
 
 %% 4. Periodic representation
@@ -135,13 +142,11 @@ T = T - real(z(T))/V
 z(T)
 
 %%
-% Here we construct a trigonometric representation:
+% Here we construct a trigonometric representation,
 % using a loosened tolerance since the computed orbit and
 % period are still far from machine precision.
-% The match with the nonperiodic representation is good:
 zT = z{0,T};
 zTtrig = chebfun(zT,'trig','eps',1e-6);
-norm(zT-zTtrig)
 
 %%
 % These are the absolute values of the Fourier coefficients:
@@ -152,12 +157,43 @@ plotcoeffs(zTtrig,'.k')
 % is interesting too:
 plot(diff(zTtrig),'m')
 title('Velocities z''(t)')
+axis([-3 3 -3 3]), axis square
+set(gca,'xtick',-3:3,'ytick',-3:3)
 
-%% 5. Computing time
+%% 5. Periodic trajectories: "collision orbits"
+% Another kind of periodic orbit arises at lower energies, which
+% we call "collision orbits".  In these orbits, the overall motion
+% looks smooth but in fact the electrons nearly collide near the
+% nucleus.  Here is the simplest example:
+N.domain = [0 10];
+V = 0.13220442; N.lbc = [1i; V];
+z = N\0; x = real(z); y = imag(z);
+plot(0,0,'.k',MS,8), hold on
+plot(x,y,x,-y,LW,lw), axis(1.2*[-1 1 -1 1]), axis square, hold off
+set(gca,'xtick',-1:1,'ytick',-1:1)
+
+%%
+% The trajectory looks smooth, but a zoom near the origin shows
+% that it is not:
+axis(0.001*[-1 1 -1 1]), axis square, hold off
+
+%%
+% Other more complicated such orbits seem to arise with
+% $V = 0.4536, 0.5539, 0.5987, 0.6205, 0.6312,\dots.$
+
+%% 6. Computing time
 % Chebfun is wonderfully convenient, but it is not especially
 % fast, as we can see from the computing time for this
 % example:
 total_time_in_seconds = toc
+
+%%
+% Moreover, without "splitting on" as set at the beginning of this note,
+% the time would have been about $60\%$ longer.  This is because
+% these trajectories are highly irregular, and Chebfun expends a
+% good deal of effort constructing global representations.
+% Let's be good citizens and turn splitting off again.
+chebfunpref.setDefaults('factory')
 
 %%
 % For faster work, the first author has been
