@@ -1,4 +1,4 @@
-%% The "explain" command for Chebfun geeks
+%% The `explain` command for Chebfun geeks
 % Jared Aurentz and Nick Trefethen, June 2016
 
 %%
