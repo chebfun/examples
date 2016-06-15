@@ -6,11 +6,11 @@
 
 %% 1. Circles, dots, dashed line, and envelope
 % Since the release of Version 5.3 in 2015, Chebfun
-% has constructed chebfuns by a process encoded in the file
-% |standardChop.m|, which implements an algorithm described
-% in [1].
+% has constructed chebfuns by a process encoded in
+% |standardChop.m|, which implements an algorithm described in [1].
 % If you want to see the details for a particular function,
 % the new |explain| command can help.
+% (As of today, you need to be on the development branch for this.)
 % For example, here is an explanation of the chebfun of the
 % function $f(x) = 10000e^x$ on $[-1,1]$:
 explain('100000*exp(x)')
@@ -33,12 +33,12 @@ explain('100000*exp(x)')
 % will be one of $17, 33, 65,\dots, 65537$.  
 
 %% 
-% _Black dashed line:_ tolerance used for this chebfun construction.
+% _Horizontal black dashed line:_ tolerance used for this chebfun construction.
 % This level is equal to the scale of the function (maximum
-% of the sample values) times  a number |tol|.  In a Chebfun
+% of the Chebyshev coefficients) times  a number |tol|.  In a Chebfun
 % computation, |tol| is set to the Chebfun |chebfuneps| parameter,
-% whose factory values is is machine epsilon, $2^{-52}$, which is
-% about $10^{-16}$.  In explain, |tol| is set to machine epsilon by
+% whose factory value is machine epsilon, $2^{-52}$,
+% about $10^{-16}$.  In |explain|, |tol| is set to machine epsilon by
 % default, and we will show later on how the user can override this
 % choice.
 
@@ -71,11 +71,11 @@ explain('exp(-(x-.5)^2)')
 
 %%
 % Now, back to the construction process.  The |standardChop| algorithm
-% has three main steps.  Step 1 constructs the monotonic envelope.
+% has three main steps.  Step 1 calculates the monotonic envelope of
+% the Chebyshev coefficients.
 % The main feature of the algorithm is the separation into a Step 2,
 % which decides that _this series is good enough to be chopped to
-% make a chebfun_ (if not,
-% we have to sample on a finer grid),
+% make a chebfun_ (if not, we have to sample on a finer grid),
 % and Step 3, which decides _exactly where we will chop this series_.
 
 %%
@@ -95,14 +95,48 @@ explain('exp(-(x-.5)^2)')
 % and the magenta ruler touch.
 
 %%
-% Here's another example:
+% Here is another example, a Runge function with a large parameter.  
 explain('1/(1+1000*x^2)')
 
-%% 3. Adjusting the tolerance
+%%
+% Here we illustrate that a long plateau at level $10^{-8}$ is too
+% high to be accepted; Chebfun insists on capturing it:
+explain('exp(x) + 1e-8*cos(99*x)')
 
+%%
+% If the plateau is lower down, Chebfun chops before it:
+explain('exp(x) + 1e-12*cos(99*x)')
+
+%%
+% Sometimes Chebfun chooses to chop a series before
+% |plateauPoint|.  One sees this most often with non-analytic
+% functions whos series converge slowly:
+explain('abs(x)^3')
+
+%%
+% Here the constructor has decided that doubling the length of
+% the series to get one more digit is not worthwhile.  One can
+% always override that decision with a command like this:
+f = chebfun('abs(x).^3',3000)
+
+%% 3. Adjusting the tolerance
+% For working with noisy data, and also for computations in two
+% and especially three dimensions, it is often desirable to
+% loosen the tolerance.  For example, Chebfun cannot capture 
+% this function:
+f = chebfun('exp(x) + 1e-8*cos(99999*x)')
+
+%%
+% With a looser tolerance it has no trouble:
+f = chebfun('exp(x) + 1e-8*cos(99999*x)','eps',1e-8)
+
+%%
+% Here we use |explain| with a second tolerance parameter
+% to see how the length was determined:
+explain('exp(x) + 1e-8*cos(99999*x)',1e-8)
 
 %% 4. References
 %
 % 1. J. L. Aurentz and L. N. Trefethen, Chopping a Chebyshev
 % series, arXiv 2015 and expected to appear after revision in
-% _Transactions on Mathematical Software_.
+% _ACM Transactions on Mathematical Software_.
