@@ -47,3 +47,12 @@ view([-2.5, -1, 0.4]), camlight, axis off, axis equal
 % at level $-0.1$, a value below all of the input data:
 isosurface(f, -0.1)
 view([-2.5, -1, 0.4]), camlight, axis off, axis equal
+
+%%
+% In this example we approximated the discrete HELLO tensor
+% using the 'equi' flag, leading to a trivariate Chebyshev
+% representation associated with equispaced data.  A more
+% straightforward approach mathematically would be to regard
+% the tensor as triply periodic and form a chebfun3 from it with 
+% the 'trig' flag instead.  Experiments show that if this is
+% done, the pictures look similar.
