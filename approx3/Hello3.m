@@ -42,7 +42,7 @@ view([-2.5, -1, 0.4]), camlight, axis off, axis equal
 %%
 % From a function approximation point of view, this is
 % most definitely not well resolved!  Readers may have
-% fun calling |isosurface(f)| without to explore different
+% fun calling |isosurface(f)| to explore different
 % levels with a slider.  For example, here is what we get
 % at level $-0.1$, a value below all of the input data:
 isosurface(f, -0.1)
