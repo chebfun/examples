@@ -67,7 +67,7 @@ I2 = sum2(v1(1,:,:)) - sum2(v1(-1,:,:)) + ...
 % formulas in Chebfun3, let us consider the functions
 f = 1 + x.*exp(y+z);
 g = x.^2 + y.^2 + z.^2;
-slice(g, 0.5, 0, 0)
+isosurface(g,1.3,'r'), axis equal, grid on
 
 %%
 % The Laplacian and gradient of $f$ can be computed with |lap(f)| and |grad(f)|.
