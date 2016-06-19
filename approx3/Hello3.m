@@ -1,5 +1,5 @@
 %% Hello 3D World
-% Olivier Sete, June 2016
+% Olivier S&egrave;te, June 2016
 
 %%
 % (Chebfun3 Example: Fun/HelloWorld3.m)
