@@ -18,7 +18,6 @@ A(6:13,34:35)=1; A(6:13,38:39)=1; A(6:7,36:37)=1; A(12:13,36:37)=1;
 
 A = [zeros(14,40); A; zeros(11,40)];
 A = fliplr(flipud(A));
-
 B = zeros(40,40,40);
 for k = 18:21
     B(k,:,:) = A;
@@ -27,16 +26,15 @@ end
 %%
 % B is now a $40\times 40\times 40$ tensor whose entries are all zeros and ones.
 
+%%
 % A chebfun3 is normally constructed from a function handle for a 
 % function $f(x,y,z)$.
 % It is also possible to do it from discrete data, and we can specify that
 % this is to be interpreted as living on an equispaced grid:
-
 f = chebfun3(B, 'equi');
 
 %% 
 % Let's plot the result:
-
 f = permute(f, [1, 3, 2]);
 isosurface(f, 0.5)
 view([-2.5, -1, 0.4]), camlight, axis off, axis equal
