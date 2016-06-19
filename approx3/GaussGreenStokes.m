@@ -1,5 +1,5 @@
 %% The theorems of Gauss, Green and Stokes
-% Olivier Sete, June 2016
+% Olivier S&egrave;te, June 2016
 
 %%
 % (Chebfun example chebfun3/GaussGreenStokes.m)
@@ -106,9 +106,9 @@ I6 = sum2(v1(1,:,:)) - sum2(v1(-1,:,:)) + ...
 % $\vec{t}$ is the tangential vector and $ds$ is the scalar line element.
 % As an easy example we consider the surface given by the unit disk in the
 % $x$ - $y$ plane, which can be parametrised by
-Phi = chebfun2v(@(rho,phi) rho.*cos(phi), @(rho,phi) rho.*sin(phi), ...
+S = chebfun2v(@(rho,phi) rho.*cos(phi), @(rho,phi) rho.*sin(phi), ...
     @(rho,phi) 0, [0, 1, 0, 2*pi]);
-surf(Phi)
+surf(S)
 
 %%
 % We consider again the vector field $\vec{v}$ from the beginning, which we now
@@ -126,16 +126,16 @@ quiver3(curlv)
 % considering.
 
 %%
-% The composition $\mbox{curl}(\vec{v})(\Phi)$ can be obtained as
+% The composition $\mbox{curl}(\vec{v})(S)$ can be obtained as
 curlv1 = curlv(1); curlv2 = curlv(2); curlv3 = curlv(3);
-curlvPhi = chebfun2v(@(rho,phi) curlv1(rho.*cos(phi), rho.*sin(phi), 0*rho), ...
+curlvS = chebfun2v(@(rho,phi) curlv1(rho.*cos(phi), rho.*sin(phi), 0*rho), ...
     @(rho,phi) curlv2(rho.*cos(phi), rho.*sin(phi), 0*rho), ...
     @(rho,phi) curlv3(rho.*cos(phi), rho.*sin(phi), 0*rho), ...
     [0, 1, 0, 2*pi]);
 
 %%
 % The flux integral is then simply
-I7 = sum2(dot(curlvPhi, normal(Phi)))
+I7 = sum2(dot(curlvS, normal(S)))
 
 %%
 % The exact value is $\pi$,
