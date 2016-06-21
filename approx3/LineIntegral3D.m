@@ -6,9 +6,9 @@
 
 %%
 % Assume that $f(x,y,z)$ is a function defined over a box
-% $[a, b] \times [c, d] \times [e, g]$ represented by a chebfun3 object and
+% $[a, b] \times [c, d] \times [e, g]$ represented by a chebfun3 and
 % $C$ is a 3D curve defined by a parameterization
-% $$ C = \{ (x,y,z): ~x = x(t),~ y = y(t),~ z = z(t),~~ t_1 \leq t \leq t_2\}. $$
+% $$ C = \{ (x,y,z): ~x = x(t),~ y = y(t),~ z = z(t),~~ t_1 \leq t \leq t_2 \}. $$
 % Our aim is to compute the line integral of $f$ over $C$. Recall from 
 % calculus that
 % $$ \int_C f(x,y,z) ds = \int_{t_1}^{t_2} f(x(t), y(t), z(t)) \sqrt{(\frac{dx}{dt})^2
@@ -35,7 +35,6 @@ r = 5;
 C = chebfun(@(t) [sin(t/(2*r)).*cos(t) sin(t/(2*r)).*sin(t) ...
     cos(t/(2*r))], [0, 10*pi]);
 plot3(C(:,1), C(:,2), C(:,3)), axis equal
-
 f = chebfun3(@(x,y,z) x+y.*z );
 I = integral(f, C)
 
