@@ -2,7 +2,7 @@
 % Olivier S&egrave;te, June 2016
 
 %%
-% (Chebfun example chebfun3/GaussGreenStokes.m)
+% (Chebfun example approx3/GaussGreenStokes.m)
 
 %%
 % In this example we illustrate Gauss's theorem,
