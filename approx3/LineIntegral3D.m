@@ -8,10 +8,12 @@
 % Assume that $f(x,y,z)$ is a function defined over a box
 % $[a, b] \times [c, d] \times [e, g]$ represented by a chebfun3 and
 % $C$ is a 3D curve defined by a parameterization
-% $$ C = \{ (x,y,z): ~x = x(t),~ y = y(t),~ z = z(t),~~ t_1 \leq t \leq t_2 \}. $$
+% $$ C = \\{ (x,y,z): ~x = x(t),~ y = y(t),~ z = z(t),~~
+% t_1 \leq t \leq t_2 \\}. $$
 % Our aim is to compute the line integral of $f$ over $C$. Recall from 
 % calculus that
-% $$ \int_C f(x,y,z) ds = \int_{t_1}^{t_2} f(x(t), y(t), z(t)) \sqrt{(\frac{dx}{dt})^2
+% $$ \int_C f(x,y,z) ds = \int_{t_1}^{t_2}
+% f(x(t), y(t), z(t)) \sqrt{(\frac{dx}{dt})^2
 % + (\frac{dy}{dt})^2 + (\frac{dz}{dt})^2} \, dt. $$
 
 %%
