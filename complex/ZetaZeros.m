@@ -82,7 +82,7 @@ grid on, hold off
 % nothing more than polynomial approximation in the complex plane,
 % which worked well because we stayed away from the pole of $\zeta(s)$
 % at $s=1$.  Near $s=1$, one could still use polynomial approximation
-% by working with $\zeta(s)/(s-1)$, which is an entire function
+% by working with $\zeta(s)*(s-1)$, which is an entire function
 % (i.e., analytic for all values of $s$).  Alternatively, a more
 % powerful approach to numerical analytic continuation is to use
 % rational approximations, which can be computed in Chebfun with
