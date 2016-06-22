@@ -97,6 +97,11 @@ toc
 % The computed integral still has several correct digits.
 
 %%
+% Here are the Chebyshev coefficients of the rows of $g$.
+% The columns and tubes are similar.
+plotcoeffs(g.rows), ylim([3e-6 10])
+
+%%
 % As good citizens, we now return the tolerance to its
 % factory value:
 chebfun3eps factory
