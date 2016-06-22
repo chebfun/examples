@@ -72,7 +72,7 @@ integral2(F, S)
 %%
 % Of course we can also integrate over curves in Chebfun3.  This is done with
 % |integral|.  See 
-% http://www.chebfun.org/examples/fun/LineIntegral3D.html
+% http://www.chebfun.org/examples/approx3/LineIntegral3D.html
 % for integration of a scalar function over a curve and
-% http://www.chebfun.org/examples/fun/GaussGreenStokes.html
+% http://www.chebfun.org/examples/approx3/GaussGreenStokes.html
 % for integrals of vector fields along a curve.
