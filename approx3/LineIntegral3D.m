@@ -32,7 +32,8 @@ I = integral(f, C)
 
 %%
 % As a second example, consider integration of $x+yz$ over a spherical 
-% helix
+% helix (a special case of a more general type of curve known as a 
+% loxodrome).
 r = 5; 
 C = chebfun(@(t) [sin(t/(2*r)).*cos(t) sin(t/(2*r)).*sin(t) ...
     cos(t/(2*r))], [0, 10*pi]);
