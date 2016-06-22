@@ -15,15 +15,15 @@ chebfun3eps
 % In 1D, there is usually
 % not much to be gained by loosening the tolerance (unless you are
 % working with noisy functions), and we have long recommended that users
-% leave `chebfuneps` at its factory value.  (For example there is an
-% FAQ questions at `www.chebfun.org` on this topic.)  In 2D and especially 3D,
+% leave `chebfuneps` at its factory value.  (There is an
+% FAQ question at `www.chebfun.org` on this topic.)  In 2D and especially 3D,
 % however, loosening the tolerance is often worthwhile.
 % This is discussed in Section 18.10 of the _Chebfun Guide_.
 
 %%
 % The reason the default tolerance is machine precision is
-% that accurate results are often easily achievable.  For example, let us
-% compute the triple integral
+% that accurate results are often easily achievable.  For example, suppose
+% we want to compute the triple integral
 % $$ I = \int_{-1}^1 \int_{-1}^1 \int_{-1}^1 \exp(\sin(xyz + \exp(xyz))) dz dy dx . $$
 % We could do it like this,
 tic
@@ -76,7 +76,8 @@ g
 [m,n,p] = length(g)
 
 %%
-% Sometimes one wants to loosen the tolerance globally, like this:
+% Sometimes one wants to loosen the tolerance globally, e.g. if there
+% will be further computations, like this:
 chebfun3eps 1e-8
 tic
 cheb.xyz
@@ -91,6 +92,9 @@ tic
 g = exp(sin(10*x.*y.*z + exp(x.*y.*z)));
 I = sum3(g)
 toc
+
+%% 
+% The computed integral still has several correct digits.
 
 %%
 % As good citizens, we now return the tolerance to its
