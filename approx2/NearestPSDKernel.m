@@ -37,7 +37,7 @@ function NearestPSDKernel()
 % symmetric) matrix.  
 % 
 % In practice, we assume that $K$ can be approximated to accuracy 
-% $\epsilon_M$ by a finite rank function [7-8]. One can easily compute such
+% $\epsilon_M$ by a finite rank function [8-9]. One can easily compute such
 % an approximation in Chebfun, even though Chebfun2 has no _eig_ command 
 % currently. The point is that the singular value expansion
 %
@@ -51,24 +51,34 @@ function NearestPSDKernel()
 % See e.g., [p. 31, 3] for details in the discrete case. Let us try some
 % symmetric indefinite kernels in Chebfun. The function 
 % `KHat = nearestPSD(K)` in the following computes $\hat{K}$.
-
+%
+% Let us recall that even though spectral expansion of an operator is 
+% classic [7], it makes sense to talk also about spectral expansion of a 
+% bivariate function in the context of approximation. But it is not our aim
+% here to make this connection precise.
 %% A multiquadric kernel 
 % One of the famous kernels used in the field of RBFs is the multiquadric.
 % This kernel is indefinite in general [6], so its approximation by a
-% positive semidefinite kernel is nontrivial.
-sigma = 0.7; c = 1.5;
-mq = @(x,y) sqrt((x.^2+y.^2)./sigma + c^2); 
+% positive semidefinite kernel is nontrivial. More specifically, as Grady 
+% Wright noticed, the multiquadric is a conditionally negative definite 
+% kernel, which means that it has one positive eigenvalue and the rest are
+% negative. In the following we try $-1$ times the multiquadric, which is a 
+% conditionally positive definite kernel, and the nearest PSD kernel would 
+% be of rank one less than the negative of the multiquadric.
+
+c = 0.01;
+mq = @(x,y) -sqrt((x.^2+y.^2) + c^2); 
 K = chebfun2(mq,[-2 2 -2 2])
 KHat = nearestPSD(K)
 
 %%
-% As we see, $9$ negative eigenvalues of $K$ have been removed to form
+% As we see, one negative eigenvalue of $K$ has been removed to form
 % $\hat{K}$.
 subplot(1,2,1), contourf(K), axis equal, title('Multiquadric kernel')
 subplot(1,2,2), contourf(KHat), axis equal, title('Nearest PSD kernel')
 
 %% A symmetric positive semidefinite kernel of Gaussian bumps
-% Here we add $20$ Gaussian bumps with centers at the diagoanl of the 
+% Here we add $20$ Gaussian bumps with centers at the diagonal of the 
 % domain, so that the kernel itself is positive semidefinite and therefore 
 % we expect $\hat{K}$ to be the same as $K$.
 gam = 50;
@@ -159,9 +169,11 @@ end
 %    non-positive kernels, _Proceedings of the 21st International 
 %    Conference on Machine Learning_, Banff, Canada, 2004.
 %
-% 7. A. Townsend, _Computing with functions in two dimensions_, DPhil
+% 7. F. Riesz and B. Sz.-Nagy, _Functional Analysis_, Dover, 1990.
+%
+% 8. A. Townsend, _Computing with functions in two dimensions_, DPhil
 %    Thesis, University of Oxford, 2014.
 %
-% 8. A. Townsend and L.N. Trefethen, An extension of Chebfun to two 
+% 9. A. Townsend and L.N. Trefethen, An extension of Chebfun to two 
 %    dimensions, _SIAM Journal on Scientific Computing_ 35 (2013) C495-C518.    
 end
