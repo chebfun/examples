@@ -2,7 +2,7 @@
 % Olivier S&egrave;te, June 2016
 
 %%
-% (Chebfun example chebfun3/GaussGreenStokes.m)
+% (Chebfun example approx3/GaussGreenStokes.m)
 
 %%
 % In this example we illustrate Gauss's theorem,
@@ -123,19 +123,8 @@ quiver3(curlv)
 
 %%
 % Note how the curl of $\vec{v}$ points up, just through the surface we are
-% considering.
-
-%%
-% The composition $\mbox{curl}(\vec{v})(S)$ can be obtained as
-curlv1 = curlv(1); curlv2 = curlv(2); curlv3 = curlv(3);
-curlvS = chebfun2v(@(rho,phi) curlv1(rho.*cos(phi), rho.*sin(phi), 0*rho), ...
-    @(rho,phi) curlv2(rho.*cos(phi), rho.*sin(phi), 0*rho), ...
-    @(rho,phi) curlv3(rho.*cos(phi), rho.*sin(phi), 0*rho), ...
-    [0, 1, 0, 2*pi]);
-
-%%
-% The flux integral is then simply
-I7 = sum2(dot(curlvS, normal(S)))
+% considering.  The flux integral then is
+I7 = integral2(curlv, S)
 
 %%
 % The exact value is $\pi$,
