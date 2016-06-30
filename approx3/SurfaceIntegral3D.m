@@ -20,8 +20,8 @@
 % Such a parametric surface can be described as a Chebfub2v object. The 
 % surface integral of $f$ is
 %
-% $$ \int_S f(x,y,z) ds = \int_S f(x(u,v), y(u,v), z(u,v))) |T_u \times T_v|
-% du dv $$
+% $$ \int_S f(x,y,z) ds = \int_S f(x(u,v), y(u,v), z(u,v)))\ |T_u \times T_v|
+% \ du dv $$
 %
 % where $T_u \times T_v$ is the cross product of tangent vectors $T_u$ and
 % $T_v$. 
