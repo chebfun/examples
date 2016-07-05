@@ -10,7 +10,6 @@
 % |standardChop.m|, which implements an algorithm described in [1].
 % If you want to see the details for a particular function,
 % the new |explain| command can help.
-% (As of today, you need to be on the development branch for this.)
 % For example, here is an explanation of the chebfun of the
 % function $f(x) = 10000e^x$ on $[-1,1]$:
 explain('100000*exp(x)')
