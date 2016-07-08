@@ -3,8 +3,7 @@
 
 %%
 % (Chebfun example linalg/AnalyticSVD.m)
-function AnalyticSVD()
-tic
+
 %% 1. The analytic SVD
 % Nearly everybody knows the matrix SVD
 % $$ A=USV^T, $$
@@ -16,8 +15,8 @@ tic
 % Then, there exists an analytic singular value decomposition [1,2]
 % $$ A(t)=U(t)S(t)V(t)^T, $$
 % in which
-% each matrix on the right-hand side is analytic for every $t \in [-1,1]$. Moreover, $U(t)$ and $V(t)$ are unitary for all
-% $t \in [-1,1]$, while $S(t)$ is a diagonal
+% each matrix on the right-hand side is analytic for $t \in [-1,1]$. Moreover, $U(t)$ and $V(t)$ 
+% are unitary for $t \in [-1,1]$, while $S(t)$ is a diagonal
 % matrix whose entries are real analytic functions of $t$, although not
 % necessarily positive or ordered
 % (these relaxations are necessary to achieve analyticity)
@@ -26,6 +25,9 @@ tic
 %% 2. A non-smooth SVD
 % Let's try to use Chebfun to explore the analytic SVD.
 % We define a $4\times 4$ matrix $A(t)$ depending affinely on $t$:
+
+function AnalyticSVD()
+tic
 
 clear, close all
 LW = 'linewidth'; MS = 'markersize'; FS = 'fontsize'; 
@@ -40,7 +42,8 @@ AA = @(t) A*t + B*(1-t);
 %%
 % Next, we use Chebfun to resolve the analytic SVD as a function.
 % We expect the initial outcome to be likely to have many singularities,
-% for reasons to be clarified below, and for this reason we use 'splitting on':
+% for reasons to be clarified below, and for this reason we use 'splitting
+% on'. 
 % We now create a function UVSVD that, given a matrix $A$, outputs one of
 % the scalar elements of the SVD (see the listing at the end). 
 % Chebfun with the flag 'splitting on' will
@@ -49,7 +52,7 @@ AA = @(t) A*t + B*(1-t);
 % showing the location of the particular singular value that requires splitting. 
 
 for ii = 1:n
-    f = chebfun(@(t) UVSVD(AA(t),ii),SP,'on',VEC);
+    f = chebfun(@(t) UVSVD(AA(t),ii),SP,'on',VEC);    
     plot(f,LW,lw), hold on, grid on
     b = f.domain(2:end-1); k = length(b); 
     for j = 1:k, x = b(j); plot(x*[1 1],[0 4],'k'), plot(x,f(x),'ko'),end    
@@ -166,9 +169,9 @@ for pos = [1 n]
     uu = uupos{pos}; uu = chebfun(@(t)uu(t));
     ss = sspos{pos}; ss = chebfun(@(t)ss(t));
     vv = vvpos{pos}; vv = chebfun(@(t)vv(t));    
-    plotcoeffs(uu,'bo',LW,lw), hold on
-    plotcoeffs(ss,'ko',LW,lw)
-    plotcoeffs(vv,'ro',LW,lw)    
+    plotcoeffs(uu,'b.',LW,lw), hold on
+    plotcoeffs(ss,'k.',LW,lw)
+    plotcoeffs(vv,'r.',LW,lw)    
     text(length(uu)+5,eps*10,['U_{',num2str(pos),'1}'],CO,'b',FS,fs)
     text(length(ss)+5,eps/10,['\sigma_',num2str(pos)],CO,'k',FS,fs)
     text(length(vv)+5,eps/1e3,['V_{',num2str(pos),'1}'],CO,'r',FS,fs)
@@ -189,7 +192,7 @@ end
 time_in_seconds = toc
 
 
-%% References
+%% 6. References
 % [1] A. Bunse-Gerstner, R. Byers, V. Mehrmann and N. Nichols, Numerical
 % computation of an analytic singular value decomposition of a matrix
 % valued function, Numerische Mathematik (1991), 60(1), 1--39.
