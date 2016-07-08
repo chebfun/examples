@@ -14,7 +14,7 @@ f = chebfun3(ff)
 
 %%
 % An alternative way of constucting $f$ is to call 
-% f = cheb.gallery3('wagon'); 
+% f = cheb.gallery3('wagon').
 % The minimization problem is easy to solve in Chebfun3 [2].
 
 tic, min3_f = min3(f), toc
@@ -84,5 +84,5 @@ clf, plotcoeffs(f.tubes(:,1))
 % 100-Digit Challenge: a Study in High-Accuracy Numerical Computing_, SIAM,
 % 2004.
 %
-% 2. B. Hashemi, L. N. Trefethen, Chebfun in three dimensions, manuscript 
-% in preparation, 2016.
+% 2. B. Hashemi, L. N. Trefethen, Chebfun in three dimensions, submitted, 
+% 2016.
