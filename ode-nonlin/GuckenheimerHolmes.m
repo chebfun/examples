@@ -91,9 +91,9 @@ legend('u','v','w','location','southeast')
 % 1. F. H. Busse and K. E. Heikes, Convection in a rotating layer: a simple
 %    case of turbulence, _Science_ 208 (1980), 173-175.
 %
-% 2. J. Guckenheimer and P. Holmes, Structurally stable hereroclinic cyles,
+% 2. J. Guckenheimer and P. Holmes, Structurally stable heteroclinic cycles,
 %    _Math. Proc. Camb. Phil. Soc._ 103 (1988), 189-192.
 %
 % 3. P. Holmes, J. L. Lumley, G. Berkooz, and C. W. Rowley, _Turbulence,
-%    Coherent Structues, Dynamical Systems and Symmetry_, 2nd ed., Cambridge,
+%    Coherent Structures, Dynamical Systems and Symmetry_, 2nd ed., Cambridge,
 %    2012.
