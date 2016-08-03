@@ -55,7 +55,7 @@ plot(U)
 
 %% 3. Example: tilted peg
 % Next, we try a tilted variant of the square peg with rank 100.  This
-% is like the function `cheb.gallery('tiltedpeg')`, except
+% is like the function `cheb.gallery2('tiltedpeg')`, except
 % with the tilting angle modified to make $f$ symmetric.
 % We solve (1) 
 % for $k = 4$ and plot the four columns of our solution.
@@ -109,7 +109,7 @@ leg_trace = trace(U2'*f*U2)
 %%
 function U = ev(f, k)
 %   U = EV(F, K) returns eigenfunctions corresponding to K algebraically 
-%   algebraically largest eigenvalues of a symmetric chebfun2 object F.
+%   largest eigenvalues of a symmetric chebfun2 object F.
 [U,S,V] = svd(f);
 s = zeros(size(U,2),1);
 for i=1:size(U,2)
