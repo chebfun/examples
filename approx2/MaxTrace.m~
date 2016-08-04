@@ -115,10 +115,10 @@ s = zeros(size(U,2),1);
 for i=1:size(U,2)
     s(i) = U(:,i)'*V(:,i); % inner product of eigenfunctions
 end
-Lambda = sign(s).*diag(S); % eigenvalues of f
-[~, idx] = sort(Lambda);
-ind = flip(idx(end-k+1:end)); % indices of the k largest eigenvals
-U = U(:, ind);                % corresponding eigenfunctions
+Lambda = sign(s).*diag(S) % eigenvalues of f
+[~, idx] = sort(Lambda)
+ind = idx(end-k+1:end);    % indices of the k largest eigenvals
+U = U(:, ind);             % corresponding eigenfunctions
 end
 
 %% References
