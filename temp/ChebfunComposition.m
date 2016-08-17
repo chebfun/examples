@@ -1,10 +1,10 @@
-%% Compose!
+%% Composition with multivariate chebfuns
 % Olivier S&egrave;te, August 2016
 
 %%
 % (Chebfun example temp/ChebfunComposition.m)
 
-%% The composition with chebfuns
+%% 1. Composition with chebfuns
 % The composition of two functions, $g(f)$, is one of the basic operations which
 % can be done in Chebfun, e.g.,
 
@@ -13,9 +13,11 @@ g = chebfun(@(t) exp(t));
 h = g(f)
 
 %%
-% The same is possible for all combinations of objects from Chebfun, Chebfun2
-% and Chebfun3, so that the composition makes sense. We present a few examples
-% and start with a chebfun of a Chebfun2:
+% The same is possible for all combinations of chebfun, chebfun2, and chebfun3
+% objects so long as the composition is defined in the sense that the range of
+% $f$ lies in the domain of $g$.
+% The composition with spherefuns and diskfuns is not yet implemented.
+% We present a few examples and start with a chebfun of a chebfun2:
 
 f = chebfun2(@(x,y) x.^2 + y);
 g = chebfun(@(t) exp(cos(10*t)), [-2, 2]);
@@ -34,16 +36,17 @@ h = g(f)
 % Chebfun3v object, depending on the number of columns of the chebfun $g$.
 
 
-%% A Chebfun2 of...
-% any object $f$ that maps to $\mathbf{R}^2$ ! Let us start with the composition
-% of a Chebfun2 object $g$ with a chebfun, which is the restriction of $g$ to a
-% curve in 2d space.  As an easy example let
+%% 2. Composition of a chebfun2 object
+% A chebfun2 object $g$ can be composed with any object $f$ that maps to
+% $\mathbf{R}^2$. Let us start with the composition of a Chebfun2 object $g$
+% with a chebfun, which is the restriction of $g$ to a curve in 2d space.  As an
+% easy example let
 
 g = chebfun2(@(x,y) x.^2 + y.^2);
 f = chebfun(@(t) [ cos(t), sin(t) ], [ -pi, pi ]);
 
 %%
-% The composition |g(f)| is of course the constant chebfun $1$ on $[-\pi, \pi]$:
+% The composition |g(f)| returns the constant chebfun $1$ on $[-\pi, \pi]$:
 h = g(f)
 plot(h)
 
@@ -51,8 +54,8 @@ plot(h)
 %%
 % Similarly we can compose $g$ with a Chebfun2v or a Chebfun3v object that maps
 % to $\mathbf{R}^2$, and the result is a Chebfun2 or Chebfun3, respectively. In
-% particular we can thus consider $g$ on a non-rectangular domain parametrized
-% by $f$:
+% particular we can consider $g$ on a non-rectangular domain parametrized by
+% $f$ like this:
 
 f = chebfun2v(@(x,y) x + y, @(x,y) y, [0, 1, 0, 1]);
 g = chebfun2(@(x,y) sin(5*x.^2).*y.^4, [0, 2, 0, 1]);
@@ -63,7 +66,7 @@ plot(h)
 % Of course the same is possible if $g$ is a Chebfun2v object.  Try it with your
 % favourite functions!
 
-%% The complex plane
+%% 3. The complex plane
 % Before we move on to Chebfun3 and Chebfn3v objects $g$, let us explore one
 % particularity in 2d:  the real and complex plane can be identified.
 % Accordingly, a single input of a Chebfun2 or Chebfun2v object is interpreted
@@ -86,7 +89,7 @@ hr = g(fr);
 hc = g(fc);
 norm(hr - hc)
 
-%% Moving to 3d
+%% 4. Moving to 3d
 % Given a Chebfun3 or Chebfun3v object, we can compose it with anything mapping
 % to $\mathbf{R}^3$: a chebfun describing a curve, a Chebfun2v object describing
 % a surface, or a Chebfun3v object parametrizing a possibly non-rectangular
