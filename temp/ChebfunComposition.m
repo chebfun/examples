@@ -30,26 +30,23 @@ g = chebfun(@(t) [ t, t.^2 ]);
 h = g(f)
 
 %%
-% We can replace $f$ by a Chebfun3 object and then we obtain a Chebfun3 or
+% Replacing $f$ by a Chebfun3 object works too and gives a Chebfun3 or
 % Chebfun3v object, depending on the number of columns of the chebfun $g$.
 
 
 %% A Chebfun2 of...
-% any object $f$ that maps to $\mathbf{R}^2$ !
-% Let us start with the composition of a Chebfun2 object g with a chebfun, which
-% is the restriction of $g$ to a curve in 2d space.  As an easy example
-% let
+% any object $f$ that maps to $\mathbf{R}^2$ ! Let us start with the composition
+% of a Chebfun2 object $g$ with a chebfun, which is the restriction of $g$ to a
+% curve in 2d space.  As an easy example let
 
 g = chebfun2(@(x,y) x.^2 + y.^2);
 f = chebfun(@(t) [ cos(t), sin(t) ], [ -pi, pi ]);
 
 %%
-% The composition is as easy as typing
+% The composition |g(f)| is of course the constant chebfun $1$ on $[-\pi, \pi]$:
 h = g(f)
 plot(h)
 
-%%
-% The result is the constant chebfun 1 on $[-\pi, \pi]$.
 
 %%
 % Similarly we can compose $g$ with a Chebfun2v or a Chebfun3v object that maps
