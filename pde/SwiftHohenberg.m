@@ -15,7 +15,7 @@ S = spinop2('sh2')
 % From here we see that the version of the equation in Chebfun is
 % $$ u_t = ru - (1 + \Delta)^2u + gu^2 - u^3, $$
 % with $r = 0.1$ and $g=1$. This equation was derived by Swift and Hohenberg 
-% in 1977 to study thermal fluctuations on a fluid near the Rayleigh-B\'enard 
+% in 1977 to study thermal fluctuations on a fluid near the Rayleigh-Benard 
 % convective instability [1]. The function $u$ is the temperature field in a 
 % plane horizontal layer of fluid heated from below. The parameter $r$ measures 
 % how far the temperature is above the minimum temperature required for 
@@ -24,8 +24,8 @@ S = spinop2('sh2')
 % quadratic nonlinearity. The Swift-Hohenberg equation is an example of a PDE 
 % that exhibits pattern formation, including stripes, spots and spirals. The 
 % preloaded demo starts with an initial condition of amplitude $0.1$ involving 
-% random noise on the domain $[0, 20, 0, 20]$, runs to $t=200$ and leads to a 
-% set of spots. As always, the boundary conditions are periodic.
+% random noise on the domain $[0, 20]\times[0, 20]$, runs to $t=200$ and leads
+% to a set of spots. As always, the boundary conditions are periodic.
 u = spin2('sh2', 'plot', 'off');
 plot(u), view(0,90), axis equal, axis off
 
@@ -41,7 +41,7 @@ u
 
 %% 2. Spots, spirals and stripes
 % Let us construct a `spinop2` corresponding to $r=10^{-2}$ and $g=1$, on the 
-% domain $[0, 20\pi, 0, 20\pi]$ and with time interval $[0, 200]$:
+% domain $[0, 20\pi]\times[0, 20\pi]$ and with time interval $[0, 200]$:
 dom = [0 20*pi 0 20*pi];
 tspan = [0 200];
 S = spinop2(dom, tspan);
