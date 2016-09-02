@@ -13,11 +13,11 @@ g = chebfun(@(t) exp(t));
 h = g(f)
 
 %%
-% The same is possible for all combinations of chebfun, chebfun2, and chebfun3
-% objects so long as the composition is defined in the sense that the range of
-% $f$ lies in the domain of $g$.
-% The composition with spherefuns and diskfuns is not yet implemented.
-% We present a few examples and start with a chebfun of a chebfun2:
+% The same is possible for all combinations of chebfun, chebfun2, chebfun2v,
+% chebfun3, chebfun3v, spherefun, and spherefunv objects, so long as the range
+% of $f$ lies in the domain of $g$.  The composition with diskfuns is not
+% currently implemented.  We present a few examples and start with a chebfun of
+% a chebfun2:
 
 f = chebfun2(@(x,y) x.^2 + y);
 g = chebfun(@(t) exp(cos(10*t)), [-2, 2]);
@@ -28,7 +28,7 @@ plot(h)
 % The chebfun can also have two or three columns, resulting in a Chebfun2v
 % object:
 
-g = chebfun(@(t) [ t, t.^2 ]);
+g = chebfun(@(t) [ t, t.^2 ], [-2, 2]);
 h = g(f)
 
 %%
@@ -37,7 +37,7 @@ h = g(f)
 
 
 %% 2. Composition of a chebfun2 object
-% A chebfun2 object $g$ can be composed with any object $f$ that maps to
+% A Chebfun2 object $g$ can be composed with any object $f$ that maps to
 % $\mathbf{R}^2$. Let us start with the composition of a Chebfun2 object $g$
 % with a chebfun, which is the restriction of $g$ to a curve in 2d space.  As an
 % easy example let
@@ -74,8 +74,7 @@ plot(h)
 % for points,
 
 g = chebfun2(@(x,y) 2*x + 3i*y);
-g(0.5 + 1i)
-g(0.5, 1)
+g(0.5 + 1i) - g(0.5, 1)
 
 %%
 % and for function inputs as well.  We can compose $g$ with a chebfun, Chebfun2
