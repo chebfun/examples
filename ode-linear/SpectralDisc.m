@@ -124,7 +124,7 @@ end
 %
 % 1. J. L. Aurentz and L. N. Trefethen, Block operators and spectral
 % discretizations, _SIAM Review_, revised manuscript submitted
-% August 2016.
+% August 2016.  See people.maths.ox.ac.uk/trefethen/papers.html.
 %
 % 2. T. A. Driscoll,
 % Automatic spectral collocation for integral, integro-differential,
