@@ -79,7 +79,7 @@ roots([.01 1 1])
 roots([.01 -1 1])
 
 %%
-% At both ends we have a mode decaying exponentially away from the
+% At both ends we have a mode decaying away from the
 % boundary at a very rapid exponential rate, and this exponential
 % decoupling of the boundaries allows the pseudo-null function.
 % Our ODE BVP, though mathematically
@@ -92,7 +92,7 @@ roots([.01 -1 1])
 % Students of the Fredholm alternative know that in some
 % sense existence is the dual of uniqueness.  Here is
 % the adjoint of our earlier problem:
-% $$ Lu = \epsilon u" +xu'+ u = 1, \quad u(\pm 1) = 0 , ~\epsilon \ll 1. $$
+% $$ L^*u = \epsilon u" +xu'+ u = 1, \quad u(\pm 1) = 0 , ~\epsilon \ll 1. $$
 % Again there exists a unique solution mathematically, but for small
 % $\epsilon$, can we see an effect of near-nonexistence?
 
