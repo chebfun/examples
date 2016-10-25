@@ -17,8 +17,8 @@
 L = chebop(-1,1); L.lbc = 0; L.rbc = 0;
 L.op = @(x,u) 0.01*diff(u,2) - x*diff(u) + u;
 LW = 'linewidth'; FS = 'fontsize';
-u = L\1; plot(u,LW,6), set(gca,'xtick',-1:1)
-title('This function should be even',FS,14)
+u = L\1; plot(u,LW,4), set(gca,'xtick',-1:1)
+title('This function should be even',FS,12)
 
 %%
 % A clue comes when we look at the residual for the computed solution.
@@ -38,9 +38,9 @@ residual_norm = norm(L*u - 1)
 % "solution" is determined by arbitrary features of the Chebfun
 % discretization that might as well be random.
 L.op = @(x,u) 0.005*diff(u,2) - x*diff(u) + u;
-u = L\1; subplot(1,2,1), plot(u,LW,4), set(gca,'xtick',-1:1)
+u = L\1; subplot(1,2,1), plot(u,LW,2), set(gca,'xtick',-1:1)
 L.op = @(x,u) 0.001*diff(u,2) - x*diff(u) + u;
-u = L\1; subplot(1,2,2), plot(u,LW,4), set(gca,'xtick',-1:1)
+u = L\1; subplot(1,2,2), plot(u,LW,2), set(gca,'xtick',-1:1)
 
 %%
 % What's going on is that although $L$ does not have any null functions, 
@@ -54,7 +54,7 @@ eigs(L)
 % If we plot the near-null function we see the shape of the upside-down
 % N:
 [v,d] = eigs(L,1,'SM');
-clf, plot(v,'m',LW,2), set(gca,'xtick',-1:1), title('null function',FS,12)
+clf, plot(v,'m',LW,2), set(gca,'xtick',-1:1), title('null function',FS,10)
 
 %%
 % We can explain this effect as follows.  An ODE BVP will have a
@@ -101,17 +101,17 @@ roots([.01 -1 1])
 % exponentially large.  Here we take the large value $\epsilon = 0.1$:
 L = chebop(-1,1); L.lbc = 0; L.rbc = 0;
 L.op = @(x,u) 0.1*diff(u,2) + x*diff(u) + u;
-u = L\1; plot(u,LW,6), set(gca,'xtick',-1:1)
+u = L\1; plot(u,LW,2), set(gca,'xtick',-1:1)
 ylim([-200 0]), set(gca,'ytick',-200:100:0)
-title('Solution to the dual problem',FS,14)
+title('Solution to the dual problem',FS,10)
 
 %%
 % As we shrink $\epsilon$, the amplitude grows exponentially.
 L.op = @(x,u) 0.05*diff(u,2) + x*diff(u) + u;
-u = L\1; subplot(1,2,1), plot(u,LW,4), set(gca,'xtick',-1:1)
+u = L\1; subplot(1,2,1), plot(u,LW,2), set(gca,'xtick',-1:1)
 ylim([-3e4 0])
 L.op = @(x,u) 0.025*diff(u,2) + x*diff(u) + u;
-u = L\1; subplot(1,2,2), plot(u,LW,4), set(gca,'xtick',-1:1)
+u = L\1; subplot(1,2,2), plot(u,LW,2), set(gca,'xtick',-1:1)
 ylim([-6e8 0])
 
 %%
@@ -181,8 +181,8 @@ roots([.01 1 1])
 % _Proc. Roy. Soc. Lond. A_ 459 (2003), 1535-1561.
 %
 % 3.  A. S. Fokas and B. Pelloni,
-% Two-point boundary value problems for
-% linear evolution equations.
+% Two-point boundary value problems for linear evolution equations,
+% _Math. Proc. Camb. Phil. Soc._ 131 (2001), 521-543.
 %
 % 4. H Lewy, An example of a smooth linear partial differential
 % equation without solution, _Ann. Math._ 66 (19757), 155-158.
