@@ -11,7 +11,7 @@
 % using the _partition_ command. Let's start with a spherefun object:
 f = spherefun(@(x,y,z) sinh(5*x.*y.*z).*cos(x-y+2*z))
 plot(f), axis off, hold on
-contour(f, 'linewidth', 2, 'color','k'), 
+contour(f, 'color','k'), 
 
 %%
 % A spherefun can be seen as a sum of two spherefuns, one of them 
