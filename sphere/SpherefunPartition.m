@@ -1,4 +1,4 @@
-%% Parity partitioning a Spherefun
+%% Parity partitioning a spherefun
 % Behnam Hashemi, November 2016
 
 %%
@@ -49,16 +49,16 @@ clf, plot(Ra)
 grid on, title('Rows of the \pi-anti-periodic part of f')
 
 %% 
-% As Grady Wright pointed out the integral of a spherefun is equal to 
-% the integral of its even/$\pi$-periodic piece, since the integral of 
-% any odd/$\pi$-anti-periodic spherefun is zero:
+% The integral of a spherefun is equal to the integral of its 
+% even/$\pi$-periodic piece, since the integral of any 
+% odd/$\pi$-anti-periodic spherefun is zero:
 format long
 sum_f = sum2(f)
 sum_foa = sum2(foa)
 sum_fep = sum2(fep)
 
 %%
-% An equivalent partitioning is available for Diskfuns [2].
+% An equivalent partitioning is available for diskfuns [2].
 
 %% References
 % 1. A. Townsend, H. Wilber, and G. Wright, Computing with functions in 
