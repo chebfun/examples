@@ -19,7 +19,7 @@
 % set, but its boundary need not be smooth.  Here is an example involving
 % a matrix of dimension 20.  The dots are the eigenvalues, and the
 % black line is the boundary of the field of values.  In this case two
-% eigenvalues lie on the boundary, and Chebfun has found them wiht
+% eigenvalues lie on the boundary, and Chebfun has found them with
 % edge detection.
 rng(1)
 d = sort(randn(20,1)) + 1i*randn(20,1);
@@ -27,12 +27,12 @@ A = diag(d); A(1:10,1:10) = A(1:10,1:10) + diag(ones(9,1),1);
 [W,W2] = fov(A);
 LW = 'linewidth'; MS = 'markersize'
 plot(W,'k',LW,1.6), hold on, plot(W2,'k',LW,1.6)
-hold on, plot(d,'.r',MS,12), hold off, axis off
+hold on, plot(d,'.r',MS,14), hold off, axis off
 
 %%
 % That example is a bit highbrow, so let us try a simpler one.
 % Here's one that is *very* simple.  Suppose we make
-% Chebfun from the function $|e^x sin(10\pi x)|$, using 'splitting on'
+% Chebfun from the function $|e^x \sin(10\pi x)|$, using 'splitting on'
 % mode:
 f = chebfun('abs(exp(x).*sin(10*pi*x))','splitting','on');
 plot(f)
@@ -50,7 +50,7 @@ domain(f)'
 % The actual errors in the breakpoints are on the order of
 % machine epsilon:
 true_edges = (-1:.1:1);
-err = domain(f)' - true_edges'
+maxerr = norm(domain(f)-true_edges,inf)
 
 %%
 % Now in this example we didn't really need the edge detector; 
@@ -72,7 +72,7 @@ A = @(t) (1-t)*B + t*C;
 abscissa = @(t) max(real(eig(A(t))));
 f = chebfun(@(t) abscissa(t),[0,1],'splitting','on','vectorize');
 plot(f), grid on
-breakpts = domain(f); breakpts = breakpts(2:end-1)
+breakpts = domain(f); breakpts = breakpts(2:end-1)'
 hold on, plot(breakpts,f(breakpts),'.r',MS,12), hold off
 
 %%
@@ -91,13 +91,13 @@ plot(diff(f)), grid on
 f2 = chebfun(@(t) abscissa(t),[0,1],'splitting','on',...
   'splitLength',1000,'vectorize');
 plot(f2), grid on
-breakpts2 = domain(f2); breakpts2 = breakpts2(2:end-1)
+breakpts2 = domain(f2); breakpts2 = breakpts2(2:end-1)'
 hold on, plot(breakpts2,f2(breakpts2),'.r',MS,12), hold off
 
 %%
 % For details of Chebfun's edge detection algorithm,
 % see [1], and for another example involving spline functions,
-% see the example `approx/Splines.m`.
+% see `http://www.chebfun.org/examples/approx/Splines.m`.
 
 %% References
 %
