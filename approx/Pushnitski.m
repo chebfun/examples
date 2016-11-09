@@ -54,7 +54,7 @@ toc
 % be proved.  For $p$ to approximate $f$ to accuracy $\epsilon$,
 % its derivative would have to be of size at least 
 % $\exp(C/\epsilon)$.  From Markov's inequality it will follow
-% that $\pesilon$ can decrease no faster than approximately
+% that $\epsilon$ can decrease no faster than approximately
 % $O(1/\log n)$ as $n\to finty$ (to be confirmed).
 
 %%
