@@ -1,12 +1,12 @@
 %% Composition with multivariate chebfuns
-% Olivier S&egrave;te, August 2016
+% Olivier S&egrave;te, November 2016
 
 %%
 % (Chebfun example temp/ChebfunComposition.m)
 
 %% 1. Composition with chebfuns
-% The composition of two functions, $g(f)$, is one of the basic operations which
-% can be done in Chebfun, e.g.,
+% The composition of two functions, $g(f) = g \circ f$, is one of the basic
+% operations which can be done in Chebfun, e.g.,
 
 f = chebfun(@(t) cos(t));
 g = chebfun(@(t) exp(t));
@@ -14,10 +14,9 @@ h = g(f)
 
 %%
 % The same is possible for all combinations of chebfun, chebfun2, chebfun2v,
-% chebfun3, chebfun3v, spherefun, and spherefunv objects, so long as the range
-% of $f$ lies in the domain of $g$.  The composition with diskfuns is not
-% currently implemented.  We present a few examples and start with a chebfun of
-% a chebfun2:
+% chebfun3, chebfun3v, diskfun, diskfunv, spherefun, and spherefunv objects, so
+% long as the range of $f$ lies in the domain of $g$.  We present a few examples
+% and start with a chebfun of a chebfun2:
 
 f = chebfun2(@(x,y) x.^2 + y);
 g = chebfun(@(t) exp(cos(10*t)), [-2, 2]);
@@ -32,8 +31,9 @@ g = chebfun(@(t) [ t, t.^2 ], [-2, 2]);
 h = g(f)
 
 %%
-% Replacing $f$ by a Chebfun3 object works too and gives a Chebfun3 or
-% Chebfun3v object, depending on the number of columns of the chebfun $g$.
+% Replacing $f$ by a chebfun3, diskfun or spherefun works too and results in a
+% corresponding scalar or vector-valued object, depending on the number of
+% columns of the chebfun $g$.
 
 
 %% 2. Composition of a chebfun2 object
