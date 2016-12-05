@@ -27,7 +27,6 @@ z = r.*sin(p);
 %%
 % We can plot the surface of this region using the plot command.
 plot(x,y,z)
-hold off
 view(-53,24)
 
 %% 
@@ -61,8 +60,7 @@ r = chebfun3(@(r,t,z) r, [0 1 0 pi 0 1]);
 t = chebfun3(@(r,t,z) t, [0 1 0 pi 0 1]);
 z = chebfun3(@(r,t,z) z, [0 1 0 pi 0 1]);
 x = r.*cos(t);
-y = r.*sin(t); 
-map = [x,y,z];
+y = r.*sin(t);
 
 density = y.*sin(10*t)+1;
 plot(x,y,z,density)
