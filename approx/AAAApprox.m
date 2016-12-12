@@ -36,9 +36,9 @@ ezplot(r), axis([-3 3 -8 8]), grid on, title(' '), xlabel(' ')
 % poles and residues as well as the function handle.  The AAA 
 % approximant is normally of type $(m-1,m-1)$ for some value $m\ge 1$,
 % and here we see that the approximant is of type $(6,6)$. 
-format long
+format short
 [r,pol,res] = aaa(@gamma);
-disp('                  poles                                   residues')
+disp('        poles             residues')
 disp([pol res])
 
 %%
@@ -49,15 +49,15 @@ disp([pol res])
 % to $(7,7)$ and the approximant is a close
 % match to the gamma function in the interval $[-3,3]$ displayed.
 [r,pol,res] = aaa(@gamma,'dom',[-2,2]);
-disp('                  poles                                   residues')
+disp('        poles             residues')
 disp([pol res])
 ezplot(r), axis([-3 3 -8 8]), grid on, title(' '), xlabel(' ')
 
 %%
 % Instead of a function handle, we can pass a chebfun to |aaa| for
 % approximation.  For example, here are the function 
-% $f(x) = \sin(20x)/(1+25x^2)$ and its AAA approximant:
-cheb.x;
+% $f(x) = \sin(20x)/(1+25x^2)$ and its AAA approximant on $[-1,2]$:
+x = chebfun('x',[-1 2]);
 f = sin(20*x)./(1+25*x.^2);
 subplot(1,2,1), plot(f), grid on, ylim([-1 1])
 title('function f')
@@ -95,6 +95,7 @@ title('type (3,3) AAA and best error curves')
 [p,q,rbest] = remez(f,3,3); hold on
 ezplot(@(x) f(x)-rbest(x),[-1,1]), hold off
 grid on, ylim(1e-6*[-1 1]), xlabel(' ')
+title('AAA and best type (3,3) approximants to exp(x)')
 
 %%
 % In this example, the best approximant is more accurate,
@@ -106,10 +107,10 @@ grid on, ylim(1e-6*[-1 1]), xlabel(' ')
 % doublet (spurious pole-zero pair) has been removed along the way.
 r = aaa(@abs);
 ezplot(@(x) abs(x)-r(x),[-1,1]), grid on
-ylim(4e-14*[-1 1]), xlabel(' ')
+ylim(5e-14*[-1 1]), xlabel(' ')
 
 %% 3. Approximation in the complex plane
-% The true power of AAA approximation is in its ability to work
+% The true power of AAA approximation lies in its ability to work
 % on arbitrary domains in the complex plane.  For example, here we make
 % a set $Z$ consisting of 2000 random points in a curved shape.  Then
 % we approximate $f(z) = (2+z^2)^{1/2}/(z-4)$ on $Z$ and plot the poles.
@@ -129,7 +130,4 @@ disp([ff(5+5i) r(5+5i); ff(5) r(5); ff(5-5i) r(5-5i)])
 %
 % [1] Y. Nakatsukasa, O. Sete, and
 % L. N. Trefethen, Rational approximation by the AAA algorithm,
-% arXiv:1612.0037.
-%
-% [2] L. N. Trefethen, _Approximation Theory and
-% Approximation Practice_, SIAM, 2013.
+% arXiv 2016:1612.00337.
