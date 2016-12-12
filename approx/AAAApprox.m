@@ -29,7 +29,9 @@ r = aaa(@gamma);
 % The result is a function handle for a rational function that
 % approximates $\Gamma(z)$ on $[-1,1]$.  We can plot it with
 % |ezplot| and get a pretty good result!
-ezplot(r), axis([-3 3 -8 8]), grid on, title(' '), xlabel(' ')
+h = ezplot(r); axis([-3 3 -8 8]), grid on, title(' '), xlabel(' ')
+LW = 'linewidth'; MS = 'markersize';
+set(h,LW,2)
 
 %%
 % To learn more about the approximation we can output the
@@ -51,7 +53,8 @@ disp([pol res])
 [r,pol,res] = aaa(@gamma,'dom',[-2,2]);
 disp('        poles             residues')
 disp([pol res])
-ezplot(r), axis([-3 3 -8 8]), grid on, title(' '), xlabel(' ')
+h = ezplot(r); axis([-3 3 -8 8]), grid on, title(' '), xlabel(' ')
+set(h,LW,2)
 
 %%
 % Instead of a function handle, we can pass a chebfun to |aaa| for
@@ -62,16 +65,16 @@ f = sin(20*x)./(1+25*x.^2);
 subplot(1,2,1), plot(f), grid on, ylim([-1 1])
 title('function f')
 [r,pol] = aaa(f);
-subplot(1,2,2), ezplot(r,[-1 1]), grid on, ylim([-1 1])
+subplot(1,2,2), ezplot(r,[-1 2]), grid on, ylim([-1 1])
 title('AAA approx r'), xlabel(' ')
 
 %%
-% The approximation has type $(24,24)$,
+% The approximation has type $(31,31)$,
 length(pol)
 
 %%
 % and the inner two poles closely match the exact values $\pm 0.2i$.
-pol(abs(pol)<1)
+format long, pol(abs(pol)<1)
 
 %% 3. Approximations of restricted type (n,n)
 % In these examples |aaa| has attempted to find an approximation to full
@@ -79,19 +82,19 @@ pol(abs(pol)<1)
 % error curve for an approximation of this kind to $e^x$ on $[-1,1]$:
 r = aaa(@exp);
 clf, ezplot(@(x) exp(x)-r(x),[-1 1]), grid on
-title('AAA approx of abs(x)'), xlabel(' ')
+title('AAA approx of exp(x)'), xlabel(' ')
 
 %%
 % Alterntatively, we
 % can ask |aaa| to find approximations of lower type or accuracy by
 % specifying values of |'mmax'| or |'tol'|, respectively.  For example,
 % here is the error curve for the type $(3,3)$ AAA approximant to
-% $e^x$ on $[-1,1]$.  The error curve for best type $(3,3)$ approximation
+% $e^x$.  The error curve for best type $(3,3)$ approximation
 % is shown for comparison. 
 f = chebfun('exp(x)');
-r = aaa(@exp,'tol',1e-6); %,'mmax',4);
+r = aaa(@exp,'mmax',4);
 ezplot(@(x) exp(x)-r(x),[-1,1]), grid on, xlabel(' ')
-title('type (3,3) AAA and best error curves')
+title('AAA and best type (3,3) error curves')
 [p,q,rbest] = remez(f,3,3); hold on
 ezplot(@(x) f(x)-rbest(x),[-1,1]), hold off
 grid on, ylim(1e-6*[-1 1]), xlabel(' ')
@@ -105,11 +108,13 @@ title('AAA and best type (3,3) approximants to exp(x)')
 % is the approximation of $|x|$ on $[-1,1]$.  Here |aaa| does
 % a pretty good job, issuing a message indicating that one Froissart
 % doublet (spurious pole-zero pair) has been removed along the way.
+% A warning indicates that the desired tolerance has not been
+% achieved, though it has come pretty close.
 r = aaa(@abs);
 ezplot(@(x) abs(x)-r(x),[-1,1]), grid on
 ylim(5e-14*[-1 1]), xlabel(' ')
 
-%% 3. Approximation in the complex plane
+%% 4. Approximation in the complex plane
 % The true power of AAA approximation lies in its ability to work
 % on arbitrary domains in the complex plane.  For example, here we make
 % a set $Z$ consisting of 2000 random points in a curved shape.  Then
@@ -117,16 +122,16 @@ ylim(5e-14*[-1 1]), xlabel(' ')
 npts = 2000; rng(0)
 X = 8*rand(npts,1)-4; Y = 2*rand(npts,1) - 1 + X.^3/16;
 Z = X + 1i*Y;
-plot(Z,'.k','markersize',3), ylim([-5 5]), axis([-8 8 -5 5]), hold on
+plot(Z,'.k',MS,3), ylim([-5 5]), axis([-8 8 -5 5]), hold on
 ff = @(z) sqrt(2+z.^2)./(z-4);
 [r,pol] = aaa(ff,Z);
-plot(pol,'.r','markersize',12), hold off
+plot(pol,'.r',MS,14), hold off
 
 %%
 % Here we check the approximation at $5+5i$, $5$, and $5-5i$:
 disp([ff(5+5i) r(5+5i); ff(5) r(5); ff(5-5i) r(5-5i)])
 
-%% 4. References
+%% 5. References
 %
 % [1] Y. Nakatsukasa, O. Sete, and
 % L. N. Trefethen, Rational approximation by the AAA algorithm,
