@@ -9,7 +9,7 @@
 % Chebfun has a number of methods for rational approximation
 % of a function on an interval, including
 % |ratinterp|, |remez|, |cf|, and |chebpade|; see the example
-% "Eight shades of rational interpolation".  For rational
+% "Eight shades of rational approximation".  For rational
 % approximation on the unit circle, one can use
 % |ratinterp| with the |'unitroots'| flag, and for
 % rational approximation based on a Taylor series at a point,
@@ -18,7 +18,17 @@
 % all, applying by default on an interval but equally well
 % on a general set in the real line or complex plane.  The
 % code is called |aaa|.
-% See [1] for a presentation of the mathematics.
+
+%%
+% We will not describe the mathematics here except to say that
+% |aaa| returns a function handle corresponding to a type $(m-1,m-1)$
+% rational function $r$ represented as a barycentric
+% quotient: a ratio of one $m$-term partial fraction divided by
+% another, both with the same poles.  This representation is
+% extremely flexible and numerically well-behaved,
+% avoiding completely any representation
+% of numerator or denominator polynomials.  
+% See [1] for details. 
 
 %% 2. Approximation on an interval
 % If no approximation set is specified, |aaa| works on a real interval.
@@ -117,7 +127,7 @@ ylim(5e-14*[-1 1]), xlabel(' ')
 %% 4. Approximation in the complex plane
 % The true power of AAA approximation lies in its ability to work
 % on arbitrary domains in the complex plane.  For example, here we make
-% a set $Z$ consisting of 2000 random points in a curved shape.  Then
+% a set $Z$ consisting of 2000 random points in a moustache shape.  Then
 % we approximate $f(z) = (2+z^2)^{1/2}/(z-4)$ on $Z$ and plot the poles.
 npts = 2000; rng(0)
 X = 8*rand(npts,1)-4; Y = 2*rand(npts,1) - 1 + X.^3/16;
