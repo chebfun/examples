@@ -32,36 +32,21 @@ S.init = 3*A^2*sech(.5*A*(x-3)).^2 + 3*B^2*sech(.5*B*(x-4)).^2;
 % $t=0.0078$, it overtakes the slower one, and around time
 % $t=0.0156$, it is as far ahead at was originally behind.
 pause off
-tic, u = spin(S,'plot','off'); time_in_seconds = toc;
+N = 800;   % numer of grid points
+dt = 5e-6; % time-step
+tic, u = spin(S,N,dt,'plot','off'); time_in_seconds = toc;
 plot(S.init), hold on, plot(u), hold off
 text(4.4,1300,'t = 0'), text(13.5,1300,'t = 0.0156')
 
 %%
-% When `spin` is run is this simple mode without extra arguments,
-% it makes adaptive decisions along the way that may slow it down,
-% especially for equations like this with no diffusion
-% (the KdV) equation is dispersive, not diffusive).
-% The calculation just carried out took quite a while:
-time_in_seconds
-
-%%
-% For practical work we can often do much better by fixing the grid and the
-% time step.  Here we do this and see that the image
-% looks the same:
-tic, u = spin(S,'plot','off','N',800,'dt',.000005);
-time_in_seconds = toc;
-plot(S.init), hold on, plot(u), hold off
-text(4.4,1300,'t = 0'), text(13.5,1300,'t = 0.0156')
-
-%%
-% However, the computation is much faster:
+% With the dicretization we used, the computation is quite fast:
 time_in_seconds
 
 %% 2. Amplitude and speed
 % Let's look at the propagation of a single soliton, the larger
 % one from the last experiment:
 S.init = 3*A^2*sech(.5*A*(x-3)).^2;
-u = spin(S,'plot','off','N',800,'dt',.000005);
+u = spin(S,N,dt,'plot','off');
 plot(S.init), hold on, plot(u), hold off
 text(3.4,1300,'t = 0'), text(13.2,1300,'t = 0.0156')
 
@@ -94,7 +79,7 @@ observed_speed = (pos-3)/tmax
 % going much more slowly, plus some low-amplitude information that is
 % not in the form of solitons.
 S.init = 3*A^2*sech(.35*A*(x-3)).^2;
-u = spin(S,'plot','off','N',800,'dt',.000005);
+u = spin(S,N,dt,'plot','off');
 plot(S.init), hold on, plot(u), hold off
 
 %%
@@ -102,13 +87,13 @@ plot(S.init), hold on, plot(u), hold off
 % of solitons.  Note that a term centered at $x=23$ has been
 % added to make this wider pulse numerically periodic.
 S.init = 3*A^2*( sech(.05*A*(x-3)).^2 + sech(.05*A*(x-23)).^2 );
-u = spin(S,'plot','off','N',800,'dt',.000005);
+u = spin(S,N,dt,'plot','off');
 plot(S.init), hold on, plot(u), hold off
 
 %%
 % Let's try something a little bit random:
 S.init = 500*(x-12).*exp(-(x-12).^2);
-u = spin(S,'plot','off','N',800,'dt',.000005);
+u = spin(S,N,dt,'plot','off');
 plot(S.init), hold on, plot(u), hold off
 
 %% 4. Conservation laws
@@ -145,8 +130,8 @@ conserved4(u), conserved4(u0)
 % for example [2].  For a quick introduction to the KdV equation,
 % see [3].
 %
-% [1] H. Montanelli and N. Bootland, Solving stiff PDEs
-% in 1D, 2D and 3D with exponential integrators, submitted, 2016.
+% [1] H. Montanelli and N. Bootland, _Solving periodic semilinear stiff PDEs
+% in 1D, 2D and 3D with exponential integrators_, submitted, 2016.
 %
 % [2] M. J. Ablowitz and H. Segur, _Solitons and the
 % Inverse Scattering Transform_, SIAM, 1981.
@@ -157,4 +142,3 @@ conserved4(u), conserved4(u0)
 % `https://people.maths.ox.ac.uk/trefethen/pdectb.html`.
 %
 % [4] G. Whitham, _Linear and Nonlinear Waves_, Wiley, 1974.
-
