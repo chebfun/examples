@@ -29,7 +29,6 @@ S.linearPart = @(u,v) [ep1*lap(u); ep2*lap(v)];
 S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
 S.init = chebfun2v(@(x,y) 1-exp(-80*((x+.05).^2+(y+.02).^2)), ...
                    @(x,y) exp(-80*((x-.05).^2+(y-.02).^2)),dom);
-pause off
 tic, u = spin2(S,200,2,'plot','off');
 plot(u{2}), view(0,90), axis equal, axis off
 time_in_seconds = toc

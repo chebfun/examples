@@ -31,7 +31,6 @@ S.init = 3*A^2*sech(.5*A*(x-3)).^2 + 3*B^2*sech(.5*B*(x-4)).^2;
 % right, with the taller one moving faster.  Around time
 % $t=0.0078$, it overtakes the slower one, and around time
 % $t=0.0156$, it is as far ahead at was originally behind.
-pause off
 N = 800;   % numer of grid points
 dt = 5e-6; % time-step
 tic, u = spin(S,N,dt,'plot','off'); time_in_seconds = toc;
