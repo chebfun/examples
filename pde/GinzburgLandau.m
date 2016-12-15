@@ -32,8 +32,8 @@ S = spinop2('gl2')
 dom = 50*[-1 1 -1 1];
 tspan = [0 16];
 S = spinop2(dom,tspan);
-S.linearPart = @(u) lap(u);
-S.nonlinearPart = @(u) u - (1+1.5i)*u.*(abs(u).^2);
+S.lin = @(u) lap(u);
+S.nonlin = @(u) u - (1+1.5i)*u.*(abs(u).^2);
 
 %% 2. Non-chaotic solutions
 % For our first initial condition, suppose we take
@@ -64,8 +64,8 @@ time_in_seconds = toc
 % side.  Here is the first computation.
 tspan = [0 48];
 S = spinop2(dom,tspan);
-S.linearPart = @(u) lap(u);
-S.nonlinearPart = @(u) u - (1+1.5i)*u.*(abs(u).^2);
+S.lin = @(u) lap(u);
+S.nonlin = @(u) u - (1+1.5i)*u.*(abs(u).^2);
 S.init = u1; tic
 u = spin2(S,npts,dt,'plot','off');
 plot(real(u)), view(0,90), axis equal, axis off
@@ -92,8 +92,8 @@ time_in_seconds = toc
 % that this first image is correct.
 tic, tspan = [0 96];
 S = spinop2(dom,tspan);
-S.linearPart = @(u) lap(u);
-S.nonlinearPart = @(u) u - (1+1.5i)*u.*(abs(u).^2);
+S.lin = @(u) lap(u);
+S.nonlin = @(u) u - (1+1.5i)*u.*(abs(u).^2);
 S.init = u1;
 tic, u = spin2(S,npts,dt,'plot','off');
 plot(real(u)), view(0,90), axis equal, axis off
@@ -119,8 +119,8 @@ time_in_seconds = toc
 dom = 100*[-1 1 -1 1];
 tspan = [0 30 60];
 S = spinop2(dom,tspan);
-S.linearPart = @(u) lap(u);
-S.nonlinearPart = @(u) u - (1+1.5i)*u.*(abs(u).^2);
+S.lin = @(u) lap(u);
+S.nonlin = @(u) u - (1+1.5i)*u.*(abs(u).^2);
 x = chebfun2(@(x,y) x,dom); y = chebfun2(@(x,y) y,dom);
 u1 = (1i*(x-8)+(y-2)).*exp(-.03*((x-8).^2+(y-2).^2)) + ...
      ((x+8)-(y+2)).*exp(-.03*((x+8).^2+(y+2).^2));

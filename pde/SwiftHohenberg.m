@@ -47,10 +47,10 @@ u
 dom = [0 20*pi 0 20*pi];
 tspan = [0 200];
 S = spinop2(dom, tspan);
-S.linearPart = @(u) -2*lap(u) - biharm(u);
+S.lin = @(u) -2*lap(u) - biharm(u);
 r = 1e-2; 
 g = 1;
-S.nonlinearPart = @(u) (-1 + r)*u + g*u.^2 - u.^3;
+S.nonlin = @(u) (-1 + r)*u + g*u.^2 - u.^3;
 
 %%
 % Let us take an initial condition corresponding to the sum of a sine/cosine 
@@ -94,7 +94,7 @@ fprintf('Relative error: %1.2e\n', error)
 % For the same value of $g=1$ but with $r=0.7$, we get spirals at the final
 % time $t=200$:
 r = 7e-1; g = 1;
-S.nonlinearPart = @(u) (-1 + r)*u + g*u.^2 - u.^3;
+S.nonlin = @(u) (-1 + r)*u + g*u.^2 - u.^3;
 u = spin2(S, 100, 2e-1, 'plot', 'off');
 clf, plot(u), view(0,90), axis equal, axis off
 
@@ -102,7 +102,7 @@ clf, plot(u), view(0,90), axis equal, axis off
 % Finally, for $r=10^{-1}$, $g=0$, the solution as $t=200$ is a set of stripes:
 S.tspan = [0 200];
 r = 1e-1; g = 0;
-S.nonlinearPart = @(u) (-1 + r)*u + g*u.^2 - u.^3;
+S.nonlin = @(u) (-1 + r)*u + g*u.^2 - u.^3;
 u = spin2(S, 100, 2e-1, 'plot', 'off');
 plot(u), view(0,90), axis equal, axis off
 

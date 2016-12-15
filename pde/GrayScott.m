@@ -25,8 +25,8 @@ b = 0.04; d = 0.1;
 % "fingerprints") appear!  
 dom = [-1 1 -1 1]; x = chebfun('x',dom(1:2)); tspan = [0 3500];
 S = spinop2(dom,tspan);
-S.linearPart = @(u,v) [ep1*lap(u); ep2*lap(v)];
-S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
+S.lin = @(u,v) [ep1*lap(u); ep2*lap(v)];
+S.nonlin = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
 S.init = chebfun2v(@(x,y) 1-exp(-80*((x+.05).^2+(y+.02).^2)), ...
                    @(x,y) exp(-80*((x-.05).^2+(y-.02).^2)),dom);
 tic, u = spin2(S,200,2,'plot','off');
@@ -38,7 +38,7 @@ time_in_seconds = toc
 % the nature of the solution changes fundamentally.
 % Now we see spots instead of rolls.
 b = 0.025; d = 0.085;
-S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
+S.nonlin = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
 tic, u = spin2(S,200,2,'plot','off');
 plot(u{2}), view(0,90), axis equal, axis off
 time_in_seconds = toc
@@ -64,7 +64,7 @@ time_in_seconds = toc
 % Moreover, the overall shape of the solution looks suspiciously
 % a little bit square -- a hint of some spurious grid alignment.
 b = 0.04; d = 0.1;
-S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
+S.nonlin = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
 tic, u = spin2(S,100,2,'plot','off');
 plot(u{2}), view(0,90), axis equal, axis off
 time_in_seconds = toc
@@ -72,7 +72,7 @@ time_in_seconds = toc
 %%
 % We get a similar effect with spots:
 b = 0.025; d = 0.085;
-S.nonlinearPart = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
+S.nonlin = @(u,v) [b*(1-u)-u.*v.^2;-d*v+u.*v.^2];
 tic, u = spin2(S,100,2,'plot','off');
 plot(u{2}), view(0,90), axis equal, axis off
 time_in_seconds = toc

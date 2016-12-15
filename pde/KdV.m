@@ -19,8 +19,8 @@ A = 25; B = 23;
 dom = [0 20]; x = chebfun('x',dom);
 tmax = 0.0156;
 S = spinop(dom,[0 tmax]);
-S.linearPart = @(u) - diff(u,3);
-S.nonlinearPart = @(u) -.5*diff(u.^2); % spin cannot parse "u.*diff(u)"
+S.lin = @(u) - diff(u,3);
+S.nonlin = @(u) -.5*diff(u.^2); % spin cannot parse "u.*diff(u)"
 S.init = 3*A^2*sech(.5*A*(x-3)).^2 + 3*B^2*sech(.5*B*(x-4)).^2;
 
 %%

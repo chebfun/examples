@@ -19,8 +19,8 @@
 % picture is dominated by oscillations with a wavelength of about $9$.
 tic, dom = [-100 100]; x = chebfun('x',dom); tspan = [0 100 200];
 S = spinop(dom,tspan);
-S.linearPart = @(u) - diff(u,2) - diff(u,4);
-S.nonlinearPart = @(u) -.5*diff(u.^2); % spin cannot parse "u.*diff(u)"
+S.lin = @(u) - diff(u,2) - diff(u,4);
+S.nonlin = @(u) -.5*diff(u.^2); % spin cannot parse "u.*diff(u)"
 S.init = exp(-((x+50)/10).^2) + exp(-((x-50)/10).^2);
 tic, u = spin(S,800,.025,'plot','off'); t = toc;
 plot(S.init), hold on, plot(u{2}), ylim([-4 4]), hold off
