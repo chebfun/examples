@@ -7,7 +7,7 @@
 
 %%
 % The function $|x|$ can be approximated with accuracy
-% $O(1/n)$ by degree $n$ polyonmials on $[-1,1]$ but accuracy
+% $O(1/n)$ by degree $n$ polynomials on $[-1,1]$ but accuracy
 % $O(\exp-C\sqrt n)$ by type $(n,n)$ rationals.
 % In a lecture at Oxford on 8 November,
 % Alexander Pushnitski presented some striking theorems
@@ -30,7 +30,7 @@ plot(f,'k',LW,2), ylim([-.2 .5]), grid on
 
 %%
 % We know that the Chebyshev coefficients of a function with
-% a jump discontinity decrease at the rate $O(1/n)$.
+% a jump discontinuity decrease at the rate $O(1/n)$.
 % This function is almost a step discontinuity, and the
 % Chebyshev coefficients decrease almost as slowly, at a 
 % rate (to be confirmed) $O(1/n\log n)$:
@@ -55,7 +55,7 @@ toc
 % its derivative would have to be of size at least 
 % $\exp(C/\epsilon)$.  From Markov's inequality it will follow
 % that $\epsilon$ can decrease no faster than approximately
-% $O(1/\log n)$ as $n\to finty$ (to be confirmed).
+% $O(1/\log n)$ as $n\to infty$ (to be confirmed).
 
 %%
 % Here are some rational approximations.  The convergence
