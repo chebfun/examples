@@ -31,7 +31,7 @@ unitsquare = join(-1i+s,1+1i*s,1i-s,-1-1i*s);
 square = @(r) r*unitsquare;
 E = unitsquare; E = 4*real((E+1)/2)-1 + 1i*imag(E);
 Z = E; for r = .1:.1:.9, Z = [Z square(r)]; end
-plot(Z,LW,1), xlim([-1.5 3.5]), axis equal
+plot(Z,LW,1.6), xlim([-1.5 3.5]), axis equal
 set(gca,'xtick',-1:3,'ytick',-1:1)
 
 %%
@@ -47,8 +47,8 @@ g = @(z) sinh(pi*(z+1)/2)/sinh(pi/2)
 
 %%
 % As promised, a single command suffices to plot the image.
-plot(g(Z),LW,1), axis([-3 9 -5 5])
-set(gca,'xtick',-2:2:8,'ytick',-4:2:4)
+plot(g(Z),LW,1.6), axis([-4 12 -5 5])
+set(gca,'xtick',-2:2:6,'ytick',-4:2:4)
 
 %%
 % Next, we map this half-plane to the unit disk by the Moebius
@@ -62,7 +62,7 @@ f = @(z) h(g(z))
 % approximately semicircular blip near $z=1$ that deviates from the unit
 % circle, since our plots show the image of a rectangle of aspect ratio $2$
 % rather than the whole infinite half-strip.
-hh = plot(f(Z),LW,1); xlim([-1.7 1.7]), axis equal
+hh = plot(f(Z),LW,1.6); xlim([-2.5 2.5]), axis equal
 set(gca,'xtick',-1:1,'ytick',-1:1)
 
 %%
@@ -76,6 +76,7 @@ hold on, plot(f(s),'k',LW,1.6), hold off
 % It is interesting to plot contours of $|f(z)|$ in the original
 % half-strip.  Can you explain this image with the aid
 % of the Schwarz reflection principle?
-x = linspace(-5,5,140); y = linspace(-4,4,100);
+x = linspace(-8,8,140); y = linspace(-4,4,100);
 [xx,yy] = meshgrid(x,y); zz = xx + 1i*yy;
 contour(x,y,log10(abs(f(zz))), -.7:.05:.7), colorbar
+set(gca,'xtick',-1:1,'ytick',-4:4)
