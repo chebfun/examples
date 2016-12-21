@@ -16,7 +16,7 @@
 %%
 % For example, Olivier Sete and I were recently interested in the conformal
 % map $f$ of an infinite half-strip to the unit disk.  The half-strip
-% consisted of all complex values $z$ with $\hbox{Re} z \ge -1$
+% consists of all complex values $z$ with $\hbox{Re} z \ge -1$
 % and $|\hbox{Im} z| \le 1$. Our particular
 % interest was in how this map would transform the unit square at the left
 % end of the half-strip and a finite rectangle enclosing that square.
@@ -31,7 +31,7 @@ unitsquare = join(-1i+s,1+1i*s,1i-s,-1-1i*s);
 square = @(r) r*unitsquare;
 E = unitsquare; E = 4*real((E+1)/2)-1 + 1i*imag(E);
 Z = E; for r = .1:.1:.9, Z = [Z square(r)]; end
-plot(Z,LW,1.6), xlim([-1.5 3.5]), axis equal
+plot(Z,LW,1.2), xlim([-1.5 3.5]), axis equal
 set(gca,'xtick',-1:3,'ytick',-1:1)
 
 %%
@@ -47,7 +47,7 @@ g = @(z) sinh(pi*(z+1)/2)/sinh(pi/2)
 
 %%
 % As promised, a single command suffices to plot the image.
-plot(g(Z),LW,1.6), axis([-4 12 -5 5])
+plot(g(Z),LW,1.2), axis([-6 12 -5 5])
 set(gca,'xtick',-2:2:6,'ytick',-4:2:4)
 
 %%
@@ -62,7 +62,7 @@ f = @(z) h(g(z))
 % approximately semicircular blip near $z=1$ that deviates from the unit
 % circle, since our plots show the image of a rectangle of aspect ratio $2$
 % rather than the whole infinite half-strip.
-hh = plot(f(Z),LW,1.6); xlim([-2.5 2.5]), axis equal
+hh = plot(f(Z),LW,1.2); xlim([-2.5 2.5]), axis equal
 set(gca,'xtick',-1:1,'ytick',-1:1)
 
 %%
@@ -70,7 +70,7 @@ set(gca,'xtick',-1:1,'ytick',-1:1)
 % and ''mapping'';
 set(hh,LW,.5)
 s = [.7i+scribble(' conformal') ; -.9i + scribble(' mapping')];
-hold on, plot(f(s),'k',LW,1.6), hold off
+hold on, plot(f(s),'k',LW,1.2), hold off
 
 %%
 % It is interesting to plot contours of $|f(z)|$ in the original
@@ -79,4 +79,4 @@ hold on, plot(f(s),'k',LW,1.6), hold off
 x = linspace(-8,8,140); y = linspace(-4,4,100);
 [xx,yy] = meshgrid(x,y); zz = xx + 1i*yy;
 contour(x,y,log10(abs(f(zz))), -.7:.05:.7), colorbar
-set(gca,'xtick',-1:1,'ytick',-4:4)
+set(gca,'xtick',-2:0,'ytick',-4:4)
