@@ -28,9 +28,9 @@
 % conformally map it with a single command.
 MS = 'markersize'; LW = 'linewidth'; s = chebfun('s');
 unitsquare = join(-1i+s,1+1i*s,1i-s,-1-1i*s);
-square = @(r) r*unitsquare;
+square = @(r) r.*unitsquare;
 E = unitsquare; E = 4*real((E+1)/2)-1 + 1i*imag(E);
-Z = E; for r = .1:.1:.9, Z = [Z square(r)]; end
+Z = [E square(.1:.1:.9)];
 plot(Z,LW,1.2), xlim([-1.5 3.5]), axis equal
 set(gca,'xtick',-1:3,'ytick',-1:1)
 
@@ -43,7 +43,7 @@ set(gca,'xtick',-1:3,'ytick',-1:1)
 % half-plane. We introduce a factor $\pi/2$ to change the half-width to
 % $1$, and use $z+1$ so that our strip starts at real part $-1$ rather than
 % $0$.  So here is the necessary map $g$:
-g = @(z) sinh(pi*(z+1)/2)/sinh(pi/2)
+g = @(z) sinh(pi*(z+1)/2)/sinh(pi/2);
 
 %%
 % As promised, a single command suffices to plot the image.
@@ -53,8 +53,8 @@ set(gca,'xtick',-2:2:6,'ytick',-4:2:4)
 %%
 % Next, we map this half-plane to the unit disk by the Moebius
 % transformation $(w-1)/(w+1)$,
-h = @(w) (w-1)./(w+1)
-f = @(z) h(g(z))
+h = @(w) (w-1)./(w+1);
+f = @(z) h(g(z));
 
 %%
 % Another single command gives us our final map. Note that the outer curve
