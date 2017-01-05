@@ -10,11 +10,11 @@
 % vibrational patterns traverse across the surface of the drum, and
 % at resonant frequencies, these patterns form 
 % what are called _standing_, or _stationary_, waves. 
-% We refer to the functions that describe these standing waves 
-% as _harmonics_ . The harmonics form an 
-% orthonormal basis for a useful class of functions on the unit disk. 
-% While the harmonics are not used within Diskfun's constructor for a variety 
-% of reasons [6], they can be accessed easily with the 
+% The functions that describe these standing waves 
+% are sometimes referred to as _harmonics_ , and
+% they form an orthonormal basis for a large class of functions on the unit disk. 
+% While the disk harmonics are not used within Diskfun's constructor 
+% for a variety of reasons [6], they can be accessed easily with the 
 % |diskfun.harmonic| command. In this example, we explore these 
 % functions and use them to approximate 
 % solutions to the wave equation on the disk. 
