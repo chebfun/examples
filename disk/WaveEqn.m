@@ -1,8 +1,8 @@
-%% Harmonic functions and the wave equation on the disk
-% Heather Wilber, January 2016
+%% The wave equation on the disk
+% Heather Wilber, January 2017
 
 %%
-% (Chebfun example diskfun)
+% (Chebfun example/disk/WaveEqn.m )
 % [Tags: #diskfun, #eigenfunctions, #Laplacian]
 
 %%  1. Introduction
@@ -11,11 +11,11 @@
 % at resonant frequencies, these patterns form 
 % what are called _standing_, or _stationary_, waves. 
 % We refer to the functions that describe these standing waves 
-% as _harmonic_ functions. The harmonic functions form an 
+% as _harmonics_ . The harmonics form an 
 % orthonormal basis for a useful class of functions on the unit disk. 
 % While the harmonics are not used within Diskfun's constructor for a variety 
 % of reasons [6], they can be accessed easily with the 
-% |diskfun.harmonic| command. In this example, we explore the harmonic 
+% |diskfun.harmonic| command. In this example, we explore these 
 % functions and use them to approximate 
 % solutions to the wave equation on the disk. 
 
@@ -83,8 +83,8 @@ lam = roots(chebfun(@(r) besselj(0,r), [0 pi]));
 norm( lap(u01)+(lam)^2*u01 )
 
 %%
-% Below, we plot |u01| along with a few other harmonic functions. 
-% The harmonic functions with $m=0$ correspond to initial displacements
+% Below, we plot |u01| along with a few other harmonics. 
+% Harmonics with the parameter $m=0$ correspond to displacements
 % in the vibrating drum problem where the drum is struck exactly in the 
 % center. This creates vibrational patterns that are radially symmetric.
 
@@ -125,7 +125,7 @@ u205 = diskfun.harmonic(20, 5);
 plot(u205), axis off, title('u205'), snapnow
 %%
 % These functions all satisfy homogeneous Dirichlet conditions, but we can
-% also compute with harmonic functions that satisfy homogeneous
+% also compute with harmonics that satisfy homogeneous
 % Neumann conditions: 
 
 uN21 = diskfun.harmonic(2,1, 'neumann');
@@ -136,7 +136,7 @@ plot(uN21), axis off, view([-1.2e2,50]), title('u21 with Neumann bc')
 subplot(1,2,2)
 plot(uN34), axis off, view(a,b), title('u34 with Neumann bc')
 %%
-% The normalized harmonic functions form an orthonormal basis; we can check 
+% When normalized, these functions form an orthonormal basis; we can check 
 % this property using |sum2|, which performs integration over the unit disk: 
 %%
 int1 = sum2(u01.*u02)
@@ -144,7 +144,7 @@ int2 = sum2(v22.*u711)
 int3 = sum2(u03.*u03)
 
 
-%% 3. Approximations with harmonic functions
+%% 3. Approximations with harmonics
 % Any function that
 % is square integrable on the disk and satisfies homogeneous Dirichlet 
 % conditions can be expressed using the following series expansion [2]: 
@@ -161,7 +161,7 @@ plot(f), title('f'), axis off, colorbar
 
 %%
 % The coefficients in (5) can be computed directly using the 
-% normalized harmonic functions $u_{mn}$ and $v_{mn}$, as 
+% normalized functions $u_{mn}$ and $v_{mn}$, as 
 % $$ a_{mn} =
 % \int_{-\pi}^{\pi}\int_{0}^{1} u_{mn}(\theta, r) f(\theta, r) r \, dr \, d \theta,
 % \quad \quad (6) $$
@@ -237,12 +237,12 @@ plot(f-fproj), title('f: error'), axis off, colorbar, snapnow
 % $u(t, r, 0) = f(t,r)$. If we let $t=0$ in (8), we see that they are given
 % by (6) and (7).
 % More generally, any vibrational pattern producible on 
-% the drum is in fact a linear combination of harmonic functions.
+% the drum is in fact a linear combination of standing waves on the disk.
 %%
 % In this example, we choose $f$ from Section 3 as the initial displacement,  
-% and plot an approximation to $u$ using the harmonic functions. While
+% and plot an approximation to $u$ using |diskfun.harmonic|. While
 % this is a theoretically interesting example that illuminates the role of
-% the harmonic functions in solutions to the wave equation, 
+% the harmonics in solutions to the wave equation, 
 % it is far from numerically efficient. 
 % We therefore begin by reducing the number of coefficients 
 % used in our approximation to $f$, so that in (5),
