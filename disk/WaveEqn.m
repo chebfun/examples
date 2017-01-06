@@ -12,7 +12,8 @@
 % what are called _standing_, or _stationary_, waves. 
 % The functions that describe these standing waves 
 % are sometimes referred to as _harmonics_ , and
-% they form an orthonormal basis for a large class of functions on the unit disk. 
+% they form an orthonormal basis for a large class of functions on the 
+% unit disk. 
 % While the disk harmonics are not used within Diskfun's constructor 
 % for a variety of reasons [6], they can be accessed easily with the 
 % |diskfun.harmonic| command. In this example, we explore these 
@@ -21,7 +22,7 @@
 
 %% 2. Deriving the harmonics
 % An idealized drum consists of a membrane with negligible 
-% and uniform thickness, clamped to a circular wire frame 
+% and uniform thickness, clamped to a circular frame 
 % so that the displacement at the boundary is zero. 
 % Letting $\theta \in [-\pi, \pi]$, $r \in [0, 1]$, and $t \geq 0$ represent 
 % angular, radial and time variables, respectively,
@@ -35,7 +36,7 @@
 % \quad \quad 
 %  u(\theta, 1, t) = 0, \quad \quad (1) $$ 
 % where $c$ is selected as a positive constant related to the speed at 
-% which tranverse waves travel across the membrane. 
+% which transverse waves travel across the membrane. 
 % We will choose $c=1$ for convenience.
 % We must also specify a set of initial conditions. In this case, we select
 % a smooth function on the disk as the initial displacement of the membrane,  
@@ -220,7 +221,7 @@ plot(f-fproj), title('f: error'), axis off, colorbar, snapnow
 %%
 % The expansion in (5) can be modified so that functions with 
 % nonhomogenous boundary conditions can also be expressed in terms of the 
-% harmonic functions. Additionally, there are ways to compute the 
+% the harmonics. Additionally, there are ways to compute the 
 % coefficients in (5) more efficiently [5]. 
 
 %% 4. An analytic solution to the wave equation
@@ -276,7 +277,7 @@ end
 %%
 % The following code computes the solution. Since the code is slow to execute,
 % it is best to first store a sequence of diskfuns representing the 
-% solution at $t = 0, 0.1, 0.2, \cdots 4.0$. These can then be plotted
+% solution at $t = 0, 0.1, 0.2, \dots, 4.0$. These can then be plotted
 % consecutively to visualize the solution through time. 
 
 tm = linspace(0, 4, 41); 
@@ -327,14 +328,14 @@ title('t=2.4')
 
 %% 5. References
 %%
-% [1] J.P. Boyd and F. Yu, Comparing seven spectral methods 
+% [1] J. P. Boyd and F. Yu, Comparing seven spectral methods 
 % for interpolation and for solving the Poisson equation in a disk: Zernike 
 % polynomials, Logan & Shepp ridge polynomials, Chebyshev & Fourier series, 
 % cylindrical Robert functions, Bessel & Fourier expansions, 
 % square-to-disk conformal mapping and radial basis functions, 
 % _J. Comp. Phys._, 230.4 (2011), pp. 1408-1438.
 %%
-% [2] R.V. Churchill and J.W. Brown, _Fourier Series 
+% [2] R. V. Churchill and J. W. Brown, _Fourier Series 
 % and Boundary Value Problems_, McGraw-Hill, 1978.
 %%
 % [3] A. Elbert, Some recent results on the zeros of Bessel functions 
@@ -348,6 +349,6 @@ title('t=2.4')
 % evaluation of special function transforms. 
 % _Appl. Comp. Harm. Anal._, 28.2 (2010): pp. 203-226.
 %%
-% [6] H. Wilber, A. Townsend, and G.B. Wright, 
+% [6] H. Wilber, A. Townsend, and G. B. Wright, 
 % Computing with functions in spherical and polar geometries II. The disk, 
 % _SIAM J. Sci. Comput._, submitted, 2016.
