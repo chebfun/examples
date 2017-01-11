@@ -1,5 +1,5 @@
 %% Spread option in the two-dimensional Black-Scholes model
-% Kathrin Glau, Behnam Hashemi, Mirco Mahlstedt, and Christian P\"{o}tz,
+% Kathrin Glau, Behnam Hashemi, Mirco Mahlstedt, and Christian Poetz,
 % January 2017
 
 %%
@@ -22,15 +22,13 @@
 % where $W^1_t$ and $W^2_t$ denote Brownian motions/Wiener processes with 
 % correlation $\rho$.
 %
-% Spread options:
-%
 % We are interested in pricing spread options. These are important instruments 
 % on several markets such as on equity, fixed income, foreign exchange, 
 % commodities, or energy markets, see [2]. In particular, when prices of spread
 % options are used to fit model parameters, fast and accurate pricing
 % methods are called for.
 %
-% Payoff of a spread option with strike price $K$ and maturity $T$:
+% Payoff of a spread option with strike price $K$ and maturity $T$ is
 %
 % $$
 %    \mbox{payoff} = \max \\{ S_1(T) - S_2(T) - K, 0 \\}.
@@ -42,8 +40,6 @@
 % $$
 %   spread_{price} = exp(-r T)  E[\max \\{ S_1(T) - S_2(T) - K, 0\\}].
 % $$
-%
-% Problem: 
 %
 % In order to compute the price of the spread option in the Black-Scholes
 % model, the expected value, a two-dimensional integral, needs to be 
@@ -58,8 +54,6 @@
 % interest rate $r$ and initial stock prices $S_1(0)$ and $S_2(0)$,
 % the spread option prices need to be evaluated for a set of 
 % maturities $T$ and strikes $K$, and different parameters $\rho$.
-%
-% Approach with the help of Chebfun3d:
 %
 % Our approach is to interpret $spread_{price}$ as a function of the three 
 % model parameters $T$, $K$ and $\rho$ and use 3D Chebyshev 
