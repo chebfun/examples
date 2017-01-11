@@ -1,13 +1,11 @@
-%% Spread Option in the two-dimensional Black-Scholes model
-% Kathrin Glau, Behnam Hashemi, Mirco Mahlstedt, and Christian Poetz,
+%% Spread option in the two-dimensional Black-Scholes model
+% Kathrin Glau, Behnam Hashemi, Mirco Mahlstedt, and Christian P\"{o}tz,
 % January 2017
 
 %%
 % (Chebfun example applics/BlackScholes2D.m)
 
 %% Problem formulation and model
-%
-% The two-dimensional Black-Scholes model:
 %
 % We model the price processes of two stocks in the two-dimensional 
 % Black-Scholes model [1] as solutions of the following stochastic 
@@ -28,21 +26,21 @@
 %
 % We are interested in pricing spread options. These are important instruments 
 % on several markets such as on equity, fixed income, foreign exchange, 
-% commodities, or energy markets, see [2]. In particular when prices of spread
+% commodities, or energy markets, see [2]. In particular, when prices of spread
 % options are used to fit model parameters, fast and accurate pricing
 % methods are called for.
 %
 % Payoff of a spread option with strike price $K$ and maturity $T$:
 %
 % $$
-%    payoff = \max \{ S_1(T) - S_2(T) - K, 0 \}.
+%    \mbox{payoff} = \max \\{ S_1(T) - S_2(T) - K, 0 \\}.
 % $$
 %
 % Using risk-neutral valuation, the price of the spread option is given
 % by the following expectation:
 %
 % $$
-%   spread_{price} = exp(-r T)  E[\max \{ S_1(T) - S_2(T) - K, 0\}].
+%   spread_{price} = exp(-r T)  E[\max \\{ S_1(T) - S_2(T) - K, 0\\}].
 % $$
 %
 % Problem: 
@@ -77,7 +75,7 @@ x02 = log(S02);
 sig1 = 0.3; % model parameter sigma_1
 sig2 = 0.3; % model parameter sigma_2
 %
-% Parameter domain for $T x K x \rho$:
+% Parameter domain for T x K x rho:
 %
 T_min = 0.3;
 T_max = 2;
@@ -115,7 +113,7 @@ price = @(T, K, rho) exp(-r.*T) .* pricetmp2d(T, K, rho);
 
 %% Calling the Chebfun3 constructor
 % 
-% Here we set the tolerance to $10^{-5}$ (This is done for speed. With the 
+% Here, we set the tolerance to $10^{-5}$ (This is done for speed. With the 
 % default tolerance, this example would take a factor of 10 times longer. 
 % See Subsection 18.10 of the Chebfun Guide). The run-time of the constructor
 % scales linearly with the run-time of the bivariate integration. The longer
@@ -134,7 +132,7 @@ campos([-10 10 10])
 xlabel('T'), ylabel('K'), zlabel('\rho')
 
 %% Checking the error
-% Finally we evaluate both the function handle and the corresponding 
+% Finally, we evaluate both the function handle and the corresponding 
 % chebfun3 object. We observe a considerable gain in efficiency: 
 % Evaluation of the chebfun3 object is hundrets times faster than the function handle.
 
@@ -167,7 +165,7 @@ err = max(abs(err(:)))
 %    liabilities", _Journal of Political Economy_ 81 (1973) 637--654.
 %
 % 2. R. Carmona and V. Durrleman, "Pricing and Hedging Spread Options",
-%    _SIAM Review_ 45(4) (2003) 627--685.
+%    _SIAM Review_ 45 (2003) 627--685.
 %
 % 3. M. Gass, K. Glau, M. Mahlstedt and M. Mair, "Chebyshev interpolation
 %    for parametric option pricing", working paper, 2016, http://arxiv.org/abs/1505.04648
