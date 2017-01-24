@@ -70,7 +70,7 @@
 % For $m<0$, the function $v_{|m|n} = 
 % B_{|m|n} J_{|m|}(\lambda_{|m|n}
 % r) \sin(|m|\theta)$ is constructed. For example, here is
-% $u_{20,10}$: 
+% $u_{4, 2}$: 
 
  u42 = diskfun.harmonic(4,2)
  plot(u42)
