@@ -72,21 +72,19 @@
 % r) \sin(|m|\theta)$ is constructed. For example, here is
 % $u_{20,10}$: 
 
- u2010 = diskfun.harmonic(20,10)
- plot(u2010)
- view(4.4, 8.12e1)
- colormap(copper)
+ u42 = diskfun.harmonic(4,2)
+ plot(u42)
  axis off
- title('u_{20,10}')
+ title('u_{4,2}')
 %%
-% We can verify that $u_{20,10}$ is an eigenfunction of Laplace's equation. The
-% associated eigenvalue is related to the tenth positive zero of the function
-% $J_{20}(r)$. We find this using |roots| in Chebfun, and then use |lap| to
+% We can verify that $u_{4,2}$ is an eigenfunction of Laplace's equation. The
+% associated eigenvalue is related to the second positive zero of the function
+% $J_{4}(r)$. We find this using |roots| in Chebfun, and then use |lap| to
 % compute the Laplacian on the disk. 
 
-lam = roots(chebfun(@(x) besselj(20,x), [56 59]));
+lam = roots(chebfun(@(x) besselj(4,x), [10 13]));
 
-norm( lap(u2010)+(lam)^2*u2010 )
+norm( lap(u42)+(lam)^2*u42 )
 
 %% 
 % Harmonics with the parameter $m=0$ correspond to displacements
