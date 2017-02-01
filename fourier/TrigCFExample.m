@@ -35,9 +35,8 @@
 % out popped 0.17737! 
 % From that moment I knew that CF approximation was going to work.
 % Nowadays we can just type
-format long
+format long, tic
 norm(hankel(1./factorial(3:9)))
-
 
 %%
 % What about CF approximation of periodic functions, based on a Hankel matrix of
@@ -67,8 +66,8 @@ c = trigcoeffs(f)
 c = c(ceil(length(c)/2):end)
 
 %%
-% Choose your values $m$ and $n$ for type $(m,n)$ rational approximation:
-m = 2; n = 1;
+% Choose your values $m$ and $n$ for type $(m,n)$ rational approximation.
+% (In this version of trigonometric CF approximation we need $m\ge n-1$.)
 
 %%
 % Make a Hankel matrix:
@@ -102,6 +101,10 @@ plot(f-p./q,'linewidth',1.6), grid on
 hold on, plot([-pi pi],err*[1 1],'--k')
 plot ([-pi pi],-err*[1 1],'--k'), ylim(.004*[-1 1])
 
+%%
+% Time in seconds for this example:
+toc
+
 %% References
 %
 % 1. M. H. Gutknecht,
@@ -115,13 +118,16 @@ plot ([-pi pi],-err*[1 1],'--k'), ylim(.004*[-1 1])
 %
 % 3. M. Javed and L. N. Trefethen,
 % Eight shades of rational approximation, Chebfun example,
-% January 2016.
+% January 2016,
+% http://www.chebfun.org/examples/approx/EightShades.html.
 %
 % 4. L. N. Trefethen, "Digital filters via CF approximation,
-% Chebfun example, April 2014.
+% Chebfun example, April 2014,
+% http://www.chebfun.org/examples/approx/FiltersCF.html.
 %
 % 5. L. N. Trefethen, _Approximation Theory and Approximation Practice,_
 % SIAM, 2013.
 % 
 % 6. L. N. Trefethen and M. Javed,
-% CF approximation 30 years ago, Chebfun example, July 2014.
+% CF approximation 30 years ago, Chebfun example, July 2014,
+% http://www.chebfun.org/examples/approx/CF30.html.
