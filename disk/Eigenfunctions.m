@@ -1,8 +1,8 @@
-%% The wave equation on the disk
+%% Eigenfunctions of the Laplacian on the disk
 % Heather Wilber, January 2017
 
 %%
-% (Chebfun example/disk/WaveEqn.m )
+% (Chebfun example/disk/Eigenfunctions.m )
 % [Tags: #diskfun, #eigenfunctions, #Laplacian]
 
 %%  1. Introduction
@@ -69,41 +69,44 @@
 % r) \cos(m\theta)$, where $A_{mn}$ is the normalization factor.  
 % For $m<0$, the function $v_{|m|n} = 
 % B_{|m|n} J_{|m|}(\lambda_{|m|n}
-% r) \sin(|m|\theta)$ is constructed. Here is how we 
-% construct the lowest order harmonic function: 
+% r) \sin(|m|\theta)$ is constructed. For example, here is
+% $u_{4, 2}$: 
 
- u01 = diskfun.harmonic(0,1)
+ u42 = diskfun.harmonic(4,2)
+ plot(u42)
+ axis off
+ title('u_{4,2}')
 %%
-% We can verify that |u01| is an eigenfunction of Laplace's equation. The
-% associated eigenvalue is related to the first positive zero of the function
-% $J_0(r)$. We find this using |roots| in Chebfun, and then use |lap| to
+% We can verify that $u_{4,2}$ is an eigenfunction of Laplace's equation. The
+% associated eigenvalue is related to the second positive zero of the function
+% $J_{4}(r)$. We find this using |roots| in Chebfun, and then use |lap| to
 % compute the Laplacian on the disk. 
 
-lam = roots(chebfun(@(r) besselj(0,r), [0 pi]));
+lam = roots(chebfun(@(x) besselj(4,x), [10 13]));
 
-norm( lap(u01)+(lam)^2*u01 )
+norm( lap(u42)+(lam)^2*u42 )
 
-%%
-% Below, we plot |u01| along with a few other harmonics. 
+%% 
 % Harmonics with the parameter $m=0$ correspond to displacements
 % in the vibrating drum problem where the drum is struck exactly in the 
 % center. This creates vibrational patterns that are radially symmetric.
 
 subplot(1,2,1)
+u01 = diskfun.harmonic(0,1);
 a = -100.4; b = 51.6; 
-plot(u01), axis off, view([a,b]), title('u01')
+plot(u01), axis off, view([a,b]), title('u_{0,1}')
 
 subplot(1,2,2)
 u02 = diskfun.harmonic(0,2); 
-plot(u02), axis off, view([a,b]), title('u02'), snapnow
+plot(u02), axis off, view([a,b]), title('u_{0,2}'), snapnow
 
 subplot(1,2,1)
 u03 = diskfun.harmonic(0,3); 
-plot(u03), axis off, view([a,b]),title('u03')  
+plot(u03), axis off, view([a,b]),title('u_{0,3}')  
 
 subplot(1,2,2)
 u04 = diskfun.harmonic(0,4); 
-plot(u04), axis off, view([a,b]), title('u04')
+plot(u04), axis off, view([a,b]), title('u_{0,4}')
 
 %%
 % Other parameter choices correspond to initial displacements that do not 
@@ -111,19 +114,19 @@ plot(u04), axis off, view([a,b]), title('u04')
 
 subplot(1,2,1)
 v21 = diskfun.harmonic(-2,1); 
-plot(v21), axis off, view([-99.5,60.3]), title('v21') 
+plot(v21), axis off, view([-99.5,60.3]), title('v_{2,1}') 
 
 subplot(1,2,2)
 v22 = diskfun.harmonic(-3,2); 
-plot(v22), axis off, view([-1.1e2,75]), title('v22'), snapnow 
+plot(v22), axis off, view([-1.1e2,75]), title('v_{2,2}'), snapnow 
 
 subplot(1,2,1)
-u711 = diskfun.harmonic(7,11); 
-plot(u711), axis off,title('u711') 
+u33 = diskfun.harmonic(3,3); 
+plot(u33), axis off, title('u_{3,3}') 
 
 subplot(1,2,2)
-u205 = diskfun.harmonic(20, 5); 
-plot(u205), axis off, title('u205'), snapnow
+u117 = diskfun.harmonic(11, 7); 
+plot(u117), axis off, title('u_{11,7}'), snapnow
 %%
 % These functions all satisfy homogeneous Dirichlet conditions, but we can
 % also compute with harmonics that satisfy homogeneous
@@ -141,7 +144,7 @@ plot(uN34), axis off, view(a,b), title('u34 with Neumann bc')
 % this property using |sum2|, which performs integration over the unit disk: 
 %%
 int1 = sum2(u01.*u02)
-int2 = sum2(v22.*u711)
+int2 = sum2(v22.*u117)
 int3 = sum2(u03.*u03)
 
 
@@ -149,7 +152,7 @@ int3 = sum2(u03.*u03)
 % Any function that
 % is square integrable on the disk and satisfies homogeneous Dirichlet 
 % conditions can be expressed using the following series expansion [2]: 
-% $$ f(\theta, r) = \sum_{n = 1}^{\infty} J_0(\lambda_{0,n} r) +
+% $$ f(\theta, r) = \sum_{n = 1}^{\infty} a_{0,n} J_0(\lambda_{0,n} r) +
 % \sum_{m = 1}^{\infty} \sum_{n = 1}^{\infty}  
 % J_m(\lambda_{mn} r) \left( a_{mn}\cos(m\theta) + 
 % b_{mn} \sin(m\theta) \right). \quad\quad (5) $$

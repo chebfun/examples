@@ -237,11 +237,9 @@ norm(mean(g)-u(0,0))
 % [2] R. V. Churchill and J. W. Brown, _Fourier Series 
 % and Boundary Value Problems_, McGraw-Hill, 1978.
 %%
-% <latex>
-% [3] J. S\l omka, A. Townsend, and J. Dunkel, Stokes II  
+% [3] J. Slomka, A. Townsend, and J. Dunkel, Stokes II  
 % problem and Einstein-de Haas effect in active fluids, in preparation,
 % 2017.
-% </latex>
 %%
 % [4] H. Wilber, A. Townsend, and G. B. Wright, 
 % Computing with functions in spherical and polar geometries II. The disk, 
