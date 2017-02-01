@@ -68,6 +68,7 @@ c = c(ceil(length(c)/2):end)
 %%
 % Choose your values $m$ and $n$ for type $(m,n)$ rational approximation.
 % (In this version of trigonometric CF approximation we need $m\ge n-1$.)
+m = 2; n = 1;
 
 %%
 % Make a Hankel matrix:
