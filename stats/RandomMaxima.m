@@ -21,7 +21,7 @@ title([int2str(length(val)) ' maxima'],FS,16)
 
 %%
 % The random function in question is obtained as the restriction of a
-% sum of a finite Fourier series with independent normally distirbuted
+% sum of a finite Fourier series with independent normally distributed
 % random coefficients; the maximum wave number is about $2\pi /dx$, i.e.,
 % $2\pi$ in this case with $dx = 1$.
 % Here is an analogous picture on an interval of length 40.
