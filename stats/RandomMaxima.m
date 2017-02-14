@@ -11,16 +11,13 @@
 % the notion of a random function implemented in the
 % new Chebfun command |randnfun|.  Here for example are
 % the local maxima of a random function on the interval $[0,20]$.
-tic
-rng(0)
-dx = 1;
+tic, rng(0), dx = 1;
 f = randnfun(dx,1,[0,20]);
 [val,pos] = max(f,'local');
 MS = 'markersize'; LW = 'linewidth'; FS = 'fontsize';
 plot(f,'k',LW,1.6), grid on, hold on
-plot(pos,val,'.r',MS,12), hold off
-nmax = length(val);
-title([int2str(nmax) ' maxima'],'fontsize',12)
+plot(pos,val,'.r',MS,16), hold off
+title([int2str(length(val)) ' maxima'],FS,16)
 
 %%
 % The random function in question is obtained as the restriction of a
@@ -31,9 +28,8 @@ title([int2str(nmax) ' maxima'],'fontsize',12)
 f = randnfun(dx,1,[0,40]);
 [val,pos] = max(f,'local');
 plot(f,'k',LW,1.6), grid on, hold on
-plot(pos,val,'.r',MS,12), hold off
-nmax = length(val);
-title([int2str(nmax) ' maxima'],'fontsize',12)
+plot(pos,val,'.r',MS,16), hold off
+title([int2str(length(val)) ' maxima'],FS,16)
 
 %%
 % Let's explore the number of maxima as a function of the length
@@ -45,10 +41,10 @@ for L = Lvec
   nmaxvec = [nmaxvec length(max(f,'local'))];
 end 
 loglog(Lvec,Lvec,'-r'), hold on
-loglog(Lvec,nmaxvec,'.',MS,14), grid on, hold off
+loglog(Lvec,nmaxvec,'.',MS,20), grid on, hold off
 axis([.8 1300 .8 1300]); 
-xlabel('length of interval',FS,10)
-ylabel('no. of maxima',FS,10)
+xlabel('length of interval',FS,16)
+ylabel('no. of maxima',FS,16)
 
 %%
 % It would seem that the expected number of maxima is asymptotic to $L$.
@@ -64,4 +60,4 @@ ylabel('no. of maxima',FS,10)
 
 %%
 % Execution time for this example:
-time_in_seconds = toc
+format short, time_in_seconds = toc
