@@ -11,7 +11,7 @@ MS = 'MarkerSize'; ms = 22; LW = 'LineWidth'; lw = 2;
 % matrices.  If $A$ is a real $n\mbox{-by-}n$ symmetric matrix then the 
 % Rayleigh quotient is defined as
 % $$ r(x) = \frac{x^{T} A x}{x^T x}, $$
-% for any $n$-dimensional real vector $x$.  
+% for any $n$-dimensional real vector $x\neq 0$.  
 % A key property of the Rayleigh quotient is that if $x$ is an eigenvector
 % of $A$ then $r(x)$ gives the corresponding eigenvalue.  Note that we can 
 % naturally extend the Rayleigh quotient to more general 
@@ -27,7 +27,7 @@ MS = 'MarkerSize'; ms = 22; LW = 'LineWidth'; lw = 2;
 rng(52509);
 A = 10*(2*rand(3)-1); A = 0.5*(A+A');
 q = spherefun(@(x,y,z) [x,y,z]*A*[x;y;z],'vectorize');
-plot(q), colorbar
+plot(q), hold on, contour(q,20,'k-'), colorbar, hold off
 
 %% 2. Maximum principle
 % The following theorem tells us that the eigenvalues of $A$ are given by
@@ -116,7 +116,7 @@ axis([-1 1 -1 1 -1 1]), alpha(0.8), hold off
 
 %% 4. Eigenvalues and the vanishing gradient of $q$ 
 % We conclude this example with a demonstration of another property of the
-% scaled Rayleigh quotient related to the maximum principle theorem.  The
+% restricted Rayleigh quotient related to the maximum principle theorem.  The
 % property is that the eigenvalues of $q$ occur where the surface gradient
 % of $q$ vanishes [2]. To demonstrate this, we plot the zero-level curves
 % of the three components of the surface gradient of $q$ together with the
@@ -132,5 +132,5 @@ plot3(X(:,1),X(:,2),X(:,3),'r.-','LineWidth',2,MS,ms), hold off
 % [1] J. P. Keener, _Principles of Applied Mathematics: Transformation and
 % Approximation_, Westview Press, 2000.
 %%
-% [2] D. Bau III, L. N. Trefethen, _Numerical Linear Algebra_, SIAM, 1997.
+% [2] D. Bau III & L. N. Trefethen, _Numerical Linear Algebra_, SIAM, 1997.
 
