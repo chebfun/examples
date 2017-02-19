@@ -71,7 +71,7 @@ plot3(x1(1),x1(2),x1(3),'r.',MS,ms), hold off
 %%
 % The maximum principle theorem says that the next two eigenvalues of $A$
 % must lie on the great circle formed by the plane that is normal to $x_1$
-% and passes through the origin.  This great circle can parameterized 
+% and passes through the origin.  This great circle can be parameterized 
 % and plotted as follows:
 xp = @(t) cos(loc(1))*cos(loc(2))*cos(t)-sin(loc(1))*sin(t);
 yp = @(t) sin(loc(1))*cos(loc(2))*cos(t)+cos(loc(1))*sin(t);
@@ -79,13 +79,13 @@ zp = @(t) -sin(loc(2))*cos(t);
 
 t = linspace(-pi,pi,501);
 plot(q), hold on
-plot3(xp(t),yp(t),zp(t),'r-')
+plot3(xp(t),yp(t),zp(t),'r-',LW,lw)
 plot3(x1(1),x1(2),x1(3),'r.',MS,ms), hold off
 
 %%
-% Let $f$ equal to the value of $q$ on this great circle.
+% Let $f$ be equal to the value of $q$ on this great circle.
 f = chebfun(@(t) feval(q,xp(t),yp(t),zp(t)),[-pi pi],'trig');
-plot(f)
+plot(f,LW,lw)
 
 %%
 % The maximum value of $f$ on this great circle gives the next largest
@@ -125,12 +125,12 @@ Gq = grad(q);
 contour(Gq(1),[0 0],'k-'), hold on
 contour(Gq(2),[0 0],'b-')
 contour(Gq(3),[0 0],'m-'), 
-plot3(X(:,1),X(:,2),X(:,3),'r.-','LineWidth',2,MS,ms), hold off
+plot3(X(:,1),X(:,2),X(:,3),'r.-',LW,lw,MS,ms), hold off
 
 %% 7. References
 %%
 % [1] J. P. Keener, _Principles of Applied Mathematics: Transformation and
 % Approximation_, Westview Press, 2000.
 %%
-% [2] D. Bau III & L. N. Trefethen, _Numerical Linear Algebra_, SIAM, 1997.
+% [2] L. N. Trefethen and D. Bau, III, _Numerical Linear Algebra_, SIAM, 1997.
 
