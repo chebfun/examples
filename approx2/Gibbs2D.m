@@ -16,8 +16,8 @@ p = chebfun2(A); plot(p), view(-110,60)
 % square in the middle.
 
 %%
-% How big is the oscillation?
-min2(p), max2(p)
+% How big is the overshoot?
+max2(p)
 
 %%
 % This is big! -- about twice what we are used to with a 
@@ -26,9 +26,15 @@ a = zeros(100,1); a(40:61) = 1;
 p1 = chebfun(a); max(p1)
 
 %%
+% (In the limit of an infinite grid this would converge to
+% $1.14114\dots;$ see equation (9.1) of [1].)
 % The reason is that the overshoot at the corner is especially
 % large, as we can see by zooming in:
-pzoom = p{0,.5,0,.5}; plot(pzoom), view(-100,20)
+pzoom = p{0,.5,0,.5}; plot(pzoom), view(-40,15)
+
+%%
+% The undershoot, by contrast, is of a more usual size:
+min2(p)
 
 %% 2. Fourier 2D Gibbs effect
 % A Fourier analogue can be produced by including the
@@ -37,11 +43,8 @@ t = chebfun2(A,'periodic'); plot(t), view(-110,60)
 
 %%
 % The extrema are similar:
-min2(t), max2(t)
+max2(t), min2(t)
 
-%%
-% For a summary of numbers associated with various versions
-% of the Gibbs phenomenon, see Chapter 9 of [1].
 
 %% Reference
 %
