@@ -8,7 +8,11 @@
 % Here is an illustration of the Gibbs phenomenon in 2D:
 A = zeros(100); A(40:61,40:61) = 1;
 p = chebfun2(A); plot(p)
-zlim([-.2 1.5]), view(-20,50), camlight left
+zlim([-.2 1.5]), view(-20,50), camlight left, camlight left
+
+%%
+% A contour plot may also be interesting:
+contour(p), colorbar
 
 %%
 % What's going on is that Chebfun has constructed a bivariate
@@ -45,7 +49,8 @@ min2(p)
 % A Fourier analogue can be produced by including the
 % 'periodic' flag:
 t = chebfun2(A,'periodic'); plot(t)
-zlim([-.2 1.5]), view(-20,50), camlight
+zlim([-.2 1.5]), view(-20,50), camlight, camlight
+contour(t), colorbar
 
 %%
 % The extrema are similar:
@@ -53,12 +58,35 @@ max2(t), min2(t)
 
 %% 3. A triangular island
 % For fun we can change from a square to a triangle:
-A = tril(A);
-p = chebfun2(A); plot(p{-.5,.5,-.5,.5})
+A2 = tril(A);
+p2 = chebfun2(A2); plot(p{-.5,.5,-.5,.5})
 zlim([-.2 1.5]), view(-20,50), camlight left
-max2(p), min2(p)
+max2(p2), min2(p2), snapnow
+contour(p2), colorbar
 
-%% 4. Reference
+%% 4. Low rank? 
+% Our first two examples, being perfectly aligned with the axes,
+% have rank 1:
+length(p)
+length(t)
+
+%%
+% The triangle example, because of is diagonal edge, has a bigger rank:
+length(p2)
+
+%%
+% Usually in Chebfun2, the rank one observes is a numerical rank due
+% to approximation to 6 digits, but in this case of a chebfun2 constructed
+% by interpolation of discrete data, the rank is identical to that of the
+% underlying matrix:
+rank(A2)
+
+%%
+% This rank is determined simply by the sparsity structure, which
+% shows a $22\times 22$ triangle.
+spy(A2), axis([36 65 36 65])
+
+%% 5. Reference
 %
 % 1. L. N. Trefethen, _Approximation Theory and Approximation Practice_,
 % SIAM, 2013.
