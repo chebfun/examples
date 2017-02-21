@@ -12,7 +12,7 @@ zlim([-.2 1.5]), view(-20,50), camlight left, camlight left
 
 %%
 % A contour plot may also be interesting:
-contour(p), colorbar
+contour(p), axis equal, colorbar
 
 %%
 % What's going on is that Chebfun has constructed a bivariate
@@ -50,7 +50,7 @@ min2(p)
 % 'periodic' flag:
 t = chebfun2(A,'periodic'); plot(t)
 zlim([-.2 1.5]), view(-20,50), camlight, camlight
-contour(t), colorbar
+contour(t), axis equal, colorbar
 
 %%
 % The extrema are similar:
@@ -59,10 +59,10 @@ max2(t), min2(t)
 %% 3. A triangular island
 % For fun we can change from a square to a triangle:
 A2 = tril(A);
-p2 = chebfun2(A2); plot(p{-.5,.5,-.5,.5})
+p2 = chebfun2(A2); plot(p2{-.5,.5,-.5,.5})
 zlim([-.2 1.5]), view(-20,50), camlight left
 max2(p2), min2(p2), snapnow
-contour(p2), colorbar
+contour(p2), axis equal, colorbar,
 
 %% 4. Low rank? 
 % Our first two examples, being perfectly aligned with the axes,
