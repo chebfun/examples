@@ -7,7 +7,8 @@
 %% 1. Chebyshev 2D Gibbs effect
 % Here is an illustration of the Gibbs phenomenon in 2D:
 A = zeros(100); A(40:61,40:61) = 1;
-p = chebfun2(A); plot(p), zlim([-.2 1.5]), view(-20,50)
+p = chebfun2(A); plot(p)
+zlim([-.2 1.5]), view(-20,50), camlight left
 
 %%
 % What's going on is that Chebfun has constructed a bivariate
@@ -30,23 +31,34 @@ p1 = chebfun(a); max(p1)
 % $1.14114\dots;$ see equation (9.1) of [1].)
 % The reason is that the overshoot at the corner is especially
 % large, as we can see by zooming in:
-pzoom = p{0,.5,0,.5}; plot(pzoom), zlim([-.2 1.5]), view(-30,15)
+pzoom = p{0,.5,0,.5}; plot(pzoom)
+zlim([-.2 1.5]), view(-20,50), camlight left
 
 %%
+% Intuitively, we can think of the overshoot at the corner as being
+% composed of one overshoot coming from the discontinuity in $x$
+% plus another coming from the discontinuity in $y$.
 % The undershoot, by contrast, is of a more usual size:
 min2(p)
 
 %% 2. Fourier 2D Gibbs effect
 % A Fourier analogue can be produced by including the
 % 'periodic' flag:
-t = chebfun2(A,'periodic'); plot(t), view(-20,50)
+t = chebfun2(A,'periodic'); plot(t)
+zlim([-.2 1.5]), view(-20,50), camlight
 
 %%
 % The extrema are similar:
 max2(t), min2(t)
 
+%% 3. A triangular island
+% For fun we can change from a square to a triangle:
+A = tril(A);
+p = chebfun2(A); plot(p{-.5,.5,-.5,.5})
+zlim([-.2 1.5]), view(-20,50), camlight left
+max2(p), min2(p)
 
-%% Reference
+%% 4. Reference
 %
 % 1. L. N. Trefethen, _Approximation Theory and Approximation Practice_,
 % SIAM, 2013.
