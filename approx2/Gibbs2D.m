@@ -12,7 +12,7 @@ zlim([-.2 1.5]), view(-20,50), camlight left, camlight left
 
 %%
 % A contour plot may also be interesting:
-contour(p), axis equal, colorbar
+contour(p), axis([-.6 .6 -.6 .6]), axis square, colorbar
 
 %%
 % What's going on is that Chebfun has constructed a bivariate
@@ -49,8 +49,8 @@ min2(p)
 % A Fourier analogue can be produced by including the
 % 'periodic' flag:
 t = chebfun2(A,'periodic'); plot(t)
-zlim([-.2 1.5]), view(-20,50), camlight, camlight
-contour(t), axis equal, colorbar
+zlim([-.2 1.5]), view(-20,50), camlight, camlight, snapnow
+contour(t), axis([-.6 .6 -.6 .6]), axis square, colorbar
 
 %%
 % The extrema are similar:
@@ -62,7 +62,7 @@ A2 = tril(A);
 p2 = chebfun2(A2); plot(p2{-.5,.5,-.5,.5})
 zlim([-.2 1.5]), view(-20,50), camlight left
 max2(p2), min2(p2), snapnow
-contour(p2), axis equal, colorbar,
+contour(p2), axis([-.6 .6 -.6 .6]), axis square, colorbar
 
 %% 4. Low rank? 
 % Our first two examples, being perfectly aligned with the axes,
