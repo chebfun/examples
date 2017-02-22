@@ -68,7 +68,7 @@ Ls = adjoint(L)
 % have $2d-1=3$ (or $2d-k$) boundary conditions, where $d$ is the order of the
 % differential operator (here 2). 
 
-L.lbc = @(u) u-1;  % just one BC
+L.lbc = 1;  % just one BC
 Ls = adjoint(L)
 
 %%
