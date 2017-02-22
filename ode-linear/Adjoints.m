@@ -7,12 +7,12 @@
 %% 1. Adjoint of a chebop
 % Let $L$ be a linear operator on the Hilbert space $H=L_2[-1,1]$ together
 % with homogeneous boundary conditions.
-% The adjoint of $L^*$ is defined as another operator, together
+% The adjoint of $L^\star$ is defined as another operator, together
 % with another set of homogeneous boundary conditions, such that 
-% $$(v,Lu)= (L^*v,u) $$
+% $$(v,Lu)= (L^\star v,u) $$
 % for all $u,v\in H$ such that $u$ satisfies the
 % boundary condition of $L$ and $y$ satisfies the boundary
-% condition of $L^*$. 
+% condition of $L^\star$. 
 % As of version 5.6.0, Chebfun is able to compute the adjoint of a linear operator represented as
 % a chebop by the command |adjoint|.
 % The operator adjoint is a classical subject [3], and the
@@ -55,7 +55,7 @@ Ls = adjoint(L)
 % we have an initial value problem, the problem is no longer self-adjoint
 % and the adjoint becomes 
 % a final value problem (as we saw above). The adjoint operator is still the formal
-% adjoint $L^*v=v''+v$. 
+% adjoint $L^\star v=v''+v$. 
 
 L = chebop([-1 1]); 
 L.op = @(u) diff(u,2)+u; 
@@ -85,8 +85,8 @@ L.lbc = @(u) u; L.rbc = @(u) u
 Ls = adjoint(L)
 
 %%
-% The formal adjoint here is $L^*v = (xv)''$. 
-% Note that the Chebfun display of $L^*$ is not very informative, as
+% The formal adjoint here is $L^\star v = (xv)''$. 
+% Note that the Chebfun display of $L^\star$ is not very informative, as
 % one can't see what the variable coefficients are.  This happens
 % because Chebfun is a numerical system, not symbolic: its
 % representation of each coefficient function is not an algebraic
@@ -104,7 +104,7 @@ abs(v'*(L*u) - (Ls*v)'*u)
 %% 3. Eigenvalues and eigenfunctions of the adjoint
 % The eigenvalues of an operator and its adjoint
 % are complex conjugates of each other, so if the eigenvalues are
-% real, then they are the same for $L$ and $L^*$.  Let's verify this a with non-self-adjoint
+% real, then they are the same for $L$ and $L^\star$.  Let's verify this a with non-self-adjoint
 % example, an advection-diffusion operator.
 
 L = chebop([-1 1]);  
@@ -118,16 +118,16 @@ Ls = adjoint(L);
 [diag(D) diag(Ds)]
 
 %%
-% Since if $Lx=\lambda x$ and $L^*y=\bar{\mu} y$ 
+% Since if $Lx=\lambda x$ and $L^\star y=\bar{\mu} y$ 
 % then 
-% $(y,Lx) = \bar{\lambda}(y,x)$ and $(L^*y,x) =\mu(y,x)$, it follows that 
+% $(y,Lx) = \bar{\lambda}(y,x)$ and $(L^\star y,x) =\mu(y,x)$, it follows that 
 % if $\lambda\neq \mu$, then $(y,x)=0$, i.e., left and right eigenfunctions
 % are orthogonal. We can confirm this as follows:
 
 Vs'*V
 
 %%
-% Let's plot the first two eigenfunctions of $L$ and of $L^*$.
+% Let's plot the first two eigenfunctions of $L$ and of $L^\star$.
 % Note that the curves are symmetric about the origin. 
 
 LW = 'linewidth'; CO = 'color'; FS = 'fontsize';
