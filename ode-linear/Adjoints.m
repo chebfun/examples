@@ -27,7 +27,7 @@
 
 L = chebop([-1 1]); 
 L.op = @(u) diff(u); % u'
-L.lbc = 0;  
+L.lbc = 0
 Ls = adjoint(L)
 
 %%
@@ -123,7 +123,7 @@ Ls = adjoint(L);
 % then 
 % $(y,Lx) = \bar{\lambda}(y,x)$ and $(L^\ast y,x) =\mu(y,x)$, it follows that 
 % if $\lambda\neq \mu$, then $(y,x)=0$, i.e., left and right eigenfunctions
-% are orthogonal. We can confirm this as follows:
+% corresponding to different eigenvalues are orthogonal. We can confirm this as follows:
 
 Vs'*V
 
