@@ -137,8 +137,8 @@ for ii = 1:2
     vs = Vs{ii}; if vs(-.9) < 0, vs = -vs; end
     plot(vs,'b')      
 end
-text(-.8,2,'adjoint eigenfunctions',CO,'b',FS,18)
-text(.3,2,'eigenfunctions',CO,'r',FS,18)
+text(-.8,2,'adjoint eigenfunctions',CO,'b',FS,14)
+text(.3,2,'eigenfunctions',CO,'r',FS,14)
 shg
 
 %%
