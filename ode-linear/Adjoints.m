@@ -80,8 +80,8 @@ Ls = adjoint(L)
 % Let's try an operator with variable coefficients. 
 
 L = chebop([-1 1]);      
-L.op = @(x,u) x.*diff(u,2); %  variable coefficient
-L.lbc = @(u) u; L.rbc = @(u) u % Dirichlet BCs on both sides 
+L.op = @(x,u) x.*diff(u,2);
+L.lbc = @(u) u; L.rbc = @(u) u
 Ls = adjoint(L)
 
 %%
