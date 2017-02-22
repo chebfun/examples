@@ -32,17 +32,17 @@ Ls = adjoint(L)
 
 %%
 % Note the sign change in the operator, which comes from integration by parts. 
-% Note also the change in the boundary condition, which switched from an
+% Note also the change in the boundary condition, which has switched from an
 % initial condition $u(-1)=0$ to a final condition $v(1)=0$. 
 % Let's check that the adjoint condition is satisfied: 
 
 x = chebfun('x');
-u = (x+1).*sin(x);       % function with u(-1) = 0
-v = (x-1).*exp(x);       % function with v(1) = 0
-abs(v'*(L(u)) - (Ls(v))'*u)
+u = (x+1).*sin(x);            % function with u(-1) = 0
+v = (x-1).*exp(x);            % function with v(1) = 0
+abs(v'*(L*u) - (Ls*v)'*u)
 
 %%
-% For self-adjoint operators (with self-adjoint boundary conditions), obviously the adjoint is itself:  
+% For self-adjoint operators with self-adjoint boundary conditions, the adjoint is itself:  
 
 L = chebop([-1 1]); 
 L.op = @(u) diff(u,2)+u; % u''
@@ -51,10 +51,11 @@ Ls = adjoint(L)
 
 
 %% 2. Adjoint boundary conditions
-% With the same (self-adjoint) operator, if we change the boundary conditions so that 
-% we have an initial value problem, the adjoint becomes 
+% With the same operator, if we change the boundary conditions so that 
+% we have an initial value problem, the problem is no longer self-adjoint
+% and the adjoint becomes 
 % a final value problem (as we saw above). The adjoint operator is still the formal
-% adjoint $L^*(v)=v''+v$. 
+% adjoint $L^*v=v''+v$. 
 
 L = chebop([-1 1]); 
 L.op = @(u) diff(u,2)+u; 
@@ -71,7 +72,7 @@ Ls = adjoint(L)
 
 %%
 % The boundary conditions of the original and adjoint operators are related
-% in an intricate manner, and those of the adjoint satisfy a null vector
+% in an intricate manner, with those of the adjoint satisfying a null vector
 % condition involving a so-called complementarity matrix. 
 % For details, see [2,3]. 
 
@@ -84,7 +85,7 @@ L.lbc = @(u) u; L.rbc = @(u) u % Dirichlet BCs on both sides
 Ls = adjoint(L)
 
 %%
-% The formal adjoint here is $L^*(v) = (xv)''$. 
+% The formal adjoint here is $L^*v = (xv)''$. 
 % Note that the Chebfun display of $L^*$ is not very informative, as
 % one can't see what the variable coefficients are.  This happens
 % because Chebfun is a numerical system, not symbolic: its
@@ -98,10 +99,10 @@ Ls = adjoint(L)
 x = chebfun('x');
 u = (x.^2-1).*sin(x);    
 v = (x.^2-1).*exp(x);   
-abs(v'*(L(u)) - (Ls(v))'*u)
+abs(v'*(L*u) - (Ls*v)'*u)
 
-%% 3. Eigenvalues of the adjoint
-% In a Hilbert space,the eigenvalues of an operator and those of its adjoint
+%% 3. Eigenvalues and eigenfunctions of the adjoint
+% The eigenvalues of an operator and its adjoint
 % are complex conjugates of each other, so if the eigenvalues are
 % real, then they are the same for $L$ and $L^*$.  Let's verify this a with non-self-adjoint
 % example, an advection-diffusion operator.
@@ -127,8 +128,7 @@ Vs'*V
 
 %%
 % Let's plot the first two eigenfunctions of $L$ and of $L^*$.
-% Note that the curves are 
-% symmetric about the origin. 
+% Note that the curves are symmetric about the origin. 
 
 LW = 'linewidth'; CO = 'color'; FS = 'fontsize';
 for ii = 1:2
@@ -137,12 +137,12 @@ for ii = 1:2
     vs = Vs{ii}; if vs(-.9) < 0, vs = -vs; end
     plot(vs,'b')      
 end
-text(-.8,2,'adjoint eigenfunctions',CO,'b',FS,12)
-text(.3,2,'eigenfunctions',CO,'r',FS,12)
+text(-.8,2,'adjoint eigenfunctions',CO,'b',FS,18)
+text(.3,2,'eigenfunctions',CO,'r',FS,18)
 shg
 
 %%
-% Note that the first eigenfunction is very far from orthogonal to the second --
+% The first eigenfunction is very far from orthogonal to the second --
 % in fact, they are nearly the same:
 V(:,2)'*V(:,1)
 
