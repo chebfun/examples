@@ -1,5 +1,5 @@
 %% Composition with multivariate chebfuns
-% Olivier S&egrave;te, November 2016
+% Olivier S&egrave;te, February 2017
 
 %%
 % (Chebfun example temp/ChebfunComposition.m)
@@ -13,10 +13,10 @@ g = chebfun(@(t) exp(t));
 h = g(f)
 
 %%
-% The same is possible for all combinations of chebfun, chebfun2, chebfun2v,
-% chebfun3, chebfun3v, diskfun, diskfunv, spherefun, and spherefunv objects, so
-% long as the range of $f$ lies in the domain of $g$.  We present a few examples
-% and start with a chebfun of a chebfun2:
+% Since Chebfun v5.6.0, the same is possible for all combinations of chebfun,
+% chebfun2, chebfun2v, chebfun3, chebfun3v, diskfun, diskfunv, spherefun, and
+% spherefunv objects, so long as the range of $f$ lies in the domain of $g$.
+% We present a few examples and start with a chebfun of a chebfun2:
 
 f = chebfun2(@(x,y) x.^2 + y);
 g = chebfun(@(t) exp(cos(10*t)), [-2, 2]);
@@ -27,7 +27,7 @@ plot(h)
 % The chebfun can also have two or three columns, resulting in a Chebfun2v
 % object:
 
-g = chebfun(@(t) [ t, t.^2 ], [-2, 2]);
+g = chebfun(@(t) [t, t.^2], [-2, 2]);
 h = g(f)
 
 %%
@@ -43,7 +43,7 @@ h = g(f)
 % easy example let
 
 g = chebfun2(@(x,y) x.^2 + y.^2);
-f = chebfun(@(t) [ cos(t), sin(t) ], [ -pi, pi ]);
+f = chebfun(@(t) [cos(t), sin(t)], [-pi, pi]);
 
 %%
 % The composition |g(f)| returns the constant chebfun $1$ on $[-\pi, \pi]$:
@@ -67,7 +67,7 @@ plot(h)
 % favourite functions!
 
 %% 3. The complex plane
-% Before we move on to Chebfun3 and Chebfn3v objects $g$, let us explore one
+% Before we move on to Chebfun3 and Chebfun3v objects $g$, let us explore one
 % particularity in 2d:  the real and complex plane can be identified.
 % Accordingly, a single input of a Chebfun2 or Chebfun2v object is interpreted
 % as a complex input: |g(z)| is the same as |g(real(z), imag(z))|.  This is true
@@ -81,8 +81,8 @@ g(0.5 + 1i) - g(0.5, 1)
 % or Chebfun3 object.  For instance, a parametrization of the complex unit
 % circle gives the same result as with the real parametrization from above:
 
-fr = chebfun(@(t) [ cos(t), sin(t) ], [ -pi, pi ]);
-fc = chebfun(@(t) exp(1i*t), [ -pi, pi ]);
+fr = chebfun(@(t) [cos(t), sin(t)], [-pi, pi]);
+fc = chebfun(@(t) exp(1i*t), [-pi, pi]);
 g = chebfun2(@(x,y) x.^2 + y.^2);
 hr = g(fr);
 hc = g(fc);
@@ -98,7 +98,7 @@ norm(hr - hc)
 % As an example, let $f$ be a helix and let $g$ measure the distance to
 % $(1,2,3)$:
 
-f = chebfun(@(t) [ cos(2*pi*t), sin(2*pi*t), t ], [0, 10]);
+f = chebfun(@(t) [cos(2*pi*t), sin(2*pi*t), t], [0, 10]);
 plot3(f(:,1), f(:,2), f(:,3))
 
 %%
