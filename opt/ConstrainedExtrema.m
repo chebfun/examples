@@ -72,7 +72,7 @@ hold on
 plot(chebfun(@(t) exp(1i*t), [0, 2*pi]), 'k-')
 plot(X(:,1), X(:,2), 'ko', 'MarkerFaceColor', 'k')
 text(X(1,1), X(1,2), '  min', 'color','w', 'FontWeight','bold', 'FontSize',24)
-text(X(2,1), X(2,2), '  max', 'color','w', 'FontWeight','bold')
+text(X(2,1), X(2,2), '  max', 'color','w', 'FontWeight','bold', 'FontSize',24)
 hold off
 axis equal
 
