@@ -69,8 +69,8 @@ X = f(Xh)
 
 contourf(g, 4)
 hold on
-plot(chebfun(@(t) exp(1i*t), [0, 2*pi]), 'k-', 'LineWidth', 2)
-plot(X(:,1), X(:,2), 'ko', 'MarkerFaceColor', 'k')
+plot(chebfun(@(t) exp(1i*t), [0, 2*pi]), 'k-', 'LineWidth', 4.2)
+plot(X(:,1), X(:,2), 'ko', 'MarkerFaceColor', 'k', 'MarkerSize',12)
 text(X(1,1), X(1,2), '  min', 'color','w', 'FontWeight','bold', 'FontSize',42)
 text(X(2,1), X(2,2), '  max', 'color','w', 'FontWeight','bold', 'FontSize',42)
 hold off
