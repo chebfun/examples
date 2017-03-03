@@ -11,7 +11,7 @@
 % with another set of homogeneous boundary conditions, such that 
 % $$(v,Lu)= (L^\ast v,u) $$
 % for all $u,v\in H$ such that $u$ satisfies the
-% boundary condition of $L$ and $y$ satisfies the boundary
+% boundary condition of $L$ and $v$ satisfies the boundary
 % condition of $L^\ast$. 
 % As of version 5.6.0, Chebfun is able to compute the adjoint of a linear operator represented as
 % a chebop by the command |adjoint|.
@@ -26,8 +26,8 @@
 % the left boundary.
 
 L = chebop([-1 1]); 
-L.op = @(u) diff(u); 
-L.lbc = @(u) u      
+L.op = @(u) diff(u); % u'
+L.lbc = 0
 Ls = adjoint(L)
 
 %%
@@ -39,14 +39,15 @@ Ls = adjoint(L)
 x = chebfun('x');
 u = (x+1).*sin(x);            % function with u(-1) = 0
 v = (x-1).*exp(x);            % function with v(1) = 0
+format short 
 abs(v'*(L*u) - (Ls*v)'*u)
 
 %%
 % For self-adjoint operators with self-adjoint boundary conditions, the adjoint is itself:  
 
 L = chebop([-1 1]); 
-L.op = @(u) diff(u,2)+u; % u''
-L.lbc = @(u) u; L.rbc = @(u) u 
+L.op = @(u) diff(u,2)+u; % u''+u
+L.lbc = 0; L.rbc = 0; 
 Ls = adjoint(L)
 
 
@@ -59,7 +60,7 @@ Ls = adjoint(L)
 
 L = chebop([-1 1]); 
 L.op = @(u) diff(u,2)+u; 
-L.lbc = @(u) [ u-1; diff(u) ]  % initial value problem with both BCs at left end
+L.lbc = [1;0]  % initial value problem with both BCs at left end
 Ls = adjoint(L)
 
 %%
@@ -67,7 +68,7 @@ Ls = adjoint(L)
 % have $2d-1=3$ (or $2d-k$) boundary conditions, where $d$ is the order of the
 % differential operator (here 2). 
 
-L.lbc = @(u) u-1;  % just one BC
+L.lbc = 1;  % just one BC
 Ls = adjoint(L)
 
 %%
@@ -80,8 +81,8 @@ Ls = adjoint(L)
 % Let's try an operator with variable coefficients. 
 
 L = chebop([-1 1]);      
-L.op = @(x,u) x.*diff(u,2);
-L.lbc = @(u) u; L.rbc = @(u) u
+L.op = @(x,u) x.*diff(u,2); % x*u''
+L.lbc = 0; L.rbc = 0
 Ls = adjoint(L)
 
 %%
@@ -109,7 +110,7 @@ abs(v'*(L*u) - (Ls*v)'*u)
 
 L = chebop([-1 1]);  
 L.op = @(x,u) diff(u,2) -20*diff(u) + u;
-L.lbc = @(u) u; L.rbc = @(u) u;   
+L.lbc = 0; L.rbc = 0;   
 Ls = adjoint(L);
 
 [V,D] = eigs(L);  
@@ -122,7 +123,7 @@ Ls = adjoint(L);
 % then 
 % $(y,Lx) = \bar{\lambda}(y,x)$ and $(L^\ast y,x) =\mu(y,x)$, it follows that 
 % if $\lambda\neq \mu$, then $(y,x)=0$, i.e., left and right eigenfunctions
-% are orthogonal. We can confirm this as follows:
+% corresponding to different eigenvalues are orthogonal. We can confirm this as follows:
 
 Vs'*V
 

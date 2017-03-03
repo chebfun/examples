@@ -57,24 +57,32 @@ g = cheb.gallery2('challenge');
 % the extrema of the chebfun $h = g(f)$:
 
 h = g(f);
-[Y, X] = minandmax(h)
+[Y, Xh] = minandmax(h)
 
 %%
 % The corresponding points on the unit circle are
 
-X = f(X)
+X = f(Xh)
 
 %%
 % and are marked as black dots on the contour plot of $g$:
 
 contourf(g, 4)
 hold on
-plot(chebfun(@(t) exp(1i*t), [0, 2*pi]), 'k-')
-plot(X(:,1), X(:,2), 'ko', 'MarkerFaceColor', 'k')
-text(X(1,1), X(1,2), '  min', 'color', 'w', 'FontWeight', 'bold')
-text(X(2,1), X(2,2), '  max', 'color', 'w', 'FontWeight', 'bold')
+plot(chebfun(@(t) exp(1i*t), [0, 2*pi]), 'k-', 'LineWidth', 4.2)
+plot(X(:,1), X(:,2), 'ko', 'MarkerFaceColor', 'k', 'MarkerSize',12)
+text(X(1,1), X(1,2), '  min', 'color','w', 'FontWeight','bold', 'FontSize',42)
+text(X(2,1), X(2,2), '  max', 'color','w', 'FontWeight','bold', 'FontSize',42)
 hold off
 axis equal
+
+%%
+% The restriction of $g$ to the unit circle, $h = g(f)$, looks as follows:
+
+plot(h)
+hold on
+plot(Xh, Y, 'ko', 'MarkerFaceColor', 'k')
+hold off
 
 %%
 % Similarly we can find the extrema of a function of three variables on a curve
@@ -153,19 +161,14 @@ axis equal
 
 g = chebfun2(@(x,y) x.^3 + cos(5*x) - y.^2);
 h = g(f);
+plot(h)
 [Y, X] = minandmax2(h)
 
 %%
-% So the extrema of $g$ are at
+% So the minimum and maximum of $g$ on the tilted square are located at
 
 Xmin = f(X(1,1), X(1,2))
 Xmax = f(X(2,1), X(2,2))
-
-%%
-% where $g$ attains exactly the extreme values computed in |Y(1)| and |Y(2)|:
-
-g(Xmin(1), Xmin(2))
-g(Xmax(1), Xmax(2))
 
 
 %%
