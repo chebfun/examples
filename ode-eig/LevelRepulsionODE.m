@@ -1,4 +1,4 @@
-%% Eigenvalue level repulsion
+%% Level repulsion for ODE eigenvalues
 % Abi Gopal and Nick Trefethen, March 2017
 
 %%
@@ -68,7 +68,7 @@ xlabel('t',FS,12)
 ylim([-6 2])
 
 %%
-% One sees that two curves nearly cross, but not quite.  This brings us
+% One sees two pairs of curves that nearly cross, but not quite.  This brings us
 % to explaining what we did wrong at first.  It turns out that if the
 % variable coefficient in the operator is replaced by the constant $1$,
 % this eigenvalue problem is non-generic: its eigenfunctions are even or
@@ -78,5 +78,15 @@ ylim([-6 2])
 % would be even closer.
 
 %%
-% Alas, this took a while:
+% For a computed example of a similar flavor involving PDEs rather
+% than ODEs, see [1].
+
+%%
+% Alas, this example takes a while to run:
 time_in_seconds = toc
+
+%% Reference
+%
+% 1. T. Betcke and L. N. Trefethen, Computations of eigenvalue
+% avoidance in planar domains, _Proc. Appl. Math. Mech._ 4 (2004),
+% 634-635.
