@@ -7,7 +7,7 @@
 %% 1. A simple example
 % Hermite (more fully Gauss-Hermite) quadrature is a quadrature method
 % for integrands of the form $\exp(-x^2) f(x)$ on the real axis, where
-% $f$ is smooth.  It is a classical subject and surely thousands of
+% $f$ is smooth.  It is a classical subject, and surely thousands of
 % people (including many physicists) have used Hermite quadrature.
 % Nevertheless it is curious how little literature there is on its
 % practicality and convergence rate as a numerical method, compared
@@ -58,7 +58,7 @@ end
 %%
 % Here's a figure
 plot(g{-8,8},'linewidth',2)
-hold on, plot(s,g(s),'.r','markersize',14), hold off
+hold on, plot(s,g(s),'.r','markersize',16), hold off
 
 %%
 % Let's compare this efficiency with the trapezoidal rule.
@@ -113,8 +113,11 @@ format short
 ratio = length(tail_points)/n
 
 %%
-% Are there
-% applications where Hermite quadrature in such a regime makes sense?
+% Perhaps there are
+% applications where Hermite quadrature in such a regime makes sense,
+% but we suspect they are rare.  Indeed, when $n$ is large
+% Townsend et al. propose to throw away most of the quadrature points;
+% they call this process "subsampling".
 
 
 %% References
