@@ -92,8 +92,8 @@ end
 % twice as fast.
 
 %% Large n?
-% Thanks to recent work by Olver, Townsend, and
-% Trogdon [1], Chebfun can compute Hermite quadrature nodes
+% Thanks to recent work by Townsend, 
+% Trogdon, and Olver [1], Chebfun can compute Hermite quadrature nodes
 % and weights for very large values of $n$ with astonishing
 % speed.  For example,
 tic, [s,w]= hermpts(1000); toc
@@ -115,7 +115,7 @@ ratio = length(tail_points)/n
 %%
 % Perhaps there are
 % applications where Hermite quadrature in such a regime makes sense,
-% but we suspect they are rare.  Indeed, when $n$ is large
+% but we suspect they are rare.  Indeed, when $n$ is large,
 % Townsend et al. propose to throw away most of the quadrature points;
 % they call this process "subsampling".
 
@@ -128,4 +128,4 @@ ratio = length(tail_points)/n
 %
 % 2. L. N. Trefethen and J. A. C. Weideman,
 % The exponentially convergent trapezoidal rule,
-% _SIAM Review_, 2014.
+% _SIAM Review_ 56 (2014), 385-458.
