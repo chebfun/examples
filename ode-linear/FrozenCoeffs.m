@@ -28,10 +28,10 @@
 % asymptotic as $k\to \infty$.
 % Eigenvalues may have little to do with the behavior of
 % powers $A^k$ for small $k$.  Therefore if the matrices appearing in
-% the produce keep changing,
+% the product keep changing,
 % we may never get into the asymptotic regime, and
 % eigenvalues may have little significance. These matters
-% are discussed at length in [6].
+% are discussed at length in [7].
 
 %% 2. Continuous case: variable-coefficient ODEs
 % The continuous analogue, which is perhaps more classical, concerns
@@ -42,8 +42,7 @@
 % if the eigenvalues of $A$ are all in the open left half-plane.
 % For a nonautonomous system $u' = A(t) u$, however,
 % $\|u\|$ may diverge to $\infty$ even though all of the
-% "frozen coefficient" matrices $A(t)$ are stable in the sense
-% of having eigenvalues in the open left half-plane. 
+% "frozen coefficient" matrices $A(t)$ are stable.
 % This has been known for more than a century.
 % As before, the explanation is that the significance of
 % eigenvalues is asymptotic as $t\to \infty$, so favorable eigenvalues
@@ -61,34 +60,35 @@
 
 %% 3. Example
 % For example, here is a nonnormal matrix with a double eigenvalue $-1$,
-% $$ B = \pmatrix{-1 & 2.2 \cr 0 & -1} . $$
-% Because the upper-right entry is bigger than $2$, the equation
+% $$ B = \pmatrix{-1 & m \cr \phantom{-}0 & -1} . $$
+% If the upper-right entry $m$ is bigger than $2$, the equation
 % $u' = Bu$ will amplify certain initial vectors, such as $u = (0,1)^T$, before
 % they eventually decay.
 % Following Kreiss [2], suppose we now define a matrix $A(t)$ that
-% consists of $B$ "rotated around" by an angle $t$ in the plane:
+% consists of $B$ "rotated by angle $t$" in the plane:
 % $$ A(t) = S(t) B S(-t), \qquad
-% S = \pmatrix{\phantom{-}\cos(t) & \sin(t) \cr -\sin(t) & \cos(t)} . $$
+% S = \pmatrix{\phantom{-}\cos(t) & \sin(t) \cr -\sin(t) & \cos(t)}, $$
+% that is,
+% $$ A(t) = \pmatrix{-1 + mcs & mc^2 \cr -ms^2 & -1 -mcs } $$
+% where $s = \sin(t)$ and $c = \cos(t)$.
 % Then $u' = A(t) u$ will have solutions that grow exponentially.
-% Here is an example.
-%L = chebop(0,10);
-%L.op = @(t,u,v) [diff(u)+u-4*v; diff(v)+v];
-%L.lbc = @(u,v) [u-1; v-3];
-%[u,v] = L\0;
-%arrowplot(u,v)
+% Yet for each $t$, $A(t)$ has a double eigenvalue at $-1$.
 
-A0 = [-1 2.2; 0 -1];
-S = @(t) [cos(t) sin(t) ; -sin(t) cos(t)];
-u = [0; 1];
-t = 0;
-dt = .02;
-hold off
-for k = 1:800
-  t = t+dt;
-  A = S(t)*A0*S(-t);
-  u = u+dt*A*u;
-  plot(u(1),u(2),'.'), hold on
-end
+%%
+% We illustrate this in Chebfun, taking $m=2.2$.
+% Unfortunately, there doesn't
+% seem to be a compact way to work with matrices, so we will work
+% with the explicit componentwise representation of the matrix as
+% given above.
+m = 2.2;
+B = [-1 m; 0 -1];
+L = chebop(0,16);
+L.lbc = @(u,v) [u; v-1];
+L.op = @(t,u,v) ...
+[diff(u) - (-1+m*cos(t)*sin(t))*u - m*cos(t)^2*v ; ...
+ diff(v) - (-m*sin(t)^2)*u - (-1-m*cos(t)*sin(t))*v];
+[u,v] = L\0;
+arrowplot(u,v)
 axis equal
 
 %% 4. Transition to turbulence
@@ -109,8 +109,9 @@ axis equal
 % Differenzengleichungen die partielle Differenzentialgleichungen
 % approximieren, _BIT_ 2 (1962), 153-181.
 %
-% 3. J. D. Lambert, _Numerical Methods for Ordinary Differential
-% Systems_, Wiley, 1991.
+% 3. J. D. Lambert, Stiffness, in _Computational Techniques for
+% Ordinary Differential Equations_, eds. I. Gladwell and D. K. Sayers,
+% Academic Press, 1980, 19-46.
 %
 % 4. O. Perron, Die Stabilit\"atsfrage bei
 % Differentialgleichungen _Math. Zeit._ 32 (1930), 703-728.
