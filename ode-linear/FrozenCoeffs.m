@@ -17,7 +17,8 @@
 % A_{\hbox{k odd}} = \pmatrix{0 & 0\cr\ 2 & 0}. $$
 % Since the product of the two matrices is
 % $$ \pmatrix{4 & 0\cr 0 & 0}, $$
-% the norm $\|u^{(k)}\|$ will in general diverge to $\infty$.
+% the norm $\|u^{(k)}\|$ will in general diverge to $\infty$, even
+% though the eigenvalues of both matrices are all zero.
 % Rota and Strang consider such effects in their classic paper [5],
 % which defines the _joint spectral radius_ of a set of matrices.
 
@@ -31,7 +32,7 @@
 % the product keep changing,
 % we may never get into the asymptotic regime, and
 % eigenvalues may have little significance. These matters
-% are discussed at length in [7].
+% are discussed at length in part IV of [7].
 
 %% 2. Continuous case: variable-coefficient ODEs
 % The continuous analogue, which is perhaps more classical, concerns
@@ -51,14 +52,15 @@
 %%
 % According to a discussion on p. 288 of [1],
 % this property of variable coefficient ODEs was first
-% investigated by Liapunov and Poincar\'e (whose theories also apply to
+% investigated by Lyapunov and Poincare (whose theories also apply to
 % nonlinear problems).  Explicit examples seem to have
 % been devised independently by various authors including
 % Perron in 1930 [4], Vinograd in 1952 [8] (with generalizations
 % by Dekker and Verwer),
 % Kreiss in 1962 [2], and Lambert in 1980 [3].
+% No doubt this list is not complete.
 
-%% 3. Example
+%% 3. Computed Example
 % For example, here is a nonnormal matrix with a double eigenvalue $-1$,
 % $$ B = \pmatrix{-1 & m \cr \phantom{-}0 & -1} . $$
 % If the upper-right entry $m$ is bigger than $2$, the equation
@@ -76,26 +78,24 @@
 
 %%
 % We illustrate this in Chebfun, taking $m=2.2$.
-% Unfortunately, there doesn't
-% seem to be a compact way to work with matrices, so we will work
-% with the explicit componentwise representation of the matrix as
+% There doesn't
+% seem to be a compact way to work with matrices in solving
+% ODEs in Chebfun, we we use
+% the explicit componentwise representation of the matrix as
 % given above.
-m = 2.2;
-B = [-1 m; 0 -1];
-L = chebop(0,16);
-L.lbc = @(u,v) [u; v-1];
+m = 2.2; B = [-1 m; 0 -1];
+L = chebop(0,16); L.lbc = @(u,v) [u; v-1];
 L.op = @(t,u,v) ...
-[diff(u) - (-1+m*cos(t)*sin(t))*u - m*cos(t)^2*v ; ...
- diff(v) - (-m*sin(t)^2)*u - (-1-m*cos(t)*sin(t))*v];
+   [diff(u) - (-1+m*cos(t)*sin(t))*u - m*cos(t)^2*v ; ...
+    diff(v) - (-m*sin(t)^2)*u - (-1-m*cos(t)*sin(t))*v];
 [u,v] = L\0;
-arrowplot(u,v)
-axis equal
+arrowplot(u,v), grid on, axis equal
 
 %% 4. Transition to turbulence
 % In fluid mechanics, certain
 % high Reynolds number laminar flows undergo transition to turbulence
 % even though the eigenvalues suggest they should be stable.  
-% A simple model of this can be based on mathematics much like
+% A simple model of this phenomenon can be based on mathematics much like
 % the example above, with the rotation provided by nonlinearity
 % rather than a variable coefficient.  See Sec. 21 of
 % [7], or for a one-page summary, [6].
@@ -103,7 +103,7 @@ axis equal
 %% 5. References
 %
 % 1. D. J. Higham and L. N. Trefethen, Stiffness of ODEs,
-% BIT 33 (1993), 285-303.
+% _BIT_ 33 (1993), 285-303.
 %
 % 2. H.-O. Kreiss, \"Uber die Stabilit\"atsdefinition f\"ur
 % Differenzengleichungen die partielle Differenzentialgleichungen
@@ -113,14 +113,14 @@ axis equal
 % Ordinary Differential Equations_, eds. I. Gladwell and D. K. Sayers,
 % Academic Press, 1980, 19-46.
 %
-% 4. O. Perron, Die Stabilit\"atsfrage bei
-% Differentialgleichungen _Math. Zeit._ 32 (1930), 703-728.
+% 4. O. Perron, Die Stabilit&auml;sfrage bei
+% Differentialgleichungen, _Math. Zeit._ 32 (1930), 703-728.
 %
 % 5. G.-C. Rota and W. G. Strang, A note on the joint
 % spectral radius, _Indag. Math._ 22 (1960), 74-76.
 %
-% 6. L. N. Trefethen, "Transition to turbulence: a one-page
-% summary", November 1997,
+% 6. L. N. Trefethen, Transition to turbulence: a one-page
+% summary, November 1997,
 % `https://people.maths.ox.ac.uk/trefethen/transitionsum.pdf`.
 %
 % 7. L. N. Trefethen and M. Embree, _Spectra and Pseudospectra:
