@@ -52,7 +52,7 @@
 %%
 % According to a discussion on p. 288 of [1],
 % this property of variable coefficient ODEs was first
-% investigated by Lyapunov and Poincare (whose theories also apply to
+% investigated by Lyapunov and Poincar&eacute; (whose theories also apply to
 % nonlinear problems).  Explicit examples seem to have
 % been devised independently by various authors including
 % Perron in 1930 [4], Vinograd in 1952 [8] (with generalizations
@@ -105,7 +105,7 @@ arrowplot(u,v), grid on, axis equal
 % 1. D. J. Higham and L. N. Trefethen, Stiffness of ODEs,
 % _BIT_ 33 (1993), 285-303.
 %
-% 2. H.-O. Kreiss, \"Uber die Stabilit\"atsdefinition f\"ur
+% 2. H.-O. Kreiss, &Uuml;ber die Stabilit&auml;tsdefinition f&uuml;r
 % Differenzengleichungen die partielle Differenzentialgleichungen
 % approximieren, _BIT_ 2 (1962), 153-181.
 %
@@ -113,7 +113,7 @@ arrowplot(u,v), grid on, axis equal
 % Ordinary Differential Equations_, eds. I. Gladwell and D. K. Sayers,
 % Academic Press, 1980, 19-46.
 %
-% 4. O. Perron, Die Stabilit&auml;sfrage bei
+% 4. O. Perron, Die Stabilit&auml;tsfrage bei
 % Differentialgleichungen, _Math. Zeit._ 32 (1930), 703-728.
 %
 % 5. G.-C. Rota and W. G. Strang, A note on the joint
