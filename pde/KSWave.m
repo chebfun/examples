@@ -30,24 +30,25 @@ S = spinop('ks')
 % is restored.
 S.tspan = [0 100]; npts = 256; dt = 0.02;
 LW = 'linewidth'; CO = 'color'; MS = 'markersize';
+XT = 'xtick'; YT = 'ytick';
 X = 8; S.domain = [0 20*X];
 
 S.init = chebfun(@(x) 2*exp(sin(2*pi*x/X)),S.domain);
 subplot(4,1,1), plot(S.init,'k',LW,1), ylim([-3 9]), grid on
-text(5,6.6,'initial condition'), set(gca,'xtick',[])
+text(5,6.6,'initial condition'), set(gca,XT,[],YT,[0 5])
 text(10*X,6.6,['X = ' num2str(X)])
 
 u = spin(S,npts,dt,'plot','off');
 subplot(4,1,2), plot(u,LW,1), ylim([-3 9]), grid on
-text(5,6.6,'after 100 time units'), set(gca,'xtick',[])
+text(5,6.6,'after 100 time units'), set(gca,XT,[],YT,[0 5])
 
 S.init = u + .1*randnfun(2,S.domain);
 subplot(4,1,3), plot(S.init,'k',LW,1), ylim([-3 9]), grid on
-text(5,6.6,'perturbation'), set(gca,'xtick',[])
+text(5,6.6,'perturbation'), set(gca,XT,[],YT,[0 5])
 
 u = spin(S,npts,dt,'plot','off');
 subplot(4,1,4), plot(u,LW,1), ylim([-3 9]), grid on
-text(5,6.6,'after 100 more time units')
+text(5,6.6,'after 100 more time units'), set(gca,YT,[0 5])
 
 %%
 % To see the regularity of the wave, we can plot the
@@ -56,7 +57,7 @@ text(5,6.6,'after 100 more time units')
 format short, format compact
 [a,b] = max(u,'local'); d = diff(b)';
 clf, plot([0 length(d)-1],X*[1 1],'k',LW,.7), hold on
-plot(d(2:end-1),'.',MS,12,CO,[0 0 .6]), set(gca,'xtick',[])
+plot(d(2:end-1),'.',MS,12,CO,[0 0 .6]), set(gca,XT,[])
 grid on, axis([0 length(d)-1 0 15]), hold off
 title('distances between successive wave crests')
 
@@ -70,26 +71,26 @@ X = 7; S.domain = [0 20*X];
 
 S.init = chebfun(@(x) 2*exp(sin(2*pi*x/X)),S.domain);
 subplot(4,1,1), plot(S.init,'k',LW,1), ylim([-3 9]), grid on
-text(5,6.6,'initial condition'), set(gca,'xtick',[])
+text(5,6.6,'initial condition'), set(gca,XT,[],YT,[0 5])
 text(10*X,6.6,['X = ' num2str(X)])
 
 u = spin(S,npts,dt,'plot','off');
 subplot(4,1,2), plot(u,LW,1), ylim([-3 9]), grid on
-text(5,6.6,'after 100 time units'), set(gca,'xtick',[])
+text(5,6.6,'after 100 time units'), set(gca,XT,[],YT,[0 5])
 
 S.init = u + .1*randnfun(2,S.domain);
 subplot(4,1,3), plot(S.init,'k',LW,1), ylim([-3 9]), grid on
-text(5,6.6,'perturbation'), set(gca,'xtick',[])
+text(5,6.6,'perturbation'), set(gca,XT,[],YT,[0 5])
 
 u = spin(S,npts,dt,'plot','off');
 subplot(4,1,4), plot(u,'r',LW,1), ylim([-3 9]), grid on
-text(5,6.6,'after 100 more time units')
+text(5,6.6,'after 100 more time units'), set(gca,YT,[0 5])
 
 %%
 % The distances between wave crests vary greatly.
 [a,b] = max(u,'local'); d = diff(b)';
 clf, plot([0 length(d)-1],X*[1 1],'k',LW,.7), hold on
-plot(d(2:end-1),'.r',MS,12), set(gca,'xtick',[])
+plot(d(2:end-1),'.r',MS,12), set(gca,XT,[])
 grid on, axis([0 length(d)-1 0 15]), hold off
 title('distances between successive wave crests')
 
@@ -109,26 +110,26 @@ S.lin = @(u) delta*(-diff(u,2)-diff(u,4)) - ep*diff(u,3);
 
 S.init = chebfun(@(x) 2*exp(sin(2*pi*x/X)),S.domain);
 subplot(4,1,1), plot(S.init,'k',LW,1), ylim([-3 9]), grid on
-text(5,7.2,'initial condition'), set(gca,'xtick',[])
+text(5,7.2,'initial condition'), set(gca,XT,[],YT,[0 5])
 text(10*X,7.2,['X = ' num2str(X)])
 
 u = spin(S,npts,dt,'plot','off');
 subplot(4,1,2), plot(u,LW,1), ylim([-3 9]), grid on
-text(5,7.2,'after 100 time units'), set(gca,'xtick',[])
+text(5,7.2,'after 100 time units'), set(gca,XT,[],YT,[0 5])
 
 S.init = u + .1*randnfun(2,S.domain);
 subplot(4,1,3), plot(S.init,'k',LW,1), ylim([-3 9]), grid on
-text(5,7.2,'perturbation'), set(gca,'xtick',[])
+text(5,7.2,'perturbation'), set(gca,XT,[])
 
 u = spin(S,npts,dt,'plot','off');
 subplot(4,1,4), plot(u,LW,1), ylim([-3 9]), grid on
-text(5,7.2,'after 100 more time units')
+text(5,7.2,'after 100 more time units'), set(gca,YT,[0 5])
 
 %%
 % The distances between wave crests are reasonably uniform again.
 [a,b] = max(u,'local'); d = diff(b)';
 clf, plot([0 length(d)-1],X*[1 1],'k',LW,.7), hold on
-plot(d(2:end-1),'.',MS,12,CO,[0 0 .6]), set(gca,'xtick',[])
+plot(d(2:end-1),'.',MS,12,CO,[0 0 .6]), set(gca,XT,[])
 grid on, axis([0 length(d)-1 0 15]), hold off
 title('distances between successive wave crests')
 
@@ -142,26 +143,26 @@ X = 11; S.domain = [0 20*X];
 
 S.init = chebfun(@(x) 2*exp(sin(2*pi*x/X)),S.domain);
 subplot(4,1,1), plot(S.init,'k',LW,1), ylim([-3 9]), grid on
-text(5,7.2,'initial condition'), set(gca,'xtick',[])
+text(5,7.2,'initial condition'), set(gca,XT,[],YT,[0 5])
 text(10*X,7.2,['X = ' num2str(X)])
 
 u = spin(S,npts,dt,'plot','off');
 subplot(4,1,2), plot(u,LW,1), ylim([-3 9]), grid on
-text(5,7.2,'after 100 time units'), set(gca,'xtick',[])
+text(5,7.2,'after 100 time units'), set(gca,XT,[],YT,[0 5])
 
 S.init = u + .1*randnfun(2,S.domain);
 subplot(4,1,3), plot(S.init,'k',LW,1), ylim([-3 9]), grid on
-text(5,7.2,'perturbation'), set(gca,'xtick',[])
+text(5,7.2,'perturbation'), set(gca,XT,[],YT,[0 5])
 
 u = spin(S,npts,dt,'plot','off');
 subplot(4,1,4), plot(u,'r',LW,1), ylim([-3 9]), grid on
-text(5,7.2,'after 100 more time units')
+text(5,7.2,'after 100 more time units'), set(gca,YT,[0 5])
 
 %%
 % The distances between wave crests vary more.
 [a,b] = max(u,'local'); d = diff(b)';
 clf, plot([0 length(d)-1],X*[1 1],'k',LW,.7), hold on
-plot(d(2:end-1),'.r',MS,12), set(gca,'xtick',[])
+plot(d(2:end-1),'.r',MS,12), set(gca,XT,[])
 grid on, axis([0 length(d)-1 0 15]), hold off
 title('distances between successive wave crests')
 
