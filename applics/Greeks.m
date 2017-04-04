@@ -10,7 +10,7 @@
 % sensitivities is among the foundations of the modern finance edifice.
 % Collectively known as the _Greeks_, they correspond to variations of the
 % derivative under small changes of underlying assets or parameters. They
-% are ubiquitous on the daily routine of financial institutions as they are
+% are ubiquitous in the daily routine of financial institutions as they are
 % unavoidable for hedging purposes, risk management, profit and loss
 % allocation, etc. At their root, their usefulness arises from their
 % capability to produce a low-order approximation of the derivative when
@@ -18,23 +18,23 @@
 %
 % In this example we calculate the Greeks with the help of Chebfun.
 % The methodology is an extension of the one introduced in a previous
-% Chebfun example for the pricing of contingent claims (see _Pricing a 
-% European call option_). We focus our attention in European calls and puts,
-% valued in the Black-Scholes framework, but we believe the 
+% Chebfun example for the pricing of contingent claims (see _Pricing a
+% European call option_). We focus our attention on European calls and puts,
+% valued in the Black-Scholes framework, but we believe the
 % method can be extended to work under more general settings.
 %
 %% Bumping the probability density function
 %
 % Suppose the random variable $S_t$ follows a geometric Brownian motion
 % (GBM) with drift $\mu$ and volatility $\sigma$. At time $t=T$ the probability
-% density function (PDF) $f$ of $S_T$ (variable `ST`) is that of a 
-% lognormal distribution implemented in the 
+% density function (PDF) $f$ of $S_T$ (variable `ST`) is that of a
+% lognormal distribution implemented in the
 % following function handle `f`.
 f = @(ST,St,vol,tau,mu) exp( - ( log(ST./St) - (mu-0.5*vol.^2).*(tau) ).^2./...
     (2*vol.^2.*(tau)) ) ./(vol.*ST.*sqrt(2*pi*(tau)));
 %%
 % Here, the variables `St`, `vol`, `tau` and `mu` represent the value of the
-% asset at time $t$, the volatility, the variable $\tau=T-t$ (i.e., the time to expiry), and the drift respectively. 
+% asset at time $t$, the volatility, the variable $\tau=T-t$ (i.e., the time to expiry), and the drift respectively.
 % How can we calculate the sensitivity of the distribution of $S_T$ with
 % respect to
 % $S_0$, $\sigma$, $\tau$ and $\mu$? A straightforward approach is to "bump"
@@ -79,7 +79,7 @@ slice_tau = chebfun2(@(s,ttau) f(s, St, vol, ttau, mu), [minS 200 0.45 0.55]);
 slice_mu = chebfun2(@(s,mmu) f(s, St, vol, tau, mmu), [minS 200 0.06 0.08]);
  
 %%
-% We calculate the partial derivative of each slice with respect to the 
+% We calculate the partial derivative of each slice with respect to the
 % second variable using the `diff` command for `chebfun2` objects.
 partial_St = diff(slice_St,[0 1]);
 partial_vol = diff(slice_vol,[0 1]);
@@ -311,8 +311,8 @@ disp('-------------------------------------------------------')
 %
 % In practice, it is very common to rely on "bumping" the underlying
 % factors to obtain the Greeks, as it requires only to perform an extra
-% evaluation of the price and, for many cases, one can expect to obtain 
-% 4 or 5 digits of accuracy. 
+% evaluation of the price and, for many cases, one can expect to obtain
+% 4 or 5 digits of accuracy.
 % The method presented here is general and seems to be very accurate, but
 % further work would be necessary to establish its robustness and
 % usefulness.

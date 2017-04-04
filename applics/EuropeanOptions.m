@@ -150,7 +150,7 @@ disp(['approx = ', num2str(approx,'%10.15f')])
 %% Power Options
 %
 % The last contract we present in this example is the European power option which,
-% as the digital optiona, can be of call or put type. The payoff of the
+% as the digital option, can be of call or put type. The payoff of the
 % power call with parameter $\alpha$ is $V(S_T) = max(0,S_T^\alpha - K)$,
 % where $\alpha>0$ and $K$ is the strike.
 %

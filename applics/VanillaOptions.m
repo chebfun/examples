@@ -10,20 +10,20 @@
 % Call and put options, the financial products that were relatively illiquid
 % and highly specialized 40 years ago, are nowadays traded frantically on
 % all asset types all over the world. They are commonly referred as
-% "vanilla options", to disguinsh them from their more "exotic" cousins.
+% "vanilla options", to distinguish them from their more "exotic" cousins.
 % Financial professionals take decision on a day-to-day basis through the
-% intution they have built around these simple contracts. _What is the
+% intuition they have built around these simple contracts. _What is the
 % impact of increasing the maturity? Or lowering the
 % volatility? Is an increase in the interest rates going to hurt me?_
 % Clearly obtaining a price is not only what matters!
 %
 % In this example we use Chebfun to explore different aspects of European
 % call and put options. The goal here consists in making sense of their
-% response when tweaking and playing with the different parameters of the
+% response when tweaking and playing around with the different parameters of the
 % Black-Scholes formulas. Similar in spirit, two classic books that
 % discuss at some length the behaviour of vanilla contracts are [1] and [2].
 %
-% In the Black-Scholes framework (underlying prices folloging a GBM process,
+% In the Black-Scholes framework (underlying prices following a GBM process,
 % constant volatility, etc), prices of a call and a put at time $t=0$, $C$ and
 % $P$ respectively, are given by
 %
@@ -95,15 +95,15 @@ set(gca,'XTick',dom(1):50:dom(end),FS,fs,'position',[0.55,0.13, 0.42,0.75])
 title('call',FS,18), xlabel('S',FS,fs), xlim([0 250]), ylim([-10 250]); grid on,hold off
 %%
 % The payoffs at expiry (the blue lines in both figures) show an
-% evident but important difference in the gains of going long a call or a
-% put: for the former it is bounded by $K$ while for the later is
+% evident but important difference in the gains of going long on a call or a
+% put: for the former it is bounded by $K$ while for the later it is
 % unbounded. The eight black lines, from lowest to highest, show the prices
 % for expiry times $2^{-1},2^0,2^1,\ldots,2^8$, and the red
 % line shows the profile for $T=1,000$, which is effectively infinity (in
-% practice its rare to find options with maturities longer than 10 years).
+% practice it is rare to find options with maturities longer than 10 years).
 %
 % The behaviour for large $T$ can be explained from the distribution of the
-% underlying asset, which is assumed to be lognormal. As $T$ increases the
+% underlying asset, which is assumed to be lognormal. As $T$ increases, the
 % distribution becomes more and more concentrated towards the left,
 % implying that the price of the asset tends to zero regardless of its
 % initial level. For the put, this results in the maximum possible payoff,
@@ -118,9 +118,9 @@ title('call',FS,18), xlabel('S',FS,fs), xlim([0 250]), ylim([-10 250]); grid on,
 %
 % $$ C = P + S - K $$
 %
-% An interpretation of this formula  is that a call can be replicated by a
+% An interpretation of this formula is that a call can be replicated by a
 % portfolio consisting of a put with the same strike and maturity, a unit of the
-% underlying asset, and a negative constant ammount $K$ which can
+% underlying asset, and a negative constant amount $K$ which can
 % be interpreted as borrowed money (remember that we keep working with $r=0$
 % so no interests are paid on loans). This relation explains the behaviour
 % towards infinity of the call option, the diagonal red line in the figure above.
@@ -129,7 +129,7 @@ title('call',FS,18), xlabel('S',FS,fs), xlim([0 250]), ylim([-10 250]); grid on,
 % the exact desired parameters. Chebfun allows us to quickly calculate the
 % impact of a hedge based on an imperfect put-call parity relation. For
 % example, consider the case of selling an at-the-money 6-months call option,
-% which could incur in great losses if the asset increase too much in value.
+% which could incur great losses if the asset increases too much in value.
 % The risk can be hedged by buying the underling asset (which will protect us
 % if the price goes up) and buying a put (which will protect us if the price
 % goes down), financed with a loan for an amount $K$.
@@ -139,7 +139,7 @@ asset = chebfun(@(s) s, [0 300]);
 loan = K;
 %%
 % We consider three strategies based on the choice of the put: one with the
-% same paremeters as the call (blue), one with a higher strike and shorter
+% same parameters as the call (blue), one with a higher strike and shorter
 % maturity (red), and one with lower strike, longer maturity and slightly
 % larger notional of 1.03 instead of 1 (black). We set these
 % strikes/maturities so the hedge is at par when $S=100$.
@@ -162,7 +162,7 @@ grid on
 % hedge the call position. The second strategy will see losses if the asset
 % prices go up and gains if they drop. The third strategy will
 % benefit from an increase in prices and will see losses if the price falls. We
-% calculate the maximum instant losses and the price levels at which the
+% calculate the maximum instant losses and the price levels at which they
 % occur:
 [ls2,as2] = min(error2);
 [ls3,as3] = min(error3);
@@ -256,14 +256,14 @@ xlabel('Time to maturity',FS,fs);
 title('Asset level at which time value of a put becomes negative',FS,fs)
 
 %%
-% On the other hand the time value of a call option remains positive with a
+% On the other hand, the time value of a call option remains positive with a
 % non-zero $r$, which means that for a call an early exercise would never be
 % more profitable than holding the option until maturity.
 
 
 %% Put-call parity (again)
 %
-% We finish this example by reapeating the calculations of the imperfect
+% We finish this example by repeating the calculations of the imperfect
 % hedge for the call, using the put-call parity relation for the case of non-zero
 % interest rates, given by
 %
