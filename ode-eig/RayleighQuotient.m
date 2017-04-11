@@ -127,7 +127,7 @@ end
 
 res
 
-%% 5. Non-selfadjoint linear operator
+%% 4. Non-selfadjoint linear operator
 % Now consider the non-selfadjoint operator $Au = -u'' + u' + u$, again with
 % zero Dirichlet boundary conditions:
 
@@ -175,7 +175,7 @@ end
 
 res3
 
-%% 5. Convergence rates
+%%
 % RQI appears to have computed eigenpairs for both operators, selfadjoint and
 % non-selfadjoint. Now let's examine the convergence rates by plotting the
 % residual convergence.
@@ -189,6 +189,6 @@ text(length(res3) - .9, res3(end-1), 'non-selfadj two-sided', 'color', 'm')
 xlabel('iteration'), ylabel('residual')
 grid on
 
-%% 6. References
+%% 5. References
 %
 % 1. B. N. Parlett, _The Symmetric Eigenvalue Problem_, SIAM, 1996.
