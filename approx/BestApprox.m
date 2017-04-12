@@ -1,13 +1,13 @@
-%% Best approximation with the `remez` command
-% Nick Trefethen, September 2010, revised April 2017
+%% Best approximation with the REMEZ command
+% Nick Trefethen, September 2010
 
 %%
 % (Chebfun example approx/BestApprox.m)
-% [Tags: #REMEZ, #Pachon, #bestapproximation, #rational, #Caratheodory]
+% [Tags: #REMEZ, #bestapproximation, #rational, #minimax]
 
 %% 1. Polynomial minimax approximation
-% Chebfun's `remez` command, written originally by Pachon and more
-% recently improved by Filip and Nakatsukasa,
+% Chebfun's |remez| command, written originally by Pachon and more
+% recently improved by Filip and Nakatsukasa in 2017,
 % can compute best
 % (i.e. infinity-norm or minimax) approximations of a real function on a
 % real interval. For example, here is an absolute value function on $[-1,1]$
