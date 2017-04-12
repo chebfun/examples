@@ -45,7 +45,7 @@ title('Type (8,8) rational error curve',FS,fs)
 %% 3. Function handles vs. quotients of polynomials
 % In the example just shown we used |p/q| to compute the
 % rational function $r$.  Mathematically this is correct, 
-% but computationally is quickly fails with more difficult
+% but computationally it quickly fails with more difficult
 % problems.  In such cases it is necessary to use the 
 % third argument returned by |remez|, |rh|, a function handle
 % connected with a barycentric representation.  For example, here
