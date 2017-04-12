@@ -12,7 +12,7 @@
 % new Chebfun command |randnfun|.  Here for example are
 % the local maxima of a random function on the interval $[0,20]$.
 tic, rng(0), dx = 1;
-f = randnfun(dx,1,[0,20]);
+f = randnfun(dx,[0,20]);
 [val,pos] = max(f,'local');
 MS = 'markersize'; LW = 'linewidth'; FS = 'fontsize';
 plot(f,'k',LW,1.6), grid on, hold on
@@ -25,7 +25,7 @@ title([int2str(length(val)) ' maxima'],FS,16)
 % random coefficients; the maximum wave number is about $2\pi /dx$, i.e.,
 % $2\pi$ in this case with $dx = 1$.
 % Here is an analogous picture on an interval of length 40.
-f = randnfun(dx,1,[0,40]);
+f = randnfun(dx,[0,40]);
 [val,pos] = max(f,'local');
 plot(f,'k',LW,1.6), grid on, hold on
 plot(pos,val,'.r',MS,16), hold off
@@ -37,7 +37,7 @@ title([int2str(length(val)) ' maxima'],FS,16)
 Lvec = 2.^(0:10);
 nmaxvec = [];
 for L = Lvec
-  f = randnfun(dx,1,[0 L]);
+  f = randnfun(dx,[0 L]);
   nmaxvec = [nmaxvec length(max(f,'local'))];
 end 
 loglog(Lvec,Lvec,'-r'), hold on
