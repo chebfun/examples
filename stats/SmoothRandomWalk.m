@@ -18,13 +18,14 @@
 % by $(dx)^{-1/2}$.  Red dots mark the initial and end points.
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
 dx = 0.1;
-rng(3)
-f = (randnfun(dx) + 1i*randnfun(dx))/sqrt(dx);
+rng(5)
+f = randnfun(dx,'norm') + 1i*randnfun(dx,'norm');
 g = cumsum(f);
 plot(g,'k',LW,1), grid on, hold on
 plot(g([-1 1]),'.r',MS,8), hold off
-axis(1.5*[-1 1 -1 1]), axis square
+axis(2.7*[-1 1 -1 1]), axis square
 title(['dx = ' num2str(dx)],FS,14)
+set(gca,'xtick',-2:2,'ytick',-2:2)
 
 %%
 % We divide the characteristic length defining 
@@ -34,14 +35,16 @@ title(['dx = ' num2str(dx)],FS,14)
 
 for k = 1:3
   dx = dx/4;
-  f = (randnfun(dx) + 1i*randnfun(dx))/sqrt(dx);
+  f = randnfun(dx,'norm') + 1i*randnfun(dx,'norm');
   g = cumsum(f);
   plot(g,'k',LW,1), grid on, hold on
   plot(g([-1 1]),'.r',MS,8), hold off
-  axis(1.5*[-1 1 -1 1]), axis square
-  title(['dx = ' num2str(dx)],FS,14), snapnow
+  axis(2.7*[-1 1 -1 1]), axis square
+  title(['dx = ' num2str(dx)],FS,14)
+  set(gca,'xtick',-2:2,'ytick',-2:2), snapnow
 end
 
 %%
 % Here is a zoom of the final image:
-axis([-1.4 .2 -.8 .8]), axis square, axis off, title(' ')
+axis([-.4 1.6 -1.5 .5]), axis square, axis off, title(' ')
+snapnow
