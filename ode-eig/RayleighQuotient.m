@@ -111,7 +111,7 @@ I = eye(A);                                 % identity on dom; equivalent
 % Initial guesses:
 disp('lam:')
 lam = 3.8; disp(lam)                        % seek eigenvalue near lam 
-u = randnfun(.1, 1, dom);  u = u/norm(u);   % random guess for eigenfunction
+u = randnfun(.1, dom);  u = u/norm(u);      % random guess for eigenfunction
 res = norm(A*u-lam*u)/norm(A*u);            % initial residual
 
 % Rayleigh quotient iteration:
@@ -139,7 +139,7 @@ I = eye(A);
 % Initial guesses:
 disp('lam:')
 lam = 1; disp(lam)
-u = randnfun(.1, 1, dom); u = u/norm(u);
+u = randnfun(.1, dom); u = u/norm(u);
 res2 = norm(A*u-lam*u)/norm(A*u);             % initial residual
 
 % Rayleigh quotient iteration:
@@ -161,8 +161,8 @@ res2
 % Initial guesses:
 disp('lam:')
 lam = 1; disp(lam)
-u = randnfun(.1, 1, dom); u = u/norm(u);    % random guess for right eigfunc
-v = randnfun(.1, 1, dom); v = v/norm(v);    % random guess for left eigfunc
+u = randnfun(.1, dom); u = u/norm(u);         % random guess for right eigfunc
+v = randnfun(.1, dom); v = v/norm(v);         % random guess for left eigfunc
 res3 = norm(A*u-lam*u) / norm(A*u);
 
 % Rayleigh quotient iteration:
