@@ -89,7 +89,8 @@ L.op = @(t,u,v) ...
    [diff(u) - (-1+m*cos(t)*sin(t))*u - m*cos(t)^2*v ; ...
     diff(v) - (-m*sin(t)^2)*u - (-1-m*cos(t)*sin(t))*v];
 [u,v] = L\0;
-arrowplot(u,v), grid on, axis equal
+arrowplot(u,v,'linewidth',5,'markersize',10)
+grid on, axis equal
 
 %% 4. Transition to turbulence
 % In fluid mechanics, certain
