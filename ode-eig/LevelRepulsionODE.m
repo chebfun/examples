@@ -1,4 +1,4 @@
-%% Level repulsion for ODE eigenvalues
+%% Avoided crossings for ODE eigenvalues
 % Abi Gopal and Nick Trefethen, March 2017
 
 %%
@@ -6,8 +6,8 @@
 % [Tags: #eigenvalues]
 
 %%
-% An old Chebfun example displays the effect of level repulsion, 
-% also known as avoided crossings, for eigenvalues of symmetric
+% An old Chebfun example displays the effect of
+% avoided crossings for eigenvalues of symmetric
 % matrices.  Here we follow that example in the analogous context
 % of eigenvalues of self-adjoint differential operators.
 
@@ -61,10 +61,10 @@ E = chebfun; tic
 for k = 1:6
    E(:,k) = chebfun(@(t) ek(eigL(t),k),d,'splitting','off','eps',1e-4,'vectorize');
 end
-FS = 'fontsize'; LW = 'linewidth'; MS = 'markersize';
-figure, plot(E,LW,1.6), grid on
-title('Eigenvalues of L(t)',FS,16);
-xlabel('t',FS,12)
+FS = 'fontsize'; LW = 'linewidth';
+figure, plot(E,LW,5), grid on
+title('Eigenvalues of L(t)',FS,36);
+xlabel('t',FS,36)
 ylim([-6 2])
 
 %%
