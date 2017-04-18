@@ -43,8 +43,8 @@ e = diag(D)
 % eigenfunction and a second eigenfunction that is almost the same
 % except for a sign flip.
 LW = 'linewidth'; FS = 'fontsize';
-plot(V(:,3:4),LW,5), grid on, shg
-title('Even and odd eigenfunctions, nearly degenerate',FS,32)
+plot(V(:,3:4),LW,6), grid on, shg
+title('Even and odd eigenfunctions, nearly degenerate',FS,40)
 
 %%
 % For both our matrix and our differential operator problems, 
@@ -54,7 +54,7 @@ title('Even and odd eigenfunctions, nearly degenerate',FS,32)
 % of the two eigenmodes, one gets a true even-odd pair:
 right = V(:,4) + V(:,3);
 left = V(:,4) - V(:,3);
-plot([left right],LW,5)
+plot([left right],LW,6)
 title('Left and right pseudo-eigenfunctions, localized',FS,32)
 
 %%
