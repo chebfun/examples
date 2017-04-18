@@ -55,7 +55,7 @@ title('Even and odd eigenfunctions, nearly degenerate',FS,40)
 right = V(:,4) + V(:,3);
 left = V(:,4) - V(:,3);
 plot([left right],LW,6)
-title('Left and right pseudo-eigenfunctions, localized',FS,32)
+title('Left and right pseudo-eigenfunctions, localized',FS,40)
 
 %%
 % Let's confirm that these are pseudo-eigenfunctions.  First we
