@@ -17,14 +17,15 @@
 % Here we plot the indefinite integral of a complex random function scaled
 % by $(dx)^{-1/2}$.  Red dots mark the initial and end points.
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
+lw = 3; fs = 36; ms = 24;
 dx = 0.1;
 rng(5)
 f = randnfun(dx,'norm') + 1i*randnfun(dx,'norm');
 g = cumsum(f);
-plot(g,'k',LW,1), grid on, hold on
-plot(g([-1 1]),'.r',MS,8), hold off
-axis(2.7*[-1 1 -1 1]), axis square
-title(['dx = ' num2str(dx)],FS,14)
+plot(g,'k',LW,lw), grid on, hold on
+plot(g([-1 1]),'.r',MS,ms), hold off
+axis(2*[-1 1 -1 1]), axis square
+title(['dx = ' num2str(dx)],FS,fs)
 set(gca,'xtick',-2:2,'ytick',-2:2)
 
 %%
@@ -37,14 +38,14 @@ for k = 1:3
   dx = dx/4;
   f = randnfun(dx,'norm') + 1i*randnfun(dx,'norm');
   g = cumsum(f);
-  plot(g,'k',LW,1), grid on, hold on
-  plot(g([-1 1]),'.r',MS,8), hold off
-  axis(2.7*[-1 1 -1 1]), axis square
-  title(['dx = ' num2str(dx)],FS,14)
+  plot(g,'k',LW,lw), grid on, hold on
+  plot(g([-1 1]),'.r',MS,ms), hold off
+  axis(2*[-1 1 -1 1]), axis square
+  title(['dx = ' num2str(dx)],FS,fs)
   set(gca,'xtick',-2:2,'ytick',-2:2), snapnow
 end
 
 %%
 % Here is a zoom of the final image:
-axis([-.4 1.6 -1.5 .5]), axis square, axis off, title(' ')
+axis([-1.6 0.6 -1.1 1.1]), axis square, axis off, title(' ')
 snapnow
