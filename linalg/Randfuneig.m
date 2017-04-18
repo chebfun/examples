@@ -16,7 +16,6 @@
 
 n = 1000;
 A = randn(n)/sqrt(n);
-hold off
 plot(eig(A),'k.'),hold on
 plot(chebfun(@(x)exp(1i*x),[0 2*pi]))
 axis(1.2*[-1 1 -1 1]), axis equal
@@ -36,6 +35,7 @@ m = n*10;   % aspect ratio 10
 A = randn(m,n)/power(m*n,1/4); 
 B = randn(m,n)/power(m*n,1/4);
 
+hold off
 plot(eig(B'*A),'k.'), hold on
 plot(chebfun(@(x)exp(1i*x),[0 2*pi]))
 axis(1.2*[-1 1 -1 1]), axis equal
@@ -76,6 +76,7 @@ m = n; % we just changed this from n*10 in the low-rank case
 A = randn(m,n); 
 B = randn(m,n);
 
+hold off
 plot(eig(B'*A)/sqrt(m*n),'k.'), hold on
 plot(chebfun(@(x)exp(1i*x),[0 2*pi]))
 axis(1.2*[-1 1 -1 1]), axis equal
@@ -102,7 +103,8 @@ dom = [-1 1 -1 1];
 f = randnfun2(dom,dt,'norm');  % normalized randum function 
 ei = eig(f);
 disp(['Number of nonzero eigenvalues: ',num2str(length(ei))])
-clf,plot(ei,'k.'),hold on
+
+hold off, plot(ei,'k.'), hold on
 plot(chebfun(@(x)exp(1i*x),[0 2*pi]))
 axis(1.2*dom), axis equal
 
@@ -139,7 +141,7 @@ f = f{-1,1,-1,1}/sqrt(dt);              % restrict and normalize
 
 ei = eig(f);
 disp(['Number of nonzero eigenvalues: ',num2str(length(ei))])
-clf,plot(ei,'k.'),hold on
+hold off, plot(ei,'k.'), hold on
 plot(chebfun(@(x)exp(1i*x),[0 2*pi]))
 axis(1.2*[-1 1 -1 1]), axis equal
 
