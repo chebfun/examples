@@ -2,7 +2,7 @@
 % Yuji Nakatsukasa, April 2017
 
 %%
-% (Chebfun example linalg/Randfuneig.m)
+% (Chebfun example ode-eig/Randfuneig.m)
 
 %% 1. Eigenvalues of random matrices
 % As is well known [2,3], eigenvalues of large random matrices 
@@ -18,7 +18,7 @@ n = 1000;
 A = randn(n)/sqrt(n);
 plot(eig(A),'k.'),hold on
 plot(chebfun(@(x)exp(1i*x),[0 2*pi]))
-axis(1.2*[-1 1 -1 1]), axis equal
+axis equal off
 
 %% 2. Eigenvalues of random low-rank matrices
 % Low-rank matrices are everywhere these days. A natural question arises:
@@ -38,7 +38,7 @@ B = randn(m,n)/power(m*n,1/4);
 hold off
 plot(eig(B'*A),'k.'), hold on
 plot(chebfun(@(x)exp(1i*x),[0 2*pi]))
-axis(1.2*[-1 1 -1 1]), axis equal
+axis equal off
 
 %%
 % The eigenvalues again appear to be distributed uniformly on the unit disk! 
@@ -79,7 +79,7 @@ B = randn(m,n);
 hold off
 plot(eig(B'*A)/sqrt(m*n),'k.'), hold on
 plot(chebfun(@(x)exp(1i*x),[0 2*pi]))
-axis(1.2*[-1 1 -1 1]), axis equal
+axis equal off
 
 %%
 % One can play with the aspect ratio and see that the larger $m/n$ is, the
@@ -106,7 +106,7 @@ disp(['Number of nonzero eigenvalues: ',num2str(length(ei))])
 
 hold off, plot(ei,'k.'), hold on
 plot(chebfun(@(x)exp(1i*x),[0 2*pi]))
-axis(1.2*dom), axis equal
+axis equal off
 
 %%
 % Again we see eigenvalues in a disk; are they uniformly distributed? 
@@ -143,7 +143,7 @@ ei = eig(f);
 disp(['Number of nonzero eigenvalues: ',num2str(length(ei))])
 hold off, plot(ei,'k.'), hold on
 plot(chebfun(@(x)exp(1i*x),[0 2*pi]))
-axis(1.2*[-1 1 -1 1]), axis equal
+axis equal off
 
 %% 5. References
 % 
