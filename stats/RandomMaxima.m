@@ -15,9 +15,10 @@ tic, rng(0), dx = 1;
 f = randnfun(dx,[0,20]);
 [val,pos] = max(f,'local');
 MS = 'markersize'; LW = 'linewidth'; FS = 'fontsize';
-plot(f,'k',LW,1.6), grid on, hold on
-plot(pos,val,'.r',MS,16), hold off
-title([int2str(length(val)) ' maxima'],FS,16)
+ms = 32; lw = 5; fs = 36;
+plot(f,'k',LW,lw), grid on, hold on
+plot(pos,val,'.r',MS,ms), hold off
+title([int2str(length(val)) ' maxima'],FS,fs)
 
 %%
 % The random function in question is obtained as the restriction of a
@@ -27,9 +28,9 @@ title([int2str(length(val)) ' maxima'],FS,16)
 % Here is an analogous picture on an interval of length 40.
 f = randnfun(dx,[0,40]);
 [val,pos] = max(f,'local');
-plot(f,'k',LW,1.6), grid on, hold on
-plot(pos,val,'.r',MS,16), hold off
-title([int2str(length(val)) ' maxima'],FS,16)
+plot(f,'k',LW,lw), grid on, hold on
+plot(pos,val,'.r',MS,ms), hold off
+title([int2str(length(val)) ' maxima'],FS,fs)
 
 %%
 % Let's explore the number of maxima as a function of the length
@@ -40,18 +41,18 @@ for L = Lvec
   f = randnfun(dx,[0 L]);
   nmaxvec = [nmaxvec length(max(f,'local'))];
 end 
-loglog(Lvec,Lvec,'-r'), hold on
-loglog(Lvec,nmaxvec,'.',MS,20), grid on, hold off
+loglog(Lvec,Lvec,'-r',LW,lw), hold on
+loglog(Lvec,nmaxvec,'.',MS,44), grid on, hold off
 axis([.8 1300 .8 1300]); 
-xlabel('length of interval',FS,16)
-ylabel('no. of maxima',FS,16)
+xlabel('length of interval',FS,fs)
+ylabel('no. of maxima',FS,fs)
 
 %%
 % It would seem that the expected number of maxima is asymptotic to $L$.
 % Very likely there is a literature on this question.
 
 %%
-% Note that the first two dots seem higher than the curve.
+% Note that the first dot falls higher than the curve.
 % This is because when Chebfun finds "local extrema", it includes
 % extrema at the endpoints even though these (with probability 1) will
 % not be points of zero derivative.  We could improve the experiment
