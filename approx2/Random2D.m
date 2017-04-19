@@ -36,13 +36,13 @@ axis equal, axis([0 2 0 1])
 
 %%
 % A contour plot shows more:
+LW = 'linewidth';
 contour(f,LW,2.5)
 axis equal, axis([0 2 0 1])
 
 %%
 % To isolate the zero contours to high accuracy (though it takes
 % longer), one could use |roots|.
-LW = 'linewidth';
 c = roots(f);
 plot(c,LW,3)
 axis equal, axis([0 2 0 1])
