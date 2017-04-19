@@ -17,14 +17,14 @@
 % Here we plot the indefinite integral of a complex random function scaled
 % by $(dx)^{-1/2}$.  Red dots mark the initial and end points.
 LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
-lw = 3; fs = 36; ms = 24;
+lw = 2.5; fs = 32; ms = 40;
 dx = 0.1;
 rng(5)
 f = randnfun(dx,'norm') + 1i*randnfun(dx,'norm');
 g = cumsum(f);
 plot(g,'k',LW,lw), grid on, hold on
 plot(g([-1 1]),'.r',MS,ms), hold off
-axis(2*[-1 1 -1 1]), axis square
+axis(1.9*[-1 1 -1 1]), axis square
 title(['dx = ' num2str(dx)],FS,fs)
 set(gca,'xtick',-2:2,'ytick',-2:2)
 
@@ -40,7 +40,7 @@ for k = 1:3
   g = cumsum(f);
   plot(g,'k',LW,lw), grid on, hold on
   plot(g([-1 1]),'.r',MS,ms), hold off
-  axis(2*[-1 1 -1 1]), axis square
+  axis(1.9*[-1 1 -1 1]), axis square
   title(['dx = ' num2str(dx)],FS,fs)
   set(gca,'xtick',-2:2,'ytick',-2:2), snapnow
 end
