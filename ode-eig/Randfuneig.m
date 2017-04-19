@@ -32,7 +32,7 @@ axis equal off
 
 n = 1000;
 m = n*10;   % aspect ratio 10
-A = randn(m,n)/power(m*n,1/4); 
+A = randn(m,n)/power(m*n,1/4); % scaled random rectangular matrix
 B = randn(m,n)/power(m*n,1/4);
 
 hold off
