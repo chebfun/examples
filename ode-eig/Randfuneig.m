@@ -32,7 +32,7 @@ axis equal off
 
 n = 1000;
 m = n*10;   % aspect ratio 10
-A = randn(m,n)/power(m*n,1/4); 
+A = randn(m,n)/power(m*n,1/4); % scaled random rectangular matrix
 B = randn(m,n)/power(m*n,1/4);
 
 hold off
@@ -73,11 +73,11 @@ axis equal off
 
 n = 1000;
 m = n; % we just changed this from n*10 in the low-rank case
-A = randn(m,n); 
-B = randn(m,n);
+A = randn(m,n)/power(m*n,1/4); 
+B = randn(m,n)/power(m*n,1/4);
 
 hold off
-plot(eig(B'*A)/sqrt(m*n),'k.'), hold on
+plot(eig(B'*A),'k.'), hold on
 plot(chebfun(@(x)exp(1i*x),[0 2*pi]))
 axis equal off
 
@@ -98,7 +98,7 @@ axis equal off
 % Here, the eig(chebfun2) code computes the nonzero eigenvalues, using again (only more crucially)
 % the identity $eig(AB) = eig(BA)$, as there are infinitely many eigenvalues at 0). 
 
-dt = 0.01;                             % max wavenumber 2pi/dt
+dt = 0.01;                     % max wavenumber 2pi/dt
 dom = [-1 1 -1 1];
 f = randnfun2(dom,dt,'norm');  % normalized randum function 
 ei = eig(f);
