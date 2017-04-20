@@ -1,5 +1,5 @@
 %% Lane-Emden equation from astrophysics
-% Alex Townsend, 6th May 2011
+% Alex Townsend, May 2011
 
 %%
 % (Chebfun example ode-nonlin/LaneEmden.m)
