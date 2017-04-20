@@ -7,13 +7,12 @@
 
 %%
 % Recently Chebfun added the command |randnfun| for generating
-% smooth random
-% functions in 1D, as well as its periodic cousin |randfuntrig|.
+% smooth random functions in 1D.
 % In keeping with Chebfun's mission of realizing continuous
 % analogues of the familiar discrete objects, |randnfun| can
 % be regarded as a continuous analogue of the Matlab command |randn|.
 % Chebfun can construct 2D random functions too, with
-% |randnfun2| and |randnfun2trig|.  Random functions
+% |randnfun2|.  Random functions
 % in 3D or on the sphere or the disk have not yet been implemented.
 
 %%
@@ -32,13 +31,14 @@
 dt = 0.2;
 rng(0), f = randnfun2(dt, [0 2 0 1]);
 plot(f), view(0,90), colormap(gray(2))
+caxis(norm(caxis,inf)*[-1 1])
 axis equal, axis([0 2 0 1])
 LW = 'linewidth'; XT = 'xtick'; YT = 'ytick';
 set(gca,XT,0:.5:2,YT,0:.5:1)
 
 %%
 % A contour plot shows more:
-contour(f,LW,2.5), colormap('default'), colorbar
+contour(f,LW,2.5), colormap('default')
 axis equal, axis([0 2 0 1])
 set(gca,XT,0:.5:2,YT,0:.5:1)
 
@@ -57,8 +57,9 @@ view(-20,50), camlight left
 
 %% 
 % Here for comparison is a periodic random function.
-f = randnfun2trig(dt, [0 2 0 1]);
+f = randnfun2(dt, [0 2 0 1], 'trig');
 plot(f), view(0,90), colormap(gray(2))
+caxis(norm(caxis,inf)*[-1 1])
 axis equal, axis([0 2 0 1])
 set(gca,XT,0:.5:2,YT,0:.5:1)
 
@@ -66,6 +67,7 @@ set(gca,XT,0:.5:2,YT,0:.5:1)
 % And here are random functions with $dt = 0.1$
 dt = 0.1; f = randnfun2(dt, [0 2 0 1]);
 plot(f), view(0,90), colormap(gray(2))
+caxis(norm(caxis,inf)*[-1 1])
 axis equal, axis([0 2 0 1])
 set(gca,XT,0:.5:2,YT,0:.5:1)
 
@@ -73,5 +75,6 @@ set(gca,XT,0:.5:2,YT,0:.5:1)
 % and with $dt = 0.05$
 dt = 0.05; f = randnfun2(dt, [0 2 0 1]);
 plot(f), view(0,90), colormap(gray(2))
+caxis(norm(caxis,inf)*[-1 1])
 axis equal, axis([0 2 0 1])
 set(gca,XT,0:.5:2,YT,0:.5:1)
