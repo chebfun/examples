@@ -18,7 +18,7 @@ h = -1;
 dom = [-2 2 -1 1];
 f = randnfun2(0.3,dom);
 plot(f-h, 'zebra'), axis equal off, colormap(blueblack)
-title(['h = ' num2str(h)],FS,18)
+title(['h = ' num2str(h)],FS,38)
 
 %%
 % Of course, the mathematics depends on one's notion of a random function,
@@ -29,14 +29,14 @@ title(['h = ' num2str(h)],FS,18)
 % If $h$ is lower, the ponds are smaller and more separated.
 h = -2;
 plot(f-h, 'zebra'), axis equal off, colormap(blueblack)
-title(['h = ' num2str(h)],FS,18)
+title(['h = ' num2str(h)],FS,38)
 
 %%
 % As $h$ gets bigger, the ponds grow and connect into a giant
 % body of water.  This is related to the subject of percolation theory.
 for h = 0:2
    plot(f-h, 'zebra'), axis equal off, colormap(blueblack)
-   title(['h = ' num2str(h)],FS,18)
+   title(['h = ' num2str(h)],FS,38)
    snapnow
 end
 
@@ -47,7 +47,7 @@ dom = [-3 3 -1 1];
 f = randnfun2(.1, dom);
 h = chebfun2(@(x,y) x, dom);
 plot(f-h, 'zebra'), axis equal off, colormap(blueblack)
-title('varying h',FS,18)
+title('varying h',FS,38)
 
 %%
 % Reference:
