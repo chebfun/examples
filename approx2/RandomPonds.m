@@ -7,11 +7,16 @@
 %%
 % Suppose $f$ is a 2D random function defining a "random landscape",
 % which is filled with water up to a level $h$.  The water collects
-% into random ponds, as we may illustrate with this figure for $h=-1$.
+% into random ponds, an interpretation I learned about
+% from Ken Golden of the University of Utah [1].
+
+%%
+% Here is an illustration for $h=-1$.
 blueblack = [.6 .6 1; 0 0 0];
 FS = 'fontsize'; CO = 'color';
 h = -1;
-f = randnfun2(.2);
+dom = [-2 2 -1 1];
+f = randnfun2(.2,dom);
 plot(f-h, 'zebra'), axis equal off, colormap(blueblack)
 title(['h = ' num2str(h)],FS,20,CO,'w')
 
@@ -43,3 +48,10 @@ f = randnfun2(.1, dom);
 h = chebfun2(@(x,y) x, dom);
 plot(f-h, 'zebra'), axis equal off, colormap(blueblack)
 
+%%
+% Reference:
+%
+% [1] B. Bowen, C. Strong, and K. M. Golden,
+% Modeling the fractal geometry of Arctic melt
+% pounds using the level sets of random surfaces,
+% _Journal of Fractal Geometry_, to appear.
