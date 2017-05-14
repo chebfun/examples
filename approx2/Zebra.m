@@ -42,7 +42,7 @@ axis equal off
 % is a zebra plot using a brownish-orange color.  Maybe that
 % makes it a giraffe plot.
 clf, contourf(f,[0 0])
-colormap([.8 .4 .2; 0 0 0])
+colormap([.8 .4 .2; 1 1 1]), colorbar
 axis equal off
 
 %%
