@@ -12,7 +12,7 @@
 
 %%
 % Here is an illustration for $h=-1$.
-blueblack = [.7 .7 1; 0 0 0];
+blueblack = [.6 .6 1; 0 0 0];
 FS = 'fontsize'; CO = 'color';
 h = -1;
 dom = [-2 2 -1 1];
@@ -54,5 +54,5 @@ title('varying h',FS,38)
 %
 % [1] B. Bowen, C. Strong, and K. M. Golden,
 % Modeling the fractal geometry of Arctic melt
-% pounds using the level sets of random surfaces,
+% ponds using the level sets of random surfaces,
 % _Journal of Fractal Geometry_, to appear.
