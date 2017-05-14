@@ -42,7 +42,7 @@ axis equal off
 % is a zebra plot using a brownish-orange color.  Maybe that
 % makes it a giraffe plot.
 clf, contourf(f,[0 0])
-colormap([0 0 0; .8 .4 .2])
+colormap([.8 .4 .2; 0 0 0])
 axis equal off
 
 %%
@@ -50,5 +50,5 @@ axis equal off
 % accuracy.  If you want higher-accuracy resolution of boundaries (at least
 % if they are not too complicated), you can use |roots|.
 c = roots(f);
-plot(c), axis equal off
+plot(c), axis equal
 
