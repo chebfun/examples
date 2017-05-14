@@ -5,8 +5,8 @@
 % (Chebfun example approx2/Zebra.m)
 
 %%
-% Instead of a plot showing
-% many function values, we may prefer to show just a
+% Instead of a plot showing many function values,
+% sometime we may wish to highlight just a
 % plus/minus distinction.  For this there is the
 % |'zebra'| option in Chebfun2, Spherefun, and Diskfun.
 
@@ -29,7 +29,26 @@ plot(f,'zebra')
 axis off
 
 %%
-% And here is an example on the unit square.
-f = randnfun2(.1);
+% Here is an example on a rectangle.
+f = randnfun2(.2,[-2 2 -1 1]);
 plot(f, 'zebra')
 axis equal off
+
+%%
+% It was hardly necessary to give Chebfun a zebra option, merely
+% convenient and memorable.
+% One can achieve the same effect
+% same with the |contourf| command.  Here for example
+% is a zebra plot using a brownish-orange color.  Maybe that
+% makes it a giraffe plot.
+clf, contourf(f,[0 0])
+colormap([0 0 0; .8 .4 .2])
+axis equal off
+
+%%
+% Contouring commands like this are quick and designed for graphical
+% accuracy.  If you want higher-accuracy resolution of boundaries (at least
+% if they are not too complicated), you can use |roots|.
+c = roots(f);
+plot(c), axis equal off
+
