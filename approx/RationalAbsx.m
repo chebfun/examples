@@ -37,7 +37,7 @@
 % Now, by contrast, here we go to type $(80,80)$.  Chebfun has to work
 % a bit, but the computation is successful.
 x = chebfun('x'); f = abs(x);
-tic, [p,q,r] = minimax(f,80,80); toc
+tic, [p,q,r] = minimax(f,80,80,'silent'); toc
 xx = linspace(-1,1,3000).^3;
 LW = 'linewidth'; FS = 'fontsize';
 plot(xx,f(xx)-r(xx),LW,4)
@@ -56,7 +56,7 @@ title('error curve for type (80,80) approximation',FS,36)
 % This clustering makes a $p/q$ representation out of the question.
 % To show the exponential effect, we can plot the right half of the error curve
 % on a semilogx scale: 
-xx = logspace(-14,0,1000);
+xx = logspace(-14,0,5000);
 semilogx(xx,f(xx)-r(xx),LW,4)
 grid on, axis([1e-14 1 -1e-11 1e-11])
 title('semilogyx scale',FS,36)
