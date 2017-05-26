@@ -1,5 +1,5 @@
 %% Swift-Hohenberg equation in 2D
-% Hadrien Montanelli, August 2016
+% Hadrien Montanelli, May 2017
 
 %%
 % (Chebfun Example pde/Swift-Hohenberg.m)
@@ -14,7 +14,7 @@ S = spinop2('sh2')
 %%
 % From here we see that the version of the equation in Chebfun is
 % $$ u_t = ru - (1 + \Delta)^2u + gu^2 - u^3, $$
-% with $r = 0.1$ and $g=1$. This equation was derived by Swift and Hohenberg 
+% with $r = 0.1$ and $g=0$. This equation was derived by Swift and Hohenberg 
 % in 1977 to study thermal fluctuations on a fluid near the Rayleigh-Benard 
 % convective instability [1]. The function $u$ is the temperature field in a 
 % plane horizontal layer of fluid heated from below. The parameter $r$ measures 
@@ -22,18 +22,20 @@ S = spinop2('sh2')
 % convection: for $r<0$, the heating is too small to cause convection, while 
 % for $r>0$, convection occurs. The parameter $g$ controls the strength of the 
 % quadratic nonlinearity. The Swift-Hohenberg equation is an example of a PDE 
-% that exhibits pattern formation, including stripes, spots and spirals. The 
-% preloaded demo starts with an initial condition of amplitude $0.1$ involving 
-% random noise on the domain $[0, 20]\times[0, 20]$, runs to $t=200$ and leads
-% to a set of spots. As always, the boundary conditions are periodic.
-N = 64;
+% that exhibits pattern formation, including stripes, spots and spirals.
+
+%%
+% The preloaded demo uses a `randndfun2` as initial condition on the domain 
+% $[0, 50]\times[0, 50]$, runs to $t=800$ and leads to the so-called convection
+% rolls. As always with the `spin` suite, the boundary conditions are periodic.
+N = 128;
 dt = 1;
 u = spin2(S, N, dt, 'plot', 'off');
 plot(u), view(0,90), axis equal, axis off
 
 %% 
 % Note that we set `'plot'` to `'off'` to avoid the movie mode, which is the
-% default. The output `u` is the solution at the final time $t=200$ and is a 
+% default. The output `u` is the solution at the final time $t=800$ and is a 
 % `chebfun2`:
 u
 
@@ -48,8 +50,7 @@ dom = [0 20*pi 0 20*pi];
 tspan = [0 200];
 S = spinop2(dom, tspan);
 S.lin = @(u) -2*lap(u) - biharm(u);
-r = 1e-2; 
-g = 1;
+r = 1e-2; g = 1;
 S.nonlin = @(u) (-1 + r)*u + g*u.^2 - u.^3;
 
 %%
@@ -69,23 +70,21 @@ plot(S.init), view(0,90), axis equal, axis off
 
 %%
 % Let us run the simulation:
-u = spin2(S, 100, 2e-1, 'plot', 'off');
+u = spin2(S, 96, 2e-1, 'plot', 'off');
 plot(u), view(0,90), axis equal, axis off
 
 %%
-% Note that we use $N=100$ points in each direction and a time-step $dt=0.2$. 
+% Note that we use $N=96$ points in each direction and a time-step $dt=0.2$. 
 % The values $r=10^{-2}$ and $g=1$ lead to spots, known as convection cells.
 % When the fluid is heated, it expands and becomes less dense. The colder,
 % denser part of the fluid descends to settle below the warmer. This causes
-% the warmer fluid to rise and generates this pattern. We can plot the Fourier 
-% coefficients of the solution with `plotcoeffs`:
-plotcoeffs(u)
+% the warmer fluid to rise and generates this pattern.
 
 %% 
-% The solution at the final time is well resolved. To check that the computation 
-% is correct, we can increase the number of grid points and decrese the 
-% time-step, and compute the relative error between the two solutions:
-v = spin2(S, 120, 1e-1, 'plot', 'off');
+% To check that the computation is correct, we can increase the number of grid 
+% points and decrese the time-step, and compute the relative error between the 
+% two solutions:
+v = spin2(S, 128, 1e-1, 'plot', 'off');
 error = norm(u-v)/norm(v);
 fprintf('Relative error: %1.2e\n', error)
 
@@ -95,7 +94,7 @@ fprintf('Relative error: %1.2e\n', error)
 % time $t=200$:
 r = 7e-1; g = 1;
 S.nonlin = @(u) (-1 + r)*u + g*u.^2 - u.^3;
-u = spin2(S, 100, 2e-1, 'plot', 'off');
+u = spin2(S, 96, 2e-1, 'plot', 'off');
 clf, plot(u), view(0,90), axis equal, axis off
 
 %%
@@ -107,8 +106,9 @@ u = spin2(S, 100, 2e-1, 'plot', 'off');
 plot(u), view(0,90), axis equal, axis off
 
 %%
-% This solution represents a set of convection rolls where each yellow stripe
-% is the hot fluid coming up, and each blue stripe is the cold fluid going down.
+% Like the solution of the preloaded demo, this solution represents a set of 
+% convection rolls where each yellow stripe is the hot fluid coming up, and 
+% each blue stripe is the cold fluid going down.
 
 %% 3. References
 %
