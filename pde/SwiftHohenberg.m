@@ -27,15 +27,15 @@ S = spinop2('sh2')
 %%
 % The preloaded demo uses a `randndfun2` as initial condition on the domain 
 % $[0, 50]\times[0, 50]$, runs to $t=800$ and leads to the so-called convection
-% rolls. As always with the `spin` suite, the boundary conditions are periodic.
-N = 128;
-dt = 1;
+% rolls. In this example, let us run the simulation to $t=1200$.
+S.tspan = [0 1200];
+N = 128; dt = 1;
 u = spin2(S, N, dt, 'plot', 'off');
 plot(u), view(0,90), axis equal, axis off
 
 %% 
-% Note that we set `'plot'` to `'off'` to avoid the movie mode, which is the
-% default. The output `u` is the solution at the final time $t=800$ and is a 
+% Note that we set `'plot'` to `'off'` to avoid the default movie mode.
+% The output `u` is the solution at the final time $t=1200$ and is a 
 % `chebfun2`:
 u
 
@@ -74,7 +74,7 @@ u = spin2(S, 96, 2e-1, 'plot', 'off');
 plot(u), view(0,90), axis equal, axis off
 
 %%
-% Note that we use $N=96$ points in each direction and a time-step $dt=0.2$. 
+% Note that we used $N=96$ points in each direction and a time-step $dt=0.2$. 
 % The values $r=10^{-2}$ and $g=1$ lead to spots, known as convection cells.
 % When the fluid is heated, it expands and becomes less dense. The colder,
 % denser part of the fluid descends to settle below the warmer. This causes
@@ -88,10 +88,8 @@ v = spin2(S, 128, 1e-1, 'plot', 'off');
 error = norm(u-v)/norm(v);
 fprintf('Relative error: %1.2e\n', error)
 
-%%
-% This means that we have 3 digits correct. 
-% For the same value of $g=1$ but with $r=0.7$, we get spirals at the final
-% time $t=200$:
+%% 
+% For the same value of $g=1$ but with $r=0.7$, we get spirals:
 r = 7e-1; g = 1;
 S.nonlin = @(u) (-1 + r)*u + g*u.^2 - u.^3;
 u = spin2(S, 96, 2e-1, 'plot', 'off');
