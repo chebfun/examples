@@ -26,7 +26,7 @@ rng(0), dom = [0 40]; LW = 'linewidth'; tic
 L = chebop(dom); L.lbc = 1; 
 c = sign(randnfun(1,dom));
 L.op = @(t,y) diff(y) - c*y;
-y = L\0; plot(y,LW,1.6), grid on
+y = L\0; plot(y,LW,4), grid on
 
 %% 2. A matrix example of Lawley, Mattingly, and Reed
 % 
@@ -49,9 +49,9 @@ lambda = 3;
 f = 5*(1+sign(randnfun(lambda,dom)))/2;
 L.op = @(t,u,v) [diff(u) + u - f*v; diff(v) + v + (5-f)*u];
 [u,v] = L\0; 
-subplot(2,1,1), plot(u,LW,1), hold on, plot(v,LW,1), hold off, grid on
+subplot(2,1,1), plot(u,LW,4), hold on, plot(v,LW,4), hold off, grid on
 title('u and v on linear scale'), ylim([-3 3])
-subplot(2,1,2), semilogy(u^2+v^2,'k',LW,1), grid on, ylim([1e-8 1e8])
+subplot(2,1,2), semilogy(u^2+v^2,'k',LW,4), grid on, ylim([1e-8 1e8])
 title('norm of (u,v) on log scale'), ylim([1e-5 1e2])
 set(gca,'ytick',10.^[-4:2:4])
 
@@ -62,9 +62,9 @@ lambda = 1;
 f = 5*(1+sign(randnfun(lambda,dom)))/2;
 L.op = @(t,u,v) [diff(u) + u - f*v; diff(v) + v + (5-f)*u];
 [u,v] = L\0; 
-subplot(2,1,1), plot(u,LW,1), hold on, plot(v,LW,1), hold off, grid on
+subplot(2,1,1), plot(u,LW,3), hold on, plot(v,LW,3), hold off, grid on
 title('u and v on linear scale'), ylim([-300 300])
-subplot(2,1,2), semilogy(u^2+v^2,'k',LW,1), grid on, ylim([1e-8 1e8])
+subplot(2,1,2), semilogy(u^2+v^2,'k',LW,3), grid on, ylim([1e-8 1e8])
 title('norm of (u,v) on log scale'), ylim([1e-1 1e6])
 set(gca,'ytick',10.^[-4:2:4])
 
@@ -78,9 +78,9 @@ lambda = 1/3;
 f = 5*(1+sign(randnfun(lambda,dom)))/2;
 L.op = @(t,u,v) [diff(u) + u - f*v; diff(v) + v + (5-f)*u];
 [u,v] = L\0; 
-subplot(2,1,1), plot(u,LW,1), hold on, plot(v,LW,1), hold off, grid on
+subplot(2,1,1), plot(u,LW,2.5), hold on, plot(v,LW,2.5), hold off, grid on
 title('u and v on linear scale'), ylim([-3 3])
-subplot(2,1,2), semilogy(u^2+v^2,'k',LW,1), grid on, ylim([1e-8 1e8])
+subplot(2,1,2), semilogy(u^2+v^2,'k',LW,2.5), grid on, ylim([1e-8 1e8])
 title('norm of (u,v) on log scale'), ylim([1e-8 1e2])
 set(gca,'ytick',10.^[-8:4:4])
 
