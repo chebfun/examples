@@ -20,7 +20,7 @@ N.lbc = 0; N.op = @(t,y) diff(y) - t*y + y^3;
 LW = 'linewidth'; FS = 'fontsize'; fs = 32;
 for k = 1:6
   f = randnfun(0.2,dom,'norm');
-  y = N\f; plot(y,LW,2.2), hold on
+  y = N\f; plot(y,LW,5), hold on
 end
 xlabel('t',FS,36), ylabel('y',FS,36)
 title('lambda = 0.2, 6 paths',FS,fs), toc
@@ -30,7 +30,7 @@ title('lambda = 0.2, 6 paths',FS,fs), toc
 tic, clf
 for k = 1:6
   f = randnfun(0.05,dom,'norm');
-  y = N\f; plot(y,LW,1.8), hold on
+  y = N\f; plot(y,LW,2), hold on
 end
 xlabel('t',FS,36), ylabel('y',FS,36)
 title('lambda = 0.05, 6 paths',FS,fs), toc
