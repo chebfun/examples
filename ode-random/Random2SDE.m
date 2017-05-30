@@ -26,11 +26,11 @@ help randnfun
 % in their Stratonovich (as opposed to Ito) formulation.  This too has
 % not been written up.  Precise statements relating Chebfun's random
 % functions to SDEs are not yet available, but we expect them to be
-% developed in due course (building for example on the
-% theory of Wong and Zakai [1]).  But we don't need a fully developed theory
+% developed in due course, building for example on the
+% theory of Wong and Zakai [1].  But we don't need a fully developed theory
 % to start exploring!  Chebfun provides an easy window into some of
 % the phenomena that make SDEs so fascinating and so important.  Just
-% remember that properly speaking, what Chebfun solves is a random ODE
+% remember that, properly speaking, what Chebfun solves is a random ODE
 % (based on band-limited randomness), not a true SDE (based on band-unlimited
 % randomness, i.e., white noise, a notion made precise through the 
 % formulation of a Wiener process, also known as Brownian motion).
@@ -39,7 +39,7 @@ help randnfun
 % For studies of this kind, one should always call |randnfun| and its
 % cousins with the flag |'norm'|.  This multiplies the random function
 % by $\lambda^{-1/2}$, meaning that its amplitude grows without bound
-% as $\lambda\to 0$; but this is just right for random ODEs that
+% as $\lambda\to 0$.  This is what is needed for random ODEs that
 % are intended to approximate SDEs.
 
 %%
@@ -62,7 +62,7 @@ help randnfun
 tic
 rng(0)
 u = randnfun(0.001,[0 1],3,'norm');
-plot(cumsum(u),'linewidth',2)
+plot(cumsum(u),'linewidth',2.5)
 grid on, ylim([-1 1])
 xlabel('t','fontsize',30), ylabel('u','fontsize',30)
 
