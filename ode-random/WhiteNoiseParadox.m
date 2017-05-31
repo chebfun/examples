@@ -33,7 +33,7 @@ end
 %%
 % How do we resolve this paradox?  In Chebfun, we resolve it by
 % cutting off the wave numbers at $O(2\pi/\lambda)$, so that a random function is
-% smooth and of finite amplitude.  In stochastic analysis, is resolved by never
+% smooth and of finite amplitude.  In stochastic analysis, it is resolved by never
 % dealing with white noise directly, but only with its integral.  Thanks to
 % sign cancellations, the integral of white noise, known as a Brownian path,
 % is continuous (with probability 1).  It is not smooth, however, and indeed
@@ -49,7 +49,7 @@ end
 % context, the paradox is avoided because
 % in actual molecular
 % dynamics there is a lower limit to the relevant space scales and thus
-% an upper limit to the wave numbers.  (So physics' view of white
+% an upper limit to the wave numbers.  (So physics's view of white
 % noise, you might say, is a bit like Chebfun's.)
 
 %%
@@ -86,7 +86,7 @@ end
 % References:
 %
 % [1] A. Einstein, &Uuml;ber einen die Erzeugung und Verwandlung des
-% Lichtes betreffended heuristischen Gesichtspunkt, _Annalen der Physik_
+% Lichtes betreffenden heuristischen Gesichtspunkt, _Annalen der Physik_
 % 17 (1905), 132-148.
 %
 % [2] A. Einstein, &Uuml;ber die von der molekularkinetischen Theorie
@@ -95,4 +95,4 @@ end
 % (1905), 549-560.
 %
 % [3] H. Kragh, Max Planck: the reluctant revolutionary, _Physics
-% World_ 13 (2000), 31.
+% World_ 13 (2000), 31-35.
