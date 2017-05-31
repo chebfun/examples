@@ -6,7 +6,7 @@
 
 %%
 % The second-order ODE
-% $$ y'' = 2\kern .3pt cy - 4y^3 - 0.2\kern .3pt y' $$
+% $$ y'' = 2\kern .3pt cy - 4y^3 $$
 % has fixed points $y=0$, $y = \sqrt{c/2}$ and $y = -\sqrt{c/2}$.
 % For $c<0$, only the first of these is real, and it is a stable
 % fixed point.  As $c$ passes through zero to values $c>0$, 
@@ -43,7 +43,6 @@ y3 = N\f2; plot(y3,'r',LW,lw), hold off
 xlabel('t',FS,32), ylabel('y',FS,32)
 title('Pitchfork',FS,32)
 axis([0 600 -.8 .8]), grid on
-pause
 
 %%
 % Note that the solutions display big oscillations.  Adding a 
