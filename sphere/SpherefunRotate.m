@@ -83,7 +83,7 @@ plot( g ), title('Rotated \phi=\psi=\pi/4',FS,fs), axis off
 %% 
 % We can verify the above statements by computing the spherical harmonic
 % coefficients of $Y_{10}^{3}$ after a rotation with Euler angles
-% $(\pi/4,pi/3,-pi/8)$:
+% $(\pi/4,\pi/3,-pi/8)$:
 eulerAngles = [pi/4, pi/3, -pi/8]; 
 f = spherefun.sphharm( 10, 3 ); 
 g = rotate(f, eulerAngles(1), eulerAngles(2), eulerAngles(3));
@@ -119,19 +119,20 @@ for m = -10:10
 end
 norm(h - g)
 
-%% 
-% In Spherefun, we avoid spherical harmonic expansions because the 
-% computation of expansion coefficients is slow as our underlying 
-% discretizations involve highly adaptive grids [3]. 
-
-%% An alternative algorithm based on the 2D NUFFT
-% While spherical harmonic expansions present a natural approach for rotating
-% functions on the sphere, we instead employ the double Fourier sphere method with a low rank
+%% An alternative rotate algorithm based on the 2D NUFFT
+% While spherical harmonic expansions present a natural approach for 
+% representing functions on the sphere, Spherefun does not use them.  
+% Instead it uses the double Fourier sphere method with a low rank
 % technique (based on a structure-preserving Gaussian elimination
 % procedure) for approximating functions on the sphere to essentially
 % machine precision [3].  This method allows us to employ fast transforms
-% based on the FFT with no setup costs, as opposed fast spherical harmonic
-% transforms [2]. The implementation of |rotate| is based on a two-dimensional
+% based on the FFT with no setup costs, unlike fast spherical harmonic
+% transforms [2], and provides highly adaptive discretizations.
+
+%%
+% Since Spherefun does not use spherical harmonics, it cannot directly use
+% the rotation technique described above. The implementation of |rotate| 
+% in Spherefun is instead based on a two-dimensional
 % nonuniform FFT (NUFFT) [1], which makes for a fast rotation algorithm.
 
 %% 
@@ -148,11 +149,11 @@ f = randnfunsphere( 0.03 );
 plot( f ), title('Random function',FS,fs), axis off
 
 %%
-% For this function, we see a 30 times speed-up for the NUFFT:
+% For this function, we see a big speed-up for the NUFFT:
 s = tic; g = rotate(f, pi/3, pi/2, 0.5, 'feval'); t_feval = toc(s); 
 s = tic; h = rotate(f, pi/3, pi/2, 0.5); t_nufft = toc(s);
 fprintf('NUFFT speed-up factor = %2.1f\n', t_feval/t_nufft)
-plot( f ), title('Rotated random function',FS,fs), axis off
+plot( h ), title('Rotated random function',FS,fs), axis off
 
 %% 
 % We hope that this speed-up allows for successful applications of the 
@@ -207,8 +208,7 @@ ylabel('Rank'), title('Rank of the rotation of a Gaussian',FS,fs)
 % of $\pi/2$ and $3\pi/2$, respectively) we see that the rank decreases
 % substantially. If we had not offset the Gaussian from the $y$-axis
 % then the rank would have been exactly 1 at north and south poles since
-% the Gaussian reduces to $\exp(-20(1\pm z))$ at the north and south poles,
-% respectively.
+% the Gaussian reduces to $\exp(-20(1\pm z))$ there.
 
 %% References 
 %%
