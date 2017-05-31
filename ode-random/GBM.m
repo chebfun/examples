@@ -37,6 +37,7 @@
 tic
 dom = [0,20]; L = chebop(dom); L.lbc = 1; L.maxnorm = 100;
 rng(0), lambda = 0.2;
+LW = 'linewidth'; FS = 'fontsize';
 f = randnfun(lambda,dom,'norm',5);
 mu = 0; sigma = 1;
 for k = 1:5
@@ -44,6 +45,8 @@ for k = 1:5
   y = L\0; plot(y,LW,2.5), hold on
 end
 grid on, hold off
+xlabel('t',FS,32), ylabel('y',FS,32)
+title('zero drift',FS,32)
 
 %%
 % If we increase $\mu$ to $0.2$, there is now an
@@ -54,6 +57,8 @@ for k = 1:5
   y = L\0; plot(y,LW,2.5), hold on
 end
 grid on, hold off, ylim([0 70])
+xlabel('t',FS,32), ylabel('y',FS,32)
+title('positive drift',FS,32)
 
 %%
 % Setting $\mu = -0.2$, on the other hand, leads to decay.
@@ -63,6 +68,8 @@ for k = 1:5
   y = L\0; plot(y,LW,2.5), hold on
 end
 grid on, hold off
+xlabel('t',FS,32), ylabel('y',FS,32)
+title('negative drift',FS,32)
 
 %%
 total_time_in_seconds = toc
