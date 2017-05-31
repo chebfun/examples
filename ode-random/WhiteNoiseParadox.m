@@ -40,14 +40,17 @@ end
 % is everywhere nondifferentiable (with probability 1).
 
 %%
-% In Einstein's _annus mirabilis_ 1905, he published three epochal papers in
+% In Einstein's _annus mirabilis_ 1905, he published four epochal papers in
 % the _Annalen der Physik_.  Curiously, two of these papers, on very different
 % subjects, have a link with the white noise paradox.  (I don't know if
-% Einstein noticed this analogy.)  One was about physical
-% Brownian motion, and here the link is obvious [1].  (Einstein's resolution of
-% the paradox was closer to Chebfun's, noting that in actual molecular
+% Einstein noticed the connection.)  One was about physical
+% Brownian motion, which Einstein studied long before its current
+% mathematical idealization had been established [1].  In the physical
+% context, the paradox is avoided because
+% in actual molecular
 % dynamics there is a lower limit to the relevant space scales and thus
-% an upper limit to the wave numbers.)
+% an upper limit to the wave numbers.  (So physics' view of white
+% noise, you might say, is a bit like Chebfun's.)
 
 %%
 % The other paper of Einstein's with a link to the white noise paradox
@@ -59,17 +62,19 @@ end
 % of all frequencies, each with an equal amount of energy. 
 % So at each instant a cavity should radiate infinite energy! Planck's 
 % quantization resolved this difficulty by positing that in fact, higher frequencies
-% have less energy in them, and Einstein's paper on light carried
+% have less energy in them, and Einstein's paper carried
 % this analysis deeper.  
 
 %%
-% Kragh has pointed out in a fascinating article that although this story is correct
-% as to the physics, it is incorrect to the sequence
-% of events [3].
+% Kragh has pointed out in a fascinating article that although
+% this familiar story is correct
+% as to the physics, it is incorrect as to the history [3].
 % Although the ultraviolet catastrophe was indeed implicit in 19th century
-% physics, it seems this was not noticed until 1905, by Rayleigh and Jeans.
-% Planck introduced his quantum for other reasons!  Only later was it pointed
-% out, by xxx, that quantum mechanics averted the catastrophe.
+% physics, it seems this was not noticed until after Planck's work,
+% and published in 1905 by Rayleigh and Jeans.
+% The name "ultraviolet catastrophe" came from Ehrenfest in 1911.
+% Planck introduced his quantum for other reasons!  Only later was it
+% appreciated that quantum mechanics averts the catastrophe.
 
 %% 
 %
@@ -81,7 +86,7 @@ end
 %
 % [2] A. Einstein, \"Uber die von der molekularkinetischen Theorie
 % der W\"arme geforderte Bewegung von in ruhenden 
-% Fl\"ussigkeiten suspendierten Teilchen, _Annalen der Physik_ 17
+% Fl&uuml;ssigkeiten suspendierten Teilchen, _Annalen der Physik_ 17
 % (1905), 549-560.
 %
 % [3] H. Kragh, Max Planck: the reluctant revolutionary, _Physics
