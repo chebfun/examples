@@ -83,7 +83,7 @@ plot( g ), title('Rotated \phi=\psi=\pi/4',FS,fs), axis off
 %% 
 % We can verify the above statements by computing the spherical harmonic
 % coefficients of $Y_{10}^{3}$ after a rotation with Euler angles
-% $(\pi/4,\pi/3,-pi/8)$:
+% $(\pi/4,\pi/3,-\pi/8)$:
 eulerAngles = [pi/4, pi/3, -pi/8]; 
 f = spherefun.sphharm( 10, 3 ); 
 g = rotate(f, eulerAngles(1), eulerAngles(2), eulerAngles(3));
