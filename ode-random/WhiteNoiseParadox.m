@@ -58,7 +58,8 @@ end
 % the photoelectric effect [2].
 % As the famous (and not quite correct) story goes, 
 % 19th century physics was troubled by the paradox of the "ultraviolet catastrophe".
-% Statistical mechanics predicted that a cavity should support electromagnetic waves
+% The equipartition theorem of
+% statistical mechanics predicted that a cavity should support electromagnetic waves
 % of all frequencies, each with an equal amount of energy. 
 % So at each instant a cavity should radiate infinite energy! Planck's 
 % quantization resolved this difficulty by positing that in fact, higher frequencies
@@ -69,23 +70,27 @@ end
 % Kragh has pointed out in a fascinating article that although
 % this familiar story is correct
 % as to the physics, it is incorrect as to the history [3].
+% (I am grateful to Adam Caulton of Balliol College for pointing me
+% to this article.)
 % Although the ultraviolet catastrophe was indeed implicit in 19th century
-% physics, it seems this was not noticed until after Planck's work,
-% and published in 1905 by Rayleigh and Jeans.
+% physics, it seems this was not the motivation for Planck's work,
+% and it was not published until 1905 by Rayleigh and Jeans.
+% Planck introduced his quantum for other reasons!
 % The name "ultraviolet catastrophe" came from Ehrenfest in 1911.
-% Planck introduced his quantum for other reasons!  Only later was it
-% appreciated that quantum mechanics averts the catastrophe.
+% The observation 
+% that quantization of light averts the catastrophe may in fact
+% be due to Einstein.
 
 %% 
 %
 % References:
 %
-% [1] A. Einstein, \"Uber einen die Erzeugung und Verwandlung des
+% [1] A. Einstein, &Uuml;ber einen die Erzeugung und Verwandlung des
 % Lichtes betreffended heuristischen Gesichtspunkt, _Annalen der Physik_
 % 17 (1905), 132-148.
 %
-% [2] A. Einstein, \"Uber die von der molekularkinetischen Theorie
-% der W\"arme geforderte Bewegung von in ruhenden 
+% [2] A. Einstein, &Uuml;ber die von der molekularkinetischen Theorie
+% der W&auml;rme geforderte Bewegung von in ruhenden 
 % Fl&uuml;ssigkeiten suspendierten Teilchen, _Annalen der Physik_ 17
 % (1905), 549-560.
 %
