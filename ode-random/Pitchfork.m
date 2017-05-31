@@ -52,7 +52,7 @@ axis([0 600 -.8 .8]), grid on
 % large oscillations:
 N.op = @(t,y) diff(y,2) - 2*(-1+t/300)*y + 4*y^3;
 plot(y1,'--k',LW,2), hold on
-y2 = -N\f1; plot(y2,'b',LW,2),
+y2 = N\(-f1); plot(y2,'b',LW,2),
 y3 = N\f2; plot(y3,'r',LW,2), hold off
 xlabel('t',FS,32), ylabel('y',FS,32)
 title('Pitchfork without damping',FS,32)
