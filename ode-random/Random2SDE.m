@@ -23,7 +23,7 @@ help randnfun
 % These commands make it easy to compute sample paths of random
 % ODEs in Chebfun, that is, of ODEs defined by smooth random coefficients.
 % As $\lambda \to 0$, we approach the limit of stochastic DEs (SDEs), typically
-% in their Stratonovich (as opposed to Ito) formulation.  This too has
+% in their Stratonovich (as opposed to It&ocirc;) formulation.  This too has
 % not been written up.  Precise statements relating Chebfun's random
 % functions to SDEs are not yet available, but we expect them to be
 % developed in due course, building for example on the
