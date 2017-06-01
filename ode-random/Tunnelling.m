@@ -6,7 +6,7 @@
 
 %%
 % Here is a bistable equation with additive noise:
-% $$ y' = ty - y^3 + f, $$
+% $$ y' = y - y^3 + f, $$
 % where $f$ is a random term of fixed amplitude.
 % There is an unstable fixed point of the deterministic
 % part of the equation at $y=0$ and
@@ -48,7 +48,7 @@ title('Tunnelling',FS,36)
 % effects on tunnelling rates.  If we move the stable states
 % further apart, or equivalently reduce the noise amplitude, then
 % the metastable state will survive much longer.  Conversely if
-% we move the stable states closer together, or equivalent
+% we move the stable states closer together, or equivalently
 % increase the noise amplitude, then the metastable states
 % will not survive as long.  Here for example we rerun the
 % last experiment but with the 
