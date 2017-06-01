@@ -8,8 +8,8 @@
 %% 1. Introduction
 % Chebfun's `spin2` and `spinop2` codes include a number of preloaded examples. 
 % One of them is the 2D Swift-Hohenberg equation, which we can run by typing
-% `spin2('sh2')`. It uses the following `spinop2` object:
-S = spinop2('sh2')
+% `spin2('sh')`. It uses the following `spinop2` object:
+S = spinop2('sh')
 
 %%
 % From here we see that the version of the equation in Chebfun is

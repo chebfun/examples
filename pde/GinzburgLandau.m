@@ -11,12 +11,12 @@
 % preloaded examples, which you can find out about by typing
 % `help spin2` or `help spinop2`.
 % One of the options is
-% `spin2('gl2')` for the 2D Complex Ginzburg-Landau equation.  What
+% `spin2('gl')` for the 2D Complex Ginzburg-Landau equation.  What
 % is this equation?
 
 %%
 % To find out, you can type
-S = spinop2('gl2')
+S = spinop2('gl')
 
 %%
 % From here we see that the version of the equation in Chebfun is
