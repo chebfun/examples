@@ -10,7 +10,7 @@ A = [0 1 0; -1 0 0; 0 0 0], B = [0 0 1; 0 0 0; -1 0 0], C = [0 0 0; 0 0 1; 0 -1 
 
 %%
 % and we consider the random ODE
-% $du/dt = fAu + gBu + hBu$ where $f$, $g$, and $h$ are random functions.
+% $du/dt = fAu + gBu + hCu$ where $f$, $g$, and $h$ are random functions.
 % Since the matrices are skew-symmetric, energy will be conserved.  So we'll
 % get a trajectory $u(t) = (x(t),y(t),z(t))^T$ that wanders around on a sphere.
 % As usual in 3D, it helps a lot if you see a moving picture,
