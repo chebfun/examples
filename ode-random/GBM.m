@@ -38,7 +38,7 @@ tic
 dom = [0,20]; L = chebop(dom); L.lbc = 1; L.maxnorm = 100;
 rng(0), lambda = 0.2;
 LW = 'linewidth'; FS = 'fontsize';
-f = randnfun(lambda,dom,'norm',5);
+f = randnfun(lambda,dom,'big',5);
 mu = 0; sigma = 1;
 for k = 1:5
   L.op = @(t,y) diff(y) - mu*y - sigma*f(:,k)*y;

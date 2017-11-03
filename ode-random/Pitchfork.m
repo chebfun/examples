@@ -36,9 +36,9 @@ N = chebop(0,600); N.lbc = [0;0];
 N.op = @(t,y) diff(y,2) - 2*(-1+t/300)*y + 4*y^3;
 FS = 'fontsize'; LW = 'linewidth'; lw = 2.5;
 y1 = N\0; plot(y1,'--k',LW,lw), hold on
-f1 = 0.003*randnfun([0 600],lambda,'norm');
+f1 = 0.003*randnfun([0 600],lambda,'big');
 y2 = N\f1; plot(y2,'b',LW,lw),
-f2 = 0.003*randnfun([0 600],lambda,'norm');
+f2 = 0.003*randnfun([0 600],lambda,'big');
 y3 = N\f2; plot(y3,'r',LW,lw), hold off
 xlabel('t',FS,32), ylabel('y',FS,32)
 title('Pitchfork',FS,32)
