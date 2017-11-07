@@ -23,8 +23,9 @@ d = [0 1]; t = chebfun('t',d); E = chebfun;
 for k = 1:n
    E(:,k) = chebfun(@(t) eigk((1-t)*A+t*B,k),d);
 end
-MS = 'markersize';
 E1 = E(:,1); E2 = E(:,2);
+
+FS = 'fontsize'; MS = 'markersize';
 figure, plot([E1; E2]), grid on
 title('Near-crossing of two eigenvalues');
 xlabel('t',FS,12)
