@@ -60,7 +60,7 @@ title('derivatives of the eigenvalue functions')
 % a branch cut.)
 X = linspace(0,1,1000);
 [r,pol] = aaa(E1,X);
-plot(pol,'.r',MS,8), grid on
+plot(pol,'.r',MS,12), grid on
 axis([0 1 -.2 .2])
 title('narrow strip of analyticity')
 
@@ -76,7 +76,7 @@ title('sum of the two eigenvalues')
 %%
 % And here are the poles of the AAA approximant:
 [r,pol] = aaa(Esum(X),X);
-plot(pol,'.r',MS,8), grid on
+plot(pol,'.r',MS,12), grid on
 axis([0 1 -.2 .2])
 title('for the sum, a wider strip of analyticity')
 
