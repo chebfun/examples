@@ -18,7 +18,7 @@ N.lbc = 0; N.op = @(t,y) diff(y) - y + y^3;
 LW = 'linewidth'; FS = 'fontsize'; fs = 32;
 lambda = 0.5;
 for k = 1:6
-  f = 0.45*randnfun(lambda,dom,'norm');
+  f = 0.45*randnfun(lambda,dom,'big');
   y = N\f; plot(y,LW,4), hold on
 end
 xlabel('t',FS,36), ylabel('y',FS,36), hold off
@@ -34,7 +34,7 @@ ylim([-1.7 1.7]), grid on, drawnow
 % infinitely often as $t\to\infty$.  Here is an illustrative
 % trajectory over the interval $t\in [0,800]$.
 dom = [0 800]; N.domain = dom;
-f = 0.45*randnfun(lambda,dom,'norm');
+f = 0.45*randnfun(lambda,dom,'big');
 y = N\f; plot(y,LW,2.5)
 xlabel('t',FS,36), ylabel('y',FS,36)
 ylim([-1.7 1.7]), grid on

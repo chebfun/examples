@@ -13,8 +13,8 @@
 rng(3), dom = [0 40]; tic
 N = chebop(dom);
 lambda = 0.2;
-f = randnfun(lambda,dom,'norm');
-g = randnfun(lambda,dom,'norm');
+f = randnfun(lambda,dom,'big');
+g = randnfun(lambda,dom,'big');
 N.op = @(t,u,v) [diff(u) + f; diff(v) + g];
 d = 1; N.lbc = @(u,v) [u-d; v+d];
 LW = 'linewidth'; lw = 2.5; FS = 'fontsize';

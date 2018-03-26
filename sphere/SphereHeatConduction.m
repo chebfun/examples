@@ -67,7 +67,7 @@
 % We first consider solving (1) with an initial condition given by the
 % following sum of spherical harmonics $Y_{\ell}^{m}(\lambda,\theta)$:
 % $$ u_0(\lambda,\theta,0) = Y_{6}^{0}(\lambda,\theta) +
-% \sqrt{\frac{14}{11}} Y_{6}^{6}(\lambda,\theta), $$
+% \sqrt{\frac{14}{11}} Y_{6}^{5}(\lambda,\theta), $$
 % which is sometimes called the soccer ball function.  First, we
 % construct this initial condition in Spherefun and plot it.
 % </latex>
