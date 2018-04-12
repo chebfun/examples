@@ -273,7 +273,7 @@ xlabel('$\ell$','Interpreter','Latex'), ylabel('m'), zlabel('|coeffs|')
 % (3).  The coefficients in this expansion are computed
 % in [6] and are given by
 % $$ a_{\ell} =
-% \frac{\sqrt{\pi}}{2}\sigma e^{-\sigma^2/2}(2\ell+1)I_{\ell+1/2}(2/\sigma^2),
+% \frac{\sqrt{\pi}}{2}\sigma e^{-2/\sigma^2}(2\ell+1)I_{\ell+1/2}(2/\sigma^2),
 % $$
 % where $I_{\nu}$ denotes the modified Bessel function of the first kind of
 % order $\nu$.  The
