@@ -6,9 +6,9 @@
 % [Tags: #linearODE, #linearalgebra]
 
 %% Krylov subspace methods
-% Krylov subspace methods are iterative solvers for linear systems 
-% $$Ax = b $$, which only require matrix-vector products with $$A $$ [4].
-% Computationally, they have a low memory requirement, and are widely used
+% Krylov subspace methods are iterative solvers for linear systems
+% $Ax = b$, which only require matrix-vector products with $A$ [4].
+% Computationally, they have low memory requirements and are widely used
 % in applications throughout science and engineering. They usually work by
 % computing an approximate solution to $$Ax = b $$ from a Krylov subspace of
 % the form:
@@ -25,10 +25,10 @@
 % Krylov subspace methods are particularly popular in the context of 
 % solving linear systems constructed by discretizing differential
 % equations [6]. The typical paradigm for solving an ordinary differential 
-% equation (ODE) is to first discretize it into a linear system $$Ax = b $$,
+% equation (ODE) is to first discretize it into a linear system $Ax = b$
 % and then use a Krylov subspace method to solve the resulting linear 
 % system. As an example, consider the second-order central finite 
-% difference discretization of $$-u_{xx} = 1 $$ with $$u(\pm 1) = 0 $$:
+% difference discretization of $-u_{xx} = 1$ with $u(\pm 1) = 0$:
 n = 100; 
 h = 2/(n + 1); 
 e = ones(n,1); 
@@ -36,13 +36,13 @@ A = -1/h.^2 * spdiags( [e -2*e e], -1:1, n, n );
 b = ones(n, 1);
 
 %%
-% This finite difference discretization is structure preserving in the
-% sense that the operator $$\mathcal{L}u=-u_{xx} $$ is self-adjoint with 
-% positive eigenvalues, and the discretization matrix $$A $$ is symmetric 
+% This finite difference discretization is structure-preserving in the
+% sense that the operator $\mathcal{L}u=-u_{xx}$ is self-adjoint with 
+% positive eigenvalues and the discretization matrix $A$ is symmetric 
 % positive definite (SPD). Thanks to this property, the linear system 
-% $$Ax = b $$ may be solved using the conjugate gradient (CG) method. The
+% $Ax = b$ may be solved using the conjugate gradient (CG) method. The
 % following code calls the built-in MATLAB command for CG until the 
-% residual is below $$10^{-12} $$, or until 100 iterations have been 
+% residual is below $10^{-12}$ or until 100 iterations have been 
 % performed.
 x_cg = pcg(A, b, 1e-12, 100);
 x_exact = A \ b;
@@ -58,7 +58,7 @@ A = matrix(L, n);
 
 %%
 % Unlike the finite difference discretization above, this discretization is
-% not structure preserving in the sense that the matrix $$A $$ is not 
+% not structure preserving in the sense that the matrix $A$ is not 
 % symmetric.
 norm( A - A' ,'fro')
 
@@ -104,7 +104,7 @@ tic, u_cg = pcg(L, f); toc
 % The operator CG method for ODEs can be used to solve a second-order BVP
 % if the differential operator is self-adjoint with positive eigenvalues. 
 % The following code calls the operator CG method to solve the 
-% differential equation $$-u_{xx} = 1 $$ with $$u(\pm 1) = 0 $$: 
+% differential equation $-u_{xx} = 1$ with $u(\pm 1) = 0$: 
 
 L = chebop( @(u) -diff(u, 2) ); 
 L.bc = 0; 
@@ -118,7 +118,7 @@ error = norm( u_cg - L\f )  % error in CG solution
 % the underlying algorithms are given in [2]. 
 
 %% MINRES for self-adjoint differential operators
-% Analogous to matrices, if a differential operator $$\mathcal{L} $$ is 
+% Analogous to matrices, if a differential operator $\mathcal{L}$ is 
 % second-order and self-adjoint, then an operator MINRES method can be 
 % used to solve the BVP. The differential operator 
 % 
@@ -150,11 +150,11 @@ set(gca, 'fontsize', 16)
 
 %% GMRES for general differential operators
 % GMRES is a Krylov subspace method that can be used to solve any linear
-% system $$Ax = b $$. Although it can always be used, GMRES is less
+% system $Ax = b$. Although it can always be used, GMRES is less
 % efficient than CG and MINRES. Analogously, any second-order ODE with 
 % Dirichlet boundary conditions can be solved with the operator GMRES 
 % method. The following code solves the differential equation 
-% $$-u_{xx} + u_{x} + u = 1 $$, $$u(\pm 1 ) = 0 $$ using the operator 
+% $-u_{xx} + u_{x} + u = 1$, $u(\pm 1 ) = 0$, using the operator 
 % GMRES method:
 
 L = chebop( @(u) -diff(u, 2)  + diff(u, 1) + u ); 
@@ -181,7 +181,7 @@ error = norm( u_colloc - u_gmres )
 % $$ \mathcal{R} u = \int_{s=-1}^{s=x} u(s) ds.$$
 % 
 % This choice of preconditioner makes
-% $$\mathcal{R}^* \mathcal{L} \mathcal{R} $$ a bounded operator.
+% $\mathcal{R}^* \mathcal{L} \mathcal{R}$ a bounded operator.
 % This built-in preconditioner means that one does not have to provide a 
 % preconditioner to obtain a solution to BVPs in a few iterations. The 
 % following code calls the operator MINRES method on a problem with 
@@ -206,9 +206,9 @@ set(gca, 'fontsize', 16)
 % integration preconditioner is supported in our operator Krylov methods,
 % they can display poor convergence in some cases. For example, the 
 % preconditioner is ineffective for the singularly perturbed equation 
-% $$-\epsilon u_{xx} + u = 1 $$ with $$u(\pm 1) = 0 $$. The following code calls
-% the operator CG method on this equation with $$\epsilon = 10^{-5} $$, and 
-% requires 446 iterations to converge to an accuracy of $$10^{-13} $$.
+% $-\epsilon u_{xx} + u = 1$ with $u(\pm 1) = 0$. The following code calls
+% the operator CG method on this equation with $\epsilon = 10^{-5}$, and 
+% requires 446 iterations to converge to an accuracy of $10^{-13}$.
 
 L = chebop( @(u) -1e-5.*diff(u,2) + u ); 
 L.bc = 0;
