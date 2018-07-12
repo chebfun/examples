@@ -13,7 +13,7 @@
 % computing an approximate solution to $$Ax = b $$ from a Krylov subspace of
 % the form:
 %
-% $$ \mathcal{K}_k(A,b) = \mbox{Span}\{b, Ab, A^2 b, \ldots, A^{k-1}b\}.$$
+% $$ \mathcal{K}_k(A,b) = \mbox{Span}\\{b, Ab, A^2 b, \ldots, A^{k-1}b\\}.$$
 %
 % Three popular Krylov methods are: (1) The conjugate gradient (CG) method
 % (for symmetric and positive definite matrices), (2) MINRES (for symmetric 
