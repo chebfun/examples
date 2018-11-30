@@ -144,7 +144,7 @@ end
 
 %%
 % The computation of the solid harmonics is very fast in Ballfun and a
-% solid harmonics of degree $150$ can be computed in a few thousandths of 
+% solid harmonics of degree $150$ can be computed in a few tenths of 
 % a second:
 tic
 ballfun.solharm(150, 50);

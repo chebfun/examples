@@ -90,7 +90,7 @@ Vx = reshape(sum(Vx,1),50,50); Vy = reshape(sum(Vy,1),50,50); Vz = reshape(sum(V
 MsinL = trigspec.multmat(50, [0.5i;0;-0.5i] ); McosL = trigspec.multmat(50, [0.5;0;0.5] );
 MsinT = trigspec.multmat(50, [0.5i;0;-0.5i] ); McosT = trigspec.multmat(50, [0.5;0;0.5] );
 v1_bc = McosL*Vx*MsinT.' + MsinL*Vy*MsinT.' + Vz*McosT.';
-phi = helmholtz_neumann(ballfun(@(r,lam,th)0, 'polar'), 0, v1_bc, 50, 50, 50);
+phi = helmholtz(ballfun(@(r,lam,th)0, 'polar'), 0, v1_bc, 50, 50, 50, 'neumann');
 quiver( grad( phi ) ), title('Harmonic component of v')
 
 %% 
