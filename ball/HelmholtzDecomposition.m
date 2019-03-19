@@ -1,5 +1,5 @@
 %% Helmholtz-Hodge decomposition of a vector field
-% Nicolas Boulle and Alex Townsend, November 2018 
+% Nicolas Boulle and Alex Townsend, March 2019 
 
 %% 
 % (Chebfun Example ball/HelmholtzDecomposition.m)
@@ -85,12 +85,12 @@ norm( curl( grad( f ) ) )
 % as follows: 
 v1 = v - grad(f);
 v1c = v1.comp;
-Vx = coeffs3(v1c{1},50,50,50); Vy = coeffs3(v1c{2},50,50,50); Vz = coeffs3(v1c{3},50,50,50);
+Vx = coeffs3(v1c{1},50); Vy = coeffs3(v1c{2},50); Vz = coeffs3(v1c{3},50);
 Vx = reshape(sum(Vx,1),50,50); Vy = reshape(sum(Vy,1),50,50); Vz = reshape(sum(Vz,1),50,50);
 MsinL = trigspec.multmat(50, [0.5i;0;-0.5i] ); McosL = trigspec.multmat(50, [0.5;0;0.5] );
 MsinT = trigspec.multmat(50, [0.5i;0;-0.5i] ); McosT = trigspec.multmat(50, [0.5;0;0.5] );
 v1_bc = McosL*Vx*MsinT.' + MsinL*Vy*MsinT.' + Vz*McosT.';
-phi = helmholtz(ballfun(@(r,lam,th)0, 'polar'), 0, v1_bc, 50, 50, 50, 'neumann');
+phi = helmholtz(ballfun(0), 0, v1_bc, 50, 'neumann');
 quiver( grad( phi ) ), title('Harmonic component of v')
 
 %% 
@@ -123,7 +123,7 @@ norm( laplacian( grad( phi ) ) )
 % as follows:
 v2 = v1 - grad(phi);
 [Pv, Tv] = PTdecomposition(v2);
-Ppsi = poisson(-Tv, @(lam,th)0, 50, 50, 50);
+Ppsi = poisson(-Tv, @(lam,th)0, 50);
 Tpsi = Pv;
 
 %%
@@ -171,7 +171,7 @@ psi = ballfunv.PT2ballfunv(Ppsi, Tpsi);
 % Helmholtz-Hodge Decomposition--A Survey, _IEEE Trans. Vis. Comput. Graphics_, 
 % 19 (2013), pp. 1386-1404.
 %
-% [3] N. Boulle, and A. Townsend, Computing with functions in the ball, in 
+% [3] N. Boulle, and A. Townsend, Computing with functions on the ball, in 
 % preparation.
 %
 % [4] Y. Tong, S. Lombeyda, A. Hirani, and M. Desbrun, Discrete Multiscale
