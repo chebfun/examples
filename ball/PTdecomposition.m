@@ -1,5 +1,5 @@
 %% Poloidal-Toroidal decomposition of a vector field
-% Nicolas Boulle and Alex Townsend, November 2018 
+% Nicolas Boulle and Alex Townsend, March 2019 
 
 %% 
 % (Chebfun Example ball/PTdecomposition.m)
@@ -118,7 +118,7 @@ norm( v - w )
 % [1] G. Backus, Poloidal and toroidal fields in geomagnetic field modelling,
 % _Reviews of Geophysics_, 24 (1986), pp. 75-109.
 %
-% [2] N. Boulle, and A. Townsend, Computing with functions in the ball, in 
+% [2] N. Boulle, and A. Townsend, Computing with functions on the ball, in 
 % preparation.
 %
 % [3] Y. Tong, S. Lombeyda, A. Hirani, and M. Desbrun, Discrete Multiscale

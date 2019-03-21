@@ -1,5 +1,5 @@
 %% Solid harmonics
-% Nicolas Boulle and Alex Townsend, November 2018 
+% Nicolas Boulle and Alex Townsend, March 2019 
 
 %% 
 % (Chebfun Example ball/SolidHarmonics.m)
