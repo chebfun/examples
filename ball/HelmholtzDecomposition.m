@@ -1,5 +1,5 @@
 %% Helmholtz-Hodge decomposition of a vector field
-% Nicolas Boulle and Alex Townsend, March 2019 
+% Nicolas Boulle and Alex Townsend, May 2019 
 
 %% 
 % (Chebfun Example ball/HelmholtzDecomposition.m)
