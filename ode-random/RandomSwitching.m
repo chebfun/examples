@@ -22,7 +22,7 @@
 % in the sense that for large values of $t$, $y(t)$ is as likely to
 % be $<1$ as $>1$.  The expected values of $y(t)$ or of $y(t)^2$,
 % however, diverge to $\infty$ as $t\to\infty$.
-rng(0), dom = [0 40]; LW = 'linewidth'; tic
+rng(1), dom = [0 40]; LW = 'linewidth'; tic
 L = chebop(dom); L.lbc = 1; 
 c = sign(randnfun(1,dom));
 L.op = @(t,y) diff(y) - c*y;
@@ -33,7 +33,7 @@ y = L\0; plot(y,LW,4), grid on
 % More remarkable behavior appears when we move from scalars
 % to matrices.  Suppose $y(t)$ is a 2-vector for each $t$ and it
 % evolves with random switching between $y'= Ay$ and $y' = By$, with
-A = [-1 5; 0 -1], B = [-1 0; -5 -1]
+A = [-1 5; 0 -1], B = [-1 0; -5 -1] 
 
 %%
 % Note that both matrices have eigenvalues $-1$, in the left

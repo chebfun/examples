@@ -14,7 +14,7 @@
 % We illustrate first for $t\in [0,100]$ with $\lambda = 0.4$.
 rng(0), dom = [0 100]; tic
 N = chebop(dom);
-lambda = 0.4; f = randnfun(lambda,dom,'norm');
+lambda = 0.4; f = randnfun(lambda,dom,'big');
 N.op = @(y) diff(y) + 2*sin(2*pi*y); N.lbc = 0;
 LW = 'linewidth'; FS = 'fontsize';
 y = N\f; plot(y,LW,2), grid on
@@ -23,7 +23,7 @@ xlabel('t',FS,32), ylabel('y',FS,32)
 %%
 % Here we cut $\lambda$ in half.
 lambda = lambda/2;
-f = randnfun(lambda,dom,'norm');
+f = randnfun(lambda,dom,'big');
 y = N\f; plot(y,LW,1), grid on
 xlabel('t',FS,32), ylabel('y',FS,32)
 

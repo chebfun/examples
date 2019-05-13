@@ -37,7 +37,7 @@ help randnfun
 
 %%
 % For studies of this kind, one should always call |randnfun| and its
-% cousins with the flag |'norm'|.  This multiplies the random function
+% cousins with the flag |'big'|.  This multiplies the random function
 % by $\lambda^{-1/2}$, meaning that its amplitude grows without bound
 % as $\lambda\to 0$.  This is what is needed for random ODEs that
 % are intended to approximate SDEs.
@@ -61,7 +61,7 @@ help randnfun
 % and $\lambda = 0.001$.
 tic
 rng(0)
-u = randnfun(0.001,[0 1],3,'norm');
+u = randnfun(0.001,[0 1],3,'big');
 plot(cumsum(u),'linewidth',2.5)
 grid on, ylim([-1 1])
 xlabel('t','fontsize',30), ylabel('u','fontsize',30)
