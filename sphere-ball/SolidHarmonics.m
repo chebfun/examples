@@ -2,7 +2,7 @@
 % Nicolas Boulle and Alex Townsend, May 2019 
 
 %% 
-% (Chebfun Example ball/SolidHarmonics.m)
+% (Chebfun example sphere-ball/SolidHarmonics.m)
 % [Tags: #ballfun, #vector-valued, #Solid-Harmonics]
 
 %% Introduction

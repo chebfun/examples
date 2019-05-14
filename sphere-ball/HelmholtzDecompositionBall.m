@@ -1,8 +1,8 @@
-%% Helmholtz-Hodge decomposition of a vector field
+%% Helmholtz-Hodge decomposition on the ball
 % Nicolas Boulle and Alex Townsend, May 2019 
 
 %% 
-% (Chebfun Example ball/HelmholtzDecomposition.m)
+% (Chebfun example sphere-ball/HelmholtzDecompositionBall.m)
 % [Tags: #ballfun, #vector-valued, #Helmholtz-Hodge] 
 
 %% The Helmholtz-Hodge decomposition 
