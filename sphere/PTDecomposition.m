@@ -2,7 +2,7 @@
 % Nicolas Boull&eacute; and Alex Townsend, May 2019 
 
 %% 
-% (Chebfun example sphere-ball/PTdecomposition.m)
+% (Chebfun example sphere-ball/PTDecomposition.m)
 % [Tags: #Ballfun, #vector-valued, #poloidal-toroidal] 
 
 %% The poloidal-toroidal decomposition
