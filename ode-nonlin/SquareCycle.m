@@ -16,7 +16,7 @@
 % where $\delta $ is a parameter.  Here is a solution with $\delta =-.2$
 % plotted in the phase plane.  We compute up to $t=110$ but plot just
 % up to $t=50$ to make the curve most attractive:
-W = 'linewidth';
+LW = 'linewidth';
 N = chebop(0,110);
 N.lbc = [.01; .02];
 N.op = @(t,x,y) [diff(x)+(.2*x-y)*(x^2-1); diff(y)+(.2*y+x)*(y^2-1)];
