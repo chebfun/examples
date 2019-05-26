@@ -6,9 +6,9 @@
 % [Tags: #ode]
 
 %%
-% Warwick Tucker and Tomas Johnson have studied the following
+% Tomas Johnson and Warwick Tucker have studied the following
 % challenging example of a two-variable ODE system whose solutions approach a
-% square limit cycle containing four saddle points.
+% square limit cycle containing four saddle points [1].
 % (More properly this should be called a _heteroclinic cycle_ or
 % a _graphic_.)
 % The system is
