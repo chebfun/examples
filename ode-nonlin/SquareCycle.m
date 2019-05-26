@@ -6,7 +6,7 @@
 % [Tags: #ode]
 
 %%
-% Warwick Tucker and T. Johnson have studied the following
+% Warwick Tucker and Tomas Johnson have studied the following
 % challenging example of a two-variable ODE system whose solutions approach a
 % square limit cycle containing four saddle points.
 % (More properly this should be called a _heteroclinic cycle_ or
@@ -55,20 +55,26 @@ xlabel t, legend({'x','y'},LO,'southwest')
 
 %%
 % A different example with a square limiting behavior can be
-% found as Exercise 48 of _Exploring ODEs_ [1], adapted
-% from p. 215 of [2].  An example with three variables moving
+% found as Exercise 48 of _Exploring ODEs_ [2], adapted
+% from p. 215 of [3].  An example with three variables moving
 % on a sphere between three saddle points can be found in
-% [3], where crossing times are also studied.
+% [4], where crossing times are also studied.
 
 %%
-% [1] L. N. Trefethen, A. Birkisson, and
+% [1] T. Johnson and W. Tucker, 
+% Automated computation of robust normal forms
+% of planar analytic vector fields,
+% arXiv:0810.5282, 2008.
+
+%%
+% [2] L. N. Trefethen, A. Birkisson, and
 % T. A. Driscoll, Exploring ODEs, SIAM, 2018, freely available online
 % at |https://people.maths.ox.ac.uk/trefethen/ExplODE/|.
 %
-% [2] M. W. Hirsch, S. Smale, and R. L. Devaney,
+% [3] M. W. Hirsch, S. Smale, and R. L. Devaney,
 % _Differential Equations, Dynamical Systems, and an Introduction
 % to Chaos_, 3rd ed., Elsevier, 2013.
 %
-% [3] L. N. Trefethen, A nonlinear system of Guckenheimer
+% [4] L. N. Trefethen, A nonlinear system of Guckenheimer
 % and Holmes, |www.chebfun.org/ode-nonlin/GuckenheimerHolmes.html/|,
 % February 2015.
