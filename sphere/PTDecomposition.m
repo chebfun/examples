@@ -15,8 +15,8 @@
 
 %% 
 % For a given unit vector $\hat{r}$, a toroidal field, $\mathbf{T}$, is
-% one that is tangential to $\mathbf{r}$, while a poloidal field, $\mathbf{P}$, 
-% is one whose curl is tangential to $\mathbf{r}$, i.e., 
+% one that is tangential to $\hat{r}$, while a poloidal field, $\mathbf{P}$, 
+% is one whose curl is tangential to $\hat{r}$, i.e., 
 % $$ \hat{r}\cdot \mathbf{T} = 0,
 % \quad \hat{r}\cdot (\nabla \times \mathbf{P}) = 0. $$
 % In this setting, the natural unit vector $\hat{r}$ to select is the unit
