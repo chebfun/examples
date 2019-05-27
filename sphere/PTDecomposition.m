@@ -14,21 +14,21 @@
 % flow visualization, and incompressible fluid simulations. 
 
 %% 
-% For a given unit vector $\mathbf{r}$, a toroidal field, $\mathbf{T}$, is
+% For a given unit vector $\hat{r}$, a toroidal field, $\mathbf{T}$, is
 % one that is tangential to $\mathbf{r}$, while a poloidal field, $\mathbf{P}$, 
 % is one whose curl is tangential to $\mathbf{r}$, i.e., 
-% $$ \mathbf{r}\cdot \mathbf{T} = 0,
-% \quad \mathbf{r}\cdot (\nabla \times \mathbf{P}) = 0. $$
+% $$ \hat{r}\cdot \mathbf{T} = 0,
+% \quad \hat{r}\cdot (\nabla \times \mathbf{P}) = 0. $$
+% In this setting, the natural unit vector $\hat{r}$ to select is the unit
+% radial vector pointing away from the origin.
 
 %% The PT decomposition for vector fields in the unit ball
 % Let $w$ be a divergence-free vector field in the unit ball.
 % Then the PT decomposition says that $w$ can be written as the sum
-% $$ w = \nabla\times\nabla\times(\mathbf{r}P_w) +
-% \nabla\times(\mathbf{r}T_w), $$
+% $$ w = \nabla\times\nabla\times(r P_w\hat{r}) +
+% \nabla\times(rT_w\hat{r}), $$
 % where $P_w$ and $T_w$ are scalar-valued potential functions (called the 
-% poloidal and toroidal scalars). In this setting, the natural unit vector
-% $\mathbf{r}$ to select is the unit radial vector pointing away from 
-% the origin. The scalars $P_w$ and $T_w$ are unique up to the addition of 
+% poloidal and toroidal scalars). The scalars $P_w$ and $T_w$ are unique up to the addition of 
 % an arbitrary function that only depends on $r$. 
 
 %%
@@ -55,7 +55,7 @@ norm( div( w ) )
 % over the unit sphere are zero.
 % Under this additional restriction, they satisfy the relations [1]
 % $$\nabla_1^2 P_w = -rv_r, $$
-% $$\nabla_1 T_w = -\Lambda_1\cdot w, $$
+% $$\nabla_1^2 T_w = -\Lambda_1\cdot w, $$
 % where $\nabla_1^2$ and $\Lambda_1$ denote the dimensionless Laplacian 
 % and surface curl, respectively. These operations are defined in the spherical
 % coordinates $(r,\lambda,\theta)$ by
@@ -94,8 +94,8 @@ quiver( T ), title('toroidal component')
 %% Recovering the vector field from the PT scalars
 % The original vector field can be recovered from the poloidal and toroidal
 % scalars since
-% $$ w = \nabla\times\nabla\times(\mathbf{r}P_w) + 
-% \nabla\times(\mathbf{r}T_w). $$
+% $$ w = \nabla\times\nabla\times(rP_w\hat{r}) + 
+% \nabla\times(rT_w\hat{r}). $$
 % This operation is implemented in Ballfun in the |PT2ballfunv| command:
 v = ballfunv.PT2ballfunv(Pw, Tw);
 

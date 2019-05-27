@@ -6,7 +6,7 @@
 % [Tags: #ballfun, #vector-valued, #Solid-Harmonics]
 
 %% Introduction
-% Solid harmonics are eigenfunctions of the Laplace operator in spherical
+% Solid harmonics are solutions of the Laplace operator in spherical
 % coordinates:
 %
 % $$\nabla^2\phi =\frac{1}{r^2}\left[\frac{\partial}{\partial
@@ -43,11 +43,11 @@
 % singularity at the origin. The solid harmonics are normalized so that their 2-norm
 % is equal to $1$:
 %
-% $$\int_B R^m_l R^{m*}_ldV=1.$$
+% $$\int_B R^m_l R^{m}_ldV=1.$$
 %
 % Thus, we have
 %
-% $$a_{lm}^2\int_0^1r^{2l}r^2dr\int_{\partial B}Y^m_lY^{m*}_ldS=1,$$
+% $$a_{lm}^2\int_0^1r^{2l}r^2dr\int_{\partial B}Y^m_lY^{m}_ldS=1,$$
 %
 % so that $a_{lm} = \sqrt{2l+3}$.
 
@@ -67,9 +67,9 @@ norm( laplacian( R42 ) )
 % The solid harmonics are also orthonormal on the ball with respect to the
 % standard $L^2$ inner-product. This can be verified with the |sum3| command:
 R40 = ballfun.solharm(4, 0);
-sum3( R42.*conj(R42) )
-sum3( R40.*conj(R40) )
-sum3( R42.*conj(R40) )
+sum3( R42*R42 )
+sum3( R40*R40 )
+sum3( R42*R40 )
 
 %%
 % Here is a plot of the solid harmonics $R^m_l$, with $l=0,...,4$ and
@@ -89,16 +89,18 @@ end
 % and order $m$ requires $\mathcal{O}(l\log l)$ operations. 
 % The solid harmonics $R^m_l$ can be expressed as
 %
-% $$R^m_l(r,\lambda,\theta) = \sqrt{2l+3}r^lP^m_l(\theta)e^(im\lambda),$$
+% $$R^m_l(r,\lambda,\theta) = \sqrt{2l+3}r^lY^m_l(\lambda,\theta),$$
 %
-% where $P^m_l$ stands for the associated Legendre polynomial of degree $l$
+% where $Y^m_l$ stands for the spherical harmonic of degree $l$
 % and order $m$.
 
 %%
 % The main issue in the computation of $R^m_l$ is to find the Fourier 
-% coefficients of $P^m_l$.
+% coefficients of the associated Legendre polynomial of degree $l$ and order $m$, $P^m_l$.
 % Thus, the algorithm used in |solharm| to compute the coefficients of this 
 % polynomial is the Modified Forward Column (MFC) method described in [3].
+
+%%
 % The most popular recursive algorithm [1] (Forward Column method) that 
 % computes non-sectoral ($l>m$) $P^m_l$ from previously computed $P^m_{l-1}$ 
 % and $P^m_{l-2}$ is given by
@@ -122,23 +124,23 @@ end
 %
 % Using these recursions, $P^m_l(\theta)$ is evaluated at $2l+1$ points and
 % the coefficients are then recovered by an FFT.
-
-%%
 % The recursive algorithm is unstable and will overflow for large
 % degrees $l>1900$ [2] because of the factors $\sin(\theta)^m$ in $P^m_l$.
+
+%%
 % The idea of the MFC method is to compute
 % $P^m_l(\theta)/\sin(\theta)^m$ in the recursion and then multiply by
 % $\sin(\theta)^m$ at the end before the FFT.
 % The recursion to compute the sectoral values of $P^m_l/\sin(\theta)^m$ 
 % remains unchanged:
 %
-% $$\frac{P^m_l(\theta)}{\sin(\theta)^m} = a_{lm}cos(\theta)
+% $$\frac{P^m_l(\theta)}{\sin(\theta)^m} = a_{lm}\cos(\theta)
 % \frac{P^m_{l-1}(\theta)}{\sin(\theta)^m}+b_{lm}
 % \frac{P^m_{l-1}}{\sin(\theta)^m},\quad \forall l>m.$$
 %
 % Finally, the sectoral values of $P^m_m(\theta)/\sin(\theta)^m$ are
 % computed using the initial values $P^0_0(\theta)/\sin(\theta)^0 = 1$ and
-% $P^1_1(\theta)/\sin(\theta) = \sqrt(3)$ and the relationship
+% $P^1_1(\theta)/\sin(\theta) = \sqrt{3}$ and the relationship
 %
 % $$P^m_m(\theta)=\sqrt{\frac{2m+1}{2m}}P^{m-1}_{m-1},\quad \forall m>1.$$
 

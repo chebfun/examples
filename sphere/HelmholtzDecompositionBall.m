@@ -94,9 +94,10 @@ norm( laplacian( grad( phi ) ) )
 % \nabla\times(\mathbf{r}T_{v^{(2)}}), $$
 % $$\psi = \nabla\times\nabla\times(\mathbf{r}P_{\psi})+
 % \nabla\times(\mathbf{r}T_{\psi}),$$
-% where $\mathbf{r} = r\vec{r}$. Moreover, the uniqueness of the PT 
-% decomposition and further vector identities lead us to the following 
-% system of equations for $\psi$:
+% where $\mathbf{r} = r\hat{r}$ and $\hat{r}$ denotes the unit radial vector 
+% in spherical coordinates. Moreover, the uniqueness of the PT decomposition
+% and further vector identities lead us to the following system of equations
+% for $\psi$:
 % $$\Delta P_{\psi} = -T_{v^{(2)}}, \quad T_{\psi} = P_{v^{(2)}},$$
 % where $P_{\psi}$ is subjected to zero Dirichlet conditions because
 % $\vec{n}\cdot\nabla\times(\mathbf{r}T_{\psi})|_{\partial B}=0$.
@@ -121,13 +122,13 @@ norm( div( curl( psi ) ) )
 %% Visualizing the decomposition
 % Here are plots of each component of the decomposition:
 subplot(1,4,1) 
-quiver( v ,'numpts',20), title('vector field')
+quiver( v ,'numpts',20, 'color'), title('vector field')
 subplot(1,4,2)
-quiver( grad(f) ,'numpts',20), title('curl-free')
+quiver( grad(f) ,'numpts',20, 'color'), title('curl-free')
 subplot(1,4,3)
-quiver( curl(psi) ,'numpts',20), title('divergence-free')
+quiver( curl(psi) ,'numpts',20, 'color'), title('divergence-free')
 subplot(1,4,4)
-quiver( grad(phi) ,'numpts',20), title('harmonic')
+quiver( grad(phi) ,'numpts',20, 'color'), title('harmonic')
 
 %% 
 % As a sanity check we confirm that the decomposition has been successful:
