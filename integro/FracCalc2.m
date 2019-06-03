@@ -25,7 +25,7 @@ J = @(n, alpha, beta) jacpoly(n, alpha, beta);  % Jacobi polynomial
 %% Half-integral
 % We begin, as in [1], with the case of the half-integral. This is defined as
 % 
-% $$(J^{1/2}f)(x) = \int_{-1}^x\frac{f(t)}{\sqrt{x-t}}dt.$$
+% $$(J^{1/2}f)(x) = \frac{1}{\Gamma(1/2)}\int_{-1}^x\frac{f(t)}{\sqrt{x-t}}dt.$$
 
 %%
 % From [2, (18.17.45)] we have that 
