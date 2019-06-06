@@ -79,10 +79,10 @@ ranwalk = @(n) t*randn + foster(2:n)*randn(n-1,1);
 % walks of degrees 20, 100, and 500:
 for n = 20*5.^(0:2)
   rng(3)
-  subplot(2,1,1), plot(ranpoly(n),'k')
+  subplot(2,1,1), plot(ranpoly(n),'k'), ylim([-100 100])
   grid on, title('random polynomial')
   rng(3)
-  subplot(2,1,2), plot(ranwalk(n+1))
+  subplot(2,1,2), plot(ranwalk(n+1)), ylim([-.75 .75])
   grid on, title('polynomial random walk')
   snapnow
 end
