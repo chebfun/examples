@@ -1,93 +1,126 @@
-%% Brownian bridge and random polynomials
+%% Brownian paths and random polynomials
 % Nick Trefethen, June 2019
 
 %%
-% Chebfun example stats/BrownianPolynomials.m)
-% [Tags: #randnfun, Brownian bridge]
+% (Chebfun example stats/BrownianPolynomials.m)
+% [Tags: #randnfun, Brownian motion]
 
 %%
 % The Chebfun |randnfun(d)| command produces a smooth random function
-% with maximal wavelength $d$, as described in [1], 
-% and its indefinite integral is
-% a smooth random walk, which converges to Brownian motion
-% as $d\to 0$.  If we subtract off the mean of the integrand, 
-% we get a _smooth Brownian bridge_ starting and ending at 0, like this:
+% with maximal wavelength $d$,
+% as described in [1], which converges (or rather fails to converge!)
+% to white noise as $d\to 0$.  Its indefinite integral is
+% a smooth random walk, which converges (properly this time) to Brownian motion
+% as $d\to 0$.  Here is an example:
 rng(1)
-r = randnfun(0.02,[0,1]); r = r - mean(r);
+r = randnfun(0.01,[0,1]);
+subplot(2,1,1), plot(r,'k'), grid on, title('smooth random function')
 b = cumsum(r);
-plot(b), grid on
+subplot(2,1,2), plot(b), grid on, title('smooth random walk')
 
 %%
 % All this is done via trigonometric polynomials with random
 % coefficients.  (The idea of Fourier series with random
-% coefficients goes back to Norbert Wiener and is the subject
-% of a marvelous book by Kahane [4].)  
-% The resulting smooth random function distribution
-% is effectively translation-invariant over its interval of definition.
+% coefficients goes back to Norbert Wiener and is treated in a
+% marvelous book by Kahane [4].)  
+% A priori, a smooth random function is periodic and translation-invariant.
+% In practice we usually want a nonperiodic function, and Chebfun achieves
+% this (with small though in principle nonzero error) by
+% truncation from a longer periodic interval to a shorter nonperiodic
+% one.
 
 %%
-% A different approach to Brownian bridge has been introduced by James
-% Foster and his coauthors
-% recently in [2], based on ordinary algebraic polynomials with random
-% coefficients.  The polynomials
-% needed for the basis are like Jacobi polynomials,
-% but with the nonstandard exponent $-1$ at both endpoints, and 
-% constrained to take the value 0 there.  They
-% can be computed for each $n\ge 2$ as a difference of
-% two Legendre polynomials:
-foster = @(n) ( legpoly(n,[0 1]) - legpoly(n-2,[0 1]) )/sqrt(8*n-4);
+% One might ask, what are the analogues of these constructions
+% for algebraic as opposed to trigonometric polynomials?  
+% An answer to this question has recently been provided in
+% a pair of papers by Foster, et al. [2] and Habermann [3].
+% We define a _random polynomial of degree $n$_ by 
+% $$ r(x) = \sum_{k=0}^n c_k \sqrt{2k+1} P_k(x), $$
+% where $P_k$ is the degree $k$ Legendre polynomial (shifted to
+% $[0,1]$) and the $c_k$ are i.i.d. standard normal random variables.
+% As $n\to\infty$, $r$ looks like white noise, and its integral
+% converges to Brownian motion.
+% Using the convenient identity 
+% $$ \int_0^t P_k(s) ds = {P_{k+1}(t) - P_{k-1}(t)\over
+% 4k+2} \quad (k\ge 1), $$
+% we conclude that _polynomial random walk of degree $n$_ can be defined by
+% $$ w(t) = c_0 t + \sum_{k=1}^{n-1} c_k {P_{k+1}(t) - P_{k-1}(t) \over
+% \sqrt{8k+4}}. $$
+% Foster, et al. note that the polynomials in this sum can be
+% interpreted as Jacobi polynomials,
+% except with the nonstandard exponents $-1$, and 
+% thus constrained to take the value 0 at both endpoints.
+% Here for example is the degree $50$ ``Foster-Habermann polynomial'':
+scaled_legendre = @(n) legpoly(n,[0 1])*diag(sqrt(2*n+1));         
+foster = @(n) (legpoly(n,[0 1])-legpoly(n-2,[0 1]))*diag(1./sqrt(8*n-4));
+clf, plot(foster(50)), grid on
+title('Foster-Habermann polynomial, degree 50')
 
 %%
-% Here for example is the degree $50$ Foster polynomial:
-plot(foster(50)), grid on
-
-%%
-% The same anonymous function works for multiple columns.  Here,
-% for example, are the first 5 polynomials:
+% The same anonymous functions work for multiple columns.
+% Here, for example, are the Foster-Habermann
+% polynomials of degrees 2 through 6:
 plot(foster(2:6)), grid on
+title('Foster-Habermann polynomials, degrees 2-6')
 
 %%
-% The random polynomials of [2] are obtained by taking
-% linear combinations of the Foster polynomials with
-% random coefficients from the standard normal distribution:
-ranpoly = @(n) foster(2:n)*randn(n-1,1);
+% Random polynomials can now be obtained by taking
+% random linear combinations of the scaled Legendre polynomials,
+% and polynomial random walks can be obtained from
+% random linear combinations of the Foster-Habermann polynomials.
+% Here are suitable anonymous functions (we could also have
+% used |cumsum|):
+ranpoly = @(n) scaled_legendre(0:n)*randn(n+1,1);
+t = chebfun('t',[0,1]);
+ranwalk = @(n) t*randn + foster(2:n)*randn(n-1,1);
 
 %%
-% Here, for example, are random polynomials of degrees 20, 100, and 500:
+% Here, for example, are random polynomials and polynomial random
+% walks of degrees 20, 100, and 500:
 for n = 20*5.^(0:2)
-    rng(2)
-    plot(ranpoly(n)), ylim([-1 1]), grid on, snapnow
+  rng(3)
+  subplot(2,1,1), plot(ranpoly(n),'k')
+  grid on, title('random polynomial')
+  rng(3)
+  subplot(2,1,2), plot(ranwalk(n+1))
+  grid on, title('polynomial random walk')
+  snapnow
 end
 
 %%
 % Note that, as usual for polynomials, these shapes are in no sense
 % translation-invariant, having faster oscillations near the endpoints
-% than in the middle.  Still, it is proved in [2] that they approach
-% Brownian bridge as $n\to \infty$.  Many other interesting properties
-% are also developed in [2], concerning polynomial moments for example,
+% than in the middle.  Still, it is proved in [2] and [3] that they approach
+% Brownian motion as $n\to \infty$.  Many other interesting properties
+% are also developed in [2] and [3], concerning polynomial moments for example,
 % as well as applications to the numerical solution of stochastic
 % differential equations.
 
 %%
 % How do random polynomials of a finite degree $n$ differ
-% from true Brownian bridge?  
+% from true Brownian motion?  
+% The essence of the polynomial construction we have described
+% is that the contributions of different degrees are independent
+% (ultimately since the Legendre polynomials are orthogonal; the
+% argument in [3] for this makes us of the result known as Ito's isometry)).
 % It has been shown in [3] that the variance of the difference
 % converges to zero at the rate $O(1/n)$
 % and approaches a semicircle in profile.  An explicit formula
-% involves $t-t^2$ plus the sum of the squares of the Foster
-% polynomials.  Thus for example, here is the distribution
-% for degree $n=20$:
+% involves $t-t^2$ minus the sum of the squares of the Foster-Habermann
+% polynomials.  Thus for example, here is the variance of the
+% error process for degree $n=20$:
 s = chebfun('t-t^2',[0,1]);
 for k = 2:20
   s = s - foster(k).^2;
 end
-plot(s), grid on
+clf, plot(s), grid on
+title('Nearly-semicircular variance profile')
 
 %%
 % Beautiful!
 %% References
 % [1] S. Filip, A. Javeed, and L. N. Trefethen,
-% Smooth random runctions, random ODEs, and Gaussian processes,
+% Smooth random functions, random ODEs, and Gaussian processes,
 % _SIAM Review_ 61 (2019), 185--205.
 %
 % [2] J. Foster, T. Lyons, and H. Oberhauser,
