@@ -9,7 +9,7 @@
 % The Chebfun |randnfun(d)| command produces a smooth random function
 % with maximal wavelength $d$,
 % as described in [1], which converges (or rather fails to converge!)
-% to white noise as $d\to 0$.  Its indefinite integral is
+% to white noise as $d\to 0$.  Its integral is
 % a smooth random walk, which converges (properly this time) to Brownian motion
 % as $d\to 0$.  Here is an example:
 rng(1)
@@ -38,8 +38,10 @@ subplot(2,1,2), plot(b), grid on, title('smooth random walk')
 % $$ r(x) = \sum_{k=0}^n c_k \sqrt{2k+1} P_k(x), $$
 % where $P_k$ is the degree $k$ Legendre polynomial (shifted to
 % $[0,1]$) and the $c_k$ are i.i.d. standard normal random variables.
-% As $n\to\infty$, $r$ looks like white noise, and its integral
-% converges to Brownian motion.
+% As $n\to\infty$, $r$ does not look like _white_ noise, for
+% is his higher frequencies and higher amplitudes near
+% the endpoints than in the middle (example are shown later).
+% However, its integral converges to Brownian motion.
 % Using the convenient identity 
 % $$ \int_0^t P_k(s) ds = {P_{k+1}(t) - P_{k-1}(t)\over
 % 4k+2} \quad (k\ge 1), $$
@@ -75,8 +77,9 @@ t = chebfun('t',[0,1]);
 ranwalk = @(n) t*randn + foster(2:n)*randn(n-1,1);
 
 %%
-% Here, for example, are random polynomials and polynomial random
-% walks of degrees 20, 100, and 500:
+% Here, for example, are random polynomials 
+% of degrees 20, 100, and 500 with their corresponding
+% random walks of degrees 21, 101, and 501:
 for n = 20*5.^(0:2)
   rng(3)
   subplot(2,1,1), plot(ranpoly(n),'k'), ylim([-100 100])
@@ -90,19 +93,21 @@ end
 %%
 % Note that, as usual for polynomials, these shapes are in no sense
 % translation-invariant, having faster oscillations near the endpoints
-% than in the middle.  Still, it is proved in [2] and [3] that they approach
+% than in the middle.  Still, it is proved in [2] and [3] that the
+% polynomial random walks approach
 % Brownian motion as $n\to \infty$.  Many other interesting properties
-% are also developed in [2] and [3], concerning polynomial moments for example,
+% are also developed in [2] and [3], concerning polynomial moments, for example,
 % as well as applications to the numerical solution of stochastic
 % differential equations.
 
 %%
-% How do random polynomials of a finite degree $n$ differ
+% How do polynomial random walks of a finite degree $n$ differ
 % from true Brownian motion?  
 % The essence of the polynomial construction we have described
 % is that the contributions of different degrees are independent
 % (ultimately since the Legendre polynomials are orthogonal; the
-% argument in [3] for this makes us of the result known as Ito's isometry)).
+% argument in [3] for this makes use of the result known as
+% It&ocirc;'s isometry)).
 % It has been shown in [3] that the variance of the difference
 % converges to zero at the rate $O(1/n)$
 % and approaches a semicircle in profile.  An explicit formula
