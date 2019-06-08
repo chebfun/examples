@@ -7,7 +7,7 @@
 
 %%
 % The Chebfun |randnfun(d)| command produces a smooth random function
-% with maximal wavelength $d$,
+% with minimal wavelength $d$,
 % as described in [1], which converges (or rather fails to converge!)
 % to white noise as $d\to 0$.  Its integral is
 % a smooth random walk, which converges (properly this time) to Brownian motion
@@ -109,7 +109,7 @@ end
 % is that the contributions of different degrees are independent
 % (ultimately since the Legendre polynomials are orthogonal; the
 % argument in [3] for this makes use of the result known as
-% It&ocirc;'s isometry)).
+% It&ocirc;'s isometry).
 % It has been shown in [3] that the variance of the difference
 % converges to zero at the rate $O(1/n)$
 % and approaches a semicircle in profile.  An explicit formula
