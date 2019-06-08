@@ -14,7 +14,9 @@
 % as $d\to 0$.  Here is an example:
 rng(1)
 r = randnfun(0.01,[0,1]);
-subplot(2,1,1), plot(r,'k'), grid on, title('smooth random function')
+LW = 'linewidth';
+subplot(2,1,1), plot(r,'k',LW,.6)
+grid on, title('smooth random function')
 b = cumsum(r);
 subplot(2,1,2), plot(b), grid on, title('smooth random walk')
 
@@ -39,8 +41,8 @@ subplot(2,1,2), plot(b), grid on, title('smooth random walk')
 % where $P_k$ is the degree $k$ Legendre polynomial (shifted to
 % $[0,1]$) and the $c_k$ are i.i.d. standard normal random variables.
 % As $n\to\infty$, $r$ does not look like _white_ noise, for
-% is his higher frequencies and higher amplitudes near
-% the endpoints than in the middle (example are shown later).
+% it has higher frequencies and higher amplitudes near
+% the endpoints than in the middle (examples will be shown in a moment).
 % However, its integral converges to Brownian motion.
 % Using the convenient identity 
 % $$ \int_0^t P_k(s) ds = {P_{k+1}(t) - P_{k-1}(t)\over
@@ -52,7 +54,7 @@ subplot(2,1,2), plot(b), grid on, title('smooth random walk')
 % interpreted as Jacobi polynomials,
 % except with the nonstandard exponents $-1$, and 
 % thus constrained to take the value 0 at both endpoints.
-% Here for example is the degree $50$ ``Foster-Habermann polynomial'':
+% Here for example is the degree $50$ "Foster-Habermann polynomial":
 scaled_legendre = @(n) legpoly(n,[0 1])*diag(sqrt(2*n+1));         
 foster = @(n) (legpoly(n,[0 1])-legpoly(n-2,[0 1]))*diag(1./sqrt(8*n-4));
 clf, plot(foster(50)), grid on
@@ -62,7 +64,7 @@ title('Foster-Habermann polynomial, degree 50')
 % The same anonymous functions work for multiple columns.
 % Here, for example, are the Foster-Habermann
 % polynomials of degrees 2 through 6:
-plot(foster(2:6)), grid on
+plot(foster(2:6)), grid on, ylim([-.5 .5])
 title('Foster-Habermann polynomials, degrees 2-6')
 
 %%
@@ -71,7 +73,7 @@ title('Foster-Habermann polynomials, degrees 2-6')
 % and polynomial random walks can be obtained from
 % random linear combinations of the Foster-Habermann polynomials.
 % Here are suitable anonymous functions (we could also have
-% used |cumsum|):
+% defined |ranwalk| via |cumsum|):
 ranpoly = @(n) scaled_legendre(0:n)*randn(n+1,1);
 t = chebfun('t',[0,1]);
 ranwalk = @(n) t*randn + foster(2:n)*randn(n-1,1);
@@ -82,8 +84,8 @@ ranwalk = @(n) t*randn + foster(2:n)*randn(n-1,1);
 % random walks of degrees 21, 101, and 501:
 for n = 20*5.^(0:2)
   rng(3)
-  subplot(2,1,1), plot(ranpoly(n),'k'), ylim([-100 100])
-  grid on, title('random polynomial')
+  subplot(2,1,1), plot(ranpoly(n),'k',LW,.6), ylim([-100 100])
+  grid on, title(['random polynomial of degree ' int2str(n)])
   rng(3)
   subplot(2,1,2), plot(ranwalk(n+1)), ylim([-.75 .75])
   grid on, title('polynomial random walk')
