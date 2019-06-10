@@ -6,6 +6,9 @@
 % [Tags: #linearalgebra, #polynomials, #qrdecomposition, #conditionnumber]
 
 %%
+% [revised June 2019]
+
+%%
 % Chebfun can compute the condition number of a set of functions on an
 % interval.  That's a condition number for continuous functions, not discrete
 % approximations.
@@ -35,10 +38,7 @@ fprintf('Condition no. for normalized Legendre polynomials: %8.3f\n',cond(A))
 % All of these condition numbers are fine for numerical work.
 % Monomials, by contrast, are exponentially ill-conditioned:
 x = chebfun('x');
-A = [1 x];
-for j = 2:N
-  A = [A x.^j];
-end
+A = x^(0:N);
 plot(A)
 fprintf('Condition no. for monomials: %8.3f\n',cond(A))
 
@@ -60,6 +60,6 @@ fprintf('Condition no. for monomials: %8.3f\n',cond(A))
 %% References
 %
 % 1. L. N. Trefethen, Householder triangularization of a quasimatrix, _IMA
-%    Journal of Numerical Analysis_, 30 (2010), 887-897.
+% Journal of Numerical Analysis_, 30 (2010), 887--897.
 %
 % 2. L. N. Trefethen and D. Bau, III, _Numerical Linear Algebra_, SIAM, 1997.
