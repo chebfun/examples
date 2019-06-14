@@ -6,18 +6,21 @@
 % [Tags: #Bessel, #ROOTS]
 
 %%
+% [revised June 2019]
+
+%%
 % Here is the Bessel function $J_0$ on the interval $[0,100]$.
 J0 = chebfun(@(x) besselj(0,x),[0 100]);
-figure, plot(J0,'linewidth',1.6), grid on
+figure, plot(J0), grid on
 title('Bessel function J_0','fontsize',16)
 
 %%
 % We can find its roots like this:
 r = roots(J0);
-hold on, plot(r,J0(r),'.r','markersize',20)
+hold on, plot(r,J0(r),'.r','markersize',14)
 
 %%
-% The number of roots can be found with the `length` command:
+% The number of roots can be found with the |length| command:
 number_of_roots = length(r)
 
 %%
