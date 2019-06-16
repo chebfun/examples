@@ -6,6 +6,9 @@
 % [Tags: #Chebyshev, #coefficients, #PLOTCOEFFS]
 
 %%
+% [revised June 2019]
+
+%%
 % Every function defined on $[-1,1]$, so long as it is a little bit smooth
 % (Lipschitz continuity is enough), has an absolutely and uniformly convergent
 % Chebyshev series:
@@ -17,12 +20,12 @@
 
 %%
 % For many functions you can compute these coefficients with the command
-% `chebcoeffs`.  For example, here we compute the Chebyshev coefficients of a
+% |chebcoeffs|.  For example, here we compute the Chebyshev coefficients of a
 % cubic polynomial:
 x = chebfun('x');
 format long
 disp('Cheb coeffs of 99x^2 + x^3:')
-p = 99*x.^2 + x.^3;
+p = 99*x^2 + x^3;
 a = chebcoeffs(p)
 
 %%
@@ -34,17 +37,17 @@ a = chebcoeffs(exp(x))
 %%
 % You can plot the absolute values of these numbers on a log scale with
 % `plotcoeffs`:
-FS = 'fontsize'; MS = 'markersize'; LW = 'linewidth'; JL = 'jumpline';
-plotcoeffs(exp(x),'.-',LW,1,MS,20), grid on
-xlabel('degree n',FS,14)
-ylabel('|a_n|',FS,14), ylim([1e-17 1e1])
-title('Chebyshev coefficients of exp(x)',FS,14)
+FS = 'fontsize'; MS = 'markersize'; JL = 'jumpline';
+plotcoeffs(exp(x),'.-'), grid on
+xlabel('degree n')
+ylabel('|a_n|'), ylim([1e-17 1e1])
+title('Chebyshev coefficients of exp(x)')
 
 %%
 % Here's a similar plot for a function that needs thousands of terms to be
 % represented to 15 digits.  (Can you explain why it looks like a wide
 % stripe?)
-plotcoeffs(exp(x)./(1+10000*x.^2)), grid on
+plotcoeffs(exp(x)/(1+10000*x^2)), grid on
 xlabel('degree n',FS,12), ylabel('|a_n|',FS,12)
 ylim([1e-18 1])
 title('Chebyshev coefficients of exp(x)/(1+10000x^2)',FS,14)
@@ -53,11 +56,11 @@ title('Chebyshev coefficients of exp(x)/(1+10000x^2)',FS,14)
 % These methods will work for any function $f$ that's represented by a global
 % polynomial, i.e., a chebfun consisting of one fun.  What about Chebyshev
 % coefficients for functions that are not smooth enough for such a
-% representation?  Here one can use the `trunc` option in the Chebfun
+% representation?  Here one can use the |'trunc'| option in the Chebfun
 % constructor. For example, suppose we are interested in the function
 f = sign(x);
-figure, plot(f,'k',LW,2,JL,'-k'), ylim([-1.5 1.5])
-title('sign(x)',FS,14)
+figure, plot(f,'k',JL,'-'), ylim([-1.5 1.5])
+title('sign(x)')
 
 %%
 % If we try to compute all the Chebyshev coefficients, we'll get an error.
@@ -69,14 +72,14 @@ a = chebcoeffs(p)
 % Here's the degree 9 polynomial obtained by adding up these first terms of
 % the Chebyshev expansion:
 hold on
-plot(p,'m',LW,2)
+plot(p,'m')
 title('sign(x) and truncated Chebyshev series',FS,14)
 
 %%
 % This is not the same as the degree 9 polynomial interpolant through 10
 % Chebyshev points:
 pinterp = chebfun(f,10);
-plot(pinterp,'--','color',[0 .8 0],LW,2)
+plot(pinterp)
 title('Same, also with Chebyshev interpolant',FS,14)
 
 %% References
