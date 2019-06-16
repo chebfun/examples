@@ -37,20 +37,18 @@ a = chebcoeffs(exp(x))
 %%
 % You can plot the absolute values of these numbers on a log scale with
 % `plotcoeffs`:
-FS = 'fontsize'; MS = 'markersize'; JL = 'jumpline';
-plotcoeffs(exp(x),'.-'), grid on
+plotcoeffs(exp(x)), grid on
 xlabel('degree n')
 ylabel('|a_n|'), ylim([1e-17 1e1])
 title('Chebyshev coefficients of exp(x)')
 
 %%
 % Here's a similar plot for a function that needs thousands of terms to be
-% represented to 15 digits.  (Can you explain why it looks like a wide
-% stripe?)
+% represented to 15 digits.  (Can you explain why there are two lines of dots?)
 plotcoeffs(exp(x)/(1+10000*x^2)), grid on
-xlabel('degree n',FS,12), ylabel('|a_n|',FS,12)
+xlabel('degree n'), ylabel('|a_n|')
 ylim([1e-18 1])
-title('Chebyshev coefficients of exp(x)/(1+10000x^2)',FS,14)
+title('Chebyshev coefficients of exp(x)/(1+10000x^2)')
 
 %%
 % These methods will work for any function $f$ that's represented by a global
@@ -59,7 +57,7 @@ title('Chebyshev coefficients of exp(x)/(1+10000x^2)',FS,14)
 % representation?  Here one can use the |'trunc'| option in the Chebfun
 % constructor. For example, suppose we are interested in the function
 f = sign(x);
-figure, plot(f,'k',JL,'-'), ylim([-1.5 1.5])
+figure, plot(f,'k','jumpline','-'), ylim([-1.5 1.5])
 title('sign(x)')
 
 %%
@@ -73,14 +71,14 @@ a = chebcoeffs(p)
 % the Chebyshev expansion:
 hold on
 plot(p,'m')
-title('sign(x) and truncated Chebyshev series',FS,14)
+title('sign(x) and truncated Chebyshev series')
 
 %%
 % This is not the same as the degree 9 polynomial interpolant through 10
-% Chebyshev points:
+% Chebyshev points, but they are close.  See Chapters 4, 7, and 8 of [1].
 pinterp = chebfun(f,10);
 plot(pinterp)
-title('Same, also with Chebyshev interpolant',FS,14)
+title('Same, also with Chebyshev interpolant')
 
 %% References
 %
