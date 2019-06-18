@@ -20,7 +20,6 @@ rng(1)
 lambda = 0.2;
 h = randnfunsphere(lambda);
 plot(h), axis off, colorbar, caxis([-2 2])
-shg
 
 %%
 % You can call spherefun with three arguments, which are
@@ -57,7 +56,7 @@ u(1,0,0)
 
 %%
 % Here, using spherical coordinates, we confirm that it matches the boundary data
-% at the longitude and latidude coordinates of Oxford.  
+% at the longitude and latitude coordinates of Oxford.  
 long = -1.26*pi/180; lat = 51.75*pi/180;
 h(long, pi/2-lat)
 u(1, long, pi/2-lat,'spherical')
