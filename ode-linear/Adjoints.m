@@ -134,15 +134,14 @@ Vs'*V
 % Let's plot the first two eigenfunctions of $L$ and of $L^\ast$.
 % Note that the curves are symmetric about the origin. 
 
-CO = 'color'; FS = 'fontsize';
 for ii = 1:2
     v = V{ii}; if v(.9) < 0, v = -v; end
     plot(v,'r'), hold on  
     vs = Vs{ii}; if vs(-.9) < 0, vs = -vs; end
     plot(vs,'b')      
 end
-text(-.8,2,'adjoint eigenfunctions',CO,'b',FS,14)
-text(.3,2,'eigenfunctions',CO,'r',FS,14)
+text(-.8,2,'adjoint eigenfunctions','color','b')
+text(.3,2,'eigenfunctions','color','r')
 shg
 
 %%
