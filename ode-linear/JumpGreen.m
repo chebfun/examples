@@ -57,7 +57,7 @@ hold off
 
 %%
 % Actually, we can combine Matlab's anonymous functions and Chebfun's
-% ODE capabilities to do make a single object that constructs this
+% ODE capabilities to make a single object that constructs this
 % Green function:
 green = @(s) chebop(@(x,u) eta*diff(u,2) + diff(u), [0 1], ...
      @(x,u) [u(0); u(1); jump(u,s); jump(diff(u),s)+eta])\0;
