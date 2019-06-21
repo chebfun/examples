@@ -134,7 +134,7 @@ Vs'*V
 % Let's plot the first two eigenfunctions of $L$ and of $L^\ast$.
 % Note that the curves are symmetric about the origin. 
 
-LW = 'linewidth'; CO = 'color'; FS = 'fontsize';
+CO = 'color'; FS = 'fontsize';
 for ii = 1:2
     v = V{ii}; if v(.9) < 0, v = -v; end
     plot(v,'r'), hold on  
