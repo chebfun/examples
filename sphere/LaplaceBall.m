@@ -41,10 +41,10 @@ meanh = mean2(h)
 % which becomes the Laplace equation if we take the right-hand side to be zero.
 % For this command, you need to specify a grid parameter $m$, which will need
 % to grow in proportion
-% to $1/\lambda$ if we want an accurate solution.  We haven't
-% investigated the proportionality constant and will take one arbitrarily
-% that appears to work:
-m = round(20/lambda);
+% to $1/\lambda$ if we want an accurate solution.  here we determine a suitable
+% $m$ by looking at the lengths of the Spherefun representation if $h$.
+[a,b] = length(h); 
+m = ceil(max(a,b));
 zero = ballfun(0);
 u = poisson(zero,h,m);
 
