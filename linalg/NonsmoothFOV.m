@@ -35,7 +35,7 @@ plotcoeffs(c), grid on
 
 %%
 % What's going on?
-% How can a curve so smooth be so complicated?
+% How can a curve that looks so smooth be so complicated?
 % (A similar question is raised in a different context
 % in Exercise 8.9 of _Approximation Theory and Approximation
 % Practice_.)
@@ -44,8 +44,7 @@ plotcoeffs(c), grid on
 % Before going any further, let's convert to the more natural periodic
 % form (Fourier instead of Chebyshev; see Chapter 11 of the
 % _Chebfun Guide_).  This shortens the length of the chebfun, but
-% only by a 
-% factor of only about $\pi/2$, so the puzzle persists of why
+% only by a factor of about $\pi/2$, so the puzzle persists of why
 % the length is so high.
 c = chebfun(@(t) c(t),[0 2*pi],'trig');
 length(c)
@@ -54,8 +53,8 @@ title('Fourier coefficients wrt Johnson angle t')
 
 %%
 % The convergence of the Fourier coefficients is
-% evidently geometric, confirming that $c$ is an
-% analytic curve, as we expected (_ATAP_, chapter 8).
+% evidently geometric, confirming that $c$ is
+% analytic, as we expected (_ATAP_, chapter 8).
 % But its strip of analyticity around the real axis in the complex
 % plane is quite narrow.  We can show this by executing the |plotregion|
 % command and superimposing also some estimates of poles near
@@ -64,6 +63,7 @@ plotregion(c), axis equal, grid on
 xx = linspace(0,2*pi,1000);
 [r,poles] = aaa(c(xx),xx,'tol',1e-10);
 hold on, plot(poles,'.r'), hold off
+ylim([-1.6 1.6])
 
 %%
 % Perhaps this is a bit highbrow.  A more
@@ -76,7 +76,7 @@ ylabel('abs(c(t))''')
 title('derivative of abs(c) wrt to Johnson angle t')
 
 %%
-% Why does such a smooth-looking curve have such a
+% Why does such a smooth-looking curve $c$ have such a
 % complicated derivative?  A promising conjecture is that it is
 % the parametrization of $c$ that is at fault.  This parametrization
 % is in terms of the
@@ -87,7 +87,7 @@ title('derivative of abs(c) wrt to Johnson angle t')
 % a different variable that we hope will be better behaved,
 % the angle $a$ of the curve
 % from the origin.  We can do this by starting with a chebfun representation
-% of $a(t)$.  Note that it's intriguingly wiggly.
+% of $a(t)$. 
 a = 2*pi + unwrap(angle(c));
 plot(a), grid on
 xlabel('Johnson angle t')
@@ -95,8 +95,7 @@ ylabel('true angle a')
 
 %%
 % Now we want a new chebfun $d$ that represents $C$ as a function
-% of $a$, in contrast to $c$ which represents it as a function
-% of $t$.  We do this by means of the inverse function $t(a)$,
+% of $a$.  We do this by means of the inverse function $t(a)$,
 t = inv(a);
 d = chebfun(@(s) c(t(s)),[0 2*pi],'trig');
 
@@ -155,20 +154,20 @@ xlabel('Johnson angle t')
 ylabel('true angle a')
 
 %%
-% As hoped, $d$ is much simpler than $c$.
+% As hoped, the reparametrized curve $d$ is much simpler than $c$.
 t = inv(a);
 d = chebfun(@(s) c(t(s)),t.ends([1 end]),'trig');
 plotcoeffs(d)
 
 %% 3. Eigenvalue avoided crossings
 % Maxwell has pointed out (private communication) that 
-% these effects are related in a very interesting way to eigenvalue avoided
+% these effects are related in an interesting way to eigenvalue avoided
 % crossings.  For all values of the Johnson angle $t$, the eigenvalues
 % of the matrix $(B+B^*)/2$ mentioned above are real and distinct, but
 % for some values of $t$ they come very close together, and this has
 % a good deal to do with the complexity of $c$ and $d$.  See
 % the Chebfun linear algebra examples
-% "Eigenvalue level repulsion" and "Analyticity at
+% "Eigenvalue level repulsion" and especially "Analyticity at
 % eigenvalue near-crossings".
 
 %% Reference
