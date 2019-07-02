@@ -95,7 +95,7 @@ ylabel('true angle a')
 
 %%
 % Now we want a new chebfun $d$ that represents $C$ as a function
-% of $a$.  We do this by means of the inverse function $t(a)$,
+% of $a$ instead of $t$.  We do this by means of the inverse function $t(a)$,
 t = inv(a);
 d = chebfun(@(s) c(t(s)),[0 2*pi],'trig');
 
@@ -114,7 +114,8 @@ title('derivative of abs(d) wrt to true angle a')
 
 %% 2. Peter Maxwell's $5\times 5$ matrix
 % We now repeat the above for a very interesting $5\times 5$ matrix cooked
-% up by Maxwell.  Here the field of values has a section that is nearly straight:
+% up by Maxwell, whose field of values boundary
+% has a section that is nearly straight:
 A = [
   0.2560 + 0.0573i   0.0568 + 0.0800i   0.1597 + 0.2204i  -0.1649 + 0.1315i  -0.3639 + 0.0091i;
   0.4733 + 0.2805i  -0.3192 + 0.1267i   0.0810 + 0.0687i   0.5213 + 0.1574i  -0.0596 + 0.2879i;
@@ -138,7 +139,8 @@ plotcoeffs(c), grid on
 
 %%
 % The derivative of the absolute value is sharply localized
-% near the special point.
+% near the special point, confirming that in this case at least,
+% the parametrization with respect to $t$ is problematic.
 ac = abs(c);
 plot(diff(ac)), grid on
 xlabel('a')
@@ -146,7 +148,7 @@ ylabel('abs(d(a))''')
 title('derivative of abs(d) wrt to true angle a')
 
 %%
-% So is the relationship $a(t)$:
+% The relationship $a(t)$ shows the difficulty:
 a = 2*pi + unwrap(angle(c));
 a = chebfun(@(s) a(s),[0 2*pi]);
 plot(a), grid on
@@ -154,7 +156,8 @@ xlabel('Johnson angle t')
 ylabel('true angle a')
 
 %%
-% As hoped, the reparametrized curve $d$ is much simpler than $c$.
+% As hoped, the reparametrized curve $d$ is much simpler than $c$, even
+% if still not as simple as we might have hoped.
 t = inv(a);
 d = chebfun(@(s) c(t(s)),t.ends([1 end]),'trig');
 plotcoeffs(d)
