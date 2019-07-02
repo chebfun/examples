@@ -24,7 +24,7 @@ c = fov(A);
 % $c$ is an analytic curve
 % well separated from the eigenvalues of $A$,
 % and it certainly looks smooth to the eye.
-plot(c,'linewidth',2), axis equal, xlim([-2 2]), grid on
+plot(c,'linewidth',2), axis equal, xlim([-3 3]), grid on
 hold on, plot(eig(A),'.k','markersize',8), hold off
 title('field of values and eigenvalues')
 
@@ -42,19 +42,22 @@ plotcoeffs(c), grid on
 
 %%
 % Before going any further, let's convert to the more natural periodic
-% form.  This shortens the length of the chebfun by a 
+% form (Fourier instead of Chebyshev; see Chapter 11 of the
+% _Chebfun Guide_).  This shortens the length of the chebfun, but
+% only by a 
 % factor of only about $\pi/2$, so the puzzle persists of why
 % the length is so high.
 c = chebfun(@(t) c(t),[0 2*pi],'trig');
 length(c)
 plotcoeffs(c), grid on
+title('Fourier coefficients wrt Johnson angle t')
 
 %%
 % The convergence of the Fourier coefficients is
 % evidently geometric, confirming that $c$ is an
 % analytic curve, as we expected (_ATAP_, chapter 8).
 % But its strip of analyticity around the real axis in the complex
-% plane is very narrow.  We can show this by executing the |plotregion|
+% plane is quite narrow.  We can show this by executing the |plotregion|
 % command and superimposing also some estimates of poles near
 % the real axis computed with |aaa|:
 plotregion(c), axis equal, grid on
@@ -69,21 +72,22 @@ hold on, plot(poles,'.r'), hold off
 ac = abs(c);
 plot(diff(ac)), grid on
 xlabel('t')
-ylabel('derivative of abs(c(t))')
+ylabel('abs(c(t))''')
+title('derivative of abs(c) wrt to Johnson angle t')
 
 %%
 % Why does such a smooth-looking curve have such a
-% complicated derivative?  An interesting conjecture is that it is
+% complicated derivative?  A promising conjecture is that it is
 % the parametrization of $c$ that is at fault.  This parametrization
 % is in terms of the
 % "Johnson angle" $t$ used in computing the field of values
 % via extreme eigenvalues of
 % the hermitian matrices $(B+B^*)/2$ with $B = e^{it} A$.
 % Let us convert $c$ to a new parameterization in terms of
-% a different variable that may be better behaved,
+% a different variable that we hope will be better behaved,
 % the angle $a$ of the curve
-% from the origin.  We can do this by starting with a chebfun representing
-% $a(t)$.  Note that it's intriguingly wiggly.
+% from the origin.  We can do this by starting with a chebfun representation
+% of $a(t)$.  Note that it's intriguingly wiggly.
 a = 2*pi + unwrap(angle(c));
 plot(a), grid on
 xlabel('Johnson angle t')
@@ -97,15 +101,17 @@ t = inv(a);
 d = chebfun(@(s) c(t(s)),[0 2*pi],'trig');
 
 %%
-% As hoped, $d$ is simpler than before?
+% As hoped, $d$ is simpler than before.
 plotcoeffs(d)
+title('Fourier coefficients wrt true angle a')
 
 %%
 % The derivative of its absolute value is better behaved.
 ad = abs(d);
 plot(diff(ad)), grid on
 xlabel('a')
-ylabel('derivative of abs(d(a))')
+ylabel('abs(d(a))''')
+title('derivative of abs(d) wrt to true angle a')
 
 %% 2. Peter Maxwell's $5\times 5$ matrix
 % We now repeat the above for a very interesting $5\times 5$ matrix cooked
@@ -137,7 +143,8 @@ plotcoeffs(c), grid on
 ac = abs(c);
 plot(diff(ac)), grid on
 xlabel('a')
-ylabel('derivative of abs(d(a))')
+ylabel('abs(d(a))''')
+title('derivative of abs(d) wrt to true angle a')
 
 %%
 % So is the relationship $a(t)$:
