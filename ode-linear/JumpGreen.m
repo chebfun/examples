@@ -14,7 +14,7 @@ L = chebop(@(x,u) eta*diff(u,2) + diff(u), [0 1]);
 L.lbc = 0; L.rbc = 0;
 
 %%
-% But suppose we want a continuous solution that whose derivative jumps
+% But suppose we want a continuous solution whose derivative jumps
 % by $-1/\eta$ at $x=1/2$?  Mathematically, this is like having one 2nd-order BVP on 
 % $[0,1/2]$ coupled to another on $[1/2,1]$, and we will need four
 % boundary conditions in total.  The two additional boundary conditions
