@@ -69,14 +69,14 @@ title('error of L1 approximant')
 x = chebfun('x'); f = abs(x-1/4);
 deg = 80; 
 pinf = minimax(f, deg);
-plot(f-pinf,'k'), ylim([-.01 .01]), grid on
+plot(f-pinf,'k'), ylim(1e-2*[-1 1]), grid on
 title('Linf error'), snapnow
 p2 = polyfit(f, deg); 
-plot(f-p2,'k'), ylim([-.01 .01]), grid on
+plot(f-p2,'k'), ylim(1e-2*[-1 1]), grid on
 title('L2 error'), snapnow
 p1 = polyfitL1(f, deg);
-plot(f-p1,'k'), ylim(1e-1*[-1 1]), grid on
-title('L1 error'), snapnow
+plot(f-p1,'k'), ylim(1e-2*[-1 1]), grid on
+title('L1 error')
 
 %%
 % Again, we see that the best $L^1$ polynomial approximant has a far more 
@@ -91,8 +91,8 @@ title('closeup')
 % conjunction with linear programming problems and a refinement step. These
 % additional algorithmic details can significantly speed up the computation.
 % However, MATLAB's linear programming commands are in a toolbox, so we
-% have avoided these steps in keeping with the Chebfun policy of jsut
-% using core MATLAB.
+% have avoided these steps in keeping with the Chebfun policy of just
+% relying on core MATLAB.
 
 %% References 
 % [1] Y. Nakatsukasa and A. Townsend, Error localization of best L1
