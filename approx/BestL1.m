@@ -1,4 +1,4 @@
-%% Best polynomial approximation in the $L^1$ norm 
+%% Best polynomial approximation in the L^1 norm 
 % Yuji Nakatsukasa and Alex Townsend, July 2019
 
 %%
@@ -18,30 +18,31 @@
 dom = [0 14]; deg = 100; 
 f = chebfun(@(x) sin(x)^2 + sin(x^2), dom);
 pinf = minimax(f, deg, 'tol', 1e-8);
-plot([f pinf]), ylim([-2.5 2.5])
-title('f and best Linfty approximant')
+plot([f pinf]), ylim([-3 3]), grid on
+title('f and Linfty approximant')
 
 %%
 % The error $f-p_\infty$ exhibits the beautiful
 % equioscillation phenomenon:
-plot(f-pinf,'k'), ylim([-2.5 2.5])
-title('error of best Linfty approximant')
+plot(f-pinf,'k'), ylim([-3 3]), grid on
+title('error of Linfty approximant')
 
 %% Polynomial approximation in the $L^2$ norm 
 % The best polynomial approximant to $f$ in the $L^2$-norm is
 % easier to compute as it is the orthogonal projection of $f$ onto the space
 % of polynomials of degree $n$. In Chebfun, one can use the |polyfit| command:
 p2 = polyfit(f, deg); 
-plot([f p2]), ylim([-2.5 2.5])
-title('f and best L2 approximant')
+plot([f p2]), ylim([-3 3]), grid on
+title('f and L2 approximant')
 
 %%
-% Here is the error:
-plot(f-p2,'k'), ylim([-2.5 2.5])
-title('error of best L2 approximant')
+% The error curve is strikingly different.  Of course it is
+% slightly larger at its largest, but not by much.
+plot(f-p2,'k'), ylim([-3 3]), grid on
+title('error of L2 approximant')
 
 %% Polynomial approximation in the $L^1$ norm 
-% Recently, Chebfun added a command |polyfitL1| to compute best polynomial
+% Recently, we added a Chebfun |polyfitL1| command to compute best polynomial
 % approximants in the $L^1$-norm. (See the book by Pinkus for a survey of
 % this subject [2].)  Compressed sensing 
 % has made the $L^1$ norm an important tool in signal processing as it can 
@@ -50,33 +51,40 @@ title('error of best L2 approximant')
 % Watson [4] is known to converge, under some assumptions, and this is
 % the basis of |polyfitL1|.
 p1 = polyfitL1(f, deg);
-plot([f p1]), ylim([-2.5 2.5])
-title('f and best L1 approximant')
+plot([f p1]), ylim([-3 3]), grid on
+title('f and L1 approximant')
 
 %%
 % Here is the error curve for our example. 
-% Notice that it is more localized than in the $L^2$ case.
-plot(f-p1,'k'), ylim([-2.5 2.5])
-title('error of best L1 approximant')
+% At first glance it looks like the $L^2$ case, but it is more
+% strongly localized.
+plot(f-p1,'k'), ylim([-3 3]), grid on
+title('error of L1 approximant')
 
 %% Another example
-% Let's do another example, motivated by Myth 3 of [3]. Let's try to 
-% approximate $|x-1/4|$ on $[-1,1]$ with a polynomial of degree
+% Let's do another example, following the example of Myth 3 of [3], the approximation
+% of $|x-1/4|$ on $[-1,1]$ by a polynomial of degree
 % $80$. This time we just plot the errors:
 
 x = chebfun('x'); f = abs(x-1/4);
 deg = 80; 
 pinf = minimax(f, deg);
-plot(f-pinf), title('Linf error'), snapnow
+plot(f-pinf,'k'), ylim([-.01 .01]), grid on
+title('Linf error'), snapnow
 p2 = polyfit(f, deg); 
-plot(f-p2), title('L2 error'), snapnow
+plot(f-p2,'k'), ylim([-.01 .01]), grid on
+title('L2 error'), snapnow
 p1 = polyfitL1(f, deg);
-plot(f-p1), title('L1 error'), snapnow
+plot(f-p1,'k'), ylim(1e-1*[-1 1]), grid on
+title('L1 error'), snapnow
 
 %%
 % Again, we see that the best $L^1$ polynomial approximant has a far more 
 % localized error. This is a typical phenomenon that is explained 
-% in~[1]. 
+% in~[1].  To see more, we zoom the y axis by a factor of 100.  There is
+% much to be learned here!
+ylim(1e-4*[-1 1])
+title('closeup')
 
 %% A word on the algorithm for |polyfitL1|
 % In [1], it is recommended that Watson's algorithm should be used in 
