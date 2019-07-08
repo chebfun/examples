@@ -25,7 +25,7 @@
 % First we consider the function $|x|^\pi$.
 MS = 'MarkerSize';
 x = chebfun('x');
-nn = 2*round(2.^(0:7));
+nn = 2*round(2.^(0:.5:7));
 ee = 0*nn; 
 f = abs(x)^pi; 
 warning off
@@ -33,7 +33,7 @@ for j = 1:length(nn)
    fn = chebfun(f,nn(j)); ee(j) = norm(f-fn,inf);
 end
 warning on
-loglog(nn,nn.^-pi,'r'), hold on
+loglog(nn,nn.^-pi,'r'), hold on, grid on
 loglog(nn,ee,'.',MS,14), hold off
 xlabel('no. of interpolation points'), ylabel('max Error')
 text(10,1e-4,'n^{-\pi}')
@@ -49,8 +49,8 @@ f = sin(abs(x)^(x+5.5));
 for j = 1:length(nn)
    fn = chebfun(f,nn(j)); ee(j) = norm(f-fn,inf);
 end
-loglog(nn,nn.^-5.5,'r',LW,1.6), hold on
-loglog(nn,ee,'.',MS,16), 
+loglog(nn,nn.^-5.5,'r'), hold on, grid on
+loglog(nn,ee,'.',MS,14), 
 xlabel('no. of interpolation points'), ylabel('max Error')
 text(10,3e-8,'n^{-5.5}')
 title('Convergence for a trigonometric function')
