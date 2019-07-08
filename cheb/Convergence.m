@@ -6,6 +6,9 @@
 % [Tags: #Gibbsphenomenon, #discontinuity, #ABS, #fractional]
 
 %%
+% [revised July 2019]
+
+%%
 % The smoother a function, the faster its approximants converge.
 % Here we approximate by interpolation in Chebyshev
 % points in the usual Chebfun fashion.
@@ -20,21 +23,21 @@
 
 %% Fractional Power Example
 % First we consider the function $|x|^\pi$.
-LW = 'LineWidth';FS = 'FontSize'; MS = 'MarkerSize';
+MS = 'MarkerSize';
 x = chebfun('x');
 nn = 2*round(2.^(0:7));
 ee = 0*nn; 
-f = abs(x).^pi; 
+f = abs(x)^pi; 
 warning off
 for j = 1:length(nn)
    fn = chebfun(f,nn(j)); ee(j) = norm(f-fn,inf);
 end
 warning on
-loglog(nn,nn.^-pi,'r',LW,1.6), hold on
-loglog(nn,ee,'.',MS,16), hold off
-xlabel('No. of interpolation points'), ylabel('Max Error')
-text(10,1e-4,'n^{-\pi}',FS,16)
-title('Convergence for fractional differentiable function',FS,14)
+loglog(nn,nn.^-pi,'r'), hold on
+loglog(nn,ee,'.',MS,14), hold off
+xlabel('no. of interpolation points'), ylabel('max Error')
+text(10,1e-4,'n^{-\pi}')
+title('Convergence for fractional differentiable function')
 
 %%
 % The fractional differentiability of $f$ clearly explains
@@ -42,15 +45,15 @@ title('Convergence for fractional differentiable function',FS,14)
 
 %% Trigonometric Example
 % Next we replace $|x|^\pi$ by $\sin(|x|^{x+5.5})$.
-f = sin(abs(x).^(x+5.5));
+f = sin(abs(x)^(x+5.5));
 for j = 1:length(nn)
    fn = chebfun(f,nn(j)); ee(j) = norm(f-fn,inf);
 end
 loglog(nn,nn.^-5.5,'r',LW,1.6), hold on
 loglog(nn,ee,'.',MS,16), 
-xlabel('No. of interpolation points'), ylabel('Max Error')
-text(10,3e-8,'n^{-5.5}',FS,14)
-title('Convergence for a trigonometric function',FS,14)
+xlabel('no. of interpolation points'), ylabel('max Error')
+text(10,3e-8,'n^{-5.5}')
+title('Convergence for a trigonometric function')
 hold off
 
 %%
