@@ -21,8 +21,8 @@ title(['number of components: ' int2str(size(r,2))],FS,12)
 
 %%
 % The Chebfun2 |roots| command has picked out the distinct
-% components of the zero set in the unit square: it is a quasimatrix
-% with 23 columns:
+% components of the zero set in the unit square: the result
+% is a quasimatrix with 23 columns:
 size(r)
 
 %%
@@ -37,7 +37,7 @@ sort(al)
 
 %%
 % Computations with |roots| in Chebfun2 are delicate, and the number
-% of components does not always come out right; nor are the curves
+% of components does not always come out right, nor are the curves
 % always accurate.  Here we seem to be doing well, though.
 % We repeat the computation with $k=16$:
 r = roots(wave(16));
