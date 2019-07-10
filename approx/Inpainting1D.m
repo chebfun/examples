@@ -2,6 +2,10 @@
 % Yuji Nakatsukasa and Nick Trefethen, July 2019
 
 %%
+% (Chebfun example approx/Inpainting1D.m)
+% [Tags: #L1, #inpainting]
+
+%%
 % Here is a smooth function corrupted in three regions:
 tic
 x = chebfun('x');
@@ -14,7 +18,7 @@ title('corrupted smooth function')
 %%
 % If we fit the function by a low-order polynomial
 % in the $L^1$ norm, we can eliminate the corruption!  This
-% is 1 1D version of what is called _inpainting_.
+% is a 1D version of what is called _inpainting_.
 n = length(smooth)-3;
 p1 = polyfitL1(corrupted,n);
 plot(p1), grid on, title('L1 fit')
@@ -34,11 +38,10 @@ err2 = norm(p2-smooth,inf)
 
 %%
 % but now the error is actually far from zero:
-plot(p2-smooth,'k'), title('L2 error')
+plot(p2-smooth,'k'), grid on, title('L2 error')
 
 %%
-% The $\infty$-norm is useless if your aim is to remove
-% the corruption in the signal:
+% The $\infty$-norm is useless for our purpose:
 pinf = minimax(corrupted,n-2);
 plot(pinf), grid on, title('Linf fit')
 errinf = norm(pinf-smooth,inf)
@@ -46,7 +49,10 @@ errinf = norm(pinf-smooth,inf)
 %%
 % We've called this example "1D inpainting" because it is a 1D
 % version of the famous "inpainting" problem in image analysis.  The
-% tools used there are varied and powerful, and what we have done here
+% tools used for that problem
+% are varied and powerful, using everything from function
+% approximation to partial differential equations to machine
+% learning; what we have done here
 % is only a small indication of some of the mathematics that may
 % come into play. Note that the issue at hand is "sparsity" of
 % the difference between the corrupted signal and its inpainted
@@ -56,13 +62,13 @@ errinf = norm(pinf-smooth,inf)
 % approximation to the $L^0$ "norm" (not actually a norm). 
 
 %%
-% The $L^1$ computation above was quite slow.
+% Our $L^1$ computation was quite slow:
 toc
 
 %%
-% Virtually all the time in this example
+% (Virtually all the time
 % was taken by |polyfitL1|; in comparison |polyfit| and |minimax|
-% are almost instantaneous.  This is partly because $L^1$ fitting
+% are almost instantaneous.)  This is partly because $L^1$ fitting
 % is challenging, but equally because Chebfun's |polyfitL1| command
 % avoids the tool that could speed it up considerably, namely
 % linear programming.  This is because linear programming is
