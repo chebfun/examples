@@ -1,4 +1,4 @@
-%% Advection-diffusion on the unit ball
+%% Advection-diffusion in the unit ball
 % Nicolas Boull&eacute;, June 2019 
 
 %% 
@@ -8,11 +8,11 @@
 %% Introduction
 % In this example, we use the Helmholtz solver of Ballfun, available
 % through the |helmholtz| command, to solve the advection-diffusion
-% equation on the unit ball. We also use some of the vector calculus and
-% visualization functionalities of Ballfun.
+% equation in the unit ball. We also use some of the vector calculus and
+% visualization capabilities of Ballfun.
 
-%% Advection-diffusion on the ball
-% The advection-diffusion equation on the ball is given by
+%% Advection-diffusion in the ball
+% The advection-diffusion equation in the ball is given by
 % $$ \frac{\partial c}{\partial t}=D\nabla^2c-v\cdot\nabla c, $$
 % where $D$ is the diffusion coefficient and $v$ is a divergence-free
 % vector field.
@@ -63,17 +63,17 @@ title("WedgePol")
 %% Time discretization
 % The advection-diffusion equation is solved using the implicit-explicit
 % order 1 backward differentiation time-stepping scheme (IMEX-BDF1).
-% This yields the following Helmholtz equation:
+% This yields a Helmholtz equation at each time step:
 % $$ \nabla^2c^{n+1}+K^2c^{n+1}=K^2c^n+\frac{1}{D}v\cdot\nabla c^n,\quad
 % \left.\frac{\partial c}{\partial \vec{n}}\right|_{\partial B(0,1)} = 0,
 % $$
 % where $c_n$ denotes the solution at time $t = n\Delta t$, $\Delta t = 5\times 10^{-2}$
 % is the time step, and $K^2 = -1/(D\Delta t)$. This equation can be solved
-% at each time step by using the Ballfun command |helmholtz|.
+% by using the Ballfun command |helmholtz|.
 
 %%
 % The following code solves the advection-diffusion numerically to time
-% %t=15$ and plots the solution $c$ at different times.
+% $t=15$ and plots the solution $c$ at different times.
 D = 1/5000;                                     % Diffusion constant
 dt = 5e-2;                                      % Time step
 K = 1i*sqrt(1/(dt*D));                          % Helmholtz frequency
