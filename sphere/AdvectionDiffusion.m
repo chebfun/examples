@@ -1,5 +1,5 @@
 %% Advection-diffusion in the unit ball
-% Nicolas Boull&eacute;, June 2019 
+% Nicolas Boull&eacute;, July 2019 
 
 %% 
 % (Chebfun example sphere/AdvectionDiffusion.m)
