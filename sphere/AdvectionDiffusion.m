@@ -88,5 +88,5 @@ for n = 0:nsteps
     end
     
     rhs = K^2*c+dot(v,grad(c))/D;
-    c = helmholtz(rhs, K, @(lam,th)0, m, 'neumann'); % Helmholtz solve
+    c = helmholtz(rhs, K, @(x,y,z)0, m, 'neumann'); % Helmholtz solve
 end
