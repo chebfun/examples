@@ -42,8 +42,8 @@ norm(vn)
 c = ballfun(@(x,y,z) -x.*exp(-5*(x.^2+y.^2+z.^2)));
 
 %%
-% The function $c$ can be vizualise using the different commands
-% implemented in Ballfun;
+% The function $c$ can be vizualised by the different plotting commands
+% in Ballfun;
 subplot(2,2,1)
 plot(c), caxis([-0.19 0.19]), axis off
 title("Plot")
@@ -61,7 +61,8 @@ plot(c, 'WedgePol'), caxis([-0.19 0.19]), axis off
 title("WedgePol")
 
 %% Time discretization
-% The advection-diffusion equation is solved using the implicit-explicit
+% Now we solve the advection-diffusion equation numerically using
+% the implicit-explicit
 % order 1 backward differentiation time-stepping scheme (IMEX-BDF1).
 % This yields a Helmholtz equation at each time step:
 % $$ \nabla^2c^{n+1}+K^2c^{n+1}=K^2c^n+\frac{1}{D}v\cdot\nabla c^n,\quad
@@ -88,5 +89,5 @@ for n = 0:nsteps
     end
     
     rhs = K^2*c+dot(v,grad(c))/D;
-    c = helmholtz(rhs, K, @(x,y,z)0, m, 'neumann'); % Helmholtz solve
+    c = helmholtz(rhs, K, @(x,y,z)0, m, 'neumann');
 end
