@@ -68,7 +68,7 @@ title("WedgePol")
 % $$ \nabla^2c^{n+1}+K^2c^{n+1}=K^2c^n+\frac{1}{D}v\cdot\nabla c^n,\quad
 % \left.\frac{\partial c}{\partial \vec{n}}\right|_{\partial B(0,1)} = 0,
 % $$
-% where $c_n$ denotes the solution at time $t = n\Delta t$, $\Delta t = 5\times 10^{-2}$
+% where $c_n$ denotes the solution at time $t = n\Delta t$, $\Delta t = 0.1$
 % is the time step, and $K^2 = -1/(D\Delta t)$. This equation can be solved
 % by using the Ballfun command |helmholtz|.
 
@@ -76,15 +76,15 @@ title("WedgePol")
 % The following code solves the advection-diffusion numerically to time
 % $t=15$ and plots the solution $c$ at different times.
 D = 1/5000;                                     % Diffusion constant
-dt = 5e-2;                                      % Time step
+dt = 0.1;                                      % Time step
 K = 1i*sqrt(1/(dt*D));                          % Helmholtz frequency
 T = 15;                                         % Stopping time
 nsteps = ceil(T/dt);                            % Number of time steps
 m = 100;                                        % Spatial discretization
 
 for n = 0:nsteps
-    if mod(n,100) == 0
-        clf, slice(c), caxis([-0.19,0.19])
+    if mod(n,50) == 0
+        clf, slice(c), caxis([-0.2,0.2])
         title(sprintf('Time %d',n*dt)), colorbar, axis('off'), snapnow
     end
     
