@@ -45,8 +45,7 @@ title('transplantation to [-1,1]')
 
 %%
 % Note that despite appearances, this
-% is not symmetric about $s=0$ since the left half corresponds
-% to $[0,L]$ whereas the right half corresponds to $[L,\infty)$.
+% is not symmetric about $s=0$.
 % For example, $g(.1)$ and $1-g(-.1)$ are quite different:
 disp([g(.1) 1-g(-.1)])
 
@@ -68,10 +67,10 @@ subplot(2,2,1:2)
 plot(ss,r(ss)-g(ss)), grid on, ylim(2*err*[-1 1]), hold on
 plot([-1 1],-err*[1 1],'--r'), plot([-1 1],err*[1 1],'--r'), hold off
 title(sprintf('Fermi-Dirac transplanted to [-1,1], L = %d, n = %d',L,n));
-subplot(2,2,3), plot(poles,'.r'), axis(10*[-1 1 -1 1])
-axis square, grid on, title poles
-subplot(2,2,4), plot(poles,'.r'), axis(.5*[-1 1 -1 1])
-axis square, grid on, title closeup
+subplot(2,2,3), plot(poles,'.r'), ylim([-10 10])
+axis equal, grid on, title poles
+subplot(2,2,4), plot(poles,'.r'), ylim([-.5 .5])
+axis equal, grid on, title closeup
 end
 
 %%
@@ -94,7 +93,7 @@ tic, fermi(1000,30), toc
 %%
 % This all looks pretty satisfactory, but it would probably not
 % be hard to break this code.  An idea for improving the
-% speed and robustness would be to adapt the idea of Moussa and
+% speed and robustness would be to adapt the idea of Moussa [2] and
 % start the |minimax| barycentric Remez iteration with an initial
 % guess derived from a Zolotarev approximation of a step.
 
