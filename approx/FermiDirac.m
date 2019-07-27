@@ -68,9 +68,9 @@ plot(ss,r(ss)-g(ss)), grid on, ylim(2*err*[-1 1]), hold on
 plot([-1 1],-err*[1 1],'--r'), plot([-1 1],err*[1 1],'--r'), hold off
 title(sprintf('Fermi-Dirac transplanted to [-1,1], L = %d, n = %d',L,n));
 subplot(2,2,3), plot(poles,'.r')
-axis equal, ylim([-10 10]), grid on, title poles
+axis equal, axis([-20 20 -10 10]), grid on, title poles
 subplot(2,2,4), plot(poles,'.r')
-axis equal, ylim([-.5 .5]), grid on, title closeup
+axis equal, axis([-1 1 -.5 .5]), grid on, title closeup
 end
 
 %%
