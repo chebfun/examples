@@ -67,10 +67,10 @@ subplot(2,2,1:2)
 plot(ss,r(ss)-g(ss)), grid on, ylim(2*err*[-1 1]), hold on
 plot([-1 1],-err*[1 1],'--r'), plot([-1 1],err*[1 1],'--r'), hold off
 title(sprintf('Fermi-Dirac transplanted to [-1,1], L = %d, n = %d',L,n));
-subplot(2,2,3), plot(poles,'.r'), ylim([-10 10])
-axis equal, grid on, title poles
-subplot(2,2,4), plot(poles,'.r'), ylim([-.5 .5])
-axis equal, grid on, title closeup
+subplot(2,2,3), plot(poles,'.r')
+axis equal, ylim([-10 10]), grid on, title poles
+subplot(2,2,4), plot(poles,'.r')
+axis equal, ylim([-.5 .5]), grid on, title closeup
 end
 
 %%
