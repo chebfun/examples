@@ -15,10 +15,10 @@ function FermiDirac
 
 %%
 % The function is smooth, but approximates a step (which corresponds to
-% the limit of zero temperature).   With \(L\) as a large parameter,
+% the limit of zero temperature).   With $L$ as a large parameter,
 % we can write the function like this:
 % $$ f(E) = {1 \over 1 + \exp(x-L) }, \quad x\in [0,\infty). $$
-% Here for example is a plot with \(L= 20\):
+% Here for example is a plot with $L= 20$:
 tic
 L = 20;
 f = @(x) 1./(1+exp(x-L));
@@ -30,8 +30,8 @@ title('physical domain')
 % the approximation domain we care about extends a finite distance
 % on one side and an infinite distance on the other.  (Ultimately this
 % is because a system has a minimum-energy state but no maximum.)  For a type
-% \((n,n)\) approximant, it is convenient to soften up the problem 
-% by a M&ouml;bius transformation to \(s\in [-1,1]\), which maps type \((n,n)\)
+% $(n,n)$ approximant, it is convenient to soften up the problem 
+% by a M&ouml;bius transformation to $s\in [-1,1]$, which maps type $(n,n)$
 % rational functions to themselves.  The transformation is this:
 x = @(s) (s*L+L)./(1-s);
 s = @(x) (x-L)./(x+L);
@@ -45,14 +45,14 @@ title('transplantation to [-1,1]')
 
 %%
 % Note that despite appearances, this
-% is not symmetric about \(s=0\).
-% For example, \(g(.1)\) and \(1-g(-.1)\) are quite different:
+% is not symmetric about $s=0$.
+% For example, $g(.1)$ and $1-g(-.1)$ are quite different:
 disp([g(.1) 1-g(-.1)])
 
 %%
-% To approximate \(g\) by a rational function of type
-% \((n,n)\), we can use the Chebfun |minimax| command.
-% (Another possibility is |cf|, at least for smaller values of \(L\).)
+% To approximate $g$ by a rational function of type
+% $(n,n)$, we can use the Chebfun |minimax| command.
+% (Another possibility is |cf|, at least for smaller values of $L$.)
 % Here is a little code that does this.
 
 function fermi(L,n)   % minimax approx for Fermi-Dirac.  Try e.g. fermi(50,10).
@@ -74,20 +74,20 @@ axis equal, axis([-1 1 -.5 .5]), grid on, title closeup
 end
 
 %%
-% Here is an easy example with \(L=10\).
+% Here is an easy example with $L=10$.
 tic, fermi(10,10), toc
 
 %%
-% Here is a harder one with \(L=100\):
+% Here is a harder one with $L=100$:
 tic, fermi(100,15), toc
 
 %%
-% The code even works with \(L=1000\):
+% The code even works with $L=1000$:
 tic, fermi(1000,20), toc
 
 %%
 % Here's the same function approximated 
-% with a higher value of \(n\):
+% with a higher value of $n$:
 tic, fermi(1000,30), toc
 
 %%
