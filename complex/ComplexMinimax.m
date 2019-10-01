@@ -82,7 +82,7 @@ Z = Z(abs(Z-(1+1i))<.5);
 Z = Z(1:1000);
 Z = [Z; chebpts(500)];
 MS = 'markersize';
-plot(Z,'.k',MS,8)
+plot(Z,'.k',MS,4)
 ylim([-.5 2]), axis equal
 title('A crazy domain for approximation')
 
@@ -94,7 +94,7 @@ r = aaa(F,Z,'degree',4);
 E = F - r(Z);
 error = norm(E,inf)
 plot(error*chebfun('exp(pi*1i*x)'),'r'), hold on
-plot(E,'.k',MS,8), grid on, hold off
+plot(E,'.k',MS,6), grid on, hold off
 ylim(4e-8*[-1 1]), axis equal
 title('Error on the crazy domain')
 
@@ -108,7 +108,7 @@ r = aaa(F,Z,'degree',4,'lawson',200);
 E = F - r(Z);
 error = norm(E,inf)
 plot(error*chebfun('exp(pi*1i*x)'),'r'), hold on
-plot(E,'.k',MS,8), grid on, hold off
+plot(E,'.k',MS,6), grid on, hold off
 ylim(4e-8*[-1 1]), axis equal
 title('Same but more accurate')
 
