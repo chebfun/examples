@@ -20,7 +20,7 @@ C = C.*(1+.15*randnfun(.2,'trig'));
 
 %%
 % To compute and plot the conformal map of $\Omega$ onto the unit disk $D$,
-% normalized by default by $f(0)=0$ and $f'(0)>0$,we type
+% normalized by default by $f(0)=0$ and $f'(0)>0$, we type
 tic
 [f, finv] = conformal(C,'plots');
 toc
