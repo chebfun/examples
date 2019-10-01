@@ -29,9 +29,10 @@ r = aaa(F,Z,'degree',4);
 
 
 E = F - r(Z);
-plot(E), grid on, axis equal
-title('degree 4 error curve on a disk')
+plot(E), grid on
 error = norm(E,inf)
+ylim(5e-8*[-1 1]), axis equal
+title('degree 4 error curve on a disk')
 
 %%
 % In fact, it is not exactly a circle, but the radius (in theory)
@@ -46,7 +47,7 @@ winding_number = (a(end)-a(1))/(2*pi)
 % to around 1980 and is the basis of the
 % Carath&eacute;odory-Fej&eacute;r method
 % for computing such approximations [2], implemented
-% (for a real interval) in Chebfun's |cf| code..  However, 
+% (for a real interval) in Chebfun's |cf| code.  However, 
 % |aaa| can also compute approximations that are not in
 % this regime.  For example, here is a set $Z$ defining
 % a triangle inscribed in the unit circle:
@@ -60,9 +61,10 @@ Z = [Z; omega*Z; omega^2*Z];
 F = exp(Z);
 r = aaa(F,Z,'degree',4);
 E = F - r(Z);
-plot(E), grid on, axis equal
-title('degree 4 error curve on a triangle')
+plot(E), grid on
 error = norm(E,inf)
+ylim(3.5e-9*[-1 1]), axis equal
+title('degree 4 error curve on a triangle')
 
 %%
 % Note that the error curve is close to a circle for most of the 
@@ -79,7 +81,9 @@ Z = .5 + rand(2000,1) + .5i + 1i*rand(2000,1);
 Z = Z(abs(Z-(1+1i))<.5);
 Z = Z(1:1000);
 Z = [Z; chebpts(500)];
-plot(Z,'.k') , axis equal
+MS = 'markersize';
+plot(Z,'.k',MS,8)
+ylim([-.5 2]), axis equal
 title('A crazy domain for approximation')
 
 %%
@@ -88,11 +92,10 @@ title('A crazy domain for approximation')
 F = exp(Z);
 r = aaa(F,Z,'degree',4);
 E = F - r(Z);
-MS = 'markersize';
 error = norm(E,inf)
 plot(error*chebfun('exp(pi*1i*x)'),'r'), hold on
-plot(E,'.k',MS,10), grid on, axis equal, hold off
-hold on, plot(error*chebfun('exp(pi*1i*x)'),'r'), hold off
+plot(E,'.k',MS,8), grid on, hold off
+ylim(4e-8*[-1 1]), axis equal
 title('Error on the crazy domain')
 
 %%
@@ -105,7 +108,8 @@ r = aaa(F,Z,'degree',4,'lawson',200);
 E = F - r(Z);
 error = norm(E,inf)
 plot(error*chebfun('exp(pi*1i*x)'),'r'), hold on
-plot(E,'.k',MS,10), grid on, axis equal, hold off
+plot(E,'.k',MS,8), grid on, hold off
+ylim(4e-8*[-1 1]), axis equal
 title('Same but more accurate')
 
 %%
