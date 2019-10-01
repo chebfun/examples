@@ -8,8 +8,8 @@
 %%
 % Chebfun has a new command |conformal| for computing conformal maps.
 % As input it takes a periodic chebfun defining the boundary curve of
-% a simply-connected region $\Omega$ in the complex plane.  For example, here is the
-% unit circle:
+% a smooth simply-connected region $\Omega$ in
+% the complex plane.  For example, here is the unit circle:
 C = chebfun('exp(1i*pi*t)','trig');
 
 %%
@@ -78,6 +78,8 @@ max_back_and_forth_error = norm( W-W2 , inf)
 % The algorithm used by |conformal| is a discretization of the Kerzman-Stein
 % integral equation [2], and our code is a descendant of one written by
 % Anne Greenbaum and Trevor Caldwell of the University of Washington.
+% This code only works for smooth domains, but we hope to introduce
+% capabilities for regions with corners in the future.
 
 %%
 % To learn more about |conformal|, type |help conformal|.  For example, an
