@@ -1,4 +1,4 @@
-%% Approximating $x^{1/p}$ by composite rational functions
+%% Approximating the pth root by composite rational functions
 % Evan S. Gawlik and Yuji Nakatsukasa, October 2019
 
 %%
@@ -134,8 +134,8 @@ hold off, semilogx(xx,abserr), grid on
 hold on
 semilogx(xx,minimaxerr)
 
-text(xx(1),abserr(1)+2e-3,'composite',IN,LT,CO,'b')
-text(xx(1),minimaxerr(1)+2e-3,'minimax',IN,LT,CO,'r')
+text(xx(20),abserr(1)+4e-3,'composite',IN,LT,CO,'b')
+text(xx(20),minimaxerr(1)+4e-3,'minimax',IN,LT,CO,'r')
 title('composite vs. minimax approximants type (9,8), absolute error')
 hold off
 
