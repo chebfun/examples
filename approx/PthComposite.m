@@ -66,8 +66,10 @@ xx = logspace(-15,0,1000);
 abserr = y(xx)-f(xx); 
 semilogx(xx,abserr),grid on
 
-line([alpini^p alpini^p],norm(abserr,inf)*[-1 0.5],'linestyle','--','color','r')
-text(alpini^p*1.1,-norm(abserr,inf),'$\alpha^p$','interpreter','latex','fontsize',18,'color','r')
+LS = 'linestyle'; IN = 'interpreter'; LT = 'latex';
+CO = 'color'; FS = 'fontsize'; MS = 'markersize';
+line([alpini^p alpini^p],norm(abserr,inf)*[-1 0.5],LS,'--',CO,'r')
+text(alpini^p*1.1,-norm(abserr,inf),'$\alpha^p$',IN,LT,FS,18,CO,'r')
 title(['absolute error of composite approximant, k=3, \alpha=',num2str(alpini)])
 
 %%
@@ -92,8 +94,8 @@ xx = logspace(-15,0,1000);
 abserr2 = y2(xx)-f(xx); 
 hold off, semilogx(xx,abserr2), grid on
 
-line([alpini^p alpini^p],norm(abserr,inf)*[-1 0.5],'linestyle','--','color','r')
-text(alpini^p*1.1,-norm(abserr,inf),'$\alpha^p$','interpreter','latex','fontsize',18,'color','r')
+line([alpini^p alpini^p],norm(abserr,inf)*[-1 0.5],LS,'--',CO,'r')
+text(alpini^p*1.1,-norm(abserr,inf),'$\alpha^p$',IN,LT,FS,18,CO,'r')
 title(['absolute error of composite approximant, k=3, \alpha=',num2str(alpini)])
 
 %%
@@ -112,8 +114,8 @@ xx = logspace(-15,0,1000);
 abserr3 = y3(xx)-f(xx); 
 hold off, semilogx(xx,abserr3), grid on
 
-line([alpini^p alpini^p],norm(abserr,inf)*[-1 0.5],'linestyle','--','color','r')
-text(alpini^p*1.1,-norm(abserr,inf),'$\alpha^p$','interpreter','latex','fontsize',18,'color','r')
+line([alpini^p alpini^p],norm(abserr,inf)*[-1 0.5],LS,'--',CO,'r')
+text(alpini^p*1.1,-norm(abserr,inf),'$\alpha^p$',IN,LT,FS,18,CO,'r')
 title(['absolute error of composite approximant, k=3, \alpha=',num2str(alpini)])
 
 %%
@@ -132,8 +134,8 @@ hold off, semilogx(xx,abserr), grid on
 hold on
 semilogx(xx,minimaxerr)
 
-text(xx(1),abserr(1)+2e-3,'composite','interpreter','latex',FS,fs,'color','b')
-text(xx(1),minimaxerr(1)+2e-3,'minimax','interpreter','latex',FS,fs,'color','r')
+text(xx(1),abserr(1)+2e-3,'composite',IN,LT,CO,'b')
+text(xx(1),minimaxerr(1)+2e-3,'minimax',IN,LT,CO,'r')
 title('composite vs. minimax approximants type (9,8), absolute error')
 hold off
 
@@ -161,15 +163,15 @@ hold off
 k = 10; % max. number of compositions 
 n = 1:30; 
 stahl = exp(-2*pi*sqrt(n))*4^(1+1/p)*sin(pi/p); % Stahl's minimax estimate
-semilogy(2*n,stahl,'.-','markersize',12)
+semilogy(2*n,stahl,'.-',MS,12)
 grid on, hold on
 nn = p.^(0:k);
 exponent = log(p/(p-1))*log(2) / (log(2*p/(p-1))*log(p)); % exponent obtained in [2]
 b = 3;  % experimental constant
-semilogy(p*(1:k+1),exp(-b*nn.^exponent)*10,'.-','markersize',12); 
+semilogy(p*(1:k+1),exp(-b*nn.^exponent)*10,'.-',MS,12); 
 xlabel('degrees of freedom'), ylabel('error')
-text(p*(k/2),exp(-b*nn(1)^(1/exponent)),'composite','fontsize',12)
-text(40,stahl(end)*10,'minimax','fontsize',12)
+text(p*(k/2),exp(-b*nn(1)^(1/exponent)),'composite',FS,12)
+text(40,stahl(end)*10,'minimax',FS,12)
 
 %%
 % This makes composite rational approximants attractive in e.g. computing
