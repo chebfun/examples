@@ -19,7 +19,7 @@
 % least-squares fitting in a set of sample points on the boundary [2,3].
 
 %%
-% This process gives the ``boundary correspondence function'', the
+% This process gives the "boundary correspondence function", the
 % homeomorphism between the boundary of $\Omega$ and the unit circle.
 % From here, one can then approximate both
 % $f$ and its inverse by rational functions using
@@ -100,7 +100,7 @@ clf, semilogy(distances,'.-'), grid on
 title('distances of poles to singularity')
 
 %%
-% The behavior is very striking.  The see it quantitatively, we
+% The exponential clustering is striking.  The see it quantitatively, we
 % can look at the ratios of successive distances:
 ratios = distances(2:end)./distances(1:end-1)
 
