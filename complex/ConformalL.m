@@ -16,7 +16,7 @@
 % problem numerically, an easy method is to expand $u$ as a linear combination of a
 % suitable family of harmonic functions -- real and imaginary
 % parts of analytic functions -- and find expansion coefficients by
-% least-squares fitting in a set of sample points on the boundary [2].
+% least-squares fitting in a set of sample points on the boundary [2,3].
 
 %%
 % This process gives the ``boundary correspondence function'', the
@@ -38,6 +38,7 @@
 % and fractional powers $z^{2k/3}$ to handle the singularity at
 % the reentrant corner at $z=0$.
   tic, N = 24; 
+  warning off                                     % suppress Froissart message
   Z = 1i*(1-tanh(12*linspace(1,0,5*N)'));         % sample pts on bndry
   Z = [Z(1:end-1); chebpts(2*N,[1i -1+1i])];
   Z = [Z(1:end-1); chebpts(2*N,[-1+1i -1-1i])]; 
@@ -58,7 +59,7 @@
        imag(mZ.^m2) -real(mZ.^m2)]*c;
   W = (Z-zc).*exp(U+1i*V); W = W/W(1);            % boundary correspondence
   [f,pol] = aaa(W,Z,'tol',10*boundary_err);       % conformal map
-  [finv,polinv] = aaa(Z,W,'tol',10*err);          % inverse map
+  [finv,polinv] = aaa(Z,W,'tol',10*boundary_err); % inverse map
 
 %%
 % Here is a plot of the map.  The red dots show the poles
@@ -86,6 +87,24 @@
   number_of_poles_of_finv = length(polinv)
 
 %%
+% A well-known effect, going back to Newman and 1964 and Zolotarev
+% in the 19th century, is that poles of rational approximations tend
+% to cluster exponentially near singularities.  Let us examine this
+% effect for the first plot above, showing poles near the reentrant
+% corner in the L.  Here are the distances of those poles from
+% the singularity plotted on a log scale.  The curving down at
+% the left edge is a known phenomenon and is modeled in equation
+% (3.2) of [2].
+distances = sort(abs(pol(real(pol)>0 & imag(pol)>0)));
+clf, semilogy(distances,'.-'), grid on
+title('distances of poles to singularity')
+
+%%
+% The behavior is very striking.  The see it quantitatively, we
+% can look at the ratios of successive distances:
+ratios = distances(2:end)./distances(1:end-1)
+
+%%
 total_time_for_this_example = toc
 
 %%
@@ -93,10 +112,15 @@ total_time_for_this_example = toc
 % Representation of conformal maps by rational functions,
 % _Numer. Math._ 142 (2019), 359-382.
 %
-% [2] L. N. Trefethen,
+% [2] A. Gopal and L. N. Trefethen,
+% Solving Laplace problems with corners singularities
+% via rational functions,
+% _SIAM J. Numer. Anal._ 57 (2019), 2074-2094.
+%
+% [3] L. N. Trefethen,
 % Conformal mapping in Chebfun, Chebfun example
 % |chebfun.org/examples/complex/ConformalMapping.html|.
 %
-% [3] L. N. Trefethen,
+% [4] L. N. Trefethen,
 % Numerical conformal mapping with rational functions,
 % manuscript in preparation, 2019.
