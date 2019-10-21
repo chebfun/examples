@@ -38,7 +38,7 @@
 % and fractional powers $z^{2k/3}$ to handle the singularity at
 % the reentrant corner at $z=0$.
   tic, N = 24; 
-  warning off                                     % suppress Froissart message
+  format short, warning off                       % suppress Froissart message
   Z = 1i*(1-tanh(12*linspace(1,0,5*N)'));         % sample pts on bndry
   Z = [Z(1:end-1); chebpts(2*N,[1i -1+1i])];
   Z = [Z(1:end-1); chebpts(2*N,[-1+1i -1-1i])]; 
@@ -69,11 +69,11 @@
   LW = 'linewidth'; MS = 'markersize';
   plot(Z,'b',LW,1)
   axis(1.1*[-1 1 -1 1]), axis equal, hold on, axis off
-  plot(pol,'.r',MS,8)
+  plot(pol,'.r',MS,10)
   ray = chebpts(100); ray = ray(ray>=0);
-  for th = 2*pi*(1:12)/12, plot(finv(exp(1i*th)*ray),'k'), end
+  for th = 2*pi*(1:12)/12, plot(finv(exp(1i*th)*ray),'k',LW,.5), end
   circ = exp(2i*pi*(0:200)/200);
-  for r = .1:.1:.9, plot(finv(r*circ),'k'), end, hold off
+  for r = .1:.1:.9, plot(finv(r*circ),'k',LW,.5), end, hold off
   number_of_poles_of_f = length(pol)
 
 %% 
@@ -82,9 +82,9 @@
 % now plot.  The red dots are the poles of $f^{-1}$.
   plot(W,'b',LW,1)
   axis(1.4*[-1 1 -1 1]), axis equal, hold on, axis off
-  plot(polinv,'.r',MS,8)
-  for th = 2*pi*(1:12)/12, plot(exp(1i*th)*ray,'k'), end
-  for r = .1:.1:.9, plot(r*circ,'k'), end, hold off
+  plot(polinv,'.r',MS,10)
+  for th = 2*pi*(1:12)/12, plot(exp(1i*th)*ray,'k',LW,.5), end
+  for r = .1:.1:.9, plot(r*circ,'k',LW,.5), end, hold off
   number_of_poles_of_finv = length(polinv)
 
 %%
