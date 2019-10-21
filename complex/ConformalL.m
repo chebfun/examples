@@ -67,7 +67,7 @@
 % six digits of accuracy.
   LW = 'linewidth'; MS = 'markersize';
   plot(Z,'b',LW,1)
-  axis(1.5*[-1 1 -1 1]), axis equal, hold on, axis off
+  axis(1.1*[-1 1 -1 1]), axis equal, hold on, axis off
   plot(pol,'.r',MS,8)
   ray = chebpts(100); ray = ray(ray>=0);
   for th = 2*pi*(1:12)/12, plot(finv(exp(1i*th)*ray),'k'), end
@@ -80,7 +80,7 @@
 % circles and radial lines in the unit disk, which we
 % now plot.  The red dots are the poles of $f^{-1}$.
   plot(W,'b',LW,1)
-  axis(1.5*[-1 1 -1 1]), axis equal, hold on, axis off
+  axis(1.4*[-1 1 -1 1]), axis equal, hold on, axis off
   plot(polinv,'.r',MS,8)
   for th = 2*pi*(1:12)/12, plot(exp(1i*th)*ray,'k'), end
   for r = .1:.1:.9, plot(r*circ,'k'), end, hold off
