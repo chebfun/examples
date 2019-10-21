@@ -64,7 +64,8 @@
 %%
 % Here is a plot of the map.  The red dots show the poles
 % of the AAA approximation, which represents $f$ to about
-% six digits of accuracy.
+% six digits of accuracy.  There are also a few more poles
+% off-scale.
   LW = 'linewidth'; MS = 'markersize';
   plot(Z,'b',LW,1)
   axis(1.1*[-1 1 -1 1]), axis equal, hold on, axis off
@@ -90,13 +91,13 @@
 % A well-known effect, going back to Newman and 1964 and Zolotarev
 % in the 19th century, is that poles of rational approximations tend
 % to cluster exponentially near singularities.  Let us examine this
-% effect for the first plot above, showing poles near the reentrant
-% corner in the L.  Here are the distances of those poles from
+% effect for the first plot above, where the poles cluster near the reentrant
+% corner.  Here are the distances of those poles from
 % the singularity plotted on a log scale.  The curving down at
 % the left edge is a known phenomenon and is modeled in equation
 % (3.2) of [2].
 distances = sort(abs(pol(real(pol)>0 & imag(pol)>0)));
-clf, semilogy(distances,'.-'), grid on
+clf, semilogy(distances,'.-',MS,12,LW,.5), grid on
 title('distances of poles to singularity')
 
 %%
