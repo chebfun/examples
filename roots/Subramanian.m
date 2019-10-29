@@ -73,5 +73,5 @@ Time_for_this_example = toc
 % Three-dimensional phase field quasicrystals, 
 % _Physical Review Letters_ 117:1075501, 2016.
 %
-% [3] P. Subramanian and A. M. Rucklidge, Mode interactions and
+% [4] P. Subramanian and A. M. Rucklidge, Mode interactions and
 % complex spatial patterns II. Quasicrystals, in preparation.
