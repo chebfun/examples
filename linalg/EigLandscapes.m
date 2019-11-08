@@ -33,18 +33,19 @@ e2 = @(x,y) evalk(e(x,y),2);
 % Let us form chebfun2 objects from e1 and e2 and plot them:
 f1 = chebfun2(@(x,y) e1(x,y), 'vectorize');
 f2 = chebfun2(@(x,y) e2(x,y), 'vectorize');
-title('first two eigenvalues'), xlabel x, ylabel y
 plot(f1), hold on, plot(f2), hold off
+title('first two eigenvalues'), xlabel x, ylabel y
 
 %%
 % According to the theory of eigenvalue avoidance for
-% hermitian matrices [ref?], since there are just 2 parameters
+% hermitian matrices [best references?], since there are just 2 parameters
 % rather than 3 or more,
 % the gap between the two eigenvalues will always (with probability 1) be positive.
 % We can confirm this by a contour plot:
 gap = f2-f1;
 mingap = min2(gap);
-contour(gap), axis equal, colorbar
+levels = 0:.25:5;
+contour(gap,levels), axis equal, colorbar
 title(['min gap = ' num2str(mingap)]), xlabel x, ylabel y
 
 %% 2. Real symmetric
@@ -72,14 +73,14 @@ e2 = @(x,y) evalk(e(x,y),2);
 npts = 512;
 f1 = chebfun2(@(x,y) e1(x,y), [npts npts], 'vectorize');
 f2 = chebfun2(@(x,y) e2(x,y),  [npts npts], 'vectorize');
-title('first two eigenvalues'), xlabel x, ylabel y
 plot(f1), hold on, plot(f2), hold off
+title('first two eigenvalues'), xlabel x, ylabel y
 
 %%
 % A contour plot confirms the eigenvalue crossing:
 gap = f2-f1;
 mingap = min2(gap);
-contour(gap,20), axis equal, colorbar
+contour(gap,levels), axis equal, colorbar
 title(['min gap = ' num2str(mingap)]), xlabel x, ylabel y
 
 %%
@@ -89,8 +90,8 @@ axis([0 .3 0 .3 -5.5 -4]), view([-27 18]),  camlight
 xlabel x, ylabel y
 
 %%
-% Eigenvalue crossings are a fascinating subject
-% that appears in a number of Chebfun examples, and in
+% Eigenvalue crossings are fascinating and can be
+% found in a number of Chebfun examples. In
 % particular, this example is a 2D analogue of
 % "Eigenvalue level repulsion", from 2010
 % (http://www.chebfun.org/examples/linalg/LevelRepulsion.html).
