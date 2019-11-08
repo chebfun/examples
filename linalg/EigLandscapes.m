@@ -44,8 +44,8 @@ title('first two eigenvalues'), xlabel x, ylabel y
 % We can confirm this by a contour plot:
 gap = f2-f1;
 mingap = min2(gap);
-levels = 0:.25:5;
-contour(gap,levels), axis equal, colorbar, caxis([0 5])
+levels = 0:.25:3;
+contour(gap,levels), axis equal, colorbar, caxis([0 3])
 title(['min gap = ' num2str(mingap)]), xlabel x, ylabel y
 
 %% 2. Real symmetric
@@ -80,20 +80,20 @@ title('first two eigenvalues'), xlabel x, ylabel y
 % A contour plot confirms the eigenvalue crossing:
 gap = f2-f1;
 mingap = min2(gap);
-contour(gap,levels), axis equal, colorbar, caxis([0 5])
+contour(gap,levels), axis equal, colorbar, caxis([0 3])
 title(['min gap = ' num2str(mingap)]), xlabel x, ylabel y
 
 %%
 % We can also see the crossing by zooming in on the two level surfaces:
 plot(f1), hold on, plot(f2), hold off
-axis([0 .3 0 .3 -5.5 -4]), view([-27 18]),  camlight
+axis([-.1 .4 -.1 .4 -5.5 -4]), view([-27 18]),  camlight
 xlabel x, ylabel y
 
 %%
 % Eigenvalue crossings are fascinating and can be
 % found in a number of Chebfun examples. In
 % particular, this example is a 2D analogue of
-% "Eigenvalue level repulsion", from 2010
+% "Eigenvalue level repulsion"
 % (http://www.chebfun.org/examples/linalg/LevelRepulsion.html).
 % The nontrivial zeros of the Riemann zeta function are conjectured
 % to be related to the eigenvalues of a hermitian (not real symmetric) operator.
