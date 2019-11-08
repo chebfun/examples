@@ -45,7 +45,7 @@ title('first two eigenvalues'), xlabel x, ylabel y
 gap = f2-f1;
 mingap = min2(gap);
 levels = 0:.25:5;
-contour(gap,levels), axis equal, colorbar
+contour(gap,levels), axis equal, colorbar, caxis([0 5])
 title(['min gap = ' num2str(mingap)]), xlabel x, ylabel y
 
 %% 2. Real symmetric
@@ -80,7 +80,7 @@ title('first two eigenvalues'), xlabel x, ylabel y
 % A contour plot confirms the eigenvalue crossing:
 gap = f2-f1;
 mingap = min2(gap);
-contour(gap,levels), axis equal, colorbar
+contour(gap,levels), axis equal, colorbar, caxis([0 5])
 title(['min gap = ' num2str(mingap)]), xlabel x, ylabel y
 
 %%
