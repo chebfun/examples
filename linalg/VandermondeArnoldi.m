@@ -32,7 +32,7 @@ function VandermondeArnoldi()
 % is a chebfun.  Again, following Matlab,
 % the columns are actually ordered in the reverse direction.
 
-%% 2. Ill-conditioning of the matrices but not the interpolation problem
+%% 2. Ill-conditioning of the matrices, not the interpolation problem
 % Unless the points $\{x_j\}$ are uniformly distributed on the unit circle,
 % Vandermonde matrices are exponentially ill-conditioned as $n\to\infty$.
 % Thus for example here we examine the matrices for degree 16 and 32 interpolation
@@ -74,13 +74,14 @@ cond(x.^(0:32))
 % $\infty \times 33$, respectively.  The fact that the numbers for our
 % discrete and continuous Vandermonde matrices are so close
 % reflects the fact that Chebyshev points are good approximations to the 
-% continuum of $[-1,1]$.  If we use equispaced points, it comes out worse:
+% continuum of $[-1,1]$.  If we use equispaced points, the numbers
+% come out worse:
 cond(vander(linspace(-1,1,17)))
 cond(vander(linspace(-1,1,33)))
 
 %%
-% If you try to do interpolation or least-squares fitting with these
-% ill-conditioned matrices or quasimatrices, you quickly run into trouble
+% If we try to do interpolation or least-squares fitting with these
+% ill-conditioned matrices or quasimatrices, we quickly run into trouble
 % at larger values of $n$.  In MATLAB, the traditional codes for computing
 % a polynomial and then evaluate it are |polyfit| and |polyval|, whose essences
 % (with the columns ordered by increasing degrees) look like this:
@@ -101,12 +102,15 @@ end
 
 %%
 % For example, let's fit the absolute value
-% function by a polynomial of degree 80 and 
-% evaluate the result at $x=0.99$.  The result is
-% nowhere near $0.99$:
+% function by a polynomial of degree 80:
 f = abs(x);
 c = polyfit(x,f,80);
-y = polyval(c,0.99)
+y = polyval(c,x)
+
+%%
+% We'll plot the result in a moment.  But here's a sign that
+% it's not good: the maximum is much bigger than $1$:
+max(y)
 
 %%
 % The reason is that the coefficients $c$ are huge because
@@ -116,9 +120,7 @@ norm(c,inf)
 
 
 %% 3. Vandermonde with Arnoldi
-% If you try to do interpolation or least-squares fitting with these
-% ill-conditioned matrices or quasimatrices, you quickly run into trouble
-% at larger values of $n$.  Yet it turns out there is a simple way to fix
+% It turns out there is a simple way to fix
 % the problem: instead of working with a Vandermonde matrix or quasimatrix,
 % generate a matrix whose columns span the same spaces by the Arnoldi process.
 % A short paper presenting these ideas with four computed examples
@@ -162,8 +164,11 @@ end
 %%
 % If we try them on the same example, we get the correct result:
 [d,H] = polyfitA(x,f,80);
-y = polyvalA(d,H,0.99)
 
+%%
+% Here's a plot of the unstable and stable interpolants:
+yA = polyvalA(d,H,x)
+plot([y yA])
 
 %% References 
 % [1] P. D. Brubeck, Y. Nakatsukasa, and L. N. Trefethen,
