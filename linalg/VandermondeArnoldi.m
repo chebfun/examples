@@ -1,5 +1,5 @@
 %% Vandermonde with Arnoldi
-% The Chebfun team, November 2019
+% Pablo Brubeck, Yuji Nakatsukasa, and Nick Trefethen, January 2020
 
 %%
 % (Chebfun example linalg/VandermondeArnoldi.m)
@@ -7,18 +7,22 @@
 
 function VandermondeArnoldi()
 
+%%
+% This example discusses an extremely useful practical tool
+% introduced at the end of 2019 in [1].
+
 %% 1. Vandermonde matrices, interpolation, and least-squares
 % An $m\times n$ Vandermonde matrix has the form
 % $$ A = \pmatrix{1 & x_1 & \dots & x_1^n \cr
 % 1 & x_2 & \dots & x_2^n \cr
-% \vdots &  & & \vdots \cr
+% \vdots & \vdots & & \vdots \cr
 % 1 & x_m & \dots & x_m^n} $$
 % where $\{x_j\}$ is a vector of distinct numbers.
 % If $m=n+1$ and $f$ is a column vector of $m$ data values, the equations
 % $$ Ac = f $$
 % give coefficients for the degree $n$ polynomial interpolant to the data,
 % $$ p(x) = \sum_{k=0}^n c_k x^k . $$
-% If $m> N+1$, we have a rectangular matrix and we can write
+% If $m> n+1$, we have a rectangular matrix and we can write
 % $$ Ac \approx f $$
 % to indicate that the system is to be solved in the least-squares sense.
 % This will give a degree $n$ polynomial approximation.
@@ -83,7 +87,7 @@ cond(vander(linspace(-1,1,33)))
 % If we try to do interpolation or least-squares fitting with these
 % ill-conditioned matrices or quasimatrices, we quickly run into trouble
 % at larger values of $n$.  In MATLAB, the traditional codes for computing
-% a polynomial and then evaluate it are |polyfit| and |polyval|, whose essences
+% a polynomial and then evaluating it are |polyfit| and |polyval|, whose essences
 % (with the columns ordered by increasing degrees) look like this:
 
 function c = polyfit(x,f,n)
@@ -176,7 +180,7 @@ plot([y yA])
 % available at arXiv and at
 % |https://people/.maths.ox.ac.uk/trefethen/papers/|.
 %
-% [2] L. N. Trefethen, _Approximation Theory and Approximation_
-% Practice, SIAM, 2013.
+% [2] L. N. Trefethen, _Approximation Theory and Approximation
+% Practice, extended edition_, SIAM, 2020.
 
 end
