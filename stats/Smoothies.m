@@ -24,7 +24,7 @@
 % all orders at $x=0$ and thus a Taylor series $0 + 0x + 0x^2 + \cdots,$ but
 % with the Taylor series obviously not converging to $f$.  Can we
 % upgrade this to a function which has Taylor series everywhere in
-% $[-1.,1]$, yet with none of them converging to the right limit?
+% $[-1,1]$, yet with none of them converging to the right limit?
 
 %%
 % Random Fourier series again give an elegant solution, and in 
@@ -52,8 +52,12 @@ plotcoeffs(f)
 % are translation-invariant rather than changing as $x$ approaches
 % $\pm 1$, the function is actually constructed via a random
 % Fourier rather than Chebyshev series (hence periodic) on a longer interval
-% than $[-1,1]$, which is then restricted to $[-1,1]$.  To get the
-% periodic version instead, one can use the |'trig'| flag:
+% than $[-1,1]$, which is then restricted to $[-1,1]$.  
+% The Fourier coefficients decrease root-exponentially in amplitude,
+% that is, at a rate $C^{-\sqrt n}$ with $C>1$.
+
+%%
+% To get a periodic smoothie, one can use the |'trig'| flag:
 ftrig = smoothie('trig');
 plot(ftrig), snapnow
 plotcoeffs(ftrig)
@@ -67,17 +71,17 @@ plot(fcomplex), xlim([-2.5 2.5]), axis equal
 
 %%
 % What do the Taylor series of these functions look like?  To give the
-% idea, we plot now the first and second derivatives of the original
-% function $f$ at the begining of this example:
+% idea, we plot the first and second derivatives of the original
+% function $f$ at the beginning of this example:
 subplot(2,1,1), plot(diff(f)), ylim([-80 80])
 subplot(2,1,2), plot(diff(f,2)), ylim([-8000 8000])
 
 %%
-% These are perfectly well-behaved functions, but they are rapidly
+% These are smooth functions, but they are rapidly
 % getting bigger in amplitude as well as having visible structure
 % on smaller and smaller space scales.  At any point $x\in [-1,1]$, the Taylor
-% series of $f$ will be well defined, but its coefficients will
-% grow too fast for it to have a positive radius of convergence.
+% series of $f$ will be well defined, but with coefficients 
+% growing too fast for a positive radius of convergence.
 
 %%
 % References:
