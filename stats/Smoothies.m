@@ -1,4 +1,4 @@
-%% "Smoothies": nowhere analytic functions
+%% Smoothies: nowhere analytic functions
 % Nick Trefethen, February 2020
 
 %%
