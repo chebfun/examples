@@ -39,7 +39,7 @@ ylim([-4 4])
 %%
 % To see the idea, we can look at the magnitudes of
 % the Chebyshev coefficients:
-plotcoeffs(f)
+plotcoeffs(f,'color','k')
 
 %%
 % These are random numbers of amplitudes decreasing
@@ -60,14 +60,14 @@ plotcoeffs(f)
 % To get a periodic smoothie, one can use the |'trig'| flag:
 ftrig = smoothie('trig');
 plot(ftrig), snapnow
-plotcoeffs(ftrig)
+plotcoeffs(ftrig,'color','k')
 
 %%
 % For all the details, take
 % a look at the (quite simple) code |smoothie.m|.
 % Another option is a complex smoothie,
 fcomplex = smoothie('complex');
-plot(fcomplex), xlim([-2.5 2.5]), axis equal
+plot(fcomplex,'m'), ylim([-1.8 1.8]), axis equal
 
 %%
 % What do the Taylor series of these functions look like?  To give the
