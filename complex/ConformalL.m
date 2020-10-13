@@ -95,7 +95,7 @@
 % corner.  Here are the distances of those poles from
 % the singularity plotted on a log scale.  The curving down at
 % the left edge is a known phenomenon and is modeled in equation
-% (3.2) of [2].
+% (3.2) of [2].  For an analysis of exponential clustering, see [5].
 distances = sort(abs(pol(real(pol)>0 & imag(pol)>0)));
 clf, semilogy(distances,'.-',MS,12,LW,.5), grid on
 title('distances of poles to singularity')
@@ -104,6 +104,10 @@ title('distances of poles to singularity')
 % The exponential clustering is striking.  The see it quantitatively, we
 % can look at the ratios of successive distances:
 ratios = distances(2:end)./distances(1:end-1)
+
+%%
+% For much more about numerical conformal mapping of regions with
+% corners, see [4] and also the code |confmap| available at [5].
 
 %%
 total_time_for_this_example = toc
@@ -124,4 +128,12 @@ total_time_for_this_example = toc
 %
 % [4] L. N. Trefethen,
 % Numerical conformal mapping with rational functions,
-% manuscript in preparation, 2019.
+% _Computational Methods and Function Theory_ (2020), 1-19.
+%
+% [5] L. N. Trefethen, |confmap.m| code, 
+% |people.maths.ox.ac.uk/trefethen/lightning.html|.
+%
+% [6] L. N. Trefethen, Y. Nakatsukasa, and J. A. C. Weideman,
+% Exponential node clustering at singularities for rational
+% approximation, quadrature, and PDEs, _Numerische Mathematik_, 
+% submitted, 2020.
