@@ -100,4 +100,3 @@ max_back_and_forth_error = norm( W-W2 , inf)
 % [3] L. N. Trefethen,
 % Numerical conformal mapping with rational functions,
 % _Computational Methods and Function Theory_ (2020), 1-19.
-% manuscript in preparation, 2019.
