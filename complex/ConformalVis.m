@@ -14,7 +14,7 @@
 % get the constants right) along the way.
 
 %%
-% For example, Olivier Sete and I were recently interested in the conformal
+% For example, Olivier S&egrave;te and I were recently interested in the conformal
 % map $f$ of an infinite half-strip to the unit disk.  The half-strip
 % consists of all complex values $z$ with $\hbox{Re} z \ge -1$
 % and $|\hbox{Im} z| \le 1$. Our particular
@@ -23,7 +23,7 @@
 % Here we visualize the domain by drawing a number of concentric squares
 % inside the area of interest.  Each square is a single complex chebfun
 % constructed with the |join| command, and the whole collection of squares
-% and the outer rectangle are a chebfun quasimatrix called $Z$. This makes
+% and the outer rectangle is a chebfun quasimatrix called $Z$. This makes
 % us able to plot the whole image with a single command, and later to
 % conformally map it with a single command.
 MS = 'markersize'; LW = 'linewidth'; s = chebfun('s');
@@ -47,11 +47,11 @@ g = @(z) sinh(pi*(z+1)/2)/sinh(pi/2);
 
 %%
 % As promised, a single command suffices to plot the image.
-plot(g(Z),LW,1.2), axis([-6 12 -5 5])
+plot(g(Z),LW,1.2), axis([-4 6 -5 5]), axis square
 set(gca,'xtick',-2:2:6,'ytick',-4:2:4)
 
 %%
-% Next, we map this half-plane to the unit disk by the Moebius
+% Next, we map this half-plane to the unit disk by the M&ouml;bius
 % transformation $(w-1)/(w+1)$,
 h = @(w) (w-1)./(w+1);
 f = @(z) h(g(z));
@@ -62,11 +62,11 @@ f = @(z) h(g(z));
 % approximately semicircular blip near $z=1$ that deviates from the unit
 % circle, since our plots show the image of a rectangle of aspect ratio $2$
 % rather than the whole infinite half-strip.
-hh = plot(f(Z),LW,1.2); xlim([-2.5 2.5]), axis equal
+hh = plot(f(Z),LW,1.2); xlim([-2 2]), axis equal
 set(gca,'xtick',-1:1,'ytick',-1:1)
 
 %%
-% For fun let's add conformal images of the words ``conformal''
+% For fun let's add conformal images of the words ''conformal''
 % and ''mapping'';
 set(hh,LW,.5)
 s = [.7i+scribble(' conformal') ; -.9i + scribble(' mapping')];
@@ -76,7 +76,8 @@ hold on, plot(f(s),'k',LW,1.2), hold off
 % It is interesting to plot contours of $|f(z)|$ in the original
 % half-strip.  Can you explain this image with the aid
 % of the Schwarz reflection principle?
-x = linspace(-8,8,140); y = linspace(-4,4,100);
+x = linspace(-5,3,140); y = linspace(-4,4,140);
 [xx,yy] = meshgrid(x,y); zz = xx + 1i*yy;
 contour(x,y,log10(abs(f(zz))), -.7:.05:.7), colorbar
-set(gca,'xtick',-2:0,'ytick',-4:4)
+set(gca,'xtick',-4:2:4,'ytick',-4:2:4)
+axis([-5 3 -4 4]), axis square
