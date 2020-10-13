@@ -94,9 +94,10 @@ max_back_and_forth_error = norm( W-W2 , inf)
 % _Numer. Math._ 142 (2019), 359-382.
 %
 % [2] N. Kerzman and M. R. Trummer,
-% Numerical conformal mapping via the Szego kernel,
+% Numerical conformal mapping via the Szeg&ouml; kernel,
 % _J. Comput. Appl. Math._ 14 (1986), 111-123.
 %
 % [3] L. N. Trefethen,
-% Conformal mapping with rational functions,
+% Numerical conformal mapping with rational functions,
+% _Computational Methods and Function Theory_ (2020), 1-19.
 % manuscript in preparation, 2019.
