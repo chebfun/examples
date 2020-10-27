@@ -41,7 +41,7 @@ phaseplot(f, [-2 2 -2 2])
 
 %%
 % Essential singularities are glorious:
-f = @(z) exp(2./z);
+f = @(z) exp(3./z);
 phaseplot(f)
 
 %%
@@ -58,8 +58,10 @@ phaseplot(f)
 % If you compare the images produced by |phaseplot| with
 % the "classic" ones such as those magnificently discussed in [1],
 % you will find a slight difference in coloring.
-subplot(121), phaseplot(@(z) z), axis off, title('default')
-subplot(122), phaseplot(@(z) z, 'classic'), axis off, title('''classic''')
+subplot(121), phaseplot(@(z) z)
+axis off, title('default colors')
+subplot(122), phaseplot(@(z) z, 'classic')
+axis off, title('''classic'' colors')
 
 %%
 % The classic color scheme makes cyan, magenta, and yellow much 
@@ -77,6 +79,6 @@ subplot(122), phaseplot(@(z) z, 'classic'), axis off, title('''classic''')
 
 %%
 % [1] E. Wegert, _Visual Complex Functions: An Introduction
-% with Phase Portraits_, Birk\&auml;user, 2012.
+% with Phase Portraits_, Birkh&auml;user, 2012.
 %
-% [2] E. Wegert, |visual.wegert.com|.
+% [2] E. Wegert, |www.visual.wegert.com|.
