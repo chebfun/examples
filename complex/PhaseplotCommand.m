@@ -48,7 +48,7 @@ phaseplot(f)
 % An earlier phase portrait capability was introduced
 % in Chebfun in 2013, in which |plot(f)| gives a phase portrait
 % if |f| is a chebfun2 that takes complex values.  The new
-% |phasplot| command can also take a chebfun2 as argument, but
+% |phaseplot| command can also take a chebfun2 as argument, but
 % is is much more flexible since it can deal with any function
 % handle.  This broadens the scope greatly since functions with
 % poles and other singularities generally cannot be resolved as
@@ -56,21 +56,27 @@ phaseplot(f)
 
 %%
 % If you compare the images produced by |phaseplot| with
-% the ``classic'' ones such as those magnificently discussed in [1],
+% the "classic" ones such as those magnificently discussed in [1],
 % you will find a slight difference in coloring.
-subplot(121), phaseplot(@(z) z), axis off
-subplot(122), phaseplot(@(z) z, 'classic'), axis off
+subplot(121), phaseplot(@(z) z), axis off, title('default')
+subplot(122), phaseplot(@(z) z, 'classic'), axis off, title('''classic''')
 
 %%
-% The classic color scheme makes cyan, magnenta, and yellow much 
+% The classic color scheme makes cyan, magenta, and yellow much 
 % narrower than red, green, and blue.  This has some 
-% appeal, since the narrow stripes carry sharper information, but
+% appeal, since the narrow stripes convey sharper information, but
 % on the other hand it seems somewhat artificial to treat three
 % arguments of the compass so differently from the other three.
 % That is why |phaseplot| introduces a slight transformation
 % of the color scheme.  In the code it is a one-liner: search
-% for ``phi'' if you are curious.
+% for "phi" if you are curious.
+
+%%
+% To see some amazing things revealed by phase portraits, check
+% out [2].
 
 %%
 % [1] E. Wegert, _Visual Complex Functions: An Introduction
 % with Phase Portraits_, Birk\&auml;user, 2012.
+%
+% [2] E. Wegert, |visual.wegert.com|.
