@@ -2,7 +2,7 @@
 % Alex Townsend and Grady Wright, May 2016
 
 %%
-% (Chebfun example spherefun)
+% (Chebfun example sphere-ball/SphereHeatConduction.m)
 % [Tags: #spherefun, #heat, #diffusion]
 
 %% 1. Introduction

@@ -2,7 +2,7 @@
 % Behnam Hashemi, November 2016
 
 %%
-% (Chebfun Example sphere/SpherefunPartition.m)
+% (Chebfun example sphere-ball/SpherefunPartition.m)
 % [Tags: #Spherefun]
 
 %%

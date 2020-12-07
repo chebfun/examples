@@ -2,7 +2,7 @@
 % Nick Trefethen, May 2016
 
 %%
-% (Chebfun example sphere/Gravity.m)
+% (Chebfun example sphere-ball/Gravity.m)
 % [Tags: #spherefun]
 
 %% 1. A little geometry

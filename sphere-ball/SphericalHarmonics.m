@@ -2,7 +2,7 @@
 % Alex Townsend and Grady Wright, May 2016
 
 %%
-% (Chebfun example sphere/SphericalHarmonics.m)
+% (Chebfun example sphere-ball/SphericalHarmonics.m)
 % [Tags: #spherefun, #eigenfunctions, #fourier]
 
 %% 1. Introduction

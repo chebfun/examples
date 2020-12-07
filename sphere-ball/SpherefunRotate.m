@@ -2,7 +2,7 @@
 % Alex Townsend and Grady Wright, May 2017
 
 %%
-% (Chebfun example spherefun)
+% (Chebfun example sphere-ball/SpherefunRotate.m)
 % [Tags: #spherefun, #rotate, #fourier]
 
 %% Introduction
