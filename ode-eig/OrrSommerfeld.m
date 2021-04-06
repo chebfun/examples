@@ -18,7 +18,7 @@
 
 %%
 % The Orr-Sommerfeld operator is the linear operator $L$ that maps
-% infinitesimal perturbations on the laminar flow to their infinitesimal
+% infinitesimal perturbations of the laminar flow to their infinitesimal
 % growth rates. Classically speaking we expect the flow to be stable if all
 % the eigenvalues of $L$ lie in the left half-plane, and unstable if there are
 % any eigenvalues in the right half-plane.
@@ -35,14 +35,14 @@ A = chebop(-1,1);
 A.op = @(x,u) (diff(u,4)-2*alph^2*diff(u,2)+alph^4*u)/Re - ...
     2i*alph*u - 1i*alph*(1-x.^2).*(diff(u,2)-alph^2*u);
 B = chebop(-1,1);
-B.op = @(x,u) diff(u,2) - u;
+B.op = @(x,u) diff(u,2) - alph^2*u;
 A.lbc = [0; 0];
 A.rbc = [0; 0];
 e = eigs(A,B,50,'LR');
-FS = 'fontsize'; MS = 'markersize';
+MS = 'markersize';
 maxe = max(real(e));
-plot(e,'.r',MS,16), grid on, axis([-.9 .1 -1 0]), axis square
-title(sprintf('Re = %8.2f   \\lambda_r = %7.5f',Re,maxe),FS,16)
+plot(e,'.r',MS,14), grid on, axis([-.9 .1 -1 0]), axis square
+title(sprintf('Re = %8.2f   \\lambda_r = %7.5f',Re,maxe))
 
 %%
 % (The eigenvalues on the lower-right branch are near-degenerate pairs.)
@@ -55,7 +55,7 @@ e = eigs(A,B,50,'LR');
 maxe = max(real(e));
 plot(e,'.r',MS,16), grid on, axis([-.9 .1 -1 0]), axis square
 title(['Re = ' sprintf('%5d',Re) ...
-   ',   \lambda_r = ' sprintf('%7.5f',maxe)],FS,16)
+   ',   \lambda_r = ' sprintf('%7.5f',maxe)],FS,14)
 
 %%
 % Although the Orr-Sommerfeld equation is very famous, this eigenvalue analysis
