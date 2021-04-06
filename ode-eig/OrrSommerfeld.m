@@ -55,7 +55,7 @@ e = eigs(A,B,50,'LR');
 maxe = max(real(e));
 plot(e,'.r',MS,16), grid on, axis([-.9 .1 -1 0]), axis square
 title(['Re = ' sprintf('%5d',Re) ...
-   ',   \lambda_r = ' sprintf('%7.5f',maxe)],FS,14)
+   ',   \lambda_r = ' sprintf('%7.5f',maxe)])
 
 %%
 % Although the Orr-Sommerfeld equation is very famous, this eigenvalue analysis
