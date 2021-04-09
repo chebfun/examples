@@ -196,9 +196,9 @@ subplot(2,1,2), plot(pswf(50,200)), grid on
 % Prolate Spheroidal Wavefunctions of Order Zero: Mathematical
 % Tools for Bandlimited Approximation, Springer, 2013.
 %
-% [5] H. Xiao, V. Rokhlin, and N. Yarvin, Prolate spheroidal
+% [5] L. N. Trefethen, Exactness of quadrature formulas,
+% SIAM Review, submitted.
+%
+% [6] H. Xiao, V. Rokhlin, and N. Yarvin, Prolate spheroidal
 % wave functions, quadrature and interpolation, Inverse
 % Problems, 17 (2001), 805--828.
-%
-% [6] L. N. Trefethen, Exactness of quadrature formulas,
-% SIAM Review, submitted.
