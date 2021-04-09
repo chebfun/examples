@@ -54,9 +54,9 @@ help randnfun
 tic
 rng(0)
 u = randnfun(0.001,[0 1],3,'big');
-plot(cumsum(u),'linewidth',2.5)
-grid on, ylim([-1 1])
-xlabel('t','fontsize',30), ylabel('u','fontsize',30)
+plot(cumsum(u))
+grid on, ylim([-2 2])
+xlabel t, ylabel u
 
 %%
 total_time_in_seconds = toc
@@ -68,5 +68,5 @@ total_time_in_seconds = toc
 % Smooth random functions, random ODEs, and Gaussian processes,
 % _SIAM Review_, 61 (2019), 185--205.
 %
-% [2] L. N. Trefethen, _Approxiamtion Theory and Approximation Practice_,
-% Extended Edition, SIAM, 2019.
+% [2] L. N. Trefethen, _Approximation Theory and Approximation Practice,
+% Extended Edition_, SIAM, 2019.
