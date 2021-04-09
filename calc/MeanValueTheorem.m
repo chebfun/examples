@@ -22,7 +22,7 @@ a = -6;
 b = 6;
 dom = [a b];
 x = chebfun('x', dom);
-f = (x-1).*(x-2).*(x-3);
+f = (x-1)*(x-2)*(x-3);
 
 %%
 % We calculate the slope of the secant:
@@ -45,9 +45,8 @@ c = roots(fprime - sl)
 % example: the tangent line at $c$ (red) is parallel to the secant (black,
 % dashed).
 
-LW = 'linewidth'; lw = 1.6;
-plot(f, LW, lw), hold on
-plot([a b], [f(a) f(b)], '--k', LW, lw)
-plot(c(1), f(c(1)),'.r', 'markersize', 20)
+plot(f), hold on
+plot([a b], [f(a) f(b)], '--k')
+plot(c(1), f(c(1)),'.r')
 L = 2;
-plot([c(1)-L c(1)+L],[f(c(1))-L*sl f(c(1))+L*sl], 'r', LW, lw)
+plot([c(1)-L c(1)+L],[f(c(1))-L*sl f(c(1))+L*sl], 'r')
