@@ -134,8 +134,8 @@ f = chebfun('exp(x) + 1e-8*cos(99999*x)','eps',1e-8)
 % to see how the length was determined:
 explain('exp(x) + 1e-8*cos(99999*x)',1e-8)
 
-%% 4. References
+%% 4. Reference
 %
 % 1. J. L. Aurentz and L. N. Trefethen, Chopping a Chebyshev
-% series, arXiv 2015 and expected to appear after revision in
-% _ACM Transactions on Mathematical Software_.
+% series, _ACM Transactions on Mathematical Software_, 43 (2017), 
+% 33:1--21.
