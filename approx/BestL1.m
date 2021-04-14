@@ -96,14 +96,14 @@ title('closeup')
 
 %% References 
 % [1] Y. Nakatsukasa and A. Townsend, Error localization of best L1
-% polynomial approximants, arXiv:1902.02664, 2019.
+% polynomial approximants, SIAM J. Numer. Anal., 59 (2021), 314--333.
 % 
 % [2] A. M. Pinkus, _On L1-approximation_, Cambridge University 
 % Press, 1989.
 %
 % [3] L. N. Trefethen, Six myths of polynomial interpolation and
-% quadrature, appendix of _Approximation Theory and Approximation Practice_,
-% SIAM, 2013. 
+% quadrature, appendix of _Approximation Theory and Approximation Practice,
+% extended edition_, SIAM, 2019. 
 % 
 % [4] G. A. Watson. An algorithm for linear L1 approximation of continuous functions,
 % _IMA J. Numer. Anal._, 1 (1981), 157--167.
