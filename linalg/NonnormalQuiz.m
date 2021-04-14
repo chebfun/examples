@@ -22,8 +22,8 @@ A1 = [-1 1; 0 -1],  A2 = [-1 5; 0 -2]
 %%
 % We first present the plot, then explain what it means and how we computed it
 % with Chebfun.
-e1 = chebfun(@(t) norm(expm(t*A1)),[0 3.4],'vectorize');
-e2 = chebfun(@(t) norm(expm(t*A2)),[0 3.4],'vectorize');
+e1 = chebfun(@(t) norm(expm(t*A1)),[0 3.4]);
+e2 = chebfun(@(t) norm(expm(t*A2)),[0 3.4]);
 LW = 'linewidth'; FS = 'fontsize';
 plot(e1,'b',e2,'r',LW,2)
 ylim([0 1.5]), grid on, legend('A1','A2')
@@ -44,9 +44,7 @@ title('Which curve is which?',FS,16)
 % with functions that don't have representations by explicit formulas.
 % Here the function we are concerned with is `norm(expm(tA))`, a function of
 % time `t`.  Chebfun is happy to sample that function at various values of `t`
-% and construct a corresponding chebfun.  Since `norm(expm(tA))` will not work
-% when `t` is a vector, the `'vectorize'` flag is included to avoid a warning
-% message.
+% and construct a corresponding chebfun.
 
 %%
 % Once we have the chebfuns, we can do things with them. For example, here are
