@@ -143,6 +143,6 @@ disp([ff(5+5i) r(5+5i); ff(5) r(5); ff(5-5i) r(5-5i)])
 
 %% 5. References
 %
-% [1] Y. Nakatsukasa, O. Sete, and
+% [1] Y. Nakatsukasa, O. S&egrave;te, and
 % L. N. Trefethen, The AAA algorithm for rational approximation,
-% arXiv 2016:1612.00337.
+% SIAM J. Sci. Comput., 40 (2018), A1494-A1522.
