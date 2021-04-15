@@ -6,8 +6,7 @@
 % [Tags: #Weierstrass, #approximation, #infinite series]
 
 %%
-% 
-LW = 'linewidth'; FS = 'fontsize'; format compact
+format compact
 
 %%
 % In the late nineteenth century, Karl Weierstrass rocked the analysis community
@@ -16,7 +15,7 @@ LW = 'linewidth'; FS = 'fontsize'; format compact
 % appearances of fractal geometry, is defined as the sum
 % $$ \sum_{k=0}^{\infty} a^k \cos(b^k \pi x), $$
 % where $0 < a < 1$ and $b$ is a positive odd integer with $ab < 1 + \frac32
-% \pi$. Since its publication, Weierstrass' work has been generalized in many
+% \pi$. Since its publication, Weierstrass's work has been generalized in many
 % directions.
 
 %%
@@ -38,14 +37,14 @@ end
 
 %%
 % Here is what the unresolved ninth iterate looks like.
-plot(F{9}, 'k-', LW, 1)
-title('A pathological function of Weierstrass', FS, 16)
+plot(F{9}, 'k')
+title('A pathological function of Weierstrass')
 
 %%
 % We must zoom in 400 times to see that Chebfun is in fact plotting a
 % smooth function.
-plot(F{9}, 'k-', 'interval', [0 0.005], LW, 1)
-title('Close-up of Weierstrass approximant', FS, 16)
+plot(F{9}, 'k', 'interval', [0 0.005])
+title('Close-up of Weierstrass approximant')
 
 %%
 % The function $F(x)$ is not differentiable, but it is integrable. For this
@@ -107,4 +106,5 @@ disp(str)
 % 2. G. H. Hardy, "Weierstrass's non-differentiable function."
 %    _Transactions of the American Mathematical Society_, 17, no. 3 (1916), 301-325.
 %
-% 3. L. N. Trefethen, _Approximation theory and approximation practice_. SIAM, 2013.
+% 3. L. N. Trefethen, _Approximation Theory and Approximation Practice, 
+% Extended Edition_, SIAM, 2019._
