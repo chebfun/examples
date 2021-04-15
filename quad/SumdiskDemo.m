@@ -52,7 +52,7 @@ exact = 2*pi*(1-exp(-.5))
 % that, which we illustrate again here:
 fpolar = @(r,t) f(r*cos(t),r*sin(t));
 fr = @(r) r*sum(chebfun(@(t) fpolar(r,t),[0,2*pi],'trig'));
-I = sum(chebfun(@(r) fr(r),[0 1],'vectorize'))
+I = sum(chebfun(@(r) fr(r),[0 1]))
 
 %%
 % The point of `sumdisk` is two-fold: it shows off some

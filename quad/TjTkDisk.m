@@ -39,21 +39,21 @@ f = @(r,t) 1 + 0*t;
 % Here is a numerical confirmation that the integral of $1$ is $\pi$:
 format long
 fr = @(r) r*sum(chebfun(@(t) f(r,t),[0,2*pi],'trig'));
-I = sum(chebfun(@(r) fr(r),[0 1],'vectorize'))
+I = sum(chebfun(@(r) fr(r),[0 1]))
 Iexact = pi
 
 %%
 % For the function $f(r,t) = r^2$, the integral is $\pi/2$:
 f = @(r,t) r^2 + 0*t;
 fr = @(r) r*sum(chebfun(@(t) f(r,t),[0,2*pi],'trig'));
-I = sum(chebfun(@(r) fr(r),[0 1],'vectorize'))
+I = sum(chebfun(@(r) fr(r),[0 1]))
 Iexact = pi/2
 
 %%
 % For the function $f(r,t) = r^2 \cos^2(t)$, the integral is $\pi/2$:
 f = @(r,t) r^2*cos(t).^2;
 fr = @(r) r*sum(chebfun(@(t) f(r,t),[0,2*pi],'trig'));
-I = sum(chebfun(@(r) fr(r),[0 1],'vectorize'))
+I = sum(chebfun(@(r) fr(r),[0 1]))
 Iexact = pi/4
 
 %% 2. Numerical integration of products of Chebyshev polynomials
@@ -70,7 +70,7 @@ for j = 0:2:10
     Tk = chebpoly(k); 
     f = @(r,t) Tk(r*cos(t)).*Tj(r*sin(t));
     fr = @(r) r*sum(chebfun(@(t) f(r,t),[0,2*pi],'trig'));
-    I(1+j/2,1+k/2) = sum(chebfun(@(r) fr(r),[0 1],'vectorize'));
+    I(1+j/2,1+k/2) = sum(chebfun(@(r) fr(r),[0 1]));
   end
 end
 I = I + tril(I,-1)'
