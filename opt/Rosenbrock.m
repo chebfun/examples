@@ -22,10 +22,10 @@ f = @(x,y) (1-x).^2 + 100*(y-x.^2).^2;
 x = linspace(-1.5,1.5); y = linspace(-1,3);
 [xx,yy] = meshgrid(x,y); ff = f(xx,yy);
 levels = 10:10:300;
-LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
-figure, contour(x,y,ff,levels,LW,1.2), colorbar
+MS = 'markersize';
+figure, contour(x,y,ff,levels), colorbar
 axis([-1.5 1.5 -1 3]), axis square, hold on
-title('Rosenbrock function f(x,y)',FS,14)
+title('Rosenbrock function f(x,y)')
 
 %%
 % It's obvious from the formula that the minimum value is $0$, taken at
@@ -36,10 +36,10 @@ fminx0 = @(x0) min(chebfun(@(y) f(x0,y),[-1 3]));
 
 %%
 % Now we can make a chebfun representing `fminx` as a function of $x$:
-fminx = chebfun(fminx0,[-1.5 1.5],'vectorize','splitting','on');
-figure, plot(fminx,LW,1.6)
-xlabel('x',FS,14), ylabel('min_y(f(x,y))',FS,14)
-title('minimum of f(x,y) along vertical slices',FS,14)
+fminx = chebfun(fminx0,[-1.5 1.5],'splitting','on');
+figure, plot(fminx)
+xlabel('x'), ylabel('min_y(f(x,y))')
+title('minimum of f(x,y) along vertical slices')
 
 %%
 % The global minimum of $f(x,y)$ is the minimum of `fminx`:
@@ -53,7 +53,7 @@ format long
 
 %%
 % Let's show the contour plot again, with the minimum point:
-close, plot(minx,miny,'.k',MS,20)
+close, plot(minx,miny,'.k',MS,14)
 
 %% 2. A function with several local minima
 % Why did we put `splitting on` in this computation? It wasn't actually
@@ -67,9 +67,9 @@ close, plot(minx,miny,'.k',MS,20)
 f = @(x,y) exp(x-2*x.^2-y.^2).*sin(6*(x+y+x.*y.^2));
 x = linspace(-1,1); y = linspace(-1,1);
 [xx,yy] = meshgrid(x,y); ff = f(xx,yy);
-figure, contour(x,y,ff,30,LW,1.2), colorbar
+figure, contour(x,y,ff,30), colorbar
 axis([-1 1 -1 1]), axis square, hold on
-title('f(x,y)',FS,14)
+title('f(x,y)')
 
 %%
 % We define `fminx0` and `fminx` as before. Because of the lack of smoothness
@@ -77,10 +77,10 @@ title('f(x,y)',FS,14)
 % while:
 tic
 fminx0 = @(x0) min(chebfun(@(y) f(x0,y),[-1 1]));
-fminx = chebfun(fminx0,[-1 1],'vectorize','splitting','on');
-figure, plot(fminx,LW,1.6)
-xlabel('x',FS,14), ylabel('min_y(f(x,y))',FS,14)
-title('minimum of f(x,y) along vertical slices',FS,14)
+fminx = chebfun(fminx0,[-1 1],'splitting','on');
+figure, plot(fminx)
+xlabel('x'), ylabel('min_y(f(x,y))')
+title('minimum of f(x,y) along vertical slices')
 toc
 
 %%
@@ -94,7 +94,7 @@ fminx.ends
 
 %%
 % And here's the plot:
-close, plot(minx,miny,'.k',MS,20)
+close, plot(minx,miny,'.k',MS,14)
 
 %% References
 %
