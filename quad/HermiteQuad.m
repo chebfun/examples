@@ -123,7 +123,7 @@ ratio = length(tail_points)/n
 % Since this example was initially drafted, an analysis has shown
 % that indeed, for large $n$, Hermite quadrature is far less efficient
 % than chopping to a finite integral (or more precisely one
-% whose width grows in proportion to $n^{1/3}$, then using a simple
+% whose width grows in proportion to $n^{1/3}$), then using a simple
 % formula like Gauss-Legendre quadrature or the trapezoidal rule.
 % See section 5 of [3].
 
@@ -138,5 +138,5 @@ ratio = length(tail_points)/n
 % The exponentially convergent trapezoidal rule,
 % _SIAM Review_ 56 (2014), 385-458.
 %
-% 3. L. N. Trefethen, Exactness of quadrature formulas_,
-% SIAM Review, submitted, 2020.
+% 3. L. N. Trefethen, Exactness of quadrature formulas,
+% _SIAM Review_, submitted, 2020.
