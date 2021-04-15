@@ -153,4 +153,5 @@ plot(f)
 % but FJ's Arb library is a contribution in this area:
 % 
 % [1] F. Johansson, Numerical integration in
-% arbitrary-precision ball arithmetic, arXiv:1802.07942.
+% arbitrary-precision ball arithmetic, arXiv:1802.07942 and
+% _International Congress on Mathematical Software_, Springer, Cham, 2018.
