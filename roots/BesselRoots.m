@@ -12,12 +12,12 @@
 % Here is the Bessel function $J_0$ on the interval $[0,100]$.
 J0 = chebfun(@(x) besselj(0,x),[0 100]);
 figure, plot(J0), grid on
-title('Bessel function J_0','fontsize',16)
+title('Bessel function J_0')
 
 %%
 % We can find its roots like this:
 r = roots(J0);
-hold on, plot(r,J0(r),'.r','markersize',14)
+hold on, plot(r,J0(r),'.r')
 
 %%
 % The number of roots can be found with the |length| command:
