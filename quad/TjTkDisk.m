@@ -29,8 +29,8 @@ hold on, plot(chebfun('exp(1i*x)',[0 2*pi]),'k'), hold off
 %%
 % Speaking in general, suppose we want to integrate a
 % smooth function $f(r,t)$ numerically over the unit disk, where $r$ is
-% radius and $t$ is angle.  Soon Diskfun will be available for
-% such problems, but here, we use standard Chebfun.  Let's
+% radius and $t$ is angle.  One could use Diskfun,
+% but here, we use standard Chebfun.  Let's
 % assume that $f$ is defined by a function that accepts a scalar
 % $r$ and a vector $t$, like this one:
 f = @(r,t) 1 + 0*t;
@@ -117,6 +117,8 @@ I = I + tril(I,-1)'
 % The results of the last section imply that there is an immediate
 % way to compute the integral of a chebfun2 over a disk: just take the
 % appropriate linear combination of its 
-% bivariate Chebyshev coefficients.  We will probably develop
-% this idea into a new Chebfun2 `sumdisk` command.
+% bivariate Chebyshev coefficients.  After this example was initially
+% written, we developed this idea into a 
+% Chebfun2 `sumdisk` command.  See the example
+% "Sumdisk for integration over a disk".
 

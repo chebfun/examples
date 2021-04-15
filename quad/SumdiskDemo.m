@@ -78,9 +78,5 @@ sumdisk(f)/pi
 f(0,0)
 
 %%
-% 
-
-%%
-% Before long, another option for integration over disks will
-% appear: Diskfun.  There is already a chapter in the _Chebfun Guide_
-% about Diskfun, but the code is still under development.
+% Another option for such integrals is to use Diskfun (see chapter 16
+% of the _Chebfun Guide_).
