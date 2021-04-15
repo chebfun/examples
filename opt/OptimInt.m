@@ -28,11 +28,7 @@ I = @(a) sum(chebfun(@(x) F(x,a)));
 
 %%
 % We compute a chebfun of this result, for $a$ ranging from $0$ to $100$.
-Ia = chebfun(@(a) I(a),[0 100],'vectorize');
-
-%%
-% The `'vectorize'` flag is used, since $I$ can not be evaluated with a
-% vector.
+Ia = chebfun(@(a) I(a),[0 100]);
 
 %%
 % We use Chebfun's `roots` command to find where $I(a)=1$.
@@ -40,16 +36,15 @@ r = roots(Ia-1)
 
 %%
 % We plot this, to make sure it looks sensible.
-LW = 'linewidth'; MS = 'markersize';
-plot(Ia,LW,1.6), hold on, grid on
+plot(Ia), hold on, grid on
 axis([0 35 0 1.2]), set(gca,'ytick',0:.25:1)
-plot(r,Ia(r),'.r',MS,20);
+plot(r,Ia(r),'.r');
 
 %%
 % Since we have $I(a)$ as a chebfun, we can do other things, like find where
 % $I(a) = 0.25$
 r = roots(Ia-0.25)
-plot(r,Ia(r),'.k',MS,20), hold off
+plot(r,Ia(r),'.k'), hold off
 
 %%
 % or the value of $a$ which maximises $I(a)$
