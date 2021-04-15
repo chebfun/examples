@@ -59,7 +59,7 @@ eigL = @(t) sort(eigs(L(t)));    % returns sorted eigenvalues of the matrix A
 d = [4.4 5.4];
 E = chebfun; tic
 for k = 1:6
-   E(:,k) = chebfun(@(t) ek(eigL(t),k),d,'splitting','off','eps',1e-4,'vectorize');
+   E(:,k) = chebfun(@(t) ek(eigL(t),k),d,'splitting','off','eps',1e-4);
 end
 figure, plot(E), grid on
 title('Eigenvalues of L(t)');
