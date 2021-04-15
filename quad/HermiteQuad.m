@@ -119,6 +119,14 @@ ratio = length(tail_points)/n
 % Townsend et al. propose to throw away most of the quadrature points;
 % they call this process "subsampling".
 
+%%
+% Since this example was initially drafted, an analysis has shown
+% that indeed, for large $n$, Hermite quadrature is far less efficient
+% than chopping to a finite integral (or more precisely one
+% whose width grows in proportion to $n^{1/3}$, then using a simple
+% formula like Gauss-Legendre quadrature or the trapezoidal rule.
+% See section 5 of [3].
+
 
 %% References
 %
@@ -129,3 +137,6 @@ ratio = length(tail_points)/n
 % 2. L. N. Trefethen and J. A. C. Weideman,
 % The exponentially convergent trapezoidal rule,
 % _SIAM Review_ 56 (2014), 385-458.
+%
+% 3. L. N. Trefethen, Exactness of quadrature formulas_,
+% SIAM Review, submitted, 2020.
