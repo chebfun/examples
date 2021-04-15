@@ -61,10 +61,9 @@ E = chebfun; tic
 for k = 1:6
    E(:,k) = chebfun(@(t) ek(eigL(t),k),d,'splitting','off','eps',1e-4,'vectorize');
 end
-FS = 'fontsize'; LW = 'linewidth';
-figure, plot(E,LW,5), grid on
-title('Eigenvalues of L(t)',FS,36);
-xlabel('t',FS,36)
+figure, plot(E), grid on
+title('Eigenvalues of L(t)');
+xlabel('t')
 ylim([-6 2])
 
 %%
