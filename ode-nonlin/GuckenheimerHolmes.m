@@ -35,7 +35,7 @@ N.op = @(t,u,v,w) [ ...
     diff(w) - w.*(1 - w.^2 - b*u.^2 - c*v.^2)];
 N.lbc = @(u,v,w) [u-0.5; v-0.49; w-0.49];
 [u,v,w] = N\0;
-LW = 'linewidth'; plot(v,LW,1.2)
+plot(v)
 ylim([-0.5 1.5])
 
 %%
@@ -62,7 +62,7 @@ xlabel u, ylabel v, zlabel w
 %%
 % Let's compute a longer orbit, to $t=2000$:
 clf, N.domain = [0 2000];
-[u,v,w] = N\0; plot(v,LW,0.9), ylim([-0.5 1.5])
+[u,v,w] = N\0; plot(v), ylim([-0.5 1.5])
 
 %%
 % The intervals are getting exponentially longer as the
@@ -77,12 +77,12 @@ tw = roots(w-0.5); wp = diff(w); tw = tw(wp(tw)>0); nw = length(tw);
 % A semilog plot of the differences between these numbers
 % reveals the exponential growth, with red, green, and blue
 % corresponding to $u$, $v$, and $w$.
-clf, FS = 'fontsize'; MS = 'markersize';
-semilogy(2/3+(2:nu),diff(tu),'.',MS,14,'color',[.9 0 0 ]), hold on
-semilogy(1/3+(2:nv),diff(tv),'.',MS,14,'color',[0 .7 0 ])
-semilogy(0/3+(2:nw),diff(tw),'.',MS,14,'color',[0 0 1])
-xlabel('crossing number',FS,10), ylabel('time',FS,10)
-title ('Crossing times',FS,14), grid on, axis([5 28 6 600])
+clf 
+semilogy(2/3+(2:nu),diff(tu),'.','color',[.9 0 0 ]), hold on
+semilogy(1/3+(2:nv),diff(tv),'.','color',[0 .7 0 ])
+semilogy(0/3+(2:nw),diff(tw),'.','color',[0 0 1])
+xlabel('crossing number'), ylabel('time')
+title ('Crossing times'), grid on, axis([5 28 6 600])
 legend('u','v','w','location','southeast')
 
 
