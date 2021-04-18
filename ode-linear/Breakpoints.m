@@ -80,7 +80,7 @@ for ep = 10.^(-1:-1:-8)
   if ep == 1e-3
     plot(u,'b'), hold on
     breakpoint = u.ends(2);
-    plot(breakpoint,u(breakpoint),'.r',MS,20)
+    plot(breakpoint,u(breakpoint),'.r',MS,16)
   end
 end
 grid on, axis([-0.03 1 0 1.03]), hold off
@@ -137,7 +137,7 @@ for ep = 10.^(-1:-1:-8)
   if ep == 1e-4
     plot(u,'m'), hold on
     breakpoints = u.ends(2:3);
-    plot(breakpoints,u(breakpoints),'.k',MS,20)
+    plot(breakpoints,u(breakpoints),'.k',MS,16)
   end
 end
 grid on, axis([-2 2 -6 17]), hold off
@@ -171,7 +171,7 @@ tic, u = N\0, t = toc
 plot(u), grid on
 title(['Same but with one breakpoint: time ' num2str(t) ' secs'])
 breakpoint = u.ends(2); hold on
-plot(breakpoint,u(breakpoint),'.r',MS,20), hold off
+plot(breakpoint,u(breakpoint),'.r',MS,16), hold off
 
 %%
 % Note that the matrix size is now a good smaller, which
@@ -186,7 +186,7 @@ tic, u = N\0, t = toc
 plot(u), grid on
 title(['Same but with two breakpoints: time ' num2str(t) ' secs'])
 breakpoints = u.ends(2:3); hold on
-plot(breakpoints,u(breakpoints),'.r',MS,20), hold off
+plot(breakpoints,u(breakpoints),'.r',MS,16), hold off
 
 %%
 % As the illustrations of this Example probably make clear, 
