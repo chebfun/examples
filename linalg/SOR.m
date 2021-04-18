@@ -35,9 +35,9 @@ rho = @(om) max(abs(eig(G(om))));
 % give us an elegant way to draw the famous optimal-$\omega$ curve:
 
 %%
-f = chebfun(rho,[1 2],'splitting','on','vectorize');
-plot(f,'linewidth',2), grid on
-xlabel('\omega','fontsize',16)
+f = chebfun(rho,[1 2],'splitting','on');
+plot(f), grid on
+xlabel('\omega')
 ylabel('convergence factor')
 
 %%
@@ -52,7 +52,7 @@ rho_exact = omega_exact - 1
 %% References
 %
 % 1. S. Frankel, Convergence rates of iterative treatments of partial
-%    differential equations, Mathematics of Computation 4 (1950), 56-75.
+%    differential equations, _Mathematics of Computation_, 4 (1950), 56-75.
 %
 % 2. G. H. Golub and C. F. Van Loan, _Matrix Computations_, 4th ed., Johns
 %    Hopkins, 2012.
