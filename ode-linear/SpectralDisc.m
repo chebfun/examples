@@ -37,10 +37,8 @@
 %%
 % What makes our paper so concrete is that that it calls Chebfun
 % codes `diffmat`, `diffrow`, `intmat`, `introw`, and
-% `gridsample` to do all the work.
-% (As of today, these
-% are available in the development branch of Chebfun.)  We will
-% illustrate with the labeled as Example 2 in the paper.
+% `gridsample` to do all the work.  We will
+% illustrate with the problem labeled as Example 2 in the paper.
 
 %% 2. Example: Airy equation
 
@@ -123,8 +121,7 @@ end
 %% 4. References
 %
 % 1. J. L. Aurentz and L. N. Trefethen, Block operators and spectral
-% discretizations, _SIAM Review_, revised manuscript submitted
-% August 2016.  See people.maths.ox.ac.uk/trefethen/papers.html.
+% discretizations, _SIAM Review_, 59 (2017), 423-446.
 %
 % 2. T. A. Driscoll,
 % Automatic spectral collocation for integral, integro-differential,
