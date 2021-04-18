@@ -27,7 +27,7 @@ A = diag(d); A(1:10,1:10) = A(1:10,1:10) + diag(ones(9,1),1);
 [W,W2] = fov(A);
 MS = 'markersize';
 plot(W,'k'), hold on, plot(W2,'k')
-hold on, plot(d,'.r',MS,10), hold off, axis off
+hold on, plot(d,'.r',MS,12), hold off, axis off
 
 %%
 % That example is a bit highbrow, so let us try a simpler one.
@@ -70,10 +70,10 @@ rng(0)
 B = randn(20); C = randn(20);
 A = @(t) (1-t)*B + t*C;
 abscissa = @(t) max(real(eig(A(t))));
-f = chebfun(@(t) abscissa(t),[0,1],'splitting','on','vectorize');
+f = chebfun(@(t) abscissa(t),[0,1],'splitting','on');
 plot(f), grid on
 breakpts = domain(f); breakpts = breakpts(2:end-1)'
-hold on, plot(breakpts,f(breakpts),'.r',MS,10), hold off
+hold on, plot(breakpts,f(breakpts),'.r',MS,12), hold off
 
 %%
 % There are five breakpoints, but only two of them
@@ -88,11 +88,10 @@ plot(diff(f)), grid on
 % this by increasing the 'splitLength' parameter from its
 % default value of 160.
 % Here they are if we change |splitLength| to 1000.
-f2 = chebfun(@(t) abscissa(t),[0,1],'splitting','on',...
-  'splitLength',1000,'vectorize');
+f2 = chebfun(@(t) abscissa(t),[0,1],'splitting','on','splitLength',1000);
 plot(f2), grid on
 breakpts2 = domain(f2); breakpts2 = breakpts2(2:end-1)'
-hold on, plot(breakpts2,f2(breakpts2),'.r',MS,10), hold off
+hold on, plot(breakpts2,f2(breakpts2),'.r',MS,12), hold off
 
 %%
 % For details of Chebfun's edge detection algorithm,
