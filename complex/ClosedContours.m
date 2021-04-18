@@ -24,27 +24,26 @@
 
 %%
 % Here is a simple example. Consider the function:
-ff = @(z) (1-2*z)./(z.*(z-1).*(z-3));
+ff = @(z) (1-2*z)/(z*(z-1)*(z-3));
 
 %%
 % Suppose we want to integrate this function on a circle of radius $2$.
 % To do this
 % in Chebfun's periodic mode, we first parametrize the circle:
-z = chebfun(@(t) 2*exp(2*pi*1i*t), [0, 1], 'periodic');
+z = chebfun(@(t) 2*exp(2*pi*1i*t), [0, 1], 'trig');
 %%
 % The integrand is then constructed by a simple composition:
 f = ff(z)
-LW = 'linewidth'; lw = 1.6;
-plot(f, LW, lw), axis equal
+plot(f), axis equal
 
 %%
 % This is how the real and imaginary parts of the integrand
 % look on the contour:
 subplot(1, 2, 1)
-plot(real(f), LW, lw)
+plot(real(f))
 title('real part')
 subplot(1, 2, 2)
-plot(imag(f), LW, lw)
+plot(imag(f))
 title('imaginary part')
 
 %%
@@ -65,20 +64,20 @@ norm(s - 5/3*pi*1i)
 
 %%
 % Here is another example. Consider the sinc function
-ff = @(z) sin(5*z)./(5*z);
+ff = @(z) sin(5*z)/(5*z);
 
 %%
 % This analytic function has a removable singularity at the origin. Therefore,
 % the integral of the function on any closed contour should be zero according to
 % Cauchy's theorem.
-z = chebfun(@(t) exp(2*pi*1i*t), [0, 1], 'periodic');
+z = chebfun(@(t) exp(2*pi*1i*t), [0, 1], 'trig');
 f = ff(z);
 dz = diff(z);
 
 %%
 % Here is a plot of the function:
 clf
-plot(f, LW, lw), axis equal
+plot(f), axis equal
 
 %%
 % And here is the integral, which is numerically zero:
@@ -87,8 +86,8 @@ s = sum(f.*dz)
 %%
 % As our final example, we pick a function with an essential singularity at the
 % origin and compute its integral on the unit circle.
-ff = @(z) exp(1./z).*sin(1./z);
-z = chebfun(@(t) exp(2*pi*1i*t), [0, 1], 'periodic');
+ff = @(z) exp(1/z)*sin(1/z);
+z = chebfun(@(t) exp(2*pi*1i*t), [0, 1], 'trig');
 f = ff(z);
 dz = diff(z);
 s = sum(f.*dz)
