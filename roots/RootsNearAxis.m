@@ -9,8 +9,7 @@
 % Here's a wiggly chebfun defined on $[0,30]$:
 x = chebfun('x',[0 30]);
 f = 3 + sin(x) + sin(pi*x);
-LW = 'linewidth';
-plot(f,LW,2)
+plot(f)
 
 %%
 % The chebfun has no roots on the interval:
@@ -21,9 +20,9 @@ roots(f)
 % chebfun will have some accuracy for these complex values. We can get an idea
 % of the relevant region with `plotregion`, which plots the "Chebfun
 % ellipse" for `f`:
-clf, plotregion(f,LW,2), grid on
+clf, plotregion(f), grid on
 xlim([-5 35]), axis equal
-hold on, plot(x,0*x,'k',LW,1.5)
+hold on, plot(x,0*x,'k')
 
 %%
 % The number of digits of accuracy of the chebfun can be expected to reduce
@@ -33,7 +32,7 @@ hold on, plot(x,0*x,'k',LW,1.5)
 % This provides an easy way to calculate roots of functions in the complex
 % plane near the interval of definition, using `roots` with the flag
 % `'complex'`:
-r = roots(f,'complex'); plot(r,'.r','markersize',18)
+r = roots(f,'complex'); plot(r,'.r','markersize',12)
 
 %%
 % Notice that the number of roots is less than the polynomial degree of the
@@ -49,10 +48,10 @@ plot(roots(f,'all'),'or'), axis auto, axis equal
 
 %%
 % For more details about computations like these, see Section 3.6 of the
-% Chebfun Guide, and for more on the mathematics, see Chapters 8
+% _Chebfun Guide_, and for more on the mathematics, see Chapters 8
 % and 18 of [1].
 
 %% References
 %
-% 1. L. N. Trefethen, _Approximation Theory and Approximation Practice_, SIAM,
-%    2013.
+% 1. L. N. Trefethen, _Approximation Theory and Approximation Practice,
+% Extended Edition_, SIAM, 2019.
