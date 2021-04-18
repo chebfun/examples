@@ -15,9 +15,9 @@
 % linear advection-diffusion equation
 % $$ -\varepsilon u'' - u' = 1,\qquad    u(0) = u(1) = 0 , $$
 % with $\varepsilon = 10^{-1}, 10^{-2},\dots,  10^{-5}$.
+MS = 'markersize';
 dom = [0,1];
 L = @(ep) chebop(@(x,u) -ep*diff(u,2) - diff(u),dom,'dirichlet');
-LW = 'linewidth'; lw = 1.6; FS = 'fontsize'; MS = 'markersize';
 headings = '        ep      pos(max(u))    length(u)    time (secs.) ';
 disp(headings)
 fs = '%12.1e %14.9f %9d %14.2f\n';
@@ -25,10 +25,10 @@ for ep = 10.^(-1:-1:-5)
   tic, u = L(ep)\1; t = toc;
   [val,pos] = max(u);
   fprintf(fs, ep, pos, length(u), t)
-  plot(u,'b',LW,lw), hold on
+  plot(u,'b'), hold on
 end
 grid on, axis([-0.03 1 0 1.03]), hold off
-title('Boundary layers for \epsilon = 1e-1, 1e-2,..., 1e-5',FS,12)
+title('Boundary layers for \epsilon = 1e-1, 1e-2,..., 1e-5')
 
 %%
 % The lengths and timings are
@@ -43,7 +43,7 @@ title('Boundary layers for \epsilon = 1e-1, 1e-2,..., 1e-5',FS,12)
 %%
 % There is a standard method used in scientific computing
 % for such problems, adaptive grid refinement, but Chebfun does
-% not have such a capability at present.
+% not have such a capability.
 % For many problems, however, it is remarkable what one can
 % achieve by a method we might regard
 % as "poor man's grid refinement": simply
@@ -78,13 +78,13 @@ for ep = 10.^(-1:-1:-8)
   fprintf(fs, ep, pos, length(u), t)
   [val,pos] = max(u);
   if ep == 1e-3
-    plot(u,'b',LW,lw), hold on
+    plot(u,'b'), hold on
     breakpoint = u.ends(2);
-    plot(breakpoint,u(breakpoint),'.r',MS,24)
+    plot(breakpoint,u(breakpoint),'.r',MS,20)
   end
 end
 grid on, axis([-0.03 1 0 1.03]), hold off
-title('The same computed with a breakpoint, \epsilon = 1e-3',FS,12)
+title('The same computed with a breakpoint, \epsilon = 1e-3')
 
 %%
 % Quite an amazing improvement!  Notice that the breakpoint
@@ -118,10 +118,10 @@ for ep = 10.^(-1:-1:-4)
   tic, u = L(ep)\0; t = toc;
   [val,pos] = max(u);
   fprintf(fs, ep, pos, length(u), t)
-  plot(u,'m',LW,lw), hold on
+  plot(u,'m'), hold on
 end
 grid on, axis([-2 2 -6 17]), hold off
-title('Interior layers for \epsilon = 1e-1, 1e-2,..., 1e-4',FS,12)
+title('Interior layers for \epsilon = 1e-1, 1e-2,..., 1e-4')
 
 %%
 % Inserting breakpoints on either side of $x=0$ improves
@@ -135,13 +135,13 @@ for ep = 10.^(-1:-1:-8)
   [val,pos] = max(u);
   fprintf(fs, ep, pos, length(u), t)
   if ep == 1e-4
-    plot(u,'m',LW,lw), hold on
+    plot(u,'m'), hold on
     breakpoints = u.ends(2:3);
-    plot(breakpoints,u(breakpoints),'.k',MS,24)
+    plot(breakpoints,u(breakpoints),'.k',MS,20)
   end
 end
 grid on, axis([-2 2 -6 17]), hold off
-title('The same computed with two breakpoints \epsilon = 1e-4',FS,12)
+title('The same computed with two breakpoints \epsilon = 1e-4')
 
 %%
 % Here we see the sizes of the three pieces:
@@ -160,7 +160,7 @@ N = chebop(@(u) 0.005*diff(u,2) + u*diff(u) - u, [0 1]);
 N.lbc = -7/6; N.rbc = 3/2;
 tic, u = N\0, t = toc;
 plot(u), grid on
-title(['Nonlinear problem: time ' num2str(t) ' secs'],FS,12)
+title(['Nonlinear problem: time ' num2str(t) ' secs'])
 
 %%
 % The transition occurs at about $x=1/3$, and if we put
@@ -169,9 +169,9 @@ N = chebop(@(u) 0.005*diff(u,2) + u*diff(u) - u, [0 1/3 1]);
 N.lbc = -7/6; N.rbc = 3/2;
 tic, u = N\0, t = toc
 plot(u), grid on
-title(['Same but with one breakpoint: time ' num2str(t) ' secs'],FS,12)
+title(['Same but with one breakpoint: time ' num2str(t) ' secs'])
 breakpoint = u.ends(2); hold on
-plot(breakpoint,u(breakpoint),'.r',MS,24), hold off
+plot(breakpoint,u(breakpoint),'.r',MS,20), hold off
 
 %%
 % Note that the matrix size is now a good smaller, which
@@ -184,9 +184,9 @@ N = chebop(@(u) 0.005*diff(u,2) + u*diff(u) - u, [0 .30 .36 1]);
 N.lbc = -7/6; N.rbc = 3/2;
 tic, u = N\0, t = toc
 plot(u), grid on
-title(['Same but with two breakpoints: time ' num2str(t) ' secs'],FS,12)
+title(['Same but with two breakpoints: time ' num2str(t) ' secs'])
 breakpoints = u.ends(2:3); hold on
-plot(breakpoints,u(breakpoints),'.r',MS,24), hold off
+plot(breakpoints,u(breakpoints),'.r',MS,20), hold off
 
 %%
 % As the illustrations of this Example probably make clear, 
