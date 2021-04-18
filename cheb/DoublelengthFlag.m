@@ -6,17 +6,15 @@
 % [Tags: #coefficients]
 
 %%
-% Recently we've added a `doublelength` flag as an option
+% Recently we've added a |doublelength| flag as an option
 % to the Chebfun constructor.  A picture gives the idea.
 % Here we see the usual Chebyshev coefficients for $\exp(x)$
 % plotted as red circles, together with blue dots for the
 % coefficients of the same function constructed with `doublelength`. 
 f = chebfun('exp(x)');
 f2 = chebfun('exp(x)','doublelength');
-MS = 'markersize'; LW = 'linewidth';
-hold off, plotcoeffs(f2,'.',MS,15)
-hold on, plotcoeffs(f,'or',MS,9,LW,1.2)
-plotcoeffs(f2,'.',MS,15) % needed to work around Matlab graphics bug
+plotcoeffs(f2,'.'), hold on
+plotcoeffs(f,'or'), hold off
 
 %%
 % When you construct a chebfun with `doublelength`, it comes out
@@ -34,18 +32,18 @@ plotcoeffs(f2,'.',MS,15) % needed to work around Matlab graphics bug
 % going any further would achieve nothing, because of rounding
 % errors.  Here's another example, with doublelength coefficients in
 % blue and ordinary ones in red:
-f = chebfun('sin(x)+sin(x.^2)',[0 10]);
-f2 = chebfun('sin(x)+sin(x.^2)',[0 10],'doublelength');
-hold off, plotcoeffs(f2,LW,1.2)
-hold on, plotcoeffs(f,'r',LW,1.2)
+f = chebfun('sin(x)+sin(x^2)',[0 10]);
+f2 = chebfun('sin(x)+sin(x^2)',[0 10],'doublelength');
+plotcoeffs(f2), hold on
+plotcoeffs(f,'r'), hold off
 
 %%
 % What about trigfuns, i.e., periodic Chebfun representations
-% of periodic functions?  The idea of `doublelength` here is analogous,
+% of periodic functions?  The idea of |doublelength| here is analogous,
 % and to be precise, it is again actually the 
 % degree that is doubled.  Here is an example:
-ff = @(t) 1./(2-cos(17*(t-1)));
+ff = @(t) 1/(2-cos(17*(t-1)));
 f = chebfun(ff,[-pi pi],'trig');
 f2 = chebfun(ff,[-pi pi],'trig','doublelength');
-hold off, plotcoeffs(f2,'.',MS,9)
-hold on, plotcoeffs(f,'.r',MS,6)
+plotcoeffs(f2,'.'), hold on
+plotcoeffs(f,'.r'), hold off
