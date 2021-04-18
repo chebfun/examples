@@ -51,38 +51,38 @@ uexact = L\sin(t);
 % the exact solution in red.
 u = u0 + 0*t;
 f = @(u,t) sin(u) + sin(t);
-LW = 'linewidth'; FS = 'fontsize'; IN = 'interpret'; LT = 'latex';
+IN = 'interpret'; LT = 'latex';
 hold off
 ss = @(k) ['$k = ' int2str(k) '$'];
 for k = 0:4
-  plot(u,'b',LW,1.6), hold on, ylim([-3 10])
+  plot(u,'b'), hold on, ylim([-3 10])
   text(1.015*d,u(end),ss(k),IN,LT)
   u = u0 + cumsum(f(u,t));
 end
-plot(uexact,'r',LW,1.6), xlabel('t',FS,10), ylabel('u',FS,10)
-title('Picard iterates $k = 0,\dots,4$',FS,12,IN,LT)
+plot(uexact,'r'), xlabel('t'), ylabel('u')
+title('Picard iterates $k = 0,\dots,4$',IN,LT)
 
 %%
 % A second plot shows $k = 5,\dots,9$.
 hold off
 for k = 5:9
-  plot(u,'b',LW,1.6), hold on, ylim([0 7])
+  plot(u,'b'), hold on, ylim([0 7])
   text(1.015*d,u(end),ss(k),IN,LT)
   u = u0 + cumsum(f(u,t));
 end
-plot(uexact,'r',LW,1.6), xlabel('t',FS,10), ylabel('u',FS,10)
-title('Picard iterates $k = 5,\dots,9$',FS,12,IN,LT)
+plot(uexact,'r'), xlabel('t'), ylabel('u')
+title('Picard iterates $k = 5,\dots,9$',IN,LT)
 
 %%
 % A third plot shows $k = 10,\dots ,14$.
 hold off
 for k = 10:14
-  plot(u,'b',LW,1.6), hold on, ylim([1 6])
+  plot(u,'b'), hold on, ylim([1 6])
   text(1.015*d,u(end),ss(k),IN,LT)
   u = u0 + cumsum(f(u,t));
 end
-plot(uexact,'r',LW,1.6), xlabel('t',FS,10), ylabel('u',FS,10)
-title('Picard iterates $k = 10,\dots,14$',FS,12,IN,LT)
+plot(uexact,'r'), xlabel('t'), ylabel('u')
+title('Picard iterates $k = 10,\dots,14$',IN,LT)
 
 %%
 % These plots show vividly the kind of convergence one
@@ -108,13 +108,13 @@ ss = @(k) ['$k = ' int2str(k) '$'];
 tt = logspace(-2,log10(8),600); hold off
 for k = 0:4
   errtt = abs(u(tt)-uexact(tt));
-  loglog(tt,errtt,'k',LW,.7), hold on
+  loglog(tt,errtt,'k'), hold on
   text(8.7,errtt(1),ss(k),IN,LT)
   u = u0 + cumsum(f(u,t));
 end
-xlabel('t',FS,10), ylabel('error',FS,10)
-axis([1e-2 8 1e-16 1e3])
-title('Errors of iterates $0,\dots,4$',FS,12,IN,LT)
+xlabel('t'), ylabel('error')
+axis([1e-2 8 1e-16 1e3]), grid on
+title('Errors of iterates $0,\dots,4$',IN,LT)
 
 %%
 % Reference:
