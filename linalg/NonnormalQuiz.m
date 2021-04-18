@@ -24,12 +24,11 @@ A1 = [-1 1; 0 -1],  A2 = [-1 5; 0 -2]
 % with Chebfun.
 e1 = chebfun(@(t) norm(expm(t*A1)),[0 3.4]);
 e2 = chebfun(@(t) norm(expm(t*A2)),[0 3.4]);
-LW = 'linewidth'; FS = 'fontsize';
-plot(e1,'b',e2,'r',LW,2)
+plot([e1 e2])
 ylim([0 1.5]), grid on, legend('A1','A2')
-xlabel('t',FS,14)
-ylabel('||e^{tA}||',FS,14)
-title('Which curve is which?',FS,16)
+xlabel('t')
+ylabel('||e^{tA}||')
+title('Which curve is which?')
 
 %%
 % The plot shows two curves, one with a hump and one without. The book asks,
