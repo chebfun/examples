@@ -9,14 +9,14 @@
 % The function $$ f(x) = \int_0^{\infty} {e^{-t} \over 1 + xt} dt $$ is an
 % easy one for Chebfun to evaluate.  For example, the value at $x=1$ is
 format long
-sum(chebfun(@(t) exp(-t)./(1+t),[0 inf]))
+sum(chebfun(@(t) exp(-t)/(1+t),[0 inf]))
 
 %%
 % It's not hard to make a Chebfun of the result, like this:
-ff = @(x) sum(chebfun(@(t) exp(-t)./(1+x*t),[0 inf]));
-f = chebfun(ff,[0,5],'vectorize');
-hold off, plot(f,'linewidth',2)
-title('The integral f as a function of parameter x','fontsize',12)
+ff = @(x) sum(chebfun(@(t) exp(-t)/(1+x*t),[0 inf]));
+f = chebfun(ff,[0,5]);
+hold off, plot(f)
+title('The integral f as a function of parameter x')
 
 %%
 % One of the interesting features of $f$ is that its derivatives at $x=0$
