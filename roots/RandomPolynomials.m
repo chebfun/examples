@@ -15,15 +15,14 @@
 % polynomial rootfinding pertain mainly to problems with roots away from the
 % unit circle and coefficients far from random.
 nn = [50 200];
-MS = 'markersize'; FS = 'fontsize'; ms = 12; fs = 12;
 for j = 1:2
     subplot(1,2,j)
     n = nn(j);
     a = [1; randn(n,1)];
     r = roots(a);
-    plot(r,'.k',MS,ms)
+    plot(r,'.k')
     axis(1.5*[-1 1 -1 1]), axis square
-    title(['monomial, n=' int2str(n)],FS,fs)
+    title(['monomial, n=' int2str(n)])
 end
 
 %%
@@ -44,9 +43,9 @@ for j = 1:2
     a = [1; randn(n,1)];
     p = chebfun(a,'coeffs');
     r = roots(p,'all');
-    plot(r,'.k',MS,ms)
+    plot(r,'.k')
     axis(1.5*[-1 1 -1 1]), axis square
-    title(['Chebyshev, n=' int2str(n)],FS,fs)
+    title(['Chebyshev, n=' int2str(n)])
 end
 
 %%
@@ -59,24 +58,24 @@ for j = 1:2
     A = legpoly(n:-1:0);
     p = A*a;
     r = roots(p,'all');
-    plot(r,'.k',MS,ms)
+    plot(r,'.k')
     axis(1.5*[-1 1 -1 1]), axis square
-    title(['Legendre, n=' int2str(n)],FS,fs)
+    title(['Legendre, n=' int2str(n)])
 end
 
 %% References
 %
-% 1. J. Hammersley, The zeros of a random polynomial, Proceedings of the Third
-%    Berkeley Symposium on Mathematical Statistics and Probability, 1954-1955,
+% 1. J. Hammersley, The zeros of a random polynomial, _Proceedings of the Third
+%    Berkeley Symposium on Mathematical Statistics and Probability_, 1954-1955,
 %    U. California Press, 1956, pp. 89-111.
 %
 % 2. L. A. Shepp and R. J. Vanderbei, The complex zeros of random polynomials,
-%    Transactions of the American Mathematical Society 347 (1995), 4365-4384.
+%    _Transactions of the American Mathematical Society_, 347 (1995), 4365-4384.
 %
 % 3. B. Shiffman and S. Zelditch, Equilibrium distribution of zeros of random
-%    polynomials, International Mathematical Research Notices, 2003, pp.
+%    polynomials, _International Mathematical Research Notices_, 2003, pp.
 %    25-49.
 %
 % 4. K.-C. Toh and L. N. Trefethen, Pseudozeros of polynomials and
-%    pseudospectra of companion matrices, Numerische Mathematik, 68 (1994),
+%    pseudospectra of companion matrices, _Numerische Mathematik_, 68 (1994),
 %    403-425.
