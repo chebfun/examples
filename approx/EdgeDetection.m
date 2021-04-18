@@ -25,20 +25,20 @@ rng(1)
 d = sort(randn(20,1)) + 1i*randn(20,1);
 A = diag(d); A(1:10,1:10) = A(1:10,1:10) + diag(ones(9,1),1); 
 [W,W2] = fov(A);
-LW = 'linewidth'; MS = 'markersize'
-plot(W,'k',LW,1.6), hold on, plot(W2,'k',LW,1.6)
-hold on, plot(d,'.r',MS,14), hold off, axis off
+MS = 'markersize';
+plot(W,'k'), hold on, plot(W2,'k')
+hold on, plot(d,'.r',MS,10), hold off, axis off
 
 %%
 % That example is a bit highbrow, so let us try a simpler one.
 % Here's one that is *very* simple.  Suppose we make
-% Chebfun from the function $|e^x \sin(10\pi x)|$, using 'splitting on'
+% a chebfun from the function $|e^x \sin(10\pi x)|$, using 'splitting on'
 % mode:
-f = chebfun('abs(exp(x).*sin(10*pi*x))','splitting','on');
+f = chebfun('abs(exp(x)*sin(10*pi*x))','splitting','on');
 plot(f)
 
 %%
-% Of course we know mathematically that the points of discontinuity
+% Of course we know mathematically that the points of singularity
 % are $-1,-0.9,\dots, 1$, but Chebfun doesn't know this a priori; it
 % figures it out with edge detection to make a piecewise Chebfun.
 % Here we see that the edges detected are correct in all the
@@ -56,7 +56,7 @@ maxerr = norm(domain(f)-true_edges,inf)
 % Now in this example we didn't really need the edge detector; 
 % indeed we could construct the chebfun by telling it where to put
 % the breakpoints. 
-f2 = chebfun('abs(exp(x).*sin(10*pi*x))',true_edges,'splitting','on');
+f2 = chebfun('abs(exp(x)*sin(10*pi*x))',true_edges);
 norm(f-f2)
 
 %%
@@ -73,7 +73,7 @@ abscissa = @(t) max(real(eig(A(t))));
 f = chebfun(@(t) abscissa(t),[0,1],'splitting','on','vectorize');
 plot(f), grid on
 breakpts = domain(f); breakpts = breakpts(2:end-1)'
-hold on, plot(breakpts,f(breakpts),'.r',MS,12), hold off
+hold on, plot(breakpts,f(breakpts),'.r',MS,10), hold off
 
 %%
 % There are five breakpoints, but only two of them
@@ -92,7 +92,7 @@ f2 = chebfun(@(t) abscissa(t),[0,1],'splitting','on',...
   'splitLength',1000,'vectorize');
 plot(f2), grid on
 breakpts2 = domain(f2); breakpts2 = breakpts2(2:end-1)'
-hold on, plot(breakpts2,f2(breakpts2),'.r',MS,12), hold off
+hold on, plot(breakpts2,f2(breakpts2),'.r',MS,10), hold off
 
 %%
 % For details of Chebfun's edge detection algorithm,
