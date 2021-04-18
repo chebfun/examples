@@ -39,22 +39,21 @@ q = nu*w + 4*Q*w.*z + 2*Q*z.^2 - 27*w.^3 - 18*w.^2.*z - 42*w.*z.^2 - 6*z.^3;
 %%
 % Let's plot the zero curves in blue for $p$ and red for $q$,
 % with black dots for the common roots:
-MS = 'markersize'; LW = 'linewidth';
-plot(roots(p),'b',LW,2), hold on, grid on
-plot(roots(q),'r',LW,2)
+MS = 'markersize';
+plot(roots(p),'b'), hold on, grid on
+plot(roots(q),'r')
 r = roots(p,q)
-plot(r(:,1),r(:,2),'.k',MS,20), axis equal, hold off
+plot(r(:,1),r(:,2),'.k',MS,12), axis equal, hold off
 xlabel z, ylabel w
 
 %%
 % For comparison, here is what we get if we negate $\mu$:
 mu = -0.1;
 p = mu*z + 2*Q*w.^2 + 4*Q*w.*z - 6*w.^3 - 42*w.^2.*z - 18*w.*z.^2 - 27*z.^3;
-plot(roots(p),'b',LW,2), hold on, grid on
-plot(roots(q),'r',LW,2)
+plot(roots(p),'b'), hold on, grid on
+plot(roots(q),'r')
 r = roots(p,q)
-MS = 'markersize';
-plot(r(:,1),r(:,2),'.k',MS,20), axis equal, hold off
+plot(r(:,1),r(:,2),'.k',MS,12), axis equal, hold off
 xlabel z, ylabel w
 
 %%
