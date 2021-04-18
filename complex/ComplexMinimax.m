@@ -128,8 +128,7 @@ total_time_for_this_example = toc
 %%
 % [1] Y. Nakatsukasa and L. N. Trefethen,
 % An algorithm for real and complex rational minimax approximation,
-% _SIAM J. Sci. Comput.,_ submitted, and
-% arXiv:1908.06001.
+% _SIAM J. Sci. Comput.,_ 42 (2020), A3157-A3179.
 %
 % [2] L. N. Trefethen, Rational Chebsyhev approximation on
 % the unit disk, _Numer. Math._ 37 (1981), 297--320.
