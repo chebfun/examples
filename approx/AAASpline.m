@@ -8,18 +8,18 @@
 %%
 % The other day I attended Heather Wilber's defense of her PhD thesis
 % at Cornell [2].
-% On of the demonstrations Wilber showed was of AAA approximation of a 
+% One of the demonstrations Wilber showed was of AAA approximation of a 
 % spline function.  Where does AAA place the poles?
 % Near the spline nodes, of course,
-% because these are points of nonanalyticity.
+% because these are the points of nonanalyticity.
 
 %%
 % To illustrate, here is the spline function from the 
 % Chebfun example "Splines" of February 2013, with
 % nodes at the integers $0,1,\dots, 10$:
-x = chebfun('x',[0 10]);
-f = sin(x + x^2/4);
-s = chebfun.spline(0:10,f(0:10));
+nodes = 0:10; 
+data = sin(nodes + nodes.^2/4);
+s = chebfun.spline(nodes,data);
 
 %%
 % We compute the AAA approximation to $s$ based on 1000 sample
@@ -39,10 +39,10 @@ clf, plot(poles,'.r',MS,10), axis([3.9 4.1 -.8 .8]), grid on
 title(['poles near x=4'])
 
 %%
-% Here way is the function we have been approximating, with
+% Here is the function we have been approximating, with
 % the nodes shown as black dots.
 plot(s), grid on
-hold on, plot(s.ends,s(s.ends),'.k',MS,12), ylim([-1.2 1.2]), hold off
+hold on, plot(nodes,data,'.k',MS,12), ylim([-1.2 1.2]), hold off
 title('the spline being approximated')
 
 %%
