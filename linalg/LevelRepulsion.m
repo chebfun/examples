@@ -52,12 +52,11 @@ d = [0 1];
 t = chebfun('t',d);
 E = chebfun; tic
 for k = 1:n
-   E(:,k) = chebfun(@(t) eigk((1-t)*A+t*B,k),d,'splitting','off','vectorize');
+   E(:,k) = chebfun(@(t) eigk((1-t)*A+t*B,k),d,'splitting','off');
 end
-FS = 'fontsize'; LW = 'linewidth'; MS = 'markersize';
-figure, plot(E,LW,1.6), grid on
-title('Eigenvalues of (1-t)A + tB',FS,16);
-xlabel('t',FS,12), toc
+figure, plot(E), grid on
+title('Eigenvalues of (1-t)A + tB');
+xlabel('t'), toc
 
 %%
 % The 1st and 2nd curves have a very close near-crossing.  We can find it
@@ -66,16 +65,16 @@ E5 = E(:,1); E6 = E(:,2);
 [minval,minpos] = min(E6-E5)
 
 %%
-% Let's zoom in and mark the minimal gap in red:
+% Let's zoom in and mark the minimal gap in black:
 axis([minpos-.05 minpos+.05 E5(minpos)-.4 E5(minpos)+.4])
-title(['Zooming in: the gap width is ' num2str(minval)],FS,16)
-hold on, plot(minpos,E5(minpos),'.r',MS,18)
-hold on, plot(minpos,E6(minpos),'.r',MS,18)
+title(['Zooming in: the gap width is ' num2str(minval)]), hold on
+plot(minpos,E5(minpos),'.k','markersize',12)
+plot(minpos,E6(minpos),'.k','markersize',12), hold off
 
 %% References
 %
 % 1. P. Lax, _Linear Algebra_, Wiley, 1996.
 %
-% 2. J. von Neumann and E. Wigner, Ueber das Verhalten von Eigenwerten bei
+% 2. J. von Neumann and E. Wigner, &Uuml;ber das Verhalten von Eigenwerten bei
 %    adiabatischen Prozessen, _Physicalische
 %    Zeitschrift_, 30 (1929), 467-470.
