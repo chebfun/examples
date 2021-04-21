@@ -18,8 +18,7 @@
 % Chebfun example "Splines" of February 2013, with
 % nodes at the integers $0,1,\dots, 10$:
 x = chebfun('x',[0 10]);
-f = sin(x + 0.25*x.^2);
-MS = 'markersize';
+f = sin(x + x^2/4);
 s = chebfun.spline(0:10,f(0:10));
 
 %%
@@ -29,20 +28,21 @@ s = chebfun.spline(0:10,f(0:10));
 % there are no singularities at $x= 0,1,9,10$.
 X = linspace(0,10,1000)';
 [r,poles] = aaa(s(X),X,'mmax',200,'tol',1e-10);
-plot(poles,'.r',MS,8)
+MS = 'markersize';
+plot(poles,'.r',MS,12)
 grid on, axis equal, axis([1.5 8.5 -2 2])
 title(['poles of AAA approximant, ' int2str(length(poles)) ' in total'])
 
 %%
 % We zoom in near $x=4$:
-clf, plot(poles,'.r',MS,10), axis([3.9 4.1 -.9 .9]), grid on
+clf, plot(poles,'.r',MS,10), axis([3.9 4.1 -.8 .8]), grid on
 title(['poles near x=4'])
 
 %%
 % Here way is the function we have been approximating, with
 % the nodes shown as black dots.
 plot(s), grid on
-hold on, plot(s.ends,s(s.ends),'.k',MS,12), hold off
+hold on, plot(s.ends,s(s.ends),'.k',MS,12), ylim([-1.2 1.2]), hold off
 title('the spline being approximated')
 
 %%
