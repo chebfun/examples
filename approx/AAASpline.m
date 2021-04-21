@@ -1,4 +1,5 @@
-%% AAA approximation of a spline % Nick Trefethen, February 2013
+%% AAA approximation of a spline
+% Nick Trefethen, April 2021
 
 %%
 % (Chebfun example approx/AAASpline.m)
