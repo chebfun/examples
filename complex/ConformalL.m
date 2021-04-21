@@ -68,7 +68,7 @@
 % off-scale.
   LW = 'linewidth'; MS = 'markersize';
   plot(Z,'b',LW,1)
-  axis(1.1*[-1 1 -1 1]), axis equal, hold on, axis off
+  axis(1.1*[-1 1 -1 1]), axis square, hold on, axis off
   plot(pol,'.r',MS,10)
   ray = chebpts(100); ray = ray(ray>=0);
   for th = 2*pi*(1:12)/12, plot(finv(exp(1i*th)*ray),'k',LW,.5), end
@@ -81,7 +81,7 @@
 % circles and radial lines in the unit disk, which we
 % now plot.  The red dots are the poles of $f^{-1}$.
   plot(W,'b',LW,1)
-  axis(1.4*[-1 1 -1 1]), axis equal, hold on, axis off
+  axis(1.4*[-1 1 -1 1]), axis square, hold on, axis off
   plot(polinv,'.r',MS,10)
   for th = 2*pi*(1:12)/12, plot(exp(1i*th)*ray,'k',LW,.5), end
   for r = .1:.1:.9, plot(r*circ,'k',LW,.5), end, hold off
@@ -90,12 +90,12 @@
 %%
 % A well-known effect, going back to Newman and 1964 and Zolotarev
 % in the 19th century, is that poles of rational approximations tend
-% to cluster exponentially near singularities.  Let us examine this
+% to cluster exponentially near singularities [6].  Let us examine this
 % effect for the first plot above, where the poles cluster near the reentrant
 % corner.  Here are the distances of those poles from
 % the singularity plotted on a log scale.  The curving down at
-% the left edge is a known phenomenon and is modeled in equation
-% (3.2) of [2].  For an analysis of exponential clustering, see [5].
+% the left edge is a known phenomenon, whcih is modeled in equation
+% (3.2) of [2] and explained in [6].
 distances = sort(abs(pol(real(pol)>0 & imag(pol)>0)));
 clf, semilogy(distances,'.-',MS,12,LW,.5), grid on
 title('distances of poles to singularity')
@@ -128,7 +128,7 @@ total_time_for_this_example = toc
 %
 % [4] L. N. Trefethen,
 % Numerical conformal mapping with rational functions,
-% _Computational Methods and Function Theory_ (2020), 1-19.
+% _Computational Methods and Function Theory_, 20 (2020), 369-387.
 %
 % [5] L. N. Trefethen, |confmap.m| code, 
 % |people.maths.ox.ac.uk/trefethen/lightning.html|.
@@ -136,4 +136,4 @@ total_time_for_this_example = toc
 % [6] L. N. Trefethen, Y. Nakatsukasa, and J. A. C. Weideman,
 % Exponential node clustering at singularities for rational
 % approximation, quadrature, and PDEs, _Numerische Mathematik_, 
-% submitted, 2020.
+% 147 (2021), 227-254.
