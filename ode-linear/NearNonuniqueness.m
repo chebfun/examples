@@ -5,6 +5,10 @@
 % (Chebfun example ode-linear/NearNonuniqueness.m)
 
 %% 1. Near-nonuniqueness for a linear ODE BVP
+% This example gives a taste of the more extensive discussion to be
+% found in the published paper [6].
+
+%% 
 % The linear problem
 % $$ Lu = \epsilon u"- xu'+ u = 1, \quad u(\pm 1) = 0 , ~\epsilon \ll 1 $$
 % has a unique solution.  From uniqueness, it follows that the
@@ -16,9 +20,8 @@
 % Chebfun with $\epsilon = 0.01$?
 L = chebop(-1,1); L.lbc = 0; L.rbc = 0;
 L.op = @(x,u) 0.01*diff(u,2) - x*diff(u) + u;
-LW = 'linewidth'; FS = 'fontsize';
-u = L\1; plot(u,LW,4), set(gca,'xtick',-1:1)
-title('This function should be even',FS,12)
+u = L\1; plot(u), set(gca,'xtick',-1:1)
+title('This function should be even')
 
 %%
 % A clue comes when we look at the residual for the computed solution.
@@ -28,7 +31,7 @@ residual_norm = norm(L*u - 1)
 
 %%
 % In the language familiar in the study of 
-% pseudospectra [5,6] we could say that although $u$ is
+% pseudospectra [5,7] we could say that although $u$ is
 % not _near a solution_, it is _nearly a solution_.
 % Domokos and Holmes would call it a _ghost solution_ [2].
 
@@ -38,9 +41,9 @@ residual_norm = norm(L*u - 1)
 % "solution" is determined by arbitrary features of the Chebfun
 % discretization that might as well be random.
 L.op = @(x,u) 0.005*diff(u,2) - x*diff(u) + u;
-u = L\1; subplot(1,2,1), plot(u,LW,2), set(gca,'xtick',-1:1)
+u = L\1; subplot(1,2,1), plot(u), set(gca,'xtick',-1:1)
 L.op = @(x,u) 0.001*diff(u,2) - x*diff(u) + u;
-u = L\1; subplot(1,2,2), plot(u,LW,2), set(gca,'xtick',-1:1)
+u = L\1; subplot(1,2,2), plot(u), set(gca,'xtick',-1:1)
 
 %%
 % What's going on is that although $L$ does not have any null functions, 
@@ -54,7 +57,7 @@ eigs(L)
 % If we plot the near-null function we see the shape of the upside-down
 % N:
 [v,d] = eigs(L,1,'SM');
-clf, plot(v,'m',LW,2), set(gca,'xtick',-1:1), title('null function',FS,10)
+clf, plot(v,'m'), set(gca,'xtick',-1:1), title('null function')
 
 %%
 % We can explain this effect as follows.  An ODE BVP will have a
@@ -101,17 +104,17 @@ roots([.01 -1 1])
 % exponentially large.  Here we take the large value $\epsilon = 0.1$:
 L = chebop(-1,1); L.lbc = 0; L.rbc = 0;
 L.op = @(x,u) 0.1*diff(u,2) + x*diff(u) + u;
-u = L\1; plot(u,LW,2), set(gca,'xtick',-1:1)
+u = L\1; plot(u), set(gca,'xtick',-1:1)
 ylim([-200 0]), set(gca,'ytick',-200:100:0)
-title('Solution to the dual problem',FS,10)
+title('Solution to the dual problem')
 
 %%
 % As we shrink $\epsilon$, the amplitude grows exponentially.
 L.op = @(x,u) 0.05*diff(u,2) + x*diff(u) + u;
-u = L\1; subplot(1,2,1), plot(u,LW,2), set(gca,'xtick',-1:1)
+u = L\1; subplot(1,2,1), plot(u), set(gca,'xtick',-1:1)
 ylim([-3e4 0])
 L.op = @(x,u) 0.025*diff(u,2) + x*diff(u) + u;
-u = L\1; subplot(1,2,2), plot(u,LW,2), set(gca,'xtick',-1:1)
+u = L\1; subplot(1,2,2), plot(u), set(gca,'xtick',-1:1)
 ylim([-6e8 0])
 
 %%
@@ -158,7 +161,7 @@ roots([.01 1 1])
 % very fully by Hormander, Dencker, and others.  Nonexistence for
 % one problem is associated with nonuniqueness for the dual problem,
 % which in turn has to do with the appearance of null functions in
-% the form of Gaussian wave packets.  See chapter 13 of [6].
+% the form of Gaussian wave packets.  See chapter 13 of [7].
 
 %%
 % One can see related issues of linear PDE ill-posedness in a
@@ -174,7 +177,7 @@ roots([.01 1 1])
 %% 4. References
 %
 % 1. J. L. Aurentz and L. N. Trefethen, Block operators and
-% spectral discretizations, _SIAM Review_, to appear.
+% spectral discretizations, _SIAM Review_, 59 (2017), 423--446.
 %
 % 2. G. Domokos and P. Holmes, On nonlinear boundary-value
 % problems: ghosts, parasites and discretizations, 
@@ -184,12 +187,16 @@ roots([.01 1 1])
 % Two-point boundary value problems for linear evolution equations,
 % _Math. Proc. Camb. Phil. Soc._ 131 (2001), 521-543.
 %
-% 4. H Lewy, An example of a smooth linear partial differential
+% 4. H. Lewy, An example of a smooth linear partial differential
 % equation without solution, _Ann. Math._ 66 (19757), 155-158.
 %
 % 5. L. N. Trefethen, Wave packet pseudomodes of variable
 % coefficient differential operators, _Proc. Roy. Soc. Lond. A_
 % 461 (2005), 3099-3122.
 %
-% 6. L. N. Trefethen and M. Embree, _Spectra and Pseudospectra_,
+% 6. L. N. Trefethen, Eight perspectives on the exponentially
+% ill-conditioned equation $\varepsilon y'' - xy + y = 0$,
+% _SIAM Review_, 62 (2020), 439--462.
+%
+% 7. L. N. Trefethen and M. Embree, _Spectra and Pseudospectra_,
 % Princeton U. Press, 2005.
