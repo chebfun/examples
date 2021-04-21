@@ -13,8 +13,8 @@
 %
 % Generically there will be no double eigenvalues for any $t$,
 % though some may come close.  Here are the bottom two eigenvalues
-% from that example as a function of $t$:
-rng(1); n = 10;
+% from that example as functions of $t$:
+rng(1), n = 10;
 A = randn(n); A = A+A'; B = randn(n); B = B+B';
 ek = @(e,k) e(k);            % returns kth element of the vector e
 eigA = @(A) sort(eig(A));    % returns sorted eigenvalues of the matrix A
@@ -25,13 +25,12 @@ for k = 1:n
 end
 E1 = E(:,1); E2 = E(:,2);
 
-FS = 'fontsize'; MS = 'markersize';
 figure, plot([E1; E2]), grid on
 title('Near-crossing of two eigenvalues');
-xlabel('t',FS,12)
+xlabel('t')
 
 %%
-% Antoine Levitt of the Ecole des Ponts has alerted me to a phenomenon
+% Antoine Levitt of the &Eacute;cole des Ponts has alerted me to a phenomenon
 % that physicists know but numerical analysts may not be so well
 % aware of.  Numerical analysts know that eigenvalues of real symmetric
 % matrices are well-conditioned, with condition number $1$ in the 2-norm.
@@ -60,7 +59,7 @@ title('derivatives of the eigenvalue functions')
 % a branch cut.)
 X = linspace(0,1,1000);
 [r,pol] = aaa(E1,X);
-plot(pol,'.r',MS,12), grid on
+plot(pol,'.r','markersize',12), grid on
 axis([0 1 -.2 .2])
 title('narrow strip of analyticity')
 
@@ -72,11 +71,10 @@ Esum = E1 + E2;
 plot(Esum)
 title('sum of the two eigenvalues')
 
-
 %%
 % And here are the poles of the AAA approximant:
 [r,pol] = aaa(Esum(X),X);
-plot(pol,'.r',MS,12), grid on
+plot(pol,'.r','markersize',14), grid on
 axis([0 1 -.2 .2])
 title('for the sum, a wider strip of analyticity')
 
