@@ -16,7 +16,7 @@
 % wavelength parameter $\lambda>0$, and the SDE limit corresponds to
 % $\lambda \to 0$.  Actually in this limit one will get a Stratonovich
 % (rather than It&ocirc;) SDE, written
-% $$ dX_t = \mu X_t dt + \sigma X_t \circ dW_t, ~~~ (3)  $$
+% $$ dX_t = \mu X_t dt + \sigma X_t \circ dW_t. ~~~ (3)  $$
 
 %%
 % $\mu$ is called the _drift_ coefficient and $\sigma$ is
@@ -37,39 +37,38 @@
 tic
 dom = [0,20]; L = chebop(dom); L.lbc = 1; L.maxnorm = 100;
 rng(0), lambda = 0.2;
-LW = 'linewidth'; FS = 'fontsize';
 f = randnfun(lambda,dom,'big',5);
 mu = 0; sigma = 1;
 for k = 1:5
-  L.op = @(t,y) diff(y) - mu*y - sigma*f(:,k)*y;
-  y = L\0; plot(y,LW,2.5), hold on
+   L.op = @(t,y) diff(y) - mu*y - sigma*f(:,k)*y;
+   y = L\0; plot(y), hold on
 end
 grid on, hold off
-xlabel('t',FS,32), ylabel('y',FS,32)
-title('zero drift',FS,32)
+xlabel('t'), ylabel('y')
+title('zero drift')
 
 %%
 % If we increase $\mu$ to $0.2$, there is now an
 % upward bias on any scale.
 mu = 0.2;
 for k = 1:5
-  L.op = @(t,y) diff(y) - mu*y - sigma*f(:,k)*y;
-  y = L\0; plot(y,LW,2.5), hold on
+   L.op = @(t,y) diff(y) - mu*y - sigma*f(:,k)*y;
+   y = L\0; plot(y), hold on
 end
 grid on, hold off, ylim([0 70])
-xlabel('t',FS,32), ylabel('y',FS,32)
-title('positive drift',FS,32)
+xlabel('t'), ylabel('y')
+title('positive drift')
 
 %%
 % Setting $\mu = -0.2$, on the other hand, leads to decay.
 mu = -0.2;
 for k = 1:5
-  L.op = @(t,y) diff(y) - mu*y - sigma*f(:,k)*y;
-  y = L\0; plot(y,LW,2.5), hold on
+   L.op = @(t,y) diff(y) - mu*y - sigma*f(:,k)*y;
+   y = L\0; plot(y), hold on
 end
 grid on, hold off
-xlabel('t',FS,32), ylabel('y',FS,32)
-title('negative drift',FS,32)
+xlabel('t'), ylabel('y')
+title('negative drift')
 
 %%
 total_time_in_seconds = toc

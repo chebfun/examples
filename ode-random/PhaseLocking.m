@@ -17,30 +17,29 @@
 % $\lambda = 0.2$.
 tic, dom = [0 6]; N = chebop(dom); rng(0)
 N.lbc = 0; N.op = @(t,y) diff(y) - t*y + y^3; 
-LW = 'linewidth'; FS = 'fontsize'; fs = 32;
 for k = 1:6
   f = randnfun(0.2,dom,'big');
-  y = N\f; plot(y,LW,5), hold on
+  y = N\f; plot(y), hold on
 end
-xlabel('t',FS,36), ylabel('y',FS,36)
-title('lambda = 0.2, 6 paths',FS,fs), toc
+xlabel('t'), ylabel('y')
+title('lambda = 0.2, 6 paths'), toc
 
 %%
 % Here's the same computation with $\lambda = 0.05$.
 tic, clf
 for k = 1:6
   f = randnfun(0.05,dom,'big');
-  y = N\f; plot(y,LW,2), hold on
+  y = N\f; plot(y), hold on
 end
-xlabel('t',FS,36), ylabel('y',FS,36)
-title('lambda = 0.05, 6 paths',FS,fs), toc
+xlabel('t'), ylabel('y')
+title('lambda = 0.05, 6 paths'), toc
 
 %%
 % Here's a much bigger sample.
 tic, clf
 for k = 1:60
   f = randnfun(0.05,dom,'big');
-  y = N\f; plot(y,LW,1), hold on
+  y = N\f; plot(y), hold on
 end
-xlabel('t',FS,36), ylabel('y',FS,36)
-title('lambda = 0.05, 60 paths',FS,fs), toc
+xlabel('t'), ylabel('y')
+title('lambda = 0.05, 60 paths'), toc
