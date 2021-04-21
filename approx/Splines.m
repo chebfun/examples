@@ -11,8 +11,8 @@
 hold off
 x = chebfun('x',[0 10]);
 f = sin(x + 0.25*x.^2);
-LW = 'linewidth'; MS = 'markersize'; FS = 'fontsize';
-plot(f,LW,1.6), axis([0 10 -1.2 1.2])
+MS = 'markersize';
+plot(f), axis([0 10 -1.2 1.2])
 
 %%
 % Let us call Chebfun `spline` to make a cubic spline $s$ that interpolates $f$ at
@@ -20,8 +20,8 @@ plot(f,LW,1.6), axis([0 10 -1.2 1.2])
 % just piecewise smooth, the Chebfun is made of a collection of funs, and we
 % include red dots to mark the knots that separate them.
 s = chebfun.spline(0:10,f(0:10));
-hold on, plot(s,'r',LW,1.6)
-plot(s.ends,s(s.ends),'.r',MS,24)
+hold on, plot(s,'r')
+plot(s.ends,s(s.ends),'.r',MS,12)
 axis([0 10 -1.2 1.2])
 
 %%
@@ -30,9 +30,9 @@ axis([0 10 -1.2 1.2])
 % piecewise linear and continuous; and piecewise constant.
 clf
 for d = 1:3
-  subplot(3,1,d)
-  plot(diff(s,d),LW,1.6)
-  text(6.5,.8*2^(d+1),['derivative ' int2str(d)],FS,14)
+   subplot(3,1,d)
+   plot(diff(s,d))
+   text(6.5,.8*2^(d+1),['derivative ' int2str(d)])
 end
 
 %%
