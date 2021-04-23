@@ -15,14 +15,13 @@
 % Here for example are six trajectories.
 dom = [0 30]; N = chebop(dom); rng(4)
 N.lbc = 0; N.op = @(t,y) diff(y) - y + y^3; 
-LW = 'linewidth'; FS = 'fontsize'; fs = 32;
 lambda = 0.5;
 for k = 1:6
   f = 0.45*randnfun(lambda,dom,'big');
-  y = N\f; plot(y,LW,4), hold on
+  y = N\f; plot(y), hold on
 end
-xlabel('t',FS,36), ylabel('y',FS,36), hold off
-title('Bistability',FS,36)
+xlabel('t'), ylabel('y'), hold off
+title('Bistability')
 ylim([-1.7 1.7]), grid on, drawnow
 
 %%
@@ -35,10 +34,11 @@ ylim([-1.7 1.7]), grid on, drawnow
 % trajectory over the interval $t\in [0,800]$.
 dom = [0 800]; N.domain = dom;
 f = 0.45*randnfun(lambda,dom,'big');
-y = N\f; plot(y,LW,2.5)
-xlabel('t',FS,36), ylabel('y',FS,36)
+LW = 'linewidth';
+y = N\f; plot(y,LW,.5)
+xlabel('t'), ylabel('y')
 ylim([-1.7 1.7]), grid on
-title('Tunnelling',FS,36)
+title('Tunnelling')
 
 %%
 % What we are seeing here is the tunnelling effect so famous
@@ -54,7 +54,7 @@ title('Tunnelling',FS,36)
 % last experiment but with the 
 % noise coefficient increased from $0.45$ to $0.60$.
 f = (0.60/0.45)*f;
-y = N\f; plot(y,LW,2.5)
-xlabel('t',FS,36), ylabel('y',FS,36)
+y = N\f; plot(y,LW,.5)
+xlabel('t'), ylabel('y')
 ylim([-1.7 1.7]), grid on
-title('Larger noise means faster tunnelling',FS,36)
+title('Larger noise means faster tunnelling')
