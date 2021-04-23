@@ -53,7 +53,7 @@ hold on
 for init = 0.2:0.4:0.2
     N.lbc = [init; 1];
     u = N\0;
-    plot(u, diff(u))
+    arrowplot(u, diff(u))
 end
 title('Phase portrait of the van der Pol oscillator')
 IN = 'interpreter'; LT = 'latex';
@@ -77,7 +77,7 @@ hold on
 for init = 0:0.5:5
     N.lbc = [0, init];
     u = N\0;
-    plot(u, diff(u))
+    arrowplot(u, diff(u))
 end
 hold off
 xlim([-2.5 25])
@@ -121,7 +121,7 @@ hold on
 for rabbits = 0.1:.2:1.9
     N.lbc = @(u,v) [u - rabbits; v - 1]; % Initial populations
     [u, v] = N\0;
-    plot(u, v)
+    arrowplot(u, v)
 end
 hold off
 title('Phase portrait for Lotka-Volterra equations')
@@ -135,7 +135,7 @@ hold on
 for rabbits = 0.1:.2:1.9
     N.lbc = @(u,v) [u - rabbits; v - 1]; % Initial populations
     [u, v] = N\0;
-    plot(u, v)
+    arrowplot(u, v)
 end
 xlim([0 5]), ylim([0 5])
 hold off
