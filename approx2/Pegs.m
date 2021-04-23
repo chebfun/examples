@@ -49,7 +49,7 @@ text(-.9,.8,['rank ' int2str(rank(f))],FS,18)
 
 %% 
 % Analogous examples to those shown here are in the
-% Diskfun gallery collection, to be released before long.
+% Diskfun gallery collection.
 % There, the
 % round peg has rank 1 whereas the square peg does not.
 % Tilting does not matter.  Translation does matter, however:
@@ -83,7 +83,9 @@ text(-.9,.8,['rank ' int2str(rank(f))],FS,18)
 % Ideas for Dimension Reduction in Parameter Studies,_
 % SIAM, 2015.
 %
-% 3. F. J. Herrmann, reference to be determined.
+% 3. F. J. Herrmann and G. Hennenfent,
+% Non-parameter seismic data recovery with curvelet frames,
+% _Geophysical Journal International_, 173 (2008), 233--248.
 %
 % 4. L. N. Trefethen, Cubature, approximation, and isotropy in
-% the hypercube, _SIAM Review_, submitted.
+% the hypercube, _SIAM Review_, 39 (2017), 469--491.

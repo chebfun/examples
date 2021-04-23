@@ -13,12 +13,12 @@
 %%
 % Here is an illustration for $h=-1$.
 blueblack = [.6 .6 1; 0 0 0];
-FS = 'fontsize'; CO = 'color';
+CO = 'color';
 h = -1;
 dom = [-2 2 -1 1];
 f = randnfun2(0.3,dom);
 plot(f-h, 'zebra'), axis equal off, colormap(blueblack)
-title(['h = ' num2str(h)],FS,38)
+title(['h = ' num2str(h)])
 
 %%
 % Of course, the mathematics depends on one's notion of a random function,
@@ -29,14 +29,14 @@ title(['h = ' num2str(h)],FS,38)
 % If $h$ is lower, the ponds are smaller and more separated.
 h = -2;
 plot(f-h, 'zebra'), axis equal off, colormap(blueblack)
-title(['h = ' num2str(h)],FS,38)
+title(['h = ' num2str(h)])
 
 %%
 % As $h$ gets bigger, the ponds grow and connect into a giant
 % body of water.  This is related to the subject of percolation theory.
 for h = 0:2
    plot(f-h, 'zebra'), axis equal off, colormap(blueblack)
-   title(['h = ' num2str(h)],FS,38)
+   title(['h = ' num2str(h)])
    snapnow
 end
 
@@ -47,7 +47,7 @@ dom = [-3 3 -1 1];
 f = randnfun2(.1, dom);
 h = chebfun2(@(x,y) x, dom);
 plot(f-h, 'zebra'), axis equal off, colormap(blueblack)
-title('varying h',FS,38)
+title('varying h')
 
 %%
 % Reference:
@@ -55,4 +55,4 @@ title('varying h',FS,38)
 % [1] B. Bowen, C. Strong, and K. M. Golden,
 % Modeling the fractal geometry of Arctic melt
 % ponds using the level sets of random surfaces,
-% _Journal of Fractal Geometry_, to appear.
+% _Journal of Fractal Geometry_, 5.2 (2018), 121--142.
