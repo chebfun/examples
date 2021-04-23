@@ -49,7 +49,7 @@
 % As an example, consider the function $$ f(x) = \frac{1}{5 + x}. $$
 % This function can be represented in Chebfun by an interpolant in
 % 17 points.
-f  = @(x) 1./(5+x);
+f  = @(x) 1/(5+x);
 fc = chebfun(f);
 k = 1:length(fc);
 

@@ -91,7 +91,7 @@ title('Lines added to show accuracy'), hold off
 % for the function $\exp(x) (1+100x^2)/(1+25x^2)$.  Mathematically,
 % the function has a root at $x= 0.1i$.  Evaluating the ordinary chebfun
 % at this point gives just 8 digits of accuracy.
-ff = @(x) exp(x).*(1+100*x.^2)./(1+25*x.^2);
+ff = @(x) exp(x)*(1+100*x^2)/(1+25*x^2);
 f = chebfun(ff);
 f(0.1i)
 
@@ -118,9 +118,9 @@ fturbo(0.1i)
 % 202--210.
 %
 % 4. L. N. Trefethen, _Approximation Theory and Approximation
-% Practice,_ SIAM, 2013.
+% Practice, Extended Edition,_ SIAM, 2019.
 %
-% 5. H. Wang and D Huybrechs, Fast and highly accurate computation
-% of Chebyshev expansions coefficients of analytic functions,
-% submitted, 2014.
+% 5. H. Wang and D Huybrechs, Fast and accurate computation
+% of Chebyshev coefficients in the complex plane,
+% IMA Journal of Numerical Analysis, 37 (2017), 1150-1174.
 
