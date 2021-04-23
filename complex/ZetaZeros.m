@@ -11,7 +11,7 @@
 % (apart from those on the negative real axis) lie
 % on the critical line $\hbox{Re} s = 1/2$ in the
 % complex $s$-plane.  Computation of $\zeta(s)$
-% and its zeros is a highly advanced subject and this Example certainly
+% and its zeros is a highly advanced subject and this example certainly
 % will not contribute anything substantial to it.
 % However, we can show how easily certain
 % kinds of analytic contination can be carried out in Chebfun.
@@ -45,12 +45,12 @@ f = chebfun(@(t) zeta(s(t)),[5 50],'vectorize')
 
 %%
 % Here is the Chebfun ellipse of $f$ (see Chapter 8
-% of [Trefethen 2013]) together with the numerically computed roots of $f$ in
+% of [Trefethen 2019]) together with the numerically computed roots of $f$ in
 % in the ellipse.  A black X is also marked to show the pole of
 % the zeta function.
 plotregion(f), xlim([-5 60]), axis equal, grid on
-zeros_t = roots(f,'complex','norecursion'); MS = 'markersize';
-hold on, plot(zeros_t,'.r',MS,15)
+zeros_t = roots(f,'complex','norecursion');
+hold on, plot(zeros_t,'.r')
 plot(0,3,'xk','markersize',12), hold off
 set(gca,'ytick',-12:4:12), grid on
 
@@ -74,11 +74,11 @@ t = chebfun('3.5i+t',[5 50]);
 ft = f(t);
 plot([imag(ft) real(ft)])
 title('Real and imaginary parts of zeta(s) along critical line')
-hold on, plot(real(zeros_t),imag(zeros_t-3.5i),'.k',MS,15)
+hold on, plot(real(zeros_t),imag(zeros_t-3.5i),'.k')
 grid on, hold off
 
 %%
-% The mathematics of what we have done in this Example is
+% The mathematics of what we have done in this example is
 % nothing more than polynomial approximation in the complex plane,
 % which worked well because we stayed away from the pole of $\zeta(s)$
 % at $s=1$.  Near $s=1$, one could still use polynomial approximation
@@ -90,7 +90,7 @@ grid on, hold off
 % rational approximations of type $(m,1)$ ($m$ zeros, 1 pole) may be
 % sufficient to get good information.  More generally one uses
 % approximation of type $(m,n)$, typically with $n$ rather small.
-% See Chapters 23, 26 and 28 of [Trefethen 2013].
+% See Chapters 23, 26 and 28 of [Trefethen 2019].
 
 %%
 % Total time taken by this example:
@@ -100,4 +100,4 @@ toc
 % Reference:
 %
 % 1. L. N. Trefethen, _Approximation Theory and Approximation
-% Practice_, SIAM, 2013.
+% Practice, Extended Edition_, SIAM, 2019.
