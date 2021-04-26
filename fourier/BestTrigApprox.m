@@ -15,9 +15,8 @@
 
 f = chebfun(@(x) exp(sin(2*x)+cos(3*x)), [-pi, pi], 'trig');
 [p,err] = trigremez(f,5);
-LW = 'linewidth'; FS = 'fontsize'; fs = 14;
-plot(f,'k',p,'r',LW,1.6)
-title('Function (black) and best trigonometric approximation (red)',FS,fs)
+plot(f,'k',p,'r')
+title('Function (black) and best trigonometric approximation (red)')
 
 %%
 % The error equioscillates, and the number of equioscillating
@@ -27,32 +26,32 @@ title('Function (black) and best trigonometric approximation (red)',FS,fs)
 % approximation, the dimension of the approximation
 % space is $11$, and hence the error curve must have at 
 % least 12 points of equioscillation: 
-plot(f-p,LW,1.6), hold on
-plot([-pi pi], err*[1 1],'--k',LW,1)
-plot([-pi pi],-err*[1 1],'--k',LW,1)
+plot(f-p), hold on
+plot([-pi pi], err*[1 1],'--k')
+plot([-pi pi],-err*[1 1],'--k')
 ylim(5*err*[-1, 1]), hold off
-title('Degree 5 trigonometric error curve',FS,fs)
+title('Degree 5 trigonometric error curve')
 
 %%
 % The $\verb|trigremez|$ command works for any chebfun, even 
 % a chebfun that is constructed without the `trig` flag, as
 % long as it is continuous in the interior of the domain 
 % and takes the same value at both endpoints. Here is an example:
-fh = @(x) 10*abs(x) + sin(20*pi*x) + 10*exp(-50*(x-.1).^2); 
+fh = @(x) 10*abs(x) + sin(20*pi*x) + 10*exp(-50*(x-.1)^2); 
 f = chebfun(fh, 'splitting', 'on' );
 
 %%
 [p, err] = trigremez(f, 8);
-plot(f,'k',p,'r',LW,1.6)
-title('Function (black) and best trigonometric approximation (red)',FS,fs)
+plot(f,'k',p,'r')
+title('Function (black) and best trigonometric approximation (red)')
 
 %%
 % And here is a plot of the error curve:
-plot(f-p,LW,1.6), hold on
-plot([-pi pi], err*[1 1],'--k',LW,1)
-plot([-pi pi],-err*[1 1],'--k',LW,1)
+plot(f-p), hold on
+plot([-pi pi], err*[1 1],'--k')
+plot([-pi pi],-err*[1 1],'--k')
 ylim(5*err*[-1 1]), hold off
-title('Degree 8 trigonometric error curve',FS,fs)
+title('Degree 8 trigonometric error curve')
 
 %%
 % Here is another example where we first define 
@@ -65,16 +64,16 @@ m = (g(1) - g(-1))/2;
 y = m*(x - 1) + g(1);
 f = g - y;
 [p, err] = trigremez(f, 15);
-plot(f,'k',p,'r',LW,1.6)
-title('Function (black) and best trigonometric approximation (red)',FS,fs)
+plot(f,'k',p,'r')
+title('Function (black) and best trigonometric approximation (red)')
 
 %%
 % Again, the error plot equioscillates beautifully:
-plot(f-p,LW,1.6), hold on
-plot([-1 1], err*[1 1],'--k',LW,1)
-plot([-1 1],-err*[1 1],'--k',LW,1)
+plot(f-p), hold on
+plot([-1 1], err*[1 1],'--k')
+plot([-1 1],-err*[1 1],'--k')
 ylim(5*err*[-1 1]), hold off
-title('Degree 15 trigonometric error curve',FS,fs)
+title('Degree 15 trigonometric error curve')
 
 %%
 % Experienced best approximators are used to seeing error curves that 
@@ -88,9 +87,9 @@ title('Degree 15 trigonometric error curve',FS,fs)
 % sine waves, not Chebyshev polynomials.  To the experienced
 % eye, this can be quite a surprise. The following example illustrates
 % this:
-f = chebfun('1./(1.01-cos(x))',[-pi,pi],'trig');
+f = chebfun('1/(1.01-cos(x))',[-pi,pi],'trig');
 plot(f-trigremez(f,40)), ylim([-1 1])
-title('Almost sinusoidal error curve', FS, fs)
+title('Almost sinusoidal error curve')
 
 
 %%
@@ -107,6 +106,6 @@ title('Almost sinusoidal error curve', FS, fs)
 
 %% References
 %
-% 1. M. Javed and L. N. Trefethen, The Remez algorithm
-%    for trigonometric approximation of
-%    periodic functions, submitted, 2015.
+% 1. M. Javed, _Algorithms for Trigonometric Polynomial
+% and Rational Approximation_, DPhil dissertation, University
+% of Oxford, 2016.

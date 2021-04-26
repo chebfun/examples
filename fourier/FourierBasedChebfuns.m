@@ -9,7 +9,6 @@
 % One of the new features of Chebfun version 5 is the ability to create
 % chebfuns of smooth periodic functions using Fourier series. This example
 % introduces and demonstrates some of the functionality of this new tool.
-LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 
 %% Construction and comparison
 % Fourier-based chebfuns, or "trigfuns" as we like to refer to them, can be
@@ -19,7 +18,7 @@ LW = 'linewidth'; lw = 1.6; MS = 'MarkerSize'; ms = 10;
 % 
 dom = [-pi,pi];
 f = chebfun(@(x) cos(8*sin(x)),dom,'trig')
-plot(f,LW,lw);
+plot(f);
 
 %%
 % Here $f$ is represented to machine precision using a Fourier interpolant
@@ -48,11 +47,11 @@ theoretical = pi/2
 % will typically result in a warning being issued and an "unhappy" trigfun,
 % as illustrated for the unit step function below:
 f = chebfun(@(x) 0.5*(1+sign(x)),dom,'trig')
-plot(f,LW,lw);
+plot(f);
 
 %%
 % The length of $f$ is 65536, which is the maximum number of samples used
-% in the construction process to try to resolve $f$. The famous Gibbs'
+% in the construction process to try to resolve $f$. The famous Gibbs
 % phenomenon can be seen near the discontinuity in the plot of $f$. Chebfun
 % can be used to represent this function in non-periodic mode (i.e. using
 % Chebyshev series) with the option of `splitting on`:
@@ -68,11 +67,12 @@ f = chebfun(@(x) 0.5*(1+sign(x)),dom,'splitting','on')
 %%
 % Addition, subtraction, multiplication, division, and function composition
 % can all be directly applied to a trigfun.  However one should be aware that
-% operation should result in a smooth and periodic function. The following
-% example illustrates some of these operations:
+% operation should result in a smooth and periodic function. (If not, it
+% will be converted to a nonperiodic chebfun.)
+% The following example illustrates some of these operations:
 g = chebfun(@(x) sin(x),dom,'trig');
-f = tanh(cos(1+2*g).^2)-0.5
-plot(f, LW, lw)
+f = tanh(cos(1+2*g)^2)-0.5
+plot(f)
 
 %%
 % The max, min, and roots of $f$ can be computed by
@@ -85,15 +85,15 @@ rootsf
 
 %%
 % These can be visualized as
-plot(f, LW, lw), hold on
-plot(xmaxf,maxf,'gs',xminf,minf,'md',rootsf,0*rootsf,'ro',MS,ms)
+plot(f), hold on
+plot(xmaxf,maxf,'gs',xminf,minf,'md',rootsf,0*rootsf,'ro')
 legend('f','max f','min f','zeros f','location','southwest')
 hold off;
 
 %%
 % The derivative of $f$ is computed using `diff`:
 df = diff(f);
-plot(df, LW, lw)
+plot(df)
 
 %%
 % and the definite integral is computed using `sum`:
@@ -102,12 +102,12 @@ intf = sum(f)
 %%
 % Complex-valued trigfuns are also possible. For example:
 f = chebfun(@(x) 1i*(13*cos(x)-5*cos(2*x)-2*cos(3*x)-cos(4*x)) + ...
-                 16*sin(x).^3, dom, 'trig')
-plot(f, LW, lw), axis equal
+                 16*sin(x)^3, dom, 'trig')
+plot(f), axis equal
 
 %%
 % The area enclosed by this curve can be computed as
-area_heart = abs(sum(real(f).*diff(imag(f))))
+area_heart = abs(sum(real(f)*diff(imag(f))))
 
 %%
 % According to [1], the true area enclosed is $180\pi$. The relative error
@@ -120,7 +120,7 @@ err = (area_heart - 180*pi)/(180*pi)
 % demonstrates this function in combination with the additional feature 
 % that allows trigfuns to be constructed from function values. The latter
 % is demonstrated first:
-rng('default'), rng(0);
+rng('default'), rng(0)
 n = 201;
 x = trigpts(n);
 func_vals = exp(sin(2*pi*x)) + 0.05*randn(n,1);
@@ -132,16 +132,16 @@ f = chebfun(func_vals,dom,'trig')
 % function can be smoothed by convolving it with a mollifier, in this case
 % a (normalized) Gaussian with variance 0.1.
 sigma = 0.1;
-g = chebfun(@(x) 1/(sigma*sqrt(2*pi))*exp(-0.5*(x/sigma).^2),dom,'trig');
+g = chebfun(@(x) 1/(sigma*sqrt(2*pi))*exp(-0.5*(x/sigma)^2),dom,'trig');
 
 %%
 % Note that the resulting respresentation of $g$ is actually the periodic 
 % extension of the Gaussian over $[-\pi,\pi]$.  The convolution of $f$ and
 % $g$ is computed and visualized using
 h = circconv(f,g);
-plot(g,'b',LW,lw), hold on
-plot(f,'r',LW,lw), plot(h,'k',LW,lw)
-legend('Molifier g','Noisy function f','Smoothed function h');
+plot(g,'b'), hold on
+plot(f,'r'), plot(h,'k')
+legend('Mollifier g','Noisy function f','Smoothed function h');
 hold off;
 
 %% References
