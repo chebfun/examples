@@ -15,15 +15,14 @@
 
 function DawsonIntegral
 
-LW = 'linewidth'; lw = 2;
 tic
 W = 5; H = 0.8;
 L = chebop(-W,W);
-L.op = @(x,f) diff(f,1) + 2*x.*f;   % ODE
+L.op = @(x,f) diff(f,1) + 2*x*f;    % ODE
 L.bc = @(x,f) f(0);                 % interior point condition
 f = L\1; 
 toc
-plot(f,LW,lw), axis([-W W -H H]), hold on, grid on;
+plot(f), axis([-W W -H H]), hold on, grid on
 
 %%
 % The problem can be solved analytically:
@@ -54,18 +53,18 @@ plot(f,LW,lw), axis([-W W -H H]), hold on, grid on;
 % It's tempting to evaluate Dawson's integral directly using Chebfun.
 tic
 x = chebfun('x',[0,W]);
-fr = exp(-x.^2).*cumsum(exp(x.^2));  % right of x=0
+fr = exp(-x^2)*cumsum(exp(x^2));     % right of x=0
 fl = newDomain(-flipud(fr),[-W 0]);  % left of x=0
 f = join(fl,fr);                     % must be an easier way to do this!
 f = merge(f)
-plot(f,LW,lw), grid on
+plot(f), grid on
 
 %%
 % How big is the discrepancy between $F$ and $f$? You can find out by running
 % these three lines:
 %
 %  semilogy(abs(f-fexact));
-%  title('error when evaluate F directly');
+%  title('error when we evaluate F directly');
 %  grid on, hold off
 
 %%
@@ -73,9 +72,9 @@ plot(f,LW,lw), grid on
 % difficult to understand the low accuracy if we notice that Dawson's integral
 % as shown in Equation (2) is a product of type $0 \cdot \infty$ as $x$
 % diverges away from the origin. A standard way to compute Dawson's integral
-% is given in Numerical Recipes [1], where the integral is evaluated using its
+% is given in _Numerical Recipes_ [1], where the integral is evaluated using its
 % Maclaurin series [2,3] near the origin and Rybicki's exponentially accurate
-% approximation [4] otherwise. It's very likely that MATLAB's built-in routine
+% approximation [4] otherwise. It's likely that MATLAB's built-in routine
 % adopts this algorithm.
 
 %%
@@ -86,7 +85,7 @@ plot(f,LW,lw), grid on
 
 N = 36;
 tic
-f = chebfun(@(x) real(sqrt(pi)*(cef(x,N)-exp(-x.^2))/2i), [-W W]);
+f = chebfun(@(x) real(sqrt(pi)*(cef(x,N)-exp(-x^2))/2i), [-W W]);
 toc
 
 %%
@@ -115,7 +114,7 @@ end
 % (denoted by $N$ in the code above). With $N = 36$, Dawson's integral is
 % computed accurately within roundoff and it's done roughly ten times faster
 % than the MATLAB Symbolic Toolbox built-in function. Amazing, isn't it?
-% Should we suggest to MathWorks that they rewrite their Dawson's function
+% Should we suggest to MathWorks that they rewrite their Dawson function
 % after an 18-year delay?
 
 end
