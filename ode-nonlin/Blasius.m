@@ -28,16 +28,15 @@
 % solve the differential equation with only a few lines of code.
 
 dom = [0, 11];
-op  = @(u) 2*diff(u,3) + u.*diff(u,2);
+op  = @(u) 2*diff(u,3) + u*diff(u,2);
 bc  = @(x,u) [u(0); feval(diff(u),0); feval(diff(u),dom(2))-1];
 N   = chebop(op, dom, bc);
-u   = N\0;
-u   = simplify(u)
+u   = N\0
 
 %%
 % Here is what the solution looks like.
 
-plot(u, 'k-')
+plot(u, 'k')
 title('The Blasius function')
 
 %%
@@ -57,7 +56,7 @@ a_exact - a_computed
 
 %%
 % Noticing that the Blasius function approaches a linear polynomial away from
-% the origin, the reader may wonder what is the limiting value $u(x) - x$ as
+% the origin, the reader may wonder, what is the limiting value $u(x) - x$ as
 % $x \to \infty$? The answer again is supplied to high accuracy by Boyd, so
 % let us see how Chebfun performs.
 

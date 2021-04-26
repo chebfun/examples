@@ -5,7 +5,7 @@
 % (Chebfun example ode-nonlin/Electrons.m)
 
 %% 1. Typical trajectories
-% Here is a variation on the familiar $n$-body problem, suggested
+% Here is a variation on the familiar $n$-body problem suggested
 % to us by Charlie Peskin of New York University.
 % Suppose $n$ electrons of charge
 % $-1$ are flying around a nucleus of infinite mass and
@@ -19,14 +19,14 @@
 % of reflection.  Here is a typical trajectory over a time interval
 % of length 40.  (The "splitting on" command is commented on at the
 % end of this writeup.)
-LW = 'linewidth'; MS = 'markersize'; lw = 1.2;
+LW = 'linewidth';
 chebfunpref.setDefaults('splitting',true)
 N = chebop(0,40);
-N.op = @(t,z) diff(z,2) + 2*z./abs(z).^3 - 0.25i*imag(z)./imag(z).^3;
+N.op = @(t,z) diff(z,2) + 2*z/abs(z)^3 - 0.25i*imag(z)/imag(z)^3;
 V = 1; N.lbc = [1i; V];
 tic, z = N\0; x = real(z); y = imag(z);
-plot(0,0,'.k',MS,8), hold on
-plot(x,y,x,-y,LW,lw), axis(1.2*[-1 1 -1 1]), axis square, hold off
+plot(0,0,'.k'), hold on
+plot(x,y,x,-y,LW,.7), axis(1.2*[-1 1 -1 1]), axis square, hold off
 set(gca,'xtick',-1:1,'ytick',-1:1)
 
 %%
@@ -83,8 +83,8 @@ plot(x), xlabel t, ylabel('x(t)'), ylim([-1.5 1.5])
 N.domain = [0 20];
 V = 1.446; N.lbc = [1i; V];
 z = N\0; x = real(z); y = imag(z);
-plot(0,0,'.k',MS,8), hold on
-plot(x,y,x,-y,LW,lw), axis(1.2*[-1 1 -1 1]), axis square, hold off
+plot(0,0,'.k'), hold on
+plot(x,y,x,-y), axis(1.2*[-1 1 -1 1]), axis square, hold off
 set(gca,'xtick',-1:1,'ytick',-1:1)
 
 %%
@@ -99,8 +99,8 @@ plot(x), xlabel t, ylabel x
 % Here is another swing orbit:
 V = 0.783; N.lbc = [1i; V];
 z = N\0; x = real(z); y = imag(z);
-plot(0,0,'.k',MS,8), hold on
-plot(x,y,x,-y,LW,lw), axis(1.2*[-1 1 -1 1]), axis square, hold off
+plot(0,0,'.k'), hold on
+plot(x,y,x,-y), axis(1.2*[-1 1 -1 1]), axis square, hold off
 set(gca,'xtick',-1:1,'ytick',-1:1)
 
 %%
@@ -112,8 +112,8 @@ r = roots(x-.9*max(x)); r = r(deriv(x,r)>0); T = r(2)-r(1)
 % And here a third swing orbit with a still longer period:
 V = 1.17745; N.lbc = [1i; V];
 z = N\0; x = real(z); y = imag(z);
-plot(0,0,'.k',MS,8), hold on
-plot(x,y,x,-y,LW,lw), axis(1.2*[-1 1 -1 1]), axis square, hold off
+plot(0,0,'.k'), hold on
+plot(x,y,x,-y), axis(1.2*[-1 1 -1 1]), axis square, hold off
 set(gca,'xtick',-1:1,'ytick',-1:1)
 r = roots(y-.9999999);
 T = mean(r(end-1:end))
@@ -168,8 +168,8 @@ set(gca,'xtick',-3:3,'ytick',-3:3)
 N.domain = [0 10];
 V = 0.13220442; N.lbc = [1i; V];
 z = N\0; x = real(z); y = imag(z);
-plot(0,0,'.k',MS,8), hold on
-plot(x,y,x,-y,LW,lw), axis(1.2*[-1 1 -1 1]), axis square, hold off
+plot(0,0,'.k'), hold on
+plot(x,y,x,-y), axis(1.2*[-1 1 -1 1]), axis square, hold off
 set(gca,'xtick',-1:1,'ytick',-1:1)
 
 %%
