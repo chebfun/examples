@@ -8,7 +8,7 @@
 %% 1. What Chebfun does
 % Let us do a test of the speed and accuracy of the Chebfun algorithm for
 % computing roots.  We'll pick a function whose roots we know:
-f = chebfun(@(x) exp(x).*sin(1000*pi*x));
+f = chebfun(@(x) exp(x)*sin(1000*pi*x));
 
 %%
 % Here is the length of the function, approximately $1000\pi$.
@@ -33,16 +33,17 @@ toc
 norm(r-exact,inf)
 
 %%
-% This number is twice machine epsilon, which looks very good. (Admittedly, you
+% This number is $1.5$ times machine epsilon,
+% which looks very good. (Admittedly, you
 % couldn't ask for a better conditioned problem than this one, since the
 % derivative of $f$ at each root is large.)
 
 %%
 % For fun we plot $f$ and its roots over a short interval:
 d = [-0.0105,0.0105];
-plot(f,'interval',d,'linewidth',1.6)
+plot(f,'interval',d)
 axis([d -1.5 1.5]), grid on
-hold on, plot(r,f(r),'.r','markersize',18), hold off
+hold on, plot(r,f(r),'.r','markersize',12), hold off
 
 
 %% 2. What Chebfun might do
@@ -52,7 +53,7 @@ hold on, plot(r,f(r),'.r','markersize',18), hold off
 % polynomial in the monomial basis.  We can illustrate that this computation
 % is slow, if not really that the complexity is cubic, by the following
 % experiment.
-for ntest = [250 500 1000]
+for ntest = [250 500 1000 2000]
     c = randn(ntest,1);
     tic, roots(c); toc
 end
@@ -93,7 +94,7 @@ end
 %%
 % But what about an $O(n^2)$ _linear algebra_ solution to the problem, rather
 % than relying on splitting of intervals? Here too there has been progress
-% [5], and we hope to have work of our own to report before long. An
+% [5].  An
 % interesting project for the future will be to see whether Chebfun
 % rootfinding can be improved by the use of $O(n^2)$ linear algebra algorithms
 % rather than interval subdivision, while holding to Chebfun's principle of
@@ -102,7 +103,9 @@ end
 
 %% References
 %
-% 1. J. Aurentz, T. Mach, R. Vandebril and D. S. Watkins, to appear.
+% 1. J. Aurentz, T. Mach, R. Vandebril and D. S. Watkins, Fast and
+% backward stable computation of roots of polynomials,
+% _SIAM J. Matrix Analysis and Applications_, 36 (2016), 942-973.
 %
 % 2. D. A. Bini, P. Boito, Y. Eidelman, L. Gemignani, and
 %    I. Gohberg, A fast implicit QR eigenvalue algorithm for companion
@@ -122,5 +125,6 @@ end
 %    matrices under low rank perturbations, _Numerical Algorithms_, 47 (2008),
 %    253-273.
 %
-% 6. L. N. Trefethen, _Approximation Theory and Approximation Practice_, SIAM,
+% 6. L. N. Trefethen, _Approximation Theory and Approximation Practice,
+% Extended Edition__, SIAM, 2019.
 %    2013.

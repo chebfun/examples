@@ -29,18 +29,17 @@ n = 30;
 cleg = randn(n+1,1);                  % Legendre coeffs
 ccheb = leg2cheb(cleg,'norm');        % Chebyshev coeffs
 p = chebfun(ccheb,'coeffs');
-LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
-plot(p,LW,1.6), axis([-1.1 1.1 -n n]), grid on
+plot(p), axis([-1.1 1.1 -n n]), grid on
 rr = roots(p);
-hold on, plot(rr,p(rr),'.r',MS,16), hold off
+hold on, plot(rr,p(rr),'.r','markersize',12), hold off
 ratio = length(rr)/n;
-title(['fraction of roots in [-1,1]: ' num2str(ratio)],FS,12)
+title(['fraction of roots in [-1,1]: ' num2str(ratio)])
 
 %%
 % Here are its roots in the complex plane, both real and complex:
 r = roots(p,'all');
-plot([-1 1],[0 0],'k',LW,1), grid on
-hold on, plot(r,'.r',MS,12), hold off
+plot([-1 1],[0 0],'k'), grid on
+hold on, plot(r,'.r','markersize',12), hold off
 xlim([-2.5 2.5]), axis equal
 set(gca,'xtick',-2:2)
 
