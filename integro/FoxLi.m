@@ -32,11 +32,11 @@ L = sqrt(1i*F/pi) * chebop(@(u) fred(K,u));    % Fredholm integral operator
 tic, lam = eigs(L,80,'lm'); toc
 
 %%
-% Finally, a beautiful pattern emerges when we plot the results:
+% A beautiful pattern emerges when we plot the results:
 x = chebfun('x');
-clf, plot(exp(1i*pi*x),'--r','linewidth',1.6)
+clf, plot(exp(1i*pi*x),'--r')
 hold on, plot(lam,'k.','markersize',14)
-title('largest 80 eigenvalues of Fox-Li operator','fontsize',16)
+title('largest 80 eigenvalues of Fox-Li operator')
 axis equal, axis(1.05*[-1 1 -1 1]), hold off
 
 %%
