@@ -40,7 +40,7 @@ y = N\rhs;
 
 %%
 % Analytic solution.
-y_exact = exp(2*x).*cos(x);
+y_exact = exp(2*x)*cos(x);
 
 %%
 % How close is the computed solution to the true solution?
@@ -48,7 +48,7 @@ norm(y-y_exact)
 
 %%
 % Plot the computed solution.
-plot(y,'linewidth',2), grid on
+plot(y), grid on
 
 %% Problem 2: Simple harmonic oscillator 
 % $$ L(y) = y'' + \pi^2 y = 0,  \qquad y(-1) = -1, ~~ y'(1) = -\pi. $$
@@ -85,7 +85,7 @@ norm(y-y_exact)
 
 %%
 % Plot the computed solution.
-plot(y,'linewidth',2), grid on
+plot(y), grid on
 
 %% Problem 3: First-order problem
 % $$ L(y) = y' + 3y = 2 \qquad y(0) = 2 . $$
@@ -121,8 +121,8 @@ norm(y-y_exact)
 
 %%
 % Plot the computed solution
-plot(y,'linewidth',2), grid on
+plot(y), grid on
 
 %% References
 %
-% 1. http://en.wikipedia.org/wiki/Linear_differential_equation
+% 1. http://en.wikipedia.org/wiki/Linear_differential_equation.
