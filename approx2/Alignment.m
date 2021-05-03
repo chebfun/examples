@@ -9,7 +9,7 @@
 % Chebfun2 and Chebfun3 take advantage of the property
 % that many multivariate functions can be approximated
 % by functions of low rank.  Not all functions have this property,
-% however.  In this Example we explore the significance of
+% however.  In this example we explore the significance of
 % axis-alignment for low-rank approximability in 2D.
 
 %%
@@ -94,16 +94,16 @@ end
 
 %%
 % In a companion to this 
-% Example, we will consider another kind of structure
+% example, we will consider another kind of structure
 % that low-rank approximations can take advantage: localized
 % near-singularities, or to put it more abstractly, 
 % non-uniform behavior with respect to translation rather
-% than rotatation [2].
+% than rotation [2].
 
 %% References
 %
 % 1. L. N. Trefethen, Cubature, approximation, and isotropy
-% in the hypercube, manuscript, March 2016.
+% in the hypercube, _SIAM Review_, 59 (2017), 469-491.
 %
 % 2. L. N. Trefethen, Low-rank approximation and localized
-% near-singularities, Chebfun example, to appear.
+% near-singularities, Chebfun example, 2016.

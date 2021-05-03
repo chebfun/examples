@@ -9,7 +9,7 @@
 % functions composed form random plane waves and related
 % problems.  Here is an example he has looked at:
 tic
-LW = 'linewidth'; XT = 'xtick'; YT = 'ytick'; FS = 'fontsize';
+LW = 'linewidth'; XT = 'xtick'; YT = 'ytick';
 rng(1); a = randn(1,4) + 1i*rand(1,4);
 cheb.xy
 wave = @(k) real(a(1)*exp(i*pi*(k*x-y)) + a(2)*exp(i*pi*(k*x+y)) ...
@@ -17,7 +17,7 @@ wave = @(k) real(a(1)*exp(i*pi*(k*x-y)) + a(2)*exp(i*pi*(k*x+y)) ...
 r = roots(wave(8));
 plot(r, LW, 2)
 axis([-1 1 -1 1]), axis square, set(gca,XT,[],YT,[])
-title(['number of components: ' int2str(size(r,2))],FS,12)
+title(['number of components: ' int2str(size(r,2))])
 
 %%
 % The Chebfun2 |roots| command has picked out the distinct
@@ -43,14 +43,14 @@ sort(al)
 r = roots(wave(16));
 plot(r, LW, 1.2)
 axis([-1 1 -1 1]), axis square, set(gca,XT,[],YT,[])
-title(['number of components: ' int2str(size(r,2))],FS,12)
+title(['number of components: ' int2str(size(r,2))])
 
 %%
 % And with $k=32$:
 r = roots(wave(32));
 plot(r, LW, .7)
 axis([-1 1 -1 1]), axis square, set(gca,XT,[],YT,[])
-title(['number of components: ' int2str(size(r,2))],FS,12)
+title(['number of components: ' int2str(size(r,2))])
 
 %%
 % Total time for this example:
