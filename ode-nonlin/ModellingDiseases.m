@@ -9,14 +9,14 @@
 % Many mathematical models exist for the spread of disease. This is partly
 % because as epidemiology matured, more sophisticated models were developed.
 % It is also because not all diseases spread in the same fashion. In this
-% Example we explore one of the best-known models of disease spread, the
+% example we explore one of the best-known models of disease spread, the
 % famous SIR model. The SIR model is called "compartmental" because it groups
 % members of a population into compartments -- for example, "infected" and
 % "uninfected" -- which interact according to a system of differential
 % equations.
 
 %%
-% The problem posed in this Example is an initial value problem, and its
+% The problem posed in this example is an initial value problem, and its
 % solution over a large time interval is made possible by the IVP
 % capabilities released with version 5.1 of Chebfun in December 2014.
 
@@ -56,8 +56,8 @@ contact_rate  = .003;
 recovery_rate = .3;
 
 op = @(x,S,I,R) [ ...
-    diff(S) + contact_rate*I.*S
-    diff(I) - contact_rate*I.*S + recovery_rate*I
+    diff(S) + contact_rate*I*S
+    diff(I) - contact_rate*I*S + recovery_rate*I
     diff(R) - recovery_rate*I
     ];
 
@@ -73,10 +73,8 @@ N.lbc = @(S,I,R) [ ...
     ];
 
 %%
-% We will use chebop's nonlinear backslash syntax to solve the problem. The
-% Chebfun `deal` method allows the solution components (which are returned as
-% a chebmatrix) to be dealt to multiple outputs.
-[S,I,R] = deal(N\0);
+% We will use chebop's nonlinear backslash syntax to solve the problem. 
+[S,I,R] = N\0;
 
 %%
 % Here is a plot of the solution.
@@ -114,7 +112,7 @@ plot(t_eq, I(t_eq), 'k.', 'MarkerSize', 15)
 % as a function of time.
 hold off
 rho = .4;                   % 40 percent of infected people die
-plot(rho*R./cumsum(I))      % The instantaneous mortality rate
+plot(rho*R/cumsum(I))       % The instantaneous mortality rate
 ylim([0 1])
 xlabel('t')
 title('Instantaneous mortality rate for the SIR model')
@@ -138,4 +136,4 @@ title('Instantaneous mortality rate for the SIR model')
 %    NY: Cambridge University Press (2005).
 %
 % 2. [Wikipedia: Compartmental models in
-%    epidemiology](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology)
+%    epidemiology](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology).
