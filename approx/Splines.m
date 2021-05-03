@@ -11,7 +11,6 @@
 hold off
 x = chebfun('x',[0 10]);
 f = sin(x + 0.25*x.^2);
-MS = 'markersize';
 plot(f), axis([0 10 -1.2 1.2])
 
 %%
@@ -21,7 +20,7 @@ plot(f), axis([0 10 -1.2 1.2])
 % include red dots to mark the knots that separate them.
 s = chebfun.spline(0:10,f(0:10));
 hold on, plot(s,'r')
-plot(s.ends,s(s.ends),'.r',MS,12)
+plot(s.ends,s(s.ends),'.r','markersize',12)
 axis([0 10 -1.2 1.2])
 
 %%

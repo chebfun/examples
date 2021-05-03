@@ -41,19 +41,18 @@ halphen_const = 9.289025491920818918755449435951
 % This result comes from a sequence of contributions between 1969 and 2002
 % by, among others, Cody, Meinardus and Varga; Newman; Trefethen and
 % Gutknecht; Carpenter, Ruttan and Varga; Magnus; Gonchar and Rakhmanov;
-% and Aptekarev.  For a discussion, see Chapter 25 of [3].
+% and Aptekarev.  For a discussion, see Chapter 25 of [5].
 
 %%
 % Here is a plot showing that the asymptotic behavior matches the actual
 % errors very closely even for small $n$:
-LW = 'linewidth'; MS = 'markersize'; FS = 'fontsize';
 n = 0:10;
 err = [.5 .0668 7.36e-3 7.99e-4 8.65e-5 9.35e-6 ...
        1.01e-6 1.09e-7 1.17e-8 1.26e-9 1.36e-10];
 model = 2*halphen_const.^(-n-.5);
-hold off, semilogy(n,model,'-b',LW,1.2)
-hold on, semilogy(n,err,'.k',MS,18), grid on
-xlabel('n',FS,14), ylabel('error',FS,14)
+hold off, semilogy(n,model,'-b')
+hold on, semilogy(n,err,'.k'), grid on
+xlabel n, ylabel error
 
 %%
 % One way to characterize Halphen's constant mathematically is that it is
@@ -66,15 +65,25 @@ s = chebfun('s',[1/12,1/6]);
 f = 0*s; k = 0; normsk = 999;
 while normsk > 1e-16
   k = k+1;
-  sk = s.^k;
-  f = f + k*sk./(1-(-1)^k*sk);
+  sk = s^k;
+  f = f + k*sk/(1-(-1)^k*sk);
   normsk = norm(sk,inf);
 end
-hold off, plot(1./s,f,LW,1.6), grid on
+hold off, plot(1/s,f), grid on
 h = 1/roots(f-1/8);
-hold on, plot(h,1/8,'.r',MS,24)
-title('Halphen''s constant',FS,16)
-text(h,.135,sprintf('%16.13f',h),FS,18)
+hold on, plot(h,1/8,'.r')
+title('Halphen''s constant')
+text(h,.135,sprintf('%16.13f',h))
+
+%%
+% Halphen's constant appears more generally than in
+% approximation of $e^x$.
+% Stahl and Schmelzer generalized it to a number of
+% perturbed exponential functions and Nakatsukasa and Trefethen
+% showed that it also governs the accuracy of rational
+% approximations of $x^n$ on $[-1,1]$ [3].  The latter effect
+% is explored in the Chebfun example "Rational approximation
+% of monomials".
 
 %% References
 %
@@ -88,6 +97,12 @@ text(h,.135,sprintf('%16.13f',h),FS,18)
 %    degree of rational approximation of analytic functions, _Math. USSR
 %    Sbornik_, 62 (1989), 305-348.
 %
-% 3. L. N. Trefethen, _Approximation Theory and Approximation Practice_,
-%    SIAM, 2013.
+% 3. Y. Nakatsukasa and L. N. Trefethen, Rational approximation of
+%    $x^n$, _Proc. AMS_, 146 (2018), 5219-5224.
+%
+% 4. H. Stahl and T. Schmelzer, An extension of the `1/9' problem,
+%    J. Comp. Appl. Math., 233 (2009), 821-834.
+%
+% 5. L. N. Trefethen, _Approximation Theory and Approximation Practice,
+%    Extended Edition_, SIAM, 2019.
 
