@@ -51,7 +51,7 @@ err = [.5 .0668 7.36e-3 7.99e-4 8.65e-5 9.35e-6 ...
        1.01e-6 1.09e-7 1.17e-8 1.26e-9 1.36e-10];
 model = 2*halphen_const.^(-n-.5);
 hold off, semilogy(n,model,'-b')
-hold on, semilogy(n,err,'.k'), grid on
+hold on, semilogy(n,err,'.k','markersize',14), grid on
 xlabel n, ylabel error
 
 %%
@@ -71,7 +71,7 @@ while normsk > 1e-16
 end
 hold off, plot(1/s,f), grid on
 h = 1/roots(f-1/8);
-hold on, plot(h,1/8,'.r')
+hold on, plot(h,1/8,'.r','markersize',24)
 title('Halphen''s constant')
 text(h,.135,sprintf('%16.13f',h))
 
@@ -100,7 +100,7 @@ text(h,.135,sprintf('%16.13f',h))
 % 3. Y. Nakatsukasa and L. N. Trefethen, Rational approximation of
 %    $x^n$, _Proc. AMS_, 146 (2018), 5219-5224.
 %
-% 4. H. Stahl and T. Schmelzer, An extension of the `1/9' problem,
+% 4. H. Stahl and T. Schmelzer, An extension of the '1/9' problem,
 %    J. Comp. Appl. Math., 233 (2009), 821-834.
 %
 % 5. L. N. Trefethen, _Approximation Theory and Approximation Practice,
