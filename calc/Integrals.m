@@ -9,8 +9,7 @@
 % Suppose we have a function, like this one:
 x = chebfun('x',[0 10]);
 f = round(2*cos(x));
-LW = 'linewidth'; lw = 1.6;
-plot(f,LW,lw), ylim(2.5*[-1 1])
+plot(f), ylim(2.5*[-1 1])
 
 %%
 % The Chebfun command `sum` returns the definite integral over the prescribed
@@ -26,7 +25,7 @@ sum(f,3,4)
 % To compute an indefinite integral, use the Chebfun command `cumsum`.
 % This returns a chebfun defined over the given interval:
 g = cumsum(f);
-plot(g,'m',LW,lw)
+plot(g,'m')
 
 %%
 % Thus another way to compute the integral over a subinterval would be to take
@@ -48,7 +47,7 @@ norm( cumsum(diff(f)) - f )
 %%
 % Plotting the two instantly alerts us that we forgot to add back in the value
 % at the left endpoint, namely $f(0) = 2$:
-plot(f,'b',cumsum(diff(f)),'r',LW,lw)
+plot(f,'b',cumsum(diff(f)),'r')
 
 %%
 % Sure enough, adding this number makes the two functions agree:
