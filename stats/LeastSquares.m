@@ -20,8 +20,8 @@ x = linspace(-1,1,npts);
 y = 1./(1+25*x.^2) + 1e-1*randn(1,npts);
 f = polyfit(x,y,10,domain(-1,1));
 plot(x,y,'xk','markersize',12)
-hold on, plot(f,'r','linewidth',2)
-title('Discrete polynomial least-squares fit','fontsize',16)
+hold on, plot(f,'r')
+title('Discrete polynomial least-squares fit')
 
 %%
 % Chebfun also has a `polyfit` command in the chebfun class, and this is for
@@ -29,5 +29,5 @@ title('Discrete polynomial least-squares fit','fontsize',16)
 % example, here is a least-squares fit to a jagged function:
 f = chebfun('abs(x+.2)-.5*sign(x-.5) ','splitting','on');
 r = polyfit(f,10);
-hold off, plot(f,'k',r,'r','linewidth',2)
-title('Continuous polynomial least-squares fit','fontsize',16)
+hold off, plot(f,'k',r,'r')
+title('Continuous polynomial least-squares fit')

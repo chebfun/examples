@@ -35,44 +35,43 @@
 % convolution.  For example, consider this triangular probability
 % distribution:
 X = chebfun({0,'(4/3+x)/2',0},[-3 -4/3 2/3 3]);
-LW = 'linewidth'; lw = 1.6; ax = [-3 3 -.2 1.2];
-hold off, plot(X,LW,lw,'jumpline','b'), axis(ax), grid on
-FS = 'fontsize'; fs = 10;
-title('Distribution of X',FS,fs)
+ax = [-3 3 -.2 1.2];
+hold off, plot(X,'jumpline','-'), axis(ax), grid on
+title('Distribution of X')
 
 %%
 % $X$ has mean zero and variance $2/9$:
 t = chebfun('t',[-3 3]);
-mu = sum(t.*X)
-variance = sum(t.^2.*X)
+mu = sum(t*X)
+variance = sum(t^2*X)
 
 %%
 % Let us superimpose on the plot the normal distribution of the same
 % mean and variance:
 sigma = sqrt(variance);
-gauss = @(sigma) chebfun(@(t) exp(-.5*(t/sigma).^2)/(sigma*sqrt(2*pi)),[-3 3]);
-hold on, plot(gauss(sigma),'r',LW,lw)
-title('Distribution of X compared with normal distribution',FS,fs)
+gauss = @(sigma) chebfun(@(t) exp(-.5*(t/sigma)^2)/(sigma*sqrt(2*pi)),[-3 3]);
+hold on, plot(gauss(sigma),'r')
+title('Distribution of X compared with normal distribution')
 
 %%
 % Here is the distribution for the sum of two copies of $X$, renormalized
 % so that the variance is again $2/9$:
 X2 = conv(X,X);
 S2 = newDomain(sqrt(2)*X2,[-3,3]*sqrt(2));
-hold off, plot(S2,LW,lw,'jumpline','b'), axis(ax), grid on
-title('Renormalized distribution of (X+X)/2',FS,fs)
-hold on, plot(gauss(sigma),'r',LW,lw)
+hold off, plot(S2,'jumpline','-'), axis(ax), grid on
+title('Renormalized distribution of (X+X)/2')
+hold on, plot(gauss(sigma),'r')
 
 %%
 % And here we have the renormalized sum of three:
 X3 = conv(X2,X);
 S3 = newDomain(sqrt(3)*X3,[-3,3]*sqrt(3));
-hold off, plot(S3,LW,lw,'jumpline','b'), axis(ax), grid on
-title('Renormalized distribution of (X+X+X)/3',FS,fs)
-hold on, plot(gauss(sigma),'r',LW,lw), hold off
+hold off, plot(S3,'jumpline','-'), axis(ax), grid on
+title('Renormalized distribution of (X+X+X)/3')
+hold on, plot(gauss(sigma),'r'), hold off
 
 %%
-% Convolutions like these appear in another Chebfun Example, called
+% Convolutions like these appear in another Chebfun Example, 
 % "B-splines and convolutions" [2].  The only difference is that in that
 % case we start with a uniform rather than triangular distribution.
 
@@ -88,9 +87,9 @@ hold on, plot(gauss(sigma),'r',LW,lw), hold off
 % $x=1$, respectively:
 x = chebfun('x',[-1 2]);
 p = .6; q = 1-p;
-p1 = q*dirac(x-0)+p*dirac(x-1);
+p1 = q*dirac(x-0) + p*dirac(x-1);
 plot(p1), xlim([-0.1 1.1]);
-title('Probability distribution for getting a head in a single toss',FS,fs)
+title('Probability distribution for getting a head in a single toss')
 
 %%
 % Now, let $X$ be the random variable that counts the number of heads when
@@ -105,7 +104,7 @@ title('Probability distribution for getting a head in a single toss',FS,fs)
 % $X_1$ and $X_2$ [1]. Since $X_1$ and $X_2$ are identical, we have
 p2 = conv(p1,p1);
 plot(p2), xlim([-.1 2.1])
-title('Probability distribution for number of heads in two tosses',FS,fs)
+title('Probability distribution for number of heads in two tosses')
 %%
 % We can verify that the probabilities add up to $1$.
 sum(p2)
@@ -119,8 +118,8 @@ pn = p2;
 for k = 3:n
     pn = conv(pn,p1);
 end
-plot(pn);
-title('The binomial distribution',FS,fs)
+plot(pn)
+title('The binomial distribution')
 
 %%
 % Again the probabilities sum to $1$.
@@ -137,7 +136,7 @@ sigma = sqrt(n*p*q)      % std
 %%
 % The probability distribution function for the corresponding
 % normal random variable is given by
-fN = chebfun(@(x) 1/(sigma*sqrt(2*pi))*exp(-(x-mu).^2/(2*sigma.^2)), domain(pn));
+fN = chebfun(@(x) 1/(sigma*sqrt(2*pi))*exp(-(x-mu)^2/(2*sigma^2)), domain(pn));
 
 %%
 % We now plot this continuous distribution on top
@@ -146,7 +145,7 @@ hold on
 plot(fN,'r')
 s = sprintf('%i Tosses, p = %2.1f, expected value = %i', n, p, n*p);
 xlabel(s);
-title('The binomial distribution compared with the normal distribution',FS,fs)
+title('The binomial distribution compared with the normal distribution')
 
 %%
 % We see that even for the modest value $n=10$, the binomial
@@ -168,4 +167,4 @@ title('The binomial distribution compared with the normal distribution',FS,fs)
 % 1. Papoulis, A., _Probability, Random Variables and Stochastic Processes_,
 %    third edition, McGraw-Hill, 1991.
 %
-% 2. Chebfun Example [approx/BSplineConv](../approx/BSplineConv.html)
+% 2. Chebfun Example [approx/BSplineConv](../approx/BSplineConv.html).
