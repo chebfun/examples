@@ -44,10 +44,10 @@
 tic
 L1 = 3; theta1 = @(z1) atan2(imag(z1),real(z1)/L1);
 L2 = 2; theta2 = @(z2) atan2(imag(z2),real(z2)/L2);
-ode1 = @(t,z1) (-L1*sin(theta1(z1))+1i*cos(theta1(z1)))./...
-    sqrt(L1^2*sin(theta1(z1)).^2+cos(theta1(z1)).^2);
-ode2 = @(t,z2) (L2*sin(theta2(z2))-1i*cos(theta2(z2)))./...
-    sqrt(L2^2*sin(theta2(z2)).^2+cos(theta2(z2)).^2);
+ode1 = @(t,z1) (-L1*sin(theta1(z1))+1i*cos(theta1(z1)))/...
+    sqrt(L1^2*sin(theta1(z1))^2+cos(theta1(z1))^2);
+ode2 = @(t,z2) (L2*sin(theta2(z2))-1i*cos(theta2(z2)))/...
+    sqrt(L2^2*sin(theta2(z2))^2+cos(theta2(z2))^2);
 opts = odeset('abstol',1e-13,'reltol',1e-13); tmax = 7.5;
 z1 = chebfun.ode113(ode1,[0,tmax], L1/2,opts);
 z2 = chebfun.ode113(ode2,[0,tmax],-L2/2,opts);
@@ -56,9 +56,8 @@ z2 = chebfun.ode113(ode2,[0,tmax],-L2/2,opts);
 % Now what about the trajectory traced by the midpoint, $w(t)$? A little
 % geometric thought reveals the right formula.  Here is a calculation and a
 % plot:
-w = z1 - z2.*diff(z1)./diff(z2);
-LW = 'linewidth';
-plot(w,'k',LW,1), grid on, axis(3*[-1 1 -1 1]), axis square
+w = z1 - z2*diff(z1)/diff(z2);
+plot(w,'k'), grid on, axis(3*[-1 1 -1 1]), axis square
 
 %%
 % To find the answer to the problem posed, we need to know the time at
@@ -81,17 +80,17 @@ toc
 ell2 = @(t) w(t) + z2*(z1(t)-w(t))/z2(t);
 fill(real(z1),imag(z1),'b'), hold on, axis(3*[-1 1 -1 1]), axis square
 for t = 0:1:6
-  plot(ell2(t),'r',LW,2), plot(w(t),'.k','markersize',12)
+  plot(ell2(t),'r'), plot(w(t),'.k','markersize',12)
 end
-plot(w,'k',LW,1)
+plot(w,'k')
 
 %%
 % (The imperfection in the blue fill is a bug in MATLAB, not Chebfun.) Or we
 % can make a movie, like this:
 hold off, fill(real(z1),imag(z1),'b'), hold on
-axis(3*[-1 1 -1 1]), axis square, plot(w,'k',LW,1)
+axis(3*[-1 1 -1 1]), axis square, plot(w,'k')
 for t = 0:.05:tmax
-  h1 = plot(ell2(t),'r',LW,2);
+  h1 = plot(ell2(t),'r');
   h2 = plot(w(t),'.k','markersize',18); pause(.01)
   if t<tmax, delete(h1(1)), delete(h2), end
 end
