@@ -1,4 +1,4 @@
-%% Eigenstates of the Schroedinger equation
+%% Eigenstates of the Schr&ouml;dinger equation
 % Nick Trefethen, January 2012
 
 %%
@@ -8,12 +8,12 @@
 %%
 % Chebfun is very good at solving eigenvalue problems in one dimension defined
 % by smooth or piecewise-smooth coefficients. An important example of such
-% problems is the determination of eigenstates of the Schroedinger operator,
+% problems is the determination of eigenstates of the Schr&ouml;dinger operator,
 % which correspond to energy levels of quantum systems. There is a special
 % Chebfun command, `quantumstates`, for computing and plotting such functions.
 
 %%
-% The Schroedinger eigenvalue problem solved by `quantumstates` takes the
+% The Schr&ouml;dinger eigenvalue problem solved by `quantumstates` takes the
 % form
 %
 % $$  L u = \lambda u, $$
@@ -36,11 +36,11 @@
 % is of one sign, the second has one zero, the third has two zeros, and so on.
 tic
 x = chebfun('x',[-3,3]);
-V = x.^2;
+V = x^2;
 quantumstates(V)
 
 %%
-% Notice that the eigenvalues take the regularly spaced values
+% Note that the eigenvalues take the regularly spaced values
 % $h[1, 3, 5, \dots]$. The `quantumstates` command permits various outputs
 % including just eigenvalues or eigenvalues and eigenfunctions, and it is also
 % possible to suppress the plot with the string `noplot`; see the help text.
@@ -53,7 +53,7 @@ quantumstates(V)
 quantumstates(V,60);
 
 %%
-% Notice that the potential now looks like a parabola that meets vertical
+% Note that the potential now looks like a parabola that meets vertical
 % walls at $x=-3$ and $x=3$, for this is the effect of the Dirichlet boundary
 % condition.  To get $60$ genuine states of the harmonic oscillator, we could
 % increase the interval from $[-3,3]$ to $[-L,L]$ with, say, $L=8$. (The
@@ -104,14 +104,14 @@ V = 0.5*(abs(x-.5)<.5);
 quantumstates(V,18);
 
 %%
-% Notice that each lower eigenfunction is localized on one or the other side
+% Note that each lower eigenfunction is localized on one or the other side
 % of the barrier, whereas the higher eigenfunctions are not localized. Inside
 % the barrier, the eigenfunction is nonzero -- this is quantum tunnelling --
 % but its amplitude decreases exponentially with distance inside the barrier.
 
 %%
 % Here is an analogous problem with a smooth potential:
-V = 0.5*exp(-2*(x-.5).^2);
+V = 0.5*exp(-2*(x-.5)^2);
 quantumstates(V,18);
 
 %%
@@ -121,9 +121,13 @@ toc
 %%
 % One can learn about the physics of these quantum mechanical problems in
 % innumerable books and other sources.  One reference we have consulted is the
-% textbook by Robinett [1].
+% textbook by Robinett [1].  See also chapter 6 of [2].
 
 %% References
 %
-% 1. Richard W. Robinett, _Quantum Mechanics_, 2nd ed., Oxford University
+% 2. Richard W. Robinett, _Quantum Mechanics_, 2nd ed., Oxford University
 %    Press, 2006.
+%
+% 1. L. N. Trefethen, A. Birkisson, and T. A. Driscoll,
+%    _Exploring ODEs_, SIAM, 2018; freely available at
+%    |people.maths.ox.ac.uk/trefethen/ExplODE/|.

@@ -23,8 +23,7 @@
 
 %%
 % We can sketch the potential like this:
-LW = 'linewidth'; hold off
-plot([-1 -1 -.2 -.2 .3 .3 1 1],[3.3 0 0 1.5 1.5 0 0 3.3],'k',LW,3)
+plot([-1 -1 -.2 -.2 .3 .3 1 1],[3.3 0 0 1.5 1.5 0 0 3.3],'k','linewidth',2)
 axis([-1.1 1.1 -.05 3.3]), axis off, hold on
 
 %%
@@ -33,7 +32,7 @@ tic
 x = chebfun('x');
 V = 1.5*(abs(x-0.05)<0.25);
 L = chebop(-1,1);
-L.op = @(x,u) -0.007*diff(u,2) + V.*u;
+L.op = @(x,u) -0.007*diff(u,2) + V*u;
 L.bc = 0;
 neigs = 12;
 [EV,D] = eigs(L,neigs);
@@ -46,7 +45,7 @@ colors = [1 0 0; 0 .8 0; .9 .9 0; 0 0 1; 1 0 1; 0 .8 1];
 for j = 1:neigs
   v = EV(:,j)/15; d = D(j,j);
   if max(v)<-min(v), v = -v; end
-  plot(d+v,LW,2,'color',colors(1+mod(j-1,6),:))
+  plot(d+v,'color',colors(1+mod(j-1,6),:))
 end
 
 %%
@@ -61,3 +60,8 @@ end
 clf, x = chebfun('x',[-3,3])
 V = max(abs(x),1-3*abs(x));
 quantumstates(V)
+
+%%
+% For more information on problems like these, see
+% chapter 6 of _Exploring ODEs_, freely available at
+% |people.maths.ox.ac.uk/trefethen/ExplODE/|.
