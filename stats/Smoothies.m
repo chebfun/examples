@@ -84,11 +84,45 @@ subplot(2,1,2), plot(diff(f,2)), ylim([-8000 8000])
 % growing too fast for a positive radius of convergence.
 
 %%
-% References:
+% Here are quite a few references.  For history, a good starting
+% point is the paper by Bilodeau.
 %
-% [1] S. Filip, A. Javeed, and L. N. Trefethen,
+% [1] G. G. Bilodeau, The origin and early development of non-analytic
+% infinitely differentiable functions, _Arch. Hist. Exact Sci._ 27 (1982),
+% 115-135.
+%
+% [2] R. B. Darst, Most infinitely differentiable functions are nowhere
+% analytic, _Canadian Math. Bull._ 16 (1973), 597-598.
+%
+% [3] J. Fabius, A probabilistic example of a nowhere analytic
+% $C^\infty$-function,
+% _Z. Wahrscheinlichkeitstheorie verw. Geb._ 5 (1966), 173-174.
+%
+% [4] S. Filip, A. Javeed, and L. N. Trefethen,
 % Smooth random functions, random ODEs, and Gaussian processes,
-% _SIAM Review_ 61 (2019), 185--205.
+% _SIAM Rev._ 61 (2019), 185-205.
 %
-% [2] J.-P. Kahane, _Some Random Series of Functions_, 
+% [5] J.-P. Kahane, _Some Random Series of Functions_, 
 % 2nd ed., Cambridge, 1985.
+%
+% [6] B. Kharazishvili, _Strange Functions in Real Analysis_, 
+% CRC Press, 2017.
+%
+% [7] K. G. Merryfield, A nowhere analytic $C^\infty$ function, 
+% _Missouri J. Math. Sci._, 4 (1992), 132-138.
+%
+% [8] D. Morgenstern, Unendlich oft differenzierbare nichtanalytische Funktionen,
+% _Math. Nachr._ 12 (1954), 74
+%
+% [9] T. Park, $C^\infty$ but nowhere analytic functions,
+% dissertation, MSc in Mathematical Sciences, Oxford, 2021.
+%
+% [10] W. Rudin, _Real and Complex Analysis_, McGraw-Hill, 1974,
+% Ex 13 on p. 418.
+%
+% [11] H. Salzmann and  K. Zeller, Singularit&auml;ten unendlich oft differenzierbarer Funktionen,
+% _Math. Z._ 62 (1955), 354-367.
+%
+% [12] P. Walczak, A proof of some theorem on the $C^\infty$-functions of one
+% variable which are not analytic, _Demonstratio Math._ 4 (1972), 209-214.
+%
