@@ -25,7 +25,8 @@ subplot(2,1,2), plot(b), grid on, title('smooth random walk')
 % coefficients.  (The idea of Fourier series with random
 % coefficients goes back to Norbert Wiener and is treated in a
 % marvelous book by Kahane [4].)  
-% A priori, a smooth random function is periodic and translation-invariant.
+% A priori, a smooth random function is periodic and given by a
+% distribution that is translation-invariant.
 % In practice we usually want a nonperiodic function, and Chebfun achieves
 % this (with small though in principle nonzero error) by
 % truncation from a longer periodic interval to a shorter nonperiodic
@@ -132,11 +133,11 @@ title('Nearly-semicircular variance profile')
 %
 % [2] J. Foster, T. Lyons, and H. Oberhauser,
 % An optimal polynomial approximation of Brownian motion,
-% arXiv:1904.06998, 2019.
+% _SIAM J. Numer. Anal._  58 (2020), 1393-1421.
 %
 % [3] K. Habermann, A semicircle law and decorrelation
 % phenomena for iterated Kolmogorov loops,
-% arXiv:1904.11484, 2019.
+% _J. LMS_ 103 (2021), 558-586.
 %
 % [4] J.-P. Kahane, _Some Random Series of Functions_, 
 % 2nd ed., Cambridge, 1985.
