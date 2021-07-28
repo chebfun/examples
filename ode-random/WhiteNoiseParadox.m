@@ -24,9 +24,8 @@ rng(1)
 for k = 1:3
   subplot(1,3,k)
   lambda = 1/4^k;
-  plot(randnfun(lambda,'big'),'linewidth',5-k)
-  set(gca,'fontsize',24)
-  title(['lambda = 1/' int2str(4^k)],'fontsize',24)
+  plot(randnfun(lambda,'big'),'linewidth',1-.2*k)
+  title(['lambda = 1/' int2str(4^k)])
   grid on, ylim([-30 30])
 end
 
