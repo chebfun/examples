@@ -16,36 +16,36 @@
 % Let's work in 2D, using a complex variable for convenience.
 % Here we plot the indefinite integral of a complex random function scaled
 % by $(dx)^{-1/2}$.  Red dots mark the initial and end points.
-LW = 'linewidth'; FS = 'fontsize'; MS = 'markersize';
-lw = 2.5; fs = 32; ms = 40;
+LW = 'linewidth'; MS = 'markersize';
+ms = 12;
 dx = 0.1;
-rng(5)
-f = randnfun(dx,'norm') + 1i*randnfun(dx,'norm');
+rng(1), f = randnfun(dx,'big','complex');
 g = cumsum(f);
-plot(g,'k',LW,lw), grid on, hold on
+plot(g,'k',LW,1), grid on, hold on
 plot(g([-1 1]),'.r',MS,ms), hold off
-axis(1.9*[-1 1 -1 1]), axis square
-title(['dx = ' num2str(dx)],FS,fs)
+axis([-1.5 .5 -.5 1.5]), axis square
+title(['dx = ' num2str(dx)])
 set(gca,'xtick',-2:2,'ytick',-2:2)
 
 %%
 % We divide the characteristic length defining 
 % the random function by 4 three times.
-% The limit of Brownian motion is being approached,
-% as no doubt could be proved.
+% The limit of Brownian motion is being approached.
+% For details, see [1].
 
 for k = 1:3
   dx = dx/4;
-  f = randnfun(dx,'norm') + 1i*randnfun(dx,'norm');
+  rng(1), f = randnfun(dx,'big','complex');
   g = cumsum(f);
-  plot(g,'k',LW,lw), grid on, hold on
+  plot(g,'k',LW,1-.15*k), grid on, hold on
   plot(g([-1 1]),'.r',MS,ms), hold off
-  axis(1.9*[-1 1 -1 1]), axis square
-  title(['dx = ' num2str(dx)],FS,fs)
+  axis([-1.5 .5 -.5 1.5]), axis square
+  title(['dx = ' num2str(dx)])
   set(gca,'xtick',-2:2,'ytick',-2:2), snapnow
 end
 
 %%
-% Here is a zoom of the final image:
-axis([-1.6 0.6 -1.1 1.1]), axis square, axis off, title(' ')
-snapnow
+%
+% [1] S. Filip, A. Javeed, and L. N. Trefethen,
+% Smooth random functions, random ODEs, and Gaussian processes,
+% _SIAM Rev._ 61 (2019), 185-205.
