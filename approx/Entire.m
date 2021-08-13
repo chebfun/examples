@@ -17,12 +17,12 @@
 % denote by $E_r$:
 rr = 1 + (1:10)/10;
 circ = exp(1i*chebfun('t',[0 2*pi]));
-clf, hold on
+CO = 'color'; blue = [0 .45 .74]; MS = 'markersize';
 for k = 1:numel(rr)
     rho = rr(k);
-    plot((rho*circ + (rho*circ).^(-1))/2, 'b', 'LineWidth', 1.6)
+    plot((rho*circ + (rho*circ)^(-1))/2,CO,blue), hold on
 end
-hold off, axis equal, box on
+hold off, axis equal
 %%
 % Suppose we have a function $f$ that is analytic on $[-1,1]$ and that can be
 % analytically continued to the closed $r$-ellipse for some $r > 1$. Then
@@ -74,19 +74,18 @@ hold off, axis equal, box on
 % Chebfun degree required for accuracy $\varepsilon = \varepsilon_{mach}$ ---
 % is plotted in each case as a red dot.
 ee = eps; NN = 10:100:1010;
-clf, hold on
 estimates = zeros(numel(NN),1);
 chebdegrees = estimates;
 for k = 1:numel(NN)
     N = NN(k);
-    P = @(p) (log(2/ee) - log(p-1) + N*pi/2*(p-1./p))./log(p);
+    P = @(p) (log(2/ee) - log(p-1) + N*pi/2*(p-1/p))/log(p);
     PP = chebfun(P,[1.01 10]);
     [mn,pos]= min(PP);
     estimates(k) = mn;
     ff = chebfun(@(x) sin(pi*N*x),'eps',ee);
     chebdegrees(k) = length(ff)-1;
-    plot(PP,'b','LineWidth',1.6)
-    plot(pos,mn,'.r','MarkerSize',20)
+    plot(PP,CO,blue), hold on
+    plot(pos,mn,'.r',MS,12)
 end
 text(8.02,200,  sprintf('N = %3i',NN(1)))
 text(8.02,800,  sprintf('N = %3i',NN(2)))
@@ -95,7 +94,7 @@ text(8.02,2100, sprintf('N = %3i',NN(4)))
 text(8.02,2700, sprintf('N = %3i',NN(5)))
 text(8.02,3350, sprintf('N = %3i',NN(6)))
 hold off, xlabel('\rho')
-shg, grid on, ylim([0 3.5e3]), box on
+shg, grid on, ylim([0 3.5e3])
 %%
 % How do these estimates for the length of the polynomial interpolant compare
 % with Chebfun lengths resulting from Chebfun's adaptive construction process?
@@ -115,5 +114,5 @@ fprintf('\n')
 
 %% References
 %
-% 1. L.N. Trefethen, _Approximation Theory and Approximation Practice_,
-%    SIAM, 2013.
+% 1. L.N. Trefethen, _Approximation Theory and Approximation Practice,
+% Extended Edition,_ SIAM, 2019.
