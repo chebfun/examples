@@ -22,10 +22,10 @@ function Drum
 % This creates a generalized problem in the form $Au = \lambda Bu$.
 r = chebfun('r',[0,1]);
 A = chebop(0,1);
-A.op = @(r,u) r.*diff(u,2) + diff(u);
+A.op = @(r,u) r*diff(u,2) + diff(u);
 A.lbc = 'neumann'; A.rbc = 'dirichlet';
 B = chebop(0,1);
-B.op = @(r,u) r.*u;
+B.op = @(r,u) r*u;
 
 %%
 % Then we find the eigenvalues with `eigs`. It turns out that the $\omega$
@@ -66,7 +66,7 @@ end
 
 function ratio = evratio(a)
   rho = 1 - a*sin(pi*r);
-  B.op = @(r,u) r.*rho.*u;
+  B.op = @(r,u) r*rho*u;
   [V,D] = eigs(A,B,2,0);
   [omega,ii] = sort(sqrt(-diag(D)));
   V = [V{:,ii'}];
@@ -75,7 +75,7 @@ end
 
 %%
 % Now, we create a chebfun to hit the target.
-ratfun = chebfun(@evratio,[0.5,1],'vectorize','eps',1e-11);
+ratfun = chebfun(@evratio,[0.5,1]);
 astar = find(ratfun==2)
 clf, plot(ratfun), title('Eigenvalue ratio'), xlabel('a')
 set(gca,'xtick',[0.5,astar,1],'ytick',[2],'xgrid','on','ygrid','on')

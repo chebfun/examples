@@ -33,7 +33,7 @@ alph = 1;                   % longitudinal Fourier parameter
 A = chebop(-1,1);
 
 A.op = @(x,u) (diff(u,4)-2*alph^2*diff(u,2)+alph^4*u)/Re - ...
-    2i*alph*u - 1i*alph*(1-x.^2).*(diff(u,2)-alph^2*u);
+    2i*alph*u - 1i*alph*(1-x^2)*(diff(u,2)-alph^2*u);
 B = chebop(-1,1);
 B.op = @(x,u) diff(u,2) - alph^2*u;
 A.lbc = [0; 0];
@@ -50,10 +50,10 @@ title(sprintf('Re = %8.2f   \\lambda_r = %7.5f',Re,maxe))
 % at which an eigenvalue first crosses into the right half-plane:
 Re = 5772.22; alph = 1.02;
 A.op = @(x,u) (diff(u,4)-2*alph^2*diff(u,2)+alph^4*u)/Re - ...
-    2i*alph*u - 1i*alph*(1-x.^2).*(diff(u,2)-alph^2*u);
+    2i*alph*u - 1i*alph*(1-x^2)*(diff(u,2)-alph^2*u);
 e = eigs(A,B,50,'LR');
 maxe = max(real(e));
-plot(e,'.r',MS,16), grid on, axis([-.9 .1 -1 0]), axis square
+plot(e,'.r',MS,14), grid on, axis([-.9 .1 -1 0]), axis square
 title(['Re = ' sprintf('%5d',Re) ...
    ',   \lambda_r = ' sprintf('%7.5f',maxe)])
 
