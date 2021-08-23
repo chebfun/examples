@@ -26,8 +26,10 @@ pol = roots(Dc), zer = roots(Nc), DCgain = abs(G(0))
 w = logspace(-4,2,3000);
 mag = abs(G(i*w)); ph = -angle(G(i*w));
 LW = 'linewidth'; LO = 'location'; SW = 'southwest';
-subplot(211), semilogx(w,20*log10(mag),'b-',LW,1.5), grid on, title('Magnitude (dB)')
-subplot(212), semilogx(w,ph*180/pi,'b-',LW,1.5), grid on, title('Phase (degrees)')
+subplot(211), semilogx(w,20*log10(mag),'b-'), grid on
+title('Magnitude (dB)')
+subplot(212), semilogx(w,ph*180/pi,'b-'), grid on
+title('Phase (degrees)')
 
 %%
 % Given magnitude and phase, an approximation $H(s)$ for $G(s)$ is readily obtained by
@@ -37,13 +39,13 @@ wA = [-fliplr(w) w]; magA = [fliplr(mag) mag]; phA = [-fliplr(ph) ph];
 GA = magA.*exp(i*phA);            % complex signal
 [H,polA,resA,zerA] = aaa(GA,i*wA);
 polA, zerA, DCgainA = abs(H(0))   % relevant parameters
-subplot(211), hold on, semilogx(w,20*log10(abs(H(i*w))),'k--',LW,1.5)
+subplot(211), hold on, semilogx(w,20*log10(abs(H(i*w))),'k--')
 legend('G(s)','AAA',LO,SW)
-subplot(212), hold on, semilogx(w,angle(H(i*w))*180/pi,'k--',LW,1.5)
+subplot(212), hold on, semilogx(w,angle(H(i*w))*180/pi,'k--')
 legend('G(s)','AAA',LO,SW)
 
 %%
-% Also, $H(s)$ features negligible errors in initial data:
+% Also, $H(s)$ shows negligible errors in initial data:
 err_mag = norm(mag-abs(H(i*w)),inf)
 err_ph = norm(ph-angle(H(i*w)),inf)
 
@@ -62,14 +64,14 @@ polA = roots(real(DcA)), zerA = roots(real(NcA))
 % algorithm with a low degree.
 % 20 Lawson iterations under the hood place our scarce resource (poles) at best, though not
 % necessarily in complex conjugate pairs, hence we force a recomputation, and
-% eventually solve a least-squares problem. This idea is actually a variant of the AAA-LS
-% method fully described in [1], so we'll call it the same. 
+% eventually solve a least-squares problem. This idea is a variant of the AAA-LS
+% method introduced in [1].
 
 %%
 % Going back to our approximation problem, with a 2nd order
 % reduction we expect two real distinct poles for the reduced $H_r(s)$. Note that in this
 % case a straightforward zero-pole (over)simplification, leaving with $1/(1+s)$, wouldn't
-% be really acceptable, and AAA-LS finds a decent compromise:
+% really be acceptable, and AAA-LS finds a decent compromise:
 [~,polAr] = aaa(GA,i*wA,'degree',2);
 polAr = roots(real(poly(polAr)));   % pole recomputation
 d = min(abs(i*wA(:)-polAr.'),[],1);
@@ -78,15 +80,15 @@ c = Q\GA.';                         % solve LS problem, new residues c
 Hr = @(s) [d./(s(:)-polAr.')]*c;
 [NAr] = residue(c,polAr,[]);
 zerAr = roots(real(NAr)), polAr, DCgainAr = abs(Hr(0))
-subplot(211), semilogx(w,20*log10(abs(Hr(i*w))),'c-',LW,1.5), hold off
+subplot(211), semilogx(w,20*log10(abs(Hr(i*w))),'c-'), hold off
 legend('G(s)','AAA','reduced order AAA',LO,SW)
-subplot(212), semilogx(w,angle(Hr(i*w))*180/pi,'c-',LW,1.5), hold off
+subplot(212), semilogx(w,angle(Hr(i*w))*180/pi,'c-'), hold off
 legend('G(s)','AAA','reduced order AAA',LO,SW)
 
 %%
 % To see how good AAA-LS actually is, consider the scalar example with noise found in [2],
-% i.e. $$ f(s) = (s-1)/(s^2+s+2) $$. The function is sampled at 500 logarithmically spaced points
-% in the interval [0.1 10], and then normally distributed noise with a standard deviation
+% i.e. $$ f(s) = (s-1)/(s^2+s+2). $$ The function is sampled at 500 logarithmically spaced points
+% in the interval [0.1,10], and then normally distributed noise with a standard deviation
 % of $10^{-2}$ is added:
 Nc = [1 -1]; Dc = [1 1 2];
 N = @(s) Nc*s.^[1 0]';
@@ -94,8 +96,10 @@ D = @(s) Dc*s.^[2 1 0]';
 f = @(s) N(s(:))./D(s(:));
 w = logspace(-1,1,500); mag = abs(f(i*w)); ph = -angle(f(i*w));
 mag = mag+0.01*randn(1,length(mag)); ph = ph+0.01*randn(1,length(ph));
-subplot(211), semilogx(w,20*log10(mag),'r-',LW,1.5), grid on, title('Magnitude (dB)')
-subplot(212), semilogx(w,ph*180/pi,'r-',LW,1.5), grid on, title('Phase (degrees)')
+subplot(211), semilogx(w,20*log10(mag),'r-'), grid on
+title('Magnitude (dB)')
+subplot(212), semilogx(w,ph*180/pi,'r-'), grid on
+title('Phase (degrees)')
 
 %%
 % We compute a rational approximant of degree only 2 using the above method. The AAA-LS approximant
@@ -111,9 +115,9 @@ dn = min(abs(i*wn(:)-poln.'),[],1);
 Qn = dn./(i*wn(:)-poln.');
 cn = Qn\fn.';
 Hn = @(s) [dn./(s(:)-poln.')]*cn;
-subplot(211), hold on, semilogx(w,20*log10(abs(Hn(i*w))),'b-',LW,1.5), hold off
+subplot(211), hold on, semilogx(w,20*log10(abs(Hn(i*w))),'b-'), hold off
 legend('Noisy data','AAA approximant',LO,SW)
-subplot(212), hold on, semilogx(w,angle(Hn(i*w))*180/pi,'b-',LW,1.5), hold off
+subplot(212), hold on, semilogx(w,angle(Hn(i*w))*180/pi,'b-'), hold off
 legend('Noisy data','AAA approximant',LO,SW)
 
 %%
@@ -123,10 +127,10 @@ Dcn = poly(poln)
 
 %%
 % The AAA-LS approximant effectively estimates the additive noise rather accurately,
-% both on magnitude and phase:
-subplot(211), loglog(w,abs(mag(:)-abs(Hn(i*w))),'r-',LW,1), grid on
+% both in magnitude and in phase:
+subplot(211), loglog(w,abs(mag(:)-abs(Hn(i*w))),'r-',LW,.5), grid on
 title('Estimated noise in magnitude'), axis([min(w) max(w) 1e-5 1e-1]);
-subplot(212), loglog(w,abs(ph(:)-angle(Hn(i*w))),'r-',LW,1), grid on
+subplot(212), loglog(w,abs(ph(:)-angle(Hn(i*w))),'r-',LW,.5), grid on
 title('Estimated noise in phase'), axis([min(w) max(w) 1e-5 1e-1]);
 
 %%
