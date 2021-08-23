@@ -9,7 +9,7 @@
 % The AAA algorithm provides a natural way to identify LTI (linear time-invariant)
 % system parameters such as
 % poles, zeros and DC gain from Bode plots. For example, consider the 4th order system
-% $$ G(s) = 2\dfrac{(1+105s)(1+\dfrac{1.4}{0.05}s+\dfrac{1}{0.05^2}s^2)}{(1+100s)(1+\dfrac{1.4}{0.04}s+\dfrac{1}{0.04^2}s^2)(1+s)} $$
+% $$ G(s) = 2\frac{(1+105s)(1+\frac{1.4}{0.05}s+\frac{1}{0.05^2}s^2)}{(1+100s)(1+\frac{1.4}{0.04}s+\frac{1}{0.04^2}s^2)(1+s)} $$
 Nc = [8.4e4 6.68e3 2.66e2 2];             % numerator coefficients
 Dc = [6.25e4 6.6625e4 4.26e3 1.36e2 1];   % denominator coefficients
 N = @(s) Nc*s.^[3:-1:0]';
