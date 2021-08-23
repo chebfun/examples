@@ -109,7 +109,7 @@ title('Phase (degrees)')
 wn = [-fliplr(w) w]; magn = [fliplr(mag) mag]; phn = [-fliplr(ph) ph];
 fn = magn.*exp(i*phn);
 [~,poln] = aaa(fn,i*wn,'degree',2,'lawson',30);
-poln(find(real(poln)>0)) = -1;   % force system stability
+poln(find(real(poln)>0)) ~= -1;   % force system stability
 poln = roots(real(poly(poln)));
 dn = min(abs(i*wn(:)-poln.'),[],1);
 Qn = dn./(i*wn(:)-poln.');
