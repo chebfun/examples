@@ -35,7 +35,7 @@ warning off
 % We compute the step response in the Laplace domain and AAA-approximate the
 % result to find the poles; samples are mirrored in order to enforce symmetry.
 % Hence the signal in the time domain: 
-% $$ {\cal{L}}^{-1} \left\{ \sum_n\frac{c_n}{s-a_n}\right\} = \sum_n c_n\,e^{a_nt}. $$
+% $$ {{L}}^{-1} \left\{ \sum_n\frac{c_n}{s-a_n}\right\} = \sum_n c_n\,e^{a_nt}. $$
 % Note that the effect of the dominant conjugate poles is almost completely
 % obfuscated by the undamped oscillations due to the purely complex pair.
 GS = Stp(1i*w).*G(1i*w);
@@ -51,7 +51,7 @@ legend('step response of G(s)',LO,SE)
 
 %%
 % Laplace becomes Fourier along the imaginary axis:
-% $$ {\cal{L}}\{g(t)\}(s=j\omega) = {\cal{F}}\{g(t)\}(\omega). $$
+% $$ {{L}}\{g(t)\}(s=j\omega) = {{F}}\{g(t)\}(\omega). $$
 % We extract the single-sided spectrum from the FFT and AAA-approximate it.
 % We don't even need to restrict the maximum degree, notwithstanding the low
 % coefficient number. All poles are caught nicely, and the AAA-LS procedure [1]
@@ -90,7 +90,7 @@ xlabel('frequency [rad/s]'), ylabel('magnitude')
 % The reconstruction works effectively also in the presence of noisy or missing data.
 % Consider the scalar example with noise found in [2], an LTI system with the
 % following step response in the time domain:
-% $$ {\cal{L}}^{-1} \left\{ \frac{1}{s}\frac{s-1}{s^2+s+2} \right\} =
+% $$ {{L}}^{-1} \left\{ \frac{1}{s}\frac{s-1}{s^2+s+2} \right\} =
 % \frac{e^{-t/2}\left(5\sin(\sqrt7t/2)+\sqrt7\cos(\sqrt7t/2)\right)}{2\sqrt7}-\frac{1}{2}. $$
 % The original system poles are a complex conjugate pair:
 poles = roots([1 1 2])
