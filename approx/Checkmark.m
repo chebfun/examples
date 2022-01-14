@@ -21,7 +21,7 @@ x = chebfun('x');
 f = @(a) abs(x-a);
 p = @(a,n) minimax(f(a),n);
 e = @(a,n) norm(p(a,n)-f(a),inf);
-chebfuneps 1e-6, splitting on
+chebfuneps 1e-3, splitting on
 E = [];
 for n = 1:7
    en = chebfun(@(a) e(a,n),[0,1]);
@@ -35,7 +35,7 @@ chebfuneps factory, splitting off
 red = [.9 0 0]; blue = [0 0 .9];
 ax = axes; ax.ColorOrder = [red; blue]; hold on
 plot(E(:,2:3)), grid on
-xlabel('$\alpha$'), ylabel('$E_n(\alpha)$')
+xlabel('$\alpha$','interpreter','latex'), ylabel('$E_n(\alpha)$','interpreter','latex')
 title('n = 2 and 3') 
 %%
 % As a numerical check, let us look at the 
@@ -50,7 +50,7 @@ title('n = 2 and 3')
 % Here we plot all seven curves to match Figure 2 of Dragnev, et al.
 close, ax = axes; ax.ColorOrder = [blue; red]; hold on
 plot(E), grid on
-xlabel('$\alpha$'), ylabel('$E_n(\alpha)$')
+xlabel('\alpha'), ylabel('E_n(\alpha)')
 title('n = 1,2,...,7'), ylim([0 .6]), hold off
 
 %%
