@@ -33,7 +33,7 @@ plotcoeffs(Q), title Q
 %%
 % Rounding errors are affecting these results fundamentally.  The first
 % column of $Q$ has a Chebyshev series that converges down to machine precision, but with each 
-% successive column, about one digits is lost.  Mathematically, all these columns
+% successive column, about one more digit is lost.  Mathematically, all these columns
 % should be smooth, so clearly rounding errors have messed things up.
 % The computed $Q$ probably matches the mathematical ideal to about 6 digits, not 16.
 
