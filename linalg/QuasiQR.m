@@ -25,7 +25,7 @@ plotcoeffs(A), title A
 cond(A)
 
 %%
-% What's particularly interesting is to compute the quasimatrix QR factorization
+% What's interesting now is to compute the quasimatrix QR factorization
 % of $A$ and to look at the Chebyshev coefficients of the columns of $Q$:
 [Q,R] = qr(A);
 plotcoeffs(Q), title Q
@@ -34,15 +34,20 @@ plotcoeffs(Q), title Q
 % Rounding errors are affecting these results fundamentally.  The first
 % column of $Q$ has a Chebyshev series that converges down to machine precision, but with each 
 % successive column, about one digits is lost.  Mathematically, all these columns
-% should be smooth, so clearly rounding errors have messed up the mathematical picture.
+% should be smooth, so clearly rounding errors have messed things up.
 % The computed $Q$ probably matches the mathematical ideal to about 6 digits, not 16.
 
 %%
-% But now here comes Wilkinson.  Wilkinson's startling discovery was that even though $Q$ is
-% full of errors, and so is $R$, the errors in these two objects are ``diabolically correlated'' so that
+% But here comes Wilkinson.  Wilkinson's startling discovery was that even though $Q$ is
+% far from accurate, and so is $R$,
+% the errors in these two objects are "diabolically correlated" so that
 % when you take the product, it matches $A$ to full precision:
 norm(A-Q*R)
 
 %%
-% As he liked to put it, though $Q$ and $R$ are far from the correct factors of $A$, they are
+% As he would have put it, though $Q$ and $R$ are far from the correct factors of $A$, they are
 % the exactly (or almost exactly) correct factors of a slightly perturbed matrix.
+
+%%
+% To learn more, see Lecture 16 of Trefethen and Bau, _Numerical Linear Algebra_, SIAM 1997
+% and 2022.
