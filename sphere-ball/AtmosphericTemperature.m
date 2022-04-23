@@ -2,7 +2,7 @@
 % Alex Townsend and Grady Wright, May 2016 
 
 %%
-% (Chebfun example sphere/AtmosphericTemperature.m)
+% (Chebfun example sphere-ball/AtmosphericTemperature.m)
 % [Tags: #spherefun]
 
 %% 1. Introduction 

@@ -2,7 +2,7 @@
 % Grady Wright, February 2017
 
 %%
-% (Chebfun example/sphere/RayleighQuotient.m )
+% (Chebfun example sphere-ball/RayleighQuotient.m)
 % [Tags: #spherefun, #spherefunv, #eigenvalues]
 MS = 'MarkerSize'; ms = 22; LW = 'LineWidth'; lw = 2;
 
