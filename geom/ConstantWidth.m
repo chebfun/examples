@@ -22,7 +22,8 @@ p = @(x,y) r2(x,y).^4 - 45*r2(x,y).^3 - 41283*r2(x,y).^2 + ...
 % with the Chebfun2 |roots| command:
 pc = chebfun2(p,[-11 11 -11 11]);
 r = roots(pc);
-plot(r,'linewidth',1.5)
+copper = [.722 .451 .20];
+fill(real(r),imag(r),copper)
 axis(12*[-1 1 -1 1]), axis square, grid on
 
 %%
