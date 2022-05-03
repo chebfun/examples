@@ -63,7 +63,7 @@ time_for_this_example = toc
 % [2] A. Champneys, Westward Ho! Musing on mathematics and
 % mechanics, _Mathematics Today_, April 2022, 56--59.
 %
-% [3] S. Rabonowitz, A polynomial curve of constant width,
-% _Missouric Journal of Mathematical Sciences_ 9 (1997), 23--27.
+% [3] S. Rabinowitz, A polynomial curve of constant width,
+% _Missouri Journal of Mathematical Sciences_ 9 (1997), 23--27.
 %
 % [4] Wikipedia, "Curve of constant width".
