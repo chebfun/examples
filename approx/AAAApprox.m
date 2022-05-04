@@ -99,7 +99,7 @@ title('AAA approx of exp(x)'), xlabel(' ')
 % $e^x$.  The error curve for best type $(3,3)$ approximation
 % is shown for comparison. 
 f = chebfun('exp(x)');
-r = aaa(@exp,'mmax',4);
+r = aaa(@exp,'mmax',4,'lawson',0);
 ezplot(@(x) exp(x)-r(x),[-1,1]), grid on, xlabel(' ')
 title('AAA and best type (3,3) error curves')
 [p,q,rbest] = minimax(f,3,3); hold on
