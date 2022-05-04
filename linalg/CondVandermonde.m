@@ -27,9 +27,10 @@ legend('Vandermonde matrix','asymptotics','location','northwest')
 
 %%
 % So far as I am aware, this growth constant $\rho_c$ was first identified by 
-% Walter Gautschi in 1975 [1].  (He was working not with quasimatrices, but
-% with discrete square matrices sampled at Chebyshev points---see his equation
-% (6.5).)
+% Walter Gautschi in 1975 [2, eq. (6.5)], and a much more complete
+% theory has been provided by Beckermann [1, Thm. 4.1].  (These authors were
+% working not with quasimatrices, but
+% with discrete square matrices sampled at Chebyshev points.
 % The crucial property of $\rho_c$ is that 
 % if the circle $|z|=\rho$ in the complex $z$-plane is mapped to an ellipse
 % in the complex
@@ -40,6 +41,7 @@ legend('Vandermonde matrix','asymptotics','location','northwest')
 
 %%
 % Here is an explanation of why this property controls the condition number.
+% (It amounts to a proof that the condition number can grow now faster than this.)
 % $A$ represents the map from coefficient vectors $c = (c_0,\dots, c_n)^T$
 % to polynomials $p(x) = c_0 + \cdots + c_n x^n$.  The essential question for
 % the condition number is, how small can $p$ be relative to $c$?
@@ -65,6 +67,9 @@ legend('Vandermonde matrix','asymptotics','location','northwest')
 % $$
 
 %%
-% [1] W. Gautschi, Norm estimates for inverses of Vandermonde matrices,
+% [1] B. Beckermann, The condition number of real Vandermonde, Krylov and positive
+% definite Hankel matrices, _Numerische Mathematik_ 85 (2000), 553-577.
+%
+% [2] W. Gautschi, Norm estimates for inverses of Vandermonde matrices,
 % _Numerische Mathematik_ 23 (1975), pp. 337--347.
 
