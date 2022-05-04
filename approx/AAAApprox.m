@@ -8,7 +8,7 @@
 %% 1.  A new kind of rational approximation
 % Chebfun has a number of methods for rational approximation
 % of a function on an interval, including
-% |ratinterp|, |remez|, |cf|, and |chebpade|; see the example
+% |ratinterp|, |minimax|, |cf|, and |chebpade|; see the example
 % "Eight shades of rational approximation".  For rational
 % approximation on the unit circle, one can use
 % |ratinterp| with the |'unitroots'| flag, and for
@@ -40,8 +40,6 @@ r = aaa(@gamma);
 % approximates $\Gamma(z)$ on $[-1,1]$.  We can plot it with
 % |ezplot| and get a pretty good result!
 h = ezplot(r); axis([-3 3 -8 8]), grid on, title(' '), xlabel(' ')
-LW = 'linewidth'; MS = 'markersize';
-set(h,LW,2)
 
 %%
 % To learn more about the approximation we can output the
@@ -64,7 +62,6 @@ disp([pol res])
 disp('        poles             residues')
 disp([pol res])
 h = ezplot(r); axis([-3 3 -8 8]), grid on, title(' '), xlabel(' ')
-set(h,LW,2)
 
 %%
 % Instead of a function handle, we can pass a chebfun to |aaa| for
@@ -95,7 +92,7 @@ clf, ezplot(@(x) exp(x)-r(x),[-1 1]), grid on
 title('AAA approx of exp(x)'), xlabel(' ')
 
 %%
-% Alterntatively, we
+% Alternatively, we
 % can ask |aaa| to find approximations of lower type or accuracy by
 % specifying values of |'mmax'| or |'tol'|, respectively.  For example,
 % here is the error curve for the type $(3,3)$ AAA approximant to
@@ -105,7 +102,7 @@ f = chebfun('exp(x)');
 r = aaa(@exp,'mmax',4);
 ezplot(@(x) exp(x)-r(x),[-1,1]), grid on, xlabel(' ')
 title('AAA and best type (3,3) error curves')
-[p,q,rbest] = remez(f,3,3); hold on
+[p,q,rbest] = minimax(f,3,3); hold on
 ezplot(@(x) f(x)-rbest(x),[-1,1]), hold off
 grid on, ylim(1e-6*[-1 1]), xlabel(' ')
 title('AAA and best type (3,3) approximants to exp(x)')
@@ -132,10 +129,10 @@ ylim(5e-14*[-1 1]), xlabel(' ')
 npts = 2000; rng(0)
 X = 8*rand(npts,1)-4; Y = 2*rand(npts,1) - 1 + X.^3/16;
 Z = X + 1i*Y;
-plot(Z,'.k',MS,3), ylim([-5 5]), axis([-8 8 -5 5]), hold on
+plot(Z,'.k','markersize',3), ylim([-5 5]), axis([-8 8 -5 5]), hold on
 ff = @(z) sqrt(2+z.^2)./(z-4);
 [r,pol] = aaa(ff,Z);
-plot(pol,'.r',MS,14), hold off
+plot(pol,'.r','markersize',10), hold off
 
 %%
 % Here we check the approximation at $5+5i$, $5$, and $5-5i$:
