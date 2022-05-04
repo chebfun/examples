@@ -41,7 +41,7 @@ legend('Vandermonde matrix','asymptotics','location','northwest')
 
 %%
 % Here is an explanation of why this property controls the condition number.
-% (It amounts to a proof that the condition number can grow now faster than this.)
+% (It amounts to a proof that the condition number can grow no faster than this.)
 % $A$ represents the map from coefficient vectors $c = (c_0,\dots, c_n)^T$
 % to polynomials $p(x) = c_0 + \cdots + c_n x^n$.  The essential question for
 % the condition number is, how small can $p$ be relative to $c$?
