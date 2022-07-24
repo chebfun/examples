@@ -7,7 +7,7 @@
 
 %% Introduction
 % Delay differential equations (DDEs) arise in a variety of areas, notably
-% population dynamics, epidemiology, and control theory [1,2]. DDES are
+% population dynamics, epidemiology, and control theory [1,2]. DDEs are
 % typically first order initial value problems of the form $x'(t) = f(t,
 % x(t), x(\tau(t)))$ with $\tau(t) \le t$, but there are also applications
 % involving other delay types, as well as second- and higher-order DDEs and
@@ -65,7 +65,7 @@ x = A\rhs;                   % Solve
 sol = exp(a*t)*x0;           % Exact solution
 err = norm(x - sol)          % Error
 MS = 'markersize';
-plot(t, sol, '-', t, x, '.', MS, 20)
+plot(t, sol, '-', t, x, '.', MS, 15)
 
 %%
 % The geometric convergence of the spectral method means an accurate
@@ -76,7 +76,7 @@ plot(t, sol, '-', t, x, '.', MS, 20)
 % We now consider the pantograph equation $dx/dt = x(t) - 8x(t/2)$, $x(0) =
 % 1$ with solution $x(t) = -\frac72t^3 + \frac{21}{2}t^2 - 7t + 1$. Notice
 % in the code below that the only significant change from the ODE example
-% above is the introduction of E = barymat(tau, t). Here |barymat| implements the
+% above is the introduction of |E = barymat(tau, t)|. Here |barymat| implements the
 % `barycentric interpolation matrix' described in [5]. It the linear
 % operator which interpolates data at the $n$-point Chebyshev grid t by a
 % polynomial of degree $n-1$ and evaluates the interpolant at the points
@@ -93,7 +93,7 @@ x = A\rhs;                      % Solve
 sol = @(t) -7/2*t.^3 + 21/2*t.^2 - 7*t + 1;
 err = norm(x - sol(t))          % Error
 tt = linspace(0, 1, 1001);
-plot(tt, sol(tt), '-', t, x, '.', MS, 20)
+plot(tt, sol(tt), '-', t, x, '.', MS, 15)
 
 %%
 % The same problem can be easily solved in Chebfun:
@@ -103,7 +103,7 @@ N.lbc = x0;
 x = N\0
 sol = chebfun(sol, dom);
 err = norm(x - sol)
-plot(sol, '-', x, '.--', MS, 20)
+plot(sol, '-', x, '.--', MS, 15)
 
 %%
 % Since the solution here is a low degree polynomial, it is not surprising
@@ -155,14 +155,14 @@ rhs = [x0 ; rhsL(2:n) ; 0 ; rhsR(2:n)];
 x = A\rhs;
 sol = @(t) exp(a*t)*x0;
 err = norm(x - sol(t))
-plot(tt, sol(tt), '-', t, x, '.', MS, 20)
+plot(tt, sol(tt), '-', t, x, '.', MS, 15)
 
 %%
 % Now we incorporate the delay and solve $x'(t) = ax(t-0.5), x(0) = x_0$.
 % Again, the only change is the introduction of the barymats. In the first
 % subinterval we have $\tau(t_L) = t_L - 0.5 < 0$, and so all the
 % evaluations take place at 0 (because the history function is the
-% constant, $\phi(t) = x_0$. In the second interval we have $0 < t_R - 0.5
+% constant, $\phi(t) = x_0$). In the second interval we have $0 < t_R - 0.5
 % < 0.5$, so the evaluation points $\tau(t_R) = t_R - 0.5$ sit within the
 % first interval and $x(\tau(t_R))$ = ER*xL.
 
@@ -175,7 +175,7 @@ rhs = [x0 ; rhsL(2:n) ; 0 ; rhsR(2:n)];
 % Solve and plot:
 x = A\rhs;
 sol = [a*tL + 1 ; (a*p+1)+a*(tR-p).*(.5*a*(tR-p)+1)];
-plot(t, sol, '-', t, x, '.', MS, 20)
+plot(t, sol, '-', t, x, '.', MS, 15)
 err = norm(x - sol)
 
 %%
@@ -187,7 +187,7 @@ N.lbc = 1;
 x = N\0
 sol = chebfun({@(t) t + 1, @(t) (a*p+1)+a*(t-p).*(.5*a*(t-p)+1)}, dom);
 err = norm(x - sol)
-plot(sol, '-', x, '.--', MS, 20)
+plot(sol, '-', x, '.--', MS, 15)
 
 %%
 % And on a larger domain:
@@ -246,7 +246,7 @@ A(1,:) = [1, z]; rhs(1) = x0;   % Boundary conditions
 x = A\rhs;
 b = sqrt(a^2-2*a+5)/2;
 sol = @(t) exp(-(a+1)/2*t).*(cosh(b*t) + .5*(1-a)/b*sinh(b*t));
-plot(tt, sol(tt), '-', t, x, '.', MS, 20), shg
+plot(tt, sol(tt), '-', t, x, '.', MS, 15), shg
 err = norm(x - sol(t))
 
 %%
@@ -257,7 +257,7 @@ N.lbc = x0;
 x = N\0
 sol = chebfun(sol, dom);
 err = norm(x - sol)
-plot(sol, '-', x, '.--', MS, 20)
+plot(sol, '-', x, '.--', MS, 15)
 
 %% State dependent delay
 % As the name suggests, state dependent delay is where the delay depends on
@@ -296,7 +296,7 @@ plot(t, x), shg
 
 %%
 % We do not have an analytic solution in this case, but the quadratic
-% convergence of the Newton is a good indication that we are on the right
+% convergence of the Newton iteration is a good indication that we are on the right
 % track. Let us check the residual of the solution using Chebfun:
 
 x = chebfun(x, dom);
@@ -310,7 +310,7 @@ N = chebop(@(t,x) diff(x) + x(x), dom);
 N.lbc = 1;
 x = N\0
 res = norm(N(x))
-hold on, plot(t, x, '.--', MS, 20), shg, hold off
+hold on, plot(t, x, '.--', MS, 15), shg, hold off
 
 %% Examples
 % Here are some other examples taken from the literature.
@@ -326,7 +326,7 @@ N = chebop(@(t,y) diff(y) - y(q*t)^2, dom);
 N.lbc = 1;
 y = N\g
 sol = 1./(1+t^2);
-plot(sol, '-', y, '.--', MS, 20)
+plot(sol, '-', y, '.--', MS, 15)
 err = norm(y - sol)
 
 %%
@@ -342,7 +342,7 @@ g = [cos(t) - cos(q*t)*cos(t) - sin(q*t)*sin(t);
      sin(q*t)*cos(t) - cos(q*t)*sin(t) - sin(t)];
 y = N\g
 sol = [sin(t);cos(t)]
-plot(sol, '-b', y, '.--r', MS, 20)
+plot(sol, '-b', y, '.--r', MS, 15)
 err = norm(y - [sin(t);cos(t)])
 
 %%
@@ -356,7 +356,7 @@ N = chebop(@(t,y) diff(y)-y(y), dom);
 N.lbc = 0;
 y = N\g
 sol = x^(3+mu);
-plot(sol, '-', y, '.--', MS, 20)
+plot(sol, '-', y, '.--', MS, 15)
 err = norm(y - sol)
 
 %%
@@ -381,12 +381,12 @@ plot(y, '-'), shg
 
 dom = [0 20];
 q = 1/2;
-N = chebop(@(x,u) diff(u) - 1/100*(q*x-x-10)*u(q*x) - 1/100*(x+20)*exp(-1) - ...
+N = chebop(@(x,u) diff(u) - 1/100*(q*x-x-10)*u(q*x) - 1/100*(x+15)*exp(-1) - ...
     1/100*cumsum(u) - 1/1000*feval(volt(@(t,s)(t/q-s), u), q*x), dom);
 N.lbc = exp(-1);
 u = N\0
 sol = chebfun(@(x) exp(x/10-1), dom);
-plot(sol, '-', u, '.--', MS, 20)
+plot(sol, '-', u, '.--', MS, 15)
 err = norm(sol-u)
 
 
@@ -401,7 +401,7 @@ N.init = 1+x;
 y = N\0
 sol = exp(-2*x);
 err = norm(y - sol)
-plot(sol, '-', y, '.--', MS, 20)
+plot(sol, '-', y, '.--', MS, 15)
 
 %%
 % Example 8. [13] First order nonlinear 'BVP' with pantograph delay
@@ -448,7 +448,7 @@ N.lbc = [log(dom(1)) ; 1./dom(1)];
 u = N\0;
 u{1}
 sol = [log(t) ; 1/t];
-plot(sol, '-b', u, '.r', MS, 20)
+plot(sol, '-b', u, '.r', MS, 15)
 err = norm(u - sol)
 
 %% References
@@ -460,15 +460,15 @@ err = norm(u - sol)
 % Springer Science & Business Media, 2012.
 %
 % [3] Erbe, L. H., and Qingkai Kong, Boundary value problems for singular
-% second-order functional differential equations. _Journal of Computational
+% second-order functional differential equations. _J. Computational
 % and Applied Mathematics,_ 1994.
 %
 % [4] Jiang, Daqing, and Junyu Wang, On boundary value problems for
-% singular second-order functional differential equations, _Journal of
+% singular second-order functional differential equations, _J.
 % Computational and Applied Mathematics_, 2000.
 %
 % [5] Driscoll, T.A., Hale, N., Rectangular spectral collocation, _IMA
-% Journal of Numerical Analysis,_ 2016.
+% J. of Numerical Analysis,_ 2016.
 %
 % [6] Driscoll, T.A., Automatic spectral collocation for integral,
 % integro-differential, and integrally reformulated differential equations,
@@ -476,11 +476,11 @@ err = norm(u - sol)
 %
 % [7] Jingtang Ma, Hermann Brunner, A posteriori error estimates of
 % discontinuous Galerkin methods for non-standard Volterra
-% integro-differential equations, _IMA Journal of Numerical Analysis,_ 2006.
+% integro-differential equations, _IMA J. of Numerical Analysis,_ 2006.
 %
 % [8] Ali, I., Brunner, H. and Tang, T., A spectral method for
 % pantograph-type delay differential equations and its convergence
-% analysis, _Journal of Computational Mathematics,_ 2009.
+% analysis, _J. of Computational Mathematics,_ 2009.
 %
 % [9] Tavernini, L., The approximate solution of volterra differential
 % systems with state-dependent time lags, _SIAM J. Numer. Anal.,_ 1978.
@@ -497,7 +497,7 @@ err = norm(u - sol)
 % using spectral method, _AIMS Mathematics,_ 2022.
 %
 % [13] Jianli Li, Jianhua Shen,  Periodic boundary value problems for delay
-% differential equations with impulses, _Journal of Computational and
+% differential equations with impulses, _J. of Computational and
 % Applied Mathematics,_ 2006.
 %
 % [14] Shampine, L.F., Solving ODEs and DDEs with Residual Control,
