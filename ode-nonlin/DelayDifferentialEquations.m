@@ -381,7 +381,7 @@ plot(y, '-'), shg
 
 dom = [0 20];
 q = 1/2;
-N = chebop(@(x,u) diff(u) - 1/100*(q*x-x-10)*u(q*x) - 1/100*(x+15)*exp(-1) - ...
+N = chebop(@(x,u) diff(u) - 1/100*(q*x-x-10)*u(q*x) - 1/100*(x+20)*exp(-1) - ...
     1/100*cumsum(u) - 1/1000*feval(volt(@(t,s)(t/q-s), u), q*x), dom);
 N.lbc = exp(-1);
 u = N\0
