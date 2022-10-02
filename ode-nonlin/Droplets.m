@@ -112,8 +112,8 @@ toc
 % We take the initial height $u = u_0 < 0$ when $r=0$.
 % Then we use the method of washers to compute the volume
 % $$ V = \int^{u_0}_u \pi r^2\, du
-% \quad = -\pi r^2u - 2\pi\int^0_r \rho u\, d\rho 
-% \quad = -\pi r^2u - 2\pi\int^0_r (\rho\sin\psi)_\rho\, d\rho 
+% = -\pi r^2u - 2\pi\int^0_r \rho u\, d\rho 
+% = -\pi r^2u - 2\pi\int^0_r (\rho\sin\psi)_\rho\, d\rho 
 % = -\pi r^2u  + 2\pi r\sin\psi.$$
 % This gives the volume formula 
 % $$
@@ -144,7 +144,6 @@ t = chebfun('t'); bguess = nthroot(v0,3)/2;
 N.init = [bguess*t; bguess*(-2+cos(t*Psib)); t*Psib; 2*bguess+0*t; bguess+0*t];
 [R,U,Psi,ell,b] = N\0;
 U = U - min(U);
-LW = 'linewidth'; blue = [.3 .4 1];
 plot([floor(min(R));ceil(max(R))],[0;0],'k',LW,1.5) , hold on
 fill(R,U,blue), plot(R,U,'k',LW,1), hold off
 axis equal, grid on, title('prescribed volume')
