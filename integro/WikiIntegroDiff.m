@@ -9,7 +9,7 @@
 % Here, we solve a first order linear integro-differential equation
 % considered in the Wikipedia article [1]:
 %
-% $$ u'(x) + 2u(x) + 5\int_0^t u(t) dt = 1~ (x\ge 0), ~~
+% $$ u'(x) + 2u(x) + 5\int_0^x u(t) dt = 1~ (x\ge 0), ~~
 % = 0~ (x<0) $$
 %
 % with $u(0)=0$.
@@ -38,7 +38,7 @@ u = N\rhs;
 
 %%
 % Here is the analytic solution:
-u_exact = 0.5*exp(-x).*sin(2*x);
+u_exact = 0.5*exp(-x)*sin(2*x);
 
 %%
 % How close is the computed solution to the true solution?
@@ -46,8 +46,8 @@ accuracy = norm(u-u_exact)
 
 %%
 % Plot the computed solution
-plot(u,'linewidth',1.6), grid on
-title('Solution of integro-differential equation','fontsize',16)
+plot(u), grid on
+title('Solution of integro-differential equation')
 
 %% References
 %
