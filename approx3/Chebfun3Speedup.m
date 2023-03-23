@@ -15,7 +15,7 @@
 % be accessed with the flag |'classic'|.
 
 %%
-% In this example we we illustrate the improved speed of the new constructor.  Following
+% In this example we illustrate the improved speed of the new constructor.  Following
 % [3], we look first at a hard example (not low-rank) and then at an easy one (low-rank).
 % Of course, many other functions could be investigated.
 
