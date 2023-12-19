@@ -50,7 +50,7 @@ error = norm( x_cg - x_exact )
 
 %% Rectangular spectral collocation
 % In Chebfun, the default discretization of ODEs is rectangular spectral
-% collocation [7]. The discretized linear system can be obtained with the
+% collocation [1]. The discretized linear system can be obtained with the
 % following commands:
 L = chebop( @(u) -diff(u, 2) );
 L.bc = 0;
@@ -67,7 +67,7 @@ norm( A - A' ,'fro')
 % system and less efficient Krylov subspace methods such as GMRES must be
 % employed instead. Alternatively, other spectral discretizations that are
 % structure preserving could be used, such as the Legendre-Galerkin
-% spectral method [1].
+% spectral method [7].
 
 %% The Chebfun and Beyond conference in 2012
 % A discussion on the topic of operator Krylov methods for differential
